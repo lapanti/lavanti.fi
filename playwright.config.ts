@@ -111,7 +111,15 @@ export default defineConfig({
     /* Run your local dev server before starting the tests */
     webServer: {
         command: 'npm run build && npm run preview',
-        url: 'http://localhost:4321',
         reuseExistingServer: !process.env.CI,
+        /*
+         * `npm run build` takes ~70s, over Playwright's 60s default. On a cold
+         * run the wait expired mid-build, which left `dist` half-written — so
+         * the next run could not reuse the preview server either (the partial
+         * `dist` served 404s) and rebuilt into the same timeout. 3 minutes
+         * clears the build with margin on slower CI runners.
+         */
+        timeout: 180_000,
+        url: 'http://localhost:4321',
     },
 })
