@@ -44,7 +44,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/mdx": "7.0.8",
+    "@astrojs/mdx": "8.0.1",
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
     "astro-icon": "1.2.0",
