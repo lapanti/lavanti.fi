@@ -1,0 +1,9 @@
+[
+  {
+    "id": "bash-git-commit-main",
+    "tool": "Bash",
+    "scope": "any",
+    "decision": "deny",
+    "message": "never commit on `main` (AGENTS.md § Git Workflow). Branch first: `git checkout -b <type>/<kebab>` off up-to-date main, then commit there."
+  }
+]
