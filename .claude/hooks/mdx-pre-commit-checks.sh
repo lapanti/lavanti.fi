@@ -1,6 +1,8 @@
 #!/bin/bash
-# Blocks git commit when MDX files are staged and prompts Claude to run
-# /review-content before committing.
+# Advisory only: when a `git commit` has MDX files staged, this approves the
+# call and attaches a reminder to run /review-content first. It does NOT block —
+# it returns permissionDecision "approve" with a reason, so the commit proceeds.
+# (The header previously claimed it blocks, which it never did.)
 
 INPUT=$(cat)
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')
