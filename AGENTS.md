@@ -25,6 +25,19 @@ Core constraint: all-content-local; hosted on Cloudflare Pages (static output on
 | **Test (E2E)** | `npm run test:e2e` | Playwright — builds + previews automatically |
 | **Lint** | `npm run lint` | ESLint + Prettier |
 | **Type check** | `npm run check` | Astro TypeScript check |
+| **Edit a PR body/title** | `node scripts/gh-pr.mjs body <n> --file <md>` | `gh pr edit` fails on the Projects-classic GraphQL deprecation and leaves the PR unchanged while exiting quietly. This PATCHes over the REST API and reads the result back; exit 1 means the read-back did not match. |
+| **Wait for CI** | `gh pr checks <n> --watch` | Never `sleep N; gh pr checks`: polling costs a turn per check. |
+
+### Agent tooling
+
+A `PreToolUse` guard hook runs at user scope (`~/.claude/hooks/tool-guard/`) in every repo on this
+machine. It denies the tool calls that two weeks of transcripts showed to be wasted or broken, and
+names the replacement in the denial. The ones that bite here: reading a single file with
+`cat`/`sed -n`/`head`/`tail` instead of `Read`; writing repo files from `python3 -`, `node -e`,
+`sed -i` or `cat > file <<EOF`, none of which the harness file tracker can see; `gh pr edit`; a
+`pkill -f` pattern that matches its own command line. `grep` is fine here — the main thread has no
+`Grep` tool on Linux, since the harness embeds `ugrep` in Bash. One-off escape: append
+`# guard:allow <rule-id>` to the command; every use is logged.
 
 ---
 
