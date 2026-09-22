@@ -1,3 +1,4 @@
+import type { Newsletter } from '../lib/newsletters'
 import type { Post } from '../lib/posts'
 
 import { describe, expect, it } from 'vitest'
@@ -77,7 +78,25 @@ const posts: Post[] = [
     }),
 ]
 
-const content = buildLlmsTxt(posts, SITE)
+const makeNewsletter = (overrides: Partial<Newsletter>): Newsletter =>
+    ({
+        description: 'description',
+        entry: {} as Newsletter['entry'],
+        pageTitle: 'Page title',
+        publishDate: '2026-04-25',
+        readingTime: 1,
+        sent: '2026-03-14',
+        updatedDate: '2026-04-25',
+        wordCount: 100,
+        ...overrides,
+    }) as Newsletter
+
+const newsletters: Newsletter[] = [
+    makeNewsletter({ id: 1, lang: 'fi', slug: 'kirje-1', title: 'Uutiskirje 1', url: '/fi/uutiskirje/1/kirje-1/' }),
+    makeNewsletter({ id: 1, lang: 'en', slug: 'issue-1', title: 'Issue 1', url: '/en/newsletter/1/issue-1/' }),
+]
+
+const content = buildLlmsTxt(posts, SITE, newsletters)
 
 describe('buildLlmsTxt — header', () => {
     it('starts with H1 "# Lauri Lavanti"', () => {
@@ -110,6 +129,10 @@ describe('buildLlmsTxt — pillar pages section', () => {
 
     it('links Suositukset to /fi/suositukset/ with trailing slash', () => {
         expect(content).toContain('[Suositukset](https://lavanti.fi/fi/suositukset/)')
+    })
+
+    it('links the newsletter archive', () => {
+        expect(content).toContain('[Uutiskirjeen arkisto](https://lavanti.fi/fi/uutiskirje/arkisto/)')
     })
 
     it('lists no URL that would round-trip a redirect (all trailing-slash canonical)', () => {
@@ -174,6 +197,23 @@ describe('buildLlmsTxt — tag sections', () => {
         for (const tag of emptyTags) {
             expect(content).not.toContain(`## ${tag.names.fi}`)
         }
+    })
+})
+
+describe('buildLlmsTxt — newsletter section', () => {
+    it('lists Finnish issues under "## Uutiskirjeet" after the tag sections', () => {
+        const section = content.slice(content.indexOf('## Uutiskirjeet'), content.indexOf('## Muut kielet'))
+        expect(section).toContain('[Uutiskirje 1](https://lavanti.fi/fi/uutiskirje/1/kirje-1/)')
+        expect(content.indexOf('## Uutiskirjeet')).toBeGreaterThan(content.indexOf('## Tekoäly'))
+    })
+
+    it('omits the section when no issue is published', () => {
+        expect(buildLlmsTxt(posts, SITE)).not.toContain('## Uutiskirjeet')
+    })
+
+    it('lists non-Finnish issues in the multilingual section', () => {
+        const multilingualSection = content.slice(content.indexOf('## Muut kielet'))
+        expect(multilingualSection).toContain('[Issue 1](https://lavanti.fi/en/newsletter/1/issue-1/)')
     })
 })
 
