@@ -15,6 +15,7 @@ Feature-specific specs (blueprint, contracts, scenarios) live at `.agents/specs/
 - [`.agents/specs/design-system/spec.md`](./.agents/specs/design-system/spec.md) — design tokens, define:vars pattern, spacing/colour/typography constants
 - [`.agents/specs/recommendations/spec.md`](./.agents/specs/recommendations/spec.md) — recommendations page, Recommendation data type, single Finnish-only data file shared across locales
 - [`.agents/specs/newsletter/spec.md`](./.agents/specs/newsletter/spec.md) — newsletter landing pages, NewsletterSubscribe component, content data file
+- [`.agents/specs/newsletter/archive.md`](./.agents/specs/newsletter/archive.md) — public newsletter archive: `newsletters` collection, localized issue/archive routes, 42-day embargo
 - [`.agents/specs/cv-descriptions/spec.md`](./.agents/specs/cv-descriptions/spec.md) — CV description fields (string arrays per locale) for CurriculumVitae component
 
 ---
