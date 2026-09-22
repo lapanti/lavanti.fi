@@ -16,7 +16,9 @@ import { ElectionSwePage } from './pages/electionSwePage'
 import { HomeEnPage } from './pages/homeEnPage'
 import { HomePage } from './pages/homePage'
 import { HomeSwePage } from './pages/homeSwePage'
+import { NewsletterArchivePage } from './pages/newsletterArchivePage'
 import { NewsletterEnPage } from './pages/newsletterEnPage'
+import { NewsletterIssuePage } from './pages/newsletterIssuePage'
 import { NewsletterPage } from './pages/newsletterPage'
 import { NewsletterSwePage } from './pages/newsletterSwePage'
 import { NotFoundPage } from './pages/notFoundPage'
@@ -150,6 +152,42 @@ test.describe('Horizontal scroll on mobile', () => {
 
     test('newsletter page (sv)', async ({ page }) => {
         const p = new NewsletterSwePage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter archive (fi)', async ({ page }) => {
+        const p = new NewsletterArchivePage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter archive (en)', async ({ page }) => {
+        const p = new NewsletterArchivePage(page, '/en/newsletter/archive/')
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter archive (sv)', async ({ page }) => {
+        const p = new NewsletterArchivePage(page, '/sv/nyhetsbrev/arkiv/')
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter issue (fi)', async ({ page }) => {
+        const p = new NewsletterIssuePage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter issue (en)', async ({ page }) => {
+        const p = new NewsletterIssuePage(page, '/en/newsletter/1/ai-is-not-taking-your-job-but-it-is-changing-it/')
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('newsletter issue (sv)', async ({ page }) => {
+        const p = new NewsletterIssuePage(page, '/sv/nyhetsbrev/1/ai-tar-inte-ditt-jobb-men-forandrar-det/')
         await p.goTo()
         await p.checkNoHorizontalScroll()
     })
