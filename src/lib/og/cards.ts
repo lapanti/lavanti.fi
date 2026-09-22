@@ -2,6 +2,8 @@ import type { Lang } from '../../content/nav'
 
 import { sloganContent } from '../../content/slogan'
 import { getCategoryPath, tags } from '../../content/tags'
+import { newsletterSlug } from '../newsletterRoutes'
+import { getAllNewsletters } from '../newsletters'
 import { getAllPosts } from '../posts'
 import { ogId } from './id'
 
@@ -112,6 +114,19 @@ async function build(): Promise<OgCard[]> {
             id: ogId(slug),
             lang: post.lang,
             title: cleanCardText(post.ogTitle ?? post.title),
+        })
+    }
+
+    /*
+     * Newsletter issues — same shape as posts. Embargoed issues are absent from
+     * getAllNewsletters(), so no card leaks before the page itself does.
+     */
+    for (const issue of await getAllNewsletters()) {
+        cards.push({
+            emphasis: issue.ogEmphasis ? cleanCardText(issue.ogEmphasis) : undefined,
+            id: ogId(newsletterSlug(issue.lang, issue.id, issue.slug)),
+            lang: issue.lang,
+            title: cleanCardText(issue.ogTitle ?? issue.title),
         })
     }
 
