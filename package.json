@@ -17,7 +17,7 @@
     "check": "astro check",
     "dev": "astro dev",
     "build": "astro build",
-    "validate-page-titles": "node scripts/check-overflow.mjs $(find src/pages -name '*.mdx') $(find src/content/posts src/content/newsletters -name '*.mdx') src/content/tags/*.ts",
+    "validate-page-titles": "node scripts/check-overflow.mjs $(find src/pages -name '*.mdx') $(find src/content -name '*.mdx') src/content/tags/*.ts",
     "generate:font-metrics": "node scripts/generate-font-metrics.mjs",
     "audit:redirects": "node --experimental-strip-types scripts/checks/redirects.mjs",
     "check:dist-crawl": "node --experimental-strip-types scripts/checks/dist-crawl.ts dist",
