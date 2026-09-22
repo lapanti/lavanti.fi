@@ -16,6 +16,7 @@ The header navigation provides the primary wayfinding for all three locales. It 
       title: string       // aria-label for the link
   }
   ```
+- **Footer site column:** `src/components/Footer.astro` renders `navLinks[lang]` minus the language switches, plus one footer-only item — the newsletter archive (`archivePath(lang)`, label in `src/content/footer.ts`). Anything else that should appear in both header and footer goes through `nav.ts`.
 - **Component tree:** `BaseLayout` → `src/components/Header.astro` → `src/components/header/SkipLinks.astro` + `src/components/header/MobileMenu.astro` + `src/components/header/DesktopMenu.astro` → `MainNavigationLink` + `NavigationLink`
 - **Responsive split:** MobileMenu is visible below 1200px; DesktopMenu is visible at 1200px+. Both are always in the DOM — CSS `display:none` hides the inactive one. This is why e2e selectors use `.nth(0)` (mobile) vs `.nth(1)` (desktop).
 - **Mobile menu toggle:** A CSS-only hamburger — `<input type="checkbox">` drives the open/closed state via sibling selectors. No JS.
