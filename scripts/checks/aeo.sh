@@ -11,11 +11,12 @@ source "$SCRIPT_DIR/../lib/bash-helpers.sh"
 file="$1"
 failed=0
 
-# A post file is src/content/posts/{id}/{fi,sv,en}.mdx — meta.json lives alongside
-# it and holds tags (used by the AI-pillar-post check below).
+# A collection entry is src/content/{posts,newsletters}/{id}/{fi,sv,en}.mdx — meta.json
+# lives alongside it and holds tags (used by the AI-pillar-post check below; newsletters
+# carry none, so that rule is inert for them and only the one-question rule applies).
 is_post=0
 meta_file=""
-if [[ "$file" =~ content/posts/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
+if [[ "$file" =~ content/(posts|newsletters)/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
     is_post=1
     meta_file="$(dirname "$file")/meta.json"
 fi

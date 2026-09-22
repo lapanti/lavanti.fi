@@ -20,7 +20,7 @@ export default {
         `node scripts/check-overflow.mjs ${files.map((f) => `"${f}"`).join(' ')}`,
         'node --experimental-strip-types scripts/checks/redirects.mjs',
     ],
-    '**/content/posts/**/meta.json': (files) => {
+    '**/content/{posts,newsletters}/**/meta.json': (files) => {
         const mdxFiles = siblingMdxFiles(files)
         if (mdxFiles.length === 0) return 'true'
         return [

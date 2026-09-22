@@ -12,8 +12,9 @@ source "$SCRIPT_DIR/../lib/bash-helpers.sh"
 file="$1"
 failed=0
 
+# Collection entries (posts and newsletters) are checked by path; static pages by layout.
 is_post=0
-if [[ "$file" =~ content/posts/[0-9]+/fi\.mdx$ ]]; then
+if [[ "$file" =~ content/(posts|newsletters)/[0-9]+/fi\.mdx$ ]]; then
     is_post=1
 fi
 

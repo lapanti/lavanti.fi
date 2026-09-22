@@ -67,6 +67,33 @@ run 'passes for non-PostLayout (no lang check)'  0  "$STYLE_FI"  "$FI_FIXTURE_DI
 # valid-en-post.txt has PostLayout but no jargon — should pass even in /fi/ path
 # (it also has PostLayout, so the jargon loop will run but find nothing)
 
+printf '\n── newsletters (src/content/newsletters/{id}/fi.mdx) ──\n'
+# Detection is path-keyed, so each case is staged under a real-looking collection path
+# with the sibling meta.json the checks read publishDate from.
+stage_newsletter() {
+    local id="$1" fixture="$2" dir="$TMP_DIR/src/content/newsletters/$1"
+    mkdir -p "$dir"
+    cp "$fixture" "$dir/fi.mdx"
+    printf '{ "id": %s, "sent": "2026-03-14", "publishDate": "2026-04-25", "updatedDate": "2026-04-25" }\n' "$id" > "$dir/meta.json"
+    printf '%s' "$dir/fi.mdx"
+}
+NL_VALID="$(stage_newsletter 1 "$FIXTURES/valid-fi-newsletter.txt")"
+# Ids 20 and 47 are the blog posts exempt from the year-slug rule; a newsletter with the
+# same id must NOT inherit that exemption.
+NL_YEAR_20="$(stage_newsletter 20 "$FIXTURES/year-slug-fi-newsletter.txt")"
+NL_NO_QUESTION="$(stage_newsletter 2 "$FIXTURES/valid-fi-newsletter.txt")"
+sed -i 's/^## Kuka päättää, mihin tekoäly ulottuu?$/## Johtamiskysymys/' "$NL_NO_QUESTION"
+NL_JARGON="$(stage_newsletter 3 "$FIXTURES/valid-fi-newsletter.txt")"
+sed -i 's/^Tekoäly ei toistaiseksi/On syytä huomata, että tekoäly ei toistaiseksi/' "$NL_JARGON"
+
+run 'seo: newsletter needs no layout field'            0  "$SEO"      "$NL_VALID"
+run 'seo: year-slug exemption does not leak to id 20'  1  "$SEO"      "$NL_YEAR_20"
+run 'content: newsletter passes without tags'          0  "$CONTENT"  "$NL_VALID"
+run 'aeo: newsletter needs one question heading'       1  "$AEO"      "$NL_NO_QUESTION"
+run 'aeo: newsletter with a question heading passes'   0  "$AEO"      "$NL_VALID"
+run 'style-fi: newsletter fi.mdx is checked'           1  "$STYLE_FI" "$NL_JARGON"
+run 'style-fi: clean newsletter passes'                0  "$STYLE_FI" "$NL_VALID"
+
 printf '\n────────────────────────────────────────────────\n'
 printf '%s passed, %s failed\n' "$pass" "$fail"
 
