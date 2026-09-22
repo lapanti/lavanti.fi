@@ -8,8 +8,8 @@ export interface NewsletterArchiveLocale {
     eyebrow: string
     /** Heading of the "other issues" plate on an issue page. */
     otherIssuesHeading: string
-    /** Provenance line; `date` is already formatted for the locale (d.m.yyyy). */
-    provenance: (date: string) => string
+    /** Provenance line around a <time> element: `${before}<time>14.3.2026</time>${after}`. */
+    provenance: { after: string; before: string }
     shareAriaLabel: (title: string) => string
 }
 
@@ -18,21 +18,21 @@ export const newsletterArchiveContent: Record<Lang, NewsletterArchiveLocale> = {
         allIssuesLabel: 'All issues',
         eyebrow: 'Newsletter',
         otherIssuesHeading: 'Other issues',
-        provenance: (date) => `Sent to subscribers on ${date}.`,
+        provenance: { after: '.', before: 'Sent to subscribers on ' },
         shareAriaLabel: (title) => `Share links for newsletter issue ${title}`,
     },
     fi: {
         allIssuesLabel: 'Kaikki uutiskirjeet',
         eyebrow: 'Uutiskirje',
         otherIssuesHeading: 'Muita uutiskirjeitä',
-        provenance: (date) => `Lähetetty tilaajille ${date}.`,
+        provenance: { after: '.', before: 'Lähetetty tilaajille ' },
         shareAriaLabel: (title) => `Uutiskirjeen ${title} sosiaalisen median jakolinkit`,
     },
     sv: {
         allIssuesLabel: 'Alla nyhetsbrev',
         eyebrow: 'Nyhetsbrev',
         otherIssuesHeading: 'Andra nyhetsbrev',
-        provenance: (date) => `Skickat till prenumeranterna ${date}.`,
+        provenance: { after: '.', before: 'Skickat till prenumeranterna ' },
         shareAriaLabel: (title) => `Delningslänkar för nyhetsbrevet ${title}`,
     },
 }
