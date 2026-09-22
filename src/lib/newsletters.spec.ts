@@ -58,6 +58,10 @@ describe('filterNewsletters', () => {
         expect(filterNewsletters(issues, { lang: 'fi' }).map((n) => n.id)).toEqual([3, 2, 1])
     })
 
+    it('treats limit 0 as none, not as unlimited', () => {
+        expect(filterNewsletters(issues, { lang: 'fi', limit: 0 })).toEqual([])
+    })
+
     it('excludes the current issue and applies the limit', () => {
         expect(filterNewsletters(issues, { excludeId: 3, lang: 'fi', limit: 1 }).map((n) => n.id)).toEqual([2])
     })
