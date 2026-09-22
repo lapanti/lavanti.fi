@@ -8,11 +8,20 @@
     - paragraph: Uutiskirjeessäni pohdin, miten teknologia, erityisesti tekoäly, muuttaa yhteiskuntaamme, työtämme ja arkeamme. Käsittelen esimerkiksi sitä, miksi digitaalinen itsenäisyys on välttämättömyys yhteiskunnalle, miten tekoälyn aiheuttama työn muutos pakottaa meidät uudistumaan ja millaista tulevaisuutta haluamme rakentaa yhdessä.
     - paragraph
     - paragraph: Uskon, että teknologian tulee mahdollistaa uusia ratkaisuja. Siksi korostan kestäviä innovaatioita ja herätän keskustelua siitä, miten voimme hyödyntää teknologian tarjoamia mahdollisuuksia. Tavoitteenani on tarjota ajatuksia herättävää, faktoihin perustuvaa ja ratkaisulähtöistä sisältöä.
-    - heading "Viimeaikaisia aiheita" [level=2]
+    - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
     - list:
-      - listitem: Ikärajat someen — miten muualla on tehty, miten pitäisi tehdä, ja pitäisikö ollenkaan?
-      - listitem: Tekoälyn väistämättömyys — olemmeko aktiivisia toimijoita vai muutosten kohde.
-      - listitem: Datakeskukset Suomessa — ovatko ne meille uhka vai mahdollisuus.
+      - listitem:
+        - article "Tekoäly ei vie työtäsi, mutta muuttaa sen":
+          - link "Tekoäly ei vie työtäsi, mutta muuttaa sen":
+            - /url: /fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
+            - heading "Tekoäly ei vie työtäsi, mutta muuttaa sen" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Tekoäly ei korvaa asiantuntijoita, mutta muuttaa työn rakennetta\. OECD:n mukaan \d+ prosenttia asiantuntijatehtävistä on muutospaineessa\. Kyse on johtamisesta\./
+    - paragraph:
+      - text: Kaikki lähetetyt kirjeet julkaistaan
+      - link "arkistoon":
+        - /url: /fi/uutiskirje/arkisto/
+      - text: /\d+ päivää lähettämisen jälkeen\. Tilaajat lukevat ne ensin\./
     - heading "Tilaa uutiskirje" [level=2]
     - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
     - text: Sähköposti
