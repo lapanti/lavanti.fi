@@ -41,16 +41,19 @@ const issues = await getNewsletters({ excludeId, lang, limit })
         }
     }
 </style>
-<ul>
-    {
-        issues.map((issue) => (
-            <Excerpt
-                date={issue.publishDate}
-                excerpt={issue.description}
-                lang={lang}
-                slug={issue.url.replace(/^\//, '').replace(/\/$/, '')}
-                title={issue.title}
-            />
-        ))
-    }
-</ul>
+{
+    /* No empty <ul>: a list role without list items fails SiteImprove sia-r68. */
+    issues.length > 0 && (
+        <ul>
+            {issues.map((issue) => (
+                <Excerpt
+                    date={issue.publishDate}
+                    excerpt={issue.description}
+                    lang={lang}
+                    slug={issue.url.replace(/^\//, '').replace(/\/$/, '')}
+                    title={issue.title}
+                />
+            ))}
+        </ul>
+    )
+}

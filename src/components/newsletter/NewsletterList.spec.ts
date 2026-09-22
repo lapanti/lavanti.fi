@@ -40,12 +40,12 @@ describe('<NewsletterList />', () => {
         expect(result.querySelector('img')).toBeNull()
     })
 
-    it('renders an empty list when nothing is published yet', async () => {
+    it('renders no list at all when nothing is published yet (an empty <ul> fails a11y audits)', async () => {
         getNewsletters.mockResolvedValue([])
 
         const result = await renderAstroComponent(NewsletterList, { props: { lang: 'sv' } })
 
-        expect(countIssues(result)).toBe(0)
+        expect(result.querySelector('ul')).toBeNull()
     })
 
     it('passes lang, excludeId and limit through', async () => {
