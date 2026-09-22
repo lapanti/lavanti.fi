@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "FöPL får inte höja tröskeln för företagande":
+          - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
+            - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
+            - img "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna."
+            - heading "FöPL får inte höja tröskeln för företagande" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Regeringens FöPL-reform slopar nyföretagarrabatten just när AI sänker tröskeln för att bli företagare. Tre korrigeringar som håller tröskeln låg.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Företagande":
+              - /url: /sv/kategori/foretagande/
+      - listitem:
         - article "Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
           - link "En tvådelad bild med Pinja Pekkarniemi till vänster i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
             - /url: /sv/blog/78/skogsavverkningar-utan-invanarnas-delaktighet/
@@ -267,24 +285,6 @@
           - listitem:
             - link "Frihet":
               - /url: /sv/kategori/frihet/
-      - listitem:
-        - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-          - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-            - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
-            - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
-            - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
-        - list:
-          - listitem:
-            - link /Riksdagsvalet \d+/:
-              - /url: /sv/kategori/riksdagsvalet-2027/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
-          - listitem:
-            - link "Digital självständighet":
-              - /url: /sv/kategori/digital-sjalvstandighet/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

@@ -36,6 +36,24 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
+          - article "YEL ei saa nostaa yrittäjyyden kynnystä":
+            - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
+              - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
+              - img "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation."
+              - heading "YEL ei saa nostaa yrittäjyyden kynnystä" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Hallituksen YEL-uudistus poistaisi aloittavan yrittäjän alennuksen juuri kun tekoäly laskee yrittämisen kynnystä. Kolme korjausta, jotka pitävät sen matalana.
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Yrittäjyys":
+                - /url: /fi/kategoria/yrittajyys/
+        - listitem:
           - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
             - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
               - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
@@ -68,24 +86,6 @@
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Sivistys":
-                - /url: /fi/kategoria/sivistys/
-        - listitem:
-          - article /Vuosi \d+ on tekoälyn/:
-            - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
-              - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
-              - img "Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä."
-              - heading /Vuosi \d+ on tekoälyn/ [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Tekoäly muuttaa yhteiskuntaamme – mutta et ehkä odottaisi, miten. Suurimmat muutokset näemme yksityiselämässä ja lasten arjessa.
-          - list:
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
             - listitem:
               - link "Sivistys":
                 - /url: /fi/kategoria/sivistys/
@@ -162,6 +162,24 @@
       - paragraph: Saumaton sivistys tarkoittaa, että oppiminen ja sivistys eivät lopu koskaan, vaan se on mahdollista elämäntilanteesta riippumatta. Tekoäly tekee tästä polusta valtavan paljon tärkeämmän. Maa, joka pitää polun auki kaikille, saa käyttöönsä koko kansansa potentiaalin. Se on vahvempi pohja kuin mikään muu kilpailuetu.
       - list:
         - listitem:
+          - article /Vuosi \d+ on tekoälyn/:
+            - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
+              - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
+              - img "Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä."
+              - heading /Vuosi \d+ on tekoälyn/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Tekoäly muuttaa yhteiskuntaamme – mutta et ehkä odottaisi, miten. Suurimmat muutokset näemme yksityiselämässä ja lasten arjessa.
+          - list:
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/sivistys/
+        - listitem:
           - article "Tekoäly ei pysty mihin tahansa":
             - link "Kuvituskuva tekoälylle, jossa on piirretty ihmisen päätä muistuttava kone, johon tulee ja josta lähtee erilaisia sähköisiä virtauksia Tekoäly ei pysty mihin tahansa":
               - /url: /fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Varhaiskasvatus":
                 - /url: /fi/kategoria/varhaiskasvatus/
-        - listitem:
-          - article "Koulutus on kunnan tärkein tehtävä":
-            - link "Kuva Laajakallion koulusta Koulutus on kunnan tärkein tehtävä":
-              - /url: /fi/blog/37/koulutus-on-kunnan-tarkein-tehtava/
-              - img "Kuva Laajakallion koulusta"
-              - heading "Koulutus on kunnan tärkein tehtävä" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Koulutus on kunnan tärkein tehtävä. Koulutusinvestoinnit näkyvät kauas tulevaisuuteen – eikä sieltä ole pikavoittoja saatavissa.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link /Kuntavaalit \d+/:
-                - /url: /fi/kategoria/kuntavaalit-2025/
-            - listitem:
-              - link "Opetus":
-                - /url: /fi/kategoria/opetus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Sivistys":
           - /url: /fi/category/enlightenment/
