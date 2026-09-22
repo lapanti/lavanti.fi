@@ -43,6 +43,8 @@ const KNOWN_JSONLD_TYPES = new Set([
     'WebSite',
 ])
 const POST_PATH_RE = /^\/(fi|sv|en)\/blog\/\d+\/.+\/$/
+/* Newsletter archive issues: /{lang}/{uutiskirje|newsletter|nyhetsbrev}/{id}/{slug}/ — article rules apply. */
+const NEWSLETTER_PATH_RE = /^\/(fi|sv|en)\/(uutiskirje|newsletter|nyhetsbrev)\/\d+\/.+\/$/
 
 type TagAttrs = Record<string, string>
 
@@ -89,7 +91,7 @@ export function collectPages(distDir: string): Map<string, string> {
 /** Check one page; returns a list of problem descriptions (empty = ok). */
 export function checkPage(html: string, pagePath: string, builtPaths: Set<string>): string[] {
     const problems: string[] = []
-    const isPost = POST_PATH_RE.test(pagePath)
+    const isPost = POST_PATH_RE.test(pagePath) || NEWSLETTER_PATH_RE.test(pagePath)
     const lang = pagePath.split('/')[1]
 
     const titles = [...html.matchAll(/<title[^>]*>([^<]*)<\/title>/g)].map((m) => m[1].trim())
