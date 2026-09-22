@@ -1,0 +1,36 @@
+---
+import { render } from 'astro:content'
+
+import NewsletterLayout from '../../../../../layouts/NewsletterLayout.astro'
+import { NEWSLETTER_SEGMENTS } from '../../../../../lib/newsletterRoutes'
+import { getAllNewsletters, getNewsletterAlternates } from '../../../../../lib/newsletters'
+
+/*
+ * /{lang}/{uutiskirje|newsletter|nyhetsbrev}/{id}/{slug}/ — the second segment is
+ * localized, so it is a param filled from NEWSLETTER_SEGMENTS rather than a static
+ * directory. Only the paths enumerated here are built; the static `blog` route tree
+ * outranks this pattern for /{lang}/blog/… and /{lang}/{segment}/ itself is the
+ * statically-routed subscribe landing page.
+ */
+export async function getStaticPaths() {
+    const issues = await getAllNewsletters()
+
+    return issues.map((issue) => ({
+        params: {
+            id: String(issue.id),
+            lang: issue.lang,
+            newsletters: NEWSLETTER_SEGMENTS[issue.lang],
+            slug: issue.slug,
+        },
+        props: { issue },
+    }))
+}
+
+const { issue } = Astro.props
+const { Content } = await render(issue.entry)
+const langAlternates = await getNewsletterAlternates(issue.id)
+---
+
+<NewsletterLayout issue={issue} langAlternates={langAlternates}>
+    <Content />
+</NewsletterLayout>
