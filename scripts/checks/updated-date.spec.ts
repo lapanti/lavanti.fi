@@ -21,6 +21,12 @@ describe('unitOf', () => {
         expect(unitOf('src/content/posts/77/meta.json')).toEqual(expected)
     })
 
+    it('folds every locale of a newsletter issue into one unit keyed on its meta.json', () => {
+        const expected = { field: 'src/content/newsletters/1/meta.json', unit: 'src/content/newsletters/1' }
+        expect(unitOf('src/content/newsletters/1/en.mdx')).toEqual(expected)
+        expect(unitOf('src/content/newsletters/1/meta.json')).toEqual(expected)
+    })
+
     it('ignores files that carry no updatedDate', () => {
         expect(unitOf('src/components/Footer.astro')).toBeNull()
         expect(unitOf('src/content/footer.ts')).toBeNull()

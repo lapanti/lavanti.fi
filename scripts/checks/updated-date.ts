@@ -18,8 +18,9 @@
  *
  * Two shapes carry the field:
  *   - pages: `updatedDate` in the frontmatter of src/pages/<...>.mdx
- *   - posts: `updatedDate` in src/content/posts/<id>/meta.json, shared by the
- *     fi/sv/en siblings — so the post, not the file, is the unit checked.
+ *   - collection entries (posts, newsletters): `updatedDate` in
+ *     src/content/<collection>/<id>/meta.json, shared by the fi/sv/en siblings —
+ *     so the entry, not the file, is the unit checked.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -27,8 +28,8 @@ import { readFileSync } from 'node:fs'
 
 export const SKIP_MARKER = '[skip-updated-date]'
 
-const POST_FILE = /^src[/\\]content[/\\]posts[/\\](\d+)[/\\](?:fi|sv|en)\.mdx$/
-const POST_META = /^src[/\\]content[/\\]posts[/\\](\d+)[/\\]meta\.json$/
+const ENTRY_FILE = /^src[/\\]content[/\\](posts|newsletters)[/\\](\d+)[/\\](?:fi|sv|en)\.mdx$/
+const ENTRY_META = /^src[/\\]content[/\\](posts|newsletters)[/\\](\d+)[/\\]meta\.json$/
 const PAGE_FILE = /^src[/\\]pages[/\\].+\.mdx$/
 
 export interface Offender {
@@ -38,12 +39,14 @@ export interface Offender {
     field: string
 }
 
-/** A unit is one page file, or one post directory shared by its three locales. */
+/** A unit is one page file, or one collection entry directory shared by its three locales. */
 export function unitOf(file: string): { unit: string; field: string } | null {
     const normalised = file.replace(/\\/g, '/')
-    const post = POST_FILE.exec(normalised) ?? POST_META.exec(normalised)
-    if (post) {
-        return { field: `src/content/posts/${post[1]}/meta.json`, unit: `src/content/posts/${post[1]}` }
+    const entry = ENTRY_FILE.exec(normalised) ?? ENTRY_META.exec(normalised)
+    if (entry) {
+        const dir = `src/content/${entry[1]}/${entry[2]}`
+
+        return { field: `${dir}/meta.json`, unit: dir }
     }
     if (PAGE_FILE.test(normalised)) {
         return { field: normalised, unit: normalised }
