@@ -1,22 +1,26 @@
 /**
  * cross-file.mjs
  *
- * Cross-file content integrity checks. Runs against the full src/pages/ and
- * src/content/posts/ trees (no path arguments) on every MDX commit.
+ * Cross-file content integrity checks. Runs against the full src/pages/,
+ * src/content/posts/ and src/content/newsletters/ trees (no path arguments) on
+ * every MDX commit.
  *
  * Checks:
- *   - Translation triplet completeness (every post id has meta.json + fi/sv/en.mdx)
- *   - Slug uniqueness per locale (two posts sharing a slug would collide at the URL)
+ *   - Translation triplet completeness (every entry id has meta.json + fi/sv/en.mdx)
+ *   - Slug uniqueness per locale within a collection (two entries sharing a slug
+ *     would collide at the URL) — and across locales for newsletters, whose glob
+ *     loader keys entries on the slug alone
  *   - pageTitle uniqueness per locale (duplicate <title> tags hurt SEO)
  */
 
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const pagesRoot = join(__dirname, '..', '..', 'src', 'pages')
 const postsRoot = join(__dirname, '..', '..', 'src', 'content', 'posts')
+const newslettersRoot = join(__dirname, '..', '..', 'src', 'content', 'newsletters')
 const LANGS = ['fi', 'sv', 'en']
 
 let hasError = false
@@ -35,40 +39,70 @@ function fmField(content, field) {
 }
 
 // ── translation triplet + slug-uniqueness check ───────────────────────────────
-const postIds = readdirSync(postsRoot, { withFileTypes: true })
-    .filter((e) => e.isDirectory() && /^\d+$/.test(e.name))
-    .map((e) => e.name)
-    .sort((a, b) => Number(a) - Number(b))
 
-const slugsByLang = {}
-for (const lang of LANGS) slugsByLang[lang] = new Map()
+/** Numeric entry directories of a collection root, ascending; [] when the root is absent. */
+function collectEntryIds(root) {
+    if (!existsSync(root)) return []
+    return readdirSync(root, { withFileTypes: true })
+        .filter((e) => e.isDirectory() && /^\d+$/.test(e.name))
+        .map((e) => e.name)
+        .sort((a, b) => Number(a) - Number(b))
+}
 
-for (const id of postIds) {
-    const dir = join(postsRoot, id)
-    const files = new Set(readdirSync(dir))
-    const missing = ['meta.json', ...LANGS.map((l) => `${l}.mdx`)].filter((f) => !files.has(f))
-    if (missing.length > 0) {
-        err(`post id ${id} is missing: ${missing.join(', ')}`)
-        continue
+/**
+ * Check one collection: every id has its four files, and no slug repeats within a
+ * locale. With `slugsAcrossLocales`, slugs must also be unique across locales —
+ * the newsletters glob loader ids entries by slug alone, so `fi/x` and `sv/x` collide.
+ */
+function checkCollection(label, root, { slugsAcrossLocales = false } = {}) {
+    const ids = collectEntryIds(root)
+    const slugsByLang = {}
+    for (const lang of LANGS) slugsByLang[lang] = new Map()
+    const slugsAll = new Map()
+
+    for (const id of ids) {
+        const dir = join(root, id)
+        const files = new Set(readdirSync(dir))
+        const missing = ['meta.json', ...LANGS.map((l) => `${l}.mdx`)].filter((f) => !files.has(f))
+        if (missing.length > 0) {
+            err(`${label} id ${id} is missing: ${missing.join(', ')}`)
+            continue
+        }
+
+        for (const lang of LANGS) {
+            const content = readFileSync(join(dir, `${lang}.mdx`), 'utf8')
+            const slug = fmField(content, 'slug')
+            if (!slug) continue
+            const map = slugsByLang[lang]
+            if (!map.has(slug)) map.set(slug, [])
+            map.get(slug).push(id)
+            if (!slugsAll.has(slug)) slugsAll.set(slug, [])
+            slugsAll.get(slug).push(`${lang}/${id}`)
+        }
     }
 
     for (const lang of LANGS) {
-        const content = readFileSync(join(dir, `${lang}.mdx`), 'utf8')
-        const slug = fmField(content, 'slug')
-        if (!slug) continue
-        const map = slugsByLang[lang]
-        if (!map.has(slug)) map.set(slug, [])
-        map.get(slug).push(id)
-    }
-}
-
-for (const lang of LANGS) {
-    for (const [slug, ids] of slugsByLang[lang]) {
-        if (ids.length > 1) {
-            err(`duplicate slug "${slug}" in ${lang} locale, used by post ids: ${ids.join(', ')}`)
+        for (const [slug, dup] of slugsByLang[lang]) {
+            if (dup.length > 1) {
+                err(`duplicate slug "${slug}" in ${lang} locale, used by ${label} ids: ${dup.join(', ')}`)
+            }
         }
     }
+    if (slugsAcrossLocales) {
+        for (const [slug, dup] of slugsAll) {
+            if (dup.length > 1) {
+                err(
+                    `${label} slug "${slug}" is reused across locales (${dup.join(', ')}) — the loader keys entries by slug`
+                )
+            }
+        }
+    }
+
+    return ids.length
 }
+
+const postCount = checkCollection('post', postsRoot)
+const newsletterCount = checkCollection('newsletter', newslettersRoot, { slugsAcrossLocales: true })
 
 // ── title uniqueness check ────────────────────────────────────────────────────
 
@@ -98,7 +132,8 @@ function collectPostMdx(dir) {
 const titlesByLang = {}
 for (const lang of LANGS) titlesByLang[lang] = new Map()
 
-for (const file of [...collectMdx(pagesRoot), ...collectPostMdx(postsRoot)]) {
+const newsletterMdx = existsSync(newslettersRoot) ? collectPostMdx(newslettersRoot) : []
+for (const file of [...collectMdx(pagesRoot), ...collectPostMdx(postsRoot), ...newsletterMdx]) {
     const content = readFileSync(file, 'utf8')
     const lang = fmField(content, 'lang')
     const title = fmField(content, 'pageTitle')
@@ -118,9 +153,10 @@ for (const lang of LANGS) {
 }
 
 if (!hasError) {
-    const total = postIds.length
     const pages = LANGS.flatMap((l) => [...titlesByLang[l].values()]).flat().length
-    console.log(`OK: ${total} post IDs complete in fi/sv/en; no duplicate slugs or titles across ${pages} pages`)
+    console.log(
+        `OK: ${postCount} post and ${newsletterCount} newsletter IDs complete in fi/sv/en; no duplicate slugs or titles across ${pages} pages`
+    )
 }
 
 process.exit(hasError ? 1 : 0)

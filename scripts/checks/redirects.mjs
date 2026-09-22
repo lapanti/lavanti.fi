@@ -10,15 +10,17 @@
  * Exit 0 = clean. Exit 1 = chains or dead-ends found.
  */
 
-import { readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { newsletterPath } from '../../src/lib/newsletterRoutes.ts'
 import { redirects } from '../../src/lib/redirects.ts'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const root = join(__dirname, '..', '..')
 const postsRoot = join(root, 'src', 'content', 'posts')
+const newslettersRoot = join(root, 'src', 'content', 'newsletters')
 const LANGS = ['en', 'fi', 'sv']
 
 /** Extract a scalar frontmatter field (single-quoted, double-quoted, or bare). */
@@ -72,25 +74,30 @@ for (const [i, tagId] of tagIds.entries()) {
     }
 }
 
-// Blog pages: /{lang}/blog/{id}/{slug}/ — bare /{lang}/blog/{id}/ excluded.
-// Posts live at src/content/posts/{id}/{lang}.mdx; slug comes from that file's
-// own frontmatter (no longer derivable from the directory name).
-const postIdDirs = readdirSync(postsRoot, { withFileTypes: true }).filter(
-    (e) => e.isDirectory() && /^\d+$/.test(e.name)
-)
-for (const idDir of postIdDirs) {
-    for (const lang of LANGS) {
-        const langPath = join(postsRoot, idDir.name, `${lang}.mdx`)
-        let content
-        try {
-            content = readFileSync(langPath, 'utf-8')
-        } catch {
-            continue
+// Collection entries: slug comes from each {lang}.mdx file's own frontmatter (not
+// derivable from the directory name). Blog: /{lang}/blog/{id}/{slug}/ — bare
+// /{lang}/blog/{id}/ excluded. Newsletters: /{lang}/{localised segment}/{id}/{slug}/.
+function addCollectionRoutes(collectionRoot, urlFor) {
+    if (!existsSync(collectionRoot)) return
+    const idDirs = readdirSync(collectionRoot, { withFileTypes: true }).filter(
+        (e) => e.isDirectory() && /^\d+$/.test(e.name)
+    )
+    for (const idDir of idDirs) {
+        for (const lang of LANGS) {
+            const langPath = join(collectionRoot, idDir.name, `${lang}.mdx`)
+            let content
+            try {
+                content = readFileSync(langPath, 'utf-8')
+            } catch {
+                continue
+            }
+            const slug = fmField(content, 'slug')
+            if (slug) validRoutes.add(urlFor(lang, idDir.name, slug))
         }
-        const slug = fmField(content, 'slug')
-        if (slug) validRoutes.add(`/${lang}/blog/${idDir.name}/${slug}/`)
     }
 }
+addCollectionRoutes(postsRoot, (lang, id, slug) => `/${lang}/blog/${id}/${slug}/`)
+addCollectionRoutes(newslettersRoot, newsletterPath)
 
 // ── Chain detection ───────────────────────────────────────────────────────────
 
