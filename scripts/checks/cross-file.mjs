@@ -8,8 +8,8 @@
  * Checks:
  *   - Translation triplet completeness (every entry id has meta.json + fi/sv/en.mdx)
  *   - Slug uniqueness per locale within a collection (two entries sharing a slug
- *     would collide at the URL) — and across locales for newsletters, whose glob
- *     loader keys entries on the slug alone
+ *     would collide at the URL) — and across locales, because the glob loader keys
+ *     every entry on its slug alone, so fi/x and sv/x would overwrite each other
  *   - pageTitle uniqueness per locale (duplicate <title> tags hurt SEO)
  */
 
@@ -51,10 +51,9 @@ function collectEntryIds(root) {
 
 /**
  * Check one collection: every id has its four files, and no slug repeats within a
- * locale. With `slugsAcrossLocales`, slugs must also be unique across locales —
- * the newsletters glob loader ids entries by slug alone, so `fi/x` and `sv/x` collide.
+ * locale or across locales (the glob loader ids entries by slug alone).
  */
-function checkCollection(label, root, { slugsAcrossLocales = false } = {}) {
+function checkCollection(label, root) {
     const ids = collectEntryIds(root)
     const slugsByLang = {}
     for (const lang of LANGS) slugsByLang[lang] = new Map()
@@ -88,13 +87,11 @@ function checkCollection(label, root, { slugsAcrossLocales = false } = {}) {
             }
         }
     }
-    if (slugsAcrossLocales) {
-        for (const [slug, dup] of slugsAll) {
-            if (dup.length > 1) {
-                err(
-                    `${label} slug "${slug}" is reused across locales (${dup.join(', ')}) — the loader keys entries by slug`
-                )
-            }
+    for (const [slug, dup] of slugsAll) {
+        if (dup.length > 1) {
+            err(
+                `${label} slug "${slug}" is reused across locales (${dup.join(', ')}) — the loader keys entries by slug`
+            )
         }
     }
 
@@ -102,7 +99,7 @@ function checkCollection(label, root, { slugsAcrossLocales = false } = {}) {
 }
 
 const postCount = checkCollection('post', postsRoot)
-const newsletterCount = checkCollection('newsletter', newslettersRoot, { slugsAcrossLocales: true })
+const newsletterCount = checkCollection('newsletter', newslettersRoot)
 
 // ── title uniqueness check ────────────────────────────────────────────────────
 
