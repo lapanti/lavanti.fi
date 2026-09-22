@@ -29,6 +29,10 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { join, sep } from 'node:path'
 import process from 'node:process'
 
+/* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import { NEWSLETTER_SEGMENTS } from '../../src/lib/newsletterRoutes.ts'
+/* eslint-enable import-x/extensions */
+
 const SITE = 'https://lavanti.fi'
 const LANGS = ['fi', 'sv', 'en']
 const KNOWN_JSONLD_TYPES = new Set([
@@ -44,7 +48,7 @@ const KNOWN_JSONLD_TYPES = new Set([
 ])
 const POST_PATH_RE = /^\/(fi|sv|en)\/blog\/\d+\/.+\/$/
 /* Newsletter archive issues: /{lang}/{uutiskirje|newsletter|nyhetsbrev}/{id}/{slug}/ — article rules apply. */
-const NEWSLETTER_PATH_RE = /^\/(fi|sv|en)\/(uutiskirje|newsletter|nyhetsbrev)\/\d+\/.+\/$/
+const NEWSLETTER_PATH_RE = new RegExp(`^/(fi|sv|en)/(${Object.values(NEWSLETTER_SEGMENTS).join('|')})/\\d+/.+/$`)
 
 type TagAttrs = Record<string, string>
 
