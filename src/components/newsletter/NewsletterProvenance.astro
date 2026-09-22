@@ -21,7 +21,8 @@ interface Props {
 const { lang, sent } = Astro.props
 
 const [year, month, day] = sent.split('-')
-const sentToDisplay = `${Number(day)}.${Number(month)}.${year}`
+// Same dd.mm.yyyy form as ArtHead's banner date, so one page shows one date style.
+const sentToDisplay = `${day}.${month}.${year}`
 const { after, before } = newsletterArchiveContent[lang].provenance
 ---
 

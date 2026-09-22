@@ -12,7 +12,7 @@ exports[`<NewsletterProvenance /> > should render 1`] = `
     datetime="2026-03-14"
     style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;"
   >
-    14.3.2026
+    14.03.2026
   </time>
   .
 </p>
