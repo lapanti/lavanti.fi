@@ -1,0 +1,19 @@
+---
+lang: 'fi'
+slug: 'tekoaly-2026-ei-vie-tyotasi'
+pageTitle: 'Tekoäly ei vie työtäsi, mutta muuttaa sen'
+title: 'Tekoäly ei vie työtäsi — mutta muuttaa sen'
+description: 'Uutiskirje maaliskuulta 2026: tekoäly ei korvaa asiantuntijoita, mutta muuttaa työn rakennetta. Kysymys on johtamisesta, ei teknologiasta.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+
+export const components = { a: SmartLink }
+
+Tekoäly ei toistaiseksi korvaa ammattilaisia kokonaan. Se muuttaa työn rakennetta.
+
+## Kuka päättää, mihin tekoäly ulottuu?
+
+Minusta tämä on ennen kaikkea [johtamiskysymys](/fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/), ja harva organisaatio on vastannut siihen.
+
+Lue myös [vuoden 2026 tekoälykatsaus](/fi/blog/47/vuosi-2026-on-tekoalyn/) ja tilaa [uutiskirje](/fi/uutiskirje/).

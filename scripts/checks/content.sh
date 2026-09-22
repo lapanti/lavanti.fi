@@ -12,13 +12,17 @@ source "$SCRIPT_DIR/../lib/bash-helpers.sh"
 file="$1"
 failed=0
 
-# A post file is src/content/posts/{id}/{fi,sv,en}.mdx — meta.json lives alongside
-# it and holds heroImage/tags/id (alt/pageTitle/description stay in this file).
+# A collection entry is src/content/{posts,newsletters}/{id}/{fi,sv,en}.mdx — meta.json
+# lives alongside it and holds heroImage/tags/id (alt/pageTitle/description stay in this
+# file). Newsletters follow the post rules except that they carry no tags, so the tag
+# validity and pillar-tag blocks are skipped for them.
 is_post=0
+is_newsletter=0
 meta_file=""
-if [[ "$file" =~ content/posts/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
+if [[ "$file" =~ content/(posts|newsletters)/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
     is_post=1
     meta_file="$(dirname "$file")/meta.json"
+    [[ "${BASH_REMATCH[1]}" == "newsletters" ]] && is_newsletter=1
 fi
 
 is_blog_post() {
@@ -135,6 +139,8 @@ if is_blog_post; then
 
     # ── tag validity ──────────────────────────────────────────────────────────
     # Extract tags and verify each exists in src/content/tags/.
+    # Newsletters are tagless by design (spec: .agents/specs/newsletter/archive.md).
+    [[ "$is_newsletter" -eq 1 ]] && exit "$failed"
     REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
     TAGS_DIR="$REPO_ROOT/src/content/tags"
 

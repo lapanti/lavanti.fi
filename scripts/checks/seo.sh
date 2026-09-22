@@ -11,15 +11,22 @@ source "$SCRIPT_DIR/../lib/bash-helpers.sh"
 file="$1"
 failed=0
 
-# A post file is src/content/posts/{id}/{fi,sv,en}.mdx — meta.json lives alongside it.
+# A collection entry is src/content/{posts,newsletters}/{id}/{fi,sv,en}.mdx — meta.json
+# lives alongside it. Both collections share the post rules below; is_newsletter marks
+# the differences (no blog id, so the year-slug exemption for posts 20/47 never applies).
 is_post=0
+is_newsletter=0
 post_id=""
 post_lang=""
-if [[ "$file" =~ content/posts/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
+if [[ "$file" =~ content/(posts|newsletters)/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
     is_post=1
-    post_id="${BASH_REMATCH[1]}"
-    post_lang="${BASH_REMATCH[2]}"
+    post_lang="${BASH_REMATCH[3]}"
     meta_file="$(dirname "$file")/meta.json"
+    if [[ "${BASH_REMATCH[1]}" == "newsletters" ]]; then
+        is_newsletter=1
+    else
+        post_id="${BASH_REMATCH[2]}"
+    fi
 fi
 
 # ── required frontmatter fields ─────────────────────────────────────────────
@@ -83,7 +90,8 @@ if [[ -n "$slug_val" ]]; then
         failed=1
     fi
     # No 4-digit years — except posts 20 and 47 where the year is part of the proper name
-    # (election cycle posts and year-in-review posts with established URLs must not be renamed)
+    # (election cycle posts and year-in-review posts with established URLs must not be renamed).
+    # Newsletters never get the exemption: post_id stays empty for them, so blog_id is "".
     if [[ "$is_post" -eq 1 ]]; then
         blog_id="$post_id"
     else

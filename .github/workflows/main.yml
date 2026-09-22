@@ -94,7 +94,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - name: Check titles for horizontal overflow on Galaxy S24 viewport
-        run: node scripts/check-overflow.mjs $(find src/pages -name '*.mdx') $(find src/content/posts -name '*.mdx') src/content/tags/*.ts
+        run: node scripts/check-overflow.mjs $(find src/pages -name '*.mdx') $(find src/content/posts src/content/newsletters -name '*.mdx') src/content/tags/*.ts
 
   validate-content:
     runs-on: ubuntu-latest
@@ -111,26 +111,26 @@ jobs:
           node-version-file: ".nvmrc"
       - name: Run SEO checks on all MDX files
         run: |
-          find src/pages src/content/posts -name '*.mdx' | while read -r f; do
+          find src/pages src/content/posts src/content/newsletters -name '*.mdx' | while read -r f; do
             bash scripts/checks/seo.sh "$f"
           done
       - name: Run AEO checks on all MDX files
         run: |
-          find src/pages src/content/posts -name '*.mdx' | while read -r f; do
+          find src/pages src/content/posts src/content/newsletters -name '*.mdx' | while read -r f; do
             bash scripts/checks/aeo.sh "$f"
           done
       - name: Run content checks on all MDX files
         run: |
-          find src/pages src/content/posts -name '*.mdx' | while read -r f; do
+          find src/pages src/content/posts src/content/newsletters -name '*.mdx' | while read -r f; do
             bash scripts/checks/content.sh "$f"
           done
       - name: Run Finnish style checks on fi/ MDX files
         run: |
-          { find src/pages/fi -name '*.mdx'; find src/content/posts -name 'fi.mdx'; } | while read -r f; do
+          { find src/pages/fi -name '*.mdx'; find src/content/posts src/content/newsletters -name 'fi.mdx'; } | while read -r f; do
             bash scripts/checks/style-fi.sh "$f"
           done
       - name: Run passage length and freshness checks
-        run: node --experimental-strip-types scripts/checks/mdx-deep.ts $(find src/pages src/content/posts -name '*.mdx')
+        run: node --experimental-strip-types scripts/checks/mdx-deep.ts $(find src/pages src/content/posts src/content/newsletters -name '*.mdx')
       - name: Run cross-file checks (translation triplet + title uniqueness)
         run: node scripts/checks/cross-file.mjs
       - name: Run redirect audit (chains + dead-ends)
