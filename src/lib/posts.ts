@@ -9,6 +9,16 @@ import { helsinkiDateOf, isPublishedBy } from './publishing'
 export const stripImportsExports = (raw: string): string =>
     raw.replace(/^(import\s+.+|export\s+const\s+components\s*=.+)$/gm, '')
 
+/** Word count and reading time (200 wpm) of an MDX body, shared by every collection. */
+export const bodyStats = (rawBody: string | undefined): { readingTime: number; wordCount: number } => {
+    const wordCount = stripImportsExports(rawBody ?? '')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean).length
+
+    return { readingTime: Math.ceil(wordCount / 200), wordCount }
+}
+
 export type Post = CollectionEntry<'posts'>['data'] & {
     entry: CollectionEntry<'posts'>
     readingTime: number
@@ -52,18 +62,12 @@ async function loadAllPosts(): Promise<Post[]> {
              * nightly scheduled-publish workflow deploys them once the date arrives.
              */
             .filter((entry) => import.meta.env.DEV || isPublishedBy(entry.data.publishDate, today))
-            .map((entry) => {
-                const body = stripImportsExports(entry.body ?? '')
-                const wordCount = body.trim().split(/\s+/).filter(Boolean).length
-
-                return {
-                    ...entry.data,
-                    entry,
-                    readingTime: Math.ceil(wordCount / 200),
-                    url: `/${entry.data.lang}/blog/${entry.data.id}/${entry.data.slug}/`,
-                    wordCount,
-                }
-            })
+            .map((entry) => ({
+                ...entry.data,
+                ...bodyStats(entry.body),
+                entry,
+                url: `/${entry.data.lang}/blog/${entry.data.id}/${entry.data.slug}/`,
+            }))
             .toSorted(byPublishDateThenId)
     )
 }
