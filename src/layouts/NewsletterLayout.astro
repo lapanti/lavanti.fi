@@ -1,0 +1,129 @@
+---
+import type { Lang } from '../content/nav'
+import type { Newsletter } from '../lib/newsletters'
+
+import NewsletterPlate from '../components/frontPage/NewsletterPlate.astro'
+import WritingsPlate from '../components/frontPage/WritingsPlate.astro'
+import NewsletterList from '../components/newsletter/NewsletterList.astro'
+import NewsletterProvenance from '../components/newsletter/NewsletterProvenance.astro'
+import NewsletterSubscribe from '../components/NewsletterSubscribe.astro'
+import PostProse from '../components/post/PostProse.astro'
+import SocialShare from '../components/SocialShare.astro'
+import TitleBanner from '../components/TitleBanner.astro'
+import { newsletterArchiveContent } from '../content/newsletter'
+import { breadcrumbLabels } from '../lib/breadcrumbs'
+import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
+import { archivePath, landingPath, newsletterSlug } from '../lib/newsletterRoutes'
+import { ogId } from '../lib/og/id'
+import { colors } from '../lib/styles'
+import BaseLayout from './BaseLayout.astro'
+
+/**
+ * Archive page for one newsletter issue (.agents/specs/newsletter/archive.md).
+ * Modelled on PostLayout minus what an issue does not have — hero image, tags,
+ * byline — plus the provenance line, since the visible date and JSON-LD
+ * datePublished are the embargo-lift date rather than the send date.
+ */
+interface Props {
+    issue: Newsletter
+    langAlternates: Record<Lang, string>
+}
+
+const { issue, langAlternates } = Astro.props
+const {
+    description,
+    faq,
+    id,
+    lang,
+    ogTitle,
+    pageTitle,
+    publishDate,
+    readingTime,
+    sent,
+    slug,
+    title,
+    updatedDate,
+    wordCount,
+} = issue
+
+const canonicalSlug = newsletterSlug(lang, id, slug)
+const shareUrl = `https://lavanti.fi/${canonicalSlug}/`
+const t = newsletterArchiveContent[lang]
+
+const ogImage = new URL(`/og/${ogId(canonicalSlug)}.png`, Astro.site).href
+
+const siteOrigin = 'https://lavanti.fi'
+const breadcrumbs: BreadcrumbItem[] = [
+    { name: breadcrumbLabels.home[lang], url: `${siteOrigin}/${lang}/` },
+    { name: breadcrumbLabels.newsletter[lang], url: `${siteOrigin}${landingPath(lang)}` },
+    { name: breadcrumbLabels.newsletterArchive[lang], url: `${siteOrigin}${archivePath(lang)}` },
+    { name: pageTitle, url: shareUrl },
+]
+---
+
+<style define:vars={{ colorsWhite: colors.white }}>
+    .prose-section {
+        background: var(--colorsWhite);
+        padding-bottom: 1.5rem;
+    }
+
+    .provenance-wrap {
+        margin-inline: auto;
+        max-width: 800px;
+        padding-top: 2rem;
+    }
+</style>
+<BaseLayout
+    breadcrumbs={breadcrumbs}
+    createdAt={publishDate}
+    description={description}
+    faq={faq}
+    lang={lang}
+    langAlternates={langAlternates}
+    ogImage={ogImage}
+    ogImageAlt={ogTitle ?? title}
+    plated
+    slug={canonicalSlug}
+    title={pageTitle}
+    type={BLOGPOSTING}
+    updatedAt={updatedDate}
+    wordCount={wordCount}
+>
+    <TitleBanner
+        createdAt={publishDate}
+        lang={lang}
+        readingTime={readingTime}
+        slot="banner"
+        title={title}
+        updatedDate={updatedDate}
+        variant="post"
+    />
+    <div class="prose-section">
+        <div class="sheet">
+            <div class="provenance-wrap">
+                <NewsletterProvenance lang={lang} sent={sent} />
+            </div>
+            <PostProse>
+                <slot />
+                <SocialShare
+                    ariaLabel={t.shareAriaLabel(pageTitle)}
+                    locale={lang}
+                    shareUrl={shareUrl}
+                    title={pageTitle}
+                />
+            </PostProse>
+        </div>
+    </div>
+    <WritingsPlate
+        allPostsHref={archivePath(lang)}
+        allPostsLabel={t.allIssuesLabel}
+        eyebrow={t.eyebrow}
+        ground="white"
+        heading={t.otherIssuesHeading}
+    >
+        <NewsletterList excludeId={id} lang={lang} limit={3} />
+    </WritingsPlate>
+    <NewsletterPlate>
+        <NewsletterSubscribe lang={lang} />
+    </NewsletterPlate>
+</BaseLayout>
