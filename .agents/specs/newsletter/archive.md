@@ -10,7 +10,7 @@
 
 Past newsletters existed only as MailerLite emails. Nothing could link to an issue, the 800–1500-word analyses on the campaign's core keywords were invisible to search and answer engines, and every newsletter CTA degraded into a rhetorical question because there was no public destination to point at.
 
-The archive publishes every sent issue as a page on lavanti.fi in all three languages, **42 days after it was sent**. Subscribers keep a meaningful lead (roughly three issues at a 14-day cadence), and the public corpus grows without the list losing its reason to exist. The design decision, the embargo length and the canonical policy are recorded in the campaign repo's ADR `.agents/adrs/2026-09-22-newsletter-archive.md` (lapanti/lavanti-2027); this spec covers the site-side implementation.
+The archive publishes every sent issue as a page on lavanti.fi in all three languages, **42 days after it was sent**. Subscribers keep a meaningful lead (roughly three issues at a 14-day cadence), and the public corpus grows without the list losing its reason to exist. The embargo length (42 days, a multiple of seven so the page lands on the send weekday), the separate collection, the localized nested URLs, the absence of a bare-id redirect and the canonical policy (one canonical page per thesis, prevented editorially rather than with `rel=canonical`) were decided upstream in the campaign's editorial process; this spec records them as the site-side contract.
 
 Archive entries are **not** blog posts: they carry no hero image and no tags, their visible date is the embargo-lift date, and they live in their own collection so the `posts` schema stays strict.
 
@@ -131,13 +131,13 @@ The page's **visible date and JSON-LD `datePublished` are `publishDate`** (when 
 
 ## Editorial pass (per issue, before it enters the repo)
 
-The email and its archive page are different artefacts. The source is `docs/published/newsletters/` in the campaign repo (normalised frontmatter: `subject`, `preview_text`, `sent`, `archive_status`); the archive entry is a rewrite of it:
+The email and its archive page are different artefacts. The source is the sent email's markdown (its subject line becomes `title`, its send date becomes `sent`); the archive entry is a rewrite of it:
 
 1. Drop the body H1 (`title` frontmatter carries it), the sign-off, any subscribe/reply CTA, and the leading translator blockquote in EN/SV.
 2. Date time-bound asides ("muutama viikko sitten" → "maaliskuussa 2026"). Remove donation and support-group asks.
 3. Add one question-form H2 and 3–10 internal links to existing lavanti.fi pages. Replace `laurilavanti.fi` with `lavanti.fi`.
 4. Keep the tone; do not pad. Passages stay under 150 words.
-5. After merge and lift, set `archive_status: published` and `archive_url` on the source files and regenerate the campaign repo's index.
+5. After merge and lift, record the public URL against the source issue so later newsletters may link it.
 
 ---
 
