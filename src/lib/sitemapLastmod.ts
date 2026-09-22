@@ -44,7 +44,7 @@ interface TagWithDate {
 type Lang = (typeof LANGS)[number]
 
 interface BuildPageDateMapInput {
-    /** src/content/newsletters — optional so the map builds before the first issue lands. */
+    /** src/content/newsletters — same {id}/meta.json layout as posts. */
     newslettersDir?: string
     pagesDir: string
     postsDir?: string
@@ -132,7 +132,7 @@ export const buildPageDateMap = ({
         }
     }
 
-    if (newslettersDir && existsSync(newslettersDir)) {
+    if (newslettersDir) {
         for (const [url, date] of buildEntryDateEntries(newslettersDir, newsletterPath)) {
             map.set(url, date)
         }

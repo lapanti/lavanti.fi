@@ -10,7 +10,7 @@
  * Exit 0 = clean. Exit 1 = chains or dead-ends found.
  */
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -78,7 +78,6 @@ for (const [i, tagId] of tagIds.entries()) {
 // derivable from the directory name). Blog: /{lang}/blog/{id}/{slug}/ — bare
 // /{lang}/blog/{id}/ excluded. Newsletters: /{lang}/{localised segment}/{id}/{slug}/.
 function addCollectionRoutes(collectionRoot, urlFor) {
-    if (!existsSync(collectionRoot)) return
     const idDirs = readdirSync(collectionRoot, { withFileTypes: true }).filter(
         (e) => e.isDirectory() && /^\d+$/.test(e.name)
     )
