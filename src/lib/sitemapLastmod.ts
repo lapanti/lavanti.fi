@@ -1,7 +1,9 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { newsletterPath } from './newsletterRoutes'
+/* eslint-disable import-x/extensions -- imported by scripts/checks/publish-due.ts under node --experimental-strip-types, which needs the explicit extension */
+import { newsletterPath } from './newsletterRoutes.ts'
+/* eslint-enable import-x/extensions */
 
 const UPDATED_DATE = /^updatedDate:\s*['"]?(\d{4}-\d{2}-\d{2})['"]?/m
 const SLUG = /^slug:\s*['"]?([^'"\n]+)['"]?/m
