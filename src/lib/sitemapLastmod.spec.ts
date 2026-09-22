@@ -38,13 +38,10 @@ describe('buildPageDateMap', () => {
         expect(map.get('/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/')).toMatch(/^\d{4}-\d{2}-\d{2}$/)
     })
 
-    it('tolerates a missing newsletters directory', () => {
-        const withoutNewsletters = buildPageDateMap({
-            newslettersDir: join(NEWSLETTERS_DIR, 'does-not-exist'),
-            pagesDir: PAGES_DIR,
-            tags: [],
-        })
-        expect([...withoutNewsletters.keys()].some((k) => k.startsWith('/fi/uutiskirje/1/'))).toBe(false)
+    it('throws for a mistyped newsletters directory rather than dropping lastmod silently', () => {
+        expect(() =>
+            buildPageDateMap({ newslettersDir: join(NEWSLETTERS_DIR, 'does-not-exist'), pagesDir: PAGES_DIR, tags: [] })
+        ).toThrow()
     })
 
     it('every map value is a YYYY-MM-DD date', () => {

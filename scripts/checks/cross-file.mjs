@@ -13,7 +13,7 @@
  *   - pageTitle uniqueness per locale (duplicate <title> tags hurt SEO)
  */
 
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -40,9 +40,8 @@ function fmField(content, field) {
 
 // ── translation triplet + slug-uniqueness check ───────────────────────────────
 
-/** Numeric entry directories of a collection root, ascending; [] when the root is absent. */
+/** Numeric entry directories of a collection root, ascending. */
 function collectEntryIds(root) {
-    if (!existsSync(root)) return []
     return readdirSync(root, { withFileTypes: true })
         .filter((e) => e.isDirectory() && /^\d+$/.test(e.name))
         .map((e) => e.name)
@@ -129,8 +128,7 @@ function collectPostMdx(dir) {
 const titlesByLang = {}
 for (const lang of LANGS) titlesByLang[lang] = new Map()
 
-const newsletterMdx = existsSync(newslettersRoot) ? collectPostMdx(newslettersRoot) : []
-for (const file of [...collectMdx(pagesRoot), ...collectPostMdx(postsRoot), ...newsletterMdx]) {
+for (const file of [...collectMdx(pagesRoot), ...collectPostMdx(postsRoot), ...collectPostMdx(newslettersRoot)]) {
     const content = readFileSync(file, 'utf8')
     const lang = fmField(content, 'lang')
     const title = fmField(content, 'pageTitle')

@@ -36,11 +36,11 @@ export const blogPath: UrlFor = (lang, id, slug) => `/${lang}/blog/${id}/${slug}
 
 /**
  * Due entries of one collection directory ({id}/meta.json + {lang}.mdx). `urlFor`
- * gives the collection's URL shape; a directory that does not exist yields nothing.
+ * gives the collection's URL shape. A missing directory throws on purpose: the
+ * nightly job must fail loudly (exit 2) rather than report "nothing to publish".
  */
 export function collectDuePosts(collectionDir: string, today: string, urlFor: UrlFor = blogPath): DuePost[] {
     const due: DuePost[] = []
-    if (!existsSync(collectionDir)) return due
 
     for (const idDir of readdirSync(collectionDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
         const dir = join(collectionDir, idDir.name)

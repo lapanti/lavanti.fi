@@ -56,8 +56,8 @@ describe('collectDuePosts', () => {
         ])
     })
 
-    it('yields nothing for a collection directory that does not exist', () => {
-        expect(collectDuePosts(join(postsDir, 'missing'), '2026-08-31')).toEqual([])
+    it('throws for a collection directory that does not exist, so a bad path cannot read as "nothing due"', () => {
+        expect(() => collectDuePosts(join(postsDir, 'missing'), '2026-08-31')).toThrow()
     })
 })
 
