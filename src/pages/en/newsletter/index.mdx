@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-08-25'
+updatedDate: '2026-09-22'
 type: 'WebPage'
 heroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka'
@@ -19,9 +19,9 @@ plated: true
 variant: 'split'
 ---
 
-import FactsList from '../../../components/FactsList.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
@@ -38,14 +38,11 @@ import Prose from '../../../components/Prose.astro'
     </Prose>
 </Plate>
 
-<Plate ground="gray" heading="Recent topics">
-    <FactsList
-        items={[
-            'Age limits on social media — how others have done it, how it should be done, and should it be done at all?',
-            'The inevitability of AI — are we active agents or subjects of change.',
-            'Data centres in Finland — are they a threat or an opportunity for us.',
-        ]}
-    />
+<Plate ground="gray" heading="What have recent issues covered?">
+    <NewsletterList lang="en" limit={3} />
+    <Prose>
+        Every issue reaches the [archive](/en/newsletter/archive/) 42 days after it was sent. Subscribers read it first.
+    </Prose>
 </Plate>
 
 <NewsletterPlate>
