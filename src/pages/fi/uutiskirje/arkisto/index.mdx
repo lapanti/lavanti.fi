@@ -1,0 +1,42 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Uutiskirjearkisto – kaikki lähetetyt kirjeet'
+title: 'Arkisto'
+eyebrow: 'Uutiskirje'
+intro: 'Kaikki lähetetyt uutiskirjeet luettavissa selaimessa. Jokainen kirje julkaistaan arkistoon 42 päivää lähettämisen jälkeen, joten tilaajat lukevat ne ensin.'
+description: 'Lauri Lavannin uutiskirjeiden arkisto: analyysejä tekoälystä, työn muutoksesta ja digitaalisesta itsenäisyydestä. Kirjeet julkaistaan 42 päivää lähetyksestä.'
+slug: 'fi/uutiskirje/arkisto'
+langAlternates:
+    en: '/en/newsletter/archive/'
+    fi: '/fi/uutiskirje/arkisto/'
+    sv: '/sv/nyhetsbrev/arkiv/'
+updatedDate: '2026-09-22'
+type: 'CollectionPage'
+breadcrumbTrail: 'newsletterArchive'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita.'
+plated: true
+variant: 'split'
+---
+
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../../components/newsletter/NewsletterList.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import Prose from '../../../../components/Prose.astro'
+
+<Plate ground="white" heading="Mitä uutiskirjeissä on käsitelty?">
+    <NewsletterList lang="fi" />
+</Plate>
+
+<Plate ground="offWhite">
+    <Prose>
+        Uutiskirje ilmestyy noin kahden viikon välein ja käsittelee yhden aiheen kerrallaan. [Tilaajat](/fi/uutiskirje/) saavat jokaisen kirjeen sähköpostiinsa lähetyspäivänä; arkistoon sama kirje tulee 42 päivää myöhemmin.
+    </Prose>
+</Plate>
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="fi" />
+</NewsletterPlate>
