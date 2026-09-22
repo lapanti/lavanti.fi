@@ -64,7 +64,7 @@ export interface NewsletterQuery {
 export const filterNewsletters = (newsletters: Newsletter[], q: NewsletterQuery): Newsletter[] => {
     const filtered = newsletters.filter((n) => n.lang === q.lang).filter((n) => n.id !== q.excludeId)
 
-    return q.limit ? filtered.slice(0, q.limit) : filtered
+    return q.limit === undefined ? filtered : filtered.slice(0, q.limit)
 }
 
 /* v8 ignore next 2 -- thin getAllNewsletters() wrapper, see the ignore note above */
