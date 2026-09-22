@@ -1,0 +1,64 @@
+- main:
+  - time: /\d+\.\d+\.\d+/
+  - text: 1 min lukuaika
+  - time: "/Päivitetty: \\d+\\.\\d+\\.\\d+/"
+  - heading "Tekoäly ei vie työtäsi, mutta muuttaa sen" [level=1]
+  - article:
+    - paragraph:
+      - text: Lähetetty tilaajille
+      - time: /\d+\.\d+\.\d+/
+      - text: .
+    - paragraph: /Eräs teknologiajohtaja kertoi minulle maaliskuussa \d+, että heidän tiiminsä on puolittanut sopimustarkistukseen kuluvan ajan tekoälyn avulla\. Kukaan ei ollut vielä päättänyt, mitä säästyneellä ajalla tehdään\./
+    - paragraph:
+      - text: "Tekoäly ei toistaiseksi korvaa ammattilaisia kokonaan. Se muuttaa työn rakennetta: aikaa vievät valmisteluvaiheet lyhenevät, mutta"
+      - link "vastuu ja harkinta pysyvät ihmisellä":
+        - /url: /fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/
+      - text: .
+      - link "OECD:n arvion":
+        - /url: https://doi.org/10.1787/08785bba-en
+      - text: /mukaan noin \d+ prosenttia korkean tulotason maiden asiantuntijatehtävistä on merkittävässä muutospaineessa seuraavan vuosikymmenen aikana, eikä tämä koske enää vain rutiinirooleja\./
+    - heading "Kuka päättää, mihin tekoäly ulottuu?" [level=2]
+    - paragraph:
+      - text: "Minusta tämä on ennen kaikkea johtamiskysymys, ja harva organisaatio on toistaiseksi vastannut siihen. Teknologia ei päätä, miten vapautunut kapasiteetti ohjataan: käytetäänkö se"
+      - link "kilpailukyvyn vahvistamiseen":
+        - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
+      - text: vai
+      - link "pelkästään kulujen leikkaamiseen":
+        - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
+      - text: "? Suomessa on perinne sopia työelämän isoista muutoksista ennen kuin ne vyöryvät päälle. Tekoälykehityksessä tämä vaihe on tekemättä, ja se on strateginen aukko, johon kannattaa reagoida nyt."
+    - paragraph:
+      - strong: Tekoäly ei ole toimistotyön vihollinen, mutta johtamaton muutos on.
+    - paragraph: Kuka teidän organisaatiossanne päättää, mihin tekoäly ulottuu ja mitä sillä korvataan? Jos vastaus on epäselvä, se kannattaa selvittää ennen kuin joku muu päättää puolestanne.
+    - complementary "Uutiskirjeen Tekoäly ei vie työtäsi, mutta muuttaa sen sosiaalisen median jakolinkit":
+      - text: "Jaa:"
+      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Mastodonissa":
+        - /url: https://mastodon.social/share?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40laurilavanti%40mastodon.social%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
+        - text: ""
+      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Blueskyssa":
+        - /url: https://bsky.app/intent/compose?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40lauri.lavanti.fi%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
+        - text: ""
+      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Threadsissä":
+        - /url: https://threads.com/intent/post?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40laurilavanti%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
+        - text: ""
+      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" LinkedInissä":
+        - /url: https://www.linkedin.com/sharing/share-offsite/?url=https://lavanti.fi/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
+        - text: ""
+      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Facebookissa":
+        - /url: https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
+        - text: ""
+    - text: Uutiskirje
+    - heading "Muita uutiskirjeitä" [level=2]
+    - link "Kaikki uutiskirjeet":
+      - /url: /fi/uutiskirje/arkisto/
+    - link "Kaikki uutiskirjeet":
+      - /url: /fi/uutiskirje/arkisto/
+    - heading "Tilaa uutiskirje" [level=2]
+    - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
+    - text: Sähköposti
+    - textbox "Sähköposti"
+    - button "Tilaa"
+    - paragraph:
+      - text: Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue
+      - link "tietosuojaseloste":
+        - /url: /fi/privacy-policy/
+      - text: .

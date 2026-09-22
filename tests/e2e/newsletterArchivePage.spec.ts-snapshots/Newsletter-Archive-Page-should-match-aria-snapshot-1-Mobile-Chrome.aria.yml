@@ -1,0 +1,29 @@
+- main:
+  - img "Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita."
+  - text: Uutiskirje
+  - heading "Arkisto" [level=1]
+  - paragraph: /Kaikki lähetetyt uutiskirjeet luettavissa selaimessa\. Jokainen kirje julkaistaan arkistoon \d+ päivää lähettämisen jälkeen, joten tilaajat lukevat ne ensin\./
+  - article:
+    - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
+    - list:
+      - listitem:
+        - article "Tekoäly ei vie työtäsi, mutta muuttaa sen":
+          - link "Tekoäly ei vie työtäsi, mutta muuttaa sen":
+            - /url: /fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
+            - heading "Tekoäly ei vie työtäsi, mutta muuttaa sen" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Tekoäly ei korvaa asiantuntijoita, mutta muuttaa työn rakennetta\. OECD:n mukaan \d+ prosenttia asiantuntijatehtävistä on muutospaineessa\. Kyse on johtamisesta\./
+    - paragraph:
+      - text: Uutiskirje ilmestyy noin kahden viikon välein ja käsittelee yhden aiheen kerrallaan.
+      - link "Tilaajat":
+        - /url: /fi/uutiskirje/
+      - text: /saavat jokaisen kirjeen sähköpostiinsa lähetyspäivänä; arkistoon sama kirje tulee \d+ päivää myöhemmin\./
+    - heading "Tilaa uutiskirje" [level=2]
+    - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
+    - text: Sähköposti
+    - textbox "Sähköposti"
+    - paragraph:
+      - text: Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue
+      - link "tietosuojaseloste":
+        - /url: /fi/privacy-policy/
+      - text: .

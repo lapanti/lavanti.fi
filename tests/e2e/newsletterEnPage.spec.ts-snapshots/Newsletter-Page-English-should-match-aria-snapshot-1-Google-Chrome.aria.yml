@@ -8,11 +8,20 @@
     - paragraph: In my newsletter, I explore how technology – especially artificial intelligence – is transforming our society, work, and daily lives. I address topics such as why digital independence is essential for society, how AI-driven changes in work force us to innovate, and what kind of future we want to build together.
     - paragraph
     - paragraph: I believe that technology should enable new solutions. That’s why I emphasize sustainable innovations and spark conversation about how we can leverage the opportunities technology provides. My goal is to provide thought-provoking, fact-based, and solution-oriented content.
-    - heading "Recent topics" [level=2]
+    - heading "What have recent issues covered?" [level=2]
     - list:
-      - listitem: Age limits on social media — how others have done it, how it should be done, and should it be done at all?
-      - listitem: The inevitability of AI — are we active agents or subjects of change.
-      - listitem: Data centres in Finland — are they a threat or an opportunity for us.
+      - listitem:
+        - article "AI is not taking your job, but it is changing it":
+          - link "AI is not taking your job, but it is changing it":
+            - /url: /en/newsletter/1/ai-is-not-taking-your-job-but-it-is-changing-it/
+            - heading "AI is not taking your job, but it is changing it" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /AI is not replacing professionals, but it is changing how work is structured\. The OECD puts \d+ per cent of expert roles under pressure\. A management question\./
+    - paragraph:
+      - text: Every issue reaches the
+      - link "archive":
+        - /url: /en/newsletter/archive/
+      - text: /\d+ days after it was sent\. Subscribers read it first\./
     - heading "Subscribe to the newsletter" [level=2]
     - paragraph: Subscribe to my newsletter and get analysis on the latest developments in AI and technology, and their impact on society, straight to your inbox.
     - text: Email

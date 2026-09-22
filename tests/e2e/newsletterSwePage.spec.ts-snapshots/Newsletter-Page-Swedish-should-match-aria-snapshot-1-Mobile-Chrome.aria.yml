@@ -8,11 +8,20 @@
     - paragraph: I mitt nyhetsbrev reflekterar jag över hur teknologi – särskilt artificiell intelligens – förändrar vårt samhälle, vårt arbete och vår vardag. Jag behandlar till exempel varför digital självständighet är en nödvändighet för samhället, hur AI-drivna förändringar i arbetslivet tvingar oss att förnya oss och vilken framtid vi vill bygga tillsammans.
     - paragraph
     - paragraph: Jag tror att teknologin ska möjliggöra nya lösningar. Därför betonar jag hållbara innovationer och väcker diskussion om hur vi kan utnyttja de möjligheter som teknologin erbjuder. Mitt mål är att erbjuda tankeväckande, faktabaserat och lösningsorienterat innehåll.
-    - heading "Aktuella ämnen" [level=2]
+    - heading "Vad har de senaste breven handlat om?" [level=2]
     - list:
-      - listitem: Åldersgränser på sociala medier – hur har det gjorts annorstädes, hur bör det göras, och bör det ens göras?
-      - listitem: AI:s oundviklighet – är vi aktiva aktörer eller offer för förändringen.
-      - listitem: Datacenter i Finland – är de ett hot eller en möjlighet för oss.
+      - listitem:
+        - article "AI tar inte ditt jobb, men förändrar det":
+          - link "AI tar inte ditt jobb, men förändrar det":
+            - /url: /sv/nyhetsbrev/1/ai-tar-inte-ditt-jobb-men-forandrar-det/
+            - heading "AI tar inte ditt jobb, men förändrar det" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /AI ersätter inte fackmän, men förändrar arbetets struktur\. Enligt OECD är \d+ procent av experttjänsterna under förändringstryck\. Frågan handlar om ledarskap\./
+    - paragraph:
+      - text: Alla utskickade brev publiceras i
+      - link "arkivet":
+        - /url: /sv/nyhetsbrev/arkiv/
+      - text: /\d+ dagar efter utskicket\. Prenumeranterna läser dem först\./
     - heading "Prenumerera på nyhetsbrevet" [level=2]
     - paragraph: Prenumerera på mitt nyhetsbrev och få analyser av den senaste utvecklingen inom AI och teknik, samt dess påverkan på samhället, direkt till din inkorg.
     - text: E-post
