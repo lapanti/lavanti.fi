@@ -137,10 +137,13 @@ if is_blog_post; then
         failed=1
     fi
 
+fi
+
+# Tag validity and the pillar-tag rule: posts only. Newsletters are tagless by design
+# (spec: .agents/specs/newsletter/archive.md), and static pages carry no tags either.
+if is_blog_post && [[ "$is_newsletter" -eq 0 ]]; then
     # ── tag validity ──────────────────────────────────────────────────────────
     # Extract tags and verify each exists in src/content/tags/.
-    # Newsletters are tagless by design (spec: .agents/specs/newsletter/archive.md).
-    [[ "$is_newsletter" -eq 1 ]] && exit "$failed"
     REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
     TAGS_DIR="$REPO_ROOT/src/content/tags"
 

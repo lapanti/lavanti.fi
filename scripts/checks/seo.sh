@@ -16,17 +16,14 @@ failed=0
 # the differences (no blog id, so the year-slug exemption for posts 20/47 never applies).
 is_post=0
 is_newsletter=0
-post_id=""
+entry_ref=""   # "{collection}/{id}", e.g. posts/47 — what the year-slug exemption is keyed on
 post_lang=""
 if [[ "$file" =~ content/(posts|newsletters)/([0-9]+)/(fi|sv|en)\.mdx$ ]]; then
     is_post=1
     post_lang="${BASH_REMATCH[3]}"
     meta_file="$(dirname "$file")/meta.json"
-    if [[ "${BASH_REMATCH[1]}" == "newsletters" ]]; then
-        is_newsletter=1
-    else
-        post_id="${BASH_REMATCH[2]}"
-    fi
+    entry_ref="${BASH_REMATCH[1]}/${BASH_REMATCH[2]}"
+    [[ "${BASH_REMATCH[1]}" == "newsletters" ]] && is_newsletter=1
 fi
 
 # ── required frontmatter fields ─────────────────────────────────────────────
@@ -89,15 +86,16 @@ if [[ -n "$slug_val" ]]; then
         error "$file" "slug contains a soft hyphen (U+00AD): '${slug_val}'"
         failed=1
     fi
-    # No 4-digit years — except posts 20 and 47 where the year is part of the proper name
-    # (election cycle posts and year-in-review posts with established URLs must not be renamed).
-    # Newsletters never get the exemption: post_id stays empty for them, so blog_id is "".
+    # No 4-digit years — except blog posts 20 and 47 where the year is part of the proper
+    # name (election cycle and year-in-review posts with established URLs must not be
+    # renamed). Keyed on collection + id, so newsletter issues 20 and 47 are not exempt.
     if [[ "$is_post" -eq 1 ]]; then
-        blog_id="$post_id"
+        exempt_ref="$entry_ref"
     else
-        blog_id="$(echo "$file" | grep -oP '/blog/\K\d+' || true)"
+        legacy_id="$(echo "$file" | grep -oP '/blog/\K\d+' || true)"
+        exempt_ref="${legacy_id:+posts/$legacy_id}"
     fi
-    if [[ "$blog_id" != "20" && "$blog_id" != "47" ]]; then
+    if [[ "$exempt_ref" != "posts/20" && "$exempt_ref" != "posts/47" ]]; then
         if echo "$slug_val" | grep -qP '(19|20)\d{2}'; then
             error "$file" "slug contains a 4-digit year (makes content appear stale): '${slug_val}'"
             failed=1
