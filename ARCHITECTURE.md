@@ -4,6 +4,7 @@ Personal homepage of Lauri Lavanti (https://lavanti.fi).
 Built with **Astro + TypeScript + MDX**. All content is local — no CMS or external content API. Hosted on **Cloudflare Pages**.
 
 Feature-specific specs (blueprint, contracts, scenarios) live at `.agents/specs/{feature}/spec.md`. Current specs:
+
 - [`.agents/specs/posts/spec.md`](./.agents/specs/posts/spec.md) — blog posts
 - [`.agents/specs/pages/spec.md`](./.agents/specs/pages/spec.md) — pages (home, about, contact, blog index, category, 404)
 - [`.agents/specs/navigation/spec.md`](./.agents/specs/navigation/spec.md) — header nav, mobile/desktop split, language-switch script, skip links
@@ -22,18 +23,18 @@ Feature-specific specs (blueprint, contracts, scenarios) live at `.agents/specs/
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Astro (static output) |
-| Content | MDX files (local, no CMS) |
-| Language | TypeScript |
-| Styling | CSS (scoped in components) |
-| Images | Cloudflare Images (flexible resizing via CF rewrite rule, `src/lib/images.ts`) |
-| Icons | `astro-icon` + `@iconify-json/fa7-brands` |
-| Hosting | Cloudflare Pages |
-| Unit tests | Vitest + happy-dom |
-| E2E tests | Playwright |
-| Linting | ESLint + Prettier |
+| Layer      | Technology                                                                     |
+| ---------- | ------------------------------------------------------------------------------ |
+| Framework  | Astro (static output)                                                          |
+| Content    | MDX files (local, no CMS)                                                      |
+| Language   | TypeScript                                                                     |
+| Styling    | CSS (scoped in components)                                                     |
+| Images     | Cloudflare Images (flexible resizing via CF rewrite rule, `src/lib/images.ts`) |
+| Icons      | `astro-icon` + `@iconify-json/fa7-brands`                                      |
+| Hosting    | Cloudflare Pages                                                               |
+| Unit tests | Vitest + happy-dom                                                             |
+| E2E tests  | Playwright                                                                     |
+| Linting    | ESLint + Prettier                                                              |
 
 ---
 
@@ -59,12 +60,12 @@ Blog posts use a two-segment URL: a stable numeric `id` and a human-readable `sl
 
 Every MDX file declares a `layout:` in its frontmatter. There are three layouts plus a shared base.
 
-| Layout | Used by | Props source |
-|---|---|---|
-| `FrontPageLayout.astro` | `{lang}/index.mdx` | `MDXLayoutProps<Frontmatter>` only |
-| `PostLayout.astro` | All blog post MDX | `MDXLayoutProps<Frontmatter>` only |
-| `PageLayout.astro` | About/contact/blog-index MDX **and** `.astro` files (404, category pages) | Dual-mode: `(Astro.props.frontmatter as Props \| undefined) ?? Astro.props` |
-| `BaseLayout.astro` | Used by the three layouts above | Direct `.astro` props |
+| Layout                  | Used by                                                                   | Props source                                                                |
+| ----------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `FrontPageLayout.astro` | `{lang}/index.mdx`                                                        | `MDXLayoutProps<Frontmatter>` only                                          |
+| `PostLayout.astro`      | All blog post MDX                                                         | `MDXLayoutProps<Frontmatter>` only                                          |
+| `PageLayout.astro`      | About/contact/blog-index MDX **and** `.astro` files (404, category pages) | Dual-mode: `(Astro.props.frontmatter as Props \| undefined) ?? Astro.props` |
+| `BaseLayout.astro`      | Used by the three layouts above                                           | Direct `.astro` props                                                       |
 
 **Why dual-mode for PageLayout?** It is called both from MDX (where Astro injects props under `frontmatter`) and directly from `.astro` files (where props are at the top level). The pattern `(Astro.props.frontmatter as Props | undefined) ?? Astro.props` handles both cases.
 
@@ -75,10 +76,10 @@ Every MDX file declares a `layout:` in its frontmatter. There are three layouts 
 Images are stored in **Cloudflare Images**, served via a rewrite rule: `images/* → cdn-cgi/imagedelivery/iOe5UJ6bvcdboiEsn9unNQ/${1}`. No image files are committed to the repo.
 
 - MDX frontmatter references images by slug (no extension, no path), e.g.:
-  ```yaml
-  heroImage: Lauri-Lavanti-nojaamassa-kasiin
-  backgroundImage: Kirkkonummen-keskusta
-  ```
+    ```yaml
+    heroImage: Lauri-Lavanti-nojaamassa-kasiin
+    backgroundImage: Kirkkonummen-keskusta
+    ```
 - `src/lib/images.ts` builds CF Images flexible-resizing URLs: `getImage(slug, variant)` and `getImageSrcset(slug, variant, widths[])`.
 - Cropping, format conversion, and responsive sizing are handled by CF at request time — no build-time processing.
 - **Add a new image:** drop original into `src/images/originals/{slug}.jpg` (gitignored, kept locally), then run `CF_ACCOUNT_ID=xxx CF_API_TOKEN=xxx npx tsx scripts/upload-to-cf-images.mts`.
@@ -106,6 +107,14 @@ Posts live at `src/content/posts/{id}/{meta.json,fi.mdx,sv.mdx,en.mdx}` — a si
 
 ---
 
+## Newsletters content collection (public archive)
+
+Sent newsletter issues live at `src/content/newsletters/{id}/{meta.json,fi.mdx,sv.mdx,en.mdx}` — the same layout as posts, loaded by the same `localizedCollectionLoader` (`src/content/lib/postsLoader.ts`), but with no hero image and no tags. `meta.json` carries `id`, `sent`, `publishDate` and `updatedDate`; the schema refines `publishDate === sent + 42 days` (`embargoLiftDate` in `src/lib/publishing.ts`), which is the subscribers' lead over the public archive. The same build filter as posts keeps an embargoed issue out of every non-dev build, and `scripts/checks/publish-due.ts` lists it for the nightly job once its date arrives.
+
+Routes are localized and nested under the subscribe landing page: `/fi/uutiskirje/{id}/{slug}/`, `/en/newsletter/{id}/{slug}/`, `/sv/nyhetsbrev/{id}/{slug}/` (`src/pages/[lang]/[newsletters]/[id]/[slug]/index.astro`, segments from `src/lib/newsletterRoutes.ts`) and archive lists at `/fi/uutiskirje/arkisto/`, `/en/newsletter/archive/`, `/sv/nyhetsbrev/arkiv/` (`index.mdx` on `PageLayout`). There is **no bare-id redirect route** — slugs are immutable after publish. `src/lib/newsletters.ts` mirrors `src/lib/posts.ts`; `NewsletterLayout.astro` renders the page with a provenance line ("Lähetetty tilaajille 14.3.2026.") because the visible date and JSON-LD `datePublished` are the embargo-lift date. Spec: `.agents/specs/newsletter/archive.md`.
+
+---
+
 ## i18n / language switching
 
 - Three locales: `fi`, `sv`, `en`.
@@ -116,10 +125,10 @@ Posts live at `src/content/posts/{id}/{meta.json,fi.mdx,sv.mdx,en.mdx}` — a si
 
 ## Blog URL redirects
 
-| From | To | Mechanism |
-|---|---|---|
-| `/{lang}/blog/{id}/` | `/{lang}/blog/{id}/{slug}/` | True HTTP 301 in production via the generated Cloudflare Pages `_redirects` file (`src/lib/redirectsIntegration.ts`). Under `output: 'static'`, `src/pages/[lang]/blog/[id]/index.astro` also emits a meta-refresh stub that serves as the `astro preview` fallback. |
-| `/{lang}/blog/{id}/{wrong-slug}/` | correct canonical URL | Client-side JS on 404 page using `window.__postIndex` lookup table |
+| From                              | To                          | Mechanism                                                                                                                                                                                                                                                            |
+| --------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/{lang}/blog/{id}/`              | `/{lang}/blog/{id}/{slug}/` | True HTTP 301 in production via the generated Cloudflare Pages `_redirects` file (`src/lib/redirectsIntegration.ts`). Under `output: 'static'`, `src/pages/[lang]/blog/[id]/index.astro` also emits a meta-refresh stub that serves as the `astro preview` fallback. |
+| `/{lang}/blog/{id}/{wrong-slug}/` | correct canonical URL       | Client-side JS on 404 page using `window.__postIndex` lookup table                                                                                                                                                                                                   |
 
 **Redirect mechanism**: The static redirect map (`src/lib/redirects.ts`) and the bare-id
 redirects above are both compiled by Astro into meta-refresh HTML stubs (HTTP 200) under
@@ -148,11 +157,14 @@ Prettier parses `<script>` blocks as plain JavaScript — **TypeScript syntax ca
 Use this pattern for scripts with complex logic:
 
 ```astro
-<script is:inline set:html={`
+<script
+    is:inline
+    set:html={`
     // plain JS only — no TypeScript
     var foo = 'bar'
     document.querySelectorAll('a').forEach(function(el) { ... })
-`} />
+`}
+/>
 ```
 
 For passing server-side data to a script:
@@ -161,6 +173,7 @@ For passing server-side data to a script:
 ---
 const dataJson = JSON.stringify(someData)
 ---
+
 <script is:inline set:html={'window.__data=' + dataJson + ';'} />
 <script is:inline set:html={`(function() { var d = window.__data; ... })()`} />
 ```
@@ -169,32 +182,33 @@ const dataJson = JSON.stringify(someData)
 
 ## Code style constraints
 
-| Rule | Detail |
-|---|---|
-| Linter | ESLint + Prettier — enforced by lint-staged on commit and CI |
-| Import order | `simple-import-sort` — fix with `npx eslint --fix` |
-| Blank line before `return` | Required by `@stylistic/padding-line-between-statements` |
-| Attribute order | `astro/sort-attributes` — attributes must be alphabetically sorted |
-| No `var` | Use `let`/`const` in normal code; `var` is acceptable only inside `is:inline set:html` strings (not parsed by ESLint) |
-| No `_` to silence errors | Use proper error handling instead |
-| No secrets in commits | `.env` files, tokens, credentials — never commit |
+| Rule                       | Detail                                                                                                                |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Linter                     | ESLint + Prettier — enforced by lint-staged on commit and CI                                                          |
+| Import order               | `simple-import-sort` — fix with `npx eslint --fix`                                                                    |
+| Blank line before `return` | Required by `@stylistic/padding-line-between-statements`                                                              |
+| Attribute order            | `astro/sort-attributes` — attributes must be alphabetically sorted                                                    |
+| No `var`                   | Use `let`/`const` in normal code; `var` is acceptable only inside `is:inline set:html` strings (not parsed by ESLint) |
+| No `_` to silence errors   | Use proper error handling instead                                                                                     |
+| No secrets in commits      | `.env` files, tokens, credentials — never commit                                                                      |
 
 ---
 
 ## Testing
 
 ### Unit tests (Vitest)
+
 - Files: `*.spec.ts` alongside source files in `src/`.
 - Environment: `happy-dom`.
 
 ### E2E tests (Playwright)
+
 - Files: `tests/e2e/`.
 - Pattern: **Page Object Model** — base class `AnyPage`, extended per page.
 - `isMobile` flag: selects `nth(0)` (mobile nav) vs `nth(1)` (desktop nav) elements.
 - **Web server**: `playwright.config.ts` runs `npm run build && npm run preview` on `:4321` automatically. Do not start a server manually.
-  - `reuseExistingServer: !process.env.CI` — reuses a running server locally, always starts fresh on CI.
+    - `reuseExistingServer: !process.env.CI` — reuses a running server locally, always starts fresh on CI.
 - **Snapshots**: aria snapshots + screenshot snapshots. After any DOM or visual change, update snapshots before committing:
-  ```bash
-  npm run test:e2e -- --update-snapshots
-  ```
-
+    ```bash
+    npm run test:e2e -- --update-snapshots
+    ```
