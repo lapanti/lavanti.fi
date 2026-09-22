@@ -1,6 +1,8 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
+import { newsletterPath } from './newsletterRoutes'
+
 const UPDATED_DATE = /^updatedDate:\s*['"]?(\d{4}-\d{2}-\d{2})['"]?/m
 const SLUG = /^slug:\s*['"]?([^'"\n]+)['"]?/m
 const LANGS = ['fi', 'sv', 'en'] as const
@@ -37,28 +39,38 @@ interface TagWithDate {
     updatedDate: string
 }
 
+type Lang = (typeof LANGS)[number]
+
 interface BuildPageDateMapInput {
+    /** src/content/newsletters — optional so the map builds before the first issue lands. */
+    newslettersDir?: string
     pagesDir: string
     postsDir?: string
     tags: readonly TagWithDate[]
 }
 
+const postPath = (lang: Lang, id: string, slug: string): string => `/${lang}/blog/${id}/${slug}/`
+
 /**
- * Posts live under postsDir/{id}/{meta.json, fi.mdx, sv.mdx, en.mdx} — updatedDate is
- *  in the shared meta.json (not any .mdx file, so walkMdx/extractUpdatedDate can't see
- *  it), and the URL needs each language file's own slug, not derivable from the path.
+ * Collection entries (posts, newsletters) live under dir/{id}/{meta.json, fi.mdx,
+ *  sv.mdx, en.mdx} — updatedDate is in the shared meta.json (not any .mdx file, so
+ *  walkMdx/extractUpdatedDate can't see it), and the URL needs each language file's
+ *  own slug, not derivable from the path; `urlFor` supplies the collection's URL shape.
  *
- * Future-dated (scheduled) posts are deliberately not filtered here: this map is a
- *  lookup consulted only for pages present in the built sitemap, and unbuilt posts
- *  never appear there — their entries are unreachable keys. Filtering would duplicate
- *  the build clock at config-eval time for no correctness gain.
+ * Future-dated (scheduled/embargoed) entries are deliberately not filtered here: this
+ *  map is a lookup consulted only for pages present in the built sitemap, and unbuilt
+ *  entries never appear there — their entries are unreachable keys. Filtering would
+ *  duplicate the build clock at config-eval time for no correctness gain.
  */
-const buildPostDateEntries = (postsDir: string): Array<[string, string]> => {
+const buildEntryDateEntries = (
+    collectionDir: string,
+    urlFor: (lang: Lang, id: string, slug: string) => string
+): Array<[string, string]> => {
     const entries: Array<[string, string]> = []
     const missing: string[] = []
 
-    for (const idDir of readdirSync(postsDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
-        const dir = join(postsDir, idDir.name)
+    for (const idDir of readdirSync(collectionDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
+        const dir = join(collectionDir, idDir.name)
         const metaPath = join(dir, 'meta.json')
         const meta = JSON.parse(readFileSync(metaPath, 'utf-8'))
         const updatedDate: string | undefined = meta.updatedDate
@@ -74,7 +86,7 @@ const buildPostDateEntries = (postsDir: string): Array<[string, string]> => {
                 missing.push(langPath)
                 continue
             }
-            entries.push([`/${lang}/blog/${idDir.name}/${slug}/`, updatedDate])
+            entries.push([urlFor(lang, idDir.name, slug), updatedDate])
         }
     }
 
@@ -87,7 +99,12 @@ const buildPostDateEntries = (postsDir: string): Array<[string, string]> => {
     return entries
 }
 
-export const buildPageDateMap = ({ pagesDir, postsDir, tags }: BuildPageDateMapInput): Map<string, string> => {
+export const buildPageDateMap = ({
+    newslettersDir,
+    pagesDir,
+    postsDir,
+    tags,
+}: BuildPageDateMapInput): Map<string, string> => {
     const map = new Map<string, string>()
     const missing: string[] = []
 
@@ -108,7 +125,13 @@ export const buildPageDateMap = ({ pagesDir, postsDir, tags }: BuildPageDateMapI
     }
 
     if (postsDir) {
-        for (const [url, date] of buildPostDateEntries(postsDir)) {
+        for (const [url, date] of buildEntryDateEntries(postsDir, postPath)) {
+            map.set(url, date)
+        }
+    }
+
+    if (newslettersDir && existsSync(newslettersDir)) {
+        for (const [url, date] of buildEntryDateEntries(newslettersDir, newsletterPath)) {
             map.set(url, date)
         }
     }
