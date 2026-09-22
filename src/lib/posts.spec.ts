@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest'
 
-import { buildAlternatesMap, filterExcerptPosts, type Post, sortByRelatedTags, stripImportsExports } from './posts'
+import {
+    buildAlternatesMap,
+    byPublishDateThenId,
+    filterExcerptPosts,
+    type Post,
+    sortByRelatedTags,
+    stripImportsExports,
+} from './posts'
 
 /**
  * getCollection() cannot be exercised here: Astro's Content Layer data store is only
@@ -143,5 +150,23 @@ describe('buildAlternatesMap', () => {
     it('returns an empty object for an unknown post id', () => {
         const alternates = buildAlternatesMap(posts, 999999)
         expect(Object.keys(alternates)).toHaveLength(0)
+    })
+})
+
+describe('byPublishDateThenId', () => {
+    it('orders newest publishDate first', () => {
+        const sorted = [
+            { id: 1, publishDate: '2026-01-01' },
+            { id: 2, publishDate: '2026-03-01' },
+        ].toSorted(byPublishDateThenId)
+        expect(sorted.map((e) => e.id)).toEqual([2, 1])
+    })
+
+    it('breaks a publishDate tie by descending id', () => {
+        const sorted = [
+            { id: 3, publishDate: '2026-01-01' },
+            { id: 7, publishDate: '2026-01-01' },
+        ].toSorted(byPublishDateThenId)
+        expect(sorted.map((e) => e.id)).toEqual([7, 3])
     })
 })

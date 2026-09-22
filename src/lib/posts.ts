@@ -16,6 +16,23 @@ export type Post = CollectionEntry<'posts'>['data'] & {
     wordCount: number
 }
 
+/** Shape shared by every localized collection entry that has per-locale alternates. */
+export interface LocalizedEntry {
+    id: number
+    lang: Post['lang']
+    publishDate: string
+    url: string
+}
+
+/**
+ * Display order is newest-first by publishDate, with id as a stable tiebreaker.
+ * Keying on the date (not id) keeps ordering correct for far-future scheduled
+ * entries, whose id — assigned at authoring time — can be lower than entries that
+ * publish earlier but are authored later. Shared with the newsletters collection.
+ */
+export const byPublishDateThenId = <T extends Pick<LocalizedEntry, 'id' | 'publishDate'>>(a: T, b: T): number =>
+    b.publishDate.localeCompare(a.publishDate) || b.id - a.id
+
 let cache: Promise<Post[]> | undefined
 
 /*
@@ -47,22 +64,19 @@ async function loadAllPosts(): Promise<Post[]> {
                     wordCount,
                 }
             })
-            /*
-             * Display order is newest-first by publishDate, with id as a stable
-             * tiebreaker. Keying on the date (not id) keeps ordering correct for
-             * far-future scheduled posts, whose id — assigned at authoring time —
-             * can be lower than posts that publish earlier but are authored later.
-             */
-            .toSorted((a, b) => b.publishDate.localeCompare(a.publishDate) || b.id - a.id)
+            .toSorted(byPublishDateThenId)
     )
 }
 
 export const getAllPosts = (): Promise<Post[]> => (cache ??= loadAllPosts())
 /* v8 ignore stop */
 
-export const buildAlternatesMap = (posts: Post[], id: number): Record<Post['lang'], string> => {
+export const buildAlternatesMap = <T extends Pick<LocalizedEntry, 'id' | 'lang' | 'url'>>(
+    entries: T[],
+    id: number
+): Record<Post['lang'], string> => {
     const result = {} as Record<Post['lang'], string>
-    for (const p of posts.filter((p) => p.id === id)) {
+    for (const p of entries.filter((p) => p.id === id)) {
         result[p.lang] = p.url
     }
     return result
@@ -85,9 +99,7 @@ export interface ExcerptQuery {
 export const sortByRelatedTags = (posts: Post[], relatedTags: string[]): Post[] =>
     posts
         .map<[Post, number]>((p) => [p, relatedTags.reduce((sum, t) => sum + (p.tags.includes(t) ? 1 : 0), 0)])
-        .toSorted(([a, aPoints], [b, bPoints]) =>
-            aPoints === bPoints ? b.publishDate.localeCompare(a.publishDate) || b.id - a.id : bPoints - aPoints
-        )
+        .toSorted(([a, aPoints], [b, bPoints]) => (aPoints === bPoints ? byPublishDateThenId(a, b) : bPoints - aPoints))
         .map(([p]) => p)
 
 export const filterExcerptPosts = (posts: Post[], q: ExcerptQuery): Post[] => {
