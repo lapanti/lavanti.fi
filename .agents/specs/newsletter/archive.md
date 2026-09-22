@@ -1,7 +1,7 @@
 # Spec: Newsletter Archive
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
-> **Status**: `Draft`
+> **Status**: `Active` (PR #1481)
 > **Last updated**: 2026-09-22
 
 ---
