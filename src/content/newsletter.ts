@@ -1,5 +1,42 @@
 import type { Lang } from './nav'
 
+/** Strings for the public archive: issue pages and the "other issues" plate. */
+export interface NewsletterArchiveLocale {
+    /** Button/link label leading to the archive list page. */
+    allIssuesLabel: string
+    /** Tracked-uppercase label above the "other issues" plate heading. */
+    eyebrow: string
+    /** Heading of the "other issues" plate on an issue page. */
+    otherIssuesHeading: string
+    /** Provenance line; `date` is already formatted for the locale (d.m.yyyy). */
+    provenance: (date: string) => string
+    shareAriaLabel: (title: string) => string
+}
+
+export const newsletterArchiveContent: Record<Lang, NewsletterArchiveLocale> = {
+    en: {
+        allIssuesLabel: 'All issues',
+        eyebrow: 'Newsletter',
+        otherIssuesHeading: 'Other issues',
+        provenance: (date) => `Sent to subscribers on ${date}.`,
+        shareAriaLabel: (title) => `Share links for newsletter issue ${title}`,
+    },
+    fi: {
+        allIssuesLabel: 'Kaikki uutiskirjeet',
+        eyebrow: 'Uutiskirje',
+        otherIssuesHeading: 'Muita uutiskirjeitä',
+        provenance: (date) => `Lähetetty tilaajille ${date}.`,
+        shareAriaLabel: (title) => `Uutiskirjeen ${title} sosiaalisen median jakolinkit`,
+    },
+    sv: {
+        allIssuesLabel: 'Alla nyhetsbrev',
+        eyebrow: 'Nyhetsbrev',
+        otherIssuesHeading: 'Andra nyhetsbrev',
+        provenance: (date) => `Skickat till prenumeranterna ${date}.`,
+        shareAriaLabel: (title) => `Delningslänkar för nyhetsbrevet ${title}`,
+    },
+}
+
 interface NewsletterLocale {
     description: string
     /** The tracked-uppercase label above the heading, shown in the split plate layout. */
