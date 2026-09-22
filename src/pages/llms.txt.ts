@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro'
 
 import { getTagName, tags } from '../content/tags'
+import { getAllNewsletters, type Newsletter } from '../lib/newsletters'
 import { getAllPosts, type Post } from '../lib/posts'
 import { stripSoftHyphens } from '../lib/text'
 
@@ -13,9 +14,14 @@ const PILLAR_LINKS = [
     { label: 'Aiheet', url: '/fi/blog/' },
     { label: 'Laurista', url: '/fi/laurista/' },
     { label: 'Suositukset', url: '/fi/suositukset/' },
+    { label: 'Uutiskirjeen arkisto', url: '/fi/uutiskirje/arkisto/' },
 ]
 
-export const buildLlmsTxt = (posts: Post[], site: URL): string => {
+const linkLine = (entry: { title: string; url: string }, site: URL): string =>
+    `- [${stripSoftHyphens(entry.title)}](${new URL(entry.url, site).href})`
+
+/** @param newsletters — published archive issues; embargoed ones never reach here. */
+export const buildLlmsTxt = (posts: Post[], site: URL, newsletters: Newsletter[] = []): string => {
     const fiPosts = posts.filter((p) => p.lang === 'fi')
 
     const tagIds = [
@@ -31,19 +37,20 @@ export const buildLlmsTxt = (posts: Post[], site: URL): string => {
             const taggedPosts = fiPosts.filter((p) => p.tags.includes(id))
             if (taggedPosts.length === 0) return ''
             const name = stripSoftHyphens(getTagName(id, 'fi') ?? id)
-            const links = taggedPosts
-                .map((p) => `- [${stripSoftHyphens(p.title)}](${new URL(p.url, site).href})`)
-                .join('\n')
+            const links = taggedPosts.map((p) => linkLine(p, site)).join('\n')
 
             return `## ${name}\n\n${links}`
         })
         .filter(Boolean)
         .join('\n\n')
 
-    const nonFiPosts = posts.filter((p) => p.lang !== 'fi')
-    const multilingualLinks = nonFiPosts
-        .map((p) => `- [${stripSoftHyphens(p.title)}](${new URL(p.url, site).href})`)
-        .join('\n')
+    // Newsletter issues get one section: they are tagless, so they never land under a tag above.
+    const fiNewsletters = newsletters.filter((n) => n.lang === 'fi')
+    const newsletterSection =
+        fiNewsletters.length > 0 ? `## Uutiskirjeet\n\n${fiNewsletters.map((n) => linkLine(n, site)).join('\n')}` : ''
+
+    const nonFi = [...posts, ...newsletters].filter((p) => p.lang !== 'fi')
+    const multilingualLinks = nonFi.map((p) => linkLine(p, site)).join('\n')
 
     const pillarLinks = PILLAR_LINKS.map((l) => `- [${l.label}](${new URL(l.url, site).href})`).join('\n')
 
@@ -56,7 +63,7 @@ export const buildLlmsTxt = (posts: Post[], site: URL): string => {
 
 ${pillarLinks}
 
-${tagSections}
+${[tagSections, newsletterSection].filter(Boolean).join('\n\n')}
 
 ## Muut kielet / Other languages / Andra språk
 
@@ -65,5 +72,5 @@ ${multilingualLinks}
 }
 
 export const GET: APIRoute = async ({ site }) => {
-    return new Response(buildLlmsTxt(await getAllPosts(), site!))
+    return new Response(buildLlmsTxt(await getAllPosts(), site!, await getAllNewsletters()))
 }
