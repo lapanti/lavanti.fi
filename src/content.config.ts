@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content'
 
-import { postsLoader } from './content/lib/postsLoader'
+import { localizedCollectionLoader, postsLoader } from './content/lib/postsLoader'
+import { embargoLiftDate } from './lib/publishing'
 
 const authorEntry = z.union([
     z.literal('lauri'),
@@ -43,4 +44,40 @@ const posts = defineCollection({
     }),
 })
 
-export const collections = { posts }
+/*
+ * Public newsletter archive (.agents/specs/newsletter/archive.md). Same on-disk layout
+ * as posts — {id}/meta.json + fi/sv/en.mdx — but no hero image and no tags, and the
+ * publish date is derived: an issue goes public 42 days after it was emailed, so
+ * publishDate must equal embargoLiftDate(sent). Hand-typing another date would either
+ * shorten the subscribers' lead or hold a page back; the refine makes both a build error.
+ */
+const newsletters = defineCollection({
+    loader: localizedCollectionLoader({ base: './src/content/newsletters', name: 'newsletters-loader' }),
+    schema: z
+        .object({
+            description: z.string(),
+            faq: z.array(z.object({ a: z.string(), q: z.string() })).optional(),
+            id: z.number().int().positive(),
+            lang: z.enum(['fi', 'sv', 'en']),
+            ogEmphasis: z.string().optional(),
+            ogTitle: z.string().optional(),
+            pageTitle: z.string(),
+            publishDate: isoDate,
+            sent: isoDate,
+            slug: z.string(),
+            title: z.string(),
+            updatedDate: isoDate,
+        })
+        .superRefine((data, ctx) => {
+            const expected = embargoLiftDate(data.sent)
+            if (data.publishDate !== expected) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: `publishDate must be sent + 42 days: expected ${expected}, got ${data.publishDate}`,
+                    path: ['publishDate'],
+                })
+            }
+        }),
+})
+
+export const collections = { newsletters, posts }
