@@ -1,0 +1,56 @@
+---
+import type { Lang } from '../../content/nav'
+
+import { getNewsletters } from '../../lib/newsletters'
+import Excerpt from '../excerptList/Excerpt.astro'
+
+/**
+ * Newest-first list of published newsletter issues in one language, rendered with
+ * the same card as blog excerpts (image-less: Banner and the tag row both no-op).
+ * Embargoed issues never reach it — getNewsletters() applies the build filter.
+ */
+interface Props {
+    /** Leave out the issue being read. */
+    excludeId?: number
+    lang: Lang
+    limit?: number
+}
+
+const { excludeId, lang, limit } = Astro.props
+
+const issues = await getNewsletters({ excludeId, lang, limit })
+---
+
+<style>
+    ul {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 769px) {
+        ul {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        ul {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+</style>
+<ul>
+    {
+        issues.map((issue) => (
+            <Excerpt
+                date={issue.publishDate}
+                excerpt={issue.description}
+                lang={lang}
+                slug={issue.url.replace(/^\//, '').replace(/\/$/, '')}
+                title={issue.title}
+            />
+        ))
+    }
+</ul>

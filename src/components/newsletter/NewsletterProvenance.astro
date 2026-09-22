@@ -1,0 +1,46 @@
+---
+import type { Lang } from '../../content/nav'
+
+import { newsletterArchiveContent } from '../../content/newsletter'
+import { colors, typographics } from '../../lib/styles'
+
+/**
+ * "Lähetetty tilaajille 14.3.2026." — the page's visible date and its JSON-LD
+ * datePublished are the embargo-lift date, so this line is what tells the reader
+ * (and a crawler reading the <time>) when the piece was actually written and sent.
+ * Rendered outside PostProse so it never takes the article-lead paragraph styling.
+ */
+interface Props {
+    lang: Lang
+    /** ISO date (YYYY-MM-DD) the issue was emailed. */
+    sent: string
+}
+
+const { lang, sent } = Astro.props
+
+const [year, month, day] = sent.split('-')
+const sentToDisplay = `${Number(day)}.${Number(month)}.${year}`
+const { after, before } = newsletterArchiveContent[lang].provenance
+---
+
+<style
+    define:vars={{
+        colorsTextSecondary: colors.textSecondary,
+        metaFontFamily: typographics.meta.fontFamily,
+        metaFontWeight: typographics.meta.fontWeight,
+        metaLetterSpacing: typographics.meta.letterSpacing,
+        metaLineHeight: typographics.meta.lineHeight,
+    }}
+>
+    .provenance {
+        color: var(--colorsTextSecondary);
+        font-family: var(--metaFontFamily);
+        font-size: 0.875rem;
+        font-weight: var(--metaFontWeight);
+        letter-spacing: var(--metaLetterSpacing);
+        line-height: var(--metaLineHeight);
+        margin: 0 0 1.5rem;
+        text-transform: uppercase;
+    }
+</style>
+<p class="provenance">{before}<time datetime={sent}>{sentToDisplay}</time>{after}</p>
