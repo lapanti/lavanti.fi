@@ -8,12 +8,14 @@ import {
     footerLinks,
     footerLogoAlt,
     footerMediaLabel,
+    footerNewsletterArchiveLabel,
     footerPrivacyPolicyHref,
     footerPrivacyPolicyLabel,
     footerRssAriaLabel,
 } from '../content/footer'
 import { navLinks } from '../content/nav'
 import { personEmail } from '../content/person'
+import { archivePath } from '../lib/newsletterRoutes'
 import { colors, gridAreas, typographics } from '../lib/styles'
 import InstagramLink from './footer/InstagramLink.astro'
 import Link from './footer/Link.astro'
@@ -187,6 +189,10 @@ const licenseText: Record<Lang, string> = {
                                 </li>
                             ))
                         }
+                        {
+                            /* Footer-only by design: the archive is for readers who already care; the nav stays the signup funnel. */
+                        }
+                        <li><a href={archivePath(lang)}>{footerNewsletterArchiveLabel[lang]}</a></li>
                     </ul>
                 </div>
                 <div>

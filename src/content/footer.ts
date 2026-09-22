@@ -49,6 +49,12 @@ export const footerMediaLabel: Record<Lang, string> = {
     sv: 'För media',
 }
 
+export const footerNewsletterArchiveLabel: Record<Lang, string> = {
+    en: 'Newsletter archive',
+    fi: 'Uutiskirjeen arkisto',
+    sv: 'Nyhetsbrevsarkiv',
+}
+
 export const footerPrivacyPolicyLabel: Record<Lang, string> = {
     en: 'Privacy policy',
     fi: 'Tietosuojaseloste',
