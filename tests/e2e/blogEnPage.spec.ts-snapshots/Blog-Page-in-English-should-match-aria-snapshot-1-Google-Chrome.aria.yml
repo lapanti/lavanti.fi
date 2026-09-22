@@ -36,6 +36,24 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
+          - article "YEL must not raise the entrepreneurship barrier":
+            - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
+              - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
+              - img "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle."
+              - heading "YEL must not raise the entrepreneurship barrier" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Finland's YEL reform would scrap the new-entrepreneur discount just as AI lowers the barrier to starting a business. Three fixes that keep the barrier low.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "Entrepreneurship":
+                - /url: /en/category/entrepreneurship/
+        - listitem:
           - article "AI helps secure municipal services, but it is not free":
             - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
               - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
@@ -68,24 +86,6 @@
             - listitem:
               - link "Digitalisation":
                 - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Enlightenment":
-                - /url: /en/category/enlightenment/
-        - listitem:
-          - article /\d+ is the year of AI/:
-            - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
-              - /url: /en/blog/47/2026-is-the-year-of-ai/
-              - img "Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie. Wearing a black jacket, white shirt and green tie. In the background, the light corridor of the main building of the University of Helsinki."
-              - heading /\d+ is the year of AI/ [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI is changing society — but perhaps not as you imagine. The biggest changes will be in private life and in the everyday lives of children.
-          - list:
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
             - listitem:
               - link "Enlightenment":
                 - /url: /en/category/enlightenment/
@@ -162,6 +162,24 @@
       - paragraph: Seamless enlightenment means learning never stops — it stays possible whatever stage of life you are in. AI makes that path vastly more important. The country that keeps the path open for everyone gets the full potential of its people. That is a stronger foundation than any other competitive advantage.
       - list:
         - listitem:
+          - article /\d+ is the year of AI/:
+            - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
+              - /url: /en/blog/47/2026-is-the-year-of-ai/
+              - img "Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie. Wearing a black jacket, white shirt and green tie. In the background, the light corridor of the main building of the University of Helsinki."
+              - heading /\d+ is the year of AI/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI is changing society — but perhaps not as you imagine. The biggest changes will be in private life and in the everyday lives of children.
+          - list:
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Enlightenment":
+                - /url: /en/category/enlightenment/
+        - listitem:
           - article "AI cannot do everything":
             - link "An illustrative image for artificial intelligence, depicting a machine resembling a human head with various electronic currents flowing in and out of it. AI cannot do everything":
               - /url: /en/blog/44/ai-cannot-do-everything/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Early childhood education":
                 - /url: /en/category/early-childhood-education/
-        - listitem:
-          - article "Education is the municipality's most important task":
-            - link "A photograph of Laajakallio school. Education is the municipality's most important task":
-              - /url: /en/blog/37/education-is-the-municipalitys-most-important-task/
-              - img "A photograph of Laajakallio school."
-              - heading "Education is the municipality's most important task" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Education is the municipality's most important task. Investment in education pays off far into the future — there are no quick wins.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link /Municipal elections \d+/:
-                - /url: /en/category/municipal-elections-2025/
-            - listitem:
-              - link "Education":
-                - /url: /en/category/education/
       - paragraph:
         - link "All posts about Enlightenment":
           - /url: /en/category/enlightenment/

@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "YEL must not raise the entrepreneurship barrier":
+          - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
+            - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
+            - img "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle."
+            - heading "YEL must not raise the entrepreneurship barrier" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Finland's YEL reform would scrap the new-entrepreneur discount just as AI lowers the barrier to starting a business. Three fixes that keep the barrier low.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Entrepreneurship":
+              - /url: /en/category/entrepreneurship/
+      - listitem:
         - article "Kirkkonummi bypassed residents in planning forest logging":
           - link "A two-part portrait with Pinja Pekkarniemi on the left in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. Kirkkonummi bypassed residents in planning forest logging":
             - /url: /en/blog/78/forest-logging-decided-without-consulting-residents/
@@ -267,24 +285,6 @@
           - listitem:
             - link "Freedom":
               - /url: /en/category/freedom/
-      - listitem:
-        - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-          - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-            - /url: /en/blog/67/my-candidacy-for-parliament/
-            - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
-            - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
-        - list:
-          - listitem:
-            - link /Parliamentary elections \d+/:
-              - /url: /en/category/parliamentary-elections-2027/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

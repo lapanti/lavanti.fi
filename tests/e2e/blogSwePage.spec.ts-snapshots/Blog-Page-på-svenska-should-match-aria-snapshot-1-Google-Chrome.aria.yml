@@ -36,6 +36,24 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
+          - article "FöPL får inte höja tröskeln för företagande":
+            - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
+              - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
+              - img "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna."
+              - heading "FöPL får inte höja tröskeln för företagande" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Regeringens FöPL-reform slopar nyföretagarrabatten just när AI sänker tröskeln för att bli företagare. Tre korrigeringar som håller tröskeln låg.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Företagande":
+                - /url: /sv/kategori/foretagande/
+        - listitem:
           - article "AI hjälper trygga kommunala tjänster, men det är inte gratis":
             - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper trygga kommunala tjänster, men det är inte gratis":
               - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
@@ -68,24 +86,6 @@
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Lärande":
-                - /url: /sv/kategori/bildning/
-        - listitem:
-          - article /År \d+ är AI-året/:
-            - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
-              - /url: /sv/blog/47/ar-2026-ar-ai-aret/
-              - img "Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie. Klädd i svart jacka, vit skjorta och grön slips. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad."
-              - heading /År \d+ är AI-året/ [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI förändrar samhället — men kanske inte som du tror. De största förändringarna ser vi i privatlivet och i barnens och ungdomarnas vardag.
-          - list:
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
             - listitem:
               - link "Lärande":
                 - /url: /sv/kategori/bildning/
@@ -162,6 +162,24 @@
       - paragraph: Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.
       - list:
         - listitem:
+          - article /År \d+ är AI-året/:
+            - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
+              - /url: /sv/blog/47/ar-2026-ar-ai-aret/
+              - img "Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie. Klädd i svart jacka, vit skjorta och grön slips. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad."
+              - heading /År \d+ är AI-året/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI förändrar samhället — men kanske inte som du tror. De största förändringarna ser vi i privatlivet och i barnens och ungdomarnas vardag.
+          - list:
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Lärande":
+                - /url: /sv/kategori/bildning/
+        - listitem:
           - article "AI kan inte allt":
             - link "En illustrationsbild för artificiell intelligens, föreställande en maskin som liknar ett mänskligt huvud med olika elektroniska strömmar som flödar in och ut ur den. AI kan inte allt":
               - /url: /sv/blog/44/ai-kan-inte-allt/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Småbarnspedagogik":
                 - /url: /sv/kategori/smabarnspedagogik/
-        - listitem:
-          - article "Utbildning är kommunens viktigaste uppgift":
-            - link "Ett fotografi av Laajakallio skola. Utbildning är kommunens viktigaste uppgift":
-              - /url: /sv/blog/37/utbildning-ar-kommunens-viktigaste-uppgift/
-              - img "Ett fotografi av Laajakallio skola."
-              - heading "Utbildning är kommunens viktigaste uppgift" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Utbildning är kommunens viktigaste uppgift. Satsningar på utbildning är investeringar som syns långt in i framtiden, utan snabba vinster.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link /Kommunalval \d+/:
-                - /url: /sv/kategori/kommunalval-2025/
-            - listitem:
-              - link "Utbildning":
-                - /url: /sv/kategori/utbildning/
       - paragraph:
         - link "Alla inlägg om Lärande":
           - /url: /sv/category/enlightenment/
