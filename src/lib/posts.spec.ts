@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+    bodyStats,
     buildAlternatesMap,
     byPublishDateThenId,
     filterExcerptPosts,
@@ -168,5 +169,17 @@ describe('byPublishDateThenId', () => {
             { id: 7, publishDate: '2026-01-01' },
         ].toSorted(byPublishDateThenId)
         expect(sorted.map((e) => e.id)).toEqual([7, 3])
+    })
+})
+
+describe('bodyStats', () => {
+    it('counts words after stripping MDX import/export lines and derives reading time', () => {
+        const body =
+            "import X from './X.astro'\nexport const components = { a: X }\n\n" + Array(201).fill('sana').join(' ')
+        expect(bodyStats(body)).toEqual({ readingTime: 2, wordCount: 201 })
+    })
+
+    it('treats a missing body as empty', () => {
+        expect(bodyStats(undefined)).toEqual({ readingTime: 0, wordCount: 0 })
     })
 })

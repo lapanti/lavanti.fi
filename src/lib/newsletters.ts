@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 import { newsletterPath } from './newsletterRoutes'
-import { buildAlternatesMap, byPublishDateThenId, stripImportsExports } from './posts'
+import { bodyStats, buildAlternatesMap, byPublishDateThenId } from './posts'
 import { helsinkiDateOf, isPublishedBy } from './publishing'
 
 /**
@@ -16,18 +16,12 @@ export type Newsletter = CollectionEntry<'newsletters'>['data'] & {
 }
 
 /** Pure decoration step, split out so it can be fixture-tested without the content store. */
-export const decorateNewsletter = (entry: CollectionEntry<'newsletters'>): Newsletter => {
-    const body = stripImportsExports(entry.body ?? '')
-    const wordCount = body.trim().split(/\s+/).filter(Boolean).length
-
-    return {
-        ...entry.data,
-        entry,
-        readingTime: Math.ceil(wordCount / 200),
-        url: newsletterPath(entry.data.lang, entry.data.id, entry.data.slug),
-        wordCount,
-    }
-}
+export const decorateNewsletter = (entry: CollectionEntry<'newsletters'>): Newsletter => ({
+    ...entry.data,
+    ...bodyStats(entry.body),
+    entry,
+    url: newsletterPath(entry.data.lang, entry.data.id, entry.data.slug),
+})
 
 let cache: Promise<Newsletter[]> | undefined
 
