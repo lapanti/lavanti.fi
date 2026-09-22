@@ -9,7 +9,7 @@ import type { Lang } from '../content/nav'
  */
 export const NEWSLETTER_SEGMENTS: Record<Lang, string> = { en: 'newsletter', fi: 'uutiskirje', sv: 'nyhetsbrev' }
 
-export const ARCHIVE_SEGMENTS: Record<Lang, string> = { en: 'archive', fi: 'arkisto', sv: 'arkiv' }
+const ARCHIVE_SEGMENTS: Record<Lang, string> = { en: 'archive', fi: 'arkisto', sv: 'arkiv' }
 
 /** Slash-less canonical slug, e.g. `fi/uutiskirje/1/tekoaly-muuttaa-tyon` — the ogId input and the JSON-LD slug. */
 export const newsletterSlug = (lang: Lang, id: number | string, slug: string): string =>
