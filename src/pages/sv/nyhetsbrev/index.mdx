@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-08-25'
+updatedDate: '2026-09-22'
 type: 'WebPage'
 heroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka'
@@ -19,9 +19,9 @@ plated: true
 variant: 'split'
 ---
 
-import FactsList from '../../../components/FactsList.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
@@ -38,14 +38,11 @@ import Prose from '../../../components/Prose.astro'
     </Prose>
 </Plate>
 
-<Plate ground="gray" heading="Aktuella ämnen">
-    <FactsList
-        items={[
-            'Åldersgränser på sociala medier – hur har det gjorts annorstädes, hur bör det göras, och bör det ens göras?',
-            'AI:s oundviklighet – är vi aktiva aktörer eller offer för förändringen.',
-            'Datacenter i Finland – är de ett hot eller en möjlighet för oss.',
-        ]}
-    />
+<Plate ground="gray" heading="Vad har de senaste breven handlat om?">
+    <NewsletterList lang="sv" limit={3} />
+    <Prose>
+        Alla utskickade brev publiceras i [arkivet](/sv/nyhetsbrev/arkiv/) 42 dagar efter utskicket. Prenumeranterna läser dem först.
+    </Prose>
 </Plate>
 
 <NewsletterPlate>

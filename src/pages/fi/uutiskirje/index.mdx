@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-08-25'
+updatedDate: '2026-09-22'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
@@ -19,9 +19,9 @@ plated: true
 variant: 'split'
 ---
 
-import FactsList from '../../../components/FactsList.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
@@ -38,14 +38,11 @@ import Prose from '../../../components/Prose.astro'
     </Prose>
 </Plate>
 
-<Plate ground="gray" heading="Viimeaikaisia aiheita">
-    <FactsList
-        items={[
-            'Ikärajat someen — miten muualla on tehty, miten pitäisi tehdä, ja pitäisikö ollenkaan?',
-            'Tekoälyn väistämättömyys — olemmeko aktiivisia toimijoita vai muutosten kohde.',
-            'Datakeskukset Suomessa — ovatko ne meille uhka vai mahdollisuus.',
-        ]}
-    />
+<Plate ground="gray" heading="Mitä uutiskirjeissä on käsitelty?">
+    <NewsletterList lang="fi" limit={3} />
+    <Prose>
+        Kaikki lähetetyt kirjeet julkaistaan [arkistoon](/fi/uutiskirje/arkisto/) 42 päivää lähettämisen jälkeen. Tilaajat lukevat ne ensin.
+    </Prose>
 </Plate>
 
 <NewsletterPlate>
