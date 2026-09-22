@@ -6,6 +6,7 @@ import { checkPage, findTags, isSkippablePage, parseAttrs } from './dist-head'
 
 const PAGE_PATH = '/fi/about/'
 const POST_PATH = '/fi/blog/1/testi-artikkeli/'
+const NEWSLETTER_PATH = '/fi/uutiskirje/1/testi-kirje/'
 
 const BUILT_PATHS = new Set([
     '/fi/about/',
@@ -14,6 +15,9 @@ const BUILT_PATHS = new Set([
     '/fi/blog/1/testi-artikkeli/',
     '/sv/blog/1/test-artikel/',
     '/en/blog/1/test-article/',
+    '/fi/uutiskirje/1/testi-kirje/',
+    '/sv/nyhetsbrev/1/test-brev/',
+    '/en/newsletter/1/test-issue/',
 ])
 
 interface HeadOverrides {
@@ -297,6 +301,34 @@ describe('checkPage', () => {
                 ogImage: '<meta content="https://lavanti.fi/images/x/og" property="og:image">',
             }),
             POST_PATH,
+            BUILT_PATHS
+        )
+        expect(valid).toEqual([])
+    })
+
+    it('applies the article rules to newsletter archive issues', () => {
+        const issueOverrides: HeadOverrides = {
+            canonical: `<link href="https://lavanti.fi${NEWSLETTER_PATH}" rel="canonical">`,
+            hreflangs: [
+                `<link href="https://lavanti.fi${NEWSLETTER_PATH}" hreflang="fi" rel="alternate">`,
+                '<link href="https://lavanti.fi/sv/nyhetsbrev/1/test-brev/" hreflang="sv" rel="alternate">',
+                '<link href="https://lavanti.fi/en/newsletter/1/test-issue/" hreflang="en" rel="alternate">',
+                `<link href="https://lavanti.fi${NEWSLETTER_PATH}" hreflang="x-default" rel="alternate">`,
+            ].join(''),
+        }
+
+        const missingBoth = checkPage(pageHtml(issueOverrides), NEWSLETTER_PATH, BUILT_PATHS)
+        expect(missingBoth).toContain('post page missing og:image')
+        expect(missingBoth).toContain('post page missing BlogPosting JSON-LD')
+
+        const valid = checkPage(
+            pageHtml({
+                ...issueOverrides,
+                jsonld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2026-04-25"}</script>',
+                ogImage:
+                    '<meta content="https://lavanti.fi/og/fi__uutiskirje__1__testi-kirje.png" property="og:image">',
+            }),
+            NEWSLETTER_PATH,
             BUILT_PATHS
         )
         expect(valid).toEqual([])
