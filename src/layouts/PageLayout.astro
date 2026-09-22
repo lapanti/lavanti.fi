@@ -1,5 +1,6 @@
 ---
 import type { Lang } from '../content/nav'
+import type { BreadcrumbTrail } from '../lib/breadcrumbs'
 import type { BreadcrumbItem, FaqItem, JsonLdType } from '../lib/jsonld'
 
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
@@ -8,12 +9,15 @@ import TitleBanner from '../components/TitleBanner.astro'
 import { breadcrumbLabels } from '../lib/breadcrumbs'
 import { getImage } from '../lib/images'
 import { COLLECTIONPAGE } from '../lib/jsonld'
+import { landingPath } from '../lib/newsletterRoutes'
 import { ogId } from '../lib/og/id'
 import { visibleCampaignEvents } from '../lib/visibleEvents'
 import BaseLayout from './BaseLayout.astro'
 
 interface Props {
     alt?: string
+    /** Breadcrumb trail for a CollectionPage; defaults to the category trail. */
+    breadcrumbTrail?: BreadcrumbTrail
     createdAt?: string
     ctaHref?: string
     ctaLabel?: string
@@ -45,6 +49,7 @@ interface Props {
 const props: Props = ((Astro.props as any).frontmatter as Props | undefined) ?? (Astro.props as Props)
 const {
     alt,
+    breadcrumbTrail = 'category',
     createdAt,
     ctaHref,
     ctaLabel,
@@ -78,11 +83,17 @@ const ogImage = slug
     ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
     : getImage('og-image-lauri-lavanti', 'ogFlat').src
 
+const siteOrigin = 'https://lavanti.fi'
 const breadcrumbs: BreadcrumbItem[] | undefined =
     type === COLLECTIONPAGE && lang && slug
         ? [
-              { name: breadcrumbLabels.home[lang], url: `https://lavanti.fi/${lang}/` },
-              { name: breadcrumbLabels.category[lang], url: `https://lavanti.fi/${slug}/` },
+              { name: breadcrumbLabels.home[lang], url: `${siteOrigin}/${lang}/` },
+              ...(breadcrumbTrail === 'newsletterArchive'
+                  ? [
+                        { name: breadcrumbLabels.newsletter[lang], url: `${siteOrigin}${landingPath(lang)}` },
+                        { name: breadcrumbLabels.newsletterArchive[lang], url: `${siteOrigin}/${slug}/` },
+                    ]
+                  : [{ name: breadcrumbLabels.category[lang], url: `${siteOrigin}/${slug}/` }]),
           ]
         : undefined
 ---
