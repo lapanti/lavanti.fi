@@ -102,6 +102,3 @@ export function localizedCollectionLoader({ base, name }: LocalizedCollectionOpt
         name,
     }
 }
-
-export const postsLoader = (): Loader =>
-    localizedCollectionLoader({ base: './src/content/posts', name: 'posts-loader' })

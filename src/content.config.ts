@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content'
 
-import { localizedCollectionLoader, postsLoader } from './content/lib/postsLoader'
+import { localizedCollectionLoader } from './content/lib/postsLoader'
 import { embargoLiftDate } from './lib/publishing'
 
 const authorEntry = z.union([
@@ -23,7 +23,7 @@ const externalPublication = z.object({
 })
 
 const posts = defineCollection({
-    loader: postsLoader(),
+    loader: localizedCollectionLoader({ base: './src/content/posts', name: 'posts-loader' }),
     schema: z.object({
         alt: z.string(),
         authors: z.array(authorEntry).optional(),
