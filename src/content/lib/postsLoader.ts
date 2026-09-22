@@ -56,14 +56,24 @@ function resolveMeta(meta: Record<string, unknown>, lang: Lang): Record<string, 
     }
 }
 
+export interface LocalizedCollectionOptions {
+    /** Directory holding `{id}/{meta.json, fi.mdx, sv.mdx, en.mdx}` — relative to the project root. */
+    base: string
+    /** Loader name; must be unique per collection (used by `--loaders` selective sync and the log prefix). */
+    name: string
+}
+
 /**
  * Wraps the built-in glob() loader instead of reimplementing MDX parsing/rendering:
- * intercepts parseData to merge each post's sibling meta.json (shared fields) into
+ * intercepts parseData to merge each entry's sibling meta.json (shared fields) into
  * its per-language frontmatter before schema validation, so file walking, frontmatter
  * parsing, and deferred MDX rendering all stay exactly as glob() already does them.
+ *
+ * Shared by every collection laid out as `{base}/{id}/{fi,sv,en}.mdx` + `meta.json`
+ * (posts, newsletters).
  */
-export function postsLoader(): Loader {
-    const inner = glob({ base: './src/content/posts', pattern: '*/{fi,sv,en}.mdx' })
+export function localizedCollectionLoader({ base, name }: LocalizedCollectionOptions): Loader {
+    const inner = glob({ base, pattern: '*/{fi,sv,en}.mdx' })
 
     return {
         load: async (context: LoaderContext) => {
@@ -74,7 +84,7 @@ export function postsLoader(): Loader {
                 if (!filePath) return originalParseData(options)
 
                 /*
-                 * Re-read per file (3 tiny reads per post) rather than caching: keeps the
+                 * Re-read per file (3 tiny reads per entry) rather than caching: keeps the
                  * loader stateless so an `astro dev` edit to meta.json is never served stale.
                  */
                 const meta: Record<string, unknown> = JSON.parse(
@@ -82,13 +92,16 @@ export function postsLoader(): Loader {
                 )
 
                 const lang = (data as { lang?: Lang }).lang
-                if (!lang) throw new Error(`Post at ${filePath} is missing required "lang" frontmatter`)
+                if (!lang) throw new Error(`Entry at ${filePath} is missing required "lang" frontmatter`)
 
                 return originalParseData({ ...options, data: { ...resolveMeta(meta, lang), ...data } as TData })
             }
 
             await inner.load(context)
         },
-        name: 'posts-loader',
+        name,
     }
 }
+
+export const postsLoader = (): Loader =>
+    localizedCollectionLoader({ base: './src/content/posts', name: 'posts-loader' })
