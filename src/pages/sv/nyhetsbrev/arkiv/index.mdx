@@ -1,0 +1,42 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: sv
+pageTitle: 'Nyhetsbrevsarkiv – alla utskickade brev'
+title: 'Arkiv'
+eyebrow: 'Nyhetsbrev'
+intro: 'Alla utskickade nyhetsbrev, läsbara i webbläsaren. Varje brev publiceras i arkivet 42 dagar efter utskicket, så prenumeranterna läser det alltid först.'
+description: 'Arkivet för Lauri Lavantis nyhetsbrev: analyser om AI, arbetets förändring och digital självständighet. Breven publiceras 42 dagar efter att de skickats ut.'
+slug: 'sv/nyhetsbrev/arkiv'
+langAlternates:
+    en: '/en/newsletter/archive/'
+    fi: '/fi/uutiskirje/arkisto/'
+    sv: '/sv/nyhetsbrev/arkiv/'
+updatedDate: '2026-09-22'
+type: 'CollectionPage'
+breadcrumbTrail: 'newsletterArchive'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden.'
+plated: true
+variant: 'split'
+---
+
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../../components/newsletter/NewsletterList.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import Prose from '../../../../components/Prose.astro'
+
+<Plate ground="white" heading="Vad har nyhetsbreven handlat om?">
+    <NewsletterList lang="sv" />
+</Plate>
+
+<Plate ground="offWhite">
+    <Prose>
+        Nyhetsbrevet kommer ungefär varannan vecka och tar upp ett ämne i taget. [Prenumeranterna](/sv/nyhetsbrev/) får varje brev per e-post samma dag som det skickas; i arkivet dyker samma brev upp 42 dagar senare.
+    </Prose>
+</Plate>
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="sv" />
+</NewsletterPlate>

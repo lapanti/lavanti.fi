@@ -1,0 +1,42 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Newsletter archive – every issue sent so far'
+title: 'Archive'
+eyebrow: 'Newsletter'
+intro: 'Every newsletter issue, readable in the browser. Each issue reaches the archive 42 days after it was sent, so subscribers always read it first.'
+description: "The archive of Lauri Lavanti's newsletter: analysis of AI, the changing nature of work and digital independence. Issues go public 42 days after sending."
+slug: 'en/newsletter/archive'
+langAlternates:
+    en: '/en/newsletter/archive/'
+    fi: '/fi/uutiskirje/arkisto/'
+    sv: '/sv/nyhetsbrev/arkiv/'
+updatedDate: '2026-09-22'
+type: 'CollectionPage'
+breadcrumbTrail: 'newsletterArchive'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
+plated: true
+variant: 'split'
+---
+
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterList from '../../../../components/newsletter/NewsletterList.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import Prose from '../../../../components/Prose.astro'
+
+<Plate ground="white" heading="What have the issues covered?">
+    <NewsletterList lang="en" />
+</Plate>
+
+<Plate ground="offWhite">
+    <Prose>
+        The newsletter goes out roughly every two weeks and covers one topic at a time. [Subscribers](/en/newsletter/) receive each issue by email on the day it is sent; the same issue reaches this archive 42 days later.
+    </Prose>
+</Plate>
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="en" />
+</NewsletterPlate>
