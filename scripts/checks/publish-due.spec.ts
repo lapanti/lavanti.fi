@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
+import { newsletterPath } from '../../src/lib/newsletterRoutes'
 import { collectDuePosts, findUnpublished, parseSitemapLocs } from './publish-due'
 
 const writePost = (
@@ -44,6 +45,19 @@ describe('collectDuePosts', () => {
     it('includes future posts once their date arrives', () => {
         const due = collectDuePosts(postsDir, '2026-09-01')
         expect(due.map((p) => p.url)).toContain('/sv/blog/3/framtida/')
+    })
+
+    it('builds newsletter URLs from the localized segments when given that url shape', () => {
+        const due = collectDuePosts(postsDir, '2026-08-31', newsletterPath)
+        expect(due.map((p) => p.url).toSorted()).toEqual([
+            '/en/newsletter/1/past/',
+            '/fi/uutiskirje/1/mennyt/',
+            '/fi/uutiskirje/2/tanaan/',
+        ])
+    })
+
+    it('yields nothing for a collection directory that does not exist', () => {
+        expect(collectDuePosts(join(postsDir, 'missing'), '2026-08-31')).toEqual([])
     })
 })
 

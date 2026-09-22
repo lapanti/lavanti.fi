@@ -1,10 +1,10 @@
 /**
  * publish-due.ts
  *
- * Scheduled-publishing check: finds posts whose publishDate has arrived
- * (Europe/Helsinki) but whose URL is missing from the live production
- * sitemap — i.e. posts that are due but not yet deployed. Self-healing:
- * a missed nightly run is caught by the next one.
+ * Scheduled-publishing check: finds posts and newsletter issues whose
+ * publishDate has arrived (Europe/Helsinki) but whose URL is missing from the
+ * live production sitemap — i.e. entries that are due but not yet deployed.
+ * Self-healing: a missed nightly run is caught by the next one.
  *
  * Exit codes (consumed by scheduled-publish.yml):
  *   0 — nothing due, live site is up to date
@@ -17,22 +17,33 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import { newsletterPath } from '../../src/lib/newsletterRoutes.ts'
 import { helsinkiDateOf, isPublishedBy } from '../../src/lib/publishing.ts'
 import { extractSlug } from '../../src/lib/sitemapLastmod.ts'
 /* eslint-enable import-x/extensions */
 
 const LANGS = ['fi', 'sv', 'en'] as const
+type Lang = (typeof LANGS)[number]
 
 export interface DuePost {
     publishDate: string
     url: string
 }
 
-export function collectDuePosts(postsDir: string, today: string): DuePost[] {
-    const due: DuePost[] = []
+type UrlFor = (lang: Lang, id: string, slug: string) => string
 
-    for (const idDir of readdirSync(postsDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
-        const dir = join(postsDir, idDir.name)
+export const blogPath: UrlFor = (lang, id, slug) => `/${lang}/blog/${id}/${slug}/`
+
+/**
+ * Due entries of one collection directory ({id}/meta.json + {lang}.mdx). `urlFor`
+ * gives the collection's URL shape; a directory that does not exist yields nothing.
+ */
+export function collectDuePosts(collectionDir: string, today: string, urlFor: UrlFor = blogPath): DuePost[] {
+    const due: DuePost[] = []
+    if (!existsSync(collectionDir)) return due
+
+    for (const idDir of readdirSync(collectionDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
+        const dir = join(collectionDir, idDir.name)
         const meta = JSON.parse(readFileSync(join(dir, 'meta.json'), 'utf8'))
         const publishDate: string | undefined = meta.publishDate
         if (!publishDate || !isPublishedBy(publishDate, today)) continue
@@ -42,7 +53,7 @@ export function collectDuePosts(postsDir: string, today: string): DuePost[] {
             if (!existsSync(langPath)) continue
             const slug = extractSlug(readFileSync(langPath, 'utf8'))
             if (!slug) continue
-            due.push({ publishDate, url: `/${lang}/blog/${idDir.name}/${slug}/` })
+            due.push({ publishDate, url: urlFor(lang, idDir.name, slug) })
         }
     }
 
@@ -74,7 +85,7 @@ const fetchSitemapPaths = async (url: string): Promise<string[]> => {
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)
 if (isMain) {
     const sitemapIndexUrl = process.argv[2] ?? 'https://lavanti.fi/sitemap-index.xml'
-    const postsDir = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content', 'posts')
+    const contentDir = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content')
     const today = helsinkiDateOf(new Date())
 
     try {
@@ -84,9 +95,13 @@ if (isMain) {
             liveUrls.push(...(await fetchSitemapPaths(new URL(path, sitemapIndexUrl).href)))
         }
 
-        const unpublished = findUnpublished(collectDuePosts(postsDir, today), liveUrls)
+        const due = [
+            ...collectDuePosts(join(contentDir, 'posts'), today),
+            ...collectDuePosts(join(contentDir, 'newsletters'), today, newsletterPath),
+        ]
+        const unpublished = findUnpublished(due, liveUrls)
         if (unpublished.length === 0) {
-            process.stdout.write('Nothing to publish: all due posts are live.\n')
+            process.stdout.write('Nothing to publish: all due posts and newsletter issues are live.\n')
             process.exit(0)
         }
 
