@@ -69,6 +69,8 @@ const newsletters = defineCollection({
             updatedDate: isoDate,
         })
         .superRefine((data, ctx) => {
+            // A malformed `sent` is already reported by isoDate; don't compound it with a RangeError.
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(data.sent)) return
             const expected = embargoLiftDate(data.sent)
             if (data.publishDate !== expected) {
                 ctx.addIssue({
