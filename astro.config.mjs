@@ -17,6 +17,7 @@ import { redirectsFile } from './src/lib/redirectsIntegration'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const pageDateMap = buildPageDateMap({
+    newslettersDir: join(__dirname, 'src', 'content', 'newsletters'),
     pagesDir: join(__dirname, 'src', 'pages'),
     postsDir: join(__dirname, 'src', 'content', 'posts'),
     tags,

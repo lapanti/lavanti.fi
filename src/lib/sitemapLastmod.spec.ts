@@ -9,6 +9,7 @@ import { buildPageDateMap, extractUpdatedDate } from './sitemapLastmod'
 
 const PAGES_DIR = join(fileURLToPath(import.meta.url), '..', '..', 'pages')
 const POSTS_DIR = join(fileURLToPath(import.meta.url), '..', '..', 'content', 'posts')
+const NEWSLETTERS_DIR = join(fileURLToPath(import.meta.url), '..', '..', 'content', 'newsletters')
 
 describe('extractUpdatedDate', () => {
     it('returns updatedDate when present', () => {
@@ -28,12 +29,22 @@ describe('extractUpdatedDate', () => {
 })
 
 describe('buildPageDateMap', () => {
-    const map = buildPageDateMap({ pagesDir: PAGES_DIR, postsDir: POSTS_DIR, tags })
+    const map = buildPageDateMap({ newslettersDir: NEWSLETTERS_DIR, pagesDir: PAGES_DIR, postsDir: POSTS_DIR, tags })
 
-    it('maps a sample of known MDX pages and posts', () => {
+    it('maps a sample of known MDX pages, posts and newsletter issues', () => {
         expect(map.get('/fi/laurista/')).toMatch(/^\d{4}-\d{2}-\d{2}$/)
         expect(map.get('/en/blog/1/home-care-allowance-supplement/')).toMatch(/^\d{4}-\d{2}-\d{2}$/)
         expect(map.get('/sv/nyhetsbrev/')).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+        expect(map.get('/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/')).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+    })
+
+    it('tolerates a missing newsletters directory', () => {
+        const withoutNewsletters = buildPageDateMap({
+            newslettersDir: join(NEWSLETTERS_DIR, 'does-not-exist'),
+            pagesDir: PAGES_DIR,
+            tags: [],
+        })
+        expect([...withoutNewsletters.keys()].some((k) => k.startsWith('/fi/uutiskirje/1/'))).toBe(false)
     })
 
     it('every map value is a YYYY-MM-DD date', () => {
