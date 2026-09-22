@@ -26,9 +26,9 @@ Archive entries are **not** blog posts: they carry no hero image and no tags, th
 - OG cards, sitemap `lastmod`, `llms.txt` section, breadcrumbs, hreflang alternates
 - Every content check script recognising the new directory
 - Links from the subscribe landing pages to the archive
+- Footer link to the archive on every page (site column, not the main navigation)
 
 ### Out of scope
-- Footer link (separate PR — invalidates every e2e baseline)
 - Backfill of issues beyond the first (separate PRs, one editorial pass each)
 - Bare-id redirect route (`/fi/uutiskirje/1/`) — slugs are immutable after publish
 - Tags and category-page inclusion — land together or not at all
@@ -160,6 +160,7 @@ The email and its archive page are different artefacts. The source is the sent e
 - **Do not** set `blog_id` for newsletters in `seo.sh` — the four-digit-year slug exemption is keyed on blog ids 20 and 47 and would leak to newsletter ids 20 and 47.
 - **Do not** apply the freshness rules — an issue is a dated document, not evergreen content.
 - **Do not** name the collection or its files `newsletter` (singular) — that namespace is the subscribe component and landing pages.
+- **Do not** add the archive to `navLinks` — the footer site column is derived from it, but so is the header on every page; the archive link is appended in `Footer.astro` only. A footer-only change touches just the `commonElements` contentinfo goldens.
 
 ---
 
@@ -174,3 +175,4 @@ The email and its archive page are different artefacts. The source is the sent e
 | Date | Change |
 |------|--------|
 | 2026-09-22 | Initial draft (#1479, Phase 1: plumbing + first issue) |
+| 2026-09-22 | Phase 2: footer link to the archive |
