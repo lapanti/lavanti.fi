@@ -2,10 +2,14 @@
 import type { Lang } from '../content/nav'
 
 interface Props {
+    /** Override the destination (defaults to the blog listing of `lang`). */
+    href?: string
+    /** Override the label (defaults to "All posts" in `lang`). */
+    label?: string
     lang: Lang
 }
 
-const { lang } = Astro.props
+const { href, label, lang } = Astro.props
 
 const labels: Record<Lang, string> = {
     en: 'All posts',
@@ -28,5 +32,5 @@ const hrefs: Record<Lang, string> = {
     }
 </style>
 <div class="cta-wrapper">
-    <a class="btn btn--green" href={hrefs[lang]}>{labels[lang]}</a>
+    <a class="btn btn--green" href={href ?? hrefs[lang]}>{label ?? labels[lang]}</a>
 </div>

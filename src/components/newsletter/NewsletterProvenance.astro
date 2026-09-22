@@ -8,7 +8,9 @@ import { colors, typographics } from '../../lib/styles'
  * "Lähetetty tilaajille 14.3.2026." — the page's visible date and its JSON-LD
  * datePublished are the embargo-lift date, so this line is what tells the reader
  * (and a crawler reading the <time>) when the piece was actually written and sent.
- * Rendered outside PostProse so it never takes the article-lead paragraph styling.
+ * Rendered outside PostProse so it never takes the article-lead paragraph styling,
+ * in the same `fine` register as the Byline (a visible paragraph must not be
+ * uppercase and needs line-height ≥ 1.5 — SiteImprove sia-r72 / sia-r73).
  */
 interface Props {
     lang: Lang
@@ -26,21 +28,19 @@ const { after, before } = newsletterArchiveContent[lang].provenance
 <style
     define:vars={{
         colorsTextSecondary: colors.textSecondary,
-        metaFontFamily: typographics.meta.fontFamily,
-        metaFontWeight: typographics.meta.fontWeight,
-        metaLetterSpacing: typographics.meta.letterSpacing,
-        metaLineHeight: typographics.meta.lineHeight,
+        fineFontFamily: typographics.fine.fontFamily,
+        fineFontSize: typographics.fine.fontSize,
+        fineFontWeight: typographics.fine.fontWeight,
+        fineLineHeight: typographics.fine.lineHeight,
     }}
 >
     .provenance {
         color: var(--colorsTextSecondary);
-        font-family: var(--metaFontFamily);
-        font-size: 0.875rem;
-        font-weight: var(--metaFontWeight);
-        letter-spacing: var(--metaLetterSpacing);
-        line-height: var(--metaLineHeight);
+        font-family: var(--fineFontFamily);
+        font-size: var(--fineFontSize);
+        font-weight: var(--fineFontWeight);
+        line-height: var(--fineLineHeight);
         margin: 0 0 1.5rem;
-        text-transform: uppercase;
     }
 </style>
 <p class="provenance">{before}<time datetime={sent}>{sentToDisplay}</time>{after}</p>

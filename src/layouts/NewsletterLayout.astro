@@ -2,6 +2,7 @@
 import type { Lang } from '../content/nav'
 import type { Newsletter } from '../lib/newsletters'
 
+import AllPostsLink from '../components/AllPostsLink.astro'
 import NewsletterPlate from '../components/frontPage/NewsletterPlate.astro'
 import WritingsPlate from '../components/frontPage/WritingsPlate.astro'
 import NewsletterList from '../components/newsletter/NewsletterList.astro'
@@ -122,6 +123,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         heading={t.otherIssuesHeading}
     >
         <NewsletterList excludeId={id} lang={lang} limit={3} />
+        <AllPostsLink href={archivePath(lang)} label={t.allIssuesLabel} lang={lang} />
     </WritingsPlate>
     <NewsletterPlate>
         <NewsletterSubscribe lang={lang} />

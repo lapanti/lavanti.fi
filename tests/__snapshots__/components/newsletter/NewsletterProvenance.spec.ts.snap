@@ -4,13 +4,13 @@ exports[`<NewsletterProvenance /> > should render 1`] = `
 <p
   class="provenance"
   data-astro-cid-3ovypd4v=""
-  style="--colorsTextSecondary: #4A4E45;--metaFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--metaFontWeight: 700;--metaLetterSpacing: 0.137em;--metaLineHeight: 1.3;"
+  style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;"
 >
   Lähetetty tilaajille 
   <time
     data-astro-cid-3ovypd4v=""
     datetime="2026-03-14"
-    style="--colorsTextSecondary: #4A4E45;--metaFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--metaFontWeight: 700;--metaLetterSpacing: 0.137em;--metaLineHeight: 1.3;"
+    style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;"
   >
     14.3.2026
   </time>
