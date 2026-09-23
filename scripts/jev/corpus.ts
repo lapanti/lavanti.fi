@@ -36,7 +36,10 @@ export interface Document {
     /** sha256 over the three locale files only, hex; unchanged by a meta.json edit. */
     contentHash: string
     description: string
+    /** The q of every frontmatter faq entry, in order; [] when the locale has none. */
+    faq: string[]
     h2s: string[]
+    h3s: string[]
     id: number
     key: DocKey
     kind: DocKind
@@ -93,11 +96,26 @@ export function leadOf(paragraphs: string[]): string {
     return out.join('\n\n')
 }
 
-export function headingsOf(body: string): string[] {
+export function headingsOf(body: string, level: 2 | 3 = 2): string[] {
+    const marker = '#'.repeat(level)
+
     return body
         .split('\n')
-        .filter((line) => /^##\s/.test(line))
-        .map((line) => line.replace(/^##\s+/, '').trim())
+        .filter((line) => line.startsWith(`${marker} `))
+        .map((line) => line.slice(marker.length).trim())
+}
+
+/**
+ * The q of every `- q:` entry in the frontmatter faq list, single- or
+ * double-quoted or bare, with YAML's doubled single quote unescaped.
+ */
+export function faqQuestionsOf(frontmatter: string): string[] {
+    const out: string[] = []
+    for (const m of frontmatter.matchAll(/^\s*-\s*q:\s*(?:'((?:[^']|'')*)'|"([^"]*)"|(\S[^\n]*))\s*$/gm)) {
+        out.push((m[1] !== undefined ? m[1].replaceAll("''", "'") : (m[2] ?? m[3] ?? '')).trim())
+    }
+
+    return out
 }
 
 function buildDocument(kind: DocKind, id: number, dir: string, lang: Lang): Document {
@@ -109,7 +127,9 @@ function buildDocument(kind: DocKind, id: number, dir: string, lang: Lang): Docu
         body,
         contentHash: hashContent(dir),
         description: fmField(frontmatter, 'description') ?? '',
+        faq: faqQuestionsOf(frontmatter),
         h2s: headingsOf(body),
+        h3s: headingsOf(body, 3),
         id,
         key: `${kind}:${id}`,
         kind,
@@ -145,6 +165,20 @@ export function buildCorpus(opts: { lang?: Lang; root?: string } = {}): Document
 /** The document-level state sent to Jev: only the fields a question needs, never the whole body. */
 export function stateFor(doc: Document): Record<string, string> {
     return { description: doc.description, headings: doc.h2s.join('\n'), lead: doc.lead, title: doc.title }
+}
+
+/**
+ * The state for decisions that need the text itself (does the article answer
+ * this question?): title, description, every heading and the prose with
+ * markup stripped. Posts are 300–800 words, well inside the context limit.
+ */
+export function bodyStateFor(doc: Document): Record<string, string> {
+    return {
+        body: doc.paragraphs.map((p) => stripMarkup(p).trim()).join('\n\n'),
+        description: doc.description,
+        headings: [...doc.h2s, ...doc.h3s].join('\n'),
+        title: doc.title,
+    }
 }
 
 /** Option label for a choice question. Pass a Document from the English corpus. */
