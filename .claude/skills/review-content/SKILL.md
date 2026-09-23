@@ -59,6 +59,10 @@ Flag:
 - Any Tier 3 assumptions (IT/privacy as a voting issue stated as fact)?
 - Does post connect to AI/digitaalinen itsenäisyys? If not, does it include one of the pillar tags (`artificial-intelligence`, `digital-independence`, `economy`, `culture-and-education`, `freedom`)? Flag if neither.
 
+## 5. Link suggestions
+
+Run `npm run suggest:links -- <post|newsletter> <id>` for the file's document (skips with a notice when no Jev key is set). Report every ★ row the post does not act on as a suggestion, every "doubtful" row as a question, and the "links now" line against the 3–10 budget. Do not propose anchor text. Advisory only. Spec: `.agents/specs/jev/links.md`.
+
 ---
 
 ## Output format

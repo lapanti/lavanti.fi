@@ -70,3 +70,13 @@ Must include at least one pillar tag:
 - `economy`
 - `culture-and-education`
 - `freedom`
+
+## Link suggestions
+
+Every post needs 3–10 internal links (`scripts/checks/content.sh`). Once the draft has an id and body on disk, run:
+
+```
+npm run suggest:links -- post <id>
+```
+
+Jev proposes, per paragraph, the post or newsletter issue that substantiates a claim there (★ = strong). Decide on every row: accept, reject, or place the target in a better paragraph. Write the anchor text yourself — a meaningful phrase, never "aiemmassa kirjoituksessa". Rows under "doubtful" are existing links Jev did not connect to the paragraph; re-read them. Advisory only: the table is a starting point, not a rule. Spec: `.agents/specs/jev/links.md`.
