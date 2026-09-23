@@ -168,14 +168,19 @@ export const EDITORIAL_TAGS = ['coop-elections', 'council-motion', 'green-party'
 export interface TagPartition { consider: Array<{ id: string; p: number }>; doubtful: Array<{ id: string; p: number }>; pillar: Array<{ assigned: boolean; id: string; p: number }> }
 export function partition(probabilities: Record<string, number>, assigned: string[], opts: { consider: number; doubtful: number }): TagPartition
 export function tagIdsFromPaths(paths: string[]): string[]                   // src/content/tags/<id>.ts → ids, types.ts excluded, unique
-export function hashTagFile(dir: string, id: string): string                 // sha256 over the file
+export function hashTagFile(id: string, dir?: string): string                // sha256 over the file, hex
+export function registeredTagIds(registry?: string): Set<string>             // ids from the `from './tags/<id>'` import lines of src/content/tags.ts
 
 // scripts/jev/suggestions.ts (change)
 export type ReceiptKind = 'links' | 'backlinks' | 'tags'                     // tags keyed by tag id, not DocKey
 export function readReceipts(path): ReceiptsFile | null                      // absent kinds become {}; null only for a missing file, unparseable JSON, or a present kind that is malformed
 export function loadTagLabels(dir?): Promise<TagLabel[]>                     // (in tags.ts) throws a descriptive error on a file without a LocalTag export or names.en / descriptions.en
-export function registeredTagIds(file?): Set<string>                         // ids from the `from './tags/<id>'` import lines of src/content/tags.ts (see Registration below)
-export function findUnchecked(file, changed: Document[], changedTags: Array<{ hash: string; id: string }>): string[]
+export interface ChangedTag { hash: string; id: string }
+export function recordTagReceipt(file, tag: ChangedTag, model, checkedAt): void
+export function findUnchecked(file, changed: Document[], changedTags?: ChangedTag[]): string[]
+
+// scripts/checks/suggestions-stale.ts (change)
+export function changedTags(paths: string[], tagsDir: string): ChangedTag[]  // existing src/content/tags/<id>.ts files with their current hash; deleted files skipped
 
 // scripts/suggest-tags.ts — CLI
 //   suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]
@@ -213,6 +218,15 @@ Receipt semantics: the `tags` receipt says "the retro-scan ran against this vers
 
 ---
 
+## Calibration runs
+
+2026-09-23, model `typesafe/jev-1.13-20260917` via OpenRouter, thresholds at their provisional values, state in fi.
+
+- `suggest:tags -- post 57` (assigned: artificial-intelligence, digitalisation, enlightenment, economy): consider lists technology at 0.75 only; no doubtful tags (digitalisation and enlightenment stay above 0.2); pillar shows artificial-intelligence 0.86 ✓, economy 0.61 ✓, digital-independence 0.04, culture-and-education 0.09, freedom 0.07. Consistent with the eval: topical tags separate, the pillar decision is the author's. Thresholds kept.
+- `--tag immigration` (78 posts, 69 requests, 9 already tagged): one candidate, post 14 (2023, kirkkonummi only) at 0.85; every other untagged post stayed under 0.7. The receipt for the current tag file is committed with this spec.
+
+---
+
 ## Open Questions
 
 *(none)*
@@ -223,5 +237,6 @@ Receipt semantics: the `tags` receipt says "the retro-scan ran against this vers
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Implemented; calibration runs on post 57 and the immigration tag recorded, data model aligned with the code (hashTagFile argument order, ChangedTag, changedTags) |
 | 2026-09-23 | Critic review (PASS WITH NOTES): readReceipts fills absent kinds, unregistered and malformed tag files, posts-only scan incl. scheduled, post without prose, editorial list split into measured and judged, lang default explained, issue checkboxes rewritten |
 | 2026-09-23 | Initial draft for #1491; retro-scan gated by a tags receipt instead of a lint-staged print (lint-staged hides output of passing tasks) |
