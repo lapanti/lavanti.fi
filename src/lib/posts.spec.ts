@@ -4,6 +4,7 @@ import {
     bodyStats,
     buildAlternatesMap,
     byPublishDateThenId,
+    byRankedIds,
     filterExcerptPosts,
     type Post,
     sortByRelatedTags,
@@ -52,6 +53,16 @@ describe('stripImportsExports', () => {
     })
 })
 
+describe('byRankedIds', () => {
+    it('puts ranked ids first in ranked order, then the rest in their existing order', () => {
+        const items = [{ id: 5 }, { id: 3 }, { id: 9 }, { id: 1 }]
+
+        expect(byRankedIds(items, [9, 1]).map((i) => i.id)).toEqual([9, 1, 5, 3])
+        expect(byRankedIds(items, [42, 3]).map((i) => i.id)).toEqual([3, 5, 9, 1])
+        expect(byRankedIds(items, []).map((i) => i.id)).toEqual([5, 3, 9, 1])
+    })
+})
+
 describe('filterExcerptPosts', () => {
     const posts = [
         makePost({ id: 3, lang: 'fi', slug: 'c', tags: ['kirkkonummi'] }),
@@ -59,6 +70,14 @@ describe('filterExcerptPosts', () => {
         makePost({ id: 1, lang: 'fi', slug: 'a', tags: ['kirkkonummi', 'freedom'] }),
         makePost({ id: 4, lang: 'sv', slug: 'd', tags: ['kirkkonummi'] }),
     ]
+
+    it('orders by rankedIds first, skips ranked ids that are not in the list, and fills the rest by tag overlap', () => {
+        const ranked = filterExcerptPosts(posts, { lang: 'fi', rankedIds: [2, 99, 1], relatedTags: ['kirkkonummi'] })
+
+        expect(ranked.map((p) => p.id)).toEqual([2, 1, 3])
+        expect(filterExcerptPosts(posts, { lang: 'fi', limit: 2, rankedIds: [1] }).map((p) => p.id)).toEqual([1, 3])
+        expect(filterExcerptPosts(posts, { lang: 'fi', rankedIds: [] }).map((p) => p.id)).toEqual([3, 2, 1])
+    })
 
     it('returns only posts for the given lang', () => {
         const results = filterExcerptPosts(posts, { lang: 'fi' })

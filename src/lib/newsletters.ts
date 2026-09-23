@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 import { newsletterPath } from './newsletterRoutes'
-import { bodyStats, buildAlternatesMap, byPublishDateThenId } from './posts'
+import { bodyStats, buildAlternatesMap, byPublishDateThenId, byRankedIds } from './posts'
 import { helsinkiDateOf, isPublishedBy } from './publishing'
 
 /**
@@ -58,13 +58,16 @@ export interface NewsletterQuery {
     excludeId?: number
     lang: Newsletter['lang']
     limit?: number
+    /** Ids to show first, in this order (from src/lib/related.ts); the rest stay newest-first. */
+    rankedIds?: number[]
 }
 
-/** Newest-first issues in one language, optionally without the current one and capped. */
+/** Issues in one language, ranked ids first then newest-first, optionally without the current one and capped. */
 export const filterNewsletters = (newsletters: Newsletter[], q: NewsletterQuery): Newsletter[] => {
     const filtered = newsletters.filter((n) => n.lang === q.lang).filter((n) => n.id !== q.excludeId)
+    const ordered = q.rankedIds ? byRankedIds(filtered, q.rankedIds) : filtered
 
-    return q.limit === undefined ? filtered : filtered.slice(0, q.limit)
+    return q.limit === undefined ? ordered : ordered.slice(0, q.limit)
 }
 
 /* v8 ignore next 2 -- thin getAllNewsletters() wrapper, see the ignore note above */

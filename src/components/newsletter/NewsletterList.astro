@@ -14,11 +14,13 @@ interface Props {
     excludeId?: number
     lang: Lang
     limit?: number
+    /** Issue ids to show first, in this order; the rest stay newest-first. */
+    rankedIds?: number[]
 }
 
-const { excludeId, lang, limit } = Astro.props
+const { excludeId, lang, limit, rankedIds } = Astro.props
 
-const issues = await getNewsletters({ excludeId, lang, limit })
+const issues = await getNewsletters({ excludeId, lang, limit, rankedIds })
 ---
 
 <style>

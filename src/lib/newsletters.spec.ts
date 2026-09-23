@@ -65,4 +65,11 @@ describe('filterNewsletters', () => {
     it('excludes the current issue and applies the limit', () => {
         expect(filterNewsletters(issues, { excludeId: 3, lang: 'fi', limit: 1 }).map((n) => n.id)).toEqual([2])
     })
+
+    it('puts ranked ids first, then newest-first, before the limit', () => {
+        expect(filterNewsletters(issues, { lang: 'fi', rankedIds: [1, 7] }).map((n) => n.id)).toEqual([1, 3, 2])
+        expect(
+            filterNewsletters(issues, { excludeId: 1, lang: 'fi', limit: 1, rankedIds: [2] }).map((n) => n.id)
+        ).toEqual([2])
+    })
 })
