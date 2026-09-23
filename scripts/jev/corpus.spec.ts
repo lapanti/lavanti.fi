@@ -1,0 +1,147 @@
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { afterAll, describe, expect, it } from 'vitest'
+
+import { buildCorpus, hashDir, headingsOf, labelFor, LEAD_WORD_MAX, leadOf, stateFor } from './corpus'
+
+const mdx = (title: string, description: string, body: string): string =>
+    `---\nlang: 'fi'\ntitle: '${title}'\ndescription: '${description}'\n---\n\nimport P from '../../../components/P.astro'\n\nexport const components = { p: P }\n\n${body}\n`
+
+const writeDoc = (
+    root: string,
+    kind: 'newsletters' | 'posts',
+    id: number,
+    meta: Record<string, unknown>,
+    bodies: Partial<Record<'en' | 'fi' | 'sv', string>>
+): string => {
+    const dir = join(root, kind, String(id))
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(join(dir, 'meta.json'), JSON.stringify({ id, ...meta }))
+    for (const [lang, body] of Object.entries(bodies)) {
+        writeFileSync(join(dir, `${lang}.mdx`), mdx(`${lang} title ${id}`, `${lang} description ${id}`, body))
+    }
+
+    return dir
+}
+
+describe('buildCorpus', () => {
+    const root = mkdtempSync(join(tmpdir(), 'jev-corpus-'))
+    afterAll(() => rmSync(root, { force: true, recursive: true }))
+
+    const longWords = Array.from({ length: LEAD_WORD_MAX }, (_unused, i) => `w${i}`).join(' ')
+    const body = `First paragraph with a [link](/fi/blog/2/slug/) inside.\n\n## Why a heading?\n\nSecond paragraph.\n\n## Another heading\n\n${longWords}\n\nAfter the long one.`
+    const postDir = writeDoc(
+        root,
+        'posts',
+        1,
+        { publishDate: '2026-01-01', tags: ['economy', 'freedom'] },
+        { en: body, fi: body, sv: body }
+    )
+    writeDoc(
+        root,
+        'posts',
+        2,
+        { publishDate: '2999-12-31', tags: ['economy'] },
+        { en: 'Future.', fi: 'Tuleva.', sv: 'Framtida.' }
+    )
+    writeDoc(
+        root,
+        'newsletters',
+        3,
+        { publishDate: '2026-02-01', sent: '2025-12-21' },
+        { en: 'Issue.', fi: 'Numero.', sv: 'Nummer.' }
+    )
+
+    it('returns one Document per post and newsletter with typed keys, future-dated ones included', () => {
+        const docs = buildCorpus({ root })
+
+        expect(docs.map((d) => d.key)).toEqual(['newsletter:3', 'post:1', 'post:2'])
+        expect(docs.find((d) => d.key === 'post:2')?.publishDate).toBe('2999-12-31')
+        expect(docs.find((d) => d.key === 'newsletter:3')?.tags).toEqual([])
+        expect(docs.find((d) => d.key === 'post:1')?.tags).toEqual(['economy', 'freedom'])
+    })
+
+    it('reads text from en.mdx by default and from the requested locale otherwise', () => {
+        const en = buildCorpus({ root }).find((d) => d.key === 'post:1')
+        const fi = buildCorpus({ lang: 'fi', root }).find((d) => d.key === 'post:1')
+
+        expect(en?.title).toBe('en title 1')
+        expect(en?.lang).toBe('en')
+        expect(fi?.title).toBe('fi title 1')
+        expect(fi?.description).toBe('fi description 1')
+    })
+
+    it('exposes headings, a bounded lead and paragraphs with link markup intact', () => {
+        const doc = buildCorpus({ root }).find((d) => d.key === 'post:1')
+
+        expect(doc?.h2s).toEqual(['Why a heading?', 'Another heading'])
+        expect(doc?.paragraphs[0]).toContain('[link](/fi/blog/2/slug/)')
+        expect(doc?.paragraphs).toHaveLength(4)
+        expect(doc?.lead).toBe('First paragraph with a link inside.\n\nSecond paragraph.')
+    })
+
+    it('hashes every sibling: an fi-only change flips the hash, an idle rerun does not', () => {
+        const before = hashDir(postDir)
+
+        expect(hashDir(postDir)).toBe(before)
+        writeFileSync(join(postDir, 'fi.mdx'), mdx('fi title 1', 'fi description 1', 'Muutettu.'))
+        const afterFi = hashDir(postDir)
+
+        expect(afterFi).not.toBe(before)
+        writeFileSync(
+            join(postDir, 'meta.json'),
+            JSON.stringify({ id: 1, publishDate: '2026-01-02', tags: ['economy'] })
+        )
+        expect(hashDir(postDir)).not.toBe(afterFi)
+        expect(buildCorpus({ root }).find((d) => d.key === 'post:1')?.sourceHash).toBe(hashDir(postDir))
+    })
+})
+
+describe('leadOf', () => {
+    it('keeps whole paragraphs while the total stays within the bound', () => {
+        const p200 = Array.from({ length: 200 }, () => 'x').join(' ')
+        const p298 = Array.from({ length: 298 }, () => 'y').join(' ')
+
+        expect(leadOf([p200, p200, 'tail'])).toBe(p200)
+        expect(leadOf(['a b', 'c d', p298])).toBe('a b\n\nc d')
+        expect(leadOf(['a b', p298])).toBe(`a b\n\n${p298}`)
+    })
+
+    it('always keeps the first paragraph even when it exceeds the bound', () => {
+        const p400 = Array.from({ length: 400 }, () => 'x').join(' ')
+
+        expect(leadOf([p400, 'next'])).toBe(p400)
+    })
+
+    it('strips markup', () => {
+        expect(leadOf(['See **bold** and [a link](/fi/blog/1/x/).'])).toBe('See bold and a link.')
+    })
+})
+
+describe('headingsOf, stateFor, labelFor', () => {
+    it('collects only level-two headings', () => {
+        expect(headingsOf('# H1\n\n## Two?\n\n### Three\n\n## Also two')).toEqual(['Two?', 'Also two'])
+    })
+
+    it('builds a compact state and an English label', () => {
+        const doc = {
+            description: 'Desc',
+            h2s: ['A?', 'B?'],
+            id: 1,
+            key: 'post:1' as const,
+            kind: 'post' as const,
+            lang: 'en' as const,
+            lead: 'Lead',
+            paragraphs: ['Lead'],
+            publishDate: '2026-01-01',
+            sourceHash: 'abc',
+            tags: [],
+            title: 'Title',
+        }
+
+        expect(stateFor(doc)).toEqual({ description: 'Desc', headings: 'A?\nB?', lead: 'Lead', title: 'Title' })
+        expect(labelFor(doc)).toBe('Title — Desc')
+        expect(labelFor({ ...doc, description: '' })).toBe('Title')
+    })
+})
