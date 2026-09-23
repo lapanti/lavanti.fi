@@ -13,12 +13,12 @@ import {
     linkOptions,
     type LinkRow,
     linkTargets,
+    loadTagLabels,
     mapConcurrent,
     NONE,
     prf,
     rankedOptions,
     runCli,
-    tagLabels,
     tagMetrics,
     tagQuestions,
     type TagRow,
@@ -41,8 +41,8 @@ const doc = (key: DocKey, title: string): Document => ({
 })
 
 describe('tagQuestions', () => {
-    it('asks one English noul per tag from the registry', () => {
-        const labels = tagLabels()
+    it('asks one English noul per tag from the registry', async () => {
+        const labels = await loadTagLabels()
         const questions = tagQuestions(labels)
 
         expect(labels.length).toBe(34)
