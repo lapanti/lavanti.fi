@@ -6,7 +6,9 @@
         "infrastructure",
         "kirkkonummi",
         "west-railway",
-        "economy"
+        "economy",
+        "transportation",
+        "urban-planning"
     ],
     "heroImage": "Havainnekuva-Veikkolan-asemasta"
 }
