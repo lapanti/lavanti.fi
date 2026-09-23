@@ -66,9 +66,9 @@ Feature: Per-post tag suggestions
 Feature: Tag retro-scan
 
   Scenario: Retro-scan for a tag
-    Given `--tag immigration`
+    Given `--tag immigration`, a tag file that is imported in src/content/tags.ts
     When the script runs
-    Then one request per post is sent, each with stateFor(post) as state and the single noul for that tag
+    Then one request per post is sent (posts only, newsletters never; scheduled posts included, since they will need the tag when they go live), each with stateFor(post) as state and the single noul for that tag
     And stdout shows a Markdown table of posts that lack the tag with p ≥ 0.7, newest first, columns post, title, publishDate, p, current tags
     And posts that already carry the tag are counted on one line, not listed
     And a receipt tags[<id>] = { checkedAt, contentHash: sha256 over src/content/tags/<id>.ts, model } is written to src/content/suggestions.json
@@ -77,6 +77,16 @@ Feature: Tag retro-scan
     Given `--tag no-such-tag`
     When the script runs
     Then it prints "tag no-such-tag not found" and exits 2
+
+  Scenario: Unregistered tag file
+    Given src/content/tags/<id>.ts exists but src/content/tags.ts does not import it
+    When `--tag <id>` runs
+    Then it prints "tag <id> is not registered in src/content/tags.ts" and exits 2 without a request or a receipt — a scan of a tag that produces no category page proves nothing
+
+  Scenario: Malformed tag file
+    Given a tag file with no LocalTag export or without names.en / descriptions.en
+    When any mode loads the tag labels
+    Then it prints the file name and the missing field and exits 1
 
   Scenario: Editorial tag
     Given `--tag municipal-elections-2025`
@@ -95,12 +105,18 @@ Feature: Gate and skills
   Scenario: Old receipts file
     Given a suggestions.json written before the tags kind existed
     When it is read
-    Then it parses, with tags as an empty map, and the next write adds the kind
+    Then readReceipts fills every absent kind with {} and rejects only a kind that is present and malformed, so the links gate keeps working unchanged
+    And serializeReceipts writes all three kinds in fixed order (backlinks, links, tags), so the next write adds the kind
+
+  Scenario: Post without prose
+    Given a post whose body yields no prose paragraphs
+    When per-post mode runs
+    Then the request is still sent (title and description are enough state) and the section is rendered as usual
 
   Scenario: Changed documents and tags from git
     Given `--changed-since origin/main`
     When the script runs
-    Then it runs per-post mode for changed posts and retro-scan mode for changed tag files, in that order
+    Then it runs per-post mode for changed posts and retro-scan mode for changed tag files, in that order, honouring --lang and the thresholds in both
     And prints "no content changes" and exits 0 when neither exists
 
   Scenario: Skills
@@ -142,9 +158,11 @@ Feature: Common behaviour
 ```typescript
 // scripts/jev/tags.ts — shared library, no CLI. Moved here from eval.ts (which imports them back):
 //   loadTagLabels, tagQuestions, predictedAt, TagLabel
-export const CONSIDER_THRESHOLD = 0.7      // eval: precision@0.7 0.54 en; provisional
+export const CONSIDER_THRESHOLD = 0.7      // provisional; the eval's microF1@0.7 was 0.43 en, precision rises with the threshold
 export const DOUBTFUL_THRESHOLD = 0.2      // provisional
 export const PILLAR_TAGS = ['artificial-intelligence', 'digital-independence', 'economy', 'culture-and-education', 'freedom']  // as content.sh:183
+// Measured (eval recall 0.08–0.28): municipal-elections-2025, parliamentary-elections-2027, regional-elections-2025.
+// By judgment (same nature, too few posts to measure): coop-elections, council-motion, green-party, marketgreen, regional-elections-2022.
 export const EDITORIAL_TAGS = ['coop-elections', 'council-motion', 'green-party', 'marketgreen', 'municipal-elections-2025', 'parliamentary-elections-2027', 'regional-elections-2022', 'regional-elections-2025']
 export interface TagPartition { consider: Array<{ id: string; p: number }>; doubtful: Array<{ id: string; p: number }>; pillar: Array<{ assigned: boolean; id: string; p: number }> }
 export function partition(probabilities: Record<string, number>, assigned: string[], opts: { consider: number; doubtful: number }): TagPartition
@@ -153,7 +171,9 @@ export function hashTagFile(dir: string, id: string): string                 // 
 
 // scripts/jev/suggestions.ts (change)
 export type ReceiptKind = 'links' | 'backlinks' | 'tags'                     // tags keyed by tag id, not DocKey
-export function readReceipts(path): ReceiptsFile | null                      // a kind missing from the file reads as {}
+export function readReceipts(path): ReceiptsFile | null                      // absent kinds become {}; null only for a missing file, unparseable JSON, or a present kind that is malformed
+export function loadTagLabels(dir?): Promise<TagLabel[]>                     // (in tags.ts) throws a descriptive error on a file without a LocalTag export or names.en / descriptions.en
+export function registeredTagIds(): Promise<Set<string>>                     // ids exported by src/content/tags.ts, loaded per file like loadTagLabels (extensionless imports)
 export function findUnchecked(file, changed: Document[], changedTags: Array<{ hash: string; id: string }>): string[]
 
 // scripts/suggest-tags.ts — CLI
@@ -163,7 +183,9 @@ export function findUnchecked(file, changed: Document[], changedTags: Array<{ ha
 export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; git?; log?; receipts?; root?; tagsDir?; today? }): Promise<number>
 ```
 
-Requests: per-post mode is one request of ~3k tokens per post (34 nouls) ≈ $0.0001; a retro-scan is one request per post, ≈ 78 requests ≈ $0.01. The `lang` default is `fi`, as for links; the eval measured fi and en within 0.01 F1 of each other.
+Requests: per-post mode is one request of ~3k tokens per post (34 nouls) ≈ $0.0001; a retro-scan is one request per post, ≈ 78 requests ≈ $0.01. The `lang` default is `fi`, as for links (the issue said English; the eval measured fi and en within 0.01 F1 of each other, and fi is the text the author is editing).
+
+Registration: `src/content/tags.ts` is the taxonomy's single source of truth (tags spec), but it imports its files without extensions, which Node's strip-types loader cannot resolve. `registeredTagIds()` therefore parses the import lines of `tags.ts` for `./tags/<id>` and treats that set as the registry; a tag file outside it is refused.
 
 Receipt semantics: the `tags` receipt says "the retro-scan ran against this version of the tag file". Editing a tag's English description changes the question, so the hash covers the whole file. Posts added after the scan are not covered by it — that is the per-post mode's job when the post is written.
 
@@ -200,4 +222,5 @@ Receipt semantics: the `tags` receipt says "the retro-scan ran against this vers
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review (PASS WITH NOTES): readReceipts fills absent kinds, unregistered and malformed tag files, posts-only scan incl. scheduled, post without prose, editorial list split into measured and judged, lang default explained, issue checkboxes rewritten |
 | 2026-09-23 | Initial draft for #1491; retro-scan gated by a tags receipt instead of a lint-staged print (lint-staged hides output of passing tasks) |
