@@ -62,6 +62,23 @@ describe('buildCorpus', () => {
         expect(docs.find((d) => d.key === 'post:1')?.tags).toEqual(['economy', 'freedom'])
     })
 
+    it('keeps titles and descriptions whole when the YAML escapes a single quote', () => {
+        const dir = join(root, 'posts', '4')
+        mkdirSync(dir, { recursive: true })
+        writeFileSync(join(dir, 'meta.json'), JSON.stringify({ id: 4, publishDate: '2026-03-01', tags: ['economy'] }))
+        for (const lang of ['en', 'fi', 'sv']) {
+            writeFileSync(
+                join(dir, `${lang}.mdx`),
+                `---\ntitle: 'David''s plan'\ndescription: 'Kirkkonummi''s schools, and more'\n---\n\nBody.\n`
+            )
+        }
+        const doc = buildCorpus({ root }).find((d) => d.key === 'post:4')
+
+        expect(doc?.title).toBe("David's plan")
+        expect(doc?.description).toBe("Kirkkonummi's schools, and more")
+        expect(labelFor(doc!)).toBe("David's plan — Kirkkonummi's schools, and more")
+    })
+
     it('reads text from en.mdx by default and from the requested locale otherwise', () => {
         const en = buildCorpus({ root }).find((d) => d.key === 'post:1')
         const fi = buildCorpus({ lang: 'fi', root }).find((d) => d.key === 'post:1')
