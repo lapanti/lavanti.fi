@@ -8,15 +8,15 @@
       - text: Lähetetty tilaajille
       - time: /\d+\.\d+\.\d+/
       - text: .
-    - paragraph: /Eräs teknologiajohtaja kertoi minulle maaliskuussa \d+, että heidän tiiminsä on puolittanut sopimustarkistukseen kuluvan ajan tekoälyn avulla\. Kukaan ei ollut vielä päättänyt, mitä säästyneellä ajalla tehdään\./
     - paragraph:
-      - text: "Tekoäly ei toistaiseksi korvaa ammattilaisia kokonaan. Se muuttaa työn rakennetta: aikaa vievät valmisteluvaiheet lyhenevät, mutta"
+      - text: "Tekoäly ei toistaiseksi korvaa ammattilaisia kokonaan, vaan muuttaa työn rakennetta: aikaa vievät valmisteluvaiheet lyhenevät, mutta"
       - link "vastuu ja harkinta pysyvät ihmisellä":
         - /url: /fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/
       - text: .
       - link "OECD:n arvion":
         - /url: https://doi.org/10.1787/08785bba-en
       - text: /mukaan noin \d+ prosenttia korkean tulotason maiden asiantuntijatehtävistä on merkittävässä muutospaineessa seuraavan vuosikymmenen aikana, eikä tämä koske enää vain rutiinirooleja\./
+    - paragraph: /Eräs teknologiajohtaja kertoi minulle maaliskuussa \d+, että heidän tiiminsä on puolittanut sopimustarkistukseen kuluvan ajan tekoälyn avulla\. Kukaan ei ollut vielä päättänyt, mitä säästyneellä ajalla tehdään\./
     - heading "Kuka päättää, mihin tekoäly ulottuu?" [level=2]
     - paragraph:
       - text: "Minusta tämä on ennen kaikkea johtamiskysymys, ja harva organisaatio on toistaiseksi vastannut siihen. Teknologia ei päätä, miten vapautunut kapasiteetti ohjataan: käytetäänkö se"
@@ -48,6 +48,28 @@
         - text: ""
     - text: Uutiskirje
     - heading "Muita uutiskirjeitä" [level=2]
+    - list:
+      - listitem:
+        - article "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+          - link "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+            - /url: /fi/uutiskirje/8/kun-toimittajaa-ei-voi-vaihtaa/
+            - heading "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Julkishallinnon järjestelmissä toimittajan vaihto on usein mahdotonta\. Neljän kaupungin eVaka maksoi 9 miljoonaa, Helsingin Asti \d+ miljoonaa ja jäi kesken\./
+      - listitem:
+        - article "Hyötyykö Suomi datakeskuksista?":
+          - link "Hyötyykö Suomi datakeskuksista?":
+            - /url: /fi/uutiskirje/7/hyotyyko-suomi-datakeskuksista/
+            - heading "Hyötyykö Suomi datakeskuksista?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Suomessa on \d+ datakeskusta, jotka kuluttavat noin 2 prosenttia sähköstä\. Sähkövero nousi 1\.\d+\.\d+ luokkaan I\. Luvut, Irlannin vertailu ja kuntien luvitus\./
+      - listitem:
+        - article /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+          - link /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+            - /url: /fi/uutiskirje/6/markkinatalous-tarvitsee-vaihtoehtoja/
+            - heading /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /EU käyttää vuosittain noin \d+ miljardia euroa suljettuihin ohjelmistoihin\. Toimittajalukko tappaa hintasignaalin, jonka avoin koodi palauttaa\./
     - link "Kaikki uutiskirjeet":
       - /url: /fi/uutiskirje/arkisto/
     - heading "Tilaa uutiskirje" [level=2]
