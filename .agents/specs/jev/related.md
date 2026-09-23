@@ -24,13 +24,13 @@ Candidates are ranked within their own kind — posts against posts, newsletters
 - `scripts/jev/related.ts` — shared constants, types and pure helpers (hashing, ranking, merge rule, staleness) used by both scripts below; no CLI
 - `scripts/generate-related.ts` + `npm run generate:related` — asks Jev and writes `src/content/related.json`; incremental by source hash, full rewrite when the candidate set changes, output stabilised so an unchanged ranking produces no diff
 - `scripts/checks/related-stale.ts` + `npm run check:related` — offline check that the file matches the content on disk; wired into lint-staged (content files and `related.json` itself) and the CI Validate content job
-- Amendments to `.agents/specs/jev/spec.md` (No key scenario: the generator exits 1) and the `ARCHITECTURE.md` Jev section (the generator is the exception to "exit 0 without a key"); a cross-link from `spec.md` to this spec
+- Amendments to `.agents/specs/jev/spec.md` (No key scenario: the generator exits 1) and the `ARCHITECTURE.md` Jev section (the generator is the exception to "exit 0 without a key", plus the related.json paragraph); a cross-link from `spec.md` to this spec
 - `src/lib/related.ts` — reads the file at build and exposes ranked ids per kind
 - `src/lib/posts.ts` `filterExcerptPosts` and `src/lib/newsletters.ts` `filterNewsletters` — optional `rankedIds` ordering with the existing order as fallback
 - `src/components/ExcerptList.astro`, `src/components/newsletter/NewsletterList.astro` — pass-through `rankedIds` prop
 - `src/layouts/PostLayout.astro`, `src/layouts/NewsletterLayout.astro` — feed ranked ids from `related.ts`
 - Unit tests for every pure function; one e2e golden regeneration (post 10's aria snapshot lists the three related links)
-- `ARCHITECTURE.md` note; `.agents/specs/newsletter/archive.md` note on the ranked "other issues" block
+- `.agents/specs/newsletter/archive.md` note on the ranked "other issues" block
 
 ### Out of scope
 - Newsletters as candidates on post pages, or posts on newsletter pages — needs a rendering decision (issues have no hero image); a later phase can add a second question per document
@@ -60,7 +60,7 @@ Feature: Generating related.json
     Then the state is stateFor(A) from the English corpus
     And the question is a choice whose criteria map every other document of kind K to labelFor(doc) from the English corpus
     And there is no "none" option
-    And the generator throws before any request when a kind has more than CHOICE_OPTION_MAX documents
+    And the generator throws before any request when a kind has more than CHOICE_OPTION_MAX + 1 documents (self is excluded, there is no "none"); CHOICE_OPTION_MAX moves from eval.ts to client.ts so no script imports the eval CLI
 
   Scenario: Answer normalisation
     Given a choice answer
@@ -158,7 +158,7 @@ Feature: Staleness check
   Scenario: Hooks and CI
     Given a staged add or edit under src/content/posts or src/content/newsletters, or a staged src/content/related.json
     When the pre-commit hook runs
-    Then `check:related` runs once and blocks the commit while the file is stale
+    Then `check:related` runs (once per matching lint-staged glob) and blocks the commit while the file is stale
     And the Validate content job in main.yml runs the same check, which is also where a deleted directory is caught (lint-staged does not pass deleted files)
 
 Feature: Rendering
@@ -229,7 +229,7 @@ export function rankAnswer(probabilities: Record<string, number>, candidates: Do
 export function mergeEntry(previous: RelatedEntry | undefined, fresh: RelatedEntry, opts: { rewriteAll: boolean }): RelatedEntry
 export function planRequests(file: RelatedFile | null, corpus: Document[], force: boolean): { keys: DocKey[]; rewriteAll: boolean }
 export function findStale(file: RelatedFile | null, corpus: Document[]): string[]   // [] means in sync
-export function readRelatedFile(path: string): RelatedFile | null                   // null when missing or malformed
+export function readRelatedFile(path: string): RelatedFile | null                   // null when missing or malformed; the generator then treats it as a first generation and overwrites
 
 // scripts/generate-related.ts — CLI: --force; exit 1 without a key or on a failed request
 // scripts/checks/related-stale.ts — CLI: exit 1 with one line per finding
@@ -282,5 +282,6 @@ Request shape: `state = stateFor(doc)`, `questions = { next_read: { type: 'choic
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic re-review (PASS WITH NOTES): option-cap bound and constant location, lint-staged wording, malformed-file overwrite stated, scope dedupe |
 | 2026-09-23 | Critic review (FAIL → revised): same-kind candidates, full rewrite on candidate-set change, force replaces, failed-request and malformed-file scenarios, MODEL_FAMILY contains-check, shared `scripts/jev/related.ts`, lint-staged deletion caveat, exit-1 amendments to spec.md and ARCHITECTURE.md, API rationale |
 | 2026-09-23 | Initial draft for #1487 |
