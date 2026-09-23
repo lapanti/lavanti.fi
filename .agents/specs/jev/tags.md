@@ -101,6 +101,7 @@ Feature: Gate and skills
     Then tags[<id>].contentHash must equal the current hash of that file
     And a missing or stale receipt exits 1 naming `npm run suggest:tags -- --tag <id>`
     And types.ts is ignored
+    And the gate trusts the receipt: it compares hashes and does not re-check registration (receipts are committed and reviewed like any change)
 
   Scenario: Old receipts file
     Given a suggestions.json written before the tags kind existed
@@ -158,7 +159,7 @@ Feature: Common behaviour
 ```typescript
 // scripts/jev/tags.ts — shared library, no CLI. Moved here from eval.ts (which imports them back):
 //   loadTagLabels, tagQuestions, predictedAt, TagLabel
-export const CONSIDER_THRESHOLD = 0.7      // provisional; the eval's microF1@0.7 was 0.43 en, precision rises with the threshold
+export const CONSIDER_THRESHOLD = 0.7      // provisional; in the eval log precision rose and recall fell from 0.5 to 0.7, and a suggestion list wants precision
 export const DOUBTFUL_THRESHOLD = 0.2      // provisional
 export const PILLAR_TAGS = ['artificial-intelligence', 'digital-independence', 'economy', 'culture-and-education', 'freedom']  // as content.sh:183
 // Measured (eval recall 0.08–0.28): municipal-elections-2025, parliamentary-elections-2027, regional-elections-2025.
@@ -173,7 +174,7 @@ export function hashTagFile(dir: string, id: string): string                 // 
 export type ReceiptKind = 'links' | 'backlinks' | 'tags'                     // tags keyed by tag id, not DocKey
 export function readReceipts(path): ReceiptsFile | null                      // absent kinds become {}; null only for a missing file, unparseable JSON, or a present kind that is malformed
 export function loadTagLabels(dir?): Promise<TagLabel[]>                     // (in tags.ts) throws a descriptive error on a file without a LocalTag export or names.en / descriptions.en
-export function registeredTagIds(): Promise<Set<string>>                     // ids exported by src/content/tags.ts, loaded per file like loadTagLabels (extensionless imports)
+export function registeredTagIds(file?): Set<string>                         // ids from the `from './tags/<id>'` import lines of src/content/tags.ts (see Registration below)
 export function findUnchecked(file, changed: Document[], changedTags: Array<{ hash: string; id: string }>): string[]
 
 // scripts/suggest-tags.ts — CLI
