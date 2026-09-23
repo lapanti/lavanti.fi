@@ -90,3 +90,13 @@ npm run suggest:links -- post <id>
 ```
 
 Jev proposes, per paragraph, the post or newsletter issue that substantiates a claim there (★ = strong). Decide on every row: accept, reject, or place the target in a better paragraph. Write the anchor text yourself — a meaningful phrase, never "aiemmassa kirjoituksessa". Rows under "doubtful" are existing links Jev did not connect to the paragraph; re-read them. Advisory only: the table is a starting point, not a rule. After the edits, run the command once more so the receipt in `src/content/suggestions.json` matches the final text, and commit that file with the post — `check:suggestions` blocks a commit or PR whose changed posts have no matching receipt. A new newsletter issue also needs `npm run suggest:links -- --backlinks newsletter <id>`. Spec: `.agents/specs/jev/links.md`.
+
+## FAQ candidates
+
+Once the headings are final, run:
+
+```
+npm run suggest:faq -- post <id>
+```
+
+Jev ranks the question-form headings of the post and of its related neighbours by whether the text answers them ("answers") and whether a voter would ask them ("usefulness"). Pick the questions worth a `faq` entry and write each answer yourself, in the post's voice, from what the text already says; never paste a heading as an answer. Rows under "doubtful" are existing `faq` questions the text no longer answers after edits; rewrite or drop them. `FAQPage` JSON-LD needs two entries. Advisory only, no receipt. Spec: `.agents/specs/jev/faq.md`.

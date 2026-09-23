@@ -138,7 +138,7 @@ Feature: Common behaviour
   Scenario: Unexpected error
     Given related.json that cannot be parsed, or a content directory that cannot be read
     When the script runs
-    Then it fails with exit 1 and the error; a missing related.json is not an error (every document falls back to its own headings, with the notice)
+    Then it fails with exit 1 and the error — for related.json: "src/content/related.json is malformed; run npm run check:related" before any request; a missing related.json is not an error (every document falls back to its own headings, with the notice)
 ```
 
 ---
@@ -160,7 +160,7 @@ export function bodyStateFor(doc: Document): Record<string, string>   // { title
 export const ANSWERABLE_THRESHOLD = 0.7       // provisional: not measured by the eval gate; tuned on the first runs
 export const DOUBTFUL_THRESHOLD = 0.3         // provisional
 export const NEIGHBOUR_COUNT = 10             // top of the related.json entry
-export const FAQ_QUESTIONS_MAX = 40           // questions per request, as BACKLINK_QUESTIONS_MAX
+const FAQ_QUESTIONS_MAX = 40                  // questions per request, as BACKLINK_QUESTIONS_MAX; module-private
 export function isQuestionHeading(heading: string): boolean            // the aeo.sh rule in Unicode terms
 export function normaliseQuestion(q: string): string                    // stripMarkup, trim, lower-case, drop trailing ?
 export interface Candidate { question: string; source: 'own' | DocKey }
