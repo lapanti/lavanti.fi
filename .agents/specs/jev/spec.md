@@ -120,7 +120,7 @@ Feature: Eval gate
     Then for each post one request carries stateFor(doc) as state and one noul question per tag
     And each question's instructions use the tag's English name and first English description paragraph
     And a tag counts as predicted when its noul probability is ≥ PREDICT_THRESHOLD (0.5)
-    And stdout shows micro and macro precision, recall and F1 against meta.json tags at thresholds 0.5 and 0.7
+    And stdout shows micro and macro precision, recall and F1 against meta.json tags at thresholds 0.5 and 0.7 (macro averaged over tags with support)
     And stdout shows a per-tag row (support, precision, recall) so rare tags are visible
     And stdout shows the frequency baseline: F1 of always predicting the three most common tags
     And stdout shows pillar accuracy: share of posts with id ≥ 43 whose predicted pillar set at 0.5 equals the actual pillar set
@@ -135,7 +135,7 @@ Feature: Eval gate
     And labels always come from the English corpus (buildCorpus() without lang), whatever --lang the state uses
 
   Scenario: Too many documents for one choice question
-    Given more than 254 Documents in the corpus
+    Given 256 or more Documents in the corpus (255 leaves 254 others plus "none")
     When the link task builds its options
     Then it throws an error naming CHOICE_OPTION_MAX before any request is sent
     And the ground truth is the set of Documents the paragraph links to via /<lang>/blog/<id>/ or /<lang>/<newsletter segment>/<id>/, links to other pages ignored
@@ -160,7 +160,7 @@ Feature: Eval gate
   Scenario: Report file
     Given `--out <path>`
     When the eval finishes
-    Then a JSON EvalReport is written to <path>
+    Then a JSON array with one EvalReport per task × lang is written to <path>
     And nothing is written when --out is absent
 
   Scenario: No key
