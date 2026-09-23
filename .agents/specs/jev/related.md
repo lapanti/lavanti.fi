@@ -51,7 +51,7 @@ Feature: Generating related.json
     Given no src/content/related.json and a key in the environment
     When `npm run generate:related` runs
     Then one request per post and newsletter is sent, each a single choice question over every other document of the same kind
-    And the file is written with model, generatedAt (ISO date), candidateSetHash and one entry per document
+    And the file is written with model, generatedAt (the Helsinki calendar date), candidateSetHash and one entry per document
     And each entry holds its sourceHash and up to 10 ranked { key, p } items with p > 0, p rounded to 2 decimals, ordered by p desc then publishDate desc then id desc
 
   Scenario: Question shape
@@ -78,7 +78,7 @@ Feature: Generating related.json
     Given related.json in sync
     When fi.mdx of post 57 changes and `npm run generate:related` runs
     Then exactly one request is sent, for post:57
-    And only the post:57 entry and generatedAt may change
+    And only the post:57 entry, generatedAt and model (the response's model field) may change
 
   Scenario: New or deleted document rewrites everything
     Given related.json in sync
@@ -220,9 +220,9 @@ interface RelatedEntry {
 }
 
 // scripts/jev/related.ts — shared library, no CLI
-export const MODEL_FAMILY = 'jev-1.13'          // check:related requires file.model to contain it
+const MODEL_FAMILY = 'jev-1.13'                 // findStale requires file.model to contain it
 export const RANKED_MAX = 10
-export const STABLE_TOP = 3
+const STABLE_TOP = 3
 export const RELATED_PATH = 'src/content/related.json'
 export function candidateSetHash(corpus: Document[]): string
 export function rankAnswer(probabilities: Record<string, number>, candidates: Document[]): RelatedEntry['ranked']

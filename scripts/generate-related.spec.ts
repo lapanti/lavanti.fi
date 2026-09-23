@@ -5,7 +5,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeEach, describe, expect, it } from 'vitest'
 
-import { runGenerate } from './generate-related'
+import { assertOptionCap, runGenerate } from './generate-related'
+import { CHOICE_OPTION_MAX } from './jev/client'
 import { readRelatedFile, type RelatedFile } from './jev/related'
 
 const writeDoc = (
@@ -63,6 +64,15 @@ const byIdAsc = (keys: string[]): Record<string, number> => {
 
     return Object.fromEntries(sorted.map((k, i) => [k, Math.max(0.01, 0.5 - i * 0.1)]))
 }
+
+describe('assertOptionCap', () => {
+    it('allows CHOICE_OPTION_MAX + 1 documents of a kind (self excluded) and throws above that', () => {
+        const posts = (n: number): Array<{ kind: 'post' }> => Array.from({ length: n }, () => ({ kind: 'post' }))
+
+        expect(() => assertOptionCap(posts(CHOICE_OPTION_MAX + 1))).not.toThrow()
+        expect(() => assertOptionCap(posts(CHOICE_OPTION_MAX + 2))).toThrow('exceed CHOICE_OPTION_MAX=255')
+    })
+})
 
 describe('runGenerate', () => {
     const root = mkdtempSync(join(tmpdir(), 'jev-generate-'))

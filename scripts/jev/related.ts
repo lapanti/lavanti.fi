@@ -147,11 +147,18 @@ export function findStale(file: RelatedFile | null, corpus: Document[]): string[
     return problems
 }
 
+const isItem = (value: unknown): value is RankedItem =>
+    typeof value === 'object' &&
+    value !== null &&
+    typeof (value as RankedItem).key === 'string' &&
+    typeof (value as RankedItem).p === 'number'
+
 const isEntry = (value: unknown): value is RelatedEntry =>
     typeof value === 'object' &&
     value !== null &&
     typeof (value as RelatedEntry).sourceHash === 'string' &&
-    Array.isArray((value as RelatedEntry).ranked)
+    Array.isArray((value as RelatedEntry).ranked) &&
+    (value as RelatedEntry).ranked.every(isItem)
 
 /** Parse the file; null when it is missing or does not have the expected shape. */
 export function readRelatedFile(path: string): RelatedFile | null {
@@ -164,6 +171,7 @@ export function readRelatedFile(path: string): RelatedFile | null {
             typeof parsed.model === 'string' &&
             typeof parsed.entries === 'object' &&
             parsed.entries !== null &&
+            !Array.isArray(parsed.entries) &&
             Object.values(parsed.entries).every(isEntry)
 
         return shapeOk ? (parsed as RelatedFile) : null

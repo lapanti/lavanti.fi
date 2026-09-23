@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import { helsinkiDateOf } from '../src/lib/publishing.ts'
 import {
     CHOICE_OPTION_MAX,
     createClient,
@@ -51,10 +52,10 @@ interface GenerateDeps {
     today?: () => string
 }
 
-const isoToday = (): string => new Date().toISOString().slice(0, 10)
+const today = (): string => helsinkiDateOf(new Date())
 
 /** Throws before any request when some kind has more candidates than one choice question can hold. */
-const assertOptionCap = (corpus: Document[]): void => {
+export const assertOptionCap = (corpus: Pick<Document, 'kind'>[]): void => {
     for (const kind of ['post', 'newsletter'] as const) {
         const count = corpus.filter((d) => d.kind === kind).length - 1
         if (count > CHOICE_OPTION_MAX) {
@@ -113,11 +114,11 @@ export async function runGenerate(argv: string[], env: NodeJS.ProcessEnv, deps: 
                 cost += res.usage.cost ?? 0
                 answer = res.answers.next_read
             } catch (error) {
-                failedKey = key
+                failedKey ??= key
                 throw error
             }
             if (answer?.type !== 'choice') {
-                failedKey = key
+                failedKey ??= key
                 throw new Error(`${key}: expected a choice answer, got ${answer?.type ?? 'nothing'}`)
             }
 
@@ -139,7 +140,7 @@ export async function runGenerate(argv: string[], env: NodeJS.ProcessEnv, deps: 
     const file: RelatedFile = {
         candidateSetHash: candidateSetHash(corpus),
         entries,
-        generatedAt: (deps.today ?? isoToday)(),
+        generatedAt: (deps.today ?? today)(),
         model,
     }
     writeFileSync(path, serialize(file))
