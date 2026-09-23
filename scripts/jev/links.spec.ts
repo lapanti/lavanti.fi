@@ -22,6 +22,7 @@ import {
 
 const doc = (key: DocKey, overrides: Partial<Document> = {}): Document => ({
     body: '',
+    contentHash: 'c',
     description: `${key} description`,
     h2s: [],
     id: Number(key.split(':')[1]),

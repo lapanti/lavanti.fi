@@ -22,7 +22,8 @@ import { fmField, proseParagraphs, splitMdx, stripMarkup, wordCount } from '../c
 
 export const LEAD_WORD_MAX = 300
 export const LANGS = ['en', 'fi', 'sv'] as const
-const HASHED_FILES = ['meta.json', 'fi.mdx', 'sv.mdx', 'en.mdx'] as const
+const CONTENT_FILES = ['fi.mdx', 'sv.mdx', 'en.mdx'] as const
+const HASHED_FILES = ['meta.json', ...CONTENT_FILES] as const
 const CONTENT_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content')
 
 export type Lang = (typeof LANGS)[number]
@@ -32,6 +33,8 @@ export type DocKey = `${DocKind}:${number}`
 export interface Document {
     /** The MDX body after the frontmatter, unmodified. */
     body: string
+    /** sha256 over the three locale files only, hex; unchanged by a meta.json edit. */
+    contentHash: string
     description: string
     h2s: string[]
     id: number
@@ -58,10 +61,9 @@ interface Meta {
 
 const DIRS: Record<DocKind, string> = { newsletter: 'newsletters', post: 'posts' }
 
-/** sha256 over the fixed file list; a missing file hashes as empty so the digest stays stable. */
-export function hashDir(dir: string): string {
+const hashFiles = (dir: string, names: readonly string[]): string => {
     const hash = createHash('sha256')
-    for (const name of HASHED_FILES) {
+    for (const name of names) {
         const path = join(dir, name)
         hash.update(name)
         hash.update(existsSync(path) ? readFileSync(path) : '')
@@ -69,6 +71,12 @@ export function hashDir(dir: string): string {
 
     return hash.digest('hex')
 }
+
+/** sha256 over meta.json and the three locale files; a missing file hashes as empty so the digest stays stable. */
+export const hashDir = (dir: string): string => hashFiles(dir, HASHED_FILES)
+
+/** sha256 over the three locale files only, so a meta.json-only change (an updatedDate bump) leaves it alone. */
+export const hashContent = (dir: string): string => hashFiles(dir, CONTENT_FILES)
 
 /** Whole paragraphs in order while the cumulative word count stays within the bound; always at least the first. */
 export function leadOf(paragraphs: string[]): string {
@@ -99,6 +107,7 @@ function buildDocument(kind: DocKind, id: number, dir: string, lang: Lang): Docu
 
     return {
         body,
+        contentHash: hashContent(dir),
         description: fmField(frontmatter, 'description') ?? '',
         h2s: headingsOf(body),
         id,

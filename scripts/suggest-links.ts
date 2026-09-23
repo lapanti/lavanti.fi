@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import { helsinkiDateOf } from '../src/lib/publishing.ts'
 import { createClient, type JevClient, mapConcurrent, NO_PROVIDER_NOTICE, resolveProvider } from './jev/client.ts'
 import { buildCorpus, type DocKey, type DocKind, type Document, type Lang, LANGS, stateFor } from './jev/corpus.ts'
 import {
@@ -39,6 +40,7 @@ import {
     suggestionRows,
     urlFor,
 } from './jev/links.ts'
+import { emptyReceipts, readReceipts, RECEIPTS_PATH, recordReceipt, writeReceipts } from './jev/suggestions.ts'
 /* eslint-enable import-x/extensions */
 
 export const CONCURRENCY_DEFAULT = 4
@@ -54,7 +56,16 @@ interface SuggestDeps {
     client?: JevClient
     git?: (args: string[]) => string
     log?: (line: string) => void
+    /** Where receipts are written; defaults to RECEIPTS_PATH. */
+    receipts?: string
     root?: string
+    today?: () => string
+}
+
+interface Section {
+    lines: string[]
+    /** Model id from the last response, '' when nothing was asked. */
+    model: string
 }
 
 interface Target {
@@ -117,11 +128,12 @@ async function suggestForDocument(
     byKey: ReadonlyMap<DocKey, Document>,
     known: ReadonlySet<DocKey>,
     opts: Options
-): Promise<string[]> {
+): Promise<Section> {
     const lines = [`## ${doc.key} — ${doc.title}`, '']
-    if (doc.paragraphs.length === 0) return [...lines, 'no paragraphs', '']
+    if (doc.paragraphs.length === 0) return { lines: [...lines, 'no paragraphs', ''], model: '' }
     const criteria = linkOptions(english, doc.key)
     const exclude = new Set<DocKey>([doc.key, ...alreadyLinked(doc, known)])
+    let model = ''
     const answers = await mapConcurrent(doc.paragraphs, opts.concurrency, async (paragraph, index) => {
         const where = `${doc.key} paragraph ${index}`
         let res
@@ -132,6 +144,7 @@ async function suggestForDocument(
         } catch (error) {
             throw new Error(`${where}: ${error instanceof Error ? error.message : String(error)}`, { cause: error })
         }
+        model = res.model
         const answer = res.answers.link_target
         if (answer?.type !== 'choice') {
             throw new Error(`${where}: expected a choice answer, got ${answer?.type ?? 'nothing'}`)
@@ -149,7 +162,7 @@ async function suggestForDocument(
     if (doubtful.length > 0) lines.push('### doubtful', '', doubtfulTable(doubtful), '')
     lines.push(`links now: ${linkCount(doc)} of 3–10`, '')
 
-    return lines
+    return { lines, model }
 }
 
 /** Backlink mode: which post paragraphs should link to the issue. */
@@ -160,8 +173,9 @@ async function suggestBacklinks(
     posts: Document[],
     known: ReadonlySet<DocKey>,
     opts: Options
-): Promise<string[]> {
+): Promise<Section> {
     const lines = [`## backlinks to ${issue.key} — ${issue.title}`, '']
+    let model = ''
     const linked = posts.filter((post) => alreadyLinked(post, known).has(issue.key))
     const candidates = posts.filter((post) => !linked.includes(post))
     const jobs = candidates.flatMap((post) => backlinkQuestions(post.paragraphs).map((chunk) => ({ chunk, post })))
@@ -174,6 +188,7 @@ async function suggestBacklinks(
         } catch (error) {
             throw new Error(`${where}: ${error instanceof Error ? error.message : String(error)}`, { cause: error })
         }
+        model = res.model
 
         return chunk.indexes.map((index) => {
             const answer = res.answers[`p${index}`]
@@ -207,7 +222,7 @@ async function suggestBacklinks(
     if (linked.length > 0)
         lines.push('### already linked', '', ...linked.map((post) => `- ${post.key} — ${post.title}`), '')
 
-    return lines
+    return { lines, model }
 }
 
 /** Returns the process exit code: 0 done or skipped, 1 failed, 2 bad arguments. */
@@ -284,11 +299,17 @@ export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps: S
         return 2
     }
 
+    const receiptsPath = deps.receipts ?? RECEIPTS_PATH
+    const receipts = readReceipts(receiptsPath) ?? emptyReceipts()
+    const checkedAt = (deps.today ?? (() => helsinkiDateOf(new Date())))()
+    let recorded = 0
     const output: string[] = []
     const finish = (code: number, error?: string): number => {
         if (error) output.push(error)
         for (const line of output) log(line)
         if (opts.out) writeFileSync(opts.out, `${output.join('\n')}\n`)
+        // Receipts for the documents that completed are kept even when a later one failed.
+        if (recorded > 0) writeReceipts(receiptsPath, receipts)
 
         return code
     }
@@ -305,7 +326,15 @@ export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps: S
                       opts
                   )
                 : await suggestForDocument(client, doc, english, byKey, known, opts)
-            output.push(...section)
+            output.push(...section.lines)
+            recordReceipt(
+                receipts,
+                values.backlinks ? 'backlinks' : 'links',
+                doc,
+                section.model || 'no request',
+                checkedAt
+            )
+            recorded++
         }
     } catch (error) {
         return finish(1, `failed at ${error instanceof Error ? error.message : String(error)}`)

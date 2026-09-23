@@ -25,6 +25,7 @@
     "check:freshness": "node --experimental-strip-types scripts/checks/freshness.ts $(find src/pages -name '*.mdx') $(find src/content/posts -name '*.mdx')",
     "check:publish-due": "node --experimental-strip-types scripts/checks/publish-due.ts",
     "check:related": "node --experimental-strip-types scripts/checks/related-stale.ts",
+    "check:suggestions": "node --experimental-strip-types scripts/checks/suggestions-stale.ts",
     "check:updated-date": "node --experimental-strip-types scripts/checks/updated-date.ts",
     "generate:related": "node --env-file-if-exists=.env --experimental-strip-types scripts/generate-related.ts",
     "jev:eval": "node --env-file-if-exists=.env --experimental-strip-types scripts/jev/eval.ts",
