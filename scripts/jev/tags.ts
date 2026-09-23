@@ -102,9 +102,7 @@ export function tagQuestions(labels: TagLabel[]): Record<string, QuestionSpec> {
 export function registeredTagIds(registry = TAGS_REGISTRY): Set<string> {
     const source = readFileSync(registry, 'utf8')
 
-    return new Set(
-        [...source.matchAll(/from '\.\/tags\/([a-z0-9-]+)'/g)].map((m) => m[1]).filter((id) => id !== 'types')
-    )
+    return new Set([...source.matchAll(/from '\.\/tags\/([^/']+)'/g)].map((m) => m[1]).filter((id) => id !== 'types'))
 }
 
 /** Keys at or above the threshold. */
@@ -149,7 +147,8 @@ export function partition(
 export function tagIdsFromPaths(paths: string[]): string[] {
     const out: string[] = []
     for (const path of paths) {
-        const match = /(?:^|\/)src\/content\/tags\/([a-z0-9-]+)\.ts$/.exec(path)
+        // Any file name: the gate must not let a non-kebab-case tag file through unchecked.
+        const match = /(?:^|\/)src\/content\/tags\/([^/]+)\.ts$/.exec(path)
         if (!match || match[1] === 'types' || out.includes(match[1])) continue
         out.push(match[1])
     }

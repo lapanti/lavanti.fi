@@ -49,10 +49,10 @@ describe('labels and registry', () => {
         const registry = join(dir, 'tags.ts')
         writeFileSync(
             registry,
-            "import type { LocalTag } from './tags/types'\n\nimport { aTag } from './tags/a-tag'\nimport { bTag } from './tags/b-tag'\n"
+            "import type { LocalTag } from './tags/types'\n\nimport { aTag } from './tags/a-tag'\nimport { bTag } from './tags/b-tag'\nimport { c } from './tags/Foo_bar'\n"
         )
 
-        expect(registeredTagIds(registry)).toEqual(new Set(['a-tag', 'b-tag']))
+        expect(registeredTagIds(registry)).toEqual(new Set(['a-tag', 'b-tag', 'Foo_bar']))
         rmSync(dir, { force: true, recursive: true })
     })
 })
@@ -118,8 +118,9 @@ describe('paths and hashing', () => {
                 'src/content/posts/1/fi.mdx',
                 'src/content/tags/economy.ts',
                 'src/content/tags/nature.ts',
+                'src/content/tags/Foo_bar.ts',
             ])
-        ).toEqual(['economy', 'nature'])
+        ).toEqual(['economy', 'nature', 'Foo_bar'])
     })
 
     it('hashes the tag file and changes with its content', () => {
