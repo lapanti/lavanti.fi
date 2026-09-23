@@ -11,7 +11,6 @@ faq:
       a: 'Uutiskirje käsittelee yhden aiheen kerrallaan tekoälystä, työn muutoksesta ja digitaalisesta itsenäisyydestä. Se ilmestyy noin kahden viikon välein, ja jokainen kirje julkaistaan arkistoon 42 päivää lähetyksen jälkeen.'
     - q: 'Kuinka usein uutiskirje ilmestyy?'
       a: 'Noin kahden viikon välein. Tilaajat saavat kirjeen sähköpostiinsa lähetyspäivänä, ja arkistoon se tulee 42 päivää myöhemmin.'
-faqSection: true
 slug: 'fi/uutiskirje/arkisto'
 langAlternates:
     en: '/en/newsletter/archive/'
@@ -27,6 +26,7 @@ plated: true
 variant: 'split'
 ---
 
+import Faq from '../../../../components/Faq.astro'
 import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
 import NewsletterList from '../../../../components/newsletter/NewsletterList.astro'
 import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
@@ -42,6 +42,8 @@ import Prose from '../../../../components/Prose.astro'
         Uutiskirje käsittelee tekoälyä, työn muutosta ja digitaalista itsenäisyyttä yhden aiheen kerrallaan, ja jokainen kirje nojaa nimettyihin lähteisiin. Kirje ilmestyy noin kahden viikon välein. [Tilaajat](/fi/uutiskirje/) saavat jokaisen kirjeen sähköpostiinsa lähetyspäivänä; arkistoon sama kirje tulee 42 päivää myöhemmin.
     </Prose>
 </Plate>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Usein kysyttyä" />
 
 <NewsletterPlate>
     <NewsletterSubscribe lang="fi" />
