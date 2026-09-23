@@ -188,6 +188,19 @@ describe('mapConcurrent', () => {
         expect(result).toEqual([60, 20, 40])
         expect(peak).toBe(2)
     })
+
+    it('stops handing out work after the first failure and rejects with that error', async () => {
+        const started: number[] = []
+        const run = mapConcurrent([1, 2, 3, 4, 5, 6], 1, async (n) => {
+            started.push(n)
+            if (n === 2) throw new Error('boom')
+
+            return n
+        })
+
+        await expect(run).rejects.toThrow('boom')
+        expect(started).toEqual([1, 2])
+    })
 })
 
 describe('formatTable', () => {
@@ -267,6 +280,15 @@ describe('runCli', () => {
             2
         )
         expect(lines[0]).toContain('faq')
+    })
+
+    it('rejects a non-numeric concurrency or a zero limit before touching the network', async () => {
+        const lines: string[] = []
+        const env = { OPENROUTER_API_KEY: 'k' }
+
+        expect(await runCli(['--concurrency', 'abc'], env, { log: (l) => lines.push(l), root })).toBe(2)
+        expect(await runCli(['--limit', '0'], env, { log: (l) => lines.push(l), root })).toBe(2)
+        expect(lines).toHaveLength(2)
     })
 
     it('runs both tasks for en and fi by default, keeps option labels English and writes the report', async () => {
