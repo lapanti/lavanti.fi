@@ -136,7 +136,7 @@ describe('runFaq', () => {
         const lines: string[] = []
         const { calls, client } = fakeClient(
             (q) => (q.includes('Onko kirjasto') ? 0.5 : q.includes('Mitä eVaka on') ? 0.1 : 0.9),
-            (q) => (q.includes('Kuka maksaa') ? { '4': 0.5, '5': 0.5 } : { '2': 0.5, '3': 0.5 })
+            (q): Record<string, number> => (q.includes('Kuka maksaa') ? { '4': 0.5, '5': 0.5 } : { '2': 0.5, '3': 0.5 })
         )
 
         expect(await runFaq(['post', '1'], env, deps(client, lines))).toBe(0)
