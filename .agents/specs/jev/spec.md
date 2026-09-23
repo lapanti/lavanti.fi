@@ -81,10 +81,6 @@ Feature: Corpus builder
     And every Document carries title, description, h2s, lead, paragraphs, tags (empty for newsletters), publishDate and sourceHash
     And paragraphs are the prose paragraphs from proseParagraphs() with link markup intact
 
-  Scenario: Corpus too large for one choice question
-    Given more than 254 Documents on disk
-    When buildCorpus() runs
-    Then it throws an error naming CHOICE_OPTION_MAX, so the eval fails loudly instead of silently truncating options
 
   Scenario: Locale selection
     Given a post with fi, sv and en siblings
@@ -136,6 +132,12 @@ Feature: Eval gate
     Then for each prose paragraph of each post one request is sent
     And the state is { title: <post title>, paragraph: <paragraph text, markup stripped> }
     And the single choice question's options are every other Document as labelFor(doc) plus "none"
+    And labels always come from the English corpus (buildCorpus() without lang), whatever --lang the state uses
+
+  Scenario: Too many documents for one choice question
+    Given more than 254 Documents in the corpus
+    When the link task builds its options
+    Then it throws an error naming CHOICE_OPTION_MAX before any request is sent
     And the ground truth is the set of Documents the paragraph links to via /<lang>/blog/<id>/ or /<lang>/<newsletter segment>/<id>/, links to other pages ignored
     And over linked paragraphs stdout shows hit@1 and hit@3: the share where at least one expected Document is among the top k non-none options by probability
     And over unlinked paragraphs stdout shows the abstain rate: the share where "none" is the top option
@@ -244,7 +246,7 @@ export interface Document {
 
 export function buildCorpus(opts?: { lang?: Lang; root?: string }): Document[]
 export function stateFor(doc: Document): Record<string, string>   // title, description, h2s, lead
-export function labelFor(doc: Document): string                    // "<title> — <description>", English
+export function labelFor(doc: Document): string                    // "<title> — <description>"; pass a Document from the English corpus
 
 // scripts/jev/eval.ts
 export interface EvalReport {
@@ -328,4 +330,5 @@ _Filled in by the Builder after running the gate. Thresholds proposed in the pla
 | Date | Change |
 |------|--------|
 | 2026-09-23 | Initial draft for #1486; OpenRouter transport smoke-tested (200, 540 ms, $0.000024) |
+| 2026-09-23 | Critic re-review (PASS WITH NOTES): option-cap check moved to the link task; option labels always from the English corpus |
 | 2026-09-23 | Critic review: define link-eval state and per-paragraph requests, hit@k and abstain rate, default run, 34 tags, baselines, `paragraphs` field, option cap failure, lead bound, injectable sleep, key never logged |
