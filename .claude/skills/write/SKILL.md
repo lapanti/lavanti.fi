@@ -71,6 +71,16 @@ Must include at least one pillar tag:
 - `culture-and-education`
 - `freedom`
 
+## Tag suggestions
+
+Once the draft has an id, body and a first set of tags in `meta.json`, run:
+
+```
+npm run suggest:tags -- post <id>
+```
+
+Jev scores every tag in the taxonomy against the text. Decide per row: "consider" lists tags the post lacks that scored high, "doubtful" lists assigned tags that scored low, "pillar" shows the five pillar tags with their scores. Edit `meta.json` by hand; the script never writes it. Editorial tags (election cycles, motions, party networks) are never suggested — assign them from the occasion. Advisory only, and the pillar rule in `content.sh` remains the gate. No receipt is needed for this mode. Spec: `.agents/specs/jev/tags.md`.
+
 ## Link suggestions
 
 Every post needs 3–10 internal links (`scripts/checks/content.sh`). Once the draft has an id and body on disk, run:

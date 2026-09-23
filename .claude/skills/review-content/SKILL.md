@@ -63,6 +63,10 @@ Flag:
 
 Run `npm run suggest:links -- <post|newsletter> <id>` for the file's document (skips with a notice when no Jev key is set). Go through every row: report ★ rows the post does not act on as suggestions, weaker rows as options worth a look, every "doubtful" row as a question, and the "links now" line against the 3–10 budget. Do not propose anchor text. Advisory only. Spec: `.agents/specs/jev/links.md`.
 
+## 6. Tag suggestions (posts only)
+
+Run `npm run suggest:tags -- post <id>` (skips with a notice when no Jev key is set). Report every "consider" row as a tag to weigh, every "doubtful" row as a question about an assigned tag, and the "pillar" table against the pillar requirement. Editorial tags are never suggested; check them against the occasion instead. The decision and the `meta.json` edit are the author's. Advisory only. Spec: `.agents/specs/jev/tags.md`.
+
 ---
 
 ## Output format
