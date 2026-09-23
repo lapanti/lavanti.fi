@@ -11,6 +11,7 @@ import {
     hasReceipt,
     readReceipts,
     recordReceipt,
+    recordTagReceipt,
     serializeReceipts,
     writeReceipts,
 } from './suggestions'
@@ -52,6 +53,7 @@ describe('receipts', () => {
         const text = serializeReceipts(file)
 
         expect(text.startsWith('{\n  "backlinks": {\n    "newsletter:2"')).toBe(true)
+        expect(text.endsWith('"tags": {}\n}\n')).toBe(true)
         expect(Object.keys(readReceipts(path)!.links)).toEqual(['post:2', 'post:9'])
         expect(serializeReceipts(readReceipts(path)!)).toBe(text)
     })
@@ -65,6 +67,42 @@ describe('receipts', () => {
         expect(readReceipts(join(dir, 'none.json'))).toBeNull()
         expect(readReceipts(bad)).toBeNull()
         expect(readReceipts(misshapen)).toBeNull()
+    })
+
+    it('reads a file written before the tags kind existed, with tags as an empty map', () => {
+        const old = join(dir, 'old.json')
+        writeFileSync(
+            old,
+            JSON.stringify({
+                backlinks: {},
+                links: { 'post:1': { checkedAt: 'd', contentHash: 'c-post:1', model: 'm' } },
+            })
+        )
+        const file = readReceipts(old)!
+
+        expect(file.tags).toEqual({})
+        expect(hasReceipt(file, 'links', doc('post:1'))).toBe(true)
+        expect(serializeReceipts(file)).toContain('"tags": {}')
+    })
+
+    it('records tag receipts and reports changed tag files without a matching one', () => {
+        const file = emptyReceipts()
+        recordTagReceipt(file, { hash: 'h1', id: 'economy' }, 'm', '2026-09-23')
+
+        expect(findUnchecked(file, [], [{ hash: 'h1', id: 'economy' }])).toEqual([])
+        expect(
+            findUnchecked(
+                file,
+                [],
+                [
+                    { hash: 'h2', id: 'economy' },
+                    { hash: 'x', id: 'nature' },
+                ]
+            )
+        ).toEqual([
+            'tag economy: retro-scan changed since the last run — npm run suggest:tags -- --tag economy',
+            'tag nature: retro-scan never run — npm run suggest:tags -- --tag nature',
+        ])
     })
 
     it('lists missing and stale receipts per changed document, newsletters needing backlinks too', () => {
