@@ -15,12 +15,14 @@
  * Spec: .agents/specs/jev/spec.md
  */
 
-import { writeFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+/* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import type { LocalTag } from '../../src/content/tags/types.ts'
+
+import { readdirSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
 
-/* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
-import { tags as tagRegistry } from '../../src/content/tags.ts'
 import { NEWSLETTER_SEGMENTS } from '../../src/lib/newsletterRoutes.ts'
 import { stripMarkup } from '../checks/mdx-deep.ts'
 import {
@@ -115,9 +117,30 @@ interface RunOpts {
 
 // ── questions and ground truth ────────────────────────────────────────────────
 
-/** English label per tag: option labels never change with --lang. */
-export const tagLabels = (): TagLabel[] =>
-    tagRegistry.map((t) => ({ description: t.descriptions.en[0] ?? '', id: t.id, name: t.names.en }))
+const TAGS_DIR = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content', 'tags')
+
+const isLocalTag = (value: unknown): value is LocalTag =>
+    typeof value === 'object' && value !== null && 'id' in value && 'names' in value && 'descriptions' in value
+
+/**
+ * English label per tag: option labels never change with --lang. Loads the
+ * per-tag files one by one because src/content/tags.ts imports them without
+ * extensions, which Node's strip-types loader cannot resolve.
+ */
+export async function loadTagLabels(dir = TAGS_DIR): Promise<TagLabel[]> {
+    const files = readdirSync(dir)
+        .filter((name) => name.endsWith('.ts') && name !== 'types.ts')
+        .sort()
+    const labels: TagLabel[] = []
+    for (const file of files) {
+        const mod = (await import(pathToFileURL(join(dir, file)).href)) as Record<string, unknown>
+        const tag = Object.values(mod).find(isLocalTag)
+        if (!tag) throw new Error(`no LocalTag export in ${file}`)
+        labels.push({ description: tag.descriptions.en[0] ?? '', id: tag.id, name: tag.names.en })
+    }
+
+    return labels
+}
 
 export function tagQuestions(labels: TagLabel[]): Record<string, QuestionSpec> {
     const questions: Record<string, QuestionSpec> = {}
@@ -343,7 +366,7 @@ const postsOf = (corpus: Document[], limit?: number): Document[] => {
 
 export async function runTagEval(client: JevClient, opts: RunOpts, root?: string): Promise<EvalReport> {
     const posts = postsOf(buildCorpus({ lang: opts.lang, root }), opts.limit)
-    const labels = tagLabels()
+    const labels = await loadTagLabels()
     const questions = tagQuestions(labels)
     const usage = newUsage()
     const rows = await mapConcurrent(posts, opts.concurrency, async (doc): Promise<TagRow> => {
