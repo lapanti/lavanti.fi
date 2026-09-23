@@ -142,46 +142,10 @@ jobs:
       - name: Require updatedDate bumps for changed content
         if: github.event_name == 'pull_request'
         run: node --experimental-strip-types scripts/checks/updated-date.ts --base "origin/${{ github.base_ref }}"
-
-  # Advisory: Jev link suggestions for the documents a PR changes, written to the
-  # job summary. Never a required check (branch protection lists its contexts
-  # explicitly); the step exits 0 whatever happens, and skips without the secret.
-  content-suggestions:
-    runs-on: ubuntu-latest
-    name: Content suggestions
-    if: github.event_name == 'pull_request'
-    continue-on-error: true
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: ".nvmrc"
-          cache: "npm"
-          cache-dependency-path: "package-lock.json"
-      - name: Install dependencies
-        run: npm ci
-      - name: Suggest internal links for changed posts and newsletters
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: |
-          if [ -z "$OPENROUTER_API_KEY" ]; then
-            echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
-          ok=1
-          npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md || ok=0
-          if [ -f suggestions.md ]; then
-            { echo "## Link suggestions (advisory)"; echo; cat suggestions.md; } >> "$GITHUB_STEP_SUMMARY"
-          elif [ "$ok" = 1 ]; then
-            echo "Link suggestions: no content changes" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Link suggestions failed before producing output (advisory, see the job log)" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          exit 0
+      # Receipts only — no Jev call here. Backstop for the pre-commit hook.
+      - name: Require link suggestions to have run on changed posts and newsletters
+        if: github.event_name == 'pull_request'
+        run: node --experimental-strip-types scripts/checks/suggestions-stale.ts --base "origin/${{ github.base_ref }}"
 
   check-dist-head:
     runs-on: ubuntu-latest
