@@ -41,9 +41,11 @@ export default {
         ]
     },
     'src/content/related.json': () => checkRelated,
+    // A new or edited tag file must also carry a receipt that suggest:tags --tag ran on its current content.
     '**/content/tags/*.ts': (files) => [
         `node scripts/check-overflow.mjs ${files.map((f) => `"${f}"`).join(' ')}`,
         'node --experimental-strip-types scripts/checks/redirects.mjs',
+        `node --experimental-strip-types scripts/checks/suggestions-stale.ts ${files.map((f) => `"${f}"`).join(' ')}`,
     ],
     'src/lib/redirects.ts': () => 'node --experimental-strip-types scripts/checks/redirects.mjs',
 }

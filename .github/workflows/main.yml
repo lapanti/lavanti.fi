@@ -143,7 +143,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: node --experimental-strip-types scripts/checks/updated-date.ts --base "origin/${{ github.base_ref }}"
       # Receipts only — no Jev call here. Backstop for the pre-commit hook.
-      - name: Require link suggestions to have run on changed posts and newsletters
+      - name: Require Jev suggestions to have run on changed posts, newsletters and tags
         if: github.event_name == 'pull_request'
         run: node --experimental-strip-types scripts/checks/suggestions-stale.ts --base "origin/${{ github.base_ref }}"
 

@@ -4,7 +4,8 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
 import { buildCorpus } from '../jev/corpus'
-import { emptyReceipts, recordReceipt, writeReceipts } from '../jev/suggestions'
+import { emptyReceipts, recordReceipt, recordTagReceipt, writeReceipts } from '../jev/suggestions'
+import { hashTagFile } from '../jev/tags'
 import { runCheck } from './suggestions-stale'
 
 const writeDoc = (root: string, kind: 'newsletters' | 'posts', id: number, body: string): void => {
@@ -27,6 +28,10 @@ describe('runCheck', () => {
     writeDoc(root, 'posts', 1, 'One.')
     writeDoc(root, 'posts', 2, 'Two.')
     writeDoc(root, 'newsletters', 3, 'Issue.')
+    const tagsDir = join(root, 'tags')
+    mkdirSync(tagsDir)
+    writeFileSync(join(tagsDir, 'economy.ts'), 'export const economy = 1\n')
+    writeFileSync(join(tagsDir, 'nature.ts'), 'export const nature = 1\n')
 
     const receiptsFor = (
         ...keys: Array<'links:post:1' | 'links:post:2' | 'links:newsletter:3' | 'backlinks:newsletter:3'>
@@ -44,10 +49,33 @@ describe('runCheck', () => {
     it('passes when nothing content-related changed, even without a receipts file', () => {
         rmSync(path, { force: true })
 
-        expect(runCheck(['src/content/tags/economy.ts', 'src/pages/fi/about.mdx'], { log: () => {}, path, root })).toBe(
-            0
-        )
-        expect(runCheck([], { log: () => {}, path, root })).toBe(0)
+        expect(
+            runCheck(['src/content/tags/types.ts', 'src/content/tags.ts', 'src/pages/fi/about.mdx'], {
+                log: () => {},
+                path,
+                root,
+                tagsDir,
+            })
+        ).toBe(0)
+        expect(runCheck([], { log: () => {}, path, root, tagsDir })).toBe(0)
+    })
+
+    it('requires a retro-scan receipt matching the current tag file, and skips deleted tag files', () => {
+        const file = emptyReceipts()
+        recordTagReceipt(file, { hash: hashTagFile('economy', tagsDir), id: 'economy' }, 'm', '2026-09-23')
+        recordTagReceipt(file, { hash: 'stale', id: 'nature' }, 'm', '2026-09-23')
+        writeReceipts(path, file)
+        const lines: string[] = []
+        const deps = { log: (l: string) => lines.push(l), path, root, tagsDir }
+
+        expect(runCheck(['src/content/tags/economy.ts', 'src/content/tags/gone.ts'], deps)).toBe(0)
+        expect(
+            runCheck(['src/content/tags/economy.ts', 'src/content/tags/nature.ts', 'src/content/tags/types.ts'], deps)
+        ).toBe(1)
+        expect(lines).toEqual([
+            'tag retro-scan not run on the current tag file: tag nature: retro-scan changed since the last run — npm run suggest:tags -- --tag nature',
+            expect.stringContaining('commit src/content/suggestions.json'),
+        ])
     })
 
     it('passes when every changed document has a matching receipt', () => {
@@ -96,13 +124,14 @@ describe('runCheck', () => {
                 '--',
                 'src/content/posts',
                 'src/content/newsletters',
+                'src/content/tags',
             ])
 
-            return 'src/content/posts/2/fi.mdx\nsrc/content/posts/99/fi.mdx\n'
+            return 'src/content/posts/2/fi.mdx\nsrc/content/posts/99/fi.mdx\nsrc/content/tags/gone.ts\n'
         }
 
-        expect(runCheck(['--base', 'origin/main'], { git, log: () => {}, path, root })).toBe(0)
-        expect(runCheck(['--base'], { git, log: () => {}, path, root })).toBe(2)
-        expect(runCheck(['--base', 'x', 'file'], { git, log: () => {}, path, root })).toBe(2)
+        expect(runCheck(['--base', 'origin/main'], { git, log: () => {}, path, root, tagsDir })).toBe(0)
+        expect(runCheck(['--base'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
+        expect(runCheck(['--base', 'x', 'file'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
     })
 })
