@@ -11,12 +11,26 @@
     - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
     - list:
       - listitem:
-        - article "Tekoäly ei vie työtäsi, mutta muuttaa sen":
-          - link "Tekoäly ei vie työtäsi, mutta muuttaa sen":
-            - /url: /fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
-            - heading "Tekoäly ei vie työtäsi, mutta muuttaa sen" [level=3]
+        - article "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+          - link "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+            - /url: /fi/uutiskirje/8/kun-toimittajaa-ei-voi-vaihtaa/
+            - heading "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut" [level=3]
           - time: /\d+\.\d+\.\d+/
-          - paragraph: /Tekoäly ei korvaa asiantuntijoita, mutta muuttaa työn rakennetta\. OECD:n mukaan \d+ prosenttia asiantuntijatehtävistä on muutospaineessa\. Kyse on johtamisesta\./
+          - paragraph: /Julkishallinnon järjestelmissä toimittajan vaihto on usein mahdotonta\. Neljän kaupungin eVaka maksoi 9 miljoonaa, Helsingin Asti \d+ miljoonaa ja jäi kesken\./
+      - listitem:
+        - article "Hyötyykö Suomi datakeskuksista?":
+          - link "Hyötyykö Suomi datakeskuksista?":
+            - /url: /fi/uutiskirje/7/hyotyyko-suomi-datakeskuksista/
+            - heading "Hyötyykö Suomi datakeskuksista?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Suomessa on \d+ datakeskusta, jotka kuluttavat noin 2 prosenttia sähköstä\. Sähkövero nousi 1\.\d+\.\d+ luokkaan I\. Luvut, Irlannin vertailu ja kuntien luvitus\./
+      - listitem:
+        - article /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+          - link /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+            - /url: /fi/uutiskirje/6/markkinatalous-tarvitsee-vaihtoehtoja/
+            - heading /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /EU käyttää vuosittain noin \d+ miljardia euroa suljettuihin ohjelmistoihin\. Toimittajalukko tappaa hintasignaalin, jonka avoin koodi palauttaa\./
     - paragraph:
       - text: Kaikki lähetetyt kirjeet julkaistaan
       - link "arkistoon":

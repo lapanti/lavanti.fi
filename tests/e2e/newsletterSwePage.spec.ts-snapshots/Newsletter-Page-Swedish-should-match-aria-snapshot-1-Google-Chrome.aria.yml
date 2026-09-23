@@ -11,12 +11,26 @@
     - heading "Vad har de senaste breven handlat om?" [level=2]
     - list:
       - listitem:
-        - article "AI tar inte ditt jobb, men förändrar det":
-          - link "AI tar inte ditt jobb, men förändrar det":
-            - /url: /sv/nyhetsbrev/1/ai-tar-inte-ditt-jobb-men-forandrar-det/
-            - heading "AI tar inte ditt jobb, men förändrar det" [level=3]
+        - article "När leverantören inte går att byta har upphandlingslagen redan misslyckats":
+          - link "När leverantören inte går att byta har upphandlingslagen redan misslyckats":
+            - /url: /sv/nyhetsbrev/8/nar-leverantoren-inte-gar-att-byta/
+            - heading "När leverantören inte går att byta har upphandlingslagen redan misslyckats" [level=3]
           - time: /\d+\.\d+\.\d+/
-          - paragraph: /AI ersätter inte fackmän, men förändrar arbetets struktur\. Enligt OECD är \d+ procent av experttjänsterna under förändringstryck\. Frågan handlar om ledarskap\./
+          - paragraph: /I de flesta offentliga system går leverantören inte att byta\. Fyra städer byggde eVaka för 9 miljoner euro, Helsingfors la \d+ miljoner på ofärdiga Asti\./
+      - listitem:
+        - article "Gagnar datacenter Finland?":
+          - link "Gagnar datacenter Finland?":
+            - /url: /sv/nyhetsbrev/7/gagnar-datacenter-finland/
+            - heading "Gagnar datacenter Finland?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Finland har \d+ datacenter som förbrukar cirka 2 procent av elen\. Elskatten steg till klass I den 1 juli \d+\. Siffrorna, Irland och kommunernas tillstånd\./
+      - listitem:
+        - article /\d+ miljarder skäl att tänka om kring IT/:
+          - link /\d+ miljarder skäl att tänka om kring IT/:
+            - /url: /sv/nyhetsbrev/6/marknadsekonomin-behover-alternativ/
+            - heading /\d+ miljarder skäl att tänka om kring IT/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /EU använder cirka \d+ miljarder euro per år på sluten programvara\. Leverantörsinlåsning dödar prissignalen som öppen källkod och portabilitet återställer\./
     - paragraph:
       - text: Alla utskickade brev publiceras i
       - link "arkivet":
