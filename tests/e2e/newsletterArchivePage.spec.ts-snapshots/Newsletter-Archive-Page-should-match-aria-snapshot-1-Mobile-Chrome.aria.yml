@@ -7,6 +7,55 @@
     - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
     - list:
       - listitem:
+        - article "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+          - link "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
+            - /url: /fi/uutiskirje/8/kun-toimittajaa-ei-voi-vaihtaa/
+            - heading "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Julkishallinnon järjestelmissä toimittajan vaihto on usein mahdotonta\. Neljän kaupungin eVaka maksoi 9 miljoonaa, Helsingin Asti \d+ miljoonaa ja jäi kesken\./
+      - listitem:
+        - article "Hyötyykö Suomi datakeskuksista?":
+          - link "Hyötyykö Suomi datakeskuksista?":
+            - /url: /fi/uutiskirje/7/hyotyyko-suomi-datakeskuksista/
+            - heading "Hyötyykö Suomi datakeskuksista?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Suomessa on \d+ datakeskusta, jotka kuluttavat noin 2 prosenttia sähköstä\. Sähkövero nousi 1\.\d+\.\d+ luokkaan I\. Luvut, Irlannin vertailu ja kuntien luvitus\./
+      - listitem:
+        - article /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+          - link /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
+            - /url: /fi/uutiskirje/6/markkinatalous-tarvitsee-vaihtoehtoja/
+            - heading /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /EU käyttää vuosittain noin \d+ miljardia euroa suljettuihin ohjelmistoihin\. Toimittajalukko tappaa hintasignaalin, jonka avoin koodi palauttaa\./
+      - listitem:
+        - article "Miten IKEA vältti lomautukset ja tienasi miljardin":
+          - link "Miten IKEA vältti lomautukset ja tienasi miljardin":
+            - /url: /fi/uutiskirje/5/miten-ikea-valtti-lomautukset-ja-tienasi-miljardin/
+            - heading "Miten IKEA vältti lomautukset ja tienasi miljardin" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /IKEA:n tekoälybotti hoitaa \d+ % asiakaskeskusteluista\. Lomautusten sijaan se koulutti henkilöstön sisustuskonsulteiksi ja sai lähes miljardin lisäliikevaihtoa\./
+      - listitem:
+        - article "Kun tekoälyn kehitys on väistämätöntä, miten toimimme?":
+          - link "Kun tekoälyn kehitys on väistämätöntä, miten toimimme?":
+            - /url: /fi/uutiskirje/4/tekoalyn-kehitys-on-vaistamatonta-miten-toimimme/
+            - heading "Kun tekoälyn kehitys on väistämätöntä, miten toimimme?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "/Tekoälyn kehitystä ei voi enää pysäyttää: suomalaisyritysten tekoälyn käyttöönotto kasvoi \\d+,\\d+ prosenttiyksikköä vuodessa\\. Kolme toimenpidettä Suomelle\\./"
+      - listitem:
+        - article "Ikärajat someen, mutta miten ne oikeasti toimisivat?":
+          - link "Ikärajat someen, mutta miten ne oikeasti toimisivat?":
+            - /url: /fi/uutiskirje/3/ikarajat-someen-miten-ne-toimisivat/
+            - heading "Ikärajat someen, mutta miten ne oikeasti toimisivat?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Yksityisyyttä suojaava iän todentaminen on ratkaistavissa eIDAS-digilompakolla vuoden \d+ loppuun mennessä\. Ikäraja ei silti poista koukuttavaa suunnittelua\./
+      - listitem:
+        - article "Tekoäly vie koodini, mitä jää jäljelle?":
+          - link "Tekoäly vie koodini, mitä jää jäljelle?":
+            - /url: /fi/uutiskirje/2/tekoaly-vie-koodini-mita-jaa-jaljelle/
+            - heading "Tekoäly vie koodini, mitä jää jäljelle?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Tekoäly kirjoittaa koodia nopeammin kuin ihminen: kahdessa minuutissa sen, mihin meni kaksi viikkoa. Jäljelle jäävät päätökset, konteksti ja vastuu."
+      - listitem:
         - article "Tekoäly ei vie työtäsi, mutta muuttaa sen":
           - link "Tekoäly ei vie työtäsi, mutta muuttaa sen":
             - /url: /fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
@@ -14,7 +63,7 @@
           - time: /\d+\.\d+\.\d+/
           - paragraph: /Tekoäly ei korvaa asiantuntijoita, mutta muuttaa työn rakennetta\. OECD:n mukaan \d+ prosenttia asiantuntijatehtävistä on muutospaineessa\. Kyse on johtamisesta\./
     - paragraph:
-      - text: Uutiskirje ilmestyy noin kahden viikon välein ja käsittelee yhden aiheen kerrallaan.
+      - text: Uutiskirje käsittelee tekoälyä, työn muutosta ja digitaalista itsenäisyyttä yhden aiheen kerrallaan, ja jokainen kirje nojaa nimettyihin lähteisiin. Kirje ilmestyy noin kahden viikon välein.
       - link "Tilaajat":
         - /url: /fi/uutiskirje/
       - text: /saavat jokaisen kirjeen sähköpostiinsa lähetyspäivänä; arkistoon sama kirje tulee \d+ päivää myöhemmin\./
