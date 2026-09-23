@@ -12,15 +12,19 @@ Every post page ends with three "other posts" and every newsletter issue with th
 
 This feature replaces that ordering with a ranking Jev computes once per document and that is committed to the repository as `src/content/related.json`. For each post and newsletter, Jev is asked one `choice` question — which of all the other documents is the best next read — and the answer's probability distribution is stored. The eval gate (`.agents/specs/jev/spec.md`) measured this question shape at hit@3 0.85–0.87 against a 0.36 baseline, so the ranking is trusted enough to render.
 
-The build never calls Jev: it reads the committed file, keeps only documents that are published at build time, and falls back to the tag-overlap order for any document without an entry. A staleness check keeps the file honest — it fails pre-commit and CI when a post or newsletter was added, edited or deleted without regenerating — so the ranking is a permanent step of publishing, not a one-off.
+The build never calls Jev: it reads the committed file, keeps only documents that are published at build time, and falls back to the tag-overlap order for any document without an entry. A staleness check keeps the file honest — it fails pre-commit and CI when a post or newsletter was added, edited or deleted without regenerating — so the ranking is a permanent step of publishing, not a one-off. The price of that guarantee: every content edit (an `updatedDate` bump included) changes a document's hash, so committing content now needs a Jev key on the machine and a `npm run generate:related` run; the incremental generator makes that one request and a few cents.
+
+Candidates are ranked within their own kind — posts against posts, newsletters against newsletters — because that is what the two blocks render today. State and labels are taken from the English corpus: the eval showed Finnish performs as well, and English keeps the option labels in one language across all three locales' pages, which share the same ranking.
 
 ---
 
 ## Scope
 
 ### In scope
-- `scripts/generate-related.ts` + `npm run generate:related` — asks Jev and writes `src/content/related.json`; incremental by source hash, full re-ask when the candidate set changes, output stabilised so an unchanged ranking produces no diff
-- `scripts/checks/related-stale.ts` + `npm run check:related` — offline check that the file matches the content on disk; wired into lint-staged and the CI Validate content job
+- `scripts/jev/related.ts` — shared constants, types and pure helpers (hashing, ranking, merge rule, staleness) used by both scripts below; no CLI
+- `scripts/generate-related.ts` + `npm run generate:related` — asks Jev and writes `src/content/related.json`; incremental by source hash, full rewrite when the candidate set changes, output stabilised so an unchanged ranking produces no diff
+- `scripts/checks/related-stale.ts` + `npm run check:related` — offline check that the file matches the content on disk; wired into lint-staged (content files and `related.json` itself) and the CI Validate content job
+- Amendments to `.agents/specs/jev/spec.md` (No key scenario: the generator exits 1) and the `ARCHITECTURE.md` Jev section (the generator is the exception to "exit 0 without a key"); a cross-link from `spec.md` to this spec
 - `src/lib/related.ts` — reads the file at build and exposes ranked ids per kind
 - `src/lib/posts.ts` `filterExcerptPosts` and `src/lib/newsletters.ts` `filterNewsletters` — optional `rankedIds` ordering with the existing order as fallback
 - `src/components/ExcerptList.astro`, `src/components/newsletter/NewsletterList.astro` — pass-through `rankedIds` prop
@@ -29,7 +33,8 @@ The build never calls Jev: it reads the committed file, keeps only documents tha
 - `ARCHITECTURE.md` note; `.agents/specs/newsletter/archive.md` note on the ranked "other issues" block
 
 ### Out of scope
-- Newsletters as candidates on post pages, or posts on newsletter pages — needs a rendering decision (issues have no hero image); the data already carries both kinds
+- Newsletters as candidates on post pages, or posts on newsletter pages — needs a rendering decision (issues have no hero image); a later phase can add a second question per document
+- A `knip.config.ts` entry — knip discovers both scripts from `package.json` scripts, as it does `jev:eval`
 - CI auto-commit of `related.json` (the `commit-baselines.ts` pattern) — regeneration is author-run and gated by the check
 - Tag, link and FAQ suggestion scripts — later phases
 - Any Jev call at build time, in pre-commit or in CI; any npm dependency
@@ -45,16 +50,22 @@ Feature: Generating related.json
   Scenario: First generation
     Given no src/content/related.json and a key in the environment
     When `npm run generate:related` runs
-    Then one request per post and newsletter is sent, each a single choice question over every other document
-    And the file is written with model, generatedAt, candidateSetHash and one entry per document
-    And each entry holds its sourceHash and up to 10 ranked { key, p } items, p rounded to 2 decimals, ordered by p desc then publishDate desc then id desc
+    Then one request per post and newsletter is sent, each a single choice question over every other document of the same kind
+    And the file is written with model, generatedAt (ISO date), candidateSetHash and one entry per document
+    And each entry holds its sourceHash and up to 10 ranked { key, p } items with p > 0, p rounded to 2 decimals, ordered by p desc then publishDate desc then id desc
 
   Scenario: Question shape
-    Given a document A
+    Given a document A of kind K
     When its request is built
     Then the state is stateFor(A) from the English corpus
-    And the question is a choice whose criteria map every other document key to labelFor(doc) from the English corpus
+    And the question is a choice whose criteria map every other document of kind K to labelFor(doc) from the English corpus
     And there is no "none" option
+    And the generator throws before any request when a kind has more than CHOICE_OPTION_MAX documents
+
+  Scenario: Answer normalisation
+    Given a choice answer
+    When it is ranked
+    Then keys that are not candidates are ignored, candidates missing from the answer count as p = 0, and items with p = 0 after rounding are dropped
 
   Scenario: Unchanged content sends nothing
     Given related.json whose candidateSetHash matches the documents on disk
@@ -67,39 +78,45 @@ Feature: Generating related.json
     Given related.json in sync
     When fi.mdx of post 57 changes and `npm run generate:related` runs
     Then exactly one request is sent, for post:57
-    And only the post:57 entry may change
+    And only the post:57 entry and generatedAt may change
 
-  Scenario: New or deleted document re-asks everything
+  Scenario: New or deleted document rewrites everything
     Given related.json in sync
     When a post directory is added or removed and `npm run generate:related` runs
     Then candidateSetHash changes and one request per remaining document is sent
-    And entries for removed documents are dropped
+    And every entry is replaced by its fresh ranking (the stabilisation rule does not apply), so no removed key survives and a new document can appear at any rank
 
-  Scenario: Stable output
-    Given an entry whose fresh answer has the same top-3 keys in the same order as the stored ranked list
+  Scenario: Stable output on an edit
+    Given the candidate set is unchanged and an edited entry's fresh answer has the same top-3 keys in the same order as the stored ranked list
     When the file is written
     Then the stored ranked list is kept as is and only sourceHash is updated
     And `git diff src/content/related.json` after a second run with no content change is empty
 
   Scenario: Changed top three is rewritten
-    Given an entry whose fresh answer differs from the stored top-3 keys or their order
+    Given the candidate set is unchanged and an edited entry's fresh answer differs from the stored top-3 keys or their order
     When the file is written
     Then the entry's ranked list is replaced by the fresh top 10
 
   Scenario: Force
     Given `--force`
     When the generator runs
-    Then every document is re-asked regardless of hashes, and the stabilisation rule still applies
+    Then every document is re-asked and every entry is replaced by its fresh ranking
+
+  Scenario: Failed request
+    Given a request that still fails after the client's retries
+    When the generator runs
+    Then it exits 1, prints the failing key, and leaves the existing related.json untouched
 
   Scenario: No key
     Given neither OPENROUTER_API_KEY nor TYPESAFE_API_KEY is set
     When `npm run generate:related` runs
     Then it prints the skipped notice and exits 1, because a regeneration was requested and could not happen
+    And the script is invoked with --env-file-if-exists=.env like jev:eval
 
   Scenario: Deterministic file
     Given any generation
     When the file is written
-    Then entries are sorted by key, ranked items keep their order, the JSON is 2-space indented with a trailing newline
+    Then entries are ordered by kind then numeric id, ranked items keep their order, the JSON is 2-space indented with a trailing newline
 
 Feature: Staleness check
 
@@ -108,8 +125,8 @@ Feature: Staleness check
     When `npm run check:related` runs
     Then it exits 0 and makes no network call
 
-  Scenario: Missing file
-    Given no related.json
+  Scenario: Missing or malformed file
+    Given no related.json, or one that does not parse or lacks the top-level fields
     When the check runs
     Then it exits 1 and names `npm run generate:related`
 
@@ -134,23 +151,23 @@ Feature: Staleness check
     Then it exits 1 naming the dangling key
 
   Scenario: Model drift
-    Given a file whose model does not start with the generator's MODEL_PREFIX
+    Given a file whose model (the response's model field, e.g. typesafe/jev-1.13-20260917 via OpenRouter) does not contain MODEL_FAMILY ('jev-1.13')
     When the check runs
-    Then it exits 1 asking for a full regeneration
+    Then it exits 1 asking for `npm run generate:related -- --force`
 
   Scenario: Hooks and CI
-    Given a staged change under src/content/posts or src/content/newsletters
+    Given a staged add or edit under src/content/posts or src/content/newsletters, or a staged src/content/related.json
     When the pre-commit hook runs
-    Then `check:related` runs and blocks the commit while the file is stale
-    And the Validate content job in main.yml runs the same check
+    Then `check:related` runs once and blocks the commit while the file is stale
+    And the Validate content job in main.yml runs the same check, which is also where a deleted directory is caught (lint-staged does not pass deleted files)
 
 Feature: Rendering
 
   Scenario: Ranked post block
-    Given related.json has an entry for post:57 whose ranked posts are 71, 76, 12 and a newsletter
+    Given related.json has an entry for post:57 whose ranked list starts 71, 76, 12
     And posts 71, 76 and 12 are published
     When /fi/blog/57/… renders
-    Then the "other posts" block lists 71, 76, 12 in that order
+    Then the "other posts" block lists 71, 76, 12 in that order, before any limit is applied to the rest
 
   Scenario: Unpublished candidates are skipped
     Given post:57's ranked list starts with a future-dated post
@@ -191,38 +208,43 @@ Feature: Rendering
 ```typescript
 // src/content/related.json
 interface RelatedFile {
-    candidateSetHash: string                     // sha256 over the sorted document keys
-    entries: Record<DocKey, RelatedEntry>        // keys sorted
-    generatedAt: string                          // ISO date of the last write
-    model: string                                // e.g. 'typesafe/jev-1.13-20260917'
+    candidateSetHash: string                     // sha256 over the document keys, ordered by kind then id
+    entries: Record<DocKey, RelatedEntry>        // ordered by kind then numeric id
+    generatedAt: string                          // ISO date (YYYY-MM-DD) of the last write
+    model: string                                // response model field, e.g. 'typesafe/jev-1.13-20260917'
 }
 
 interface RelatedEntry {
-    ranked: Array<{ key: DocKey; p: number }>    // ≤ 10, p rounded to 2 decimals, self excluded
+    ranked: Array<{ key: DocKey; p: number }>    // ≤ 10, same kind, self excluded, p > 0 rounded to 2 decimals
     sourceHash: string                           // Document.sourceHash at generation time
 }
 
-// scripts/generate-related.ts
-export const MODEL_PREFIX = 'typesafe/jev-1.13'   // check:related compares against this
+// scripts/jev/related.ts — shared library, no CLI
+export const MODEL_FAMILY = 'jev-1.13'          // check:related requires file.model to contain it
 export const RANKED_MAX = 10
 export const STABLE_TOP = 3
-export function candidateSetHash(keys: DocKey[]): string
-export function rankAnswer(probabilities: Record<string, number>, docs: Map<DocKey, Document>): RelatedEntry['ranked']
-export function mergeEntry(previous: RelatedEntry | undefined, fresh: RelatedEntry): RelatedEntry  // stabilisation rule
-export function planRequests(file: RelatedFile | null, corpus: Document[], force: boolean): DocKey[]
-
-// scripts/checks/related-stale.ts
+export const RELATED_PATH = 'src/content/related.json'
+export function candidateSetHash(corpus: Document[]): string
+export function rankAnswer(probabilities: Record<string, number>, candidates: Document[]): RelatedEntry['ranked']
+export function mergeEntry(previous: RelatedEntry | undefined, fresh: RelatedEntry, opts: { rewriteAll: boolean }): RelatedEntry
+export function planRequests(file: RelatedFile | null, corpus: Document[], force: boolean): { keys: DocKey[]; rewriteAll: boolean }
 export function findStale(file: RelatedFile | null, corpus: Document[]): string[]   // [] means in sync
+export function readRelatedFile(path: string): RelatedFile | null                   // null when missing or malformed
 
-// src/lib/related.ts
+// scripts/generate-related.ts — CLI: --force; exit 1 without a key or on a failed request
+// scripts/checks/related-stale.ts — CLI: exit 1 with one line per finding
+
+// src/lib/related.ts (build side, plain JSON import)
 export function rankedKeys(key: DocKey, file?: RelatedFile): DocKey[]
-export function relatedPostIds(id: number, file?: RelatedFile): number[]           // post keys only
-export function relatedNewsletterIds(id: number, file?: RelatedFile): number[]     // newsletter keys only
+export function relatedPostIds(id: number, file?: RelatedFile): number[]
+export function relatedNewsletterIds(id: number, file?: RelatedFile): number[]
 ```
 
-`filterExcerptPosts(posts, q)` gains `q.rankedIds?: number[]`: posts whose id is in `rankedIds` come first in that order, the rest follow in the existing order (`sortByRelatedTags` when `relatedTags` is given, else date). `filterNewsletters` gains the same field with recency as the rest-order. Both functions stay pure and fixture-tested.
+The issue sketched a single `getRelated(key, { lang, limit, kinds })`; the three functions above replace it because lang is irrelevant (all locales share ids), limit belongs to the caller, and kinds are fixed per entry.
 
-Request shape: `state = stateFor(doc)`, `questions = { next_read: { type: 'choice', instructions: 'Which of these is the best next read for someone who has just finished this article?', criteria: { [otherKey]: labelFor(other) } } }`. Concurrency 4, retries from the client. Expected full regeneration: 87 requests, roughly 350k tokens, $0.015.
+`filterExcerptPosts(posts, q)` gains `q.rankedIds?: number[]`: posts whose id is in `rankedIds` come first in that order, the rest follow in the existing order (`sortByRelatedTags` when `relatedTags` is given, else date), then `limit` applies. `filterNewsletters` gains the same field with recency as the rest-order. Both functions stay pure and fixture-tested.
+
+Request shape: `state = stateFor(doc)`, `questions = { next_read: { type: 'choice', instructions: 'Which of these is the best next read for someone who has just finished this article?', criteria: { [otherKeyOfSameKind]: labelFor(other) } } }`. Concurrency 4, retries from the client. Expected full regeneration: 87 requests, roughly 300k tokens, $0.015.
 
 ---
 
@@ -241,7 +263,8 @@ Request shape: `state = stateFor(doc)`, `questions = { next_read: { type: 'choic
 
 - **Do not** import `related.json` through a content collection or `astro:content` — it is a plain JSON import in `src/lib/related.ts`; the collection loaders match only `*/{fi,sv,en}.mdx`
 - **Do not** filter by date in `related.ts` — `getAllPosts()` and `getAllNewsletters()` already apply the publish filter and dev exception; duplicating it drifts
-- **Do not** rewrite an entry whose top three did not change — Jev probabilities drift between runs and every rewrite is diff noise plus a golden regeneration
+- **Do not** rewrite an entry whose top three did not change on an edit-only run — Jev probabilities drift between runs and every rewrite is diff noise; but **do** rewrite every entry when the candidate set changed, or a removed key lingers at rank 4–10 and no run can heal the file
+- **Do not** mix kinds in one ranking question — the post block renders posts only, and newsletters would consume ranked slots and probability mass without ever being shown
 - **Do not** call Jev from `check:related`, the build, or CI — the check is a hash compare; the generator is the only network user
 - **Do not** add a "none" option to the ranking question — every document has a best next read
 - **Do not** let the generator swallow a failed request and write a partial file — abort and leave the previous file intact
@@ -259,4 +282,5 @@ Request shape: `state = stateFor(doc)`, `questions = { next_read: { type: 'choic
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review (FAIL → revised): same-kind candidates, full rewrite on candidate-set change, force replaces, failed-request and malformed-file scenarios, MODEL_FAMILY contains-check, shared `scripts/jev/related.ts`, lint-staged deletion caveat, exit-1 amendments to spec.md and ARCHITECTURE.md, API rationale |
 | 2026-09-23 | Initial draft for #1487 |
