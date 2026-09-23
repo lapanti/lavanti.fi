@@ -1,0 +1,58 @@
+---
+lang: 'fi'
+slug: 'tekoaly-vie-koodini-mita-jaa-jaljelle'
+pageTitle: 'Tekoäly vie koodini, mitä jää jäljelle?'
+title: 'Tekoäly vie koodini, mitä jää jäljelle?'
+description: 'Tekoäly kirjoittaa koodia nopeammin kuin ihminen: kahdessa minuutissa sen, mihin meni kaksi viikkoa. Jäljelle jäävät päätökset, konteksti ja vastuu.'
+faq:
+  - q: 'Vieko tekoäly ohjelmistokehittäjien työt?'
+    a: 'Ei kokonaan, mutta se vie koodin kirjoittamisen. Tekoäly tekee kahdessa minuutissa sen, mihin kehittäjältä meni aiemmin kaksi viikkoa, ja Nordea, Etteplan ja Vincit ovat jo kytkeneet irtisanomisia tekoälyyn. Suurin paine kohdistuu keskitason kehittäjiin, joiden työ on ollut pääosin koodin tuottamista.'
+  - q: 'Mitä taitoja tekoäly ei pysty korvaamaan ohjelmistokehityksessä?'
+    a: 'Päätöksentekoa, kontekstin tunnistamista, vastuun ymmärtämistä ja arvovalintoja. Kent Beckin mukaan sen tietäminen, mitä kannattaa kysyä, on arvokkaampaa kuin koskaan. Ohjelmistokehitys ei ole koskaan ollut pelkkää koodin kirjoittamista.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+Istun näytön äärellä ja katson, kun tekoäly koodaa: siistiä, toimivaa ja huomattavasti nopeammin kuin mihin minä pystyn. Vielä helmikuussa 2026 käytin sitä lähinnä ennakoivana tekstinsyöttönä.
+
+Tämän uutiskirjeen piti alun perin käsitellä tekoälyn ja sosiaaliturvan yhteyttä. Sitten muutin mieltäni ja olin kirjoittamassa siitä, miten meidän pitäisi irrottaa sovellukset ja alustat toisistaan (kirjoitan siitä kyllä myöhemmin, mutta en nyt). Sitten luin [Andrew Murphyn kirjoituksen devaajien viidestä surun vaiheesta](https://andrewmurphy.io/blog/the-five-stages-of-losing-our-craft): kieltämisestä, vihasta, kaupanteosta, masennuksesta ja lopulta hyväksymisestä. Sen jälkeen tiesin, että minunkin on pakko kirjoittaa tästä.
+
+Vielä vuoden 2025 puolella kieltäydyin uskomasta siihen, että tekoäly tulee mullistamaan kovin montaa asiaa. Olin kieltäytynyt uskomasta jo pitkään. Olin samaan aikaan myös vihainen, erityisesti siitä, miten ihmiset eivät tuntuneet ymmärtävän, mitä laajat kielimallit pohjimmiltaan ovat (siitäkin myöhemmin lisää), vaan kuvittelivat sen "ymmärtävän", mistä se puhuu. Sitten ajattelin, että kyllähän sillä pystyy kirjoittamaan testejä tai tekemään triviaaleja asioita.
+
+Sitten aloin käyttää sitä toden teolla, maaliskuussa 2026. Nyt olen yhtä aikaa sekä masentunut että hyväksynyt tilanteen. Masentunut, koska vaikka en ollut rakentanut (ammatillista) identiteettiäni koodaustaitojeni päälle, koen silti ylpeyttä niistä. Ja nyt niissä ei ole enää juuri mitään erityistä. Samaan aikaan kuitenkin kaikki se muu, mitä olen opetellut urallani ja jota ohjelmointi on vahvistanut, on nyt entistäkin arvokkaampaa.
+
+## Miksi kyky kirjoittaa koodia on nyt arvotonta?
+
+[Kent Beck](https://tidyfirst.substack.com/p/90-of-my-skills-are-now-worth-0), ohjelmistokehityksen pioneeri ja ketterän kehityksen keskeinen kehittäjä, esitti väitteen, joka pysäytti monet: "90% of my skills are now worth $0". Hänkin oli päätynyt siihen lopputulokseen, että tekoäly on yksinkertaisesti saavuttanut pisteen, jossa koodin kirjoittaminen ei ole enää taito, jossa ihminen on etulyöntiasemassa. Se, mikä aiemmin erotti seniorin juniorista, eli paradigmojen ja syntaksin tunteminen, nopea koodin kirjoittaminen ja ratkaisujen tunteminen, on kadonnut. Tekoäly tekee sen riittävän hyvin. Joskus se tekee sen jopa paremmin, ja aina se tekee sen murto-osassa siitä ajasta, mikä ihmisellä kestää.
+
+[Ylen haastattelema professori Pekka Abrahamsson](https://yle.fi/a/74-20214345) Tampereen yliopistosta tiivistää muutoksen konkreettisesti: tekoäly suorittaa kahdessa minuutissa sen, mihin kehittäjältä aiemmin meni kaksi viikkoa. Metropolian Janne Salosen mukaan ohjelmistoprojekti, joka aiemmin maksoi sata tuhatta euroa, voidaan periaatteessa toteuttaa vuonna 2026 25 eurolla. Etteplan ja Vincit ovatkin jo ilmoittaneet irtisanomisista, jotka yritykset itse kytkivät tekoälyn aiheuttamiin rakenteellisiin muutoksiin. [Nordea](https://yle.fi/a/74-20215715) aikoo irtisanoa arviolta 1 500 työpaikkaa vuoden 2026 loppuun mennessä, ja syyksi nimetään nimenomaan tekoäly ja prosessien optimointi.
+
+Tämä on ohjelmistokehityksen todellisuus maaliskuussa 2026. Olen sittemmin kirjoittanut tarkemmin siitä, miten [tekoäly muuttaa sen, mistä kehittäjille maksetaan](/fi/blog/57/tekoaly-ei-korvaa-koodareita-vaan-muuttaa-sen-mista-heille-maksetaan/).
+
+## Mitä tekoäly ei pysty viemään pois?
+
+Teknologiset vallankumoukset etenevät aina karkeasti saman kaavan mukaan: ensin jokin kallis muuttuu halvaksi, sitten keksitään, mitä halpa asia nyt mahdollistaa. Beckin mukaan niiden asioiden määrä, joita hän voi tehdä, kasvoi tuhannella. Se, mitä hän ei voi delegoida, on osoittautunut arvokkaammaksi kuin koskaan: sen tietäminen, mitä kannattaa kysyä.
+
+Murphy kiteyttää saman ajatuksen toisin: "Software was never really about the typing." Ohjelmistokehitys ei koskaan ollutkaan pelkkää koodin kirjoittamista. Se oli ongelmien ymmärtämistä, ihmisten välisen dynamiikan navigointia ja sen tunnistamista, milloin teknisesti elegantti ratkaisu on kuitenkin väärä ratkaisu. [Nolan Lawson](https://nolanlawson.com/2026/02/07/we-mourn-our-craft/) kuvaa kokemusta surutyönä, ja se on sopiva käsite. Se konkreettinen nautinto, jonka saa siitä, kun ratkoo pitkään vaivanneen ongelman koodissa, on nyt mennyttä. Ja se on todellinen menetys, eikä sitä pidä väheksyä. Mutta sureminen ei tarkoita sitä, että pitäisi jäädä paikoilleen.
+
+Jäljelle jäävät taidot eivät ole jämiä. Ne ovat ohjelmistokehityksen kova ydin: kyky tehdä päätöksiä, tunnistaa konteksti, ymmärtää vastuu, tehdä arvovalintoja ja tietää, miksi valittiin nykyinen suunta. Kyse on loppuviimein asioista, joita tekoäly ei pysty itsekseen ratkomaan. Olen kirjoittanut [tekoälyn rajoituksista julkisissa palveluissa](/fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/), ja samat rajat pätevät kaikkialla, missä vastuu on ihmisellä. Samaan johtopäätökseen päädyin [ensimmäisessä uutiskirjeessäni](/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/): tekoäly ei vie työtäsi, mutta muuttaa sen.
+
+## Miten tämä tulee vaikuttamaan yhteiskuntaan?
+
+Suurin mullistus kohdistuu keskitason kehittäjiin. Sellaisiin, joiden taidoista suurin osa on koodin tuottamista, annettujen vaatimusten toteuttamista ja bugien metsästystä. Kaikkea sitä, minkä tekoäly tekee nopeammin ja (ainakin toistaiseksi) halvemmalla. Uransa alussa olevat ovat todennäköisesti käyttäneet tekoälyä alusta asti, ja he käyttävät sitä myös rohkeammin ja laajemmin kuin kokeneet kehittäjät. Nyt heidän täytyy vain oppia, mitä valvoa.
+
+Kun koodin yksikkökustannus romahtaa, sovellusten tuotanto teollistuu. Yhtäkkiä mikä tahansa pienikin yritys voi teettää tai tehdä kohtuulliseen hintaan juuri sellaisia sovelluksia kuin tarvitsee. Uusien yritysten ja liiketoimintamallien syntymisen potentiaali on huomattava. Toki erityisesti kriittisemmissä järjestelmissä laadunvarmistuksen ja tietoturvan tärkeys korostuu entisestään. Kokonaiskuvassa kuitenkin ne, jotka eivät opi, jäävät jälkeen. Sama koskee julkista sektoria: [tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista](/fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/).
+
+Siinä missä yksittäisen yrityksen tai projektin kontekstissa tekoäly kiihdyttää prosesseja, se kiihdyttää myös yhteiskunnassa jo aiemmin orastavaa jakoa korkean ja matalan tuottavuuden töihin. Toisin sanoen he, jotka tuottavat nyt paljon arvoa, tuottavat jatkossa entistäkin enemmän arvoa. Ja he, jotka tuottavat vähemmän arvoa, tuottavat entistäkin vähemmän.
+
+Henkilökohtaisella tasolla en pelkää muutosta, koska olen jo pidempään keskittynyt kaikkeen muuhun kuin koodin kirjoittamiseen. Uskon, että taidoilleni on kysyntää myös tulevaisuudessa.
+
+Samaa en kuitenkaan voi sanoa laajemmin yhteiskunnan osalta. En ole varma, olemmeko varautuneita siihen, mitä käy, kun tämä sama kehitys laajenee muualle tietotyöhön. Olen käsitellyt [tekoälyn laajempia yhteiskunnallisia vaikutuksia](/fi/blog/47/vuosi-2026-on-tekoalyn/), erityisesti sitä, miten muutos näkyy jo henkilökohtaisessa elämässä ja lasten arjessa. Ohjelmistokehitys on nimittäin vain ensimmäinen ala, jossa näitä muutoksia nähdään. Aivan varmasti se tapahtuu myös muilla aloilla. Ja sielläkin joudutaan käymään läpi näitä samoja ajatuksia.
+
+Yhteiskunnan tehtävä ei kuitenkaan ole estää työpaikkojen katoamista. Yhteiskunnan tehtävä on toimia ihmisille turvaverkkona, kun asiat eivät mene putkeen. Eikä se ole koskaan ennen ollut yhtä tärkeää.
+
+Jos kuitenkin ajatellaan, että asiat menisivät kohtalaisen hyvin, se nostaa esiin seuraavan kysymyksen: mitä sinä tekisit sillä ajalla, jonka tekoäly vapauttaa?
