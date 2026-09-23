@@ -261,23 +261,23 @@
               - link "Frihet":
                 - /url: /sv/kategori/frihet/
         - listitem:
-          - article "Flaggan hissades. Vad gör Kyrkslätt nästa?":
-            - link /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\. Flaggan hissades\. Vad gör Kyrkslätt nästa\?/:
-              - /url: /sv/blog/64/flaggan-hissades-vad-gor-kyrkslatt-nasta/
-              - img /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\./
-              - heading "Flaggan hissades. Vad gör Kyrkslätt nästa?" [level=3]
+          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
+              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
+              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kyrkslätt hissade regnbågsflaggan första gången \d+\.\d+\.\d+\. Flaggningen är viktig, men jämlikhet kräver också konkreta åtgärder i höstens budget\./
+            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
           - list:
             - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
+              - link /Riksdagsvalet \d+/:
+                - /url: /sv/kategori/riksdagsvalet-2027/
             - listitem:
-              - link "Jämlikhet":
-                - /url: /sv/kategori/jamlikhet/
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
             - listitem:
-              - link "Frihet":
-                - /url: /sv/kategori/frihet/
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
       - paragraph:
         - link "Alla inlägg om Frihet":
           - /url: /sv/category/freedom/
@@ -320,24 +320,27 @@
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
         - listitem:
-          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
-              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
-              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
+          - 'article "Digital självständighet: 5 + 1 val för vardagen"':
+            - 'link "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet. Digital självständighet: 5 + 1 val för vardagen"':
+              - /url: /sv/blog/66/digital-sjalvstandighet-vardagens-val/
+              - img "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet."
+              - 'heading "Digital självständighet: 5 + 1 val för vardagen" [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
+            - paragraph: Digital självständighet byggs i vardagens val. Här är 5 + 1 konkreta sätt att stärka den och den digitala försörjningsberedskapen själv.
           - list:
-            - listitem:
-              - link /Riksdagsvalet \d+/:
-                - /url: /sv/kategori/riksdagsvalet-2027/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
             - listitem:
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/category/digital-independence/
@@ -347,6 +350,24 @@
       - paragraph: "De frågor jag driver hårdast lokalt är desamma som jag skriver om nationellt: digitala tjänster som faktiskt fungerar för invånarna, planläggning som bygger på Kyrkslätts geografi i stället för att motarbeta den, och kollektivtrafik som möjliggör kommunens hållbara tillväxt."
       - paragraph: "Kyrkslätt är en tvåspråkig kustkommun som växer snabbt i kanten av Helsingforsregionen. Den har gott om verkliga tillgångar — strandlinje, natur, en blandad gemenskap — och verkliga påfrestningar: en intäktsbas som har svårt att hålla jämna steg med behoven, och en järnväg som är avgörande för regionen. Lokalpolitiken här är inte småpolitik."
       - list:
+        - listitem:
+          - article "Flaggan hissades. Vad gör Kyrkslätt nästa?":
+            - link /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\. Flaggan hissades\. Vad gör Kyrkslätt nästa\?/:
+              - /url: /sv/blog/64/flaggan-hissades-vad-gor-kyrkslatt-nasta/
+              - img /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\./
+              - heading "Flaggan hissades. Vad gör Kyrkslätt nästa?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Kyrkslätt hissade regnbågsflaggan första gången \d+\.\d+\.\d+\. Flaggningen är viktig, men jämlikhet kräver också konkreta åtgärder i höstens budget\./
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Jämlikhet":
+                - /url: /sv/kategori/jamlikhet/
+            - listitem:
+              - link "Frihet":
+                - /url: /sv/kategori/frihet/
         - listitem:
           - 'article "Fullmäktigemotion: digital beredskap"':
             - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-shirt med texten Digitaalinen itsenäisyys (Digital självständighet) och ett lejonmotiv ovanför, samt en kavaj. Foto av Erkki Laine. Fullmäktigemotion: digital beredskap"':
@@ -383,24 +404,6 @@
             - listitem:
               - link "Västra Nyland":
                 - /url: /sv/kategori/vastra-nyland/
-        - listitem:
-          - article "Lähteelä — en gem vid Kyrksländets kust":
-            - link "Lauri Lavanti och Miisa Jeremejew, kommunfullmäktigeledamöter (gröna), Kyrksländ Lähteelä — en gem vid Kyrksländets kust":
-              - /url: /sv/blog/56/lahteela-en-gemma-vid-kyrkslaendets-kust/
-              - img "Lauri Lavanti och Miisa Jeremejew, kommunfullmäktigeledamöter (gröna), Kyrksländ"
-              - heading "Lähteelä — en gem vid Kyrksländets kust" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kyrksländ köpte Lähteelä som kustanläggning. En av få platser vid kusten dit man kan ta sig utan egen båt — nu permanent tillgängligt för alla invånare.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Natur":
-                - /url: /sv/kategori/natur/
-            - listitem:
-              - link "Frihet":
-                - /url: /sv/kategori/frihet/
       - paragraph:
         - link "Alla inlägg om Kyrkslätt":
           - /url: /sv/category/kirkkonummi/

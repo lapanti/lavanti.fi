@@ -261,23 +261,23 @@
               - link "Freedom":
                 - /url: /en/category/freedom/
         - listitem:
-          - article "The flag is up. What does Kirkkonummi do next?":
-            - link /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\. The flag is up\. What does Kirkkonummi do next\?/:
-              - /url: /en/blog/64/the-flag-is-up-what-does-kirkkonummi-do-next/
-              - img /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\./
-              - heading "The flag is up. What does Kirkkonummi do next?" [level=3]
+          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+              - /url: /en/blog/67/my-candidacy-for-parliament/
+              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
+              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kirkkonummi raised the Pride flag for the first time on \d+ June \d+\. The flag matters, but equality also demands concrete action in the autumn budget\./
+            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
           - list:
             - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
+              - link /Parliamentary elections \d+/:
+                - /url: /en/category/parliamentary-elections-2027/
             - listitem:
-              - link "Equality":
-                - /url: /en/category/equality-and-non-discrimination/
+              - link "National politics":
+                - /url: /en/category/national-politics/
             - listitem:
-              - link "Freedom":
-                - /url: /en/category/freedom/
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
       - paragraph:
         - link "All posts about Freedom":
           - /url: /en/category/freedom/
@@ -320,24 +320,27 @@
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
         - listitem:
-          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-              - /url: /en/blog/67/my-candidacy-for-parliament/
-              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
-              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
+          - 'article "Digital independence: 5 + 1 choices for everyday life"':
+            - 'link "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads ''Digital independence'', ''Digitaalinen itsenäisyys'' and ''Digital självständighet''. Copyright for the image belongs to the Digital Independence citizens'' initiative. Digital independence: 5 + 1 choices for everyday life"':
+              - /url: /en/blog/66/digital-independence-five-plus-one-everyday-choices/
+              - img "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative."
+              - 'heading "Digital independence: 5 + 1 choices for everyday life" [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
+            - paragraph: Digital independence is built through everyday choices. Here are 5 + 1 concrete ways to strengthen it and digital security of supply yourself.
           - list:
-            - listitem:
-              - link /Parliamentary elections \d+/:
-                - /url: /en/category/parliamentary-elections-2027/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
             - listitem:
               - link "Digital independence":
                 - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Security":
+                - /url: /en/category/security/
       - paragraph:
         - link "All posts about Digital independence":
           - /url: /en/category/digital-independence/
@@ -347,6 +350,24 @@
       - paragraph: "The issues I push hardest on locally are the same ones I write about nationally: digital services that actually work for residents, urban planning that builds on Kirkkonummi's geography instead of fighting it, and public transport that enables the municipality's sustainable growth."
       - paragraph: "Kirkkonummi is a bilingual, coastal municipality growing fast at the edge of the Helsinki region. It has plenty of real assets — shoreline, nature, a mixed community — and real pressures: a revenue base that struggles to keep up with demand, and a rail line that is critical to the region. Local politics here is not small politics."
       - list:
+        - listitem:
+          - article "The flag is up. What does Kirkkonummi do next?":
+            - link /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\. The flag is up\. What does Kirkkonummi do next\?/:
+              - /url: /en/blog/64/the-flag-is-up-what-does-kirkkonummi-do-next/
+              - img /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\./
+              - heading "The flag is up. What does Kirkkonummi do next?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Kirkkonummi raised the Pride flag for the first time on \d+ June \d+\. The flag matters, but equality also demands concrete action in the autumn budget\./
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Equality":
+                - /url: /en/category/equality-and-non-discrimination/
+            - listitem:
+              - link "Freedom":
+                - /url: /en/category/freedom/
         - listitem:
           - 'article "Council initiative: digital resilience"':
             - 'link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt that reads Digitaalinen itsenäisyys (Digital independence) with a lion motif above it, and a blazer. Photo by Erkki Laine. Council initiative: digital resilience"':
@@ -383,24 +404,6 @@
             - listitem:
               - link "Western Uusimaa":
                 - /url: /en/category/western-uusimaa/
-        - listitem:
-          - article "Lähteelä — a gem on Kirkkonummi coast":
-            - link "Lauri Lavanti and Miisa Jeremejew, municipal councillors (Greens), Kirkkonummi Lähteelä — a gem on Kirkkonummi coast":
-              - /url: /en/blog/56/lahteela-a-gem-on-kirkkonummis-coast/
-              - img "Lauri Lavanti and Miisa Jeremejew, municipal councillors (Greens), Kirkkonummi"
-              - heading "Lähteelä — a gem on Kirkkonummi coast" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi acquired Lähteelä, a coastal area. One of the few places on Kirkkonummi's coast accessible without a private boat — now permanently open to all.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Nature":
-                - /url: /en/category/nature/
-            - listitem:
-              - link "Freedom":
-                - /url: /en/category/freedom/
       - paragraph:
         - link "All posts about Kirkkonummi":
           - /url: /en/category/kirkkonummi/
