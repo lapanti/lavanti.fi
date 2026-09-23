@@ -145,6 +145,7 @@ describe('headingsOf, stateFor, labelFor', () => {
 
     it('builds a compact state and an English label', () => {
         const doc = {
+            body: 'Lead',
             description: 'Desc',
             h2s: ['A?', 'B?'],
             id: 1,
