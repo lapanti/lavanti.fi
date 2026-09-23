@@ -1,0 +1,229 @@
+# Spec: Link suggestions and newsletter backlinks
+
+> **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
+> **Status**: `Active`
+> **Last updated**: 2026-09-23
+
+---
+
+## Intent
+
+Internal links are found by rereading the corpus. Every post and issue must carry 3–10 of them (`scripts/checks/content.sh`), the newsletter archive policy wants links in both directions, and today no post links back to any issue (#1485) because nobody re-reads 78 posts when an issue is published. The eval gate measured Jev's per-paragraph link targeting at hit@3 0.85–0.87 against a 0.36 baseline, with Finnish input as good as English, so the *finding* half of the job can be delegated while the *writing* half — anchor text, placement in the sentence, the 3–10 budget — stays with the author.
+
+This feature is an author-run, advisory script with two modes. **Per document**: for each paragraph of a post or issue, which other page on the site (post or issue) substantiates a claim made there, if any. **Backlinks**: for one newsletter issue, which paragraphs of which posts make a claim the issue substantiates — the automated form of the manual audit that produced the pair table in #1485, to be run whenever an issue is added. The script becomes a step of `/write` and `/review-content`, and an advisory CI job writes the same tables to the job summary of any pull request that touches content, so the suggestions appear without anyone remembering to ask. Nothing is enforced: the output is a table, not a gate.
+
+---
+
+## Scope
+
+### In scope
+- `scripts/jev/links.ts` — shared, network-free helpers lifted out of the eval (`linkTargets`, option building, paragraph state) plus suggestion-row shaping, doubtful-link detection, backlink question building, changed-document parsing and Markdown rendering; no CLI
+- `scripts/suggest-links.ts` + `npm run suggest:links` — the CLI: per-document mode, backlink mode, `--changed-since <ref>` for CI
+- `scripts/jev/corpus.ts` — `Document.slug` (per-locale frontmatter slug) so suggestions can print canonical URLs
+- `scripts/jev/eval.ts` — imports the lifted helpers instead of defining them (behaviour unchanged)
+- `.claude/skills/write/SKILL.md`, `.claude/skills/review-content/SKILL.md` — a "Link suggestions" step
+- `.github/workflows/main.yml` — `content-suggestions` job, advisory, skipped without content changes or without the `OPENROUTER_API_KEY` secret
+- Unit tests for every pure helper and for the CLI with an injected client; no network in tests
+- `ARCHITECTURE.md` paragraph
+
+### Out of scope
+- Editing any post to add links (content work: #1485 for existing issues, `/write` for new ones)
+- Anchor text, sentence placement, or any prose change — Jev returns typed decisions only
+- A gate on missing or weak links; `content.sh` keeps the only enforced rule (3–10 links)
+- PR comments from CI (a shared-state action; the job summary is the channel)
+- Tag and FAQ suggestions (#1491, #1492); ranking for the related blocks (`related.md`)
+- Any npm dependency; any Jev call at build time
+
+---
+
+## Contract
+
+```gherkin
+Feature: Per-document link suggestions
+
+  Scenario: Suggestions for a post
+    Given a key and post 57 with fi, sv and en siblings
+    When `npm run suggest:links -- post 57` runs
+    Then one choice request is sent per prose paragraph of fi.mdx
+    And each state is { paragraph: <paragraph, markup stripped>, title: <fi title> }
+    And the options are every other post and newsletter labelled from the English corpus, plus "none"
+    And stdout shows a Markdown table with columns paragraph, starts, target, title, url, p
+    And a row appears only for options with p ≥ 0.5 that are not "none", not the post itself, and not already linked anywhere in the post's fi body
+    And target titles and urls are for the fi locale (/fi/blog/<id>/<slug>/ or /fi/uutiskirje/<id>/<slug>/)
+    And the table is followed by "links now: N of 3–10"
+
+  Scenario: Locale and threshold flags
+    Given `--lang en --threshold 0.7`
+    When the script runs
+    Then paragraphs, titles and urls come from en.mdx files and only options with p ≥ 0.7 are shown
+
+  Scenario: Suggestions for an issue
+    Given `newsletter 2`
+    When the script runs
+    Then the same table is produced for the issue's paragraphs, with posts and other issues as candidates
+
+  Scenario: Doubtful existing links
+    Given a paragraph that already links a document whose option scores below 0.2
+    When the script runs
+    Then a second table "doubtful" lists paragraph, starts, current target and p
+
+  Scenario: No suggestions
+    Given every paragraph's best option is "none" or already linked
+    When the script runs
+    Then stdout says "no new link targets" and the doubtful table still appears when it has rows
+
+  Scenario: Report file
+    Given `--out <path>`
+    When the script finishes
+    Then the same Markdown is written to <path>; nothing is written otherwise
+
+Feature: Newsletter backlinks
+
+  Scenario: Backlinks for an issue
+    Given `--backlinks newsletter 2`
+    When the script runs
+    Then one request is sent per post with state = stateFor(issue 2, English corpus)
+    And the questions are one noul per prose paragraph of the post (fi.mdx by default): "This paragraph makes a claim that the newsletter issue substantiates: <paragraph>"
+    And stdout shows a Markdown table with columns post, title, url, paragraph, starts, p for rows with p ≥ 0.5, sorted by p desc
+    And posts that already link issue 2 anywhere in their body are listed separately as "already linked"
+
+  Scenario: Backlink request stays within budget
+    Given a post whose paragraphs would exceed 40 questions
+    When the request is built
+    Then the paragraphs are split across several requests of at most 40 questions each
+
+Feature: CI and skills
+
+  Scenario: Changed documents from git
+    Given `--changed-since origin/main`
+    When the script runs
+    Then it lists the post and newsletter ids touched between that ref and HEAD (from src/content/{posts,newsletters}/<id>/…) and runs per-document mode for each, in order
+    And it prints "no content changes" and exits 0 when the diff touches no document
+
+  Scenario: Advisory job
+    Given a pull request that touches src/content/posts or src/content/newsletters and a repository secret OPENROUTER_API_KEY
+    When the pipeline runs
+    Then the content-suggestions job runs `suggest:links --changed-since origin/<base>` and appends the output to the job summary
+    And the job is continue-on-error and never blocks the pipeline
+    And it is skipped, with a notice in the summary, when the secret is absent or no document changed
+
+  Scenario: Skills
+    Given /write or /review-content is run on a post
+    Then the skill instructs running `npm run suggest:links -- post <id>` and deciding on every row, and writing anchor text by hand
+
+Feature: Common behaviour
+
+  Scenario: No key
+    Given neither key is set
+    When any mode runs
+    Then it prints the skipped notice and exits 0
+
+  Scenario: Bad arguments
+    Given an unknown kind, a non-numeric id, an unknown lang or a threshold outside (0, 1]
+    When the script runs
+    Then it prints the usage line and exits 2
+
+  Scenario: Unknown document
+    Given `post 999` with no such directory
+    When the script runs
+    Then it prints "post:999 not found" and exits 2
+
+  Scenario: Failed request
+    Given a request that fails after the client's retries
+    When the script runs
+    Then it prints the error and exits 1; rows already computed are not printed as if complete
+
+  Scenario: Eval unchanged
+    Given the lifted helpers
+    When `npm run test` runs
+    Then the eval's link-target and option tests still pass against the shared module
+```
+
+---
+
+## Data Model
+
+```typescript
+// scripts/jev/corpus.ts (addition)
+interface Document { slug: string /* per-locale frontmatter slug */ }
+
+// scripts/jev/links.ts — shared library, no CLI
+export const SUGGEST_THRESHOLD = 0.5
+export const DOUBTFUL_THRESHOLD = 0.2
+export const BACKLINK_QUESTIONS_MAX = 40
+export const NONE = 'none'
+export function linkTargets(paragraph: string, known: ReadonlySet<DocKey>): DocKey[]          // from eval.ts
+export function linkOptions(english: Document[], self: DocKey): Record<string, string>         // from eval.ts, both kinds + none
+export function paragraphState(doc: Document, paragraph: string): { paragraph: string; title: string }
+export function urlFor(doc: Document): string                                                  // /<lang>/blog/<id>/<slug>/ or newsletterPath()
+export function alreadyLinked(doc: Document, known: ReadonlySet<DocKey>): Set<DocKey>
+export interface SuggestionRow { index: number; key: DocKey; p: number; starts: string; title: string; url: string }
+export interface DoubtfulRow { current: DocKey; index: number; p: number; starts: string }
+export function suggestionRows(index, paragraph, probabilities, opts: { byKey: Map<DocKey, Document>; exclude: ReadonlySet<DocKey>; threshold: number }): SuggestionRow[]
+export function doubtfulRows(index, paragraph, probabilities, known): DoubtfulRow[]
+export function backlinkQuestions(paragraphs: string[]): Array<Record<string, QuestionSpec>>   // chunks of ≤ BACKLINK_QUESTIONS_MAX nouls
+export interface BacklinkRow { index: number; key: DocKey; p: number; starts: string; title: string; url: string }
+export function docsFromPaths(paths: string[]): Array<{ id: number; kind: DocKind }>           // src/content/{posts,newsletters}/<id>/… → unique, ordered
+export function renderTable(headers: string[], rows: string[][]): string                        // Markdown
+
+// scripts/suggest-links.ts — CLI
+//   suggest:links -- <post|newsletter> <id>… [--lang fi|sv|en] [--threshold 0.5] [--concurrency 4] [--out <md>]
+//   suggest:links -- --backlinks newsletter <id> [--lang] [--threshold] [--out]
+//   suggest:links -- --changed-since <ref> [--lang] [--threshold] [--out]
+export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; root?; git? }): Promise<number>
+```
+
+`starts` is the first eight words of the paragraph with markup stripped. `title` and `url` are taken from the corpus in the chosen locale; the option labels sent to Jev are always English.
+
+Requests: per-document mode sends one request per paragraph (≈ 88 options × ~35 tokens + paragraph ≈ 4k tokens; a 20-paragraph post ≈ $0.004). Backlink mode sends one request per post with the issue as state and up to 40 paragraph nouls (≈ 78 requests ≈ $0.02).
+
+CI job sketch (`main.yml`):
+
+```yaml
+content-suggestions:
+  if: github.event_name == 'pull_request'
+  continue-on-error: true
+  permissions: { contents: read }
+  steps:
+    - checkout (fetch-depth 0), setup-node
+    - run: |
+        if [ -z "$OPENROUTER_API_KEY" ]; then echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"; exit 0; fi
+        npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md
+        cat suggestions.md >> "$GITHUB_STEP_SUMMARY"
+      env: { OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }} }
+```
+
+---
+
+## Dependencies
+
+- [Jev decision pipeline](./spec.md) — client, corpus, the eval whose link-target helpers move to `links.ts`; eval result hit@3 0.85–0.87
+- [Ranked related posts](./related.md) — script conventions (exit codes, `--env-file-if-exists`, no CLI in shared modules, `candidatesFor` style)
+- [Newsletter archive](../newsletter/archive.md) — bidirectional linking policy; `src/lib/newsletterRoutes.ts` `newsletterPath` for issue URLs
+- `scripts/checks/content.sh:129-138` — the 3–10 link budget the output reports against
+- `src/lib/posts.ts:69` — post URL shape `/<lang>/blog/<id>/<slug>/`
+
+---
+
+## Anti-patterns
+
+- **Do not** turn suggestions into a check — the eval's abstain rate is 0.73–0.79, so a fifth of unlinked paragraphs get a suggestion; a gate would force links the author rejected
+- **Do not** send one request per paragraph in backlink mode — the issue is the state and paragraphs are parallel questions; 78 requests, not 1,200
+- **Do not** label options in the document's locale — labels come from the English corpus in every mode, as in the eval and `related.md`
+- **Do not** post PR comments from the job — the job summary is the only output; comments are a shared-state action the author has not approved
+- **Do not** let the job block the pipeline — `continue-on-error: true` and explicit skips; a missing secret or a Jev outage must not fail a content PR
+- **Do not** duplicate `linkTargets` or `linkOptions` — the eval and this script share `scripts/jev/links.ts`
+
+---
+
+## Open Questions
+
+*(none)*
+
+---
+
+## Changelog
+
+| Date | Change |
+|------|--------|
+| 2026-09-23 | Initial draft for #1490 |
