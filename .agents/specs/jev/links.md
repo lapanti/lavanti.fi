@@ -125,6 +125,7 @@ Feature: Receipts and the gate
     Given a document whose meta.json changed but whose three locale files did not
     When the check runs
     Then its receipt still matches
+    And a changed meta.json alone (tags, dates) does not make the document "changed" for the check, in pre-commit or with --base — only fi.mdx, sv.mdx and en.mdx paths do, the files the hash covers
 
   Scenario: Changed documents must carry receipts
     Given staged or changed files under src/content/posts or src/content/newsletters
@@ -293,6 +294,7 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 | Date | Change |
 |------|--------|
 | 2026-09-23 | Advisory CI job replaced by the receipt gate: `suggestions.json` written by the script, `check:suggestions` in pre-commit and CI, no Jev call and no key in CI |
+| 2026-09-23 | Gate ignores meta.json-only paths: the first bulk tag edit (36 posts, #1495) failed CI's --base check for posts that had no links receipt although no text changed |
 | 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): failure line carries key and paragraph, already-linked over the whole body, strict backlink answers, calibration numbers corrected, data model refreshed, CI summary wording |
 | 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, doubtful flag interpreted |
 | 2026-09-23 | Critic re-review (PASS WITH NOTES): flags apply to every mode, `--backlinks post` is a bad argument, unexpected errors exit 1, job-level vs script-level skip stated |

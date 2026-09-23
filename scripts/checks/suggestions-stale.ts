@@ -38,11 +38,15 @@ const DIFF_PATHS = ['src/content/posts', 'src/content/newsletters', 'src/content
 
 const defaultGit = (args: string[]): string => execFileSync('git', args, { encoding: 'utf8' })
 
-/** The changed documents that still exist, from explicit paths or from a git range. */
+/**
+ * The changed documents that still exist, from explicit paths or from a git
+ * range. Only the locale files count — they are what the receipt hashes — so a
+ * meta.json-only edit (tags, updatedDate) needs no new run.
+ */
 export function changedDocuments(paths: string[], corpus: Document[]): Document[] {
     const byKey = new Map(corpus.map((d) => [d.key, d]))
 
-    return docsFromPaths(paths)
+    return docsFromPaths(paths.filter((path) => /\/(fi|sv|en)\.mdx$/.test(path)))
         .map((t) => byKey.get(`${t.kind}:${t.id}`))
         .filter((d): d is Document => d !== undefined)
 }
