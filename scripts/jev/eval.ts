@@ -23,11 +23,9 @@ import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
 
-import { NEWSLETTER_SEGMENTS } from '../../src/lib/newsletterRoutes.ts'
 import { stripMarkup } from '../checks/mdx-deep.ts'
 import {
     type Answer,
-    CHOICE_OPTION_MAX,
     createClient,
     type JevClient,
     mapConcurrent,
@@ -35,22 +33,13 @@ import {
     type QuestionSpec,
     resolveProvider,
 } from './client.ts'
-import {
-    buildCorpus,
-    type DocKey,
-    type DocKind,
-    type Document,
-    labelFor,
-    type Lang,
-    LANGS,
-    stateFor,
-} from './corpus.ts'
+import { buildCorpus, type DocKey, type Document, type Lang, LANGS, stateFor } from './corpus.ts'
+import { linkOptions, linkTargets, NONE, rankedOptions, topChoice } from './links.ts'
 /* eslint-enable import-x/extensions */
 
 export const PREDICT_THRESHOLD = 0.5
 export const THRESHOLDS = [0.5, 0.7] as const
 export const CONCURRENCY_DEFAULT = 4
-export const NONE = 'none'
 export const PILLAR_MIN_ID = 43
 export const PILLAR_TAGS = [
     'artificial-intelligence',
@@ -155,48 +144,7 @@ export function tagQuestions(labels: TagLabel[]): Record<string, QuestionSpec> {
     return questions
 }
 
-const SEGMENT_KIND: Record<string, DocKind> = Object.fromEntries([
-    ['blog', 'post'],
-    ...Object.values(NEWSLETTER_SEGMENTS).map((segment) => [segment, 'newsletter']),
-])
-
-/** Documents a paragraph links to via /<lang>/blog/<id>/ or /<lang>/<newsletter segment>/<id>/; other links ignored. */
-export function linkTargets(paragraph: string, known: ReadonlySet<DocKey>): DocKey[] {
-    const out = new Set<DocKey>()
-    for (const match of paragraph.matchAll(/\]\(\/(?:en|fi|sv)\/([a-z]+)\/(\d+)\//g)) {
-        const kind = SEGMENT_KIND[match[1]]
-        if (!kind) continue
-        const key: DocKey = `${kind}:${Number(match[2])}`
-        if (known.has(key)) out.add(key)
-    }
-
-    return [...out]
-}
-
-/** Choice criteria for one paragraph: every other document labelled in English, plus "none". Throws above the option cap. */
-export function linkOptions(english: Document[], self: DocKey): Record<string, string> {
-    if (english.length > CHOICE_OPTION_MAX) {
-        throw new Error(
-            `corpus has ${english.length} documents; a choice question allows CHOICE_OPTION_MAX=${CHOICE_OPTION_MAX} options`
-        )
-    }
-    const criteria: Record<string, string> = {}
-    for (const doc of english) if (doc.key !== self) criteria[doc.key] = labelFor(doc)
-    criteria[NONE] = 'No page on the site substantiates a claim made in this paragraph'
-
-    return criteria
-}
-
 // ── metrics ───────────────────────────────────────────────────────────────────
-
-export const rankedOptions = (probabilities: Record<string, number>): string[] =>
-    Object.entries(probabilities)
-        .filter(([key]) => key !== NONE)
-        .sort(([, a], [, b]) => b - a)
-        .map(([key]) => key)
-
-export const topChoice = (probabilities: Record<string, number>): string =>
-    Object.entries(probabilities).sort(([, a], [, b]) => b - a)[0]?.[0] ?? NONE
 
 const ratio = (num: number, den: number): number => (den === 0 ? 0 : num / den)
 

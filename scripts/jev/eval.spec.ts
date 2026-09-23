@@ -9,19 +9,15 @@ import { CHOICE_OPTION_MAX, type JevClient, mapConcurrent, type QuestionSpec, ty
 import {
     formatTable,
     linkMetrics,
-    linkOptions,
     type LinkRow,
-    linkTargets,
     loadTagLabels,
-    NONE,
     prf,
-    rankedOptions,
     runCli,
     tagMetrics,
     tagQuestions,
     type TagRow,
-    topChoice,
 } from './eval'
+import { linkOptions, linkTargets, NONE, rankedOptions, topChoice } from './links'
 
 const doc = (key: DocKey, title: string): Document => ({
     description: `${title} description`,
@@ -33,6 +29,7 @@ const doc = (key: DocKey, title: string): Document => ({
     lead: '',
     paragraphs: [],
     publishDate: '2026-01-01',
+    slug: 'slug',
     sourceHash: 'h',
     tags: [],
     title,
