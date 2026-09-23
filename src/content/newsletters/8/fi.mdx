@@ -1,0 +1,58 @@
+---
+lang: 'fi'
+slug: 'kun-toimittajaa-ei-voi-vaihtaa'
+pageTitle: 'Siirrettävyys kirjattava hankintalakiin'
+title: 'Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut'
+description: 'Julkishallinnon järjestelmissä toimittajan vaihto on usein mahdotonta. Neljän kaupungin eVaka maksoi 9 miljoonaa, Helsingin Asti 32 miljoonaa ja jäi kesken.'
+faq:
+  - q: 'Miksi julkisen sektorin tietojärjestelmän toimittajaa on vaikea vaihtaa?'
+    a: 'Rajapinnat, dataformaatit ja integraatiot rakennetaan yhden toimittajan ehdoilla, jolloin siirtymisen kustannus kasvaa vuosi vuodelta. Kun vaihtoehtoa ei ole, toimittaja tietää, ettei asiakas voi lähteä, ja neuvotteluasema siirtyy pysyvästi toimittajalle.'
+  - q: 'Mitä eVaka opettaa julkisista ohjelmistohankinnoista?'
+    a: 'Espoon, Tampereen, Oulun ja Turun yhdessä kehittämä avoimen lähdekoodin eVaka oli vuoteen 2023 mennessä maksanut noin yhdeksän miljoonaa euroa ja on yli kymmenen kunnan käytössä. Helsinki käytti yksin rakentamaansa Asti-järjestelmään noin 32 miljoonaa euroa vuosina 2019–2023 ja keskeytti kehityksen sen valmistumatta.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+Kun vanhempi ilmoittaa lapsensa varhaiskasvatukseen jossain niistä suomalaisista kunnista, jotka käyttävät eVaka-järjestelmää, hän käyttää palvelua, jonka ylläpitäjän kunta voisi halutessaan vaihtaa.
+
+eVaka on alun perin Espoon rakentama avoimen lähdekoodin varhaiskasvatusjärjestelmä. Nyt se on useiden kuntien yhteisessä käytössä, ja järjestelmän ylläpidosta vastaa jokaisessa kunnassa oma palveluntarjoaja, jonka voi tarvittaessa korvata toisella. Tämä on poikkeus, ei sääntö.
+
+Julkinen sektori on yksi Suomen suurimmista ohjelmistojen ostajista, ja sen hankintapäätökset ratkaisevat, syntyykö kotimaiselle ohjelmistoalalle kilpailtu markkina vai muutaman suuren toimittajan pysyvä asiakassuhde. Nykyinen hankintalaki keskittyy siihen, miten kilpailutus järjestetään, ei siihen, mitä hankinnan jälkeen tapahtuu. Suurimmassa osassa julkishallinnon järjestelmistä siirtyminen toiselle toimittajalle on käytännössä mahdotonta, koska siirrettävyyttä ei ole yleensä suunniteltu sisään. Kun vaihtoehtoa ei ole, hinta ei enää ohjaudu markkinaehtoisesti: toimittaja tietää, ettei asiakas voi lähteä, ja neuvotteluasema siirtyy pysyvästi toimittajalle.
+
+## Miksi siirtyminen muuttuu mahdottomaksi?
+
+[Otso Kivekkään analyysi vuodelta 2024 julkisen sektorin ohjelmistohankinnoista](https://otsokivekas.fi/2024/11/miten-tietojarjestelmahankinta-epaonnistuu/) erottelee kolme hankintastrategiaa: valmis tuote, oma kehitys ja strateginen kumppanuus. Jokainen voi toimia, kun se valitaan hyvin perustein. Yleisin epäonnistumisen syy syntyy järjestyksestä: tarjouspyyntö kirjoitetaan ennen kuin organisaatio on edes päättänyt, mitä ongelmaa se ratkaisee tai mitä prosessimuutosta uusi järjestelmä vaatii. Yhtä tarjouspyyntöä on mahdotonta kirjoittaa niin, että se sopisi yhtä hyvin sekä kehitystiimille että valmiille tuotteelle, jos strategiaa ei ole ensin valittu.
+
+Kun rajapinnat, dataformaatit ja integraatiot rakennetaan yhden toimittajan ehdoilla, siirtymisen kustannus kasvaa vuosi vuodelta, kunnes vaihtaminen ei ole enää edes teoriassa mahdollista. Oma ajattelumalli, jota olen pyrkinyt jokaisessa ohjelmistohankkeessani noudattamaan, on aina ollut, että järjestelmän jokaisen kerroksen tulisi olla vaihdettavissa.
+
+eVaka todistaa, että jaettu vaihtoehto toimii ja on halvempi. Espoon, Tampereen, Oulun ja Turun yhdessä kehittämän eVakan [lähdekoodi on julkinen](https://github.com/espoon-voltti/evaka), ja järjestelmä on jo [yli kymmenen kunnan käytössä](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella), väestöpohjaltaan noin 1,2 miljoonaa asukasta. Sen kehitykseen oli [vuoteen 2023 mennessä käytetty noin yhdeksän miljoonaa euroa](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi), josta osa oli valtion digitalisaatiotukea.
+
+Helsinki taas rakensi yksin omaa asiointijärjestelmäänsä Astia, joka kattoi sekä varhaiskasvatuksen että perusopetuksen asioinnin. Kaupunki [käytti siihen noin 32 miljoonaa euroa vuosina 2019–2023 ja keskeytti kehityksen järjestelmän valmistumatta](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/), vaikka alkuperäinen kustannusarvio oli noin 60 miljoonaa euroa. Sama hallitsemattoman käyttöönoton logiikka näkyi Helsingin palkanmaksussa: kaupunki otti keväällä 2022 käyttöön uuden Sarastia365 HR -järjestelmän, ja [tuhannet työntekijät saivat vääriä palkkoja tai jäivät kokonaan ilman](https://yle.fi/a/74-20026642).
+
+Sama suunta on tunnistettu EU-tasolla: komission valmistelema pilvi- ja tekoälysäädös (Cloud and AI Development Act) [ehdottaa avointa lähdekoodia julkisten pilvi- ja tekoälyhankintojen oletukseksi](https://fsfe.org/news/2026/news-20260603-01.en.html) juuri samasta syystä.
+
+Kumpikaan tapaus ei ole ainutlaatuinen suomalainen erehdys. Sama malli toistuu joka kerta, kun hankintayksikkö tekee yksittäisiä päätöksiä ilman, että kukaan kysyy, miten tästä järjestelmästä joskus pääsee pois. Opetus ei koske yksittäistä kaupunkia. Se koskee koko hankintajärjestelmää: ilman sisäänrakennettua siirrettävyysvaatimusta sama virhe toistuu seuraavassakin hankinnassa, riippumatta siitä, kuka sen tekee.
+
+## Siirrettävyys kirjattava hankintalakiin
+
+Hankintalakiin tulee kirjata vaatimus, että jokaisesta julkishallinnon kriittisestä järjestelmästä on voitava siirtää data, prosessit ja integraatiot toiselle toimittajalle. Siirrettävyys ja avoimet rajapinnat kirjataan hankinnan ehdoiksi heti alussa, ei lisätä jälkikäteen sopimusneuvottelussa, jossa neuvotteluasema on jo menetetty. Jokaiseen kriittiseen ICT-hankintaan liitetään pakollinen [toimittajariippuvuusarvio](/fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/) ennen päätöstä: komponenttiluettelo, toimitusketjun varmennus, päivitysprosessin kuvaus ja toimittajan tietoturvapäivitysten vasteaika kirjataan auki jo tarjouspyyntöön.
+
+Modulaarinen hankinta asetetaan oletukseksi monoliitin sijaan, jotta yksi toimittaja ei voi koskaan omia koko järjestelmää. [Avoin lähdekoodi asetetaan oletukseksi kriittisissä järjestelmissä](/fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/), koska jaetut ylläpitokustannukset tekevät järjestelmästä sekä halvemman että vakaamman, aivan kuten eVakassa. Kun useampi kunta jakaa saman ylläpidon, veronmaksajan raha riittää pidemmälle eikä yksikään yksittäinen toimittaja pääse sanelemaan hintaa. Käytännössä tämä tarkoittaisi, että kunta voisi kilpailuttaa järjestelmänsä ylläpidon muutaman vuoden välein aivan kuten mitä tahansa muutakin palvelua, sen sijaan että se olisi sidottu samaan toimittajaan vuosikymmeniksi.
+
+Käytännössä avoimet rajapinnat tarkoittavat kolmea asiaa: dataformaatit ovat julkisesti dokumentoituja ja standardoituja, integraatiot rakennetaan tunnettujen rajapintastandardien varaan, ja sopimukseen kirjataan aina selkeä irtautumislauseke, joka määrittää, miten data ja dokumentaatio siirtyvät seuraavalle toimittajalle. Ne ovat kaikki [toteutettavissa jo tänään](/fi/blog/53/digitaalinen-itsenaisyys-rakennetaan-askel-kerrallaan/), kunhan hankintayksikkö vaatii niitä ennen sopimuksen allekirjoittamista, ei sen jälkeen.
+
+## Kilpailulla on hintansa, riippuvuudella suurempi
+
+Siirrettävyysvaatimus ei ole ilmainen. Rajapintojen dokumentointi, komponenttiluettelot ja toimittajariippuvuusarvioinnit vaativat hankintayksiköltä osaamista ja aikaa, joka pieneltä kunnalta voi puuttua kokonaan. Tämä kustannus kannattaa sanoa ääneen. Pienen kunnan ei tarvitse rakentaa tätä osaamista yksin: hankintayksiköt voivat jakaa saman arviointimallin ja asiantuntemuksen, aivan kuten ne jo jakavat eVakan ylläpidon.
+
+Vaihtoehto on kuitenkin kalliimpi: kun rajapinnat ovat avoimet ja siirrettävyys taattu, myös [suomalainen pk-yritys pystyy tarjoamaan osan kokonaisuudesta](/fi/blog/74/kolme-keinoa-yrittamisen-helpottamiseen/), ja tarjouskilpailusta tulee oikea kilpailu yhden suuren toimittajan sanelun sijaan.
+
+Hyöty ei ole pelkkä halvempi hinta. Kun kunta voi vaihtaa toimittajaa, se [säilyttää otteen omasta järjestelmästään](/fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/) myös silloin, kun toimittaja korottaa hintojaan, ajautuu vaikeuksiin tai lopettaa tuotteen. Tällaista varmuutta on vaikea ostaa takaisin jälkikäteen, ja juuri se on julkiselle palvelulle tärkeämpää kuin yhdenkään yksittäisen kilpailutuksen hinta.
+
+Kilpailu ei synny toivomalla sitä. Se syntyy siitä, että lähteminen on mahdollista.
+
+Se sama vanhempi, joka kirjautui eVakaan keväällä 2026, hyötyisi samasta periaatteesta jokaisessa muussakin asioinnissaan kunnan kanssa. Kuinka moni kunnan päättäjä osaisi tänään sanoa, pääsisikö hänen kuntansa irti nykyisestä järjestelmätoimittajastaan, jos pitäisi?
