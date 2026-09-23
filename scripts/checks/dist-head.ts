@@ -196,6 +196,16 @@ export function checkPage(html: string, pagePath: string, builtPaths: Set<string
         else if (!posting.datePublished) problems.push('BlogPosting JSON-LD missing datePublished')
     }
 
+    /*
+     * Google's structured-data policy: marked-up FAQ content must be visible on
+     * the page. The layouts gate both on hasFaqSection(), but a PageLayout page
+     * composes its own body — it can carry faq frontmatter (which reaches Head
+     * unconditionally) while forgetting to render the plate. That mismatch is
+     * invisible in review, so catch it in the built HTML instead.
+     */
+    if (parsedTypes.some((d) => d['@type'] === 'FAQPage') && !/class="faq section"/.test(html))
+        problems.push('FAQPage JSON-LD with no visible FAQ section')
+
     return problems
 }
 
