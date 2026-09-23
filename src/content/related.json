@@ -1,0 +1,2594 @@
+{
+  "candidateSetHash": "56c5260178655eb6cdcccdbf541f6bd84060ac60fa9b894cf2462be1706b7833",
+  "entries": {
+    "newsletter:1": {
+      "ranked": [
+        {
+          "key": "newsletter:5",
+          "p": 0.51
+        },
+        {
+          "key": "newsletter:4",
+          "p": 0.39
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.1
+        }
+      ],
+      "sourceHash": "6e63f0bcbaf9bb2198760f34d507e21c6dea406c93f57e545d6f522b73e488db"
+    },
+    "newsletter:2": {
+      "ranked": [
+        {
+          "key": "newsletter:1",
+          "p": 0.96
+        },
+        {
+          "key": "newsletter:4",
+          "p": 0.03
+        },
+        {
+          "key": "newsletter:5",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "f41775acdb47882e4517170e287574d522892c83997e549027d291ac92537c49"
+    },
+    "newsletter:3": {
+      "ranked": [
+        {
+          "key": "newsletter:6",
+          "p": 0.45
+        },
+        {
+          "key": "newsletter:9",
+          "p": 0.28
+        },
+        {
+          "key": "newsletter:8",
+          "p": 0.16
+        },
+        {
+          "key": "newsletter:4",
+          "p": 0.05
+        },
+        {
+          "key": "newsletter:7",
+          "p": 0.02
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.02
+        },
+        {
+          "key": "newsletter:1",
+          "p": 0.02
+        }
+      ],
+      "sourceHash": "630bf08ae7d97b5105d07b07687c33155b2b29a3f5b1bc30c6da15c9b33eb47f"
+    },
+    "newsletter:4": {
+      "ranked": [
+        {
+          "key": "newsletter:6",
+          "p": 0.46
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.23
+        },
+        {
+          "key": "newsletter:1",
+          "p": 0.14
+        },
+        {
+          "key": "newsletter:7",
+          "p": 0.05
+        },
+        {
+          "key": "newsletter:9",
+          "p": 0.04
+        },
+        {
+          "key": "newsletter:8",
+          "p": 0.04
+        },
+        {
+          "key": "newsletter:5",
+          "p": 0.04
+        }
+      ],
+      "sourceHash": "b1033dd87787e0fcdf8f39541c985d64fba76c2ac5d0d10176f6f4defe6d10fb"
+    },
+    "newsletter:5": {
+      "ranked": [
+        {
+          "key": "newsletter:1",
+          "p": 0.81
+        },
+        {
+          "key": "newsletter:4",
+          "p": 0.14
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.04
+        }
+      ],
+      "sourceHash": "9b2631cfc1f8fbfc76947d3b70fb877ff9c75dd7422ecc5833e5b62b1534d22a"
+    },
+    "newsletter:6": {
+      "ranked": [
+        {
+          "key": "newsletter:8",
+          "p": 1
+        }
+      ],
+      "sourceHash": "83caadafa9c1c257a0954ae1b55341ed45439ab140a9f99eaa15165be8eea377"
+    },
+    "newsletter:7": {
+      "ranked": [
+        {
+          "key": "newsletter:4",
+          "p": 0.37
+        },
+        {
+          "key": "newsletter:6",
+          "p": 0.22
+        },
+        {
+          "key": "newsletter:8",
+          "p": 0.16
+        },
+        {
+          "key": "newsletter:9",
+          "p": 0.12
+        },
+        {
+          "key": "newsletter:1",
+          "p": 0.09
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.02
+        },
+        {
+          "key": "newsletter:5",
+          "p": 0.01
+        },
+        {
+          "key": "newsletter:3",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "9a3fcc1b02cfba8b13678d45d84430d10c99c26c25a34f8122e1b20bf446cd03"
+    },
+    "newsletter:8": {
+      "ranked": [
+        {
+          "key": "newsletter:6",
+          "p": 1
+        }
+      ],
+      "sourceHash": "e47e1e0f61eb80f30e2871867abd5bcc044973b022febbb4b38613bc0b0dc876"
+    },
+    "newsletter:9": {
+      "ranked": [
+        {
+          "key": "newsletter:8",
+          "p": 0.4
+        },
+        {
+          "key": "newsletter:6",
+          "p": 0.27
+        },
+        {
+          "key": "newsletter:4",
+          "p": 0.16
+        },
+        {
+          "key": "newsletter:7",
+          "p": 0.13
+        },
+        {
+          "key": "newsletter:3",
+          "p": 0.02
+        },
+        {
+          "key": "newsletter:2",
+          "p": 0.01
+        },
+        {
+          "key": "newsletter:1",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "489b47618852a2f4aeabad37131198fd868a19ce43457a3b6232efaaa213f9dd"
+    },
+    "post:1": {
+      "ranked": [
+        {
+          "key": "post:4",
+          "p": 0.37
+        },
+        {
+          "key": "post:2",
+          "p": 0.34
+        },
+        {
+          "key": "post:3",
+          "p": 0.1
+        },
+        {
+          "key": "post:19",
+          "p": 0.08
+        },
+        {
+          "key": "post:33",
+          "p": 0.04
+        },
+        {
+          "key": "post:6",
+          "p": 0.02
+        },
+        {
+          "key": "post:64",
+          "p": 0.01
+        },
+        {
+          "key": "post:52",
+          "p": 0.01
+        },
+        {
+          "key": "post:38",
+          "p": 0.01
+        },
+        {
+          "key": "post:20",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "bc8955f11e667fcc9273eea1f903dd22d015adf6c3a0c7bbf6a8e5f04bfdf133"
+    },
+    "post:2": {
+      "ranked": [
+        {
+          "key": "post:1",
+          "p": 0.33
+        },
+        {
+          "key": "post:4",
+          "p": 0.25
+        },
+        {
+          "key": "post:3",
+          "p": 0.09
+        },
+        {
+          "key": "post:19",
+          "p": 0.08
+        },
+        {
+          "key": "post:6",
+          "p": 0.08
+        },
+        {
+          "key": "post:33",
+          "p": 0.06
+        },
+        {
+          "key": "post:10",
+          "p": 0.03
+        },
+        {
+          "key": "post:20",
+          "p": 0.02
+        },
+        {
+          "key": "post:64",
+          "p": 0.01
+        },
+        {
+          "key": "post:52",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "65e2247762d969e72ec4312854a39b372efe8eb5d532c79bbad6600d2dec7499"
+    },
+    "post:3": {
+      "ranked": [
+        {
+          "key": "post:1",
+          "p": 0.52
+        },
+        {
+          "key": "post:4",
+          "p": 0.29
+        },
+        {
+          "key": "post:19",
+          "p": 0.1
+        },
+        {
+          "key": "post:37",
+          "p": 0.05
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        },
+        {
+          "key": "post:6",
+          "p": 0.01
+        },
+        {
+          "key": "post:2",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "8ab7df94928c420a75c8f528ee48554f0fb1c763b58e4046ed6f99c2e8781613"
+    },
+    "post:4": {
+      "ranked": [
+        {
+          "key": "post:6",
+          "p": 0.37
+        },
+        {
+          "key": "post:33",
+          "p": 0.17
+        },
+        {
+          "key": "post:3",
+          "p": 0.14
+        },
+        {
+          "key": "post:5",
+          "p": 0.13
+        },
+        {
+          "key": "post:37",
+          "p": 0.1
+        },
+        {
+          "key": "post:19",
+          "p": 0.04
+        },
+        {
+          "key": "post:15",
+          "p": 0.03
+        },
+        {
+          "key": "post:35",
+          "p": 0.01
+        },
+        {
+          "key": "post:1",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "dce50378a621edd62b46b5ff4d4497ffd7caf75bf2b09eb5bf0eba9268a415c7"
+    },
+    "post:5": {
+      "ranked": [
+        {
+          "key": "post:37",
+          "p": 0.45
+        },
+        {
+          "key": "post:50",
+          "p": 0.17
+        },
+        {
+          "key": "post:15",
+          "p": 0.16
+        },
+        {
+          "key": "post:33",
+          "p": 0.06
+        },
+        {
+          "key": "post:35",
+          "p": 0.04
+        },
+        {
+          "key": "post:4",
+          "p": 0.04
+        },
+        {
+          "key": "post:78",
+          "p": 0.02
+        },
+        {
+          "key": "post:58",
+          "p": 0.01
+        },
+        {
+          "key": "post:49",
+          "p": 0.01
+        },
+        {
+          "key": "post:46",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "41b74f79866a8ae7b75190cbc331f261413fda11e093e0d11c11c0c3b088e322"
+    },
+    "post:6": {
+      "ranked": [
+        {
+          "key": "post:4",
+          "p": 0.64
+        },
+        {
+          "key": "post:19",
+          "p": 0.13
+        },
+        {
+          "key": "post:3",
+          "p": 0.11
+        },
+        {
+          "key": "post:37",
+          "p": 0.06
+        },
+        {
+          "key": "post:33",
+          "p": 0.04
+        },
+        {
+          "key": "post:28",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "25a66de90b0f071f6dc453b41deaaeb447222f8e636443be7226a32a2f816f4a"
+    },
+    "post:7": {
+      "ranked": [
+        {
+          "key": "post:10",
+          "p": 0.42
+        },
+        {
+          "key": "post:9",
+          "p": 0.3
+        },
+        {
+          "key": "post:11",
+          "p": 0.1
+        },
+        {
+          "key": "post:34",
+          "p": 0.08
+        },
+        {
+          "key": "post:20",
+          "p": 0.05
+        },
+        {
+          "key": "post:63",
+          "p": 0.01
+        },
+        {
+          "key": "post:60",
+          "p": 0.01
+        },
+        {
+          "key": "post:58",
+          "p": 0.01
+        },
+        {
+          "key": "post:33",
+          "p": 0.01
+        },
+        {
+          "key": "post:1",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "fbddb867dece62de547d87e2926064b9114cd433b26a6a0de5523c924e7cc85b"
+    },
+    "post:8": {
+      "ranked": [
+        {
+          "key": "post:1",
+          "p": 0.3
+        },
+        {
+          "key": "post:33",
+          "p": 0.28
+        },
+        {
+          "key": "post:70",
+          "p": 0.1
+        },
+        {
+          "key": "post:41",
+          "p": 0.1
+        },
+        {
+          "key": "post:10",
+          "p": 0.08
+        },
+        {
+          "key": "post:11",
+          "p": 0.04
+        },
+        {
+          "key": "post:78",
+          "p": 0.02
+        },
+        {
+          "key": "post:7",
+          "p": 0.02
+        },
+        {
+          "key": "post:60",
+          "p": 0.01
+        },
+        {
+          "key": "post:58",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "f235d149931778db6e3d1d1645d6864cdf363fc75f68a17f01c15076f634d13b"
+    },
+    "post:9": {
+      "ranked": [
+        {
+          "key": "post:10",
+          "p": 0.44
+        },
+        {
+          "key": "post:11",
+          "p": 0.32
+        },
+        {
+          "key": "post:7",
+          "p": 0.23
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "5461803e69fc9316501188103a82c3330d995ac302d6264191111439636d3633"
+    },
+    "post:10": {
+      "ranked": [
+        {
+          "key": "post:11",
+          "p": 0.84
+        },
+        {
+          "key": "post:9",
+          "p": 0.07
+        },
+        {
+          "key": "post:7",
+          "p": 0.05
+        },
+        {
+          "key": "post:44",
+          "p": 0.01
+        },
+        {
+          "key": "post:37",
+          "p": 0.01
+        },
+        {
+          "key": "post:19",
+          "p": 0.01
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "881076d56449aa016d5bfca11d36f392938940ee482c48e20cb10d71b4cf479a"
+    },
+    "post:11": {
+      "ranked": [
+        {
+          "key": "post:10",
+          "p": 0.43
+        },
+        {
+          "key": "post:8",
+          "p": 0.2
+        },
+        {
+          "key": "post:7",
+          "p": 0.13
+        },
+        {
+          "key": "post:36",
+          "p": 0.07
+        },
+        {
+          "key": "post:41",
+          "p": 0.04
+        },
+        {
+          "key": "post:9",
+          "p": 0.03
+        },
+        {
+          "key": "post:1",
+          "p": 0.03
+        },
+        {
+          "key": "post:15",
+          "p": 0.02
+        },
+        {
+          "key": "post:70",
+          "p": 0.01
+        },
+        {
+          "key": "post:60",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "8539b620689bb027df7e7b47e190279ff0159499872aead9cce29abfdbd0e50f"
+    },
+    "post:12": {
+      "ranked": [
+        {
+          "key": "post:78",
+          "p": 0.86
+        },
+        {
+          "key": "post:17",
+          "p": 0.11
+        },
+        {
+          "key": "post:56",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "95dc1bb191da04246fcf043b7b7fdff8f9a96e98d69501f48dc5518c65f8b7e7"
+    },
+    "post:13": {
+      "ranked": [
+        {
+          "key": "post:46",
+          "p": 0.39
+        },
+        {
+          "key": "post:41",
+          "p": 0.28
+        },
+        {
+          "key": "post:70",
+          "p": 0.15
+        },
+        {
+          "key": "post:75",
+          "p": 0.1
+        },
+        {
+          "key": "post:33",
+          "p": 0.05
+        },
+        {
+          "key": "post:50",
+          "p": 0.01
+        },
+        {
+          "key": "post:35",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "7237ba16f7bee98c16e60c8cdad229fe7bac5e6e846514900be7011aaef91e65"
+    },
+    "post:14": {
+      "ranked": [
+        {
+          "key": "post:28",
+          "p": 0.59
+        },
+        {
+          "key": "post:42",
+          "p": 0.19
+        },
+        {
+          "key": "post:40",
+          "p": 0.04
+        },
+        {
+          "key": "post:39",
+          "p": 0.04
+        },
+        {
+          "key": "post:64",
+          "p": 0.02
+        },
+        {
+          "key": "post:55",
+          "p": 0.02
+        },
+        {
+          "key": "post:32",
+          "p": 0.02
+        },
+        {
+          "key": "post:31",
+          "p": 0.02
+        },
+        {
+          "key": "post:36",
+          "p": 0.01
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2b58146246bc4629bc5e98eda6ce73fbf3395e19cc7b2e00b3c3c9c89441fcd2"
+    },
+    "post:15": {
+      "ranked": [
+        {
+          "key": "post:4",
+          "p": 0.49
+        },
+        {
+          "key": "post:50",
+          "p": 0.33
+        },
+        {
+          "key": "post:37",
+          "p": 0.08
+        },
+        {
+          "key": "post:5",
+          "p": 0.04
+        },
+        {
+          "key": "post:49",
+          "p": 0.02
+        },
+        {
+          "key": "post:78",
+          "p": 0.01
+        },
+        {
+          "key": "post:74",
+          "p": 0.01
+        },
+        {
+          "key": "post:35",
+          "p": 0.01
+        },
+        {
+          "key": "post:33",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "fe402f9ee170afc8c123f9ceb6aa1e1f25ee3a41e104379215073a1cb6f10204"
+    },
+    "post:16": {
+      "ranked": [
+        {
+          "key": "post:13",
+          "p": 0.96
+        },
+        {
+          "key": "post:33",
+          "p": 0.02
+        },
+        {
+          "key": "post:41",
+          "p": 0.01
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2f0224e2a4d8f15e656b69d290b0d3f919e4cc53c0b8021e28eb0cef290e6668"
+    },
+    "post:17": {
+      "ranked": [
+        {
+          "key": "post:12",
+          "p": 0.79
+        },
+        {
+          "key": "post:78",
+          "p": 0.2
+        },
+        {
+          "key": "post:56",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2f7a6d3534fbaeddc04d95864d34a93d0a3470c3e53f139a895443c379a8103b"
+    },
+    "post:18": {
+      "ranked": [
+        {
+          "key": "post:33",
+          "p": 0.8
+        },
+        {
+          "key": "post:34",
+          "p": 0.13
+        },
+        {
+          "key": "post:20",
+          "p": 0.02
+        },
+        {
+          "key": "post:7",
+          "p": 0.02
+        },
+        {
+          "key": "post:74",
+          "p": 0.01
+        },
+        {
+          "key": "post:32",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "133213c5f24a5e5e93c3bd36a553711f90f3f290b7ac98e9977c7f8d300e158f"
+    },
+    "post:19": {
+      "ranked": [
+        {
+          "key": "post:27",
+          "p": 0.36
+        },
+        {
+          "key": "post:4",
+          "p": 0.18
+        },
+        {
+          "key": "post:37",
+          "p": 0.11
+        },
+        {
+          "key": "post:3",
+          "p": 0.11
+        },
+        {
+          "key": "post:15",
+          "p": 0.1
+        },
+        {
+          "key": "post:6",
+          "p": 0.07
+        },
+        {
+          "key": "post:38",
+          "p": 0.03
+        },
+        {
+          "key": "post:22",
+          "p": 0.02
+        },
+        {
+          "key": "post:33",
+          "p": 0.01
+        },
+        {
+          "key": "post:1",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "4037985617bbb0e945b63150c1cff139d1117e19819cf28b476c98a3b36e357c"
+    },
+    "post:20": {
+      "ranked": [
+        {
+          "key": "post:37",
+          "p": 0.45
+        },
+        {
+          "key": "post:4",
+          "p": 0.33
+        },
+        {
+          "key": "post:33",
+          "p": 0.09
+        },
+        {
+          "key": "post:41",
+          "p": 0.07
+        },
+        {
+          "key": "post:3",
+          "p": 0.03
+        },
+        {
+          "key": "post:70",
+          "p": 0.01
+        },
+        {
+          "key": "post:9",
+          "p": 0.01
+        },
+        {
+          "key": "post:7",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "e52c4915ddad2b9669ee5cf2aa950ee5430203d7ab3612977c3982c42a596658"
+    },
+    "post:21": {
+      "ranked": [
+        {
+          "key": "post:55",
+          "p": 0.49
+        },
+        {
+          "key": "post:37",
+          "p": 0.22
+        },
+        {
+          "key": "post:15",
+          "p": 0.06
+        },
+        {
+          "key": "post:32",
+          "p": 0.05
+        },
+        {
+          "key": "post:27",
+          "p": 0.04
+        },
+        {
+          "key": "post:4",
+          "p": 0.03
+        },
+        {
+          "key": "post:33",
+          "p": 0.02
+        },
+        {
+          "key": "post:20",
+          "p": 0.02
+        },
+        {
+          "key": "post:61",
+          "p": 0.01
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "04aaf99feee30a0994b1e01a4286e9c4a0159f096608b5acfc556c80af6e26b7"
+    },
+    "post:22": {
+      "ranked": [
+        {
+          "key": "post:27",
+          "p": 0.98
+        },
+        {
+          "key": "post:37",
+          "p": 0.01
+        },
+        {
+          "key": "post:19",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "1e2b432a234392e86410d25d87d7dfba8ca0dbf775c56de5ab59566a2c746d50"
+    },
+    "post:23": {
+      "ranked": [
+        {
+          "key": "post:24",
+          "p": 0.92
+        },
+        {
+          "key": "post:42",
+          "p": 0.06
+        },
+        {
+          "key": "post:28",
+          "p": 0.01
+        },
+        {
+          "key": "post:26",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "5329bfa304527ba1e55f4a018d3c03810b612ee01f5fc7d640ce7df928f257b5"
+    },
+    "post:24": {
+      "ranked": [
+        {
+          "key": "post:26",
+          "p": 0.44
+        },
+        {
+          "key": "post:28",
+          "p": 0.19
+        },
+        {
+          "key": "post:42",
+          "p": 0.18
+        },
+        {
+          "key": "post:23",
+          "p": 0.16
+        },
+        {
+          "key": "post:31",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "0424f8a7061136d67f248bf4674ff959ef3c23998c22b6c8e0dbc2ba0cdf64e5"
+    },
+    "post:25": {
+      "ranked": [
+        {
+          "key": "post:40",
+          "p": 0.48
+        },
+        {
+          "key": "post:52",
+          "p": 0.13
+        },
+        {
+          "key": "post:39",
+          "p": 0.13
+        },
+        {
+          "key": "post:42",
+          "p": 0.11
+        },
+        {
+          "key": "post:32",
+          "p": 0.05
+        },
+        {
+          "key": "post:10",
+          "p": 0.03
+        },
+        {
+          "key": "post:64",
+          "p": 0.02
+        },
+        {
+          "key": "post:55",
+          "p": 0.02
+        },
+        {
+          "key": "post:31",
+          "p": 0.01
+        },
+        {
+          "key": "post:24",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "841b4257255f1c53099aa57c98f7346718fcdcec3d5044b9a2cd0b6b86a28993"
+    },
+    "post:26": {
+      "ranked": [
+        {
+          "key": "post:28",
+          "p": 0.5
+        },
+        {
+          "key": "post:42",
+          "p": 0.24
+        },
+        {
+          "key": "post:29",
+          "p": 0.12
+        },
+        {
+          "key": "post:31",
+          "p": 0.07
+        },
+        {
+          "key": "post:30",
+          "p": 0.04
+        },
+        {
+          "key": "post:24",
+          "p": 0.02
+        },
+        {
+          "key": "post:23",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "530b70d03edffceacd86241c433c6bdb92a0f90ac8e2587eac0e72dc7abd608b"
+    },
+    "post:27": {
+      "ranked": [
+        {
+          "key": "post:22",
+          "p": 0.99
+        },
+        {
+          "key": "post:9",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "45db59a2c93f9fc7e94e4e763a1643a444d50b6d0ba268d41c127028292a313f"
+    },
+    "post:28": {
+      "ranked": [
+        {
+          "key": "post:29",
+          "p": 0.74
+        },
+        {
+          "key": "post:42",
+          "p": 0.09
+        },
+        {
+          "key": "post:26",
+          "p": 0.07
+        },
+        {
+          "key": "post:24",
+          "p": 0.04
+        },
+        {
+          "key": "post:31",
+          "p": 0.03
+        },
+        {
+          "key": "post:30",
+          "p": 0.01
+        },
+        {
+          "key": "post:23",
+          "p": 0.01
+        },
+        {
+          "key": "post:6",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "826007495e8e4117a4876be495cc33b0b2526b4798fe77ccd0af4203fada249d"
+    },
+    "post:29": {
+      "ranked": [
+        {
+          "key": "post:30",
+          "p": 0.3
+        },
+        {
+          "key": "post:42",
+          "p": 0.28
+        },
+        {
+          "key": "post:28",
+          "p": 0.23
+        },
+        {
+          "key": "post:31",
+          "p": 0.14
+        },
+        {
+          "key": "post:26",
+          "p": 0.02
+        },
+        {
+          "key": "post:24",
+          "p": 0.01
+        },
+        {
+          "key": "post:23",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "7ada5c7cf980d7929969eca000fde3f9afde362e9f366b0615d70de4e0dfc1ab"
+    },
+    "post:30": {
+      "ranked": [
+        {
+          "key": "post:31",
+          "p": 0.76
+        },
+        {
+          "key": "post:42",
+          "p": 0.23
+        },
+        {
+          "key": "post:23",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2b9663e29950c055e159d384dbb54eb4a389646949a90fd5a916ef98cd818bd5"
+    },
+    "post:31": {
+      "ranked": [
+        {
+          "key": "post:30",
+          "p": 0.58
+        },
+        {
+          "key": "post:42",
+          "p": 0.41
+        },
+        {
+          "key": "post:9",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "ce7a1bcdfdd550478fdbdaedcdef2e52ae1bcfaae79faeaef66fd0d6c356a3be"
+    },
+    "post:32": {
+      "ranked": [
+        {
+          "key": "post:14",
+          "p": 0.33
+        },
+        {
+          "key": "post:42",
+          "p": 0.25
+        },
+        {
+          "key": "post:28",
+          "p": 0.22
+        },
+        {
+          "key": "post:23",
+          "p": 0.05
+        },
+        {
+          "key": "post:60",
+          "p": 0.04
+        },
+        {
+          "key": "post:25",
+          "p": 0.04
+        },
+        {
+          "key": "post:55",
+          "p": 0.01
+        },
+        {
+          "key": "post:37",
+          "p": 0.01
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        },
+        {
+          "key": "post:31",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "3cd5251a61257e4a2b7336c9001bd2b91411a8a16158b57261e650da3f1b3beb"
+    },
+    "post:33": {
+      "ranked": [
+        {
+          "key": "post:34",
+          "p": 0.33
+        },
+        {
+          "key": "post:37",
+          "p": 0.16
+        },
+        {
+          "key": "post:46",
+          "p": 0.14
+        },
+        {
+          "key": "post:15",
+          "p": 0.13
+        },
+        {
+          "key": "post:4",
+          "p": 0.07
+        },
+        {
+          "key": "post:20",
+          "p": 0.05
+        },
+        {
+          "key": "post:49",
+          "p": 0.03
+        },
+        {
+          "key": "post:35",
+          "p": 0.02
+        },
+        {
+          "key": "post:78",
+          "p": 0.01
+        },
+        {
+          "key": "post:50",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "0eb81a29bed205ec1ee6545017220a0f5f5921ef37e59870e550bc0714a56cf4"
+    },
+    "post:34": {
+      "ranked": [
+        {
+          "key": "post:33",
+          "p": 0.49
+        },
+        {
+          "key": "post:19",
+          "p": 0.16
+        },
+        {
+          "key": "post:38",
+          "p": 0.13
+        },
+        {
+          "key": "post:37",
+          "p": 0.11
+        },
+        {
+          "key": "post:4",
+          "p": 0.05
+        },
+        {
+          "key": "post:42",
+          "p": 0.01
+        },
+        {
+          "key": "post:31",
+          "p": 0.01
+        },
+        {
+          "key": "post:27",
+          "p": 0.01
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        },
+        {
+          "key": "post:6",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "d27cee730ee2520d3889a14c9f054433457737f6bb6140c2da465fe25248d414"
+    },
+    "post:35": {
+      "ranked": [
+        {
+          "key": "post:49",
+          "p": 0.97
+        },
+        {
+          "key": "post:46",
+          "p": 0.02
+        },
+        {
+          "key": "post:17",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "b39fcb484938368d6977b7506de69c1c0817e0e6d75b53d52eee3098d2cd52f3"
+    },
+    "post:36": {
+      "ranked": [
+        {
+          "key": "post:22",
+          "p": 0.53
+        },
+        {
+          "key": "post:27",
+          "p": 0.14
+        },
+        {
+          "key": "post:37",
+          "p": 0.13
+        },
+        {
+          "key": "post:42",
+          "p": 0.04
+        },
+        {
+          "key": "post:38",
+          "p": 0.03
+        },
+        {
+          "key": "post:33",
+          "p": 0.03
+        },
+        {
+          "key": "post:31",
+          "p": 0.03
+        },
+        {
+          "key": "post:19",
+          "p": 0.03
+        },
+        {
+          "key": "post:30",
+          "p": 0.01
+        },
+        {
+          "key": "post:29",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "38982157daf3ae9cca809544e0ffbf480f969c8dda97b935e0dbcd13015bd7ef"
+    },
+    "post:37": {
+      "ranked": [
+        {
+          "key": "post:27",
+          "p": 0.43
+        },
+        {
+          "key": "post:22",
+          "p": 0.22
+        },
+        {
+          "key": "post:33",
+          "p": 0.15
+        },
+        {
+          "key": "post:19",
+          "p": 0.09
+        },
+        {
+          "key": "post:4",
+          "p": 0.06
+        },
+        {
+          "key": "post:36",
+          "p": 0.04
+        },
+        {
+          "key": "post:6",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "08a80ee239e1a0672bf3c41fbb162fc80c889e548b6ae295ca4ed326d738cfe6"
+    },
+    "post:38": {
+      "ranked": [
+        {
+          "key": "post:19",
+          "p": 0.52
+        },
+        {
+          "key": "post:5",
+          "p": 0.21
+        },
+        {
+          "key": "post:37",
+          "p": 0.11
+        },
+        {
+          "key": "post:6",
+          "p": 0.07
+        },
+        {
+          "key": "post:33",
+          "p": 0.02
+        },
+        {
+          "key": "post:15",
+          "p": 0.02
+        },
+        {
+          "key": "post:27",
+          "p": 0.01
+        },
+        {
+          "key": "post:22",
+          "p": 0.01
+        },
+        {
+          "key": "post:4",
+          "p": 0.01
+        },
+        {
+          "key": "post:3",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "78690c3757975442e5726db322ba8aa0241b8dfd58633ab790823da526ba17a1"
+    },
+    "post:39": {
+      "ranked": [
+        {
+          "key": "post:55",
+          "p": 0.42
+        },
+        {
+          "key": "post:64",
+          "p": 0.27
+        },
+        {
+          "key": "post:52",
+          "p": 0.26
+        },
+        {
+          "key": "post:40",
+          "p": 0.05
+        }
+      ],
+      "sourceHash": "f659ad799c1072f1fc9a5eb7a29b7904ae83953460304bf57b851dcd8181b7ba"
+    },
+    "post:40": {
+      "ranked": [
+        {
+          "key": "post:55",
+          "p": 0.72
+        },
+        {
+          "key": "post:64",
+          "p": 0.13
+        },
+        {
+          "key": "post:39",
+          "p": 0.12
+        },
+        {
+          "key": "post:52",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "c17e7d65db5e24e80a7754a5e5873e69bbb4f723684c5d54361e6d89ae2879c8"
+    },
+    "post:41": {
+      "ranked": [
+        {
+          "key": "post:70",
+          "p": 0.95
+        },
+        {
+          "key": "post:75",
+          "p": 0.02
+        },
+        {
+          "key": "post:50",
+          "p": 0.02
+        },
+        {
+          "key": "post:46",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "fe788e85778e5c17ebc24210c8d243c5e8c49adec2e551ab527b089267ffc0c7"
+    },
+    "post:42": {
+      "ranked": [
+        {
+          "key": "post:31",
+          "p": 0.22
+        },
+        {
+          "key": "post:24",
+          "p": 0.2
+        },
+        {
+          "key": "post:28",
+          "p": 0.19
+        },
+        {
+          "key": "post:23",
+          "p": 0.13
+        },
+        {
+          "key": "post:26",
+          "p": 0.1
+        },
+        {
+          "key": "post:30",
+          "p": 0.09
+        },
+        {
+          "key": "post:29",
+          "p": 0.02
+        },
+        {
+          "key": "post:38",
+          "p": 0.01
+        },
+        {
+          "key": "post:33",
+          "p": 0.01
+        },
+        {
+          "key": "post:14",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "e58340f4421ec95cc4a976ca5e9585efc1944508fecfea9b60a9032d89bf7caa"
+    },
+    "post:43": {
+      "ranked": [
+        {
+          "key": "post:51",
+          "p": 0.75
+        },
+        {
+          "key": "post:66",
+          "p": 0.08
+        },
+        {
+          "key": "post:54",
+          "p": 0.06
+        },
+        {
+          "key": "post:76",
+          "p": 0.05
+        },
+        {
+          "key": "post:53",
+          "p": 0.03
+        },
+        {
+          "key": "post:71",
+          "p": 0.02
+        },
+        {
+          "key": "post:67",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "83d00941a930437e778a38dfd2579c1e29e341d95022fded1326b90fe46cd11e"
+    },
+    "post:44": {
+      "ranked": [
+        {
+          "key": "post:60",
+          "p": 0.74
+        },
+        {
+          "key": "post:47",
+          "p": 0.18
+        },
+        {
+          "key": "post:72",
+          "p": 0.03
+        },
+        {
+          "key": "post:67",
+          "p": 0.02
+        },
+        {
+          "key": "post:53",
+          "p": 0.02
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "ef1102ed71defde17fddc2010837cb367c593fd7f8de6143c179da0feaccb635"
+    },
+    "post:45": {
+      "ranked": [
+        {
+          "key": "post:48",
+          "p": 0.66
+        },
+        {
+          "key": "post:54",
+          "p": 0.34
+        }
+      ],
+      "sourceHash": "5ba3ab624299f5c83272c5a484d2f19b890998603c54b59c8c67b7578e278ec9"
+    },
+    "post:46": {
+      "ranked": [
+        {
+          "key": "post:58",
+          "p": 0.46
+        },
+        {
+          "key": "post:50",
+          "p": 0.44
+        },
+        {
+          "key": "post:70",
+          "p": 0.05
+        },
+        {
+          "key": "post:41",
+          "p": 0.04
+        },
+        {
+          "key": "post:13",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "02016f05f156fa41b13d629ec03c3785cf0e41b51184356f3418c1ed120e7db0"
+    },
+    "post:47": {
+      "ranked": [
+        {
+          "key": "post:44",
+          "p": 0.33
+        },
+        {
+          "key": "post:43",
+          "p": 0.29
+        },
+        {
+          "key": "post:66",
+          "p": 0.1
+        },
+        {
+          "key": "post:67",
+          "p": 0.09
+        },
+        {
+          "key": "post:72",
+          "p": 0.07
+        },
+        {
+          "key": "post:57",
+          "p": 0.06
+        },
+        {
+          "key": "post:60",
+          "p": 0.01
+        },
+        {
+          "key": "post:54",
+          "p": 0.01
+        },
+        {
+          "key": "post:53",
+          "p": 0.01
+        },
+        {
+          "key": "post:51",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "7bf043e8cfa6eef002efc5fa514fd8d8b27884ff5e709a71c694aab069f8202c"
+    },
+    "post:48": {
+      "ranked": [
+        {
+          "key": "post:45",
+          "p": 0.97
+        },
+        {
+          "key": "post:54",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "227fa440a0a2ac1e41d299d1625c998acf6333991a65e89762aa7d876fc83846"
+    },
+    "post:49": {
+      "ranked": [
+        {
+          "key": "post:35",
+          "p": 0.99
+        },
+        {
+          "key": "post:46",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "de3405714b9912952637988b304ae7f82924930368d88cf4a226d4275ad8641b"
+    },
+    "post:50": {
+      "ranked": [
+        {
+          "key": "post:46",
+          "p": 0.72
+        },
+        {
+          "key": "post:58",
+          "p": 0.14
+        },
+        {
+          "key": "post:78",
+          "p": 0.11
+        },
+        {
+          "key": "post:15",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "81c52b8958aab184809f313ebefc2b71a11b84465698bea33a71cabd84103b2a"
+    },
+    "post:51": {
+      "ranked": [
+        {
+          "key": "post:53",
+          "p": 0.32
+        },
+        {
+          "key": "post:76",
+          "p": 0.28
+        },
+        {
+          "key": "post:66",
+          "p": 0.18
+        },
+        {
+          "key": "post:71",
+          "p": 0.14
+        },
+        {
+          "key": "post:67",
+          "p": 0.03
+        },
+        {
+          "key": "post:59",
+          "p": 0.02
+        },
+        {
+          "key": "post:69",
+          "p": 0.01
+        },
+        {
+          "key": "post:43",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "3c5887fa3c1a94c23b58df4750f2be14baf890584f4277539e4b8e754a9c796f"
+    },
+    "post:52": {
+      "ranked": [
+        {
+          "key": "post:55",
+          "p": 0.68
+        },
+        {
+          "key": "post:64",
+          "p": 0.26
+        },
+        {
+          "key": "post:39",
+          "p": 0.04
+        },
+        {
+          "key": "post:40",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "5e4ef51efe2d2199314d142f6b629cec8bebe6ced91b31276496b655f9724f1d"
+    },
+    "post:53": {
+      "ranked": [
+        {
+          "key": "post:66",
+          "p": 0.37
+        },
+        {
+          "key": "post:51",
+          "p": 0.26
+        },
+        {
+          "key": "post:69",
+          "p": 0.2
+        },
+        {
+          "key": "post:76",
+          "p": 0.06
+        },
+        {
+          "key": "post:71",
+          "p": 0.05
+        },
+        {
+          "key": "post:59",
+          "p": 0.05
+        },
+        {
+          "key": "post:43",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "14737357b7b5c77633b91696ae3be096e0d948ade3cb40cf9d7225ea00c7321c"
+    },
+    "post:54": {
+      "ranked": [
+        {
+          "key": "post:45",
+          "p": 0.98
+        },
+        {
+          "key": "post:48",
+          "p": 0.02
+        }
+      ],
+      "sourceHash": "4c9e0da0864e16f2d684c56ef683b337c14ef652a8e404c357d85ec60e389390"
+    },
+    "post:55": {
+      "ranked": [
+        {
+          "key": "post:64",
+          "p": 0.66
+        },
+        {
+          "key": "post:39",
+          "p": 0.18
+        },
+        {
+          "key": "post:52",
+          "p": 0.09
+        },
+        {
+          "key": "post:40",
+          "p": 0.06
+        }
+      ],
+      "sourceHash": "93a91ca1a4ae80c6adb26bab6f37d47218c357aadd31821c29c36736dc3c85e8"
+    },
+    "post:56": {
+      "ranked": [
+        {
+          "key": "post:17",
+          "p": 0.78
+        },
+        {
+          "key": "post:12",
+          "p": 0.19
+        },
+        {
+          "key": "post:49",
+          "p": 0.02
+        },
+        {
+          "key": "post:78",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "b685b2f92eba1fefc00874fa7d7a616c7ed1c4c965935f2b5c7cf0c0b2a580bd"
+    },
+    "post:57": {
+      "ranked": [
+        {
+          "key": "post:72",
+          "p": 0.98
+        },
+        {
+          "key": "post:67",
+          "p": 0.01
+        },
+        {
+          "key": "post:44",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "0910754e236a1dd6148e50bede569e2a9dd0b418e8775f1f185a3b509f2fe18c"
+    },
+    "post:58": {
+      "ranked": [
+        {
+          "key": "post:37",
+          "p": 0.23
+        },
+        {
+          "key": "post:46",
+          "p": 0.16
+        },
+        {
+          "key": "post:50",
+          "p": 0.11
+        },
+        {
+          "key": "post:70",
+          "p": 0.1
+        },
+        {
+          "key": "post:41",
+          "p": 0.08
+        },
+        {
+          "key": "post:15",
+          "p": 0.08
+        },
+        {
+          "key": "post:38",
+          "p": 0.07
+        },
+        {
+          "key": "post:33",
+          "p": 0.04
+        },
+        {
+          "key": "post:27",
+          "p": 0.03
+        },
+        {
+          "key": "post:19",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "04f71831aab81d618ffcabe08fedec5d8105e98595e7b5c211807e2e1963fe5b"
+    },
+    "post:59": {
+      "ranked": [
+        {
+          "key": "post:53",
+          "p": 0.49
+        },
+        {
+          "key": "post:76",
+          "p": 0.26
+        },
+        {
+          "key": "post:51",
+          "p": 0.18
+        },
+        {
+          "key": "post:66",
+          "p": 0.05
+        },
+        {
+          "key": "post:71",
+          "p": 0.01
+        },
+        {
+          "key": "post:69",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "c1049216634acead4d17bc282630971c776ebf14700431bb0d6cc29fd35f9d0d"
+    },
+    "post:60": {
+      "ranked": [
+        {
+          "key": "post:44",
+          "p": 0.92
+        },
+        {
+          "key": "post:53",
+          "p": 0.03
+        },
+        {
+          "key": "post:59",
+          "p": 0.01
+        },
+        {
+          "key": "post:58",
+          "p": 0.01
+        },
+        {
+          "key": "post:47",
+          "p": 0.01
+        },
+        {
+          "key": "post:38",
+          "p": 0.01
+        },
+        {
+          "key": "post:15",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "47773a632c9647d9ababc1cbaea0f25626728c273c57c1ffa1dcc000d36b3f87"
+    },
+    "post:61": {
+      "ranked": [
+        {
+          "key": "post:38",
+          "p": 0.41
+        },
+        {
+          "key": "post:19",
+          "p": 0.15
+        },
+        {
+          "key": "post:63",
+          "p": 0.1
+        },
+        {
+          "key": "post:27",
+          "p": 0.09
+        },
+        {
+          "key": "post:62",
+          "p": 0.06
+        },
+        {
+          "key": "post:1",
+          "p": 0.06
+        },
+        {
+          "key": "post:22",
+          "p": 0.04
+        },
+        {
+          "key": "post:34",
+          "p": 0.02
+        },
+        {
+          "key": "post:13",
+          "p": 0.02
+        },
+        {
+          "key": "post:58",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "38b708e701fe721a06f94056990be345544ca3f7b0ca1982649b14441cbc951f"
+    },
+    "post:62": {
+      "ranked": [
+        {
+          "key": "post:75",
+          "p": 0.78
+        },
+        {
+          "key": "post:77",
+          "p": 0.09
+        },
+        {
+          "key": "post:61",
+          "p": 0.08
+        },
+        {
+          "key": "post:68",
+          "p": 0.02
+        },
+        {
+          "key": "post:63",
+          "p": 0.01
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2283c9fe1780d565da1bf2a89bb14f44c6fd3b194627b2f281dff3038d1f03fc"
+    },
+    "post:63": {
+      "ranked": [
+        {
+          "key": "post:62",
+          "p": 0.6
+        },
+        {
+          "key": "post:75",
+          "p": 0.2
+        },
+        {
+          "key": "post:61",
+          "p": 0.15
+        },
+        {
+          "key": "post:34",
+          "p": 0.03
+        },
+        {
+          "key": "post:68",
+          "p": 0.02
+        }
+      ],
+      "sourceHash": "1f479cf0fdda16e95c89eb4c15b68b8e58224f6036ecff6618b74b783ddd6685"
+    },
+    "post:64": {
+      "ranked": [
+        {
+          "key": "post:55",
+          "p": 0.92
+        },
+        {
+          "key": "post:52",
+          "p": 0.03
+        },
+        {
+          "key": "post:40",
+          "p": 0.02
+        },
+        {
+          "key": "post:39",
+          "p": 0.02
+        },
+        {
+          "key": "post:38",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "0080c651314451be4ac5692f8d0f30ed85300d373ebc57ebdcd1907ee005acf3"
+    },
+    "post:65": {
+      "ranked": [
+        {
+          "key": "post:71",
+          "p": 0.49
+        },
+        {
+          "key": "post:77",
+          "p": 0.27
+        },
+        {
+          "key": "post:66",
+          "p": 0.07
+        },
+        {
+          "key": "post:51",
+          "p": 0.07
+        },
+        {
+          "key": "post:46",
+          "p": 0.04
+        },
+        {
+          "key": "post:53",
+          "p": 0.03
+        },
+        {
+          "key": "post:50",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "cb90b478a0ea95e221bbfd601380977d116bf86b7f96fe6a20235989c026bf7b"
+    },
+    "post:66": {
+      "ranked": [
+        {
+          "key": "post:53",
+          "p": 0.42
+        },
+        {
+          "key": "post:51",
+          "p": 0.28
+        },
+        {
+          "key": "post:76",
+          "p": 0.23
+        },
+        {
+          "key": "post:69",
+          "p": 0.02
+        },
+        {
+          "key": "post:43",
+          "p": 0.02
+        },
+        {
+          "key": "post:71",
+          "p": 0.01
+        },
+        {
+          "key": "post:67",
+          "p": 0.01
+        },
+        {
+          "key": "post:59",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "2f7d8fb9d337e9c555754ec8db4c4bfdcc249250f364b553552bdfc217230983"
+    },
+    "post:67": {
+      "ranked": [
+        {
+          "key": "post:51",
+          "p": 0.42
+        },
+        {
+          "key": "post:76",
+          "p": 0.35
+        },
+        {
+          "key": "post:53",
+          "p": 0.17
+        },
+        {
+          "key": "post:66",
+          "p": 0.03
+        },
+        {
+          "key": "post:71",
+          "p": 0.01
+        },
+        {
+          "key": "post:59",
+          "p": 0.01
+        },
+        {
+          "key": "post:43",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "46bb9ead9e7615bf2e33359041865587d94bfd260008b4de740dd838649c1b02"
+    },
+    "post:68": {
+      "ranked": [
+        {
+          "key": "post:71",
+          "p": 0.37
+        },
+        {
+          "key": "post:51",
+          "p": 0.18
+        },
+        {
+          "key": "post:75",
+          "p": 0.11
+        },
+        {
+          "key": "post:62",
+          "p": 0.08
+        },
+        {
+          "key": "post:53",
+          "p": 0.07
+        },
+        {
+          "key": "post:69",
+          "p": 0.05
+        },
+        {
+          "key": "post:76",
+          "p": 0.04
+        },
+        {
+          "key": "post:54",
+          "p": 0.02
+        },
+        {
+          "key": "post:67",
+          "p": 0.01
+        },
+        {
+          "key": "post:65",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "9f8c01ef417e390b32ae3dd32cbfed0c9a71ec957ce10bcd635745b78bc96b7f"
+    },
+    "post:69": {
+      "ranked": [
+        {
+          "key": "post:53",
+          "p": 0.56
+        },
+        {
+          "key": "post:51",
+          "p": 0.22
+        },
+        {
+          "key": "post:71",
+          "p": 0.17
+        },
+        {
+          "key": "post:76",
+          "p": 0.02
+        },
+        {
+          "key": "post:66",
+          "p": 0.01
+        },
+        {
+          "key": "post:43",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "69ee3ab1c5ccaef19ede0067e9c8fee1c133ff180b6b31adcf527b2d98cf73e1"
+    },
+    "post:70": {
+      "ranked": [
+        {
+          "key": "post:41",
+          "p": 0.99
+        },
+        {
+          "key": "post:46",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "881a76318ee10ee4add986c7dde101124262acd8fd8f3652760475119d4dcd5b"
+    },
+    "post:71": {
+      "ranked": [
+        {
+          "key": "post:51",
+          "p": 0.57
+        },
+        {
+          "key": "post:69",
+          "p": 0.27
+        },
+        {
+          "key": "post:76",
+          "p": 0.05
+        },
+        {
+          "key": "post:65",
+          "p": 0.04
+        },
+        {
+          "key": "post:77",
+          "p": 0.02
+        },
+        {
+          "key": "post:53",
+          "p": 0.02
+        },
+        {
+          "key": "post:67",
+          "p": 0.01
+        },
+        {
+          "key": "post:43",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "bae50f7c742568676477a7daee869b21880a3d0cd07eceec49628078881a3d49"
+    },
+    "post:72": {
+      "ranked": [
+        {
+          "key": "post:57",
+          "p": 0.98
+        },
+        {
+          "key": "post:47",
+          "p": 0.01
+        },
+        {
+          "key": "post:44",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "d296b70a0a8d7140934d0ae7f42710b097bbe75d778aaa74fb9252d90abf2822"
+    },
+    "post:73": {
+      "ranked": [
+        {
+          "key": "post:74",
+          "p": 0.93
+        },
+        {
+          "key": "post:57",
+          "p": 0.07
+        }
+      ],
+      "sourceHash": "5599791147264b61ed2f1cab35f2feed667003c6741f4d73a2d383569ec5dedf"
+    },
+    "post:74": {
+      "ranked": [
+        {
+          "key": "post:73",
+          "p": 0.98
+        },
+        {
+          "key": "post:75",
+          "p": 0.01
+        },
+        {
+          "key": "post:62",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "99180fb1fec0c42228f21e57ba4f1ac840f3bc80c9302c35416979c45356703f"
+    },
+    "post:75": {
+      "ranked": [
+        {
+          "key": "post:62",
+          "p": 0.68
+        },
+        {
+          "key": "post:77",
+          "p": 0.11
+        },
+        {
+          "key": "post:68",
+          "p": 0.06
+        },
+        {
+          "key": "post:65",
+          "p": 0.05
+        },
+        {
+          "key": "post:70",
+          "p": 0.03
+        },
+        {
+          "key": "post:74",
+          "p": 0.02
+        },
+        {
+          "key": "post:73",
+          "p": 0.01
+        },
+        {
+          "key": "post:41",
+          "p": 0.01
+        },
+        {
+          "key": "post:34",
+          "p": 0.01
+        },
+        {
+          "key": "post:13",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "23639f49d44ee24b0db9f2ecb9debc35947448efa93b64ad145121043ca63a9e"
+    },
+    "post:76": {
+      "ranked": [
+        {
+          "key": "post:53",
+          "p": 0.4
+        },
+        {
+          "key": "post:66",
+          "p": 0.32
+        },
+        {
+          "key": "post:51",
+          "p": 0.22
+        },
+        {
+          "key": "post:69",
+          "p": 0.03
+        },
+        {
+          "key": "post:59",
+          "p": 0.02
+        },
+        {
+          "key": "post:71",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "d3f9a01e9f43d995d3106d204064152ae29004d704173daa00bf7d15f6c3fe45"
+    },
+    "post:77": {
+      "ranked": [
+        {
+          "key": "post:65",
+          "p": 0.54
+        },
+        {
+          "key": "post:71",
+          "p": 0.33
+        },
+        {
+          "key": "post:62",
+          "p": 0.08
+        },
+        {
+          "key": "post:75",
+          "p": 0.02
+        },
+        {
+          "key": "post:69",
+          "p": 0.01
+        },
+        {
+          "key": "post:61",
+          "p": 0.01
+        }
+      ],
+      "sourceHash": "e3f43b3129fafaa4ac778c33680e187cc8a21f674d1a46429f81bfdbad7751cc"
+    },
+    "post:78": {
+      "ranked": [
+        {
+          "key": "post:12",
+          "p": 0.84
+        },
+        {
+          "key": "post:17",
+          "p": 0.09
+        },
+        {
+          "key": "post:50",
+          "p": 0.04
+        },
+        {
+          "key": "post:5",
+          "p": 0.03
+        }
+      ],
+      "sourceHash": "650b6bb91038f887d16b4a4c61278fd05f4fd04f527b0601faea69e8070b773b"
+    }
+  },
+  "generatedAt": "2026-09-23",
+  "model": "typesafe/jev-1.13-20260917"
+}
