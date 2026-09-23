@@ -5,6 +5,7 @@ import type { Post } from '../lib/posts'
 import AllPostsLink from '../components/AllPostsLink.astro'
 import Byline from '../components/Byline.astro'
 import ExcerptList from '../components/ExcerptList.astro'
+import Faq from '../components/Faq.astro'
 import NewsletterPlate from '../components/frontPage/NewsletterPlate.astro'
 import WritingsPlate from '../components/frontPage/WritingsPlate.astro'
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
@@ -13,6 +14,7 @@ import PostProse from '../components/post/PostProse.astro'
 import SocialShare from '../components/SocialShare.astro'
 import TitleBanner from '../components/TitleBanner.astro'
 import { breadcrumbLabels } from '../lib/breadcrumbs'
+import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
 import { ogId } from '../lib/og/id'
 import { relatedPostIds } from '../lib/related'
@@ -72,6 +74,9 @@ const i18n = {
 }
 
 const t = i18n[lang]
+
+// Narrowed here rather than in the template: the type guard does not carry into the JSX expression.
+const faqItems = hasFaqSection(faq) ? faq : undefined
 
 const ogImage = new URL(`/og/${ogId(canonicalSlug)}.png`, Astro.site).href
 
@@ -136,6 +141,11 @@ const breadcrumbs: BreadcrumbItem[] = [
             </PostProse>
         </div>
     </div>
+    {
+        faqItems && (
+            <Faq eyebrow={faqSectionLabels[lang].eyebrow} faq={faqItems} heading={faqSectionLabels[lang].heading} />
+        )
+    }
     <WritingsPlate
         allPostsHref={t.allPostsHref}
         allPostsLabel={t.allPostsLabel}
