@@ -28,6 +28,7 @@ import {
 } from '../content/person'
 import { rssTitles } from '../content/rss'
 import { toHelsinkiIso } from '../lib/eventDate'
+import { hasFaqSection } from '../lib/faq'
 import {
     BLOGPOSTING,
     type BreadcrumbItem,
@@ -228,21 +229,20 @@ const jsonLd = JSON.stringify(
           }
 )
 
-const faqJsonLd =
-    faq && faq.length >= 2
-        ? JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': FAQPAGE,
-              mainEntity: faq.map(({ q, a }) => ({
-                  '@type': 'Question',
-                  acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: a,
-                  },
-                  name: q,
-              })),
-          })
-        : null
+const faqJsonLd = hasFaqSection(faq)
+    ? JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': FAQPAGE,
+          mainEntity: faq.map(({ q, a }) => ({
+              '@type': 'Question',
+              acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: a,
+              },
+              name: q,
+          })),
+      })
+    : null
 
 /*
  * Event nodes ride along as a sibling script, exactly as faqJsonLd does — the page's
