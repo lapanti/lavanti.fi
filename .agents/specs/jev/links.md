@@ -123,6 +123,7 @@ Feature: CI and skills
     And the step itself always exits 0: a script failure is written to the summary as a notice, so the job shows green and never blocks the pipeline
     And the job is not in the branch protection's required checks (15 explicit contexts today) and must not be added
     And it is skipped, with a notice in the summary, when the secret is absent (fork pull requests included) or no document changed
+    And the "no document changed" skip happens inside the script after checkout and `npm ci` (no path-filter action is added), so the job still runs briefly on every pull request
 
   Scenario: Skills
     Given /write or /review-content is run on a post
@@ -136,9 +137,14 @@ Feature: Common behaviour
     Then it prints the skipped notice and exits 0
 
   Scenario: Bad arguments
-    Given an unknown kind, a non-numeric id, an unknown lang, a threshold outside (0, 1] or a non-positive-integer concurrency
+    Given an unknown kind (including `--backlinks post 5`), a non-numeric id, an unknown lang, a threshold outside (0, 1] or a non-positive-integer concurrency
     When the script runs
     Then it prints the usage line and exits 2
+
+  Scenario: Unexpected error
+    Given any other thrown error (for example a target whose frontmatter has no slug)
+    When the script runs
+    Then it prints the message and exits 1, like a failed request
 
   Scenario: Unknown document
     Given `post 999` with no such directory
@@ -187,8 +193,9 @@ export function renderTable(headers: string[], rows: string[][]): string        
 
 // scripts/suggest-links.ts — CLI
 //   suggest:links -- <post|newsletter> <id>… [--lang fi|sv|en] [--threshold 0.5] [--concurrency 4] [--out <md>]
-//   suggest:links -- --backlinks newsletter <id> [--lang] [--threshold] [--out]
-//   suggest:links -- --changed-since <ref> [--lang] [--threshold] [--out]
+//   suggest:links -- --backlinks newsletter <id> [--lang] [--threshold] [--concurrency] [--out]
+//   suggest:links -- --changed-since <ref> [--lang] [--threshold] [--concurrency] [--out]
+//   (--lang, --threshold, --concurrency and --out apply to every mode; --backlinks accepts only the newsletter kind)
 export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; root?; git? }): Promise<number>
 ```
 
@@ -204,7 +211,7 @@ content-suggestions:
   continue-on-error: true
   permissions: { contents: read }
   steps:
-    - checkout (fetch-depth 0), setup-node
+    - checkout (fetch-depth 0), setup-node, npm ci
     - run: |
         if [ -z "$OPENROUTER_API_KEY" ]; then echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"; exit 0; fi
         npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md \
@@ -249,5 +256,6 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic re-review (PASS WITH NOTES): flags apply to every mode, `--backlinks post` is a bad argument, unexpected errors exit 1, job-level vs script-level skip stated |
 | 2026-09-23 | Critic review (FAIL → revised): top-3 rows with a none column and provisional ★ thresholds, backlink shape marked unmeasured with post 57 as calibration, three-dot diff and skipped missing directories, CI step always exits 0, link count per content.sh, concurrency validation, unknown-issue and no-prose scenarios, moved helpers listed, slug semantics |
 | 2026-09-23 | Initial draft for #1490 |
