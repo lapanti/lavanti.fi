@@ -61,8 +61,9 @@ Feature: Jev client
   Scenario: Transient failure
     Given the endpoint answers 429 or a 5xx
     When the client sends a request
-    Then it retries up to 3 times with exponential backoff starting at 500 ms
+    Then it retries up to 3 times with exponential backoff starting at 500 ms (sleep is injectable for tests)
     And after the last failure it throws an error naming the status and the question names
+    And no error message or log line ever contains the API key
 
   Scenario: Typed answers
     Given a request with a choice, a score and a noul question
@@ -77,7 +78,13 @@ Feature: Corpus builder
     When buildCorpus() runs
     Then it returns one Document per directory under src/content/posts and src/content/newsletters
     And keys are "post:<id>" and "newsletter:<id>"
-    And every Document carries title, description, h2s, lead, tags (empty for newsletters), publishDate and sourceHash
+    And every Document carries title, description, h2s, lead, paragraphs, tags (empty for newsletters), publishDate and sourceHash
+    And paragraphs are the prose paragraphs from proseParagraphs() with link markup intact
+
+  Scenario: Corpus too large for one choice question
+    Given more than 254 Documents on disk
+    When buildCorpus() runs
+    Then it throws an error naming CHOICE_OPTION_MAX, so the eval fails loudly instead of silently truncating options
 
   Scenario: Locale selection
     Given a post with fi, sv and en siblings
@@ -88,7 +95,8 @@ Feature: Corpus builder
   Scenario: Lead is bounded
     Given a post whose prose exceeds 300 words
     When its Document is built
-    Then lead contains the first prose paragraphs up to 300 words, markup stripped, imports and export lines excluded
+    Then lead contains whole prose paragraphs, in order, while the cumulative word count stays ≤ 300, and always at least the first paragraph
+    And lead has markup stripped, imports and export lines excluded
 
   Scenario: Hash covers every sibling
     Given a Document's sourceHash
@@ -104,34 +112,48 @@ Feature: Corpus builder
 
 Feature: Eval gate
 
+  Scenario: Default run
+    Given a key is set
+    When `npm run jev:eval` runs with no flags
+    Then it runs task tags and task links for lang en and lang fi
+    And prints one table with a row per task × lang, the primary metric, the baseline, requests and cost
+
   Scenario: Tag eval
-    Given the corpus and the 35 tags in src/content/tags
+    Given the corpus and the 34 tag files in src/content/tags (types.ts excluded)
     When `npm run jev:eval -- --task tags --lang en` runs
-    Then for each post one request carries the Document as state and one noul question per tag
+    Then for each post one request carries stateFor(doc) as state and one noul question per tag
     And each question's instructions use the tag's English name and first English description paragraph
-    And a tag counts as predicted when its noul probability is ≥ 0.5
-    And stdout shows micro precision, recall and F1 against meta.json tags at thresholds 0.5 and 0.7
-    And stdout shows pillar-tag accuracy (predicted pillar set equals actual pillar set) for posts with id ≥ 43
+    And a tag counts as predicted when its noul probability is ≥ PREDICT_THRESHOLD (0.5)
+    And stdout shows micro and macro precision, recall and F1 against meta.json tags at thresholds 0.5 and 0.7
+    And stdout shows a per-tag row (support, precision, recall) so rare tags are visible
+    And stdout shows the frequency baseline: F1 of always predicting the three most common tags
+    And stdout shows pillar accuracy: share of posts with id ≥ 43 whose predicted pillar set at 0.5 equals the actual pillar set
+      (stricter than content.sh, which only requires at least one pillar tag)
 
   Scenario: Link eval
     Given the corpus
     When `npm run jev:eval -- --task links --lang fi` runs
-    Then for each prose paragraph of each post one choice question is asked
-    And the options are every other Document (title and description in English) plus "none"
-    And the ground truth is the set of Documents the paragraph links to via /<lang>/blog/<id>/ or /<lang>/<newsletter segment>/<id>/
-    And paragraphs without a ground-truth link are scored as "none" expected
-    And stdout shows hit@1 and hit@3 over linked paragraphs and the false-positive rate over unlinked paragraphs (top choice ≠ none with p ≥ 0.5)
+    Then for each prose paragraph of each post one request is sent
+    And the state is { title: <post title>, paragraph: <paragraph text, markup stripped> }
+    And the single choice question's options are every other Document as labelFor(doc) plus "none"
+    And the ground truth is the set of Documents the paragraph links to via /<lang>/blog/<id>/ or /<lang>/<newsletter segment>/<id>/, links to other pages ignored
+    And over linked paragraphs stdout shows hit@1 and hit@3: the share where at least one expected Document is among the top k non-none options by probability
+    And over unlinked paragraphs stdout shows the abstain rate: the share where "none" is the top option
+    And stdout shows the popularity baseline: hit@3 of always predicting the three most-linked Documents
+    And stdout shows the number of linked and unlinked paragraphs
 
-  Scenario: Language and sampling flags
-    Given `--lang` in {en, fi, sv} and optional `--limit N`
+  Scenario: Language, sampling and concurrency flags
+    Given `--lang` in {en, fi, sv}, optional `--limit N` and optional `--concurrency C` (default 4)
     When the eval runs
     Then state text comes from the chosen locale while option labels stay English
     And only the first N posts by id are evaluated when --limit is given
+    And at most C requests are in flight at once
 
   Scenario: Cost is visible
     Given any eval run
     When it finishes
     Then stdout shows request count, total input tokens and summed usage.cost in USD
+    And the report never contains the API key or the Authorization header
 
   Scenario: Report file
     Given `--out <path>`
@@ -194,7 +216,10 @@ export interface Provider {
 }
 
 export function resolveProvider(env: NodeJS.ProcessEnv): Provider | null
-export function createClient(provider: Provider, fetchImpl?: typeof fetch): {
+export function createClient(
+    provider: Provider,
+    deps?: { fetchImpl?: typeof fetch; sleep?: (ms: number) => Promise<void> },
+): {
     ask(state: SystemOneRequest['state'], questions: Record<string, QuestionSpec>): Promise<SystemOneResponse>
 }
 
@@ -230,8 +255,9 @@ export interface EvalReport {
     requests: number
     inputTokens: number
     costUsd: number
-    metrics: Record<string, number>   // tags: precision@0.5, recall@0.5, f1@0.5, precision@0.7, …, pillarAccuracy
-                                      // links: hit@1, hit@3, falsePositiveRate, linkedParagraphs, unlinkedParagraphs
+    metrics: Record<string, number>   // tags: microF1@0.5, macroF1@0.5, precision@0.5, recall@0.5, …@0.7, baselineF1, pillarAccuracy
+                                      // links: hit@1, hit@3, abstainRate, baselineHit@3, linkedParagraphs, unlinkedParagraphs
+    perTag?: Array<{ id: string; support: number; precision: number; recall: number }>
     perPost: Array<{ key: DocKey; expected: string[]; predicted: string[] }>
 }
 ```
@@ -246,13 +272,15 @@ Environment:
 
 Scripts run as `node --env-file-if-exists=.env --experimental-strip-types scripts/jev/eval.ts`.
 
-Constants: `LEAD_WORD_MAX = 300`, `CHOICE_OPTION_MAX = 255`, `RETRY_MAX = 3`, `RETRY_BASE_MS = 500`, `PREDICT_THRESHOLD = 0.5`.
+Constants: `LEAD_WORD_MAX = 300`, `CHOICE_OPTION_MAX = 255` (254 Documents + "none"), `RETRY_MAX = 3`, `RETRY_BASE_MS = 500`, `PREDICT_THRESHOLD = 0.5`, `CONCURRENCY_DEFAULT = 4`.
+
+Cost and time expectations (OpenRouter, 2026-09-23 smoke call: 579 tokens = $0.000024, 540 ms): tag eval ≈ 78 requests per language, well under $0.01; link eval ≈ 1,200 paragraph requests × ~5k tokens per language ≈ $0.30 and about 3 minutes at concurrency 4.
 
 ---
 
 ## Dependencies
 
-- `scripts/checks/mdx-deep.ts` — reuse `splitMdx`, `fmField`, `stripMarkup`, `proseParagraphs`; do not re-implement MDX parsing
+- `scripts/checks/mdx-deep.ts` — reuse `splitMdx`, `fmField`, `stripMarkup`, `proseParagraphs` (CLI-guarded by `isMain`, safe to import); relative imports need the `.ts` extension under `--experimental-strip-types`; do not re-implement MDX parsing
 - `scripts/lib/read-json-field.mjs` / `meta.json` — post id, tags, publishDate
 - `src/content/tags/*.ts` — English names and descriptions for tag questions; pillar set is the five ids checked in `scripts/checks/content.sh:181-200`
 - `src/lib/newsletterRoutes.ts` `NEWSLETTER_SEGMENTS` — link ground truth for newsletter URLs
@@ -266,7 +294,9 @@ Constants: `LEAD_WORD_MAX = 300`, `CHOICE_OPTION_MAX = 255`, `RETRY_MAX = 3`, `R
 
 - **Do not** import `src/lib/posts.ts` or `astro:content` from `scripts/jev/*` — Astro's content layer is not available in a plain Node process (see the freshness spec)
 - **Do not** pass Finnish tag names or descriptions as question criteria — option labels stay English; only the `state` changes with `--lang`
-- **Do not** send whole MDX bodies as state — accuracy drops with unrelated material and OpenRouter caps the request at 32k tokens; send `stateFor(doc)`
+- **Do not** send whole MDX bodies as state — accuracy drops with unrelated material and OpenRouter caps the request at 32k tokens; send `stateFor(doc)` for document-level questions and `{ title, paragraph }` for paragraph-level ones
+- **Do not** batch several paragraphs' choice questions into one request — each carries ~88 options, and the request budget is shared by state and all questions
+- **Do not** read the eval numbers without the baselines — 34 labels at ~3.4 per post and a link graph dominated by two posts make raw F1 and hit@k look better or worse than they are
 - **Do not** call the client from unit tests — inject `fetchImpl`
 - **Do not** add `jev:eval` to lint-staged, `main.yml` or the build — it is a manual, paid, non-deterministic script
 - **Do not** compare probabilities for equality across runs — Jev output drifts; metrics are aggregate
@@ -276,14 +306,14 @@ Constants: `LEAD_WORD_MAX = 300`, `CHOICE_OPTION_MAX = 255`, `RETRY_MAX = 3`, `R
 
 ## Eval results
 
-_Filled in by the Builder after running the gate. Thresholds proposed in the plan: proceed per task and language where the primary metric is ≥ 0.6 on `en`; record `fi` and `sv` for the suggestion phases._
+_Filled in by the Builder after running the gate. Thresholds proposed in the plan: proceed per task and language where the primary metric is ≥ 0.6 on `en` and clearly above its baseline; record `fi` and `sv` for the suggestion phases. For tags, recall matters more than precision: the ground truth was assigned from memory, so a "false positive" may be a tag the author missed._
 
-| Task | Lang | Primary metric | Value | Requests | Cost USD | Go |
-|---|---|---|---|---|---|---|
-| tags | en | f1@0.5 | | | | |
-| tags | fi | f1@0.5 | | | | |
-| links | en | hit@3 | | | | |
-| links | fi | hit@3 | | | | |
+| Task | Lang | Primary metric | Value | Baseline | Requests | Cost USD | Go |
+|---|---|---|---|---|---|---|---|
+| tags | en | microF1@0.5 | | | | | |
+| tags | fi | microF1@0.5 | | | | | |
+| links | en | hit@3 | | | | | |
+| links | fi | hit@3 | | | | | |
 
 ---
 
@@ -298,3 +328,4 @@ _Filled in by the Builder after running the gate. Thresholds proposed in the pla
 | Date | Change |
 |------|--------|
 | 2026-09-23 | Initial draft for #1486; OpenRouter transport smoke-tested (200, 540 ms, $0.000024) |
+| 2026-09-23 | Critic review: define link-eval state and per-paragraph requests, hit@k and abstain rate, default run, 34 tags, baselines, `paragraphs` field, option cap failure, lead bound, injectable sleep, key never logged |
