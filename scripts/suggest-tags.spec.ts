@@ -54,7 +54,7 @@ const fakeClient = (
         ask: async (state, questions): Promise<SystemOneResponse> => {
             calls.push({ questions, state })
             const text = JSON.stringify(state)
-            if (failOn && text.includes(failOn)) throw new Error('boom')
+            if (failOn && JSON.stringify({ questions, state }).includes(failOn)) throw new Error('boom')
             const answers: SystemOneResponse['answers'] = {}
             for (const [name, q] of Object.entries(questions)) {
                 if (q.type === 'noul') answers[name] = { noul: noul(name, text), type: 'noul' }
@@ -295,5 +295,20 @@ describe('runTags', () => {
         expect(lines.at(-1)).toBe('failed at post:3: boom')
         expect(readFileSync(out, 'utf8')).toBe(`${lines.join('\n')}\n`)
         expect(readReceipts(receipts)).toBeNull()
+    })
+
+    it('keeps the receipts of the retro-scans that completed before a failure', async () => {
+        const lines: string[] = []
+        const { client } = fakeClient(() => 0.9, 'Nature matters')
+        const d = {
+            ...deps(client, (l) => lines.push(l)),
+            git: () => 'src/content/tags/freedom.ts\nsrc/content/tags/nature.ts\n',
+        }
+        rmSync(receipts, { force: true })
+
+        expect(await runTags(['--changed-since', 'main'], env, d)).toBe(1)
+        expect(lines[0]).toBe('## tag freedom — Freedom')
+        expect(lines.at(-1)).toMatch(/^failed at post:\d: boom$/)
+        expect(Object.keys(readReceipts(receipts)!.tags)).toEqual(['freedom'])
     })
 })
