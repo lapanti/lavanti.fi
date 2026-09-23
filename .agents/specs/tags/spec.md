@@ -17,11 +17,8 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
       updatedDate: string                                   // required; used by sitemap lastmod
       heroImage?: string                                    // Cloudinary image id; fallback: 'Lauri-Lavanti-next-to-a-table'
       heroImageAlt?: { en: string; fi: string; sv: string } // required when heroImage is set
-      faq?: {                                               // per-locale; only renders when locale array has 2+ entries
-          en?: Array<{ q: string; a: string }>
-          fi?: Array<{ q: string; a: string }>
-          sv?: Array<{ q: string; a: string }>
-      }
+      // NOT IMPLEMENTED — planned, see the FAQ scenarios below:
+      // faq?: { en?: Array<{ q: string; a: string }>; fi?: …; sv?: … }  // per-locale
   }
   export const tags: LocalTag[]
   export function getTagName(id: string, lang?: Lang): string | undefined
@@ -34,7 +31,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 
 - **Category pages:** single dynamic route `src/pages/[lang]/category/[tag].astro` — `getStaticPaths` maps the cross product of locales × `tags` → `{ params: { lang, tag: t.id }, props: { tag: t } }`. Only ids in `tags.ts` get a page generated.
 
-- **Category page enrichment:** Each category page passes `type={COLLECTIONPAGE}`, `description` (from `tag.metaDescription[lang]`), `heroImage` (tag override or `'Lauri-Lavanti-next-to-a-table'`), `alt`, and `faq` (locale-specific array) to `PageLayout`. Each string in `tag.descriptions[lang]` is rendered as a separate `<Paragraph>` before `<ExcerptList>`. FAQPage JSON-LD is emitted when the locale's `faq` array has 2+ entries.
+- **Category page enrichment:** Each category page passes `type={COLLECTIONPAGE}`, `description` (from `tag.metaDescription[lang]`), `heroImage` (tag override or `'Lauri-Lavanti-next-to-a-table'`), and `alt` to `PageLayout`. Each string in `tag.descriptions[lang]` is rendered as a separate `<Paragraph>` before `<ExcerptList>`. No `faq` is passed: tags carry no FAQ data yet (see the FAQ scenarios below), so category pages emit neither the plate nor FAQPage JSON-LD.
 
 - **Filtering in `ExcerptList`:** delegates to `getExcerptPosts({ tag })` (`src/lib/posts.ts`), which filters by `post.tags.includes(tagId)` — strict string equality. No fuzzy matching.
 
@@ -91,12 +88,13 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 - When: Called at runtime
 - Then: First returns `'Kirkkonummi'`; second returns `undefined`
 
-**Scenario: Category page with FAQ (2+ entries)**
+**Scenario: Category page with FAQ (2+ entries) — NOT IMPLEMENTED**
 - Given: A tag has `faq.fi` with 2+ entries
 - When: `/fi/category/{id}` is rendered
-- Then: Two `<script type="application/ld+json">` blocks are emitted — one `CollectionPage`, one `FAQPage`. A visible `<FaqSection>` appears below the `<ExcerptList>`.
+- Then: Two `<script type="application/ld+json">` blocks are emitted — one `CollectionPage`, one `FAQPage`. A visible `<Faq>` plate appears below the `<ExcerptList>`.
+- Status: `LocalTag` has no `faq` field and `[tag].astro` passes none, so no category page renders either today. The rendering half exists: `PageLayout` takes `faq` plus a `faqSection: true` opt-in and mounts `src/components/Faq.astro` below the page body (#1500). What is missing is the data — the field on `LocalTag` and trilingual entries for the tags that warrant them.
 
-**Scenario: Category page FAQ in only one locale**
+**Scenario: Category page FAQ in only one locale — NOT IMPLEMENTED**
 - Given: A tag has `faq.fi` with 2+ entries but no `faq.sv`
 - When: `/sv/category/{id}` is rendered
-- Then: No `FAQPage` JSON-LD for the Swedish page; the Finnish page still gets both.
+- Then: No `FAQPage` JSON-LD and no plate for the Swedish page; the Finnish page still gets both. `hasFaqSection()` (`src/lib/faq.ts`) is the single gate for both.

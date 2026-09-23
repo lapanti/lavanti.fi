@@ -99,6 +99,17 @@ Feature: Blog post content-collection routing
     Given a post's meta.json has tags: ["nonexistent-tag"]
     When the site is built
     Then the tag filter silently returns zero results for that tag — no build error, but the post is invisible under that category (anti-pattern: always use tag ids defined in src/content/tags.ts)
+
+  Scenario: Post with two or more FAQ entries
+    Given a post's {lang}.mdx frontmatter has faq with two or more entries
+    When the page is built
+    Then PostLayout renders the Faq plate between the prose sheet and the "Muita kirjoituksia" plate, with the locale's heading (Usein kysyttyä / Vanliga frågor / Frequently asked questions) and the eyebrow "Q & A"
+    And Head.astro emits the FAQPage JSON-LD for the same entries — both gated on hasFaqSection() in src/lib/faq.ts, so the visible block and the structured data can never disagree
+
+  Scenario: Post with fewer than two FAQ entries
+    Given a post's {lang}.mdx frontmatter has one faq entry or none
+    When the page is built
+    Then neither the plate nor the FAQPage JSON-LD is rendered — a FAQPage rich result needs two questions, and marked-up questions must be visible on the page
 ```
 
 ---

@@ -53,6 +53,18 @@ Feature: Newsletter archive
     And each has an og:image at /og/{lang}__{segment}__1__{slug}.png that is a built file
     And each shows the provenance line with the sent date
 
+  Scenario: Issue with two or more FAQ entries
+    Given an issue's {lang}.mdx frontmatter has faq with two or more entries
+    When the site is built
+    Then NewsletterLayout renders the Faq plate between the prose sheet and the other-issues plate, with the locale's heading (Usein kysyttyä / Vanliga frågor / Frequently asked questions) and the eyebrow "Q & A"
+    And Head.astro emits the FAQPage JSON-LD for the same entries — both gated on hasFaqSection() in src/lib/faq.ts
+    And the archive landing pages (src/pages/{fi,sv,en}/…/ index.mdx) render the same plate, which PageLayout gates behind the explicit faqSection: true opt-in
+
+  Scenario: Issue with fewer than two FAQ entries
+    Given an issue's {lang}.mdx frontmatter has one faq entry or none
+    When the site is built
+    Then neither the plate nor the FAQPage JSON-LD is rendered
+
   Scenario: Embargo hides an unsent-to-public issue
     Given meta.json sent is S and publishDate is S + 42 days
     And S + 42 is after today in Europe/Helsinki
