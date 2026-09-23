@@ -1,0 +1,105 @@
+---
+lang: 'sv'
+slug: 'gagnar-datacenter-finland'
+pageTitle: 'Gagnar datacenter Finland, och hur?'
+title: 'Gagnar datacenter Finland?'
+description: 'Finland har 44 datacenter som förbrukar cirka 2 procent av elen. Elskatten steg till klass I den 1 juli 2026. Siffrorna, Irland och kommunernas tillstånd.'
+faq:
+  - q: 'Hur mycket el förbrukar datacentren i Finland?'
+    a: 'Finlands 44 datacenter förbrukar cirka två procent av landets el, och enligt Finlands datacenterförening växer andelen till mellan fem och sex procent fram till år 2030. Av Fingrids anslutningsförfrågningar på över 50 000 megawatt uppskattas cirka tio procent, ungefär fem gigawatt, förverkligas.'
+  - q: 'Varför är Irland inte en jämförelsepunkt för Finland när det gäller datacenter?'
+    a: 'Finlands vindkraftspotential överstiger den beräknade efterfrågan från datacenter, centren är geografiskt spridda, klimatet möjliggör frikylning och spillvärmen kan kopplas till fjärrvärmen. I Irland steg datacentrens andel av elanvändningen från 21 till 32 procent mellan åren 2023 och 2026, och nya projekt i Dublinregionen är stoppade fram till år 2028.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
+
+Den 1 juli 2026 höjdes elskatten på datacenter i Finland från klass II till klass I. Hösten 2026 ska ett riktat stödsystem bli klart. Under den första veckan i juli 2026 nådde tre amerikanska fall rubrikerna om lokala olägenheter: en bakterie som spreds i det kommunala avloppet i Wyoming, ett konstant buller på 60 decibel i ett bostadsområde i Michigan och ett gruppåtal mot ett datacenter värt 7,3 miljarder dollar i Wisconsin.
+
+Samtidigt arbetar de finländska kommunala beslutsfattarna med konkret detaljplanering: i Kyrkslätt går Microsofts projekt vidare enligt bygglovet, i Raumo bedöms inte de samlade effekterna av tre projekt, och i Lovisa saknas en samlad konsekvensbedömning för det breda energi- och datacenterprojektet. Det är dags att samla ihop det vi faktiskt vet om datacenter i Finland och att titta på vad som förtjänar mer av debatten.
+
+## Finländska datacenter i siffror
+
+I juli 2026 finns det i Finland [44 datacenter, av vilka bara sju sysselsätter över 20 anställda](https://www.uusisuomi.fi/uutiset/a/882216d3-6ad5-4c54-9b55-f6195da4f09a). Skatteförvaltningens generaldirektör Markku Heikura presenterade samma siffror i en [intervju i Hufvudstadsbladet i början av maj 2026](https://www.hbl.fi/ekonomi/skatteboss-datacenter-ger-minus-i-statskassan/). Att bygga ett datacenter sysselsätter betydligt. När det tagits i drift blir sysselsättningseffekten liten på grund av den höga automatiseringsgraden. En traditionell tillverkningsindustri är dock en ganska dålig jämförelsepunkt, eftersom man inte tillverkar fysiska produkter i ett datacenter.
+
+Datacenter förbrukar år 2026 cirka två procent av Finlands el, och enligt [Finlands datacenterförenings (FDCA) verksamhetsledare Antti "Jogi" Poikola växer andelen till mellan fem och sex procent fram till år 2030](https://www.ksml.fi/uutissuomalainen/9428138). [Stamnätsbolaget Fingrid har fått anslutningsförfrågningar från datacenter på över 50 000 megawatt, av vilka Jussi Jyrinsalo, chef för stamnätsplaneringen, uppskattar att cirka tio procent förverkligas](https://korkia.fi/fi/datakeskukset-suomessa-sahkojarjestelman-painolasti-vai-pelastaja/). Det handlar alltså om ungefär fem gigawatt tilläggslast för elnätet. Som jämförelse: förbrukningstoppen vintern 2026 låg kring 15,5 gigawatt. Finlands näringsliv EK uppskattar Finlands nuvarande datacenterpotential till 1,5 gigawatt.
+
+Den andra sidan av elsystemet ger proportionerna. Finlands årliga elproduktion är omkring 83 terawattimmar. [Enligt Finlands förnybara rf:s projektlista överskrider vindkraftens tillståndskö den nuvarande installerade kapaciteten flera gånger om; över 60 gigawatt planeras på land och över 45 gigawatt till havs](https://suomenuusiutuvat.fi/en/wind-power/projects-and-wind-turbines-in-finland/projects-under-planning/). De tillståndsgivna vindkraftsprojekten väntar på en kund: en enskild datacenterinvestering utlöser typiskt ett långt elhandelsavtal för förnybar el, som finansierar bygget av ett nytt kraftverk. [Datacentren ökar alltså den förnybara produktionen på elmarknaden](/sv/blog/65/finland-kan-gora-elektrifieringen-till-en-konkurrensfordel/).
+
+Skalan är också värd att jämföras med utlandet. [Enligt DC Bytes rapport 2026 Data Centre Outlook har mer än 1 400 megawatt datacenterkapacitet lagts till i Finland åren 2023 och 2024](https://www.dcbyte.com/news-blogs/2026-data-centre-outlook-top-five-trends/). [I den amerikanska delstaten Virginia finns cirka 17 gigawatt operativ datacenterkapacitet, och Dominion Energy har därtill cirka 47 gigawatt i anslutningskön](https://kilowattlogic.com/news/virginia-dominion-data-center-70gw-pipeline-rate-impact-2026). Finland är fortfarande ett litet land i denna debatt, men inte längre marginellt.
+
+Några enskilda projekt är värda att hålla i minnet. [I Utajärvi byggs ett AI-datacenter för två miljarder euro på 200 megawatt, med ett batterilager på 200 megawatt vid sidan](https://yle.fi/a/74-20228048). [I Rusko i Uleåborg, på Nokias tidigare område, kommer datacentret Campus Oulu, vars kapacitetspotential på lång sikt är upp till 300 megawatt](https://dawn.fi/uutiset/2026/06/04/campus-oulu-datakeskus); den första fasen ligger på cirka åtta megawatt. [Microsoft slöt i sin tur ett preliminärt avtal om markköp på cirka 190 hektar på gränsen mellan Vasa och Korsholm för ett nytt datacenter](https://yle.fi/a/74-20229989). Dessa tre projekt fördubblar nästan Finlands nuvarande datacenterkapacitet om de förverkligas i den planerade skalan.
+
+För att hålla skalan i minnet i korthet:
+
+- Finländska datacenter i dag: 44 stycken, cirka två procent av elförbrukningen.
+- Prognos för år 2030: fem till sex procent av Finlands el.
+- Fingrids anslutningsförfrågningar från datacenter: över 50 000 megawatt, av vilka cirka tio procent, det vill säga cirka fem gigawatt, uppskattas förverkligas.
+- Jämförelsevärde: förbrukningstoppen vintern 2026 var 15,5 gigawatt.
+- Vindkraftens tillståndskö (väntar på en långsiktig kund som ett datacenter): över 60 gigawatt på land och över 45 gigawatt till havs.
+- Virginia i USA som jämförelse: cirka 17 gigawatt operativ datacenterkapacitet och cirka 47 gigawatt i kön.
+
+Värdeskapandet är en av debattens viktigaste dimensioner. Av Anthropics API-prissättning kan man sluta sig till att slutkundspriset för AI-användning, det vill säga inferens, per kilowattimme är i dollar, medan producentpriset på finländsk el håller sig i cent. Storleksordningen är hundrafaldig, och [journalisten Niko Vartiainens utredning "Humiseva halli" i Uusi Juttu](https://www.uusijuttu.fi/juttu/su3ZnNOS-m8IOO0Uw-9b352) tog upp detta. En viktig fråga i finländsk politik är hur stor del av det värdet vi bör försöka, och kan, hålla här: genom ägande av datacenter, avtalsvillkor och skatteramar.
+
+## Varför Irland inte är en jämförelsepunkt för Finland
+
+Det vanligaste exemplet på ett dåligt utfall i datacenterdebatten är Irland. [Enligt en prognos av Internationella energiorganet IEA steg datacentrens andel av Irlands elanvändning från 21 procent till 32 procent mellan åren 2023 och 2026](https://www.iiea.com/blog/data-centres-in-ireland-the-state-of-play), och [Friends of the Earth Ireland uppskattar att hushållen betalade 715 miljoner euro mer i elräkningar mellan åren 2015 och 2023, i genomsnitt 360 euro per hushåll](https://www.friendsoftheearth.ie/news/the-cost-of-data-centre-growth-in-ireland-households-paid-an-estimated-715-million-more-in-electrici/). [På basis av EirGrids All-Island Resource Adequacy Assessment 2026–2035 har byggandet av nya datacenter i Dublinregionen stoppats fram till år 2028 på grund av bristande nätkapacitet](https://cms.eirgrid.ie/sites/default/files/publications/AIRAA-2026-2035_Ireland.pdf).
+
+Påståendet att Irlands elpris skulle ha tredubblats på grund av datacentren är dock vilseledande. [Nätanalytikern Riku Merikoski visar i en LinkedIn-analys att det irländska elpriset följer utvecklingen av naturgaspriset, inte antalet datacenter](https://www.linkedin.com/posts/rikumerikoski_min%C3%A4-en-tajua-miten-huonolla-asiantuntemuksella-share-7478441564722102272-r4Pv/). Enligt Merikoskis data sjönk partipriset mellan åren 2021 och 2025, samtidigt som byggandet av datacenter växte. Efterfrågan från datacenter är en sekundär faktor i prisutvecklingen.
+
+Finland skiljer sig från Irland när det gäller fyra strukturella faktorer:
+
+1. Vår vindkraftspotential är klart större än den beräknade efterfrågan från datacenter.
+2. Datacentren är geografiskt spridda. De har byggts i Fredrikshamn, Utajärvi, trakten kring Uleåborg, Kajana och Kyrkslätt, och det uppstår ingen flaskhals av Dublinsnitt inom ett enda område.
+3. Finlands klimat möjliggör så kallad frikylning, som lyfter energieffektiviteten till Europas toppnivå.
+4. Datacentrets spillvärme kan kopplas till fjärrvärmenätet, vilket minskar den förbränningsbaserade värmeproduktionen. I Kyrkslätt ingår detta i Microsofts projekt.
+
+## Elskatt och kommande kompensationsstöd
+
+Den 1 juli 2026 [överfördes elskatten på datacenter från klass II till klass I, från 0,05 cent till 2,24 cent per kilowattimme](https://www.vero.fi/en/detailed-guidance/decisions/47187/tax-rates-on-electricity-and-certain-fuels/). Höjningen är ungefär 45-faldig, och den fiskala effekten för staten är cirka 47 miljoner euro per år. En del aktörer bedömer reformen i juli 2026: [Google Finland har till exempel pausat planeringen av ett datacenterprojekt för översynens tid](https://www.datacenterdynamics.com/en/news/plans-on-hold-for-google-data-center-in-finland-following-potential-electricity-tax-raise/). Genom höjningen slopades datacentrens separata skattelättnad och de flyttades till den allmänna skattenivån. Tillverkningsindustrin betalar fortfarande enligt den lägre skatteklassen II.
+
+[Ministerutskottet för ekonomipolitik drog i december 2025 upp linjerna för beredningen av ett riktat kompensationsstödsystem](https://valtioneuvosto.fi/-/talouspoliittinen-ministerivaliokunta-linjasi-datakeskusten-tuen-ja-rekisteroinnin-valmistelusta), som är avsett särskilt för "value-added"-datacenter. Vid sidan bereds ett datacenterregister. Kompensationsstödsystemet är ännu inte i kraft, och dess kriterier formas under hösten 2026.
+
+Kriterierna avgör hela systemets karaktär. Ett riktat stöd förvandlas till en ogenomskinlig urvalskanal om "value-added" definieras så att begreppet döljer prövningsrätten. Risken för kompiskapitalism är verklig här. Den offentliga debatten våren 2026 om snedvridningar i det riktade stödet har visat att mekanismen kräver en noggrann bedömning. Kompensationsstödsystemets kriterier ska vara öppna, offentliga och tillämpas neutralt. I annat fall monteras marknadsmekanismen ned på ena sidan samtidigt som den förstärks på elskattens sida.
+
+## Lokala olägenheter i USA och tillståndsförfarandet i Finland
+
+I USA blev tre fall offentliga under den första veckan i juli 2026 som beskriver vad som händer när förebyggande reglering saknas och problemen lämnas åt domstolsprocesserna att lösa. [Goat Systems LLC, som bygger Metas datacenter i Cheyenne, spred vid en startspolning den sällsynta bakterien *Cupriavidus gilardii* i det kommunala avloppssystemet, varefter Cheyennes Board of Public Utilities återkallade alla datacenters fyllnings- och tömningstillstånd tills vidare](https://cowboystatedaily.com/2026/07/02/cheyenne-wont-take-data-center-wastewater-after-meta-company-contaminated-system/).
+
+[I Dowagiac i Michigan orsakar Alliance Cloud Services LLC:s datacenter cirka 60 decibel buller dygnet runt, mätt på grannarnas gårdar, och invånarna har väckt en federal grupptalan i maj 2026](https://michiganadvance.com/2026/05/27/federal-class-action-lawsuit-filed-over-dowagiac-data-center-noise/). [Microsofts datacenter Fairwater på 7,3 miljarder dollar i Mount Pleasant i Wisconsin drabbades den 1 juli 2026 av en grupptalan från grannarna om bullereffekterna av bland annat dieselgeneratorer, HVAC-system, kyltorn och kondensfläktar](https://wtmj.com/news/2026/07/02/homeowners-sue-microsoft-over-noise-from-mount-pleasant-data-center/).
+
+I Finland är grundstrukturen bättre. [Statsrådets beslut 993/1992](https://www.finlex.fi/fi/laki/alkup/1992/19920993) fastställer riktvärden för buller: 55 decibel dagtid och 45 decibel nattetid i tätorter, 45 decibel i fritidsbebyggelse. [Förfarandet vid miljökonsekvensbedömning (MKB) inleds om ett datacenters bränsleeffekt för reservkraft överstiger 300 megawatt eller om uttaget av stenmaterial överstiger 200 000 fasta kubikmeter per år](https://finland.dlapiper.com/en/news/datakeskushankkeiden-edellyttamat-luvat-ja-menettelyt). I detaljplanebestämmelserna kan man kräva fjärrvärmeanvändning av spillvärmen, bullerskydd för kylanläggningarna och skydd av naturenliga områden.
+
+Problemen är strukturella, inte regleringsmässiga. Egenkontrollen är utsatt för manipulation när myndighetens stickprovsövervakning är knapp. Riktvärdena tillämpas i samband med miljötillståndsprövningen, vilket har gjort det svårt för medborgarna att åberopa dem i planbesvär. Kumulativa effekter av flera projekt bedöms typiskt inte om varje projekt går genom en separat MKB-process. Detta är framför allt frågor om tillräcklig resursering, inte problem med marknadsmekanismen. [Lösningen är inte att lyfta ut datacentren ur den övriga industrin till en egen regleringssektor](/sv/blog/75/mer-marknad/).
+
+## Finländska lokala fall
+
+I finländska städer och kommuner pågår sommaren 2026 tio konkreta datacenterprocesser. [Byggnads- och miljönämnden i Kyrkslätts kommun beviljade bygglov för den första fasen av Microsofts datacenter hösten 2024, och användningen av datacentrets spillvärme i fjärrvärmeproduktionen är inbyggd i planen](https://kirkkonummi.fi/microsoftin-datakeskushanke-etenee-kirkkonummella/). Bygglovet för den andra fasen är under behandling. Den återvinning av spillvärme som ska genomföras tillsammans med Fortum skulle, när den är klar, täcka cirka 40 procent av behovet i Kyrkslätts, Esbo och Grankulla fjärrvärmenät. [Datacentret AtNorth i Esbo längs Ring III (Kehä III)](https://www.atnorth.com/nordic-data-centers/finland-data-centers/) är ett exempel på fungerande bullerdimensionering i den finländska tillståndsmiljön.
+
+I staden Raumo påbörjas samtidigt ett datacenterprojekt och två investeringar i grön energiproduktion. Det lokala fjärrvärmenätet kan inte utnyttja ens ett projekts spillvärme, eftersom behovet i området är begränsat. Spillvärmen måste ledas ut i havet. I miljökonsekvensbedömningarna har man inte krävt en granskning av projektens kumulativa effekter, eftersom en del av projekten ännu inte har förverkligats.
+
+[Datacentret vid Östra Anslutningen i Lovisa fick bygglov i december 2025 och skogen har redan avverkats](https://www.loviisansanomat.fi/paikalliset/9093969). I samma område pågår ett omfattande vind- och solkraftsprojekt samt försäljningen av ett kärnkraftsområde. Enligt kommunala beslutsfattare har ingen kumulativ MKB-bedömning gjorts av helheten. I [MKB-beskrivningens bullerbilaga för servercentret i Träskända väckte en formulering enligt vilken nattens bullergränser inte överskrids om reservgeneratorerna körs högst tre timmar](https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/jarvenpaan-palvelinkeskus) uppmärksamhet. Generatorernas faktiska bullernivå fanns inte tillgänglig för föredragandena.
+
+I Tammerfors skulle elnätet och tomterna räcka till för ett datacenter på cirka 50 megawatt, vars spillvärme nästan helt skulle kunna användas till fjärrvärme. De internationella investeringarna riktar sig mot center på 100 megawatt och större, så frågan lyder: kommer finländska städer att kunna locka också medelstora center, där de lokala fördelarna skulle vara som störst?
+
+Skillnaden mellan välfungerande tillståndsförfarande och tillräcklig resursering märks direkt i invånarens vardag. Finland har nu ett kort tidsfönster att lära sig av andras misstag.
+
+## Vad jag tycker om datacenter
+
+[Utsläppshandeln och spotprissättningen styr Finlands elmarknader mot jämvikt](/sv/blog/77/elmarknaden-google-pristak/), och marknadsmekanismen uppmuntrar till investeringar i förnybar produktion. Riktade krav på reglerkraft eller lagförslag som skulle kräva långa elhandelsavtal endast av datacenter behövs inte, eftersom de skulle bryta marknadsmekanismen och godtyckligt bestraffa en enskild bransch. Den offentliga sektorns kärnansvar består av tre saker: upprätthållande av nätkapacitet, tydlighet i tillståndsförfarandet och tryggande av den lokala miljö- och hälsobalansen.
+
+Kompensationsstödsystemet bör godkännas hösten 2026 på det villkoret att dess kriterier är offentliga, öppna och tillämpas neutralt. Samtidigt kräver den kommunala tillsynen resurser: stickprovsanalyser, oberoende bullerövervakning och kumulativa effektbedömningar av flera projekt. Detta är nödvändigt för att marknaden ska fungera rättvist för alla och för att man ska kunna trygga invånarnas välbefinnande.
+
+[De grönas informationspolitiska program](https://www.vihreat.fi/ohjelmat/tietopoliittinen-ohjelma/) passar in i detta: nationella krav på användning av grön energi och värmeåtervinning kan ställas, förutsatt att kraven inte driver bort investeringar till länder med svagare miljöstandard. Samma tanke gäller det datacenterregister som Arbets- och näringsministeriet bereder. Registret är en naturlig plats att samla anmälningar om användningsändamål, vilket skulle möjliggöra till exempel offentliggörande av andelen kryptobrytning. Motsvarande beredning har inletts i Norge. [Transparens är en förutsättning för marknadsmekanismens funktion](/sv/blog/62/de-grona-marknadsekonomiets-sanna-forsvarare/).
+
+> Elmarknaderna är tack vare utsläppshandeln synnerligen välfungerande marknader, där priset kraftigt styr mot jämviktsläget. Marknaderna sköter allokeringen, så länge man inte börjar förstöra dem med sektorspecifika åligganden.
+
+## Efterord
+
+[Datacentren är också djupt sammanflätade med geopolitiken](/sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/): [vad hyperskalarnas fysiska infrastruktur på EU:s mark betyder för suveräniteten](/sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/), var Nokia och den finländska verkstadsindustrin placerar sig i denna bild och varför EU:s AI-suveränitetsnivåer är värda att läsa före stöddebatten hösten 2026. Innan dess är det värt att stanna vid en fråga: på vems villkor bygger vi Finlands digitala infrastruktur i en tid då AI åter förändrar allt, eller gör den det?
