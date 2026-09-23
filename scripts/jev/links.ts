@@ -24,8 +24,8 @@ export const SUGGEST_FLOOR = 0.1
 /** Rows at or above this are marked strong. Provisional: the eval measured hit@k, not calibration. */
 export const SUGGEST_THRESHOLD = 0.5
 /** An existing link whose target scores below this is flagged as doubtful. Provisional. */
-export const DOUBTFUL_THRESHOLD = 0.2
-export const SUGGEST_TOP = 3
+const DOUBTFUL_THRESHOLD = 0.2
+const SUGGEST_TOP = 3
 export const BACKLINK_QUESTIONS_MAX = 40
 const STARTS_WORDS = 8
 
