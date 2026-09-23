@@ -69,11 +69,12 @@ describe('buildCorpus', () => {
         for (const lang of ['en', 'fi', 'sv']) {
             writeFileSync(
                 join(dir, `${lang}.mdx`),
-                `---\ntitle: 'David''s plan'\ndescription: 'Kirkkonummi''s schools, and more'\n---\n\nBody.\n`
+                `---\ntitle: 'David''s plan'\nslug: 'davids-plan'\ndescription: 'Kirkkonummi''s schools, and more'\n---\n\nBody.\n`
             )
         }
         const doc = buildCorpus({ root }).find((d) => d.key === 'post:4')
 
+        expect(doc?.slug).toBe('davids-plan')
         expect(doc?.title).toBe("David's plan")
         expect(doc?.description).toBe("Kirkkonummi's schools, and more")
         expect(labelFor(doc!)).toBe("David's plan — Kirkkonummi's schools, and more")
@@ -85,6 +86,7 @@ describe('buildCorpus', () => {
 
         expect(en?.title).toBe('en title 1')
         expect(en?.lang).toBe('en')
+        expect(en?.slug).toBe('')
         expect(fi?.title).toBe('fi title 1')
         expect(fi?.description).toBe('fi description 1')
     })
@@ -152,6 +154,7 @@ describe('headingsOf, stateFor, labelFor', () => {
             lead: 'Lead',
             paragraphs: ['Lead'],
             publishDate: '2026-01-01',
+            slug: 'title',
             sourceHash: 'abc',
             tags: [],
             title: 'Title',

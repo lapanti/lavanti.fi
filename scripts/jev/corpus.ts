@@ -41,6 +41,8 @@ export interface Document {
     /** All prose paragraphs with markup kept — the link eval reads the hrefs. */
     paragraphs: string[]
     publishDate: string
+    /** Per-locale frontmatter slug; '' when the frontmatter has none. */
+    slug: string
     /** sha256 over meta.json and the three locale files, hex. */
     sourceHash: string
     tags: string[]
@@ -103,6 +105,7 @@ function buildDocument(kind: DocKind, id: number, dir: string, lang: Lang): Docu
         lead: leadOf(paragraphs),
         paragraphs,
         publishDate: meta.publishDate,
+        slug: fmField(frontmatter, 'slug') ?? '',
         sourceHash: hashDir(dir),
         tags: meta.tags ?? [],
         title: fmField(frontmatter, 'title') ?? '',

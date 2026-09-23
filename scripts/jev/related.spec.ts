@@ -29,6 +29,7 @@ const doc = (key: DocKey, publishDate = '2026-01-01', sourceHash = `h-${key}`): 
     lead: '',
     paragraphs: [],
     publishDate,
+    slug: 'slug',
     sourceHash,
     tags: [],
     title: key,
