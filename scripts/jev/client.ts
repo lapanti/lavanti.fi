@@ -13,6 +13,8 @@ import { setTimeout as delay } from 'node:timers/promises'
 export const RETRY_MAX = 3
 const RETRY_BASE_MS = 500
 export const NO_PROVIDER_NOTICE = 'skipped: no OPENROUTER_API_KEY or TYPESAFE_API_KEY'
+/** Jev accepts at most this many options in one choice question. */
+export const CHOICE_OPTION_MAX = 255
 
 export type QuestionSpec =
     | { criteria: Record<string, string>; instructions: string; type: 'choice' }
@@ -106,4 +108,30 @@ export function createClient(provider: Provider, deps: ClientDeps = {}): JevClie
     }
 
     return { ask, provider }
+}
+
+/** Run fn over items with at most `concurrency` in flight, preserving order; stops handing out work after the first failure. */
+export async function mapConcurrent<T, R>(
+    items: T[],
+    concurrency: number,
+    fn: (item: T, index: number) => Promise<R>
+): Promise<R[]> {
+    const results: R[] = new Array<R>(items.length)
+    let next = 0
+    let failed = false
+    const worker = async (): Promise<void> => {
+        // Stop handing out new (paid) work once any item has failed; the first error rejects the whole run.
+        while (next < items.length && !failed) {
+            const index = next++
+            try {
+                results[index] = await fn(items[index], index)
+            } catch (error) {
+                failed = true
+                throw error
+            }
+        }
+    }
+    await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, items.length)) }, worker))
+
+    return results
 }
