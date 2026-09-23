@@ -115,6 +115,18 @@ Routes are localized and nested under the subscribe landing page: `/fi/uutiskirj
 
 ---
 
+## Jev decision pipeline (author-run tooling)
+
+`scripts/jev/` talks to TypeSafe AI's Jev decision model, which returns typed decisions (choice, score, yes/no) with probabilities and cannot generate text. `client.ts` is a dependency-free `fetch` wrapper; `corpus.ts` turns every post and newsletter into one locale-invariant `Document` with a sha256 over `meta.json` and all three locale files; `eval.ts` (`npm run jev:eval`) scores Jev's tag and link-target decisions against the tags in `meta.json` and the internal links already in post bodies.
+
+- **Keys**: `OPENROUTER_API_KEY` (OpenRouter route, model `jev-1.13`) or `TYPESAFE_API_KEY` (direct, `jev-1.13.0`) in `.env`; the scripts load it with `--env-file-if-exists` and exit 0 with a notice when neither is set.
+- **Never at build time**: the build, pre-commit and CI do not call Jev. Its output reaches the site only as committed data in later phases.
+- **Not importable from `src/`**: the scripts read the content directories with `fs` because Astro's content layer is unavailable in a plain Node process; conversely, nothing under `src/` imports `scripts/jev/`.
+
+Spec: `.agents/specs/jev/spec.md`.
+
+---
+
 ## i18n / language switching
 
 - Three locales: `fi`, `sv`, `en`.
