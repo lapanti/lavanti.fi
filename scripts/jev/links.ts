@@ -20,7 +20,7 @@ import { type DocKey, type DocKind, type Document, labelFor } from './corpus.ts'
 
 export const NONE = 'none'
 /** Rows below this probability are noise and not shown. */
-export const SUGGEST_FLOOR = 0.1
+const SUGGEST_FLOOR = 0.1
 /** Rows at or above this are marked strong. Provisional: the eval measured hit@k, not calibration. */
 export const SUGGEST_THRESHOLD = 0.5
 /** An existing link whose target scores below this is flagged as doubtful. Provisional. */
