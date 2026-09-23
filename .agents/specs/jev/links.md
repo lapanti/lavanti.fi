@@ -168,25 +168,29 @@ Feature: Common behaviour
 
 ```typescript
 // scripts/jev/corpus.ts (addition)
-interface Document { slug: string /* per-locale frontmatter slug; '' when the frontmatter has none */ }
+interface Document {
+    body: string   // the MDX body after the frontmatter, for the content.sh link count and already-linked targets
+    slug: string   // per-locale frontmatter slug; '' when the frontmatter has none
+}
 
 // scripts/jev/links.ts — shared library, no CLI. Moved here from eval.ts (which imports them back):
 //   NONE, SEGMENT_KIND, linkTargets, linkOptions, rankedOptions, topChoice
-export const SUGGEST_FLOOR = 0.1          // rows below this are noise
+const SUGGEST_FLOOR = 0.1                 // rows below this are noise
 export const SUGGEST_THRESHOLD = 0.5      // ★ mark; provisional, see Contract
-export const DOUBTFUL_THRESHOLD = 0.2     // provisional
-export const SUGGEST_TOP = 3
+const DOUBTFUL_THRESHOLD = 0.2            // provisional
+const SUGGEST_TOP = 3
 export const BACKLINK_QUESTIONS_MAX = 40
+export function starts(paragraph: string): string                                            // first 8 words, markup stripped
 export function linkOptions(english: Document[], self: DocKey): Record<string, string>         // both kinds + none
 export function paragraphState(doc: Document, paragraph: string): { paragraph: string; title: string }
 export function urlFor(doc: Document): string                                                  // /<lang>/blog/<id>/<slug>/ or newsletterPath(); throws on an empty slug
-export function alreadyLinked(doc: Document, known: ReadonlySet<DocKey>): Set<DocKey>
+export function alreadyLinked(doc: Document, known: ReadonlySet<DocKey>): Set<DocKey>          // over the whole body, not only prose paragraphs
 export function linkCount(doc: Document): number                                               // content.sh's regex over the body
 export interface SuggestionRow { index: number; key: DocKey; none: number; p: number; starts: string; strong: boolean; title: string; url: string }
 export interface DoubtfulRow { current: DocKey; index: number; p: number; starts: string }
 export function suggestionRows(index, paragraph, probabilities, opts: { byKey: Map<DocKey, Document>; exclude: ReadonlySet<DocKey>; threshold: number }): SuggestionRow[]  // top SUGGEST_TOP ≥ SUGGEST_FLOOR
 export function doubtfulRows(index, paragraph, probabilities, known): DoubtfulRow[]              // only paragraphs with a current corpus link
-export function backlinkQuestions(paragraphs: string[]): Array<Record<string, QuestionSpec>>   // chunks of ≤ BACKLINK_QUESTIONS_MAX nouls
+export function backlinkQuestions(paragraphs: string[]): Array<{ indexes: number[]; questions: Record<string, QuestionSpec> }>  // chunks of ≤ BACKLINK_QUESTIONS_MAX nouls, keyed p<index>
 export interface BacklinkRow { index: number; key: DocKey; p: number; starts: string; title: string; url: string }
 export function docsFromPaths(paths: string[]): Array<{ id: number; kind: DocKind }>           // src/content/{posts,newsletters}/<id>/… → unique, path order; the CLI drops ids without a directory
 export function renderTable(headers: string[], rows: string[][]): string                        // Markdown
@@ -250,8 +254,8 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 2026-09-23, model `typesafe/jev-1.13-20260917` via OpenRouter, thresholds at their provisional values.
 
-- `suggest:links -- post 57` (7 paragraphs, fi): newsletter 2 is the ★ target for paragraphs 1–4 and 6 (p up to 0.93), with newsletter 1 and post 72 as the next options on paragraph 0; posts 51 and 67 appear on paragraph 5 at 0.23 and 0.13. The three existing links (posts 47, 44, 53) are all flagged doubtful at p ≤ 0.03 — when a much stronger candidate exists, the choice distribution leaves nothing for the current target, so "doubtful" over-flags; read it as "a stronger target exists", not "remove this link". Threshold left at 0.2 pending more runs.
-- `--backlinks newsletter 2` (78 posts, 78 requests): 13 rows at p ≥ 0.5, led by post 57 paragraphs 1 and 3 (the pair found by hand in #1485), then post 72 (five paragraphs, 0.58–0.67) and post 44. Threshold 0.5 kept.
+- `suggest:links -- post 57` (7 paragraphs, fi): newsletter 2 is the ★ target for paragraphs 1–4 (p up to 0.93) and the top option at 0.12 on paragraph 6, with newsletter 1 and post 72 as the next options on paragraph 0; posts 51 and 67 appear on paragraph 5 at 0.23 and 0.17. The three existing links (posts 47, 44, 53) are all flagged doubtful at p ≤ 0.03 — when a much stronger candidate exists, the choice distribution leaves nothing for the current target, so "doubtful" over-flags; read it as "a stronger target exists", not "remove this link". Threshold left at 0.2 pending more runs.
+- `--backlinks newsletter 2` (78 posts, 78 requests): 13 rows at p ≥ 0.5, led by post 57 paragraphs 1 and 3 (the pair found by hand in #1485), then post 72 (seven paragraphs, 0.55–0.67), post 44 and post 73 at 0.50. Threshold 0.5 kept.
 
 ---
 
@@ -265,6 +269,7 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): failure line carries key and paragraph, already-linked over the whole body, strict backlink answers, calibration numbers corrected, data model refreshed, CI summary wording |
 | 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, doubtful flag interpreted |
 | 2026-09-23 | Critic re-review (PASS WITH NOTES): flags apply to every mode, `--backlinks post` is a bad argument, unexpected errors exit 1, job-level vs script-level skip stated |
 | 2026-09-23 | Critic review (FAIL → revised): top-3 rows with a none column and provisional ★ thresholds, backlink shape marked unmeasured with post 57 as calibration, three-dot diff and skipped missing directories, CI step always exits 0, link count per content.sh, concurrency validation, unknown-issue and no-prose scenarios, moved helpers listed, slug semantics |
