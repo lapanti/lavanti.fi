@@ -183,9 +183,134 @@
     }
   },
   "tags": {
+    "artificial-intelligence": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "8e2328d26d02d8554d2ed5ed710090f5019499c7f3179da906ef691a9988c477",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "basic-welfare": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "a305b80727bfa920c301870d6e2531ffeb29b35f053a28e796cddcec9121c907",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "culture-and-education": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "dd675340461d4f3c4d0a228bddde218a199e4b3c5da1491dcbf4e23bf3df2464",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "digital-independence": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "806e961c30ad65ab245f4341f14290f0d4f2341123358b66276fe8d964502108",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "digitalisation": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "e916c93e4637bf15e86243ad84d77d59cb822c0deaa0731caeff2e1ea6b9be3b",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "early-childhood-education": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "f964ffdb671dec9d04e9e56e58750a7ab66e9c4edbd5e4095cdf91ba537d51b1",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "economy": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "36c3ccb96152e9d6ae682efbdf3cb213d41193c594094cefe07e6e74354b706a",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "education": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "da8ee42c7665ed7a9438065dcb028a9c5e11950eab81929367b08ee0587fcc2b",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "enlightenment": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "04d157fb0d2ea0b0e9df260e77d606444ccf8b8a8c5bfcdbdbe3ffc6f87a6cb4",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "entrepreneurship": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "2d2177f1ff8307cf87c7db318586243383ae42c1002293abed2398942c891dd4",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "equality-and-non-discrimination": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "836e151d54b27884af9a8bd89ab3a5e7584064330d7a9cb1b945089947981b27",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "freedom": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "471b07a19f4d51c7cb89370b38d91a05e4e128cee05d7595fb3ce015f95c5881",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "health-and-social-reform": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "757b0487d5c7cc77389827eb80dd23bd634fb7c910dc901478562c45580b8315",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "immigration": {
       "checkedAt": "2026-09-23",
       "contentHash": "e78d368684b31acb60eb0d1bd641a2322855ec684fe0774eb8112ebdac8b3fbb",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "infrastructure": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "b11e6b6523e890e82cbb28ddea6862e2edce1b2ac457ed4d54faf1bd155c8e49",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "kirkkonummi": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "8221e8e0e31a0357b9aa746c0cb64120c73ccca522d95c76b621e675110289ad",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "national-politics": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "5a5bbf17db56909ec0baf35a882c37a1af1e0cacc0c90f220aa90916a2928983",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "nature": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "9112fd760024a36bed850336488466fff4a774f71bb80933754040149b719dbe",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "privacy": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "155c7fd35a29f810ff1419389415456e4e3b90718504d46c9006fdbc48d2869d",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "security": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "f89e70d88a8c47ee50ec0a093a848e1d8052a8b6064d86cca9e7dea0a3fed050",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "social-media": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "44566c6b16fa980b0eebc431d6306c631299ccb06cf2eec84039091d307f593f",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "technology": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "763368c70fd33dac8fc1b7a9802660009a9274fd54594737cf71d4d13fc31641",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "transportation": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "e0993a3bd4d2685ff3eb6fcdb01e86786d7ea9310cc3afa320740de2e778050b",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "urban-planning": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "b3a46f85ff9c136d802329107ad3fe658298d0524d15e0430d5a18a452fa2f23",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "west-railway": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "1e50cd2c3b52f80e79f884eeed4570da4c70f3b2d9fd8062787871885d104dc4",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "western-uusimaa": {
+      "checkedAt": "2026-09-23",
+      "contentHash": "d9636d50ad38f9cbd4963f116cea48e98f9718ef5ec191e5148df04c592fb54e",
       "model": "typesafe/jev-1.13-20260917"
     }
   }
