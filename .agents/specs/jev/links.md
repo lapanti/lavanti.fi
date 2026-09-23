@@ -10,7 +10,7 @@
 
 Internal links are found by rereading the corpus. Every post and issue must carry 3–10 of them (`scripts/checks/content.sh`), the newsletter archive policy wants links in both directions, and today no post links back to any issue (#1485) because nobody re-reads 78 posts when an issue is published. The eval gate measured Jev's per-paragraph link targeting at hit@3 0.85–0.87 against a 0.36 baseline, with Finnish input as good as English, so the *finding* half of the job can be delegated while the *writing* half — anchor text, placement in the sentence, the 3–10 budget — stays with the author.
 
-This feature is an author-run, advisory script with two modes. **Per document**: for each paragraph of a post or issue, which other page on the site (post or issue) substantiates a claim made there, if any. **Backlinks**: for one newsletter issue, which paragraphs of which posts make a claim the issue substantiates — the automated form of the manual audit that produced the pair table in #1485, to be run whenever an issue is added. The script becomes a step of `/write` and `/review-content`, and an advisory CI job writes the same tables to the job summary of any pull request that touches content, so the suggestions appear without anyone remembering to ask. Nothing is enforced: the output is a table, not a gate.
+This feature is an author-run, advisory script with two modes. **Per document**: for each paragraph of a post or issue, which other page on the site (post or issue) substantiates a claim made there, if any. **Backlinks**: for one newsletter issue, which paragraphs of which posts make a claim the issue substantiates — the automated form of the manual audit that produced the pair table in #1485, to be run whenever an issue is added. The script becomes a step of `/write` and `/review-content`. What is enforced is that it *ran*, not what the author did with it: every successful run writes a receipt (a hash of the document's three locale files) to `src/content/suggestions.json`, and an offline check in pre-commit and CI requires a matching receipt for every post or newsletter a change touches — for a newsletter, a backlinks receipt too. CI never calls Jev and holds no key; the author runs the script locally, decides on every row, and commits the receipt with the content. The suggestions themselves stay advisory.
 
 ---
 
@@ -18,19 +18,20 @@ This feature is an author-run, advisory script with two modes. **Per document**:
 
 ### In scope
 - `scripts/jev/links.ts` — shared, network-free helpers lifted out of the eval (`linkTargets`, option building, paragraph state) plus suggestion-row shaping, doubtful-link detection, backlink question building, changed-document parsing and Markdown rendering; no CLI
-- `scripts/suggest-links.ts` + `npm run suggest:links` — the CLI: per-document mode, backlink mode, `--changed-since <ref>` for CI
-- `scripts/jev/corpus.ts` — `Document.slug` (per-locale frontmatter slug) so suggestions can print canonical URLs
+- `scripts/suggest-links.ts` + `npm run suggest:links` — the CLI: per-document mode, backlink mode, `--changed-since <ref>` for everything a branch touched; writes a receipt per completed document
+- `scripts/jev/suggestions.ts` — receipts: the `src/content/suggestions.json` shape, read/write, matching and the missing-receipt report; no CLI
+- `scripts/checks/suggestions-stale.ts` + `npm run check:suggestions` — offline check that every changed post or newsletter has matching receipts; lint-staged on staged content files, CI Validate content with `--base`
+- `scripts/jev/corpus.ts` — `Document.slug` (per-locale frontmatter slug) for canonical URLs, `Document.body` for the link count, `Document.contentHash` (three locale files, not `meta.json`) for receipts
 - `scripts/jev/eval.ts` — imports the lifted helpers instead of defining them (behaviour unchanged)
 - `.claude/skills/write/SKILL.md`, `.claude/skills/review-content/SKILL.md` — a "Link suggestions" step
-- `.github/workflows/main.yml` — `content-suggestions` job, advisory, skipped without content changes or without the `OPENROUTER_API_KEY` secret
 - Unit tests for every pure helper and for the CLI with an injected client; no network in tests
 - `ARCHITECTURE.md` paragraph
 
 ### Out of scope
 - Editing any post to add links (content work: #1485 for existing issues, `/write` for new ones)
 - Anchor text, sentence placement, or any prose change — Jev returns typed decisions only
-- A gate on missing or weak links; `content.sh` keeps the only enforced rule (3–10 links)
-- PR comments from CI (a shared-state action; the job summary is the channel)
+- A gate on missing or weak links; `content.sh` keeps the only enforced rule on links (3–10). The receipt gate enforces that the script ran, never its output
+- Any Jev call from CI, any key in GitHub, PR comments or job summaries — suggestions are produced and read locally
 - Tag and FAQ suggestions (#1491, #1492); ranking for the related blocks (`related.md`)
 - Any npm dependency; any Jev call at build time
 
@@ -106,28 +107,51 @@ Feature: Newsletter backlinks
     When the request is built
     Then the paragraphs are split across several requests of at most 40 questions each
 
-Feature: CI and skills
+Feature: Receipts and the gate
+
+  Scenario: Receipt on a completed document
+    Given per-document mode completes a document (a document without prose included)
+    When the script finishes
+    Then src/content/suggestions.json holds links[<key>] = { checkedAt: <Helsinki date>, contentHash: <sha256 over fi.mdx, sv.mdx, en.mdx>, model: <response model, or "no request"> }
+    And receipts of other documents and kinds are kept, keys sorted, 2-space indent, trailing newline
+    And when a later document in the same run fails, receipts of the completed ones are still written
+
+  Scenario: Receipt on a backlink scan
+    Given `--backlinks newsletter 2` completes
+    When the script finishes
+    Then backlinks["newsletter:2"] is recorded with the issue's contentHash
+
+  Scenario: Receipt survives an updatedDate bump
+    Given a document whose meta.json changed but whose three locale files did not
+    When the check runs
+    Then its receipt still matches
+
+  Scenario: Changed documents must carry receipts
+    Given staged or changed files under src/content/posts or src/content/newsletters
+    When `npm run check:suggestions -- <files>` (pre-commit) or `-- --base origin/<base>` (CI, three-dot diff, --diff-filter=ACMR) runs
+    Then for each changed document that still exists, links[<key>].contentHash must equal the current hash
+    And a newsletter additionally needs backlinks[<key>] to match
+    And a missing or stale receipt exits 1 with one line per problem naming the exact command, plus a reminder to commit src/content/suggestions.json
+    And documents that were not changed need no receipt, so nothing is required retroactively
+    And the check never reads a key or touches the network
+
+  Scenario: Gate wiring
+    Given the repository hooks and pipeline
+    Then lint-staged runs the check with the staged post and newsletter .mdx files
+    And the Validate content job runs it with --base on pull requests, next to the updatedDate check
+    And no job calls Jev and no Jev key exists in GitHub
 
   Scenario: Changed documents from git
     Given `--changed-since origin/main`
     When the script runs
     Then it runs `git diff --name-only origin/main...HEAD -- src/content/posts src/content/newsletters` (three dots: since the merge base)
     And it lists the unique post and newsletter ids in those paths, in path order, skipping ids that no longer have a directory (deleted or renumbered documents)
-    And it runs per-document mode for each remaining id, one section per document
+    And it runs per-document mode for each remaining id, one section per document, writing their receipts
     And it prints "no content changes" and exits 0 when nothing remains
-
-  Scenario: Advisory job
-    Given a pull request that touches src/content/posts or src/content/newsletters and a repository secret OPENROUTER_API_KEY
-    When the pipeline runs
-    Then the content-suggestions job runs `suggest:links --changed-since origin/<base> --out suggestions.md` and appends the file to the job summary
-    And the step itself always exits 0: a script failure is written to the summary as a notice, so the job shows green and never blocks the pipeline
-    And the job is not in the branch protection's required checks (15 explicit contexts today) and must not be added
-    And it is skipped, with a notice in the summary, when the secret is absent (fork pull requests included) or no document changed
-    And the "no document changed" skip happens inside the script after checkout and `npm ci` (no path-filter action is added), so the job still runs briefly on every pull request
 
   Scenario: Skills
     Given /write or /review-content is run on a post
-    Then the skill instructs running `npm run suggest:links -- post <id>` and deciding on every row, and writing anchor text by hand
+    Then the skill instructs running `npm run suggest:links -- post <id>` and deciding on every row, writing anchor text by hand, and running once more after the edits so the receipt matches the final text
 
 Feature: Common behaviour
 
@@ -169,9 +193,24 @@ Feature: Common behaviour
 ```typescript
 // scripts/jev/corpus.ts (addition)
 interface Document {
-    body: string   // the MDX body after the frontmatter, for the content.sh link count and already-linked targets
-    slug: string   // per-locale frontmatter slug; '' when the frontmatter has none
+    body: string          // the MDX body after the frontmatter, for the content.sh link count and already-linked targets
+    contentHash: string   // sha256 over fi.mdx, sv.mdx, en.mdx only (hashContent); sourceHash keeps covering meta.json too
+    slug: string          // per-locale frontmatter slug; '' when the frontmatter has none
 }
+
+// scripts/jev/suggestions.ts — receipts, no CLI
+export const RECEIPTS_PATH = 'src/content/suggestions.json'
+export type ReceiptKind = 'links' | 'backlinks'
+export interface Receipt { checkedAt: string; contentHash: string; model: string }
+export type ReceiptsFile = Record<ReceiptKind, Record<string, Receipt>>          // { backlinks: {…}, links: {…} }
+export function readReceipts(path): ReceiptsFile | null                           // null when missing or malformed
+export function writeReceipts(path, file): void                                   // canonical order, trailing newline
+export function recordReceipt(file, kind, doc, model, checkedAt): void
+export function hasReceipt(file, kind, doc): boolean                              // contentHash equality
+export function findUnchecked(file, changed: Document[]): string[]                // "<key>: <kind> never run|changed since the last run — <command>"; posts need links, newsletters links + backlinks
+
+// scripts/checks/suggestions-stale.ts — CLI: <changed file>… | --base <ref>; exit 0 checked, 1 unchecked, 2 bad arguments
+export function runCheck(argv, deps?: { git?; log?; path?; root? }): number
 
 // scripts/jev/links.ts — shared library, no CLI. Moved here from eval.ts (which imports them back):
 //   NONE, SEGMENT_KIND, linkTargets, linkOptions, rankedOptions, topChoice
@@ -200,30 +239,14 @@ export function renderTable(headers: string[], rows: string[][]): string        
 //   suggest:links -- --backlinks newsletter <id> [--lang] [--threshold] [--concurrency] [--out]
 //   suggest:links -- --changed-since <ref> [--lang] [--threshold] [--concurrency] [--out]
 //   (--lang, --threshold, --concurrency and --out apply to every mode; --backlinks accepts only the newsletter kind)
-export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; root?; git? }): Promise<number>
+export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; git?; log?; receipts?; root?; today? }): Promise<number>
 ```
 
 `starts` is the first eight words of the paragraph with markup stripped. `title` and `url` are taken from the corpus in the chosen locale; the option labels sent to Jev are always English.
 
 Requests: per-document mode sends one request per paragraph (≈ 88 options × ~35 tokens + paragraph ≈ 4k tokens; a 20-paragraph post ≈ $0.004). Backlink mode sends one request per post with the issue as state and up to 40 paragraph nouls (≈ 78 requests ≈ $0.02).
 
-CI job sketch (`main.yml`):
-
-```yaml
-content-suggestions:
-  if: github.event_name == 'pull_request'
-  continue-on-error: true
-  permissions: { contents: read }
-  steps:
-    - checkout (fetch-depth 0), setup-node, npm ci
-    - run: |
-        if [ -z "$OPENROUTER_API_KEY" ]; then echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"; exit 0; fi
-        npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md \
-          || echo "Link suggestions failed (advisory, see the job log)" >> "$GITHUB_STEP_SUMMARY"
-        [ -f suggestions.md ] && cat suggestions.md >> "$GITHUB_STEP_SUMMARY"
-        exit 0
-      env: { OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }} }
-```
+Gate wiring: `.lintstagedrc.mjs` runs `scripts/checks/suggestions-stale.ts <staged .mdx files>` for `**/content/{posts,newsletters}/**/*.mdx`; `main.yml` Validate content runs it with `--base "origin/${{ github.base_ref }}"` on pull requests, immediately after the updatedDate check. Author flow: write → `npm run suggest:links -- post <id>` → apply the links you want → run once more (prints "no new link targets", costs under a cent) → commit content and `src/content/suggestions.json` together.
 
 Budget check for backlink mode: the longest post body today is 1,575 words in 38 paragraphs, so one request is about 5k tokens against the 32k OpenRouter limit; the 40-question chunking is a guard, not the normal path.
 
@@ -241,11 +264,11 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 ## Anti-patterns
 
-- **Do not** turn suggestions into a check — the eval's abstain rate is 0.73–0.79, so a fifth of unlinked paragraphs get a suggestion; a gate would force links the author rejected
+- **Do not** gate on the suggestions themselves — the eval's abstain rate is 0.73–0.79, so a fifth of unlinked paragraphs get a suggestion; the receipt proves the script ran on the final text, nothing more
+- **Do not** hash `meta.json` into the receipt — every commit bumps `updatedDate`, which would make every receipt stale by construction; `contentHash` covers the three locale files only
+- **Do not** call Jev from CI or store a key in GitHub — the check is a hash comparison; the runs are local
 - **Do not** send one request per paragraph in backlink mode — the issue is the state and paragraphs are parallel questions; 78 requests, not 1,200
 - **Do not** label options in the document's locale — labels come from the English corpus in every mode, as in the eval and `related.md`
-- **Do not** post PR comments from the job — the job summary is the only output; comments are a shared-state action the author has not approved
-- **Do not** let the job block the pipeline — `continue-on-error: true` and explicit skips; a missing secret or a Jev outage must not fail a content PR
 - **Do not** duplicate `linkTargets` or `linkOptions` — the eval and this script share `scripts/jev/links.ts`
 
 ---
@@ -269,6 +292,7 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Advisory CI job replaced by the receipt gate: `suggestions.json` written by the script, `check:suggestions` in pre-commit and CI, no Jev call and no key in CI |
 | 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): failure line carries key and paragraph, already-linked over the whole body, strict backlink answers, calibration numbers corrected, data model refreshed, CI summary wording |
 | 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, doubtful flag interpreted |
 | 2026-09-23 | Critic re-review (PASS WITH NOTES): flags apply to every mode, `--backlinks post` is a bad argument, unexpected errors exit 1, job-level vs script-level skip stated |
