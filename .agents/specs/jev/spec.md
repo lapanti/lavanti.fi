@@ -56,7 +56,8 @@ Feature: Jev client
     Given neither key is set
     When a script asks the client for a provider
     Then the client reports "no provider" without touching the network
-    And the calling script prints "skipped: no OPENROUTER_API_KEY or TYPESAFE_API_KEY" and exits 0
+    And the calling script prints "skipped: no OPENROUTER_API_KEY or TYPESAFE_API_KEY"
+    And an eval or suggestion script exits 0, while a generator that was asked to produce committed data exits 1 (see related.md)
 
   Scenario: Transient failure
     Given the endpoint answers 429 or a 5xx
@@ -289,6 +290,7 @@ Cost and time expectations (OpenRouter, 2026-09-23 smoke call: 579 tokens = $0.0
 - [Tag taxonomy](../tags/spec.md) — tag ids are the ground truth labels
 - [Newsletter archive](../newsletter/archive.md) — newsletters are tagless and a separate collection; they are corpus members but excluded from the tag eval
 - [Scheduled publishing](../posts/scheduled-publishing.md) — future-dated documents exist on disk; callers filter by publishDate
+- [Ranked related posts](./related.md) — the first consumer: `src/content/related.json`, generated with this client and corpus
 
 ---
 

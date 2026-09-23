@@ -147,6 +147,7 @@ The email and its archive page are different artefacts. The source is the sent e
 - [Scheduled publishing](../posts/scheduled-publishing.md) — the build filter and nightly job the embargo rides on
 - [Newsletter](./spec.md) — the subscribe component and landing pages the archive hangs off
 - [SEO](../seo/spec.md) — JSON-LD, OG and hreflang rules the issue pages satisfy
+- [Ranked related posts](../jev/related.md) — the "other issues" block on an issue page lists the issues Jev ranked as the best next reads (from `src/content/related.json`) first, then newest-first; an issue without an entry keeps the newest-first order. Adding or editing an issue requires `npm run generate:related`, enforced by `check:related`.
 
 ---
 
