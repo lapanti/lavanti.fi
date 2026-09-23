@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "YEL ei saa nostaa yrittäjyyden kynnystä":
+          - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
+            - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
+            - img "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation."
+            - heading "YEL ei saa nostaa yrittäjyyden kynnystä" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Hallituksen YEL-uudistus poistaisi aloittavan yrittäjän alennuksen juuri kun tekoäly laskee yrittämisen kynnystä. Kolme korjausta, jotka pitävät sen matalana.
+        - list:
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Yrittäjyys":
+              - /url: /fi/kategoria/yrittajyys/
+      - listitem:
         - article "Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
           - link "Kaksiosainen kuva, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
             - /url: /fi/blog/78/metsien-hakkuut-ilman-asukkaiden-kuulemista/
@@ -127,21 +145,3 @@
           - listitem:
             - link "Markkinavihreä":
               - /url: /fi/kategoria/markkinavihrea/
-      - listitem:
-        - article "Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut":
-          - 'link "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut"':
-            - /url: /fi/blog/68/daavidin-linko-euroopan-epaonnistuminen/
-            - 'img "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
-            - heading "Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Daavidin linko oli Suomelle oikea hankinta, mutta se paljastaa Euroopan puolustusteollisuuden epäonnistumisen. Markkinavihreä näkökulma puolustushankintoihin.
-        - list:
-          - listitem:
-            - link "Turvallisuus":
-              - /url: /fi/kategoria/turvallisuus/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
-          - listitem:
-            - link "Vapaus":
-              - /url: /fi/kategoria/vapaus/
