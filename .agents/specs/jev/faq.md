@@ -205,6 +205,16 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 
 ---
 
+## Calibration runs
+
+2026-09-23, model `typesafe/jev-1.13-20260917` via OpenRouter, thresholds at their provisional values, fi.
+
+- `suggest:faq -- post 57` (4 faq entries, 4 related neighbours, 7 candidates, one request): four candidates above 0.7 — "Mitä muutoksia tekoäly tuo?" (post 47, 0.81, usefulness 3.0), "Mitä tekoäly ei voi korvata?" (post 44, 0.77, 2.9), then the post's own "Mistä kehittäjälle maksetaan jatkossa?" (0.78, 1.6) and "Miksi koodin tuottamisen hinta romahtaa?" (0.87, 1.6). At `--answerable 0.3` one more row appears (own "Mitä Suomi tarvitsee nyt?" at 0.53); the two remaining candidates stayed under 0.3. No doubtful faq entries: the four existing questions all scored above 0.3.
+- `newsletter 2` (2 faq entries, 3 issue neighbours): three own headings above 0.7 (0.79–0.92), nothing from the neighbours; no doubtful entries.
+- Reading: answerability separates well (0.3–0.9 across the seven candidates), usefulness compresses to 1.3–3.0, so the sort is a mild tie-break rather than a ranking; a second run moved values by ≤ 0.02. Thresholds kept; usefulness is shown, not filtered on.
+
+---
+
 ## Open Questions
 
 *(none)*
@@ -215,5 +225,6 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, thresholds kept |
 | 2026-09-23 | Critic review (FAIL → revised): readRelatedFile instead of the src/lib JSON import, Unicode question rule with ä/ö fixtures, faq parsing rule and helper named, score criteria '1'–'5' and expectedScore semantics, 40-question chunking, no-candidates-with-faq, report file and unexpected-error scenarios, tie-break and decimals, markup stripped in dedupe |
 | 2026-09-23 | Initial draft for #1492: related neighbours instead of tag siblings, existing faq scored as doubtful, newsletters as targets, no gate (author decisions on discovery) |
