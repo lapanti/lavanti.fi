@@ -310,18 +310,28 @@ Cost and time expectations (OpenRouter, 2026-09-23 smoke call: 579 tokens = $0.0
 
 _Filled in by the Builder after running the gate. Thresholds proposed in the plan: proceed per task and language where the primary metric is ≥ 0.6 on `en` and clearly above its baseline; record `fi` and `sv` for the suggestion phases. For tags, recall matters more than precision: the ground truth was assigned from memory, so a "false positive" may be a tag the author missed._
 
+Run 2026-09-23, model `typesafe/jev-1.13-20260917` via OpenRouter, 78 posts, concurrency 8, total cost $0.32.
+
 | Task | Lang | Primary metric | Value | Baseline | Requests | Cost USD | Go |
 |---|---|---|---|---|---|---|---|
-| tags | en | microF1@0.5 | | | | | |
-| tags | fi | microF1@0.5 | | | | | |
-| links | en | hit@3 | | | | | |
-| links | fi | hit@3 | | | | | |
+| tags | en | microF1@0.5 | 0.467 | 0.352 | 78 | 0.008 | advisory only |
+| tags | fi | microF1@0.5 | 0.460 | 0.352 | 78 | 0.010 | advisory only |
+| links | en | hit@3 | 0.841 | 0.364 | 795 | 0.152 | go |
+| links | fi | hit@3 | 0.850 | 0.364 | 793 | 0.153 | go |
+
+Secondary numbers: tags en precision/recall 0.435/0.504 at 0.5, macroF1 0.512, pillar set accuracy 0.222 (36 posts); links en hit@1 0.692, abstain rate 0.740 over 688 unlinked paragraphs; fi within 0.02 of en on every metric.
+
+Reading:
+
+- **Links (go).** Given a paragraph, Jev puts a human-chosen target in its top 3 for 84–85% of linked paragraphs, against 36% for always suggesting the three most-linked posts. This is the same question shape as related-post ranking (a `choice` over every other document), so it also clears #1487.
+- **Tags (advisory only).** Above baseline but under the 0.6 threshold. The per-tag rows explain why: topical tags are reliable (immigration 0.80/0.89 precision/recall, infrastructure 0.67/0.89, digitalisation 0.57/0.89, transportation 0.67/0.80, artificial-intelligence 0.80/0.67), while tags the text never announces are not — election-cycle tags (regional-elections-2025 recall 0.08, municipal-elections-2025 0.28, parliamentary-elections-2027 0.20) and the broad pillar tags (economy recall 0.16, digital-independence 0.22, culture-and-education precision 0.07). Those are editorial assignments the author makes from campaign context; a text classifier cannot recover them. Tag suggestions stay a suggestion, and the suggestion script should present topical tags and pillar tags separately.
+- **Language.** Finnish state text performs as well as English on both tasks. Later phases may send the source-language text; computing on the English sibling is not required for accuracy.
 
 ---
 
 ## Open Questions
 
-- [ ] Go/no-go thresholds (0.6 proposed) — confirm with the author once the first numbers exist
+*(none — thresholds applied 2026-09-23: links clear 0.6 with a wide margin, tags do not and remain advisory)*
 
 ---
 
@@ -330,5 +340,6 @@ _Filled in by the Builder after running the gate. Thresholds proposed in the pla
 | Date | Change |
 |------|--------|
 | 2026-09-23 | Initial draft for #1486; OpenRouter transport smoke-tested (200, 540 ms, $0.000024) |
+| 2026-09-23 | Eval gate run: links go (hit@3 0.84–0.85), tags advisory only (F1 0.46–0.47), fi ≈ en |
 | 2026-09-23 | Critic re-review (PASS WITH NOTES): option-cap check moved to the link task; option labels always from the English corpus |
 | 2026-09-23 | Critic review: define link-eval state and per-paragraph requests, hit@k and abstain rate, default run, 34 tags, baselines, `paragraphs` field, option cap failure, lead bound, injectable sleep, key never logged |
