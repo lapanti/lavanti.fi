@@ -27,8 +27,10 @@ import { NEWSLETTER_SEGMENTS } from '../../src/lib/newsletterRoutes.ts'
 import { stripMarkup } from '../checks/mdx-deep.ts'
 import {
     type Answer,
+    CHOICE_OPTION_MAX,
     createClient,
     type JevClient,
+    mapConcurrent,
     NO_PROVIDER_NOTICE,
     type QuestionSpec,
     resolveProvider,
@@ -47,7 +49,6 @@ import {
 
 export const PREDICT_THRESHOLD = 0.5
 export const THRESHOLDS = [0.5, 0.7] as const
-export const CHOICE_OPTION_MAX = 255
 export const CONCURRENCY_DEFAULT = 4
 export const NONE = 'none'
 export const PILLAR_MIN_ID = 43
@@ -337,31 +338,6 @@ export function linkMetrics(rows: LinkRow[]): Record<string, number> {
 }
 
 // ── runners ───────────────────────────────────────────────────────────────────
-
-export async function mapConcurrent<T, R>(
-    items: T[],
-    concurrency: number,
-    fn: (item: T, index: number) => Promise<R>
-): Promise<R[]> {
-    const results: R[] = new Array<R>(items.length)
-    let next = 0
-    let failed = false
-    const worker = async (): Promise<void> => {
-        // Stop handing out new (paid) work once any item has failed; the first error rejects the whole run.
-        while (next < items.length && !failed) {
-            const index = next++
-            try {
-                results[index] = await fn(items[index], index)
-            } catch (error) {
-                failed = true
-                throw error
-            }
-        }
-    }
-    await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, items.length)) }, worker))
-
-    return results
-}
 
 const noulOf = (answer: Answer | undefined): number => (answer?.type === 'noul' ? answer.noul : 0)
 

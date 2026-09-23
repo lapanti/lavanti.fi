@@ -1,4 +1,3 @@
-import type { JevClient, QuestionSpec, SystemOneResponse } from './client'
 import type { DocKey, Document } from './corpus'
 
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
@@ -6,15 +5,14 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
+import { CHOICE_OPTION_MAX, type JevClient, mapConcurrent, type QuestionSpec, type SystemOneResponse } from './client'
 import {
-    CHOICE_OPTION_MAX,
     formatTable,
     linkMetrics,
     linkOptions,
     type LinkRow,
     linkTargets,
     loadTagLabels,
-    mapConcurrent,
     NONE,
     prf,
     rankedOptions,
