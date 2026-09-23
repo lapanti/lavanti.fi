@@ -9,6 +9,8 @@ export class NewsletterIssuePage extends AnyPage {
     readonly titleLocator: Locator
     readonly provenance: Locator
     readonly archiveLink: Locator
+    readonly faqHeading: Locator
+    readonly faqQuestions: Locator
 
     constructor(page: Page, url = '/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/') {
         super(page)
@@ -19,6 +21,13 @@ export class NewsletterIssuePage extends AnyPage {
         this.archiveLink = page
             .locator('main a.btn')
             .filter({ hasText: /Kaikki uutiskirjeet|All issues|Alla nyhetsbrev/ })
+        /*
+         * The goldens cannot stand in for these: screenshots are viewport-sized
+         * (no fullPage), and toMatchAriaSnapshot matches partially, so a section
+         * this far below the fold moves neither baseline.
+         */
+        this.faqHeading = page.locator('section.faq').getByRole('heading', { level: 2 })
+        this.faqQuestions = page.locator('section.faq').getByRole('heading', { level: 3 })
     }
 
     async goTo() {
@@ -32,5 +41,11 @@ export class NewsletterIssuePage extends AnyPage {
         await expect(this.provenance).toBeVisible()
         await expect(this.provenance).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/)
         await expect(this.archiveLink.first()).toBeVisible()
+    }
+
+    async checkFaq() {
+        await expect(this.faqHeading).toHaveText('Usein kysyttyä')
+        expect(await this.faqQuestions.count()).toBeGreaterThanOrEqual(2)
+        await expect(this.faqQuestions.first()).toBeVisible()
     }
 }

@@ -12,6 +12,13 @@ test.describe('Newsletter Issue Page', () => {
         await issuePage.checkContent()
     })
 
+    test('should render the FAQ section', async ({ page }) => {
+        const issuePage = new NewsletterIssuePage(page)
+        await issuePage.goTo()
+
+        await issuePage.checkFaq()
+    })
+
     test('should match aria snapshot', async ({ page }) => {
         const issuePage = new NewsletterIssuePage(page)
         await issuePage.goTo()
