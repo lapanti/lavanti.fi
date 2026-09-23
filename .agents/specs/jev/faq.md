@@ -101,8 +101,8 @@ Feature: FAQ candidates for one document
 
   Scenario: Report file
     Given `--out report.md`
-    When the script finishes, with or without a failure
-    Then everything printed is also written to the file
+    When the script finishes, with or without a failed request
+    Then the sections and the failure line are also written to the file; the usage line, "not found", the skipped notice and the malformed-related.json line go to stdout only, as for links
 
   Scenario: Several documents
     Given `post 57 post 71`
@@ -135,10 +135,10 @@ Feature: Common behaviour
     When the script runs
     Then it prints the sections completed so far, then "failed at <key>: <error>", writes --out when given, and exits 1
 
-  Scenario: Unexpected error
-    Given related.json that cannot be parsed, or a content directory that cannot be read
+  Scenario: Malformed related.json
+    Given a related.json that exists but does not parse to the expected shape
     When the script runs
-    Then it fails with exit 1 and the error — for related.json: "src/content/related.json is malformed; run npm run check:related" before any request; a missing related.json is not an error (every document falls back to its own headings, with the notice)
+    Then it prints "<path> is malformed; run npm run check:related" before any request and exits 1; a missing related.json is not an error (every document falls back to its own headings, with the notice)
 ```
 
 ---
@@ -153,18 +153,19 @@ export interface Document {
     h3s: string[]          // '### ' headings, as h2s
 }
 export function headingsOf(body: string, level: 2 | 3 = 2): string[]
+export function sectionHeadingsOf(body: string): string[]             // H2 and H3 in document order (h2s/h3s lose the interleaving)
 export function faqQuestionsOf(frontmatter: string): string[]         // the faq: block only; fmField's quote grammar per `- q:` line
-export function bodyStateFor(doc: Document): Record<string, string>   // { title, description, headings: h2s then h3s, body: prose paragraphs with markup stripped, joined by blank lines }
+export function bodyStateFor(doc: Document): Record<string, string>   // { title, description, headings: sectionHeadingsOf(body), body: prose paragraphs with markup stripped, joined by blank lines }
 
 // scripts/jev/faq.ts — shared library, no CLI
 export const ANSWERABLE_THRESHOLD = 0.7       // provisional: not measured by the eval gate; tuned on the first runs
 export const DOUBTFUL_THRESHOLD = 0.3         // provisional
-export const NEIGHBOUR_COUNT = 10             // top of the related.json entry
+export const NEIGHBOUR_COUNT = RANKED_MAX     // the whole related.json entry (10), one constant with related.ts
 const FAQ_QUESTIONS_MAX = 40                  // questions per request, as BACKLINK_QUESTIONS_MAX; module-private
 export function isQuestionHeading(heading: string): boolean            // the aeo.sh rule in Unicode terms
 export function normaliseQuestion(q: string): string                    // stripMarkup, trim, lower-case, drop trailing ?
 export interface Candidate { question: string; source: 'own' | DocKey }
-export function harvest(doc: Document, neighbours: Document[]): Candidate[]   // own first, then neighbours in ranked order; deduped; existing faq excluded
+export function harvest(doc: Document, neighbours: Document[]): Candidate[]   // own first (sectionHeadingsOf(doc.body), document order), then neighbours in ranked order; deduped; existing faq excluded
 export function faqQuestions(doc: Document, candidates: Candidate[]): Record<string, QuestionSpec>   // a<i>, u<i> (criteria '1'–'5'), f<j>
 export function chunkQuestions(questions: Record<string, QuestionSpec>): Array<Record<string, QuestionSpec>>   // ≤ FAQ_QUESTIONS_MAX each, key order
 export interface RankedCandidate extends Candidate { answers: number; usefulness: number }
@@ -174,7 +175,7 @@ export const expectedScore = (probabilities: Record<string, number>): number   /
 
 // scripts/suggest-faq.ts — CLI
 //   suggest:faq -- <post|newsletter> <id>… [--lang fi|sv|en] [--answerable 0.7] [--doubtful 0.3] [--out <md>]
-export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?: RelatedFile | null; root? }): Promise<number>
+export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?: RelatedFile | null; relatedPath?; root? }): Promise<number>
 ```
 
 Requests: per document, 2 × (own + neighbours' question headings) + existing faq nouls, typically 20–60 questions; the worst case today is 11 headings × 11 documents ≈ 240 questions, hence the 40-per-request chunking (6 requests). State is under 2,500 tokens (the longest post is 1,575 words); ≈ $0.0003–0.001 per document. Related neighbours come from `src/content/related.json` read with `readRelatedFile` in `scripts/jev/related.ts` — not `src/lib/related.ts`, whose JSON import has no `with { type: 'json' }` attribute and fails under Node's strip-types loader.
@@ -225,6 +226,7 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review of the implementation (FAIL → fixed): headings harvested in document order via sectionHeadingsOf, malformed related.json tested through an injected path, neighbours tested in en and for an issue, NEIGHBOUR_COUNT shares RANKED_MAX, bare faq values reject a leading quote, report-file scope stated |
 | 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, thresholds kept |
 | 2026-09-23 | Critic review (FAIL → revised): readRelatedFile instead of the src/lib JSON import, Unicode question rule with ä/ö fixtures, faq parsing rule and helper named, score criteria '1'–'5' and expectedScore semantics, 40-question chunking, no-candidates-with-faq, report file and unexpected-error scenarios, tie-break and decimals, markup stripped in dedupe |
 | 2026-09-23 | Initial draft for #1492: related neighbours instead of tag siblings, existing faq scored as doubtful, newsletters as targets, no gate (author decisions on discovery) |
