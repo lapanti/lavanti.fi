@@ -30,7 +30,6 @@ const faq = [
 
 const render = (props: Record<string, unknown>) =>
     renderAstroComponent(PageLayout, {
-        // @ts-expect-error the container types props as the component's own Props; this is a partial fixture.
         props: { lang: 'fi', pageTitle: 'Page title', slug: 'fi/page', title: 'Title', ...props },
     })
 
