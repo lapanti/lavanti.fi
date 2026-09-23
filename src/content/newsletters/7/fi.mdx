@@ -9,16 +9,17 @@ faq:
     a: 'Suomen 44 datakeskusta kuluttavat noin kaksi prosenttia maan sähköstä, ja Datakeskusteollisuuden arvion mukaan osuus kasvaa viidestä kuuteen prosenttiin vuoteen 2030 mennessä. Fingridin yli 50 000 megawatin liityntäkyselyistä arvioidaan toteutuvan noin kymmenen prosenttia eli noin viisi gigawattia.'
   - q: 'Miksi Irlanti ei ole Suomen verrokki datakeskuksissa?'
     a: 'Suomen tuulivoimapotentiaali ylittää ennustetun datakeskuskysynnän, keskukset ovat maantieteellisesti hajautettuja, ilmasto mahdollistaa vapaajäähdytyksen ja hukkalämpö voidaan kytkeä kaukolämpöön. Irlannissa datakeskusten osuus sähkönkäytöstä nousi 21 prosentista 32 prosenttiin vuosien 2023 ja 2026 välillä, ja Dublinin alueen uudet hankkeet on pysäytetty vuoteen 2028 asti.'
+  - q: 'Nostavatko datakeskukset sähkön hintaa?'
+    a: 'Eivät ensisijaisesti. Verkostoasiantuntija Riku Merikosken analyysin mukaan Irlannin sähkön hinta seuraa maakaasun hintaa, ei datakeskusten määrää: tukkuhinta laski vuosien 2021 ja 2025 välillä, vaikka datakeskusrakentaminen kasvoi.'
 ---
 
-import BlockQuote from '../../../components/body/BlockQuote.astro'
 import SmartLink from '../../../components/SmartLink.astro'
 import H2 from '../../../components/H2.astro'
 import LI from '../../../components/LI.astro'
 import Paragraph from '../../../components/Paragraph.astro'
 import UL from '../../../components/UL.astro'
 
-export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
+export const components = { a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
 
 Datakeskusten sähkövero nousi Suomessa 1. heinäkuuta 2026 luokasta II luokkaan I. Syksyllä 2026 valmistuu kohdennettu tukijärjestelmä. Yhdysvalloissa nousi heinäkuun 2026 ensimmäisellä viikolla otsikoihin kolme tapausta paikallisista haitoista: kunnalliseen jäteveteen levinnyt bakteeri Wyomingissa, 60 desibelin jatkuva melu asuinalueella Michiganissa ja 7,3 miljardin dollarin datakeskukselle nostettu ryhmäkantelu Wisconsinissa.
 
@@ -26,9 +27,9 @@ Samaan aikaan Suomen kuntapäättäjät käyvät läpi konkreettista kaavoitusta
 
 ## Suomen datakeskukset numeroina
 
-Heinäkuussa 2026 Suomessa toimii [44 datakeskusta, joista vain seitsemässä on yli 20 työntekijää](https://www.uusisuomi.fi/uutiset/a/882216d3-6ad5-4c54-9b55-f6195da4f09a). Verohallinnon pääjohtaja Markku Heikura esitteli samoja lukuja [Hufvudstadsbladetin haastattelussa toukokuun alussa 2026](https://www.hbl.fi/ekonomi/skatteboss-datacenter-ger-minus-i-statskassan/). Datakeskuksen rakentaminen työllistää merkittävästi. Valmistumisen jälkeen korkean automaatioasteen seurauksena keskus työllistää vähemmän. Toki vertailukohtana esimerkiksi perinteinen valmistava teollisuus on hieman huono, kun datakeskuksissa ei tehdä fyysisiä tuotteita.
+Heinäkuussa 2026 Suomessa toimii [44 datakeskusta, joista vain 7 työllistää yli 20 työntekijää](https://www.uusisuomi.fi/uutiset/a/882216d3-6ad5-4c54-9b55-f6195da4f09a). Verohallinnon pääjohtaja Markku Heikura esitteli samoja lukuja [Hufvudstadsbladetin haastattelussa toukokuun alussa 2026](https://www.hbl.fi/ekonomi/skatteboss-datacenter-ger-minus-i-statskassan/). Datakeskuksen rakentaminen työllistää merkittävästi. Valmistumisen jälkeen korkean automaatioasteen seurauksena keskus työllistää vähemmän. Toki vertailukohtana esimerkiksi perinteinen valmistava teollisuus on hieman huono, kun datakeskuksissa ei tehdä fyysisiä tuotteita.
 
-Datakeskukset kuluttavat vuonna 2026 noin kaksi prosenttia Suomen sähköstä, ja [Datakeskusteollisuuden toiminnanjohtaja Antti 'Jogi' Poikolan arvion mukaan osuus kasvaa viidestä kuuteen prosenttiin vuoteen 2030 mennessä](https://www.ksml.fi/uutissuomalainen/9428138). [Kantaverkkoyhtiö Fingridille on tullut yli 50 000 megawatin edestä datakeskusten liityntäkyselyjä, joista kantaverkkosuunnittelusta vastaava johtaja Jussi Jyrinsalo arvioi noin kymmenen prosentin toteutuvan](https://korkia.fi/fi/datakeskukset-suomessa-sahkojarjestelman-painolasti-vai-pelastaja/). Kyse on siis noin viiden gigawatin lisäkuormasta sähköverkolle. Vertailuksi: vuoden 2026 talven kulutushuippu oli noin 15,5 gigawattia. Elinkeinoelämän keskusliitto EK arvioi Suomen nykyisen datakeskuspotentiaalin 1,5 gigawattiin.
+Datakeskukset kuluttavat vuonna 2026 noin kaksi prosenttia Suomen sähköstä, ja [Datakeskusteollisuuden toiminnanjohtaja Antti 'Jogi' Poikolan arvion mukaan osuus kasvaa viidestä kuuteen prosenttiin vuoteen 2030 mennessä](https://www.ksml.fi/uutissuomalainen/9428138). [Kantaverkkoyhtiö Fingridille on tullut yli 50 000 megawatin edestä datakeskusten liityntäkyselyjä, joista kantaverkkosuunnittelusta vastaava johtaja Jussi Jyrinsalo arvioi noin kymmenen prosentin toteutuvan](https://korkia.fi/fi/datakeskukset-suomessa-sahkojarjestelman-painolasti-vai-pelastaja/). Kyse on siis noin viiden gigawatin lisäkuormasta sähköverkolle. Vertailuksi: vuoden 2026 talven kulutushuippu oli noin 15,5 gigawattia. Oman arvioni mukaan Suomen nykyinen datakeskuspotentiaali on noin 1,5 gigawattia.
 
 Sähköjärjestelmän toinen puoli antaa mittasuhteet. Suomen vuotuinen sähköntuotanto on noin 83 terawattituntia. [Suomen uusiutuvat ry:n hankelistan mukaan tuulivoiman luvitusjono ylittää nykyisen asennetun kapasiteetin moninkertaisesti; maalle on suunnitteilla yli 60 gigawattia ja merelle yli 45 gigawattia hankkeita](https://suomenuusiutuvat.fi/en/wind-power/projects-and-wind-turbines-in-finland/projects-under-planning/). Luvitetut tuulivoimahankkeet odottavat asiakasta: yksi datakeskusinvestointi laukaisee tyypillisesti pitkän uusiutuvan energian sähkönostosopimuksen, joka rahoittaa uuden voimalan rakentamisen. [Datakeskukset kasvattavat siis uusiutuvan tuotannon määrää sähkömarkkinoilla](/fi/blog/65/suomi-voi-tehda-sahkoistymisesta-kilpailuedun/).
 
@@ -45,7 +46,7 @@ Mittakaavan hahmottamiseksi tiiviisti:
 - Tuulivoiman luvitusjono (odottaa pitkäaikaista asiakasta, kuten datakeskusta): yli 60 gigawattia maalle ja yli 45 gigawattia merelle.
 - Verrokkina Virginia, Yhdysvallat: noin 17 gigawattia operatiivista datakeskuskapasiteettia ja noin 47 gigawattia jonossa.
 
-Arvonluonti on yksi keskustelun tärkeimmistä ulottuvuuksista. Anthropicin API-hinnoittelusta voi päätellä, että tekoälyn käytön, eli inferenssin, hinta loppuasiakkaalle kilowattituntia kohti on dollareita, kun taas suomalaisen sähkön tuottajahinta pysyy senteissä. Suuruusluokaltaan ero on satakertainen, ja [toimittaja Niko Vartiaisen "Humiseva halli" -selvitys Uudessa Jutussa](https://www.uusijuttu.fi/juttu/su3ZnNOS-m8IOO0Uw-9b352) käsitteli tätä. Suomen politiikassa yksi tärkeä kysymys on, kuinka suuri osa tuosta arvosta kannattaa pyrkiä, ja pystytään, pitämään täällä: datakeskusten omistuksen, sopimusehtojen ja/tai verokehyksen kautta.
+Arvonluonti on yksi keskustelun tärkeimmistä ulottuvuuksista. Anthropicin API-hinnoittelusta voi päätellä, että tekoälyn käytön, eli inferenssin, hinta loppuasiakkaalle kilowattituntia kohti on dollareita, kun taas suomalaisen sähkön tuottajahinta pysyy senteissä. Suuruusluokaltaan ero on satakertainen. Tämä vertailu on oma laskelmani julkisesta API-hinnastosta, ei ulkopuolisen lähteen luku, ja [toimittaja Niko Vartiaisen "Humiseva halli" -selvitys Uudessa Jutussa](https://www.uusijuttu.fi/juttu/su3ZnNOS-m8IOO0Uw-9b352) käsitteli samaa kysymystä. Suomen politiikassa yksi tärkeä kysymys on, kuinka suuri osa tuosta arvosta kannattaa pyrkiä, ja pystytään, pitämään täällä: datakeskusten omistuksen, sopimusehtojen ja/tai verokehyksen kautta.
 
 ## Miksi Irlanti ei ole Suomen verrokki
 
@@ -78,15 +79,15 @@ Suomessa perusrakenne on parempi. [Valtioneuvoston päätös 993/1992](https://w
 
 Ongelmat ovat rakenteellisia, eivät säädöspohjaisia. Omavalvonta on altis manipuloinnille, kun viranomaisen pistokoevalvonta on niukkaa. Ohjearvoja sovelletaan ympäristöluvituksen yhteydessä, joten kansalaisten on ollut vaikea vedota niihin kaavavalituksissa. Useiden hankkeiden yhteisvaikutuksia ei tyypillisesti arvioida, jos jokainen hanke käydään läpi erillisessä YVA-menettelyssä. Nämä ovat ennen kaikkea kysymyksiä riittävästä resursoinnista, eivät ongelmista markkinamekanismissa. [Ratkaisu ei ole datakeskusten erottaminen muusta teollisuudesta omaksi sääntelysektorikseen](/fi/blog/75/lisaa-markkinoita/).
 
-## Suomen paikalliset tapaukset
+## Miten datakeskushankkeet etenevät Suomen kunnissa?
 
-Suomen kaupungeissa ja kunnissa käydään kesällä 2026 kymmentä konkreettista datakeskusprosessia. [Kirkkonummen kunnan rakennus- ja ympäristölautakunta myönsi Microsoftin datakeskuksen ensimmäisen vaiheen rakennusluvan syksyllä 2024, ja kaavaan on rakennettu sisään datakeskuksen tuottaman hukkalämmön hyödyntäminen kaukolämmön tuotannossa](https://kirkkonummi.fi/microsoftin-datakeskushanke-etenee-kirkkonummella/). Toisen vaiheen rakennuslupa on käsittelyssä. Yhdessä Fortumin kanssa toteutettava hukkalämmön talteenotto kattaisi valmistuessaan noin 40 prosenttia Kirkkonummen, Espoon ja Kauniaisten kaukolämpöverkon tarpeesta. [Espoon AtNorth-datakeskus Kehä III:n varrella](https://www.atnorth.com/nordic-data-centers/finland-data-centers/) on esimerkki toimivasta melumitoituksesta suomalaisessa luvitusympäristössä.
+Suomen kaupungeissa ja kunnissa on kesällä 2026 käynnissä 10 konkreettista datakeskusprosessia. [Kirkkonummen kunnan rakennus- ja ympäristölautakunta myönsi Microsoftin datakeskuksen ensimmäisen vaiheen rakennusluvan syksyllä 2024, ja kaavaan on rakennettu sisään datakeskuksen tuottaman hukkalämmön hyödyntäminen kaukolämmön tuotannossa](https://kirkkonummi.fi/microsoftin-datakeskushanke-etenee-kirkkonummella/). Toisen vaiheen rakennuslupa on käsittelyssä. Yhdessä Fortumin kanssa toteutettava hukkalämmön talteenotto kattaisi valmistuessaan noin 40 prosenttia Kirkkonummen, Espoon ja Kauniaisten kaukolämpöverkon tarpeesta. [Espoon AtNorth-datakeskus Kehä III:n varrella](https://www.atnorth.com/nordic-data-centers/finland-data-centers/) on esimerkki toimivasta melumitoituksesta suomalaisessa luvitusympäristössä.
 
 Rauman kaupungissa käynnistyy yhtaikaa yksi datakeskushanke ja kaksi vihreään energiantuotantoon liittyvää investointia. Paikallinen kaukolämpöverkko ei pysty hyödyntämään edes yhden hankkeen hukkalämpöä, koska tarve alueella on rajallinen. Hukkalämpö joudutaan johtamaan mereen. Ympäristövaikutusten arvioinneissa ei ole edellytetty hankkeiden yhteisvaikutusten tarkastelua, koska osa hankkeista ei ole vielä toteutunut.
 
 [Loviisan Itäisen Liittymän datakeskus sai rakennusluvan joulukuussa 2025, ja metsä on jo kaadettu](https://www.loviisansanomat.fi/paikalliset/9093969). Samalla alueella on vireillä laaja tuulivoima- ja aurinkovoimahankekokonaisuus sekä ydinvoima-alueen myynti. Kuntapäättäjien mukaan kokonaisuudesta ei ole tehty yhteisvaikutusten YVA-arviointia. Järvenpään palvelinkeskuksen [YVA-selostuksen melumallinnusliitteessä huomiota herätti muotoilu, jonka mukaan yön melurajat eivät ylity, jos varavoimageneraattoreita ajetaan enintään kolme tuntia](https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/jarvenpaan-palvelinkeskus). Generaattoreiden todellista melutasoa ei ollut esittelijöillä käytettävissä.
 
-Tampereella sähköverkko ja tontit riittäisivät noin 50 megawatin datakeskukselle, jonka hukkalämpö saataisiin lähes kokonaan kaukolämpökäyttöön. Kansainväliset investoinnit suuntautuvat 100 megawatin ja sitä suurempiin keskuksiin, joten kysymys kuuluu: pystyvätkö suomalaiset kaupungit houkuttelemaan myös keskisuuria keskuksia, joissa paikalliset hyödyt olisivat suurimmillaan?
+Tampereella sähköverkko ja tontit riittäisivät oman arvioni mukaan noin 50 megawatin datakeskukselle, jonka hukkalämpö saataisiin lähes kokonaan kaukolämpökäyttöön. Kansainväliset investoinnit suuntautuvat 100 megawatin ja sitä suurempiin keskuksiin, joten kysymys kuuluu: pystyvätkö suomalaiset kaupungit houkuttelemaan myös keskisuuria keskuksia, joissa paikalliset hyödyt olisivat suurimmillaan?
 
 Toimivan luvituksen ja resursoinnin ero näkyy suoraan asukkaan arjessa. Suomella on nyt lyhyt aika oppia toisten virheistä.
 
@@ -98,8 +99,8 @@ Kompensaatiotukijärjestelmä tulee hyväksyä syksyllä 2026 sillä ehdolla, et
 
 [Vihreiden tietopoliittinen ohjelma](https://www.vihreat.fi/ohjelmat/tietopoliittinen-ohjelma/) sopii tähän: kansallisia vaatimuksia vihreän energian käytöstä ja lämmön talteenotosta voidaan asettaa, kunhan vaatimukset eivät karkota investointeja ympäristön kannalta huonompiin maihin. Sama ajatus soveltuu TEM:n valmistelemaan datakeskusrekisteriin. Rekisteri on luonteva paikka koota käyttötarkoitusilmoituksia, jotka mahdollistaisivat esimerkiksi kryptolouhinnan osuuden julkistamisen. Norjassa on käynnistetty vastaava valmistelu. [Läpinäkyvyys on markkinamekanismin toiminnan edellytys](/fi/blog/62/vihreat-markkinatalouden-aito-puolustaja/).
 
-> Sähkömarkkinat ovat päästökaupan ansiosta erittäin hyvin toimivat markkinat, joissa hinta ohjaa voimakkaasti kohti tasapainotilaa. Markkinat hoitavat allokaation, kunhan niitä ei lähdetä pilaamaan sektorikohtaisilla velvoitteilla.
+Tiivistän oman kantani näin: sähkömarkkinat ovat päästökaupan ansiosta erittäin hyvin toimivat markkinat, joissa hinta ohjaa voimakkaasti kohti tasapainotilaa. Markkinat hoitavat allokaation, kunhan niitä ei lähdetä pilaamaan sektorikohtaisilla velvoitteilla.
 
-## Jälkisanat
+## Miksi datakeskukset ovat geopoliittinen kysymys?
 
 [Datakeskukset liittyvät myös olennaisesti geopolitiikkaan](/fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/): [mitä hyperskaalaajien fyysinen infrastruktuuri EU:n maaperällä tarkoittaa suvereniteetille](/fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/), mihin Nokia ja suomalainen konepajateollisuus asettuvat tässä kuvassa sekä miksi EU:n tekoälysuvereniteettitasot on syytä lukea ennen syksyn 2026 tukikeskustelua. Ennen sitä on hyvä pysähtyä yhteen kysymykseen: kenen ehdoilla rakennamme Suomen digitaalista infrastruktuuria aikana, jolloin tekoäly muuttaa taas kaiken, vai muuttaako?
