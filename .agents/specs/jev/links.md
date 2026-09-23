@@ -246,6 +246,15 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 ---
 
+## Calibration runs
+
+2026-09-23, model `typesafe/jev-1.13-20260917` via OpenRouter, thresholds at their provisional values.
+
+- `suggest:links -- post 57` (7 paragraphs, fi): newsletter 2 is the ★ target for paragraphs 1–4 and 6 (p up to 0.93), with newsletter 1 and post 72 as the next options on paragraph 0; posts 51 and 67 appear on paragraph 5 at 0.23 and 0.13. The three existing links (posts 47, 44, 53) are all flagged doubtful at p ≤ 0.03 — when a much stronger candidate exists, the choice distribution leaves nothing for the current target, so "doubtful" over-flags; read it as "a stronger target exists", not "remove this link". Threshold left at 0.2 pending more runs.
+- `--backlinks newsletter 2` (78 posts, 78 requests): 13 rows at p ≥ 0.5, led by post 57 paragraphs 1 and 3 (the pair found by hand in #1485), then post 72 (five paragraphs, 0.58–0.67) and post 44. Threshold 0.5 kept.
+
+---
+
 ## Open Questions
 
 *(none)*
@@ -256,6 +265,7 @@ Budget check for backlink mode: the longest post body today is 1,575 words in 38
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, doubtful flag interpreted |
 | 2026-09-23 | Critic re-review (PASS WITH NOTES): flags apply to every mode, `--backlinks post` is a bad argument, unexpected errors exit 1, job-level vs script-level skip stated |
 | 2026-09-23 | Critic review (FAIL → revised): top-3 rows with a none column and provisional ★ thresholds, backlink shape marked unmeasured with post 57 as calibration, three-dot diff and skipped missing directories, CI step always exits 0, link count per content.sh, concurrency validation, unknown-issue and no-prose scenarios, moved helpers listed, slug semantics |
 | 2026-09-23 | Initial draft for #1490 |
