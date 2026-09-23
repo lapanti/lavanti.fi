@@ -68,7 +68,7 @@ Feature: Tag retro-scan
   Scenario: Retro-scan for a tag
     Given `--tag immigration`, a tag file that is imported in src/content/tags.ts
     When the script runs
-    Then one request per post is sent (posts only, newsletters never; scheduled posts included, since they will need the tag when they go live), each with stateFor(post) as state and the single noul for that tag
+    Then one request per post lacking the tag is sent (posts only, newsletters never; scheduled posts included, since they will need the tag when they go live), each with stateFor(post) as state and the single noul for that tag
     And stdout shows a Markdown table of posts that lack the tag with p ≥ 0.7, newest first, columns post, title, publishDate, p, current tags
     And posts that already carry the tag are counted on one line, not listed
     And a receipt tags[<id>] = { checkedAt, contentHash: sha256 over src/content/tags/<id>.ts, model } is written to src/content/suggestions.json
@@ -172,7 +172,7 @@ export function hashTagFile(id: string, dir?: string): string                // 
 export function registeredTagIds(registry?: string): Set<string>             // ids from the `from './tags/<id>'` import lines of src/content/tags.ts
 
 // scripts/jev/suggestions.ts (change)
-export type ReceiptKind = 'links' | 'backlinks' | 'tags'                     // tags keyed by tag id, not DocKey
+type ReceiptKind = 'links' | 'backlinks' | 'tags'                            // module-private; tags keyed by tag id, not DocKey
 export function readReceipts(path): ReceiptsFile | null                      // absent kinds become {}; null only for a missing file, unparseable JSON, or a present kind that is malformed
 export function loadTagLabels(dir?): Promise<TagLabel[]>                     // (in tags.ts) throws a descriptive error on a file without a LocalTag export or names.en / descriptions.en
 export interface ChangedTag { hash: string; id: string }
@@ -237,6 +237,7 @@ Receipt semantics: the `tags` receipt says "the retro-scan ran against this vers
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): tag ids from paths and the registry accept any file name so a non-kebab-case tag file cannot bypass the gate; failure path keeps completed receipts, now tested; retro-scan wording (posts lacking the tag) |
 | 2026-09-23 | Implemented; calibration runs on post 57 and the immigration tag recorded, data model aligned with the code (hashTagFile argument order, ChangedTag, changedTags) |
 | 2026-09-23 | Critic review (PASS WITH NOTES): readReceipts fills absent kinds, unregistered and malformed tag files, posts-only scan incl. scheduled, post without prose, editorial list split into measured and judged, lang default explained, issue checkboxes rewritten |
 | 2026-09-23 | Initial draft for #1491; retro-scan gated by a tags receipt instead of a lint-staged print (lint-staged hides output of passing tasks) |
