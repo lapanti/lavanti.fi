@@ -11,12 +11,26 @@
     - heading "What have recent issues covered?" [level=2]
     - list:
       - listitem:
-        - article "AI is not taking your job, but it is changing it":
-          - link "AI is not taking your job, but it is changing it":
-            - /url: /en/newsletter/1/ai-is-not-taking-your-job-but-it-is-changing-it/
-            - heading "AI is not taking your job, but it is changing it" [level=3]
+        - article "When a vendor cannot be switched, procurement law has already failed":
+          - link "When a vendor cannot be switched, procurement law has already failed":
+            - /url: /en/newsletter/8/when-a-vendor-cannot-be-switched/
+            - heading "When a vendor cannot be switched, procurement law has already failed" [level=3]
           - time: /\d+\.\d+\.\d+/
-          - paragraph: /AI is not replacing professionals, but it is changing how work is structured\. The OECD puts \d+ per cent of expert roles under pressure\. A management question\./
+          - paragraph: /In most Finnish public systems, switching vendors is impossible\. Four cities built eVaka for 9 million euros; Helsinki spent \d+ million on an unfinished Asti\./
+      - listitem:
+        - article "Does Finland benefit from data centres?":
+          - link "Does Finland benefit from data centres?":
+            - /url: /en/newsletter/7/does-finland-benefit-from-data-centres/
+            - heading "Does Finland benefit from data centres?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Finland has \d+ data centres using about 2 per cent of its electricity\. The electricity tax rose to class I on 1 July \d+\. The numbers, Ireland, permitting\./
+      - listitem:
+        - article /\d+ billion reasons to rethink public IT/:
+          - link /\d+ billion reasons to rethink public IT/:
+            - /url: /en/newsletter/6/a-market-economy-needs-alternatives/
+            - heading /\d+ billion reasons to rethink public IT/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /The EU spends about EUR \d+ billion a year on closed software\. Vendor lock-in kills the price signal that open source and portability in law restore\./
     - paragraph:
       - text: Every issue reaches the
       - link "archive":
