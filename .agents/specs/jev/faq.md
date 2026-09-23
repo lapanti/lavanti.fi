@@ -40,20 +40,23 @@ This feature is an author-run, advisory script that ranks those existing questio
 Feature: FAQ candidates for one document
 
   Scenario: Candidates for a post
-    Given a key and post 57, whose related.json entry ranks ten posts
+    Given a key and post 57, whose related.json entry ranks up to ten posts (entries hold 1–10 today)
     When `npm run suggest:faq -- post 57` runs
-    Then the candidates are the question-form H2/H3 headings of post 57 (fi) and of its ten neighbours (fi), each once, minus any that match a question already in post 57's fi `faq`
-    And one request is sent with bodyStateFor(post 57) as state and, per candidate i, `a<i>` = noul "The article answers this question directly: <question>" and `u<i>` = score over 1–5 "How likely is a voter to ask this before reading the article?"
-    And per existing faq question j, `f<j>` = the same noul
-    And stdout shows a "candidates" table of candidates with answerability ≥ 0.7, sorted by usefulness desc then answerability desc, columns question, source (own | <key>), answers, usefulness
-    And a "doubtful" table of existing faq questions with answerability < 0.3, columns question, answers, or "no doubtful faq entries"
+    Then the candidates are the question-form H2/H3 headings of post 57 (fi) and of its ranked neighbours (fi), each once, minus any that match a question already in post 57's fi `faq`; inline markup is stripped from the wording
+    And the questions are, per candidate i, `a<i>` = noul "The article answers this question directly: <question>" and `u<i>` = score with criteria ['1','2','3','4','5'] "How likely is a voter to ask this before reading the article? (1 = never, 5 = almost always): <question>", and per existing faq question j, `f<j>` = the same noul
+    And they are sent in chunks of at most 40 questions per request (FAQ_QUESTIONS_MAX, as links.ts does), every chunk with bodyStateFor(post 57) as state, answers merged; a document is ⌈n / 40⌉ requests
+    And stdout shows a "candidates" table of candidates with answerability ≥ the effective --answerable, sorted by usefulness desc, then answerability desc, then harvest order (stable), columns question, source (own | <key>), answers (two decimals), usefulness (one decimal)
+    And a "doubtful" table of existing faq questions with answerability < the effective --doubtful, least answered first, columns question, answers, or "no doubtful faq entries"
     And a line "faq entries: <n> (FAQPage JSON-LD needs 2)"
-    And "no candidates above 0.70" replaces an empty candidates table
+    And "no candidates above <answerable>" replaces an empty candidates table
+    And a missing or wrongly typed answer for any `a<i>`, `u<i>` or `f<j>` is a failed request (below)
 
   Scenario: Question-form headings
     Given the headings of a document
     When candidates are harvested
-    Then a heading counts when it starts with an EN, FI or SV question word from aeo.sh, ends with "?", or its first word ends in -ko/-kö; H2 and H3 both count, in document order
+    Then a heading counts when it starts with an EN, FI or SV question word from aeo.sh:33-35 followed by the end or a non-letter, ends with "?", or its first word (letters only) ends in -ko/-kö followed by the end or a non-letter — in Unicode terms, because JS \b treats ä and ö as non-word characters
+    And "Mitä käy…", "Mikä on…", "Pitäisikö…", "Är det…" and "Koko kuva" (the -ko rule, as aeo.sh) count; "Mitään…" and "Kokoomus…" do not
+    And H2 and H3 both count, in document order
 
   Scenario: Locale
     Given `--lang en`
@@ -66,9 +69,15 @@ Feature: FAQ candidates for one document
     Then it is the expected value, printed with one decimal
 
   Scenario: Dedupe
-    Given two candidates or a candidate and an existing faq question that are equal after trimming, lower-casing and dropping a trailing "?"
+    Given two candidates or a candidate and an existing faq question that are equal after stripping inline markup, trimming, lower-casing and dropping a trailing "?"
     When candidates are harvested
     Then the later one is dropped
+
+  Scenario: Existing faq read from the frontmatter
+    Given a locale file whose frontmatter has a `faq:` block
+    When the corpus is built
+    Then Document.faq holds the value of every `- q:` line inside the block (up to the next top-level key), at any indent, single-quoted with '' unescaped, double-quoted with a bare apostrophe allowed, or bare — the quote grammar of fmField, in `faqQuestionsOf` in corpus.ts
+    And a file without the block yields []
 
   Scenario: Newsletter target
     Given `newsletter 2`
@@ -84,6 +93,16 @@ Feature: FAQ candidates for one document
     Given a document with no question-form headings, no neighbours with any, and no faq
     When the script runs
     Then it prints "no candidates" and the faq-entries line and exits 0 without a request
+
+  Scenario: No candidates but an existing faq
+    Given a document with no candidates and two faq entries
+    When the script runs
+    Then the `f<j>` questions are still sent, the candidates table reads "no candidates above <answerable>" and the doubtful table is rendered
+
+  Scenario: Report file
+    Given `--out report.md`
+    When the script finishes, with or without a failure
+    Then everything printed is also written to the file
 
   Scenario: Several documents
     Given `post 57 post 71`
@@ -112,9 +131,14 @@ Feature: Common behaviour
     Then it prints "post:999 not found" and exits 2
 
   Scenario: Failed request
-    Given a request that fails after the client's retries
+    Given a request that fails after the client's retries, or an answer that is missing or of the wrong type
     When the script runs
     Then it prints the sections completed so far, then "failed at <key>: <error>", writes --out when given, and exits 1
+
+  Scenario: Unexpected error
+    Given related.json that cannot be parsed, or a content directory that cannot be read
+    When the script runs
+    Then it fails with exit 1 and the error; a missing related.json is not an error (every document falls back to its own headings, with the notice)
 ```
 
 ---
@@ -128,37 +152,41 @@ export interface Document {
     faq: string[]          // the q of every frontmatter faq entry, in order; [] when none
     h3s: string[]          // '### ' headings, as h2s
 }
-export function bodyStateFor(doc: Document): Record<string, string>   // { title, description, headings, body: prose paragraphs joined by blank lines }
+export function headingsOf(body: string, level: 2 | 3 = 2): string[]
+export function faqQuestionsOf(frontmatter: string): string[]         // the faq: block only; fmField's quote grammar per `- q:` line
+export function bodyStateFor(doc: Document): Record<string, string>   // { title, description, headings: h2s then h3s, body: prose paragraphs with markup stripped, joined by blank lines }
 
 // scripts/jev/faq.ts — shared library, no CLI
 export const ANSWERABLE_THRESHOLD = 0.7       // provisional: not measured by the eval gate; tuned on the first runs
 export const DOUBTFUL_THRESHOLD = 0.3         // provisional
 export const NEIGHBOUR_COUNT = 10             // top of the related.json entry
-export function isQuestionHeading(heading: string): boolean            // the aeo.sh rule
-export function normaliseQuestion(q: string): string                    // trim, lower-case, drop trailing ?
+export const FAQ_QUESTIONS_MAX = 40           // questions per request, as BACKLINK_QUESTIONS_MAX
+export function isQuestionHeading(heading: string): boolean            // the aeo.sh rule in Unicode terms
+export function normaliseQuestion(q: string): string                    // stripMarkup, trim, lower-case, drop trailing ?
 export interface Candidate { question: string; source: 'own' | DocKey }
 export function harvest(doc: Document, neighbours: Document[]): Candidate[]   // own first, then neighbours in ranked order; deduped; existing faq excluded
-export function faqQuestions(doc: Document, candidates: Candidate[]): Record<string, QuestionSpec>   // a<i>, u<i>, f<j>
+export function faqQuestions(doc: Document, candidates: Candidate[]): Record<string, QuestionSpec>   // a<i>, u<i> (criteria '1'–'5'), f<j>
+export function chunkQuestions(questions: Record<string, QuestionSpec>): Array<Record<string, QuestionSpec>>   // ≤ FAQ_QUESTIONS_MAX each, key order
 export interface RankedCandidate extends Candidate { answers: number; usefulness: number }
-export function rank(candidates: Candidate[], answers: Record<string, Answer>, opts: { answerable: number }): RankedCandidate[]
+export function rank(candidates: Candidate[], answers: Record<string, Answer>, opts: { answerable: number }): RankedCandidate[]   // throws on a missing or wrongly typed answer
 export function doubtfulFaq(doc: Document, answers: Record<string, Answer>, opts: { doubtful: number }): Array<{ answers: number; question: string }>
-export const expectedScore = (probabilities: Record<string, number>): number   // Σ level × p
+export const expectedScore = (probabilities: Record<string, number>): number   // Σ Number(level) × p over the keys present; not renormalised; a non-numeric key adds 0
 
 // scripts/suggest-faq.ts — CLI
 //   suggest:faq -- <post|newsletter> <id>… [--lang fi|sv|en] [--answerable 0.7] [--doubtful 0.3] [--out <md>]
-export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?; root? }): Promise<number>
+export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?: RelatedFile | null; root? }): Promise<number>
 ```
 
-Requests: one per document, ≈ 2 × (own + neighbours' question headings) + existing faq nouls, typically 20–60 questions over a state of under 1,500 tokens ≈ $0.0003 per document. Related neighbours come from `src/content/related.json` through `rankedKeys` in `src/lib/related.ts` (a pure helper; the one-way dependency rule allows scripts to import it).
+Requests: per document, 2 × (own + neighbours' question headings) + existing faq nouls, typically 20–60 questions; the worst case today is 11 headings × 11 documents ≈ 240 questions, hence the 40-per-request chunking (6 requests). State is under 2,500 tokens (the longest post is 1,575 words); ≈ $0.0003–0.001 per document. Related neighbours come from `src/content/related.json` read with `readRelatedFile` in `scripts/jev/related.ts` — not `src/lib/related.ts`, whose JSON import has no `with { type: 'json' }` attribute and fails under Node's strip-types loader.
 
-State: `stateFor` (title, description, headings, bounded lead) is enough for the link and tag decisions but not for "answers this question directly", which needs the prose. `bodyStateFor` sends the full prose paragraphs; posts are 300–800 words, well inside the 32k context.
+State: `stateFor` (title, description, headings, bounded lead) is enough for the link and tag decisions but not for "answers this question directly", which needs the prose. `bodyStateFor` sends every prose paragraph with markup stripped, well inside the 32k context.
 
 ---
 
 ## Dependencies
 
 - [Jev decision pipeline](./spec.md) — client, corpus, exit-code and notice conventions
-- [Related ranking](./related.md) — `related.json` entries and `rankedKeys`; a document without an entry falls back to its own headings
+- [Related ranking](./related.md) — `related.json` entries and `readRelatedFile`; a document without an entry falls back to its own headings
 - [Link suggestions](./links.md) — CLI conventions (positional `kind id` pairs, `--out`, failure output)
 - `scripts/checks/aeo.sh:33-35` — the question-word lists; `faq.ts` must keep the same words
 - `src/components/Head.astro:231` — the two-entry `FAQPage` threshold quoted in the output
@@ -172,6 +200,8 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 - **Do not** send `stateFor` for answerability — the bounded lead cannot say whether the body answers a question; send the prose
 - **Do not** harvest tag siblings — unbounded on broad tags; the related ranking is the neighbourhood
 - **Do not** mix locales — candidates, existing faq and state all come from the same `--lang` file
+- **Do not** use `\b` around Finnish or Swedish words in JS — it is ASCII-only, so "Mitä" would never match; test with ä/ö fixtures
+- **Do not** import `src/lib/related.ts` from a script — its JSON import lacks the import attribute Node requires
 
 ---
 
@@ -185,4 +215,5 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review (FAIL → revised): readRelatedFile instead of the src/lib JSON import, Unicode question rule with ä/ö fixtures, faq parsing rule and helper named, score criteria '1'–'5' and expectedScore semantics, 40-question chunking, no-candidates-with-faq, report file and unexpected-error scenarios, tie-break and decimals, markup stripped in dedupe |
 | 2026-09-23 | Initial draft for #1492: related neighbours instead of tag siblings, existing faq scored as doubtful, newsletters as targets, no gate (author decisions on discovery) |
