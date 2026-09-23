@@ -3,10 +3,12 @@ import type { Lang } from '../content/nav'
 import type { BreadcrumbTrail } from '../lib/breadcrumbs'
 import type { BreadcrumbItem, FaqItem, JsonLdType } from '../lib/jsonld'
 
+import Faq from '../components/Faq.astro'
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
 import Stripe from '../components/Stripe.astro'
 import TitleBanner from '../components/TitleBanner.astro'
 import { breadcrumbLabels } from '../lib/breadcrumbs'
+import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { getImage } from '../lib/images'
 import { COLLECTIONPAGE } from '../lib/jsonld'
 import { landingPath } from '../lib/newsletterRoutes'
@@ -27,6 +29,13 @@ interface Props {
     eventCalendar?: boolean
     eyebrow?: string
     faq?: Array<FaqItem>
+    /**
+     * Opt in to the visible FAQ plate below the page body. Unlike PostLayout and
+     * NewsletterLayout, a PageLayout body is composed by the page itself: the
+     * election pages already mount <Faq> mid-body with their own heading, so
+     * rendering it automatically from `faq` would duplicate them.
+     */
+    faqSection?: boolean
     heroImage?: string
     intro?: string
     lang?: Lang
@@ -58,6 +67,7 @@ const {
     eventCalendar,
     eyebrow,
     faq,
+    faqSection = false,
     heroImage,
     intro,
     lang,
@@ -82,6 +92,10 @@ const {
 const ogImage = slug
     ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
     : getImage('og-image-lauri-lavanti', 'ogFlat').src
+
+// Narrowed here rather than in the template: the type guard does not carry into the JSX expression.
+const faqItems = faqSection && lang && hasFaqSection(faq) ? faq : undefined
+const faqLabels = lang ? faqSectionLabels[lang] : undefined
 
 const siteOrigin = 'https://lavanti.fi'
 const breadcrumbs: BreadcrumbItem[] | undefined =
@@ -141,4 +155,5 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
     />
     <Stripe size="slim" />
     <slot />
+    {faqItems && faqLabels && <Faq eyebrow={faqLabels.eyebrow} faq={faqItems} heading={faqLabels.heading} />}
 </BaseLayout>
