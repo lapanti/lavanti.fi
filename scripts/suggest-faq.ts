@@ -41,8 +41,10 @@ export const USAGE =
 interface FaqDeps {
     client?: JevClient
     log?: (line: string) => void
-    /** The parsed related.json; null when the file is missing. Defaults to reading RELATED_PATH. */
+    /** The parsed related.json; null when the file is missing. Defaults to reading relatedPath. */
     related?: RelatedFile | null
+    /** Where related.json is read from when `related` is not injected; defaults to RELATED_PATH. */
+    relatedPath?: string
     root?: string
 }
 
@@ -179,9 +181,10 @@ export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps: FaqDe
     }
     let related = deps.related
     if (related === undefined) {
-        related = readRelatedFile(RELATED_PATH)
-        if (related === null && existsSync(RELATED_PATH)) {
-            log(`${RELATED_PATH} is malformed; run npm run check:related`)
+        const relatedPath = deps.relatedPath ?? RELATED_PATH
+        related = readRelatedFile(relatedPath)
+        if (related === null && existsSync(relatedPath)) {
+            log(`${relatedPath} is malformed; run npm run check:related`)
 
             return 1
         }

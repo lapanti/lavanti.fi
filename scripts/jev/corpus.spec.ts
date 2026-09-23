@@ -13,6 +13,7 @@ import {
     labelFor,
     LEAD_WORD_MAX,
     leadOf,
+    sectionHeadingsOf,
     stateFor,
 } from './corpus'
 
@@ -161,6 +162,11 @@ describe('headingsOf, stateFor, labelFor', () => {
     it('collects level-two headings by default and level-three on request', () => {
         expect(headingsOf('# H1\n\n## Two?\n\n### Three\n\n## Also two')).toEqual(['Two?', 'Also two'])
         expect(headingsOf('# H1\n\n## Two?\n\n### Three\n\n#### Four', 3)).toEqual(['Three'])
+        expect(sectionHeadingsOf('# H1\n\n## Two?\n\n### Three\n\n## Also two\n\n#### Four')).toEqual([
+            'Two?',
+            'Three',
+            'Also two',
+        ])
     })
 
     it('reads faq questions from the frontmatter in every YAML quoting style', () => {
@@ -192,6 +198,7 @@ describe('headingsOf, stateFor, labelFor', () => {
         expect(faqQuestionsOf('title: "It\'s"\nfaq:\n  - q: "Isn\'t a bare apostrophe fine?"\n    a: "Yes"')).toEqual([
             "Isn't a bare apostrophe fine?",
         ])
+        expect(faqQuestionsOf("faq:\n  - q: 'unterminated\n    a: 'x'")).toEqual([])
     })
 
     it('builds a compact state and an English label', () => {
@@ -216,10 +223,16 @@ describe('headingsOf, stateFor, labelFor', () => {
         }
 
         expect(stateFor(doc)).toEqual({ description: 'Desc', headings: 'A?\nB?', lead: 'Lead', title: 'Title' })
-        expect(bodyStateFor({ ...doc, paragraphs: ['A [link](/x/) here.', 'Second **bold** one.'] })).toEqual({
+        expect(
+            bodyStateFor({
+                ...doc,
+                body: '## A?\n\nA [link](/x/) here.\n\n### C?\n\nSecond **bold** one.\n\n## B?\n\nx',
+                paragraphs: ['A [link](/x/) here.', 'Second **bold** one.'],
+            })
+        ).toEqual({
             body: 'A link here.\n\nSecond bold one.',
             description: 'Desc',
-            headings: 'A?\nB?\nC?',
+            headings: 'A?\nC?\nB?',
             title: 'Title',
         })
         expect(labelFor(doc)).toBe('Title — Desc')
