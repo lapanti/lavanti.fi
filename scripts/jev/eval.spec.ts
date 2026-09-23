@@ -20,6 +20,7 @@ import {
 import { linkOptions, linkTargets, NONE, rankedOptions, topChoice } from './links'
 
 const doc = (key: DocKey, title: string): Document => ({
+    body: '',
     description: `${title} description`,
     h2s: [],
     id: Number(key.split(':')[1]),

@@ -30,6 +30,8 @@ export type DocKind = 'newsletter' | 'post'
 export type DocKey = `${DocKind}:${number}`
 
 export interface Document {
+    /** The MDX body after the frontmatter, unmodified. */
+    body: string
     description: string
     h2s: string[]
     id: number
@@ -96,6 +98,7 @@ function buildDocument(kind: DocKind, id: number, dir: string, lang: Lang): Docu
     const paragraphs = proseParagraphs(body)
 
     return {
+        body,
         description: fmField(frontmatter, 'description') ?? '',
         h2s: headingsOf(body),
         id,

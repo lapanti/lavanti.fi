@@ -20,6 +20,7 @@ import {
 } from './related'
 
 const doc = (key: DocKey, publishDate = '2026-01-01', sourceHash = `h-${key}`): Document => ({
+    body: '',
     description: `${key} description`,
     h2s: [],
     id: Number(key.split(':')[1]),
