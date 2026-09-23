@@ -60,6 +60,19 @@ describe('runCheck', () => {
         expect(runCheck([], { log: () => {}, path, root, tagsDir })).toBe(0)
     })
 
+    it('ignores meta.json-only changes: the receipt hashes the locale files, not the tags or dates', () => {
+        rmSync(path, { force: true })
+
+        expect(
+            runCheck(['src/content/posts/1/meta.json', 'src/content/newsletters/3/meta.json'], {
+                log: () => {},
+                path,
+                root,
+                tagsDir,
+            })
+        ).toBe(0)
+    })
+
     it('requires a retro-scan receipt matching the current tag file, and skips deleted tag files', () => {
         const file = emptyReceipts()
         recordTagReceipt(file, { hash: hashTagFile('economy', tagsDir), id: 'economy' }, 'm', '2026-09-23')
