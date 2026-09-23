@@ -106,12 +106,19 @@ export function headingsOf(body: string, level: 2 | 3 = 2): string[] {
 }
 
 /**
- * The q of every `- q:` entry in the frontmatter faq list, single- or
- * double-quoted or bare, with YAML's doubled single quote unescaped.
+ * The q of every `- q:` entry inside the frontmatter `faq:` block (up to the
+ * next top-level key), at any indent, single- or double-quoted or bare, with
+ * YAML's doubled single quote unescaped — the same quote grammar as fmField.
  */
 export function faqQuestionsOf(frontmatter: string): string[] {
+    const lines = frontmatter.split('\n')
+    const start = lines.findIndex((line) => /^faq:\s*$/.test(line))
+    if (start === -1) return []
     const out: string[] = []
-    for (const m of frontmatter.matchAll(/^\s*-\s*q:\s*(?:'((?:[^']|'')*)'|"([^"]*)"|(\S[^\n]*))\s*$/gm)) {
+    for (const line of lines.slice(start + 1)) {
+        if (/^\S/.test(line)) break
+        const m = /^\s*-\s*q:\s*(?:'((?:[^']|'')*)'|"([^"]*)"|(\S[^\n]*?))\s*$/.exec(line)
+        if (!m) continue
         out.push((m[1] !== undefined ? m[1].replaceAll("''", "'") : (m[2] ?? m[3] ?? '')).trim())
     }
 

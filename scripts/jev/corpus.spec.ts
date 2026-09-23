@@ -175,6 +175,10 @@ describe('headingsOf, stateFor, labelFor', () => {
             "    a: 'x'",
             '  - q: Bare question?',
             '    a: bare',
+            "    - q: 'Deeper indent, as post 74 has'",
+            "      a: 'x'",
+            'other:',
+            "  - q: 'Not in the faq block'",
         ].join('\n')
 
         expect(faqQuestionsOf(fm)).toEqual([
@@ -182,8 +186,12 @@ describe('headingsOf, stateFor, labelFor', () => {
             "What about ''quotes''?",
             "Mikä on 'lainaus'?",
             'Bare question?',
+            'Deeper indent, as post 74 has',
         ])
         expect(faqQuestionsOf("title: 'T'\ndescription: 'q: not a faq'")).toEqual([])
+        expect(faqQuestionsOf('title: "It\'s"\nfaq:\n  - q: "Isn\'t a bare apostrophe fine?"\n    a: "Yes"')).toEqual([
+            "Isn't a bare apostrophe fine?",
+        ])
     })
 
     it('builds a compact state and an English label', () => {
