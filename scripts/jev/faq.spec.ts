@@ -68,20 +68,29 @@ describe('isQuestionHeading', () => {
 })
 
 describe('harvest', () => {
+    const body = (...headings: string[]): string => headings.map((h) => `${h}\n\ntext`).join('\n\n')
     const own = doc('post:1', {
+        body: body(
+            '## Mitä osaamista vien eduskuntaan?',
+            '### Onko kirjasto tasa-arvon turvaaja?',
+            '## Sivistys ja tasa-arvo',
+            '## mitä digitaalinen itsenäisyys tarkoittaa',
+            '### Kuka päättää?'
+        ),
         faq: ['Mitä digitaalinen itsenäisyys tarkoittaa?'],
-        h2s: ['Mitä osaamista vien eduskuntaan?', 'Sivistys ja tasa-arvo', 'mitä digitaalinen itsenäisyys tarkoittaa'],
-        h3s: ['Onko kirjasto tasa-arvon turvaaja?'],
     })
-    const n1 = doc('post:2', { h2s: ['Miksi toimittajariippuvuus maksaa?', 'Mitä osaamista vien eduskuntaan?'] })
-    const n2 = doc('post:3', { h2s: ['Miksi toimittajariippuvuus maksaa?  ', 'Ei kysymys'], h3s: ['Kuka päättää?'] })
+    const n1 = doc('post:2', {
+        body: body('## Miksi toimittajariippuvuus maksaa?', '## Mitä osaamista vien eduskuntaan?'),
+    })
+    const n2 = doc('post:3', { body: body('## Miksi toimittajariippuvuus maksaa?  ', '## Ei kysymys', '### Milloin?') })
 
-    it('takes own question headings first, then neighbours in order, once each, minus the existing faq', () => {
+    it('takes own question headings first in document order (H2 and H3 interleaved), then neighbours, once each, minus the existing faq', () => {
         expect(harvest(own, [n1, n2])).toEqual([
             { question: 'Mitä osaamista vien eduskuntaan?', source: 'own' },
             { question: 'Onko kirjasto tasa-arvon turvaaja?', source: 'own' },
+            { question: 'Kuka päättää?', source: 'own' },
             { question: 'Miksi toimittajariippuvuus maksaa?', source: 'post:2' },
-            { question: 'Kuka päättää?', source: 'post:3' },
+            { question: 'Milloin?', source: 'post:3' },
         ])
         expect(harvest(doc('post:9'), [])).toEqual([])
     })
@@ -89,7 +98,7 @@ describe('harvest', () => {
     it('normalises for dedupe, strips inline markup, and keeps the wording otherwise', () => {
         expect(normaliseQuestion('  Miksi?? ')).toBe('miksi')
         expect(normaliseQuestion('Miksi *eVaka* [toimii](/x/)?')).toBe('miksi evaka toimii')
-        expect(harvest(doc('post:1', { h2s: ['Miksi?', 'MIKSI', 'Miksi **nyt**?'] }), [])).toEqual([
+        expect(harvest(doc('post:1', { body: body('## Miksi?', '## MIKSI', '## Miksi **nyt**?') }), [])).toEqual([
             { question: 'Miksi?', source: 'own' },
             { question: 'Miksi nyt?', source: 'own' },
         ])

@@ -14,14 +14,16 @@ import type { Answer, QuestionSpec } from './client.ts'
 import type { DocKey, Document } from './corpus.ts'
 
 import { stripMarkup } from '../checks/mdx-deep.ts'
+import { sectionHeadingsOf } from './corpus.ts'
+import { RANKED_MAX } from './related.ts'
 /* eslint-enable import-x/extensions */
 
 /** Candidates the document answers at or above this are listed. Provisional: not measured by the eval gate. */
 export const ANSWERABLE_THRESHOLD = 0.7
 /** Existing faq questions answered below this are flagged. Provisional. */
 export const DOUBTFUL_THRESHOLD = 0.3
-/** Neighbours read from the top of the related.json entry. */
-export const NEIGHBOUR_COUNT = 10
+/** Neighbours read from the top of the related.json entry: the whole entry, as related.ts bounds it. */
+export const NEIGHBOUR_COUNT = RANKED_MAX
 /** A request never carries more questions than this; the same state is repeated per chunk (as links.ts). */
 const FAQ_QUESTIONS_MAX = 40
 const SCORE_LEVELS = ['1', '2', '3', '4', '5']
@@ -67,7 +69,7 @@ export const isQuestionHeading = (heading: string): boolean => {
 export const normaliseQuestion = (question: string): string =>
     stripMarkup(question).trim().replace(/\?+$/, '').trim().toLowerCase()
 
-const questionHeadings = (doc: Document): string[] => [...doc.h2s, ...doc.h3s].filter(isQuestionHeading)
+const questionHeadings = (doc: Document): string[] => sectionHeadingsOf(doc.body).filter(isQuestionHeading)
 
 /**
  * Own question headings first, then the neighbours' in ranked order, each

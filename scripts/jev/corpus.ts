@@ -105,6 +105,14 @@ export function headingsOf(body: string, level: 2 | 3 = 2): string[] {
         .map((line) => line.slice(marker.length).trim())
 }
 
+/** H2 and H3 headings together, in document order (h2s and h3s lose the interleaving). */
+export function sectionHeadingsOf(body: string): string[] {
+    return body
+        .split('\n')
+        .filter((line) => /^##{1,2} /.test(line))
+        .map((line) => line.replace(/^#+/, '').trim())
+}
+
 /**
  * The q of every `- q:` entry inside the frontmatter `faq:` block (up to the
  * next top-level key), at any indent, single- or double-quoted or bare, with
@@ -117,7 +125,7 @@ export function faqQuestionsOf(frontmatter: string): string[] {
     const out: string[] = []
     for (const line of lines.slice(start + 1)) {
         if (/^\S/.test(line)) break
-        const m = /^\s*-\s*q:\s*(?:'((?:[^']|'')*)'|"([^"]*)"|(\S[^\n]*?))\s*$/.exec(line)
+        const m = /^\s*-\s*q:\s*(?:'((?:[^']|'')*)'|"([^"]*)"|([^\s'"][^\n]*?))\s*$/.exec(line)
         if (!m) continue
         out.push((m[1] !== undefined ? m[1].replaceAll("''", "'") : (m[2] ?? m[3] ?? '')).trim())
     }
@@ -183,7 +191,7 @@ export function bodyStateFor(doc: Document): Record<string, string> {
     return {
         body: doc.paragraphs.map((p) => stripMarkup(p).trim()).join('\n\n'),
         description: doc.description,
-        headings: [...doc.h2s, ...doc.h3s].join('\n'),
+        headings: sectionHeadingsOf(doc.body).join('\n'),
         title: doc.title,
     }
 }

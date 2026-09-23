@@ -89,9 +89,12 @@ describe('runFaq', () => {
     writeDoc(root, 'posts', 5, 'Ei otsikoita.', ['Vanha?', 'Toinen vanha?'])
     writeDoc(root, 'newsletters', 6, '## Vad betyder det?\n\nx')
     writeDoc(root, 'posts', 7, '## Why in English?\n\nx', ['Old English?'], 'en')
+    writeDoc(root, 'posts', 9, '## What is next?\n\nx', [], 'en')
+    writeDoc(root, 'newsletters', 10, '## Kuka lukee kirjeen?\n\nx')
     const related: RelatedFile = {
         candidateSetHash: 'h',
         entries: {
+            'newsletter:6': { ranked: [{ key: 'newsletter:10', p: 0.9 }], sourceHash: 's' },
             'post:1': {
                 ranked: [
                     { key: 'post:3', p: 0.6 },
@@ -101,6 +104,7 @@ describe('runFaq', () => {
                 sourceHash: 's',
             },
             'post:5': { ranked: [{ key: 'post:4', p: 1 }], sourceHash: 's' },
+            'post:9': { ranked: [{ key: 'post:7', p: 1 }], sourceHash: 's' },
         },
         generatedAt: '2026-09-23',
         model: 'typesafe/jev-1.13',
@@ -192,6 +196,39 @@ describe('runFaq', () => {
         expect(text).toContain('| Why in English? | own | 0.60 | 3.0 |')
         expect(text).toContain('| Old English? | 0.60 |')
         expect(text).toContain('no related entry for post:7: own headings only')
+    })
+
+    it('reads the neighbours in the requested locale, and ranked issues for a newsletter', async () => {
+        const lines: string[] = []
+        const { client } = fakeClient(() => 0.8)
+
+        expect(await runFaq(['post', '9', '--lang', 'en'], env, deps(client, lines))).toBe(0)
+        expect(lines.join('\n')).toContain(
+            '| What is next? | own | 0.80 | 3.0 |\n| Why in English? | post:7 | 0.80 | 3.0 |'
+        )
+        lines.length = 0
+        expect(await runFaq(['newsletter', '6'], env, deps(client, lines))).toBe(0)
+        expect(lines.join('\n')).toContain(
+            '| Vad betyder det? | own | 0.80 | 3.0 |\n| Kuka lukee kirjeen? | newsletter:10 | 0.80 | 3.0 |'
+        )
+    })
+
+    it('reads related.json from disk when not injected: missing is fine, malformed exits 1', async () => {
+        const lines: string[] = []
+        const { client } = fakeClient(() => 0.8)
+        const missing = join(root, 'none.json')
+        const malformed = join(root, 'bad.json')
+        writeFileSync(malformed, '{"entries": 1}')
+
+        expect(
+            await runFaq(['post', '2'], env, { client, log: (l) => lines.push(l), relatedPath: missing, root })
+        ).toBe(0)
+        expect(lines).toContain('no related entry for post:2: own headings only')
+        lines.length = 0
+        expect(
+            await runFaq(['post', '2'], env, { client, log: (l) => lines.push(l), relatedPath: malformed, root })
+        ).toBe(1)
+        expect(lines).toEqual([`${malformed} is malformed; run npm run check:related`])
     })
 
     it('sends nothing for a document without candidates or faq, but still checks an existing faq', async () => {
