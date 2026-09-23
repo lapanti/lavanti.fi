@@ -17,7 +17,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
       updatedDate: string                                   // required; used by sitemap lastmod
       heroImage?: string                                    // Cloudinary image id; fallback: 'Lauri-Lavanti-next-to-a-table'
       heroImageAlt?: { en: string; fi: string; sv: string } // required when heroImage is set
-      // NOT IMPLEMENTED — planned, see the FAQ scenarios below:
+      // NOT IMPLEMENTED — planned in #1502, see the FAQ scenarios below:
       // faq?: { en?: Array<{ q: string; a: string }>; fi?: …; sv?: … }  // per-locale
   }
   export const tags: LocalTag[]
@@ -92,7 +92,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 - Given: A tag has `faq.fi` with 2+ entries
 - When: `/fi/category/{id}` is rendered
 - Then: Two `<script type="application/ld+json">` blocks are emitted — one `CollectionPage`, one `FAQPage`. A visible `<Faq>` plate appears below the `<ExcerptList>`.
-- Status: `LocalTag` has no `faq` field and `[tag].astro` passes none, so no category page renders either today. The rendering half exists: `PageLayout` takes `faq` plus a `faqSection: true` opt-in and mounts `src/components/Faq.astro` below the page body (#1500). What is missing is the data — the field on `LocalTag` and trilingual entries for the tags that warrant them.
+- Status: `LocalTag` has no `faq` field and `[tag].astro` passes none, so no category page renders either today. The rendering half exists: `PageLayout` takes `faq` plus a `faqSection: true` opt-in and mounts `src/components/Faq.astro` below the page body (#1500). What is missing is the data — the field on `LocalTag` and trilingual entries for the tags that warrant them (#1502).
 
 **Scenario: Category page FAQ in only one locale — NOT IMPLEMENTED**
 - Given: A tag has `faq.fi` with 2+ entries but no `faq.sv`
