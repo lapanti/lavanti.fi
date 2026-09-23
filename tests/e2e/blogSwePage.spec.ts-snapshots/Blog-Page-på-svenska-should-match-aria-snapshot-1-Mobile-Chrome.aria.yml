@@ -54,6 +54,24 @@
               - link "Företagande":
                 - /url: /sv/kategori/foretagande/
         - listitem:
+          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
+              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
+              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
+          - list:
+            - listitem:
+              - link /Riksdagsvalet \d+/:
+                - /url: /sv/kategori/riksdagsvalet-2027/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+        - listitem:
           - article "AI hjälper trygga kommunala tjänster, men det är inte gratis":
             - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper trygga kommunala tjänster, men det är inte gratis":
               - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-        - listitem:
-          - article "AI förändrar vad utvecklare får betalt för":
-            - link "En datorskärm med kod. AI förändrar vad utvecklare får betalt för":
-              - /url: /sv/blog/57/ai-forandrar-vad-utvecklare-far-betalt-for/
-              - img "En datorskärm med kod."
-              - heading "AI förändrar vad utvecklare får betalt för" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI gör på två minuter det som en utvecklare tidigare behövde två veckor på sig för. Priset på kod rasar — men vad ska utvecklare få betalt för i stället?
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Lärande":
-                - /url: /sv/kategori/bildning/
       - paragraph:
         - link "Alla inlägg om AI":
           - /url: /sv/category/artificial-intelligence/
@@ -162,6 +162,24 @@
       - paragraph: Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.
       - list:
         - listitem:
+          - article "AI förändrar vad utvecklare får betalt för":
+            - link "En datorskärm med kod. AI förändrar vad utvecklare får betalt för":
+              - /url: /sv/blog/57/ai-forandrar-vad-utvecklare-far-betalt-for/
+              - img "En datorskärm med kod."
+              - heading "AI förändrar vad utvecklare får betalt för" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI gör på två minuter det som en utvecklare tidigare behövde två veckor på sig för. Priset på kod rasar — men vad ska utvecklare få betalt för i stället?
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Lärande":
+                - /url: /sv/kategori/bildning/
+        - listitem:
           - article /År \d+ är AI-året/:
             - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
               - /url: /sv/blog/47/ar-2026-ar-ai-aret/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Lärande":
                 - /url: /sv/kategori/bildning/
-        - listitem:
-          - article "En kall skörd för Kyrkslätt – svaga beslut":
-            - link "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden. En kall skörd för Kyrkslätt – svaga beslut":
-              - /url: /sv/blog/38/en-kall-skord-for-kyrkslätt/
-              - img "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden."
-              - heading "En kall skörd för Kyrkslätt – svaga beslut" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Halvtidsöverläggningen innebar nedskärningar i statsandelar och samfundsskatt. Det inskränker kommunfullmäktiges handlingsutrymme avsevärt.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Utbildning":
-                - /url: /sv/kategori/utbildning/
-            - listitem:
-              - link "Småbarnspedagogik":
-                - /url: /sv/kategori/smabarnspedagogik/
       - paragraph:
         - link "Alla inlägg om Lärande":
           - /url: /sv/category/enlightenment/
@@ -261,23 +261,23 @@
               - link "Frihet":
                 - /url: /sv/kategori/frihet/
         - listitem:
-          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
-              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
-              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
+          - 'article "Digital självständighet: 5 + 1 val för vardagen"':
+            - 'link "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet. Digital självständighet: 5 + 1 val för vardagen"':
+              - /url: /sv/blog/66/digital-sjalvstandighet-vardagens-val/
+              - img "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet."
+              - 'heading "Digital självständighet: 5 + 1 val för vardagen" [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
+            - paragraph: Digital självständighet byggs i vardagens val. Här är 5 + 1 konkreta sätt att stärka den och den digitala försörjningsberedskapen själv.
           - list:
-            - listitem:
-              - link /Riksdagsvalet \d+/:
-                - /url: /sv/kategori/riksdagsvalet-2027/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
             - listitem:
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
       - paragraph:
         - link "Alla inlägg om Frihet":
           - /url: /sv/category/freedom/
@@ -324,23 +324,23 @@
               - link "Teknologi":
                 - /url: /sv/kategori/teknologi/
         - listitem:
-          - 'article "Digital självständighet: 5 + 1 val för vardagen"':
-            - 'link "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet. Digital självständighet: 5 + 1 val för vardagen"':
-              - /url: /sv/blog/66/digital-sjalvstandighet-vardagens-val/
-              - img "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet."
-              - 'heading "Digital självständighet: 5 + 1 val för vardagen" [level=3]'
+          - article "Finland kan göra elektrifieringen till en konkurrensfördel":
+            - link "Kraftledningsstolpar mot en blå himmel Finland kan göra elektrifieringen till en konkurrensfördel":
+              - /url: /sv/blog/65/finland-kan-gora-elektrifieringen-till-en-konkurrensfordel/
+              - img "Kraftledningsstolpar mot en blå himmel"
+              - heading "Finland kan göra elektrifieringen till en konkurrensfördel" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital självständighet byggs i vardagens val. Här är 5 + 1 konkreta sätt att stärka den och den digitala försörjningsberedskapen själv.
+            - paragraph: Caruna byter ägare, men elnätets framtid avgörs av reglering — inte av ägaren. Finland kan göra elektrifieringen till en konkurrensfördel.
           - list:
+            - listitem:
+              - link "Infrastruktur":
+                - /url: /sv/kategori/infrastruktur/
             - listitem:
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
             - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Säkerhet":
-                - /url: /sv/kategori/sakerhet/
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/category/digital-independence/

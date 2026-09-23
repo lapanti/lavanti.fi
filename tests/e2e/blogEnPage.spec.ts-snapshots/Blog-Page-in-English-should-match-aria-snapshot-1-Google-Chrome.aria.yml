@@ -54,6 +54,24 @@
               - link "Entrepreneurship":
                 - /url: /en/category/entrepreneurship/
         - listitem:
+          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+              - /url: /en/blog/67/my-candidacy-for-parliament/
+              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
+              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
+          - list:
+            - listitem:
+              - link /Parliamentary elections \d+/:
+                - /url: /en/category/parliamentary-elections-2027/
+            - listitem:
+              - link "National politics":
+                - /url: /en/category/national-politics/
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+        - listitem:
           - article "AI helps secure municipal services, but it is not free":
             - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
               - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digitalisation":
                 - /url: /en/category/digitalisation/
-        - listitem:
-          - article "AI changes what developers get paid for":
-            - link "A computer screen showing code. AI changes what developers get paid for":
-              - /url: /en/blog/57/ai-changes-what-developers-get-paid-for/
-              - img "A computer screen showing code."
-              - heading "AI changes what developers get paid for" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI does in two minutes what used to take a developer two weeks. The price of code is collapsing — but what will developers get paid for instead?
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Enlightenment":
-                - /url: /en/category/enlightenment/
       - paragraph:
         - link "All posts about AI":
           - /url: /en/category/artificial-intelligence/
@@ -162,6 +162,24 @@
       - paragraph: Seamless enlightenment means learning never stops — it stays possible whatever stage of life you are in. AI makes that path vastly more important. The country that keeps the path open for everyone gets the full potential of its people. That is a stronger foundation than any other competitive advantage.
       - list:
         - listitem:
+          - article "AI changes what developers get paid for":
+            - link "A computer screen showing code. AI changes what developers get paid for":
+              - /url: /en/blog/57/ai-changes-what-developers-get-paid-for/
+              - img "A computer screen showing code."
+              - heading "AI changes what developers get paid for" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI does in two minutes what used to take a developer two weeks. The price of code is collapsing — but what will developers get paid for instead?
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Enlightenment":
+                - /url: /en/category/enlightenment/
+        - listitem:
           - article /\d+ is the year of AI/:
             - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
               - /url: /en/blog/47/2026-is-the-year-of-ai/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Enlightenment":
                 - /url: /en/category/enlightenment/
-        - listitem:
-          - article "A cold harvest for Kirkkonummi — a weak budget":
-            - link "Kirkkonummi's town centre from a high vantage point, with the sun low in the background. A cold harvest for Kirkkonummi — a weak budget":
-              - /url: /en/blog/38/a-cold-harvest-for-kirkkonummi/
-              - img "Kirkkonummi's town centre from a high vantage point, with the sun low in the background."
-              - heading "A cold harvest for Kirkkonummi — a weak budget" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: The government's mid-term session cut state subsidies and corporate tax. This significantly narrows the room for manoeuvre for local councils.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Education":
-                - /url: /en/category/education/
-            - listitem:
-              - link "Early childhood education":
-                - /url: /en/category/early-childhood-education/
       - paragraph:
         - link "All posts about Enlightenment":
           - /url: /en/category/enlightenment/
@@ -261,23 +261,23 @@
               - link "Freedom":
                 - /url: /en/category/freedom/
         - listitem:
-          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-              - /url: /en/blog/67/my-candidacy-for-parliament/
-              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
-              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
+          - 'article "Digital independence: 5 + 1 choices for everyday life"':
+            - 'link "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads ''Digital independence'', ''Digitaalinen itsenäisyys'' and ''Digital självständighet''. Copyright for the image belongs to the Digital Independence citizens'' initiative. Digital independence: 5 + 1 choices for everyday life"':
+              - /url: /en/blog/66/digital-independence-five-plus-one-everyday-choices/
+              - img "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative."
+              - 'heading "Digital independence: 5 + 1 choices for everyday life" [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
+            - paragraph: Digital independence is built through everyday choices. Here are 5 + 1 concrete ways to strengthen it and digital security of supply yourself.
           - list:
-            - listitem:
-              - link /Parliamentary elections \d+/:
-                - /url: /en/category/parliamentary-elections-2027/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
             - listitem:
               - link "Digital independence":
                 - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Security":
+                - /url: /en/category/security/
       - paragraph:
         - link "All posts about Freedom":
           - /url: /en/category/freedom/
@@ -324,23 +324,23 @@
               - link "Technology":
                 - /url: /en/category/technology/
         - listitem:
-          - 'article "Digital independence: 5 + 1 choices for everyday life"':
-            - 'link "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads ''Digital independence'', ''Digitaalinen itsenäisyys'' and ''Digital självständighet''. Copyright for the image belongs to the Digital Independence citizens'' initiative. Digital independence: 5 + 1 choices for everyday life"':
-              - /url: /en/blog/66/digital-independence-five-plus-one-everyday-choices/
-              - img "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative."
-              - 'heading "Digital independence: 5 + 1 choices for everyday life" [level=3]'
+          - article "Finland Can Turn Electrification Into a Competitive Edge":
+            - link "High-voltage power line pylons against a blue sky Finland Can Turn Electrification Into a Competitive Edge":
+              - /url: /en/blog/65/finland-can-turn-electrification-into-a-competitive-edge/
+              - img "High-voltage power line pylons against a blue sky"
+              - heading "Finland Can Turn Electrification Into a Competitive Edge" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital independence is built through everyday choices. Here are 5 + 1 concrete ways to strengthen it and digital security of supply yourself.
+            - paragraph: Caruna is changing owners, but regulation — not ownership — decides the power grid's future. Finland can turn electrification into a competitive edge.
           - list:
+            - listitem:
+              - link "Infrastructure":
+                - /url: /en/category/infrastructure/
             - listitem:
               - link "Digital independence":
                 - /url: /en/category/digital-independence/
             - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Security":
-                - /url: /en/category/security/
+              - link "Economy":
+                - /url: /en/category/economy/
       - paragraph:
         - link "All posts about Digital independence":
           - /url: /en/category/digital-independence/

@@ -54,6 +54,24 @@
               - link "Yrittäjyys":
                 - /url: /fi/kategoria/yrittajyys/
         - listitem:
+          - 'article /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
+            - 'link /Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos\. Kuva: Markus Isomeri\. Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
+              - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
+              - 'img "Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos. Kuva: Markus Isomeri."'
+              - 'heading /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/ [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Asetun Vihreiden ehdokkaaksi Uudenmaan vaalipiirissä eduskuntavaaleihin \d+\. Tavoitteenani on digitaalisesti itsenäinen Suomi tekoälyn aikakaudella\./
+          - list:
+            - listitem:
+              - link /Eduskuntavaalit \d+/:
+                - /url: /fi/kategoria/eduskuntavaalit-2027/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+        - listitem:
           - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
             - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
               - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-        - listitem:
-          - article "Tekoäly muuttaa kehittäjän palkan perustan":
-            - link "Kuvassa tietokoneen näyttö, jossa näkyy koodia. Tekoäly muuttaa kehittäjän palkan perustan":
-              - /url: /fi/blog/57/tekoaly-ei-korvaa-koodareita-vaan-muuttaa-sen-mista-heille-maksetaan/
-              - img "Kuvassa tietokoneen näyttö, jossa näkyy koodia."
-              - heading "Tekoäly muuttaa kehittäjän palkan perustan" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Tekoäly tekee kahdessa minuutissa sen, mihin kehittäjältä meni kaksi viikkoa. Koodin hinta romahtaa — mutta mistä kehittäjille sitten maksetaan?
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Sivistys":
-                - /url: /fi/kategoria/sivistys/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
           - /url: /fi/category/artificial-intelligence/
@@ -162,6 +162,24 @@
       - paragraph: Saumaton sivistys tarkoittaa, että oppiminen ja sivistys eivät lopu koskaan, vaan se on mahdollista elämäntilanteesta riippumatta. Tekoäly tekee tästä polusta valtavan paljon tärkeämmän. Maa, joka pitää polun auki kaikille, saa käyttöönsä koko kansansa potentiaalin. Se on vahvempi pohja kuin mikään muu kilpailuetu.
       - list:
         - listitem:
+          - article "Tekoäly muuttaa kehittäjän palkan perustan":
+            - link "Kuvassa tietokoneen näyttö, jossa näkyy koodia. Tekoäly muuttaa kehittäjän palkan perustan":
+              - /url: /fi/blog/57/tekoaly-ei-korvaa-koodareita-vaan-muuttaa-sen-mista-heille-maksetaan/
+              - img "Kuvassa tietokoneen näyttö, jossa näkyy koodia."
+              - heading "Tekoäly muuttaa kehittäjän palkan perustan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Tekoäly tekee kahdessa minuutissa sen, mihin kehittäjältä meni kaksi viikkoa. Koodin hinta romahtaa — mutta mistä kehittäjille sitten maksetaan?
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/sivistys/
+        - listitem:
           - article /Vuosi \d+ on tekoälyn/:
             - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
               - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Sivistys":
                 - /url: /fi/kategoria/sivistys/
-        - listitem:
-          - article "Kylmä riihi Kirkkonummelle":
-            - link "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla Kylmä riihi Kirkkonummelle":
-              - /url: /fi/blog/38/kylma-riihi-kirkkonummelle/
-              - img "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla"
-              - heading "Kylmä riihi Kirkkonummelle" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Hallituksen puoliväliriihi toi leikkauksia valtionosuuksiin ja yhteisöveroon. Se kaventaa kunnanvaltuutettujen liikkumatilaa merkittävästi.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Opetus":
-                - /url: /fi/kategoria/opetus/
-            - listitem:
-              - link "Varhaiskasvatus":
-                - /url: /fi/kategoria/varhaiskasvatus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Sivistys":
           - /url: /fi/category/enlightenment/
@@ -261,23 +261,23 @@
               - link "Vapaus":
                 - /url: /fi/kategoria/vapaus/
         - listitem:
-          - 'article /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-            - 'link /Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos\. Kuva: Markus Isomeri\. Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-              - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
-              - 'img "Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos. Kuva: Markus Isomeri."'
-              - 'heading /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/ [level=3]'
+          - 'article "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
+            - 'link "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella. Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
+              - /url: /fi/blog/66/digitaalinen-itsenaisyys-arjen-valinnat/
+              - img "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella."
+              - 'heading "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen" [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Asetun Vihreiden ehdokkaaksi Uudenmaan vaalipiirissä eduskuntavaaleihin \d+\. Tavoitteenani on digitaalisesti itsenäinen Suomi tekoälyn aikakaudella\./
+            - paragraph: Digitaalinen itsenäisyys rakentuu arjen valinnoissa. Tässä on 5 + 1 konkreettista keinoa, joilla vahvistat sitä ja digitaalista huoltovarmuutta itse.
           - list:
-            - listitem:
-              - link /Eduskuntavaalit \d+/:
-                - /url: /fi/kategoria/eduskuntavaalit-2027/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
             - listitem:
               - link "Digitaalinen itsenäisyys":
                 - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Turvallisuus":
+                - /url: /fi/kategoria/turvallisuus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Vapaus":
           - /url: /fi/category/freedom/
@@ -324,23 +324,23 @@
               - link "Teknologia":
                 - /url: /fi/kategoria/teknologia/
         - listitem:
-          - 'article "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
-            - 'link "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella. Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
-              - /url: /fi/blog/66/digitaalinen-itsenaisyys-arjen-valinnat/
-              - img "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella."
-              - 'heading "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen" [level=3]'
+          - article "Suomi voi tehdä sähköistymisestä kilpailuedun":
+            - link "Korkeajännitteisiä voimajohtopylonita sinistä taivasta vasten Suomi voi tehdä sähköistymisestä kilpailuedun":
+              - /url: /fi/blog/65/suomi-voi-tehda-sahkoistymisesta-kilpailuedun/
+              - img "Korkeajännitteisiä voimajohtopylonita sinistä taivasta vasten"
+              - heading "Suomi voi tehdä sähköistymisestä kilpailuedun" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digitaalinen itsenäisyys rakentuu arjen valinnoissa. Tässä on 5 + 1 konkreettista keinoa, joilla vahvistat sitä ja digitaalista huoltovarmuutta itse.
+            - paragraph: Caruna vaihtaa omistajaa, mutta sähköverkon tulevaisuuden ratkaisee sääntely — ei omistaja. Suomi voi tehdä sähköistymisestä kilpailuedun.
           - list:
+            - listitem:
+              - link "Infra":
+                - /url: /fi/kategoria/infra/
             - listitem:
               - link "Digitaalinen itsenäisyys":
                 - /url: /fi/kategoria/digitaalinen-itsenaisyys/
             - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Turvallisuus":
-                - /url: /fi/kategoria/turvallisuus/
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
           - /url: /fi/category/digital-independence/
