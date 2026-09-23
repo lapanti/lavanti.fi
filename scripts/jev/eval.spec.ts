@@ -6,18 +6,9 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
 import { CHOICE_OPTION_MAX, type JevClient, mapConcurrent, type QuestionSpec, type SystemOneResponse } from './client'
-import {
-    formatTable,
-    linkMetrics,
-    type LinkRow,
-    loadTagLabels,
-    prf,
-    runCli,
-    tagMetrics,
-    tagQuestions,
-    type TagRow,
-} from './eval'
+import { formatTable, linkMetrics, type LinkRow, prf, runCli, tagMetrics, type TagRow } from './eval'
 import { linkOptions, linkTargets, NONE, rankedOptions, topChoice } from './links'
+import { loadTagLabels, tagQuestions } from './tags'
 
 const doc = (key: DocKey, title: string): Document => ({
     body: '',

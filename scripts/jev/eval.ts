@@ -15,14 +15,11 @@
  * Spec: .agents/specs/jev/spec.md
  */
 
-/* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
-import type { LocalTag } from '../../src/content/tags/types.ts'
-
-import { readdirSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
-import { fileURLToPath, pathToFileURL } from 'node:url'
+import { writeFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
+/* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
 import { stripMarkup } from '../checks/mdx-deep.ts'
 import {
     type Answer,
@@ -35,19 +32,13 @@ import {
 } from './client.ts'
 import { buildCorpus, type DocKey, type Document, type Lang, LANGS, stateFor } from './corpus.ts'
 import { linkOptions, linkTargets, NONE, rankedOptions, topChoice } from './links.ts'
+import { loadTagLabels, PILLAR_TAGS, predictedAt, tagQuestions } from './tags.ts'
 /* eslint-enable import-x/extensions */
 
 export const PREDICT_THRESHOLD = 0.5
 export const THRESHOLDS = [0.5, 0.7] as const
 export const CONCURRENCY_DEFAULT = 4
 export const PILLAR_MIN_ID = 43
-export const PILLAR_TAGS = [
-    'artificial-intelligence',
-    'digital-independence',
-    'economy',
-    'culture-and-education',
-    'freedom',
-]
 export const TASKS = ['tags', 'links'] as const
 
 export type Task = (typeof TASKS)[number]
@@ -70,12 +61,6 @@ export interface PerTag {
     precision: number
     recall: number
     support: number
-}
-
-export interface TagLabel {
-    description: string
-    id: string
-    name: string
 }
 
 export interface TagRow {
@@ -103,45 +88,6 @@ interface RunOpts {
     concurrency: number
     lang: Lang
     limit?: number
-}
-
-// ── questions and ground truth ────────────────────────────────────────────────
-
-const TAGS_DIR = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content', 'tags')
-
-const isLocalTag = (value: unknown): value is LocalTag =>
-    typeof value === 'object' && value !== null && 'id' in value && 'names' in value && 'descriptions' in value
-
-/**
- * English label per tag: option labels never change with --lang. Loads the
- * per-tag files one by one because src/content/tags.ts imports them without
- * extensions, which Node's strip-types loader cannot resolve.
- */
-export async function loadTagLabels(dir = TAGS_DIR): Promise<TagLabel[]> {
-    const files = readdirSync(dir)
-        .filter((name) => name.endsWith('.ts') && name !== 'types.ts')
-        .sort()
-    const labels: TagLabel[] = []
-    for (const file of files) {
-        const mod = (await import(pathToFileURL(join(dir, file)).href)) as Record<string, unknown>
-        const tag = Object.values(mod).find(isLocalTag)
-        if (!tag) throw new Error(`no LocalTag export in ${file}`)
-        labels.push({ description: tag.descriptions.en[0] ?? '', id: tag.id, name: tag.names.en })
-    }
-
-    return labels
-}
-
-export function tagQuestions(labels: TagLabel[]): Record<string, QuestionSpec> {
-    const questions: Record<string, QuestionSpec> = {}
-    for (const t of labels) {
-        questions[t.id] = {
-            instructions: `This article belongs in the category '${t.name}': ${t.description}`,
-            type: 'noul',
-        }
-    }
-
-    return questions
 }
 
 // ── metrics ───────────────────────────────────────────────────────────────────
@@ -179,11 +125,6 @@ const mostCommon = (lists: string[][], n: number): string[] => {
         .slice(0, n)
         .map(([key]) => key)
 }
-
-const predictedAt = (probabilities: Record<string, number>, threshold: number): string[] =>
-    Object.entries(probabilities)
-        .filter(([, p]) => p >= threshold)
-        .map(([key]) => key)
 
 const sameSet = (a: string[], b: string[]): boolean => {
     const sa = new Set(a)
