@@ -22,6 +22,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const TAGS_DIR = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content', 'tags')
 const TAGS_REGISTRY = join(TAGS_DIR, '..', 'tags.ts')
+/** Tags not assigned to a post are suggested at or above this. Provisional. */
+export const CONSIDER_THRESHOLD = 0.7
+/** Assigned tags scoring below this are flagged. Provisional. */
+export const DOUBTFUL_THRESHOLD = 0.2
 /** The pillar tags content.sh:183 requires at least one of on posts with id ≥ 43. */
 export const PILLAR_TAGS = [
     'artificial-intelligence',
