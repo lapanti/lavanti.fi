@@ -1,0 +1,60 @@
+---
+lang: 'sv'
+slug: 'marknadsekonomin-behover-alternativ'
+pageTitle: 'Marknadsekonomin behöver alternativ'
+title: '264 miljarder skäl att tänka om kring IT'
+description: 'EU använder cirka 264 miljarder euro per år på sluten programvara. Leverantörsinlåsning dödar prissignalen som öppen källkod och portabilitet återställer.'
+faq:
+  - q: 'Vad betyder leverantörsinlåsning i offentlig IT-upphandling?'
+    a: 'Leverantörsinlåsning uppstår när datan är låst i leverantörens format, gränssnitten är begränsade och processerna är byggda ovanpå en enda leverantörs tjänster. Köparen kan inte byta leverantör till en rimlig kostnad, prissignalen försvinner och priset stiger. Helsingfors misslyckade lönesystem är ett exempel på detta.'
+  - q: 'Hur återställer öppen källkod och öppna gränssnitt konkurrensen i IT-upphandlingar?'
+    a: 'När öppen källkod är upphandlingens standardval och portabilitet skrivs in i upphandlingslagen sjunker kostnaden för att lämna och leverantören kan bytas. Nitton kommuners öppna eVaka kostade 12 miljoner euro, medan Helsingfors slutna motsvarighet kostade 32 miljoner euro och misslyckades.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
+
+Föreställ dig en IT-direktör som ber sin nuvarande systemleverantör om en uppskattning för att flytta data till en annan plattform. Svaret är sannolikt en summa som inte kan betalas och en tidtabell som inte kan inväntas. Beslutet fattades för direktörens räkning redan för flera år sedan, då systemet upphandlades.
+
+**Det blir sällan en nyhet, eftersom det ser ut som en teknisk detalj. Det är ändå ett strukturellt problem på marknaden.**
+
+## Vad består en fungerande marknad av?
+
+Marknadsekonomin fungerar när köparen kan byta leverantör. Pris är en signal endast om man kan rösta med fötterna. När det är praktiskt taget omöjligt att lämna försvinner prissignalen. Datan är låst i leverantörens format, gränssnitten är begränsade och processerna är byggda ovanpå en enda leverantörs tjänster. Kvar blir en leverantör, en kund och ett avtal som inte tar slut.
+
+Den största scenen för denna logik är offentlig upphandling. [Europeiska kommissionens paket för teknologisk suveränitet, publicerat i juni 2026](https://digital-strategy.ec.europa.eu/en/policies/european-technological-sovereignty), konstaterar att EU årligen använder cirka 264 miljarder euro huvudsakligen på sluten amerikansk programvara. Den finländska motsvarigheten finns närmare: Helsingfors misslyckade lönesystem är fortfarande en av 2020-talets dyraste enskilda förluster i en offentlig upphandling, och dess grundläggande orsak är leverantörsinlåsning *(toimittajalukko)*. Systemet kunde varken flyttas eller bytas till en rimlig kostnad när det visade sig fungera dåligt.
+
+När köparen inte kan lämna stiger priset, kvaliteten sjunker och den inhemska utbudssidan vissnar. Kvar blir ett monopol som finansieras med offentliga medel. Att förhindra det är marknadsekonomins uppgift, inte ett ideologiskt val. Den marknadsvänliga (*pro-market*) linjen tryggar konkurrensen och bytbarheten strukturellt. Den företagsvänliga (*pro-business*) linjen skyddar den etablerade leverantören mot förändring, även när följden är att konkurrensen försvinner. [Den som försvarar marknadsekonomin väljer det första](/sv/blog/62/de-grona-marknadsekonomiets-sanna-forsvarare/).
+
+## Öppna gränssnitten, återställ konkurrensen
+
+Lösningen är strukturell. [Öppen källkod och öppna gränssnitt måste skrivas in i upphandlingslagen som utgångspunkt](/sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/), inte som ett undantag. När kostnaden för att lämna sjunker [återvänder konkurrensen och marknadsekonomin fungerar som den ska](/sv/blog/75/mer-marknad/).
+
+[eVaka](https://evaka.fi/) är det mest konkreta finländska beviset på detta. Nitton kommuners gemensamma småbarnspedagogiska system, byggt på öppen källkod, kostade 12 miljoner euro. Helsingfors slutna motsvarighet kostade ensam 32 miljoner euro och misslyckades. Skillnaden förklaras mer av struktur än av licensvalet: när flera kommuner delar samma plattform fördelas utvecklingskostnaden, ett underhållsfel rättas en gång och alla har nytta av det, och en enskild leverantör kan inte längre låsa köparen i en prisspiral. Samma logik [syns i Helsingfors val att bygga kärninformationssystemet för sina offentliga tjänster ovanpå den inhemska leverantören UpCloud](/sv/blog/53/digital-sjalvstandighet-byggs-steg-for-steg/). [Suveränitet och kostnadseffektivitet uppstår i enskilda upphandlingsbeslut](/sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/).
+
+För finländsk politik innebär detta tre konkreta åtgärder:
+
+- **Öppen källkod som standardval.** Programvara som byggs med offentliga medel är i utgångspunkten offentlig kod. Ett slutet alternativ väljs endast med en motiverad grund, inte tvärtom.
+- **Portabilitet och öppna gränssnitt in i upphandlingslagen.** Från varje system ska man kunna flytta data, processer och integrationer till en annan leverantör. Kraven skrivs in i upphandlingsskedet, inte i efterhand.
+- **Delade systemkostnader mellan kommunerna.** eVaka-modellen skalas upp till nationell nivå. När tiotals kommuner delar på underhållet sparar var och en, och inhemska små och medelstora företag får den skala som behövs för att kunna konkurrera.
+
+Jag har byggt programvara ovanpå internationella plattformar i över ett decennium. Leverantörsinlåsningen kan tekniskt sett identifieras redan i upphandlingsskedet: då ser man vilka gränssnitt som har planerats, i vilka format datan lagras och på vilka villkor integrationerna kan kopplas loss. Att förhindra inlåsning kräver inte nya teknologier. Det kräver att portabilitet definieras som ett villkor i upphandlingen och bedöms innan något avtal undertecknas.
+
+## Små och medelstora företag kommer med i upphandlingarna
+
+Offentliga upphandlingar är Finlands enskilt största IT-marknad. Där avgörs om vi får en konkurrenskraftig inhemsk programvarusektor eller om vi förblir kunder hos en handfull utländska leverantörer. För närvarande är en stor del av upphandlingströsklarna byggda så att endast en internationell leverantör kan ta sig över dem. När gränssnitten är öppna och portabiliteten är garanterad kan ett finländskt SMF erbjuda en modul eller ett underhållsskikt som en del av helheten. Anbudstävlingen blir en verklig konkurrens.
+
+Jämförelsepunkter hittas hos våra närmaste grannar. Estland byggde sin offentliga sektor ovanpå öppna gränssnitt från första början och kopplade samman sina system via X-Road, genom vilket data rör sig kontrollerat mellan myndigheterna. [Tyska Schleswig-Holstein har under de senaste åren ersatt sina Microsoft-system med Linux och LibreOffice, och efter en investering på 9 miljoner euro har besparingarna uppgått till cirka 12 miljoner euro](https://www.verdelehti.fi/2026/04/22/saksa-saastaa-miljoonia-irtautumalla-microsoftista-suomessa-ei-edes-tiedeta-maksujen-maaraa/). Danmark har enligt samma logik flyttat kärnsystem bort från enskilda leverantörsinlåsningar. Den nordiska och europeiska institutionella tillförlitligheten vilar just på att myndighetens system kan granskas och bytas ut. Oberoendet är formellt om varken det ena eller det andra går att göra.
+
+En reservation är på sin plats. Öppen källkod ensam förhindrar inte leverantörsinlåsning. En inlåsning kan uppstå även i system med öppen källkod, om endast en leverantör kan och hinner underhålla dem. Därför måste öppenheten i gränssnitt, dataformat och processer definieras tillsammans med kodens öppenhet. Upphandlingslagen behöver alla tre skikten.
+
+**En marknad som man inte kan lämna är ingen marknad.**
+
+Att försvara marknadsekonomin i Finland innebär i dag mer än beskattningens struktur eller konkurrenslagstiftningen. Det innebär att den största offentliga beställaren beslutar sig för att öppna dörrarna för konkurrens just där den under det senaste decenniet har stängt dem. [Den EU-enkät som Sitra och EVA publicerade i maj 2026 visar](https://www.sitra.fi/uutiset/kysely-turvaa-ja-toimintakykya-suomalaiset-haluavat-vahvan-ja-omavaraisen-euroopan-unionin/) att 77 procent av finländarna vill minska det teknologiska beroendet av USA och att 79 procent stöder EU:s strategiska autonomi inom kritiska teknologier. Mandatet finns, och alternativen byggs i upphandlingslagen. [Digital självständighet byggs i enskilda upphandlingsbeslut](/sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/), och samma gäller för en fungerande marknad.
+
+Vad tycker du: borde portabilitetskraven skrivas in i upphandlingslagen bindande?
