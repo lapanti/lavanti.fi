@@ -123,12 +123,18 @@ async function suggestForDocument(
     const criteria = linkOptions(english, doc.key)
     const exclude = new Set<DocKey>([doc.key, ...alreadyLinked(doc, known)])
     const answers = await mapConcurrent(doc.paragraphs, opts.concurrency, async (paragraph, index) => {
-        const res = await client.ask(paragraphState(doc, paragraph), {
-            link_target: { criteria, instructions: LINK_QUESTION, type: 'choice' },
-        })
+        const where = `${doc.key} paragraph ${index}`
+        let res
+        try {
+            res = await client.ask(paragraphState(doc, paragraph), {
+                link_target: { criteria, instructions: LINK_QUESTION, type: 'choice' },
+            })
+        } catch (error) {
+            throw new Error(`${where}: ${error instanceof Error ? error.message : String(error)}`, { cause: error })
+        }
         const answer = res.answers.link_target
         if (answer?.type !== 'choice') {
-            throw new Error(`${doc.key} paragraph ${index}: expected a choice answer, got ${answer?.type ?? 'nothing'}`)
+            throw new Error(`${where}: expected a choice answer, got ${answer?.type ?? 'nothing'}`)
         }
 
         return answer.probabilities
@@ -161,12 +167,23 @@ async function suggestBacklinks(
     const jobs = candidates.flatMap((post) => backlinkQuestions(post.paragraphs).map((chunk) => ({ chunk, post })))
     const state = stateFor(issueEnglish)
     const answered = await mapConcurrent(jobs, opts.concurrency, async ({ chunk, post }) => {
-        const res = await client.ask(state, chunk.questions)
+        const where = `${post.key} paragraphs ${chunk.indexes[0]}–${chunk.indexes.at(-1)}`
+        let res
+        try {
+            res = await client.ask(state, chunk.questions)
+        } catch (error) {
+            throw new Error(`${where}: ${error instanceof Error ? error.message : String(error)}`, { cause: error })
+        }
 
         return chunk.indexes.map((index) => {
             const answer = res.answers[`p${index}`]
+            if (answer?.type !== 'noul') {
+                throw new Error(
+                    `${post.key} paragraph ${index}: expected a noul answer, got ${answer?.type ?? 'nothing'}`
+                )
+            }
 
-            return { index, p: answer?.type === 'noul' ? answer.noul : 0, post }
+            return { index, p: answer.noul, post }
         })
     })
     const rows = answered
@@ -291,7 +308,7 @@ export async function runSuggest(argv: string[], env: NodeJS.ProcessEnv, deps: S
             output.push(...section)
         }
     } catch (error) {
-        return finish(1, `failed: ${error instanceof Error ? error.message : String(error)}`)
+        return finish(1, `failed at ${error instanceof Error ? error.message : String(error)}`)
     }
 
     return finish(0)

@@ -70,7 +70,8 @@ describe('paragraphState, urlFor, alreadyLinked, linkCount', () => {
 
     it('collects every corpus target linked anywhere in the document', () => {
         const d = doc('post:1', {
-            paragraphs: ['[a](/fi/blog/2/x/)', 'plain', '[b](/en/newsletter/3/y/) [a](/fi/blog/2/x/)'],
+            body: '[a](/fi/blog/2/x/)\n\nplain\n\n<Aside>[b](/en/newsletter/3/y/) [a](/fi/blog/2/x/)</Aside>',
+            paragraphs: ['[a](/fi/blog/2/x/)', 'plain'],
         })
 
         expect([...alreadyLinked(d, known)]).toEqual(['post:2', 'newsletter:3'])

@@ -172,12 +172,14 @@ jobs:
             echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md \
-            || echo "Link suggestions failed (advisory, see the job log)" >> "$GITHUB_STEP_SUMMARY"
+          ok=1
+          npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md || ok=0
           if [ -f suggestions.md ]; then
             { echo "## Link suggestions (advisory)"; echo; cat suggestions.md; } >> "$GITHUB_STEP_SUMMARY"
-          else
+          elif [ "$ok" = 1 ]; then
             echo "Link suggestions: no content changes" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Link suggestions failed before producing output (advisory, see the job log)" >> "$GITHUB_STEP_SUMMARY"
           fi
           exit 0
 

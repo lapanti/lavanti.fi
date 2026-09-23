@@ -61,7 +61,7 @@ Flag:
 
 ## 5. Link suggestions
 
-Run `npm run suggest:links -- <post|newsletter> <id>` for the file's document (skips with a notice when no Jev key is set). Report every ★ row the post does not act on as a suggestion, every "doubtful" row as a question, and the "links now" line against the 3–10 budget. Do not propose anchor text. Advisory only. Spec: `.agents/specs/jev/links.md`.
+Run `npm run suggest:links -- <post|newsletter> <id>` for the file's document (skips with a notice when no Jev key is set). Go through every row: report ★ rows the post does not act on as suggestions, weaker rows as options worth a look, every "doubtful" row as a question, and the "links now" line against the 3–10 budget. Do not propose anchor text. Advisory only. Spec: `.agents/specs/jev/links.md`.
 
 ---
 

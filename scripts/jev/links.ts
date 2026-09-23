@@ -96,13 +96,9 @@ export function urlFor(doc: Document): string {
     return doc.kind === 'post' ? `/${doc.lang}/blog/${doc.id}/${doc.slug}/` : newsletterPath(doc.lang, doc.id, doc.slug)
 }
 
-/** Every corpus document the document links anywhere in its prose. */
-export function alreadyLinked(doc: Document, known: ReadonlySet<DocKey>): Set<DocKey> {
-    const out = new Set<DocKey>()
-    for (const paragraph of doc.paragraphs) for (const key of linkTargets(paragraph, known)) out.add(key)
-
-    return out
-}
+/** Every corpus document the document links anywhere in its body, component-wrapped blocks included. */
+export const alreadyLinked = (doc: Document, known: ReadonlySet<DocKey>): Set<DocKey> =>
+    new Set(linkTargets(doc.body, known))
 
 /** Internal link count the way scripts/checks/content.sh counts it: every [text](/path) in the body. */
 export const linkCount = (doc: Document): number => (doc.body.match(/\[[^\]]*\]\(\/[^)]*\)/g) ?? []).length
