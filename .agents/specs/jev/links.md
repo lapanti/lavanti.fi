@@ -47,15 +47,18 @@ Feature: Per-document link suggestions
     Then one choice request is sent per prose paragraph of fi.mdx
     And each state is { paragraph: <paragraph, markup stripped>, title: <fi title> }
     And the options are every other post and newsletter labelled from the English corpus, plus "none"
-    And stdout shows a Markdown table with columns paragraph, starts, target, title, url, p
-    And a row appears only for options with p ≥ 0.5 that are not "none", not the post itself, and not already linked anywhere in the post's fi body
+    And stdout shows a Markdown table with columns paragraph, starts, target, title, url, p, none
+    And for each paragraph the rows are its top 3 options by p that are not "none", not the post itself, not already linked anywhere in the post's body (targets are id-keyed, so the locale of the existing link does not matter), and have p ≥ 0.1
+    And "none" is that paragraph's probability of needing no link, so the author can weigh the row
+    And rows with p ≥ 0.5 are marked ★ (the thresholds are provisional: the eval measured hit@k and abstain, not probability calibration; they are tuned by hand on the first runs and recorded in this spec)
+    And the same target may appear under several paragraphs; the author places it once
     And target titles and urls are for the fi locale (/fi/blog/<id>/<slug>/ or /fi/uutiskirje/<id>/<slug>/)
-    And the table is followed by "links now: N of 3–10"
+    And the table is followed by "links now: N of 3–10", N counted with content.sh's regex (every `[text](/path)` link in the body)
 
-  Scenario: Locale and threshold flags
-    Given `--lang en --threshold 0.7`
+  Scenario: Locale, threshold and concurrency flags
+    Given `--lang en --threshold 0.7 --concurrency 2`
     When the script runs
-    Then paragraphs, titles and urls come from en.mdx files and only options with p ≥ 0.7 are shown
+    Then paragraphs, titles and urls come from en.mdx files, the ★ mark applies at p ≥ 0.7, and at most two requests are in flight
 
   Scenario: Suggestions for an issue
     Given `newsletter 2`
@@ -68,9 +71,14 @@ Feature: Per-document link suggestions
     Then a second table "doubtful" lists paragraph, starts, current target and p
 
   Scenario: No suggestions
-    Given every paragraph's best option is "none" or already linked
+    Given every paragraph's options are "none", already linked or below the 0.1 floor
     When the script runs
     Then stdout says "no new link targets" and the doubtful table still appears when it has rows
+
+  Scenario: Document without prose
+    Given a document whose body yields no prose paragraphs
+    When the script runs
+    Then no request is sent, stdout says "no paragraphs" and the exit code is 0
 
   Scenario: Report file
     Given `--out <path>`
@@ -86,6 +94,12 @@ Feature: Newsletter backlinks
     And the questions are one noul per prose paragraph of the post (fi.mdx by default): "This paragraph makes a claim that the newsletter issue substantiates: <paragraph>"
     And stdout shows a Markdown table with columns post, title, url, paragraph, starts, p for rows with p ≥ 0.5, sorted by p desc
     And posts that already link issue 2 anywhere in their body are listed separately as "already linked"
+    And this noul shape was not measured by the eval gate (which measured per-paragraph choice); the first run on issue 2 is the calibration: post 57, the pair found by hand in #1485, must appear, and the threshold is adjusted and recorded in this spec if it does not
+
+  Scenario: Backlinks for an unknown issue
+    Given `--backlinks newsletter 999`
+    When the script runs
+    Then it prints "newsletter:999 not found" and exits 2
 
   Scenario: Backlink request stays within budget
     Given a post whose paragraphs would exceed 40 questions
@@ -97,15 +111,18 @@ Feature: CI and skills
   Scenario: Changed documents from git
     Given `--changed-since origin/main`
     When the script runs
-    Then it lists the post and newsletter ids touched between that ref and HEAD (from src/content/{posts,newsletters}/<id>/…) and runs per-document mode for each, in order
-    And it prints "no content changes" and exits 0 when the diff touches no document
+    Then it runs `git diff --name-only origin/main...HEAD -- src/content/posts src/content/newsletters` (three dots: since the merge base)
+    And it lists the unique post and newsletter ids in those paths, in path order, skipping ids that no longer have a directory (deleted or renumbered documents)
+    And it runs per-document mode for each remaining id, one section per document
+    And it prints "no content changes" and exits 0 when nothing remains
 
   Scenario: Advisory job
     Given a pull request that touches src/content/posts or src/content/newsletters and a repository secret OPENROUTER_API_KEY
     When the pipeline runs
-    Then the content-suggestions job runs `suggest:links --changed-since origin/<base>` and appends the output to the job summary
-    And the job is continue-on-error and never blocks the pipeline
-    And it is skipped, with a notice in the summary, when the secret is absent or no document changed
+    Then the content-suggestions job runs `suggest:links --changed-since origin/<base> --out suggestions.md` and appends the file to the job summary
+    And the step itself always exits 0: a script failure is written to the summary as a notice, so the job shows green and never blocks the pipeline
+    And the job is not in the branch protection's required checks (15 explicit contexts today) and must not be added
+    And it is skipped, with a notice in the summary, when the secret is absent (fork pull requests included) or no document changed
 
   Scenario: Skills
     Given /write or /review-content is run on a post
@@ -119,7 +136,7 @@ Feature: Common behaviour
     Then it prints the skipped notice and exits 0
 
   Scenario: Bad arguments
-    Given an unknown kind, a non-numeric id, an unknown lang or a threshold outside (0, 1]
+    Given an unknown kind, a non-numeric id, an unknown lang, a threshold outside (0, 1] or a non-positive-integer concurrency
     When the script runs
     Then it prints the usage line and exits 2
 
@@ -131,7 +148,7 @@ Feature: Common behaviour
   Scenario: Failed request
     Given a request that fails after the client's retries
     When the script runs
-    Then it prints the error and exits 1; rows already computed are not printed as if complete
+    Then it prints the sections completed so far, then a line "failed at <key> paragraph <n>: <error>", writes the same to --out when given, and exits 1
 
   Scenario: Eval unchanged
     Given the lifted helpers
@@ -145,25 +162,27 @@ Feature: Common behaviour
 
 ```typescript
 // scripts/jev/corpus.ts (addition)
-interface Document { slug: string /* per-locale frontmatter slug */ }
+interface Document { slug: string /* per-locale frontmatter slug; '' when the frontmatter has none */ }
 
-// scripts/jev/links.ts — shared library, no CLI
-export const SUGGEST_THRESHOLD = 0.5
-export const DOUBTFUL_THRESHOLD = 0.2
+// scripts/jev/links.ts — shared library, no CLI. Moved here from eval.ts (which imports them back):
+//   NONE, SEGMENT_KIND, linkTargets, linkOptions, rankedOptions, topChoice
+export const SUGGEST_FLOOR = 0.1          // rows below this are noise
+export const SUGGEST_THRESHOLD = 0.5      // ★ mark; provisional, see Contract
+export const DOUBTFUL_THRESHOLD = 0.2     // provisional
+export const SUGGEST_TOP = 3
 export const BACKLINK_QUESTIONS_MAX = 40
-export const NONE = 'none'
-export function linkTargets(paragraph: string, known: ReadonlySet<DocKey>): DocKey[]          // from eval.ts
-export function linkOptions(english: Document[], self: DocKey): Record<string, string>         // from eval.ts, both kinds + none
+export function linkOptions(english: Document[], self: DocKey): Record<string, string>         // both kinds + none
 export function paragraphState(doc: Document, paragraph: string): { paragraph: string; title: string }
-export function urlFor(doc: Document): string                                                  // /<lang>/blog/<id>/<slug>/ or newsletterPath()
+export function urlFor(doc: Document): string                                                  // /<lang>/blog/<id>/<slug>/ or newsletterPath(); throws on an empty slug
 export function alreadyLinked(doc: Document, known: ReadonlySet<DocKey>): Set<DocKey>
-export interface SuggestionRow { index: number; key: DocKey; p: number; starts: string; title: string; url: string }
+export function linkCount(doc: Document): number                                               // content.sh's regex over the body
+export interface SuggestionRow { index: number; key: DocKey; none: number; p: number; starts: string; strong: boolean; title: string; url: string }
 export interface DoubtfulRow { current: DocKey; index: number; p: number; starts: string }
-export function suggestionRows(index, paragraph, probabilities, opts: { byKey: Map<DocKey, Document>; exclude: ReadonlySet<DocKey>; threshold: number }): SuggestionRow[]
-export function doubtfulRows(index, paragraph, probabilities, known): DoubtfulRow[]
+export function suggestionRows(index, paragraph, probabilities, opts: { byKey: Map<DocKey, Document>; exclude: ReadonlySet<DocKey>; threshold: number }): SuggestionRow[]  // top SUGGEST_TOP ≥ SUGGEST_FLOOR
+export function doubtfulRows(index, paragraph, probabilities, known): DoubtfulRow[]              // only paragraphs with a current corpus link
 export function backlinkQuestions(paragraphs: string[]): Array<Record<string, QuestionSpec>>   // chunks of ≤ BACKLINK_QUESTIONS_MAX nouls
 export interface BacklinkRow { index: number; key: DocKey; p: number; starts: string; title: string; url: string }
-export function docsFromPaths(paths: string[]): Array<{ id: number; kind: DocKind }>           // src/content/{posts,newsletters}/<id>/… → unique, ordered
+export function docsFromPaths(paths: string[]): Array<{ id: number; kind: DocKind }>           // src/content/{posts,newsletters}/<id>/… → unique, path order; the CLI drops ids without a directory
 export function renderTable(headers: string[], rows: string[][]): string                        // Markdown
 
 // scripts/suggest-links.ts — CLI
@@ -188,10 +207,14 @@ content-suggestions:
     - checkout (fetch-depth 0), setup-node
     - run: |
         if [ -z "$OPENROUTER_API_KEY" ]; then echo "Link suggestions skipped: no OPENROUTER_API_KEY secret" >> "$GITHUB_STEP_SUMMARY"; exit 0; fi
-        npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md
-        cat suggestions.md >> "$GITHUB_STEP_SUMMARY"
+        npm run suggest:links -- --changed-since "origin/${{ github.base_ref }}" --out suggestions.md \
+          || echo "Link suggestions failed (advisory, see the job log)" >> "$GITHUB_STEP_SUMMARY"
+        [ -f suggestions.md ] && cat suggestions.md >> "$GITHUB_STEP_SUMMARY"
+        exit 0
       env: { OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }} }
 ```
+
+Budget check for backlink mode: the longest post body today is 1,575 words in 38 paragraphs, so one request is about 5k tokens against the 32k OpenRouter limit; the 40-question chunking is a guard, not the normal path.
 
 ---
 
@@ -226,4 +249,5 @@ content-suggestions:
 
 | Date | Change |
 |------|--------|
+| 2026-09-23 | Critic review (FAIL → revised): top-3 rows with a none column and provisional ★ thresholds, backlink shape marked unmeasured with post 57 as calibration, three-dot diff and skipped missing directories, CI step always exits 0, link count per content.sh, concurrency validation, unknown-issue and no-prose scenarios, moved helpers listed, slug semantics |
 | 2026-09-23 | Initial draft for #1490 |
