@@ -135,6 +135,9 @@ jobs:
         run: node scripts/checks/cross-file.mjs
       - name: Run redirect audit (chains + dead-ends)
         run: node --experimental-strip-types scripts/checks/redirects.mjs
+      # Backstop for the pre-commit hook, which cannot see deleted post directories.
+      - name: Check related.json is in sync with posts and newsletters
+        run: node --experimental-strip-types scripts/checks/related-stale.ts
       # Backstop for the commit-msg hook, which a --no-verify commit skips.
       - name: Require updatedDate bumps for changed content
         if: github.event_name == 'pull_request'
