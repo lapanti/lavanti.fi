@@ -40,12 +40,13 @@ export function splitMdx(content: string): { body: string; frontmatter: string }
     }
 }
 
-/** Extract a scalar frontmatter field (single-quoted, double-quoted, or bare). */
+/** Extract a scalar frontmatter field (single-quoted with YAML's '' escape, double-quoted, or bare). */
 export function fmField(frontmatter: string, field: string): string | null {
-    const re = new RegExp(`^${field}:\\s*(?:'([^']*)'|"([^"]*)"|([^\\n'""][^\\n]*))`, 'm')
+    const re = new RegExp(`^${field}:\\s*(?:'((?:[^']|'')*)'|"([^"]*)"|([^\\n'""][^\\n]*))`, 'm')
     const m = frontmatter.match(re)
     if (!m) return null
-    return (m[1] ?? m[2] ?? m[3] ?? '').trim()
+    if (m[1] !== undefined) return m[1].replaceAll("''", "'").trim()
+    return (m[2] ?? m[3] ?? '').trim()
 }
 
 /** Count words in a plain-text string. */
@@ -95,9 +96,11 @@ interface CheckFileParams {
     updatedDate?: string | null
 }
 
-/** Run passage-length and freshness checks. Returns error strings (empty = pass).
+/**
+ * Run passage-length and freshness checks. Returns error strings (empty = pass).
  *  For blog posts, publishDate/updatedDate live in the post's sibling meta.json
- *  (not this file's own frontmatter) — callers resolve and pass them in directly. */
+ *  (not this file's own frontmatter) — callers resolve and pass them in directly.
+ */
 export function checkFile({ body, isBlogPost, publishDate, today, updatedDate }: CheckFileParams): string[] {
     const errors: string[] = []
 

@@ -73,6 +73,13 @@ describe('fmField', () => {
     it('returns null when field is absent', () => {
         expect(fmField('lang: fi', 'slug')).toBeNull()
     })
+
+    it("unescapes YAML's doubled single quote instead of truncating", () => {
+        expect(fmField("title: 'David''s plan for Kirkkonummi''s schools'", 'title')).toBe(
+            "David's plan for Kirkkonummi's schools"
+        )
+        expect(fmField("description: 'Ends with a quote'''\nalt: 'x'", 'description')).toBe("Ends with a quote'")
+    })
 })
 
 // ── wordCount ─────────────────────────────────────────────────────────────────
