@@ -48,11 +48,11 @@ describe('<NewsletterList />', () => {
         expect(result.querySelector('ul')).toBeNull()
     })
 
-    it('passes lang, excludeId and limit through', async () => {
+    it('passes lang, excludeId, limit and rankedIds through', async () => {
         getNewsletters.mockResolvedValue([])
 
-        await renderAstroComponent(NewsletterList, { props: { excludeId: 3, lang: 'en', limit: 3 } })
+        await renderAstroComponent(NewsletterList, { props: { excludeId: 3, lang: 'en', limit: 3, rankedIds: [7, 4] } })
 
-        expect(getNewsletters).toHaveBeenCalledWith({ excludeId: 3, lang: 'en', limit: 3 })
+        expect(getNewsletters).toHaveBeenCalledWith({ excludeId: 3, lang: 'en', limit: 3, rankedIds: [7, 4] })
     })
 })

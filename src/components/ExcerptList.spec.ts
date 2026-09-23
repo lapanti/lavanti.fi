@@ -54,7 +54,7 @@ describe('<ExcerptList />', () => {
         expect(countPosts(result)).toBe(0)
     })
 
-    it('passes lang, currentSlug, tag, limit, onlyIds, excludeIds, and relatedTags through to getExcerptPosts', async () => {
+    it('passes lang, currentSlug, tag, limit, onlyIds, excludeIds, rankedIds and relatedTags through to getExcerptPosts', async () => {
         getExcerptPosts.mockResolvedValue([])
 
         await renderAstroComponent(ExcerptList, {
@@ -64,6 +64,7 @@ describe('<ExcerptList />', () => {
                 lang: 'en',
                 limit: 2,
                 onlyIds: [1, 2],
+                rankedIds: [2, 1],
                 relatedTags: ['kirkkonummi'],
                 tag: 'freedom',
             },
@@ -75,6 +76,7 @@ describe('<ExcerptList />', () => {
             lang: 'en',
             limit: 2,
             onlyIds: [1, 2],
+            rankedIds: [2, 1],
             relatedTags: ['kirkkonummi'],
             tag: 'freedom',
         })

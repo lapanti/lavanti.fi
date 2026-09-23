@@ -10,13 +10,14 @@ interface Props {
     lang?: Lang
     limit?: number
     onlyIds?: number[]
+    rankedIds?: number[]
     relatedTags?: string[]
     tag?: string
 }
 
-const { currentSlug, excludeIds, lang = 'fi', limit, onlyIds, relatedTags, tag } = Astro.props
+const { currentSlug, excludeIds, lang = 'fi', limit, onlyIds, rankedIds, relatedTags, tag } = Astro.props
 
-const nodes = await getExcerptPosts({ currentSlug, excludeIds, lang, limit, onlyIds, relatedTags, tag })
+const nodes = await getExcerptPosts({ currentSlug, excludeIds, lang, limit, onlyIds, rankedIds, relatedTags, tag })
 ---
 
 <style>

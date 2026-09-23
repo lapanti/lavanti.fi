@@ -96,8 +96,18 @@ export interface ExcerptQuery {
     lang: Post['lang']
     limit?: number
     onlyIds?: number[]
+    /** Ids to show first, in this order (from src/lib/related.ts); the rest keep their existing order. */
+    rankedIds?: number[]
     relatedTags?: string[]
     tag?: string
+}
+
+/** Items whose id is in rankedIds come first in that order; the others follow in their existing order. */
+export const byRankedIds = <T extends Pick<LocalizedEntry, 'id'>>(items: T[], rankedIds: number[]): T[] => {
+    const rank = new Map(rankedIds.map((id, index) => [id, index]))
+    const ranked = items.filter((item) => rank.has(item.id)).toSorted((a, b) => rank.get(a.id)! - rank.get(b.id)!)
+
+    return [...ranked, ...items.filter((item) => !rank.has(item.id))]
 }
 
 export const sortByRelatedTags = (posts: Post[], relatedTags: string[]): Post[] =>
@@ -115,8 +125,9 @@ export const filterExcerptPosts = (posts: Post[], q: ExcerptQuery): Post[] => {
         .filter((p) => !q.excludeIds || !q.excludeIds.includes(p.id))
 
     const sorted = q.relatedTags ? sortByRelatedTags(filtered, q.relatedTags) : filtered
+    const ordered = q.rankedIds ? byRankedIds(sorted, q.rankedIds) : sorted
 
-    return q.limit ? sorted.slice(0, q.limit) : sorted
+    return q.limit ? ordered.slice(0, q.limit) : ordered
 }
 
 export const getExcerptPosts = async (q: ExcerptQuery): Promise<Post[]> => filterExcerptPosts(await getAllPosts(), q)

@@ -16,6 +16,7 @@ import { breadcrumbLabels } from '../lib/breadcrumbs'
 import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
 import { archivePath, landingPath, newsletterSlug } from '../lib/newsletterRoutes'
 import { ogId } from '../lib/og/id'
+import { relatedNewsletterIds } from '../lib/related'
 import { colors } from '../lib/styles'
 import BaseLayout from './BaseLayout.astro'
 
@@ -122,7 +123,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         ground="white"
         heading={t.otherIssuesHeading}
     >
-        <NewsletterList excludeId={id} lang={lang} limit={3} />
+        <NewsletterList excludeId={id} lang={lang} limit={3} rankedIds={relatedNewsletterIds(id)} />
         <AllPostsLink href={archivePath(lang)} label={t.allIssuesLabel} lang={lang} />
     </WritingsPlate>
     <NewsletterPlate>
