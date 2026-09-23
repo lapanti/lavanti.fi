@@ -122,7 +122,19 @@ const ogImageUrl = ogImage ?? null
 
 const resolvedAuthors = (authors ?? (['lauri'] as AuthorEntry[])).map((entry: AuthorEntry) => {
     if (entry === 'lauri') {
-        return { '@id': PERSON_ID, '@type': 'Person' as const }
+        /*
+         * The canonical Person node with its full field set lives on the profile page;
+         * elsewhere this is a reference to it. Carrying name/url/jobTitle inline as well
+         * keeps the identity the same while letting an engine that parses one article in
+         * isolation — as AI answer engines do — see who wrote it.
+         */
+        return {
+            '@id': PERSON_ID,
+            '@type': 'Person' as const,
+            jobTitle: personJobTitle[lang],
+            name: personName,
+            url: personUrl,
+        }
     }
     return {
         '@type': 'Person' as const,

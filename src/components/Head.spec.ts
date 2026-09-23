@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { renderAstroComponent } from '../../tests/helpers'
-import { PERSON_ID, personJobTitle } from '../content/person'
+import { PERSON_ID, personJobTitle, personName } from '../content/person'
 import { socialUrls } from '../content/social'
 import Head from './Head.astro'
 
@@ -139,7 +139,8 @@ describe('<Head />', () => {
         expect(jsonLd.author).toHaveLength(1)
         expect(jsonLd.author[0]['@id']).toBe(PERSON_ID)
         expect(jsonLd.author[0]['@type']).toBe('Person')
-        expect(jsonLd.author[0].name).toBeUndefined()
+        // Named inline as well as referenced: an engine parsing one article alone must see the author.
+        expect(jsonLd.author[0].name).toBe(personName)
     })
 
     it('should emit author array with co-author inline Person for BlogPosting', async () => {
@@ -169,7 +170,7 @@ describe('<Head />', () => {
         expect(jsonLd.author[0].url).toBe('https://example.com/co-author')
         expect(jsonLd.author[0]['@id']).toBeUndefined()
         expect(jsonLd.author[1]['@id']).toBe(PERSON_ID)
-        expect(jsonLd.author[1].name).toBeUndefined()
+        expect(jsonLd.author[1].name).toBe(personName)
     })
 
     it('should emit one article:author meta for sole-author BlogPosting', async () => {
