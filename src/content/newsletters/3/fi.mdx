@@ -1,0 +1,77 @@
+---
+lang: 'fi'
+slug: 'ikarajat-someen-miten-ne-toimisivat'
+pageTitle: 'Ikärajat someen, miten ne toimisivat?'
+title: 'Ikärajat someen, mutta miten ne oikeasti toimisivat?'
+description: 'Yksityisyyttä suojaava iän todentaminen on ratkaistavissa eIDAS-digilompakolla vuoden 2026 loppuun mennessä. Ikäraja ei silti poista koukuttavaa suunnittelua.'
+faq:
+  - q: 'Miten sosiaalisen median ikäraja voidaan todentaa paljastamatta henkilötietoja?'
+    a: 'EU:n eIDAS 2.0 -asetuksen mukaisella digilompakolla, joka jäsenvaltioiden on tarjottava vuoden 2026 loppuun mennessä. Käyttäjä todistaa olevansa yli tai alle 16-vuotias paljastamatta syntymäaikaa, nimeä tai muita tietoja. Suomessa Findynet rakentaa samaan periaatteeseen perustuvaa luottamusverkkoa.'
+  - q: 'Ratkaisevatko ikärajat nuorten ongelmat sosiaalisessa mediassa?'
+    a: 'Eivät yksin. Koukuttavat suunnittelumallit, kuten loputon vieritys ja automaattinen toisto, eivät katoa, kun nuori täyttää 16 vuotta. Tehokkaampi vipu on EU:n digipalvelusäädös, joka velvoittaa alustat suojelemaan alaikäisiä, sekä pimeiden suunnittelumallien kielto ja medialukutaito kouluissa.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+import LI from '../../../components/LI.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
+
+Kun Suomi keväällä 2027 päättää sosiaalisen median ikärajoista, vastaus siihen, miten se teknisesti tehtäisiin, puuttuu.
+
+Kysymys on oleellinen. [Tutkimuksen (Lahti & Paakkari 2022)](https://www.liito.fi/uutiset/liito-3-25-turvataidot-sosiaalisen/) mukaan yhdeksän prosenttia suomalaisesta nuorisosta luokitellaan ongelmallisiksi sosiaalisen median käyttäjiksi, ja 37 prosentilla riski on kohonnut. Nämä luvut kertovat todellisista haitoista, eivät moraalipaniikista. Sosiaalisen median alustat on suunniteltu koukuttamaan: loputon vieritys, automaattinen toisto, palkitsemissilmukat ja algoritminen vahvistaminen pitävät käyttäjän ruudulla mahdollisimman kauan. Nämä ovat tietoisesti rakennettuja ominaisuuksia, joilla on selvä liiketaloudellinen tarkoitus. Olen kirjoittanut aiemmin siitä, [kuka päättää, mistä puhumme](/fi/blog/43/kuka-paattaa-mista-puhumme/), ja sama valta näkyy myös nuorten syötteissä. Silti kielto ei ole yksinkertainen ratkaisu, ei teknisesti saati periaatteellisesti.
+
+## Mitä muualla on kokeiltu ja miten siinä kävi?
+
+Ikärajoilla on pitkä historia. EU:n yleinen tietosuoja-asetus asetti jo vuonna 2018 oletusiäksi 13 vuotta, mutta jäsenvaltiot saivat korottaa sitä haluamallaan tavalla: Saksa ja Irlanti valitsivat 16, Italia ja Espanja 14.
+
+Isossa-Britanniassa [ICO:n "Children's code"](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/) on ollut voimassa vuodesta 2020. Children's code asettaa 15 tiukkaa vaatimusta palveluille, joita lapset käyttävät, ja ICO on alkanut myös valvoa sitä: vuonna 2025 se antoi sanktioilmoitukset sekä Redditille että Imgurin omistajalle MediaLabille. Täytäntöönpano on käynnistynyt, mutta hitaasti.
+
+Ranska meni pidemmälle: tammikuussa 2026 kansalliskokous hyväksyi äänin 116–23 lain, joka kieltää sosiaalisen median alle 15-vuotiailta. Laki on voimassa, mutta toteutusmekanismit olivat huhtikuussa 2026 vielä kesken.
+
+Australia on tähän mennessä mennyt pisimmälle ja tarjoaa myös eniten opittavaa. [Online Safety Amendment Act](https://www.esafety.gov.au/) velvoittaa internet-palveluita rajoittamaan alle 16-vuotiaiden tilin luomista, mikäli ne täyttävät tietyt ehdot. Käytännössä useimmat sosiaalisen median palvelut, kuten Facebook, Snapchat ja TikTok, kuuluvat lain piiriin. Laki tuli voimaan joulukuussa 2025. Huhtikuussa 2026, neljä kuukautta myöhemmin, Australiassa on käynnissä tutkintoja useita alustoja vastaan: viranomaisselvitysten mukaan iän todentaminen on puutteellista, tilejä voi luoda toistuvilla yrityksillä, ja vanhemmille tarjotut ilmoituskanavat ovat vaikeaselkoisia. Lain noudattaminen on heikkoa, ja oikeudenkäyntejäkin on vireillä.
+
+Yhteinen nimittäjä näissä kokeiluissa on sama: lainsäädäntöä on helpompi kirjoittaa kuin panna täytäntöön.
+
+## Iän todentaminen on tekniikalla ratkaistavissa
+
+Miksi täytäntöönpano on niin hankalaa? Koska luotettava iän todentaminen verkossa on vaikea tekninen ongelma. Tai pikemminkin se on vaikea *tietosuojaongelma*, joka on naamioitunut tekniseksi.
+
+Vuonna 2026 käytössä olevat menetelmät ovat kaikki puutteellisia:
+
+**Itseilmoitus** ("syntymäaikasi?") on kierrettävissä yhdellä näppäinpainalluksella. Käytännössä kaikilla suurilla alustoilla on tämä käytössä, ja käytännössä kaikki tietävät, ettei se toimi.
+
+**Henkilöllisyystodistuksen skannaus** toimii paremmin, mutta hinta on suuri: palvelulle annetaan passin tai henkilökortin kopio, joka kertoo paljon muutakin kuin iän. Tietovuotojen ja identiteettivarkauksien riski on merkittävä.
+
+**Tekoälypohjainen ikäarvio** kasvoanalyysin perusteella on epäluotettava, ja siinä kerätään biometrinen otos jokaisesta käyttäjästä. Tämä on juuri sellainen tietosuojauhka, jota ei haluaisi toteutettavan laajamittaisesti. Samasta syystä [passien biometristen tunnisteiden käyttöä ei pidä laajentaa](/fi/blog/48/passien-biometristen-tunnisteiden-kayttoa-ei-pida-laajentaa/).
+
+Mutta on olemassa vaihtoehto, jota ei ole laajasti käytetty: **eIDAS-digilompakko**.
+
+[EU:n sähköisen tunnistamisen asetus](https://digital-strategy.ec.europa.eu/en/policies/eudi-regulation) (eIDAS 2.0) velvoittaa jäsenvaltiot tarjoamaan kansalaisille digitaalisen lompakon vuoden 2026 loppuun mennessä. Suomessa Poliisihallitus julkaisee lompakon virallisena asiakirjana. Lompakko mahdollistaa yksityisyyttä säilyttävän todistamisen: voit osoittaa, että olet yli 16-vuotias (tai alle), paljastamatta syntymäaikaasi, nimeäsi tai muita henkilötietoja. Palvelu saa vain sen tiedon, jonka se tarvitsee.
+
+Irlanti on jo aloittanut pilotin: maan hallitus testaa digilompakon käyttöä sosiaalisen median ikätodentamisessa. Suomessa [Findynet](https://findynet.fi/) kehittää samaan tarkoitukseen sopivaa infrastruktuuria. Valtiovarainministeriöltä kolme miljoonaa euroa saanut osuuskunta rakentaa luottamusverkkoa, jossa käyttäjä hallinnoi itse sitä, kenelle ja milloin jakaa tietojaan. Periaate on sama kuin eIDAS-lompakossa: todista se, mitä tarvitsee todistaa, ei enempää.
+
+Tekninen este yksityisyyttä suojaavalle iän todentamiselle on siis poistumassa. Kysymys muuttuu siksi poliittiseksi: onko ikäraja edes oikea lääke?
+
+## Hoidammeko oiretta?
+
+Tekninen ratkaisuvalmius ei tarkoita, että ikärajat ovat oikea vastaus.
+
+Pimeät suunnittelumallit (loputon vieritys, automaattinen toisto, palkitsemissilmukat) eivät ole luonnonlakeja. Ne ovat tietoisia suunnitteluvalintoja, jotka palvelevat alustojen liiketoimintamalleja. TikTokin algoritmi ei koukuta nuoria vahingossa; se on optimoitu tekemään juuri niin. Se koukuttavuus ei poistu, vaikka nuori täyttäisi 16 vuotta.
+
+EU:n [digipalvelusäädös](https://eur-lex.europa.eu/legal-content/FI/TXT/?uri=CELEX%3A32022R2065) (DSA) velvoittaa suuret alustat jo nyt arvioimaan käyttäjiensä ikäjakaumaa ja suojelemaan alaikäisiä. Sen 28 artikla edellyttää alustoilta alaikäisiä suojaavia toimia, mutta täytäntöönpano oli keväällä 2026 vasta käynnistymässä. Tässä on oikea vipuvarsi:
+
+- Pakotetaan alustat ottamaan vastuu omasta toiminnastaan.
+- Kielletään pimeät suunnittelumallit.
+- Vaaditaan oletusarvoisesti turvalliset asetukset alaikäisille.
+- Tehdään algoritmien läpinäkyvyydestä vaatimus, ei poikkeus.
+
+Samalla tarvitaan pakollista medialukutaitoa kouluissa. Taito tunnistaa koukuttava suunnittelu on vähintään yhtä tärkeä kuin taito lukea mainoksia kriittisesti. Ja kuten [chat control -äänestys](/fi/blog/54/chat-control-parlamentti-toimi-oikein/) osoitti, lasten suojelun nimissä [ei pidä purkaa kaikkien perusoikeuksia](/fi/blog/45/perusoikeuksia-ei-pida-purkaa-perusteettomasti/).
+
+Ikärajat eivät poista näitä ongelmia. Ne siirtävät vastuun alustalta käyttäjän iän todistamiselle, ja ne voivat ajaa nuoria valvomattomampiin ympäristöihin, joissa ei ole edes heikkoa sisältösääntelyä.
+
+Mitä me oikeastaan suojelemme, kun puhumme lasten suojelemisesta? [Vastuu on meidän aikuisten](/fi/blog/21/vastuu-on-meidan-aikuisten/), mutta pääsy digitaaliseen elämään on jo osa nuorten identiteettiä, yhteisöllisyyttä ja osallistumista.
+
+Onko sinulla ajatuksia siitä, miten nuorten ongelmia sosiaalisessa mediassa pitäisi ratkaista?

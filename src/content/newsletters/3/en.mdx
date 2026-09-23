@@ -1,0 +1,77 @@
+---
+lang: 'en'
+slug: 'age-limits-for-social-media-how-would-they-work'
+pageTitle: 'Social media age limits, would they work?'
+title: 'Age limits for social media, but how would they actually work?'
+description: 'Privacy-preserving age verification is solvable with the eIDAS digital wallet due by the end of 2026. An age limit still does not remove addictive design.'
+faq:
+  - q: 'How can a social media age limit be verified without revealing personal data?'
+    a: 'With the digital wallet under the EU eIDAS 2.0 regulation, which member states must provide by the end of 2026. The user proves they are over or under 16 without revealing their date of birth, name or other data. In Finland, Findynet is building a trust network on the same principle.'
+  - q: 'Do age limits solve the problems young people face on social media?'
+    a: 'Not on their own. Addictive design patterns such as infinite scroll and autoplay do not disappear when a young person turns 16. The stronger lever is the EU Digital Services Act, which obliges platforms to protect minors, together with a ban on dark patterns and media literacy in schools.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+import LI from '../../../components/LI.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph, ul: UL, li: LI }
+
+When Finland makes its decision on social media age limits in spring 2027, the answer to how it would technically be done is still missing.
+
+The question matters. [Research by Lahti & Paakkari (2022)](https://www.liito.fi/uutiset/liito-3-25-turvataidot-sosiaalisen/) found that nine per cent of Finnish youth are classified as problematic social media users, with 37 per cent at elevated risk. These figures point to real harms, not moral panic. Social media platforms are designed to be addictive: infinite scroll, autoplay, reward loops, and algorithmic amplification are built to keep users on screen as long as possible. These are deliberately engineered features with a clear commercial purpose. I have written before about [who decides what we talk about](/en/blog/43/who-decides-what-we-talk-about/), and the same power shapes young people's feeds. Yet a ban is not a simple solution, technically or in principle.
+
+## What has been tried elsewhere, and how did it go?
+
+Age limits have a long history. The EU's General Data Protection Regulation set the default age at 13 in 2018, but member states were free to raise it: Germany and Ireland chose 16, Italy and Spain 14.
+
+In the United Kingdom, the [ICO's Children's Code](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/) has been in force since 2020. The Children's Code sets 15 strict requirements for services used by children, and the ICO has begun enforcing them: in 2025 it issued enforcement notices against both Reddit and MediaLab, the owner of Imgur. Enforcement has started, but slowly.
+
+France went further: in January 2026 the National Assembly passed by 116 votes to 23 a law banning social media for under-15s. The law is in force, but as of April 2026 the implementation mechanisms were still being finalised.
+
+Australia has gone furthest of all, and offers the most to learn from. The [Online Safety Amendment Act](https://www.esafety.gov.au/) requires internet services to restrict account creation for under-16s, provided they meet certain criteria. In practice, most major social media services, such as Facebook, Snapchat and TikTok, fall within its scope. The law came into force in December 2025. In April 2026, four months on, investigations are under way against several platforms: according to regulatory reviews, age verification is inadequate, accounts can be created through repeated attempts, and parental notification channels are difficult to navigate. Compliance is weak, and legal proceedings are pending.
+
+The common thread running through all these experiments is the same: legislation is easier to write than to enforce.
+
+## Age verification is a problem technology can solve
+
+Why is enforcement so difficult? Because reliable online age verification is a hard technical problem. Or rather, it is a hard *privacy problem* dressed up as a technical one.
+
+The methods in use in 2026 are all flawed:
+
+**Self-declaration** ("what is your date of birth?") can be bypassed with a single keystroke. Virtually every major platform uses this, and virtually everyone knows it does not work.
+
+**Identity document scanning** works better, but at a high cost: the service receives a copy of your passport or ID card that reveals far more than your age. The risk of data breaches and identity theft is significant.
+
+**AI-based age estimation** from facial analysis is unreliable, and it collects a biometric sample from every user. This is precisely the kind of privacy threat you would not want deployed at scale. For the same reason, [the use of biometric identifiers in passports must not be expanded](/en/blog/48/the-use-of-biometric-identifiers-in-passports-must-not-be-expanded/).
+
+But there is an alternative that has not yet been widely used: the **eIDAS digital wallet**.
+
+[The EU's electronic identification regulation](https://digital-strategy.ec.europa.eu/en/policies/eudi-regulation) (eIDAS 2.0) requires member states to provide citizens with a digital wallet by the end of 2026. In Finland, the National Police Board will issue the wallet as an official document. The wallet enables privacy-preserving proof: you can demonstrate that you are over 16 (or under) without revealing your date of birth, your name, or any other personal data. The service receives only what it needs to know.
+
+Ireland has already launched a pilot: the government is testing the use of the digital wallet for social media age verification. In Finland, [Findynet](https://findynet.fi/) is developing compatible infrastructure. A cooperative that received three million euros from the Ministry of Finance is building a trust network in which users control who they share their data with and when. The principle is the same as the eIDAS wallet: prove what needs to be proved, nothing more.
+
+The technical barrier to privacy-preserving age verification is therefore receding. The question becomes political: is an age limit even the right remedy?
+
+## Are we treating the symptom?
+
+Technical readiness does not mean age limits are the right answer.
+
+Dark patterns (infinite scroll, autoplay, reward loops) are not laws of nature. They are deliberate design choices that serve the business models of platforms. TikTok's algorithm does not hook young people by accident; it is optimised to do exactly that. That addictiveness does not disappear when a young person turns 16.
+
+The EU's [Digital Services Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R2065) (DSA) already requires large platforms to assess the age profile of their users and protect minors. Its Article 28 requires platforms to take measures that protect minors, but in spring 2026 enforcement was only just beginning. This is where the real leverage lies:
+
+- Platforms are required to take responsibility for their own conduct.
+- Dark patterns are banned.
+- Safe-by-default settings are required for minors.
+- Algorithmic transparency becomes a requirement, not an exception.
+
+Mandatory media literacy in schools is also needed. The ability to recognise addictive design is at least as important as the ability to read advertising critically. And as the [chat control vote](/en/blog/54/chat-control-parliament-was-right/) showed, protecting children is no reason to [dismantle everyone's fundamental rights](/en/blog/45/fundamental-rights-must-not-be-dismantled-without-justification/).
+
+Age limits do not remove these problems. They shift responsibility from the platform to proving the user's age, and they may push young people toward less regulated environments where there is even weaker content oversight.
+
+What are we actually protecting, when we talk about protecting children? [Responsibility lies with us adults](/en/blog/21/responsibility-lies-with-us-adults/), but access to digital life is already part of young people's identity, community, and participation.
+
+Do you have thoughts on how the problems young people face on social media should be solved?
