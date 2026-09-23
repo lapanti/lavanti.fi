@@ -333,4 +333,30 @@ describe('checkPage', () => {
         )
         expect(valid).toEqual([])
     })
+
+    it('flags FAQPage JSON-LD that no visible FAQ section backs', () => {
+        const faqJsonld = [
+            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage"}</script>',
+            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[]}</script>',
+        ].join('')
+
+        expect(checkPage(pageHtml({ jsonld: faqJsonld }), PAGE_PATH, BUILT_PATHS)).toContain(
+            'FAQPage JSON-LD with no visible FAQ section'
+        )
+    })
+
+    it('accepts FAQPage JSON-LD when the plate is rendered', () => {
+        const faqJsonld = [
+            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage"}</script>',
+            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[]}</script>',
+        ].join('')
+
+        expect(
+            checkPage(
+                pageHtml({ body: '<section class="faq section"><h3>Kysymys?</h3></section>', jsonld: faqJsonld }),
+                PAGE_PATH,
+                BUILT_PATHS
+            )
+        ).toEqual([])
+    })
 })

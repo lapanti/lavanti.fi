@@ -58,7 +58,7 @@ Feature: Newsletter archive
     When the site is built
     Then NewsletterLayout renders the Faq plate between the prose sheet and the other-issues plate, with the locale's heading (Usein kysyttyä / Vanliga frågor / Frequently asked questions) and the eyebrow "Q & A"
     And Head.astro emits the FAQPage JSON-LD for the same entries — both gated on hasFaqSection() in src/lib/faq.ts
-    And the archive landing pages (src/pages/{fi,sv,en}/…/ index.mdx) render the same plate, which PageLayout gates behind the explicit faqSection: true opt-in
+    And the archive landing pages (src/pages/{fi,sv,en}/…/index.mdx) mount the same Faq component in their own body, before the subscribe plate — a PageLayout body is composed by the page, so the plate is placed there rather than appended after the whole body
 
   Scenario: Issue with fewer than two FAQ entries
     Given an issue's {lang}.mdx frontmatter has one faq entry or none
