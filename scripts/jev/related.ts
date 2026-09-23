@@ -16,9 +16,9 @@ import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 /* eslint-enable import-x/extensions */
 
-export const MODEL_FAMILY = 'jev-1.13'
+const MODEL_FAMILY = 'jev-1.13'
 export const RANKED_MAX = 10
-export const STABLE_TOP = 3
+const STABLE_TOP = 3
 export const RELATED_PATH = 'src/content/related.json'
 export const REGEN_HINT = 'run `npm run generate:related` and commit src/content/related.json'
 
@@ -48,7 +48,7 @@ const parseKey = (key: string): { id: number; kind: DocKind } | null => {
 }
 
 /** Order documents (or keys) by kind then numeric id, so every list in the file is deterministic. */
-export const byKindThenId = (a: Pick<Document, 'id' | 'kind'>, b: Pick<Document, 'id' | 'kind'>): number =>
+const byKindThenId = (a: Pick<Document, 'id' | 'kind'>, b: Pick<Document, 'id' | 'kind'>): number =>
     a.kind.localeCompare(b.kind) || a.id - b.id
 
 export const sortKeys = (keys: string[]): string[] =>
