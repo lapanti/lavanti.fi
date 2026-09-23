@@ -22,8 +22,8 @@ import { fmField, proseParagraphs, splitMdx, stripMarkup, wordCount } from '../c
 
 export const LEAD_WORD_MAX = 300
 export const LANGS = ['en', 'fi', 'sv'] as const
-export const HASHED_FILES = ['meta.json', 'fi.mdx', 'sv.mdx', 'en.mdx'] as const
-export const CONTENT_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content')
+const HASHED_FILES = ['meta.json', 'fi.mdx', 'sv.mdx', 'en.mdx'] as const
+const CONTENT_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..', 'src', 'content')
 
 export type Lang = (typeof LANGS)[number]
 export type DocKind = 'newsletter' | 'post'

@@ -11,7 +11,7 @@
 import { setTimeout as delay } from 'node:timers/promises'
 
 export const RETRY_MAX = 3
-export const RETRY_BASE_MS = 500
+const RETRY_BASE_MS = 500
 export const NO_PROVIDER_NOTICE = 'skipped: no OPENROUTER_API_KEY or TYPESAFE_API_KEY'
 
 export type QuestionSpec =
@@ -19,9 +19,9 @@ export type QuestionSpec =
     | { criteria: string[]; instructions: string; type: 'score' }
     | { instructions: string; type: 'noul' }
 
-export type SystemOneState = Record<string, unknown> | string | string[]
+type SystemOneState = Record<string, unknown> | string | string[]
 
-export interface SystemOneRequest {
+interface SystemOneRequest {
     model: string
     questions: Record<string, QuestionSpec>
     state: SystemOneState
