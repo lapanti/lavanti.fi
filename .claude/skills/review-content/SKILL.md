@@ -67,6 +67,10 @@ Run `npm run suggest:links -- <post|newsletter> <id>` for the file's document (s
 
 Run `npm run suggest:tags -- post <id>` (skips with a notice when no Jev key is set). Report every "consider" row as a tag to weigh, every "doubtful" row as a question about an assigned tag, and the "pillar" table against the pillar requirement. Editorial tags are never suggested; check them against the occasion instead. The decision and the `meta.json` edit are the author's. Advisory only. Spec: `.agents/specs/jev/tags.md`.
 
+## 7. FAQ candidates
+
+Run `npm run suggest:faq -- <post|newsletter> <id>` (skips with a notice when no Jev key is set). Report the "candidates" rows as questions worth a `faq` entry, in the order given, every "doubtful" row as an existing entry to rewrite or drop, and the "faq entries" line against the two-entry `FAQPage` threshold. Do not draft answers. Advisory only. Spec: `.agents/specs/jev/faq.md`.
+
 ---
 
 ## Output format

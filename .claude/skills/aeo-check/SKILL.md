@@ -135,6 +135,7 @@ FAQPage schema has the highest citation rates in AI-generated answers. Even with
 | Post contains 2+ sections that could be reformatted as explicit Q&A pairs (question heading + direct answer paragraph) | Info — flag as an opportunity to add FAQ structure |
 | If the page is already structured as a FAQ (multiple question headings with answers), note that FAQPage JSON-LD schema should be added at the layout level | Info — this project generates schema in Head.astro; flag for the developer to add FAQPage support |
 | Post answers a "What is X?", "How to X", or "Why X?" — core patterns that trigger AI summaries most reliably | Pass if present; Info if absent |
+| Run `npm run suggest:faq -- <post\|newsletter> <id>` (skips with a notice without a Jev key): list the "candidates" rows as FAQ questions to add, "doubtful" rows as entries to rewrite, and the "faq entries" count against the two-entry `FAQPage` threshold. Answers are the author's. Spec `.agents/specs/jev/faq.md` | Info — opportunities |
 
 ---
 
