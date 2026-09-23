@@ -25,7 +25,11 @@ export default {
         `node scripts/check-overflow.mjs ${files.map((f) => `"${f}"`).join(' ')}`,
         'node --experimental-strip-types scripts/checks/redirects.mjs',
     ],
-    '**/content/{posts,newsletters}/**/*.mdx': () => checkRelated,
+    // A changed post or newsletter must also carry a receipt that suggest:links ran on its final text.
+    '**/content/{posts,newsletters}/**/*.mdx': (files) => [
+        checkRelated,
+        `node --experimental-strip-types scripts/checks/suggestions-stale.ts ${files.map((f) => `"${f}"`).join(' ')}`,
+    ],
     '**/content/**/meta.json': (files) => {
         const mdxFiles = siblingMdxFiles(files)
         if (mdxFiles.length === 0) return checkRelated
