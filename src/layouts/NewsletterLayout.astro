@@ -3,6 +3,7 @@ import type { Lang } from '../content/nav'
 import type { Newsletter } from '../lib/newsletters'
 
 import AllPostsLink from '../components/AllPostsLink.astro'
+import Faq from '../components/Faq.astro'
 import NewsletterPlate from '../components/frontPage/NewsletterPlate.astro'
 import WritingsPlate from '../components/frontPage/WritingsPlate.astro'
 import NewsletterList from '../components/newsletter/NewsletterList.astro'
@@ -13,6 +14,7 @@ import SocialShare from '../components/SocialShare.astro'
 import TitleBanner from '../components/TitleBanner.astro'
 import { newsletterArchiveContent } from '../content/newsletter'
 import { breadcrumbLabels } from '../lib/breadcrumbs'
+import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
 import { archivePath, landingPath, newsletterSlug } from '../lib/newsletterRoutes'
 import { ogId } from '../lib/og/id'
@@ -51,6 +53,9 @@ const {
 const canonicalSlug = newsletterSlug(lang, id, slug)
 const shareUrl = `https://lavanti.fi/${canonicalSlug}/`
 const t = newsletterArchiveContent[lang]
+
+// Narrowed here rather than in the template: the type guard does not carry into the JSX expression.
+const faqItems = hasFaqSection(faq) ? faq : undefined
 
 const ogImage = new URL(`/og/${ogId(canonicalSlug)}.png`, Astro.site).href
 
@@ -116,6 +121,11 @@ const breadcrumbs: BreadcrumbItem[] = [
             </PostProse>
         </div>
     </div>
+    {
+        faqItems && (
+            <Faq eyebrow={faqSectionLabels[lang].eyebrow} faq={faqItems} heading={faqSectionLabels[lang].heading} />
+        )
+    }
     <WritingsPlate
         allPostsHref={archivePath(lang)}
         allPostsLabel={t.allIssuesLabel}
