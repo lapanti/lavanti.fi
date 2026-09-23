@@ -1,0 +1,58 @@
+---
+lang: 'en'
+slug: 'when-a-vendor-cannot-be-switched'
+pageTitle: 'Portability belongs in procurement law'
+title: 'When a vendor cannot be switched, procurement law has already failed'
+description: 'In most Finnish public systems, switching vendors is impossible. Four cities built eVaka for 9 million euros; Helsinki spent 32 million on an unfinished Asti.'
+faq:
+  - q: 'Why is it so hard to switch the vendor of a public-sector IT system?'
+    a: "Interfaces, data formats and integrations are built on one vendor's terms, so the cost of switching grows year by year. When there is no alternative, the vendor knows the customer cannot leave, and the negotiating position shifts permanently to the vendor."
+  - q: 'What does eVaka teach about public software procurement?'
+    a: 'eVaka, the open-source system developed jointly by Espoo, Tampere, Oulu and Turku, had cost around nine million euros by 2023 and is used by more than ten municipalities. Helsinki spent about 32 million euros between 2019 and 2023 on its own Asti system, built alone, and halted development with the system unfinished.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+When a parent enrols their child in early childhood education in a Finnish municipality that uses eVaka, they are using a service whose provider the municipality could replace if it wished.
+
+eVaka is an open-source early childhood education system originally built by Espoo. It is now used jointly by several municipalities, and in each one the system is maintained by a service provider that can be replaced if necessary. This is the exception, not the rule.
+
+The public sector is one of Finland's largest buyers of software, and its procurement decisions determine whether a competitive market for domestic software emerges or a handful of large vendors secure permanent customer relationships. The current procurement law focuses on how a tender is run, not on what happens afterward. For most public-sector systems, moving to another vendor is practically impossible, because portability was rarely designed in from the start. When there is no alternative, price stops responding to market pressure: the vendor knows the customer cannot leave, and the negotiating position shifts permanently to the vendor.
+
+## Why does switching become impossible?
+
+[Otso Kivekäs's 2024 analysis of public-sector software procurement](https://otsokivekas.fi/2024/11/miten-tietojarjestelmahankinta-epaonnistuu/) identifies three procurement strategies: buying an off-the-shelf product, building in-house, and forming a strategic partnership. Each can work, if chosen on sound grounds. The most common cause of failure lies in the sequence: the tender is written before the organisation has even decided which problem it is solving or what process change the new system requires. It is impossible to write a single tender that suits a development team and a finished product equally well if the strategy has not been chosen first.
+
+When interfaces, data formats and integrations are built on one vendor's terms, the cost of switching grows year by year, until changing vendors is no longer even theoretically possible. My own approach, one I have tried to follow in every software project, has always been that every layer of a system should be replaceable.
+
+eVaka demonstrates that a shared alternative works, and costs less. eVaka, developed jointly by Espoo, Tampere, Oulu and Turku, has [its source code publicly available](https://github.com/espoon-voltti/evaka), and the system is already [in use in more than ten municipalities](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella), covering a population of roughly 1.2 million. By 2023, [around nine million euros had been spent on its development](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi), part of it covered by state digitalisation funding.
+
+Helsinki, by contrast, built its own case-management system, Asti, alone, covering both early childhood education and basic education services. The city [spent about 32 million euros on it between 2019 and 2023 and halted development with the system unfinished](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/), even though the original cost estimate had been around 60 million euros. The same pattern of uncontrolled rollout showed up in Helsinki's payroll system: in spring 2022 the city introduced a new Sarastia365 HR system, and [thousands of employees received incorrect pay or none at all](https://yle.fi/a/74-20026642).
+
+The same direction is now recognised at EU level: the European Commission's draft Cloud and AI Development Act [proposes open source as the default for public cloud and AI procurement](https://fsfe.org/news/2026/news-20260603-01.en.html), for exactly the same reason.
+
+Neither case is a uniquely Finnish mistake. The same pattern repeats every time a contracting authority makes individual decisions without anyone asking how, one day, it will be possible to leave this system. The lesson does not concern a single city. It concerns the entire procurement system: without a built-in portability requirement, the same error will recur in the next procurement, regardless of who makes it.
+
+## Portability must be written into procurement law
+
+Procurement law should require that data, processes and integrations can be moved to another vendor for every critical public-sector system. Portability and open interfaces should be set as procurement conditions from the very start, not added later in contract negotiations, where the negotiating position has already been lost. Every critical ICT procurement should include a mandatory [vendor lock-in assessment](/en/blog/59/council-initiative-strengthening-kirkkonummis-digital-resilience/) before the decision is made: a component inventory, supply-chain verification, a description of the update process and the vendor's response time for security patches, all specified in the tender itself.
+
+Modular procurement should become the default instead of monolithic systems, so that no single vendor can ever own the whole system. [Open source should become the default for critical systems](/en/blog/76/open-source-is-the-cornerstone-of-digital-independence/), because shared maintenance costs make a system both cheaper and more stable, exactly as with eVaka. When several municipalities share the same maintenance, taxpayer money goes further and no single vendor can dictate the price. In practice, this would mean a municipality could put the maintenance of its system out to tender every few years, just like any other service, instead of being tied to the same vendor for decades.
+
+In practice, open interfaces mean three things: data formats are publicly documented and standardised, integrations are built on recognised interface standards, and every contract includes a clear exit clause specifying how data and documentation transfer to the next vendor. All three are [achievable today](/en/blog/53/digital-independence-is-built-one-step-at-a-time/), as long as the contracting authority requires them before the contract is signed, not after.
+
+## Competition has a price, dependency a higher one
+
+A portability requirement is not free. Documenting interfaces, compiling component inventories and carrying out vendor lock-in assessments demand expertise and time that a small municipality may not have at all. That cost deserves to be said out loud. A small municipality does not need to build this expertise alone: contracting authorities can share the same assessment model and expertise, just as they already share the maintenance of eVaka.
+
+The alternative, however, is more expensive: when interfaces are open and portability guaranteed, [a Finnish SME can also bid for part of the whole](/en/blog/74/three-ways-to-make-entrepreneurship-easier/), and the tender becomes genuine competition instead of dictation by a single large vendor.
+
+The benefit is not just a lower price. When a municipality can switch vendors, it [keeps control of its own system](/en/blog/51/digital-independence-is-a-necessity/) even when a vendor raises prices, runs into difficulties, or discontinues a product. That kind of security is hard to buy back afterward, and it matters more to a public service than the price of any single tender.
+
+Competition does not appear because we wish for it. It appears because leaving is possible.
+
+The same parent who logged into eVaka in spring 2026 would benefit from that same principle in every other interaction with their municipality. How many municipal decision-makers could say today whether their municipality could actually leave its current system vendor, if it had to?

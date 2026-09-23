@@ -1,0 +1,58 @@
+---
+lang: 'sv'
+slug: 'nar-leverantoren-inte-gar-att-byta'
+pageTitle: 'Skriv in överförbarhet i upphandlingslagen'
+title: 'När leverantören inte går att byta har upphandlings­lagen redan misslyckats'
+description: 'I de flesta offentliga system går leverantören inte att byta. Fyra städer byggde eVaka för 9 miljoner euro, Helsingfors la 32 miljoner på ofärdiga Asti.'
+faq:
+  - q: 'Varför är det så svårt att byta leverantör av ett offentligt IT-system?'
+    a: 'Gränssnitt, dataformat och integrationer byggs på en enda leverantörs villkor, så kostnaden för att byta växer för varje år. När alternativ saknas vet leverantören att kunden inte kan lämna, och förhandlingspositionen hamnar permanent hos leverantören.'
+  - q: 'Vad lär eVaka oss om offentliga programvaruupphandlingar?'
+    a: 'eVaka, som Esbo, Tammerfors, Uleåborg och Åbo utvecklat tillsammans med öppen källkod, hade fram till 2023 kostat omkring nio miljoner euro och används av över tio kommuner. Helsingfors använde omkring 32 miljoner euro mellan 2019 och 2023 på sitt eget system Asti, byggt på egen hand, och avbröt utvecklingen innan systemet blev klart.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+När en förälder anmäler sitt barn till småbarnspedagogik i någon av de finländska kommuner som använder systemet eVaka, anlitar föräldern en tjänst vars leverantör kommunen vid behov skulle kunna byta ut.
+
+eVaka är ett system för småbarnspedagogik med öppen källkod, ursprungligen byggt av Esbo. I dag används det gemensamt av flera kommuner, och i varje kommun ansvarar en egen tjänsteleverantör för underhållet, en leverantör som vid behov kan bytas ut. Det här är undantaget, inte regeln.
+
+Den offentliga sektorn är en av Finlands största programvaruköpare, och dess upphandlingsbeslut avgör om den inhemska programvarubranschen får en konkurrensutsatt marknad eller permanent kundbindning till några få stora leverantörer. Den nuvarande upphandlingslagen fokuserar på hur konkurrensutsättningen ordnas, inte på vad som händer efter upphandlingen. I de flesta system inom den offentliga förvaltningen är det i praktiken omöjligt att byta leverantör, eftersom överförbarhet sällan har byggts in från början. När alternativ saknas styrs priset inte längre av marknaden: leverantören vet att kunden inte kan lämna, och förhandlingspositionen hamnar permanent hos leverantören.
+
+## Varför blir övergången omöjlig?
+
+[Otso Kivekäs analys från 2024 av den offentliga sektorns programvaruupphandlingar](https://otsokivekas.fi/2024/11/miten-tietojarjestelmahankinta-epaonnistuu/) urskiljer tre upphandlingsstrategier: färdig produkt, egen utveckling och strategiskt partnerskap. Var och en kan fungera när den väljs på goda grunder. Den vanligaste orsaken till misslyckande ligger i ordningen: anbudsförfrågan skrivs innan organisationen ens har bestämt vilket problem den löser eller vilken processförändring det nya systemet kräver. Det är omöjligt att skriva en enda anbudsförfrågan som passar lika bra för både ett utvecklingsteam och en färdig produkt, om strategin inte har valts först.
+
+När gränssnitt, dataformat och integrationer byggs på en enda leverantörs villkor växer kostnaden för att byta för varje år, tills bytet inte längre är möjligt ens i teorin. Min egen tankemodell, den jag har försökt följa i varje programvaruprojekt, har alltid varit att varje lager i ett system bör kunna bytas ut.
+
+eVaka visar att ett delat alternativ fungerar och är billigare. Källkoden till eVaka, som Esbo, Tammerfors, Uleåborg och Åbo har utvecklat tillsammans, [är öppen](https://github.com/espoon-voltti/evaka), och systemet [används redan av över tio kommuner](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella), för sammanlagt omkring 1,2 miljoner invånare. Fram till 2023 hade utvecklingen [kostat omkring nio miljoner euro](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi), varav en del var statligt digitaliseringsstöd.
+
+Helsingfors byggde däremot ensamt sitt eget ärendehanteringssystem Asti, som täckte ärenden inom både småbarnspedagogik och grundläggande utbildning. Staden [använde omkring 32 miljoner euro på det mellan 2019 och 2023 och avbröt utvecklingen innan systemet blev klart](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/), trots att den ursprungliga kostnadsuppskattningen låg på omkring 60 miljoner euro. Samma logik av okontrollerad implementering syntes i Helsingfors löneutbetalning: staden tog våren 2022 i bruk det nya systemet Sarastia365 HR, och [tusentals anställda fick fel lön eller ingen lön alls](https://yle.fi/a/74-20026642).
+
+Samma riktning har uppmärksammats på EU-nivå: kommissionens beredda moln- och AI-förordning (Cloud and AI Development Act) [föreslår öppen källkod som standard för offentliga moln- och AI-upphandlingar](https://fsfe.org/news/2026/news-20260603-01.en.html) av precis samma skäl.
+
+Inget av fallen är ett unikt finländskt misstag. Samma mönster upprepas varje gång en upphandlande enhet fattar enskilda beslut utan att någon frågar hur man en dag ska kunna lämna det här systemet. Lärdomen gäller inte en enskild stad. Den gäller hela upphandlingssystemet: utan ett inbyggt krav på överförbarhet upprepas samma misstag i nästa upphandling, oavsett vem som gör den.
+
+## Överförbarhet måste skrivas in i upphandlingslagen
+
+Upphandlingslagen ska föreskriva att data, processer och integrationer i varje kritiskt system inom den offentliga förvaltningen kan flyttas till en annan leverantör. Överförbarhet och öppna gränssnitt skrivs in som upphandlingsvillkor från början, inte i efterhand i avtalsförhandlingen, där förhandlingspositionen redan är förlorad. Varje kritisk IKT-upphandling förenas med en obligatorisk [leverantörsberoendebedömning](/sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/) före beslutet: komponentförteckning, leveranskedjeverifiering, uppdateringsprocessbeskrivning och leverantörens svarstid för säkerhetsuppdateringar skrivs redan in i anbudsförfrågan.
+
+Modulär upphandling görs till standard i stället för monolit, så att en enda leverantör aldrig kan ta över hela systemet. [Öppen källkod görs till standard i kritiska system](/sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/), eftersom delade underhållskostnader gör systemet både billigare och stabilare, precis som i eVaka. När flera kommuner delar samma underhåll räcker skattebetalarnas pengar längre, och ingen enskild leverantör kan diktera priset. I praktiken skulle en kommun kunna konkurrensutsätta underhållet av sitt system med några års mellanrum, som vilken annan tjänst som helst, i stället för att vara bunden till samma leverantör i decennier.
+
+I praktiken innebär öppna gränssnitt tre saker: dataformaten är offentligt dokumenterade och standardiserade, integrationerna byggs på kända gränssnittsstandarder, och avtalet innehåller alltid en tydlig utträdesklausul som fastställer hur data och dokumentation överförs till nästa leverantör. Allt detta [går att genomföra redan i dag](/sv/blog/53/digital-sjalvstandighet-byggs-steg-for-steg/), så länge den upphandlande enheten kräver det innan avtalet undertecknas, inte efteråt.
+
+## Konkurrens har sitt pris, beroende ett större
+
+Kravet på överförbarhet är inte gratis. Gränssnittsdokumentation, komponentförteckningar och leverantörsberoendebedömningar kräver kompetens och tid av den upphandlande enheten, något som en liten kommun helt kan sakna. Den här kostnaden är värd att säga rakt ut. En liten kommun behöver inte bygga upp den här kompetensen ensam: upphandlande enheter kan dela samma bedömningsmodell och sakkunskap, precis som de redan delar underhållet av eVaka.
+
+Alternativet är däremot dyrare: när gränssnitten är öppna och överförbarheten garanterad kan även [små och medelstora finländska företag erbjuda en del av helheten](/sv/blog/74/tre-satt-att-underlatta-foretagande/), och anbudstävlingen blir en verklig konkurrens i stället för en enda stor leverantörs diktat.
+
+Nyttan är inte bara ett lägre pris. När en kommun kan byta leverantör [behåller den greppet om sitt eget system](/sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/) även när leverantören höjer priserna, hamnar i svårigheter eller lägger ner produkten. Sådan trygghet är svår att köpa tillbaka i efterhand, och just det är viktigare för en offentlig tjänst än priset i en enskild upphandling.
+
+Konkurrens uppstår inte av att man önskar den. Den uppstår av att det är möjligt att lämna.
+
+Samma förälder som loggade in i eVaka våren 2026 skulle dra nytta av samma princip i alla andra ärenden med kommunen. Hur många kommunala beslutsfattare skulle i dag kunna svara på om deras kommun kan lämna sin nuvarande systemleverantör, om det behövdes?
