@@ -236,7 +236,12 @@ const predictedAt = (probabilities: Record<string, number>, threshold: number): 
         .filter(([, p]) => p >= threshold)
         .map(([key]) => key)
 
-const sameSet = (a: string[], b: string[]): boolean => a.length === b.length && a.every((x) => b.includes(x))
+const sameSet = (a: string[], b: string[]): boolean => {
+    const sa = new Set(a)
+    const sb = new Set(b)
+
+    return sa.size === sb.size && [...sa].every((x) => sb.has(x))
+}
 
 export function tagMetrics(rows: TagRow[], labels: string[]): { metrics: Record<string, number>; perTag: PerTag[] } {
     const metrics: Record<string, number> = {}
@@ -256,10 +261,14 @@ export function tagMetrics(rows: TagRow[], labels: string[]): { metrics: Record<
                     }))
                 )
             )
-        metrics[`macroF1@${t}`] = ratio(
-            perLabel.reduce((sum, m) => sum + m.f1, 0),
-            perLabel.length
-        )
+        const mean = (pick: (m: ReturnType<typeof prf>) => number): number =>
+            ratio(
+                perLabel.reduce((sum, m) => sum + pick(m), 0),
+                perLabel.length
+            )
+        metrics[`macroPrecision@${t}`] = mean((m) => m.precision)
+        metrics[`macroRecall@${t}`] = mean((m) => m.recall)
+        metrics[`macroF1@${t}`] = mean((m) => m.f1)
     }
 
     const baseline = mostCommon(
@@ -336,10 +345,17 @@ export async function mapConcurrent<T, R>(
 ): Promise<R[]> {
     const results: R[] = new Array<R>(items.length)
     let next = 0
+    let failed = false
     const worker = async (): Promise<void> => {
-        while (next < items.length) {
+        // Stop handing out new (paid) work once any item has failed; the first error rejects the whole run.
+        while (next < items.length && !failed) {
             const index = next++
-            results[index] = await fn(items[index], index)
+            try {
+                results[index] = await fn(items[index], index)
+            } catch (error) {
+                failed = true
+                throw error
+            }
         }
     }
     await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, items.length)) }, worker))
@@ -421,9 +437,16 @@ export async function runLinkEval(client: JevClient, opts: RunOpts, root?: strin
         )
         record(usage, res)
         const answer = res.answers.link_target
-        const probabilities = answer?.type === 'choice' ? answer.probabilities : { [NONE]: 1 }
+        if (answer?.type !== 'choice') {
+            throw new Error(`${doc.key} paragraph ${index}: expected a choice answer, got ${answer?.type ?? 'nothing'}`)
+        }
 
-        return { expected: linkTargets(paragraph, known), key: doc.key, paragraph: index, probabilities }
+        return {
+            expected: linkTargets(paragraph, known),
+            key: doc.key,
+            paragraph: index,
+            probabilities: answer.probabilities,
+        }
     })
     const perPost = new Map<DocKey, { expected: Set<string>; predicted: Set<string> }>()
     for (const row of rows) {
@@ -532,6 +555,12 @@ export async function runCli(argv: string[], env: NodeJS.ProcessEnv, deps: CliDe
     const bad = [...tasks.filter((t) => !isTask(t)), ...langs.filter((l) => !isLang(l))]
     if (bad.length > 0) {
         log(`unknown task or lang: ${bad.join(', ')}`)
+
+        return 2
+    }
+    const positiveInt = (value: string | undefined): boolean => value === undefined || /^[1-9]\d*$/.test(value)
+    if (!positiveInt(values.concurrency) || !positiveInt(values.limit)) {
+        log('--concurrency and --limit take a positive integer')
 
         return 2
     }
