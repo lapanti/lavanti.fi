@@ -21,6 +21,7 @@ import {
 
 const doc = (key: DocKey, publishDate = '2026-01-01', sourceHash = `h-${key}`): Document => ({
     body: '',
+    contentHash: 'c',
     description: `${key} description`,
     h2s: [],
     id: Number(key.split(':')[1]),

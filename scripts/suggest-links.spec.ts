@@ -5,6 +5,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
+import { buildCorpus } from './jev/corpus'
+import { readReceipts } from './jev/suggestions'
 import { runSuggest, USAGE } from './suggest-links'
 
 const writeDoc = (
@@ -70,6 +72,7 @@ const fakeClient = (
 
 describe('runSuggest', () => {
     const root = mkdtempSync(join(tmpdir(), 'jev-suggest-'))
+    const receipts = join(root, 'suggestions.json')
     afterAll(() => rmSync(root, { force: true, recursive: true }))
 
     writeDoc(root, 'posts', 1, {
@@ -92,15 +95,17 @@ describe('runSuggest', () => {
         }
         const env = { OPENROUTER_API_KEY: 'k' }
 
-        expect(await runSuggest(['post'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['page', '1'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['post', '1', '--lang', 'de'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['post', '1', '--threshold', '1.5'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['post', '1', '--concurrency', '0'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['--backlinks', 'post', '1'], env, { log, root })).toBe(2)
-        expect(await runSuggest(['--backlinks', 'newsletter', '4', '--changed-since', 'x'], env, { log, root })).toBe(2)
+        expect(await runSuggest(['post'], env, { log, receipts, root })).toBe(2)
+        expect(await runSuggest(['page', '1'], env, { log, receipts, root })).toBe(2)
+        expect(await runSuggest(['post', '1', '--lang', 'de'], env, { log, receipts, root })).toBe(2)
+        expect(await runSuggest(['post', '1', '--threshold', '1.5'], env, { log, receipts, root })).toBe(2)
+        expect(await runSuggest(['post', '1', '--concurrency', '0'], env, { log, receipts, root })).toBe(2)
+        expect(await runSuggest(['--backlinks', 'post', '1'], env, { log, receipts, root })).toBe(2)
+        expect(
+            await runSuggest(['--backlinks', 'newsletter', '4', '--changed-since', 'x'], env, { log, receipts, root })
+        ).toBe(2)
         expect(lines.every((l) => l === USAGE)).toBe(true)
-        expect(await runSuggest(['post', '1'], {}, { log, root })).toBe(0)
+        expect(await runSuggest(['post', '1'], {}, { log, receipts, root })).toBe(0)
         expect(lines.at(-1)).toContain('skipped: no OPENROUTER_API_KEY')
     })
 
@@ -108,7 +113,7 @@ describe('runSuggest', () => {
         const { calls, client } = fakeClient(preferTwo)
         const lines: string[] = []
 
-        expect(await runSuggest(['post', '99'], {}, { client, log: (l) => lines.push(l), root })).toBe(2)
+        expect(await runSuggest(['post', '99'], {}, { client, log: (l) => lines.push(l), receipts, root })).toBe(2)
         expect(lines).toEqual(['post:99 not found'])
         expect(calls).toHaveLength(0)
     })
@@ -118,7 +123,9 @@ describe('runSuggest', () => {
         const lines: string[] = []
         const out = join(root, 'out.md')
 
-        expect(await runSuggest(['post', '1', '--out', out], {}, { client, log: (l) => lines.push(l), root })).toBe(0)
+        expect(
+            await runSuggest(['post', '1', '--out', out], {}, { client, log: (l) => lines.push(l), receipts, root })
+        ).toBe(0)
         expect(calls).toHaveLength(2)
         expect(calls[0].state).toEqual({ paragraph: 'Väite kakkosesta. jo', title: 'fi posts 1' })
         const criteria = (calls[0].questions.link_target as Extract<QuestionSpec, { type: 'choice' }>).criteria
@@ -147,7 +154,7 @@ describe('runSuggest', () => {
             await runSuggest(
                 ['post', '1', 'newsletter', '4', '--lang', 'en'],
                 {},
-                { client, log: (l) => lines.push(l), root }
+                { client, log: (l) => lines.push(l), receipts, root }
             )
         ).toBe(0)
         expect(calls[0].state).toEqual({ paragraph: 'Claim about two. already', title: 'en posts 1' })
@@ -165,7 +172,11 @@ describe('runSuggest', () => {
         const lines: string[] = []
 
         expect(
-            await runSuggest(['--backlinks', 'newsletter', '4'], {}, { client, log: (l) => lines.push(l), root })
+            await runSuggest(
+                ['--backlinks', 'newsletter', '4'],
+                {},
+                { client, log: (l) => lines.push(l), receipts, root }
+            )
         ).toBe(0)
         expect(calls.every((c) => (c.state as { title: string }).title === 'en newsletters 4')).toBe(true)
         expect(calls.map((c) => Object.keys(c.questions).length)).toEqual([2, 1, 1])
@@ -184,7 +195,11 @@ describe('runSuggest', () => {
             'src/content/posts/2/fi.mdx\nsrc/content/posts/77/meta.json\nsrc/content/newsletters/4/en.mdx\n'
 
         expect(
-            await runSuggest(['--changed-since', 'origin/main'], {}, { client, git, log: (l) => lines.push(l), root })
+            await runSuggest(
+                ['--changed-since', 'origin/main'],
+                {},
+                { client, git, log: (l) => lines.push(l), receipts, root }
+            )
         ).toBe(0)
         expect(calls).toHaveLength(2)
         expect(lines.join('\n')).toContain('## post:2 — fi posts 2')
@@ -195,10 +210,36 @@ describe('runSuggest', () => {
             await runSuggest(
                 ['--changed-since', 'origin/main'],
                 {},
-                { client, git: () => '\n', log: (l) => none.push(l), root }
+                { client, git: () => '\n', log: (l) => none.push(l), receipts, root }
             )
         ).toBe(0)
         expect(none).toEqual(['no content changes'])
+    })
+
+    it('writes a receipt per completed document with its content hash, and a backlinks receipt for an issue', async () => {
+        rmSync(receipts, { force: true })
+        const { client } = fakeClient(preferTwo)
+        const today = (): string => '2026-09-23'
+
+        expect(await runSuggest(['post', '1', 'post', '2'], {}, { client, log: () => {}, receipts, root, today })).toBe(
+            0
+        )
+        const post1 = buildCorpus({ root }).find((d) => d.key === 'post:1')!
+        const file = readReceipts(receipts)!
+
+        expect(file.links['post:1']).toEqual({
+            checkedAt: '2026-09-23',
+            contentHash: post1.contentHash,
+            model: 'typesafe/jev-1.13-20260917',
+        })
+        expect(Object.keys(file.links)).toEqual(['post:1', 'post:2'])
+        expect(file.backlinks).toEqual({})
+
+        expect(
+            await runSuggest(['--backlinks', 'newsletter', '4'], {}, { client, log: () => {}, receipts, root, today })
+        ).toBe(0)
+        expect(readReceipts(receipts)!.backlinks['newsletter:4']?.contentHash).toHaveLength(64)
+        expect(readReceipts(receipts)!.links['post:1']).toBeDefined()
     })
 
     it('prints the sections done so far and the failure, writes --out, and exits 1 on a failed request', async () => {
@@ -207,10 +248,17 @@ describe('runSuggest', () => {
         const out = join(root, 'fail.md')
 
         expect(
-            await runSuggest(['post', '2', 'post', '3', '--out', out], {}, { client, log: (l) => lines.push(l), root })
+            await runSuggest(
+                ['post', '2', 'post', '3', '--out', out],
+                {},
+                { client, log: (l) => lines.push(l), receipts, root }
+            )
         ).toBe(1)
         expect(lines.join('\n')).toContain('## post:2 — fi posts 2')
         expect(lines.at(-1)).toBe('failed at post:3 paragraph 0: boom')
         expect(readFileSync(out, 'utf8')).toContain('failed at post:3 paragraph 0: boom')
+        // The receipt for the completed document survives; the failed one gets none.
+        expect(readReceipts(receipts)!.links['post:2']).toBeDefined()
+        expect(readReceipts(receipts)!.links['post:3']).toBeUndefined()
     })
 })

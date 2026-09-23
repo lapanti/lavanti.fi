@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
-import { buildCorpus, hashDir, headingsOf, labelFor, LEAD_WORD_MAX, leadOf, stateFor } from './corpus'
+import { buildCorpus, hashContent, hashDir, headingsOf, labelFor, LEAD_WORD_MAX, leadOf, stateFor } from './corpus'
 
 const mdx = (title: string, description: string, body: string): string =>
     `---\nlang: 'fi'\ntitle: '${title}'\ndescription: '${description}'\n---\n\nimport P from '../../../components/P.astro'\n\nexport const components = { p: P }\n\n${body}\n`
@@ -102,18 +102,26 @@ describe('buildCorpus', () => {
 
     it('hashes every sibling: an fi-only change flips the hash, an idle rerun does not', () => {
         const before = hashDir(postDir)
+        const contentBefore = hashContent(postDir)
 
         expect(hashDir(postDir)).toBe(before)
         writeFileSync(join(postDir, 'fi.mdx'), mdx('fi title 1', 'fi description 1', 'Muutettu.'))
         const afterFi = hashDir(postDir)
 
         expect(afterFi).not.toBe(before)
+        expect(hashContent(postDir)).not.toBe(contentBefore)
+        const contentAfterFi = hashContent(postDir)
         writeFileSync(
             join(postDir, 'meta.json'),
             JSON.stringify({ id: 1, publishDate: '2026-01-02', tags: ['economy'] })
         )
         expect(hashDir(postDir)).not.toBe(afterFi)
-        expect(buildCorpus({ root }).find((d) => d.key === 'post:1')?.sourceHash).toBe(hashDir(postDir))
+        // A meta.json-only change (an updatedDate bump) leaves the content hash alone.
+        expect(hashContent(postDir)).toBe(contentAfterFi)
+        const built = buildCorpus({ root }).find((d) => d.key === 'post:1')
+
+        expect(built?.sourceHash).toBe(hashDir(postDir))
+        expect(built?.contentHash).toBe(hashContent(postDir))
     })
 })
 
@@ -146,6 +154,7 @@ describe('headingsOf, stateFor, labelFor', () => {
     it('builds a compact state and an English label', () => {
         const doc = {
             body: 'Lead',
+            contentHash: 'c',
             description: 'Desc',
             h2s: ['A?', 'B?'],
             id: 1,
