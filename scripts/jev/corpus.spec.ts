@@ -3,7 +3,18 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
-import { buildCorpus, hashContent, hashDir, headingsOf, labelFor, LEAD_WORD_MAX, leadOf, stateFor } from './corpus'
+import {
+    bodyStateFor,
+    buildCorpus,
+    faqQuestionsOf,
+    hashContent,
+    hashDir,
+    headingsOf,
+    labelFor,
+    LEAD_WORD_MAX,
+    leadOf,
+    stateFor,
+} from './corpus'
 
 const mdx = (title: string, description: string, body: string): string =>
     `---\nlang: 'fi'\ntitle: '${title}'\ndescription: '${description}'\n---\n\nimport P from '../../../components/P.astro'\n\nexport const components = { p: P }\n\n${body}\n`
@@ -147,8 +158,32 @@ describe('leadOf', () => {
 })
 
 describe('headingsOf, stateFor, labelFor', () => {
-    it('collects only level-two headings', () => {
+    it('collects level-two headings by default and level-three on request', () => {
         expect(headingsOf('# H1\n\n## Two?\n\n### Three\n\n## Also two')).toEqual(['Two?', 'Also two'])
+        expect(headingsOf('# H1\n\n## Two?\n\n### Three\n\n#### Four', 3)).toEqual(['Three'])
+    })
+
+    it('reads faq questions from the frontmatter in every YAML quoting style', () => {
+        const fm = [
+            "title: 'T'",
+            'faq:',
+            "  - q: 'Korvaako tekoäly ohjelmoijat?'",
+            "    a: 'Ei.'",
+            `  - q: "What about ''quotes''?"`,
+            '    a: "No."',
+            "  - q: 'Mikä on ''lainaus''?'",
+            "    a: 'x'",
+            '  - q: Bare question?',
+            '    a: bare',
+        ].join('\n')
+
+        expect(faqQuestionsOf(fm)).toEqual([
+            'Korvaako tekoäly ohjelmoijat?',
+            "What about ''quotes''?",
+            "Mikä on 'lainaus'?",
+            'Bare question?',
+        ])
+        expect(faqQuestionsOf("title: 'T'\ndescription: 'q: not a faq'")).toEqual([])
     })
 
     it('builds a compact state and an English label', () => {
@@ -156,7 +191,9 @@ describe('headingsOf, stateFor, labelFor', () => {
             body: 'Lead',
             contentHash: 'c',
             description: 'Desc',
+            faq: [],
             h2s: ['A?', 'B?'],
+            h3s: ['C?'],
             id: 1,
             key: 'post:1' as const,
             kind: 'post' as const,
@@ -171,6 +208,12 @@ describe('headingsOf, stateFor, labelFor', () => {
         }
 
         expect(stateFor(doc)).toEqual({ description: 'Desc', headings: 'A?\nB?', lead: 'Lead', title: 'Title' })
+        expect(bodyStateFor({ ...doc, paragraphs: ['A [link](/x/) here.', 'Second **bold** one.'] })).toEqual({
+            body: 'A link here.\n\nSecond bold one.',
+            description: 'Desc',
+            headings: 'A?\nB?\nC?',
+            title: 'Title',
+        })
         expect(labelFor(doc)).toBe('Title — Desc')
         expect(labelFor({ ...doc, description: '' })).toBe('Title')
     })
