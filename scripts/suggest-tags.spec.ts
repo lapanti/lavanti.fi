@@ -99,7 +99,16 @@ describe('runTags', () => {
         "import type { LocalTag } from './tags/types'\n\nimport { tag as a } from './tags/economy'\nimport { tag as b } from './tags/freedom'\nimport { tag as c } from './tags/municipal-elections-2025'\nimport { tag as d } from './tags/nature'\n"
     )
     const env = { OPENROUTER_API_KEY: 'k' }
-    const deps = (client: JevClient, log: (l: string) => void = () => {}) => ({ client, log, receipts, root, tagsDir })
+    /* Pin the clock: the receipt's checkedAt is asserted below, and the real date moves. */
+    const today = (): string => '2026-09-23'
+    const deps = (client: JevClient, log: (l: string) => void = () => {}) => ({
+        client,
+        log,
+        receipts,
+        root,
+        tagsDir,
+        today,
+    })
 
     it('skips without a key and rejects bad arguments before any request', async () => {
         const lines: string[] = []
