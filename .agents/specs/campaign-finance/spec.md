@@ -29,7 +29,7 @@ Figures change throughout the campaign. Every number on the page and in the teas
 
 ### Out of scope
 - Donation payment link or form (separate feature; the FAQ says how to donate in words only).
-- Breadcrumb trail or breadcrumb JSON-LD; `Dataset` JSON-LD (`dist-head.ts` allows only known types).
+- Breadcrumb trail or breadcrumb JSON-LD (`PageLayout` only emits `BreadcrumbList` for `CollectionPage` trails; adding an election trail touches `breadcrumbs.ts` and the layout). `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
 - Real campaign figures. Initial values are placeholders: budget 30 000 €, own funds 10 000 €, spent 5 000 €, every other source 0 €.
@@ -51,8 +51,8 @@ Feature: Campaign finance transparency page
     And the visible FAQ plate renders the same questions
 
   Scenario: Summary stats are text, not pixels
-    Given the fi page is rendered with CSS disabled
-    When the summary section (#lyhyesti) is read
+    Given a page is rendered with CSS disabled
+    When the summary section (fi #lyhyesti, sv #ikorthet, en #inbrief) is read
     Then budget, raised total, spent and gap-to-budget are readable as text with a euro sign
     And the as-of date is printed in the page locale
 
@@ -73,19 +73,37 @@ Feature: Campaign finance transparency page
     Given benchmark2023 holds all-filers median 32634 and mean 37540 and Uusimaa median 36355 and mean 42517
     When the "how much does a campaign cost" bars render
     Then five rows appear: campaign budget (emphasised), all median, all mean, Uusimaa median, Uusimaa mean
-    And each row shows its euro value as text and a decorative bar whose --w is value / max × 100 %
+    And max is the largest row value (barsMax), so the tallest row has --w:100%
+    And each row shows its euro value as text and a decorative bar whose --w is round(value / max × 100) %
     And a source line links to the VTV CSV URL and states the retrieval date
 
   Scenario: 2023 funding mix uses the same six display rows
     Given benchmark2023.shares in §6 order
     When the "how did MPs fund their campaigns in 2023" bars render
     Then the rows are own, loans, private, companies, party (merged: party + partyAssociations), other
+    And the merged party value is rounded to one decimal after summing (3.0 + 8.3 → 11.3, never 11.299999)
     And each row shows a percentage with one decimal
 
   Scenario: Spending stack
     Given spent is 5000 and raised total is 10000
     When the spending stack renders
     Then two legend rows appear: spent 5 000 € (50,0 %) and unspent 5 000 € (50,0 %)
+
+  Scenario: Raised exceeds budget
+    Given budget is 30000 and totalRaised is 32000
+    When budgetSegments and the funding stack render
+    Then gapToBudget is 0, the "still needed" row prints 0 €, and the stack total is 32000 so segments sum to 100 %
+
+  Scenario: Degenerate inputs never break rendering
+    Given FinanceBars receives max 0, or FinanceStack receives total 0
+    When the component renders
+    Then every bar gets --w:0% and no NaN or Infinity appears in the HTML
+    And percentOf(part, 0) returns 0
+
+  Scenario: Spent never exceeds raised on the page
+    Given spent is greater than totalRaised in the data
+    When the data-module spec runs
+    Then the spec fails (invariant spent ≤ totalRaised), so the page is never built with a negative unspent row
 
   Scenario: One-file update
     Given campaignFinance.budget is changed and updatedDate is bumped on the three pages
@@ -97,12 +115,12 @@ Feature: Campaign finance transparency page
     Given the fi, sv and en election pages
     When they render
     Then a FinanceTeaser section shows budget, raised and spent and links to the locale's finance page
-    And the "how can I support the campaign" FAQ answer links to the finance page
+    And the "how can I support the campaign" FAQ answer names the finance page in plain text (FAQ answers are plain strings shared with FAQPage JSON-LD; the link lives in the teaser)
 
   Scenario: Discoverability
     Given the built site
     When the footer, llms.txt and sitemap are inspected
-    Then the footer site column links the finance page in every locale
+    Then the footer site column carries a footer-only <li> for the finance page after the newsletter-archive item, in every locale, without touching nav.ts
     And llms.txt lists /fi/eduskuntavaalit/vaalirahoitus/ under the pillar links
     And the sitemap lists all three URLs with lastmod equal to updatedDate
 
@@ -127,6 +145,17 @@ Feature: Campaign finance transparency page
     Given a 360 px viewport
     When any of the three pages renders
     Then no horizontal scrollbar appears and every heading passes check-overflow
+
+  Scenario: E2E coverage follows the canonical page pattern
+    Given tests/e2e/campaignFinancePage.spec.ts and its En/Swe siblings
+    When CI runs
+    Then each spec has exactly the tests "should render", "should match aria snapshot", "should pass accessibility test", "should pass siteimprove check" and "should match screenshot"
+    And aria and screenshot goldens were produced by the Update baselines workflow and committed, never generated locally
+
+  Scenario: Page titles fit the SEO window
+    Given the three new pages
+    When scripts/checks/content.sh runs
+    Then each pageTitle plus " | Lauri Lavanti" is 50–60 characters and each description 120–160
 ```
 
 ---
@@ -135,6 +164,7 @@ Feature: Campaign finance transparency page
 
 ```typescript
 import type { Lang } from '../content/nav'
+import { colors } from '../lib/styles'
 
 /** Order and names follow laki ehdokkaan vaalirahoituksesta 273/2009 §6 (2.1–2.7). */
 export type FundingSource = 'own' | 'loans' | 'private' | 'companies' | 'party' | 'partyAssociations' | 'other'
@@ -163,17 +193,34 @@ export interface Benchmark {
     sourceUrl: string
 }
 
+/** Segment colours; each maps to one token in src/lib/styles.ts colors. */
+export type Tone = 'own' | 'loans' | 'private' | 'companies' | 'party' | 'other' | 'needed' | 'spent' | 'unspent'
+export const toneColors: Record<Tone, string> = {
+    companies: colors.signalBlue,
+    loans: colors.oat,
+    needed: colors.sand,        // plus dashed forestGreen70 outline
+    other: colors.aquaBlue,
+    own: colors.darkGreen,
+    party: colors.brightSky,
+    private: colors.brightGreen,
+    spent: colors.peach,
+    unspent: colors.lightSand,
+}
+
 export interface FinanceLabels {
-    asOf: string
+    asOf: (date: string) => string          // "Tilanne 25.9.2026"
     budget: string
+    budgetRow: string                       // benchmark row label for the campaign budget
     gap: string
     mean: string
     median: string
     needed: string
     raised: string
     sets: Record<BenchmarkSet['id'], string>
+    source: (retrieved: string) => string  // "Lähde: VTV:n vaalirahoitusilmoitukset 2023, haettu 25.9.2026"
     sources: Record<DisplaySource, string>
     spent: string
+    teaser: { cta: string; eyebrow: string; heading: string }
     unspent: string
 }
 
@@ -181,6 +228,8 @@ export const campaignFinance: CampaignFinance
 export const benchmark2023: Benchmark
 export const financeLabels: Record<Lang, FinanceLabels>
 ```
+
+Section captions and prose live in the three MDX pages (per-locale files), not in the module.
 
 Benchmark provenance (documented as a comment in the module): VTV final disclosures CSV `E_VI_eduskuntavaalit2023.csv` (273 filers: elected MPs and alternates), retrieved 2026-09-25. Median and mean of `Vaalikampanjan kulut yhteensa`; Uusimaa subset where `Vaalipiiri/Kunta` contains "Uudenmaan"; share = Σ(`2.x … yhteensa`) / Σ(`Vaalikampanjan rahoitus yhteensa`). The CSV has no elected/alternate flag.
 
@@ -190,12 +239,15 @@ Helper signatures (`src/lib/campaignFinance.ts`):
 |---|---|
 | `totalRaised(f)` | Σ `f.raised` |
 | `gapToBudget(f)` | `max(0, budget − totalRaised)` |
-| `percentOf(part, whole)` | one decimal; `0` when `whole` is 0 |
-| `formatEuro(n, lang)` | fi/sv `12 345 €` (U+00A0), en `€12,345`; no `Intl.NumberFormat` |
-| `formatPercent(p, lang)` | fi/sv `12,3 %`, en `12.3%` |
-| `formatAsOf(iso, lang)` | same approach as `src/lib/eventDate.ts` |
-| `mergeParty(r)` | `Record<DisplaySource, number>`, party + partyAssociations summed |
-| `budgetSegments(f, lang)` | six display sources + `needed`, each `{ id, label, tone, value }` |
+| `percentOf(part, whole)` | one decimal; `0` when `whole ≤ 0` |
+| `barWidth(value, max)` | integer percent 0–100; `0` when `max ≤ 0` |
+| `barsMax(rows)` | largest `value` in `rows`, `0` for empty |
+| `formatEuro(n, lang)` | fi/sv `12 345 €` (U+00A0 groups and before `€`), en `€12,345`; no `Intl.NumberFormat` |
+| `formatPercent(p, lang)` | fi/sv `12,3 %` (U+00A0), en `12.3%` |
+| `formatDate(iso, lang)` | hand-rolled: fi/sv `25.9.2026`, en `25 September 2026` (month table); no `Intl.DateTimeFormat`, so aria goldens are ICU-independent |
+| `mergeParty(r)` | `Record<DisplaySource, number>`, party + partyAssociations summed and rounded to one decimal |
+| `budgetSegments(f, lang)` | six display sources + `needed`, each `{ id, label, tone, value }`; stack total = `max(budget, totalRaised)` |
+| `spendingSegments(f, lang)` | `spent` + `unspent` (`max(0, totalRaised − spent)`); total = `totalRaised` |
 
 Component props:
 
@@ -203,8 +255,8 @@ Component props:
 |---|---|
 | `FinanceStat` | `label`, `value`, `note?` |
 | `FinanceStats` | `items: { label, value, note? }[]` |
-| `FinanceBars` | `caption`, `max`, `rows: { emphasis?, label, value }[]`, `unit: 'eur' \| 'percent'`, `lang` |
-| `FinanceStack` | `caption`, `segments: { label, tone, value }[]`, `total`, `lang` |
+| `FinanceBars` | `caption`, `rows: { emphasis?, label, value }[]`, `unit: 'eur' \| 'percent'`, `lang`; computes `max` via `barsMax` |
+| `FinanceStack` | `caption`, `segments: { id, label, tone, value }[]`, `total`, `lang`; every segment in the legend, only `value > 0` in the bar |
 | `FinanceTeaser` | `href`, `lang` |
 
 ---
@@ -220,12 +272,13 @@ Component props:
 
 ## Anti-patterns
 
-- **Do not** format money with `Intl.NumberFormat` — ICU group separators vary by Node build and would break aria goldens.
+- **Do not** format money or the as-of date with `Intl.*` — ICU output varies by Node build and would break aria goldens.
+- **Do not** put an `<a>` inside a FAQ answer — `Faq.astro` renders `a` as plain text and the same string feeds FAQPage JSON-LD.
 - **Do not** put figures in `description`, `intro` or FAQ text that is not generated from the data module — they go stale on the next update.
 - **Do not** make the bars the only carrier of a number — bars are `aria-hidden` decoration; the legend/value text is the content.
 - **Do not** drop zero-value categories from the legend — the zero is the statement.
 - **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts`.
-- **Do not** use `Dataset` or breadcrumb JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types.
+- **Do not** use `Dataset` JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types. Breadcrumbs are out of scope by issue, not blocked by the check.
 - **Do not** use `@media` widths outside the `breakpoints` map — `src/lib/mediaQueries.spec.ts` fails.
 - **Do not** write unhyphenated long compounds in `heading=` props — `scripts/check-overflow.mjs` measures them; use soft hyphens.
 - **Do not** regenerate e2e goldens locally — they are CI-canonical; use the Update baselines workflow.
@@ -243,3 +296,4 @@ Component props:
 | Date | Change |
 |------|--------|
 | 2026-09-25 | Initial draft |
+| 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
