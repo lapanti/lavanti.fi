@@ -70,12 +70,29 @@ Feature: Campaign finance transparency page
     And every other key keeps its value
 
   Scenario: Benchmark compares budget with 2023 campaigns
-    Given benchmark2023 holds all-filers median 32634 and mean 37540 and Uusimaa median 36355 and mean 42517
-    When the "how much does a campaign cost" bars render
-    Then five rows appear: campaign budget (emphasised), all median, all mean, Uusimaa median, Uusimaa mean
+    Given benchmark2023 holds all-filers median 32634 and Uusimaa median 36355
+    When the "how much did a winning campaign cost" bars render
+    Then three rows appear: campaign budget (emphasised), all median, Uusimaa median
+    And no mean is drawn: the costs are right-skewed, so the page states the quartiles in words instead
     And max is the largest row value (barsMax), so the tallest row has --w:100%
     And each row shows its euro value as text and a decorative bar whose --w is round(value / max × 100) %
     And a source line links to the VTV CSV URL and states the retrieval date
+
+  Scenario: Percentages are drawn against the whole
+    Given FinanceBars receives unit "percent" and the largest row is 24.7
+    When the bars render
+    Then that row's --w is 25%, not 100%: a share is drawn against 100, never against the largest share
+    And an amount unit still scales to the largest row, which has no natural ceiling
+
+  Scenario: Each part-to-whole figure names its denominator
+    Given the funding stack divides by the budget and the spending stack divides by the money raised
+    When their captions render
+    Then each caption says which whole its percentages are shares of, because the two differ
+
+  Scenario: The comparison states the shape of the distribution
+    Given the 2023 costs run from 0 € to 136 739 € with the mean above the median
+    When the comparison section renders
+    Then the prose gives the interquartile range, says the figures cover only elected members and their alternates, says the Uusimaa rows are part of the national ones, and says our own figure is a plan against realised costs
 
   Scenario: 2023 funding mix uses the same six display rows
     Given benchmark2023.shares in §6 order
@@ -285,7 +302,10 @@ Component props:
 - **Do not** make the bars the only carrier of a number — bars are `aria-hidden` decoration; the legend/value text is the content.
 - **Do not** drop zero-value categories from the legend — the zero is the statement.
 - **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero. Figures from the 2023 benchmark are final and may be quoted in prose.
-- **Do not** give a segment a tone that matches the plate it sits on — the `oat` ground hides an `oat` swatch.
+- **Do not** give a segment a tone that matches the plate it sits on — the `oat` ground hides an `oat` swatch. Reach for an outline before an off-palette colour; `regionalPurple` and the other social-brand tokens are not data colours.
+- **Do not** scale a percentage bar to the largest row — a quarter drawn as a full track inflates every share by the same factor.
+- **Do not** put a mean beside a median on a skewed distribution as though the pair described it, and do not show two part-to-whole figures with different denominators without naming them.
+- **Do not** animate on load — these sections sit below the fold. Scroll-driven reveal only, inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, so the static render is always the correct picture.
 - **Do not** use `Dataset` JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types. Breadcrumbs are out of scope by issue, not blocked by the check.
 - **Do not** use `@media` widths outside the `breakpoints` map — `src/lib/mediaQueries.spec.ts` fails.
 - **Do not** write unhyphenated long compounds in `heading=` props — `scripts/check-overflow.mjs` measures them; use soft hyphens.
@@ -304,5 +324,6 @@ Component props:
 | Date | Change |
 |------|--------|
 | 2026-09-25 | Initial draft |
+| 2026-09-25 | Statistical review: percent bars scale to 100, means dropped from the comparison in favour of stated quartiles, denominators named in both stack captions, comparison reframed as the cost of winning campaigns; scroll-driven bar reveal added behind @supports |
 | 2026-09-25 | Implementation drift: BenchmarkSet unexported, FinanceTeaser takes a section id, DISPLAY_SOURCE_ORDER replaces key order, loans tone moved off oat |
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
