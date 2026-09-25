@@ -9,8 +9,8 @@
  * Categories and their names follow the statutory vaalirahoitusilmoitus — laki
  * ehdokkaan vaalirahoituksesta 273/2009 §6, fields 2.1–2.7 — so a reader can check
  * this page line by line against the disclosure that VTV publishes after the
- * election. A category that is zero stays in the list: "no loans, no party money" is
- * itself the thing being disclosed.
+ * election. A category that is zero stays in the list rather than being hidden: a
+ * source that has given nothing is part of what the page discloses.
  */
 
 import type { Lang } from './nav'
@@ -49,6 +49,10 @@ interface BenchmarkSet {
     mean: number
     median: number
     n: number
+    /** Lower quartile: a quarter of the campaigns cost less than this. */
+    q1: number
+    /** Upper quartile: a quarter cost more. */
+    q3: number
 }
 
 export interface Benchmark {
@@ -88,7 +92,9 @@ export const campaignFinance: CampaignFinance = {
  * alternate. The file is semicolon-separated, single-quote quoted, decimal comma,
  * and carries no elected/alternate flag, so both groups are in every figure.
  *
- * - `median`/`mean`: of `Vaalikampanjan kulut yhteensa`.
+ * - `median`/`mean`/`q1`/`q3`: of `Vaalikampanjan kulut yhteensa`. The distribution is
+ *   right-skewed — nationally the mean sits about 15 % above the median, and the range
+ *   runs from 0 € to 136 739 € — so the quartiles, not the mean, carry the spread.
  * - `uusimaa`: rows whose `Vaalipiiri/Kunta` contains "Uudenmaan".
  * - `shares`: Σ`2.x Rahoitus sisaltaa … yhteensa` / Σ`Vaalikampanjan rahoitus yhteensa`.
  *
@@ -98,8 +104,8 @@ export const campaignFinance: CampaignFinance = {
 export const benchmark2023: Benchmark = {
     retrievedDate: '2026-09-25',
     sets: [
-        { id: 'all', mean: 37540, median: 32634, n: 273 },
-        { id: 'uusimaa', mean: 42517, median: 36355, n: 46 },
+        { id: 'all', mean: 37540, median: 32634, n: 273, q1: 19801, q3: 48986 },
+        { id: 'uusimaa', mean: 42517, median: 36355, n: 46, q1: 25566, q3: 59106 },
     ],
     shares: {
         companies: 20.1,
@@ -144,7 +150,7 @@ export interface FinanceLabels {
  */
 export const financeLabels: Record<Lang, FinanceLabels> = {
     en: {
-        asOf: (formatted) => `Situation on ${formatted}`,
+        asOf: (formatted) => `As of ${formatted}`,
         budget: 'Campaign budget',
         budgetRow: 'Our budget',
         donate: {
@@ -158,7 +164,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         raised: 'Raised so far',
         sets: { all: 'All of Finland', uusimaa: 'Uusimaa district' },
         source: (retrieved) =>
-            `Source: campaign finance disclosures for the 2023 election, VTV. Retrieved ${retrieved}.`,
+            `Source: campaign finance disclosures for the 2023 election, National Audit Office of Finland. Retrieved ${retrieved}.`,
         sourceLinkText: 'Open the disclosure data',
         sources: {
             companies: 'Companies',
@@ -179,16 +185,16 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
     fi: {
         asOf: (formatted) => `Tilanne ${formatted}`,
         budget: 'Kampanjabudjetti',
-        budgetRow: 'Oma budjettimme',
+        budgetRow: 'Oma budjettini',
         donate: {
             cta: 'Tue kampanjaa',
-            pending: 'Lahjoituslinkki julkaistaan tähän heti, kun kampanjatili on auki.',
+            pending: 'Lahjoituslinkki tulee tälle sivulle heti, kun kampanjatili on auki.',
         },
         gap: 'Vielä kerättävä',
         mean: 'keskiarvo',
         median: 'mediaani',
         needed: 'Vielä kerättävä',
-        raised: 'Kerätty tähän asti',
+        raised: 'Kerätty',
         sets: { all: 'Koko Suomi', uusimaa: 'Uudenmaan vaalipiiri' },
         source: (retrieved) =>
             `Lähde: vuoden 2023 eduskuntavaalien vaalirahoitusilmoitukset, VTV. Haettu ${retrieved}.`,
@@ -201,7 +207,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             party: 'Puolue ja puolueyhdistykset',
             private: 'Yksityishenkilöt',
         },
-        spent: 'Käytetty tähän asti',
+        spent: 'Käytetty',
         teaser: {
             cta: 'Katso kampanjan rahoitus',
             eyebrow: 'Avoimuus',
@@ -223,8 +229,9 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         needed: 'Kvar att samla in',
         raised: 'Insamlat hittills',
         sets: { all: 'Hela Finland', uusimaa: 'Nylands valkrets' },
-        source: (retrieved) => `Källa: valfinansieringsanmälningarna för riksdagsvalet 2023, VTV. Hämtat ${retrieved}.`,
-        sourceLinkText: 'Öppna anmälningsmaterialet',
+        source: (retrieved) =>
+            `Källa: redovisningarna av valfinansieringen för riksdagsvalet 2023, Statens revisionsverk. Hämtat ${retrieved}.`,
+        sourceLinkText: 'Öppna redovisningsuppgifterna',
         sources: {
             companies: 'Företag',
             loans: 'Lån',
