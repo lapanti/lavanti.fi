@@ -32,6 +32,12 @@ export interface CampaignFinance {
     asOf: string
     /** Planned total spend for the whole campaign, whole euros. */
     budget: number
+    /**
+     * Public donation channel. Undefined until the account is open: the page then
+     * says the link is coming instead of rendering a dead button. The finance page
+     * is not meant to go live without it.
+     */
+    donationUrl?: string
     /** Received so far per §6 category, whole euros. */
     raised: Record<FundingSource, number>
     /** Paid out so far, whole euros. */
@@ -61,6 +67,7 @@ export interface Benchmark {
 export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-25',
     budget: 30000,
+    // TODO: set donationUrl before this page is published.
     raised: {
         companies: 0,
         loans: 0,
@@ -113,6 +120,8 @@ export interface FinanceLabels {
     budget: string
     /** Row label for our own budget in the benchmark comparison. */
     budgetRow: string
+    /** Donation call to action, and what to say while the channel is still closed. */
+    donate: { cta: string; pending: string }
     gap: string
     mean: string
     median: string
@@ -138,6 +147,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Situation on ${formatted}`,
         budget: 'Campaign budget',
         budgetRow: 'Our budget',
+        donate: {
+            cta: 'Support the campaign',
+            pending: 'The donation link is published here as soon as the campaign account is open.',
+        },
         gap: 'Still to raise',
         mean: 'average',
         median: 'median',
@@ -167,6 +180,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Tilanne ${formatted}`,
         budget: 'Kampanjabudjetti',
         budgetRow: 'Oma budjettimme',
+        donate: {
+            cta: 'Tue kampanjaa',
+            pending: 'Lahjoituslinkki julkaistaan tähän heti, kun kampanjatili on auki.',
+        },
         gap: 'Vielä kerättävä',
         mean: 'keskiarvo',
         median: 'mediaani',
@@ -196,6 +213,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Situationen ${formatted}`,
         budget: 'Kampanjbudget',
         budgetRow: 'Vår egen budget',
+        donate: {
+            cta: 'Stöd kampanjen',
+            pending: 'Donationslänken publiceras här så snart kampanjkontot är öppet.',
+        },
         gap: 'Kvar att samla in',
         mean: 'medeltal',
         median: 'median',
