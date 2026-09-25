@@ -3,10 +3,10 @@
   - heading "Campaign finance in the open" [level=1]:
     - text: ""
     - emphasis: in the open
-  - paragraph: This page shows how much the campaign has raised, where the money came from and what it has been spent on. The figures and the date they were confirmed are at the top of the page, and they are updated during the campaign.
+  - paragraph: My campaign is funded from my own money and from donations by private individuals. I accept no corporate support and take no loans. Here I set out how much has been raised, where it came from and what it has been spent on.
   - article:
     - text: Situation
-    - heading "Where does the campaign money stand?" [level=2]
+    - heading "What is the state of the campaign finances?" [level=2]
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
@@ -18,9 +18,9 @@
     - text: Why
     - heading "Why publish the figures at all?" [level=2]
     - paragraph: I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from members who are elected and their alternates. I publish the figures during the campaign, whether or not I win a seat.
-    - paragraph: /Money is not a neutral instrument in politics\. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return\. So I name the source of every euro and keep the campaign small\. A comparison with the \d+ campaigns is further down this page\./
+    - paragraph: Money is not a neutral instrument in politics. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return. So I name the source of every euro and keep the campaign small.
     - paragraph:
-      - text: My aim is that a voter can judge me through the money as well. If a figure on this page is wrong, I will correct it at once —
+      - text: "My aim is that a voter can judge me through the money as well. If a figure is wrong, I will correct it at once:"
       - link "get in touch":
         - /url: /en/contact/
       - text: . There is more about the campaign on the
@@ -28,7 +28,7 @@
         - /url: /en/elections/
       - text: .
     - text: Comparison
-    - heading "How much does a campaign cost?" [level=2]
+    - heading "How much does an election campaign cost?" [level=2]
     - figure /The campaign budget against what the \d+ campaigns cost/:
       - text: ""
       - list:
@@ -41,7 +41,7 @@
         - text: "/Source: campaign finance disclosures for the \\d+ election, VTV\\. Retrieved \\d+ September \\d+\\./"
         - link "Open the disclosure data":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
-    - paragraph: "/The \\d+ figures cover all \\d+ people required to file: the members elected and their alternates\\. Campaigns in the Uusimaa district were among the most expensive in the country, with a median of \\d+,\\d+ euros\\. The single most expensive campaign nationally cost \\d+,\\d+ euros\\./"
+    - paragraph: "/The \\d+ figures cover all \\d+ people required to file: the members elected and their alternates\\. The median in the Uusimaa district, \\d+,\\d+ euros, was above the national median\\. The single most expensive campaign nationally cost \\d+,\\d+ euros, according to the same disclosures\\./"
     - text: Sources
     - heading "Where does the money come from?" [level=2]
     - figure "Funding of the campaign budget by source":
@@ -54,8 +54,8 @@
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
-    - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as nothing. The campaign accepts no corporate support and takes no loans."
-    - paragraph: /Donations from private individuals are welcome\. The donation link will be published on this page, and every contribution of \d+,\d+ euros or more is published with the donor’s name\./
+    - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. I accept no corporate support and take no loans."
+    - paragraph: /Donations from private individuals are welcome\. I will publish the donation link in this section, and I publish every contribution of \d+,\d+ euros or more with the donor’s name\./
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "Spent and unspent share of the funds raised":
@@ -63,7 +63,7 @@
       - list:
         - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
         - listitem: /Not yet spent €\d+,\d+ \d+\.\d+%/
-    - paragraph: Costs become more detailed as the campaign goes on. The largest items are online advertising, printed material and campaign events. A breakdown will be published here at the same level of detail as in the statutory disclosure.
+    - paragraph: Costs become more detailed as the campaign goes on. The largest items are online advertising, printed material and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
     - figure /Funding of the \d+ campaigns by source, share of all financing/:
@@ -75,13 +75,13 @@
         - listitem: /Companies \d+\.\d+%/
         - listitem: /The party and party associations \d+\.\d+%/
         - listitem: /Associations and other bodies \d+\.\d+%/
-    - paragraph: "A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for almost as much. The comparison shows where my own campaign sits: self-funded, and without corporate support."
+    - paragraph: /A quarter of the funding came from the candidates’ own money and a fifth from companies\. Associations and other bodies accounted for \d+\.\d+ per cent, more than companies did, while private individuals stopped at \d+\.\d+ per cent\. My own campaign rests on exactly the share that many others cover with corporate money\./
     - text: Q & A
     - heading "Questions about campaign finance" [level=2]
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
-    - paragraph: "The funding sources and the amounts are on the campaign finance page, and every figure carries the date the situation was checked. The categories are the ones used in the disclosure filed with the National Audit Office of Finland: own funds, loans, private individuals, companies, the party and party associations, and other bodies."
+    - paragraph: Lauri Lavanti’s campaign is funded from his own money and from donations by private individuals. It accepts no corporate support and takes no loans. The amount for each source is itemised separately, with the date the situation was checked.
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
-    - paragraph: /The campaign does not accept corporate funding\. Donations from private individuals are accepted, and every contribution of \d+,\d+ euros or more is published with the donor’s name, as the Act on a Candidate’s Election Funding requires\. The campaign takes no loans either\./
+    - paragraph: /The campaign accepts neither corporate funding nor loans\. Donations from private individuals are welcome, and Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the donor’s name, even though the law does not require that of a candidate before the election\./
     - heading "Where is the election funding disclosure published?" [level=3]
     - paragraph: The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.
     - heading "How much does a parliamentary election campaign cost?" [level=3]
