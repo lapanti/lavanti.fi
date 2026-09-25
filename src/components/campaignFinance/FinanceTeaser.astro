@@ -6,7 +6,7 @@
 import type { Lang } from '../../content/nav'
 
 import { campaignFinance, financeLabels } from '../../content/campaignFinance'
-import { formatEuro, gapToBudget, totalRaised } from '../../lib/campaignFinance'
+import { summaryTiles } from '../../lib/campaignFinance'
 import Plate from '../Plate.astro'
 import FinanceStats from './FinanceStats.astro'
 
@@ -19,12 +19,7 @@ interface Props {
 
 const { href, id, lang } = Astro.props
 const labels = financeLabels[lang]
-const items = [
-    { label: labels.budget, value: formatEuro(campaignFinance.budget, lang) },
-    { label: labels.raised, value: formatEuro(totalRaised(campaignFinance), lang) },
-    { label: labels.spent, value: formatEuro(campaignFinance.spent, lang) },
-    { label: labels.gap, value: formatEuro(gapToBudget(campaignFinance), lang) },
-]
+const items = summaryTiles(campaignFinance, lang)
 ---
 
 <style>

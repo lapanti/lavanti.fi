@@ -8,7 +8,7 @@
  * given nothing is exactly what a transparency page exists to show.
  */
 import type { Lang } from '../../content/nav'
-import type { FinanceSegment } from '../../lib/campaignFinance'
+import type { FinanceSegment, Tone } from '../../lib/campaignFinance'
 
 import { formatEuro, formatPercent, percentOf, toneColors } from '../../lib/campaignFinance'
 import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
@@ -23,6 +23,9 @@ interface Props {
 
 const { caption, lang, segments, total } = Astro.props
 const drawn = segments.filter((segment) => segment.value > 0)
+
+/** Not in the account: an undertaking, or the shortfall still to be raised. */
+const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
 ---
 
 <style
@@ -36,6 +39,7 @@ const drawn = segments.filter((segment) => segment.value > 0)
         colorsForestGreen70: colors.forestGreen70,
         colorsTextPrimary: colors.textPrimary,
         colorsTextSecondary: colors.textSecondary,
+        colorsWhite: colors.white,
         figuresFontSize: typographics.text.fontSize,
         figuresFontWeight: fontWeights.bold,
         labelFontFamily: typographics.text.fontFamily,
@@ -75,12 +79,6 @@ const drawn = segments.filter((segment) => segment.value > 0)
         min-width: 3px;
     }
 
-    /* What is still missing is drawn as an outline, not a solid block. */
-    .seg--needed,
-    .swatch--needed {
-        border: 2px dashed var(--colorsForestGreen70);
-    }
-
     .legend {
         display: grid;
         gap: 0.75rem;
@@ -111,6 +109,23 @@ const drawn = segments.filter((segment) => segment.value > 0)
         box-shadow: inset 0 0 0 1px var(--colorsForestGreen70);
         height: var(--swatchSize);
         width: var(--swatchSize);
+    }
+
+    /*
+     * Money that is not in the account yet — pledged, or still to be raised — is
+     * hatched rather than filled, so a solid block always means money that has
+     * actually arrived. Declared after .seg and .swatch: the rules carry the same
+     * specificity, so source order is what decides which background wins.
+     */
+    .seg--pledged,
+    .swatch--pledged {
+        background: repeating-linear-gradient(135deg, var(--tone) 0 5px, var(--colorsWhite) 5px 10px);
+        box-shadow: inset 0 0 0 1px var(--colorsForestGreen70);
+    }
+
+    /* Coarser stripes on the 14 px swatch, where a 5 px gap would read as solid. */
+    .swatch--pledged {
+        background: repeating-linear-gradient(135deg, var(--tone) 0 3px, var(--colorsWhite) 3px 6px);
     }
 
     .name {
@@ -168,7 +183,7 @@ const drawn = segments.filter((segment) => segment.value > 0)
         {
             drawn.map((segment) => (
                 <div
-                    class:list={['seg', { 'seg--needed': segment.tone === 'needed' }]}
+                    class:list={['seg', { 'seg--pledged': PLEDGED_TONES.has(segment.tone) }]}
                     style={`--tone: ${toneColors[segment.tone]}; flex: ${segment.value} 1 0%`}
                 />
             ))
@@ -180,7 +195,7 @@ const drawn = segments.filter((segment) => segment.value > 0)
                 <li class="item">
                     <span
                         aria-hidden="true"
-                        class:list={['swatch', { 'swatch--needed': segment.tone === 'needed' }]}
+                        class:list={['swatch', { 'swatch--pledged': PLEDGED_TONES.has(segment.tone) }]}
                         style={`--tone: ${toneColors[segment.tone]}`}
                     />
                     <span class="name">{segment.label}</span>

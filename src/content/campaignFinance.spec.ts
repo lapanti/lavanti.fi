@@ -14,7 +14,12 @@ describe('campaign finance data', () => {
     })
 
     it('should state every figure as a non-negative whole euro amount', () => {
-        const figures = [campaignFinance.budget, campaignFinance.spent, ...Object.values(campaignFinance.raised)]
+        const figures = [
+            campaignFinance.budget,
+            campaignFinance.ownCommitment,
+            ...Object.values(campaignFinance.raised),
+            ...(campaignFinance.spent === undefined ? [] : [campaignFinance.spent]),
+        ]
 
         for (const figure of figures) {
             expect(Number.isInteger(figure)).toBe(true)
@@ -36,13 +41,23 @@ describe('campaign finance data', () => {
     it('should not report more spent than raised', () => {
         const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
 
-        expect(campaignFinance.spent).toBeLessThanOrEqual(raised)
+        expect(campaignFinance.spent ?? 0).toBeLessThanOrEqual(raised)
     })
 
     it('should not report more raised than the budget', () => {
         const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
 
         expect(raised).toBeLessThanOrEqual(campaignFinance.budget)
+    })
+
+    /*
+     * The commitment is a backstop that shrinks as donations arrive, so together with
+     * what has been received it should never promise more than the budget.
+     */
+    it('should not promise more than the budget once the commitment is counted', () => {
+        const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
+
+        expect(raised + campaignFinance.ownCommitment).toBeLessThanOrEqual(campaignFinance.budget)
     })
 })
 
@@ -145,6 +160,8 @@ describe('finance labels', () => {
             expect(labels.sourceLinkText).toBeTruthy()
             expect(labels.donate.cta).toBeTruthy()
             expect(labels.donate.pending).toBeTruthy()
+            expect(labels.committed).toBeTruthy()
+            expect(labels.spentPending).toBeTruthy()
             expect(labels.teaser.cta).toBeTruthy()
             expect(labels.teaser.eyebrow).toBeTruthy()
             expect(labels.teaser.heading).toBeTruthy()
