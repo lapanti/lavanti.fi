@@ -135,6 +135,10 @@ describe('buildLlmsTxt — pillar pages section', () => {
         expect(content).toContain('[Uutiskirjeen arkisto](https://lavanti.fi/fi/uutiskirje/arkisto/)')
     })
 
+    it('links the campaign finance page', () => {
+        expect(content).toContain('[Vaalirahoitus](https://lavanti.fi/fi/eduskuntavaalit/vaalirahoitus/)')
+    })
+
     it('lists no URL that would round-trip a redirect (all trailing-slash canonical)', () => {
         const urls = [...content.matchAll(/\[[^\]]+\]\((https:\/\/lavanti\.fi[^)]*)\)/g)].map((m) => m[1])
         const redirecting = urls.filter((u) => !u.endsWith('/') && !u.endsWith('.xml') && !u.endsWith('.txt'))
