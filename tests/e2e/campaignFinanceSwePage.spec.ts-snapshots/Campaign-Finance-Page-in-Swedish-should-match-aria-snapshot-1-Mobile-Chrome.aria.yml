@@ -55,7 +55,8 @@
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
     - paragraph: "Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte."
-    - paragraph: /Donationer är välkomna från privatpersoner, företag och föreningar\. Jag publicerar donationslänken i det här avsnittet och offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn\./
+    - paragraph: /Donationer är välkomna från privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsanmälan till revisionsverket\. Lagen kräver ingetdera av en kandidat före valet\./
+    - paragraph: Donationslänken publiceras här så snart kampanjkontot är öppet.
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
     - figure "Använd och oanvänd andel av de insamlade medlen":
@@ -63,7 +64,7 @@
       - list:
         - listitem: /Använt hittills 5 \d+ € \d+,\d+ %/
         - listitem: /Oanvänt 5 \d+ € \d+,\d+ %/
-    - paragraph: Kostnaderna preciseras under kampanjen. De största posterna är valreklam på nätet, tryckt material och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i valfinansieringsanmälan.
+    - paragraph: Kostnaderna preciseras under kampanjen. De största posterna är vägskyltar, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i valfinansieringsanmälan.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]
     - figure /Kampanjernas finansiering per källa \d+, andel av all finansiering/:
@@ -81,7 +82,7 @@
     - heading "Vem finansierar Lauri Lavantis kampanj?" [level=3]
     - paragraph: /Kampanjen finansieras av Lauri Lavanti själv och av de privatpersoner, företag och föreningar som stöder den\. Lån tar kampanjen inte\. Beloppet för varje källa redovisas separat med datumet då situationen kontrollerades, och varje stöd på minst 1 \d+ euro offentliggörs med stödjarens namn\./
     - heading "Tar Lauri Lavanti emot företagsstöd?" [level=3]
-    - paragraph: /Ja\. Kampanjen tar emot stöd av företag, privatpersoner och föreningar\. Lauri Lavanti offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn också när lagen inte kräver det av en kandidat före valet\. Det avgörande är inte varifrån pengarna kommer, utan att väljaren ser källan och kan bedöma den själv\. Lån tar kampanjen inte\./
+    - paragraph: /Ja\. Kampanjen tar emot stöd av företag, privatpersoner och föreningar\. Lauri Lavanti offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsanmälan till Statens revisionsverk\. Lagen kräver ingetdera av en kandidat före valet\. Det avgörande är inte varifrån pengarna kommer, utan att väljaren ser källan och kan bedöma den själv\. Lån tar kampanjen inte\./
     - heading "Var offentliggörs valfinansieringsanmälan?" [level=3]
     - paragraph: Statens revisionsverk upprätthåller registret över valfinansieringsanmälningar på vaalirahoitusvalvonta.fi. Valda riksdagsledamöter och ersättare är skyldiga att lämna in anmälan inom två månader efter att valresultatet fastställts. En kandidat kan också lämna in en frivillig förhandsanmälan före valet.
     - heading "Hur mycket kostar en riksdagsvalskampanj?" [level=3]
