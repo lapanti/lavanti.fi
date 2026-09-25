@@ -1,0 +1,199 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<FinanceStack /> > should render 1`] = `
+<figure
+  class="stack"
+  data-astro-cid-hvjct2tw=""
+  style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+>
+   
+  <figcaption
+    data-astro-cid-hvjct2tw=""
+    style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+  >
+    Mistä rahat tulevat?
+  </figcaption>
+   
+  <div
+    aria-hidden="true"
+    class="bar"
+    data-astro-cid-hvjct2tw=""
+    style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+  >
+     
+    <div
+      class="seg"
+      data-astro-cid-hvjct2tw=""
+      style="--tone: #006845; flex: 10000 1 0%; --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    />
+    <div
+      class="seg"
+      data-astro-cid-hvjct2tw=""
+      style="--tone: rgb(214, 210, 196); flex: 20000 1 0%; --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    />
+     
+  </div>
+   
+  <ul
+    class="legend"
+    data-astro-cid-hvjct2tw=""
+    style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+  >
+     
+    <li
+      class="item"
+      data-astro-cid-hvjct2tw=""
+      style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    >
+       
+      <span
+        aria-hidden="true"
+        class="swatch"
+        data-astro-cid-hvjct2tw=""
+        style="--tone: #006845; --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      />
+       
+      <span
+        class="name"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+        Omat varat
+      </span>
+       
+      <span
+        class="figures"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+         10 000 € 
+        <span
+          class="share"
+          data-astro-cid-hvjct2tw=""
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+        >
+          33,3 %
+        </span>
+         
+      </span>
+       
+    </li>
+    <li
+      class="item"
+      data-astro-cid-hvjct2tw=""
+      style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    >
+       
+      <span
+        aria-hidden="true"
+        class="swatch"
+        data-astro-cid-hvjct2tw=""
+        style="--tone: #E4D77E; --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      />
+       
+      <span
+        class="name"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+        Lainat
+      </span>
+       
+      <span
+        class="figures"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+         0 € 
+        <span
+          class="share"
+          data-astro-cid-hvjct2tw=""
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+        >
+          0,0 %
+        </span>
+         
+      </span>
+       
+    </li>
+    <li
+      class="item"
+      data-astro-cid-hvjct2tw=""
+      style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    >
+       
+      <span
+        aria-hidden="true"
+        class="swatch"
+        data-astro-cid-hvjct2tw=""
+        style="--tone: #009639; --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      />
+       
+      <span
+        class="name"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+        Yksityishenkilöt
+      </span>
+       
+      <span
+        class="figures"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+         0 € 
+        <span
+          class="share"
+          data-astro-cid-hvjct2tw=""
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+        >
+          0,0 %
+        </span>
+         
+      </span>
+       
+    </li>
+    <li
+      class="item"
+      data-astro-cid-hvjct2tw=""
+      style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+    >
+       
+      <span
+        aria-hidden="true"
+        class="swatch"
+        data-astro-cid-hvjct2tw=""
+        style="--tone: rgb(214, 210, 196); --colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      />
+       
+      <span
+        class="name"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+        Vielä kerättävä
+      </span>
+       
+      <span
+        class="figures"
+        data-astro-cid-hvjct2tw=""
+        style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+      >
+         20 000 € 
+        <span
+          class="share"
+          data-astro-cid-hvjct2tw=""
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen10: rgba(22, 62, 53, 0.1);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--stackCaptionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackCaptionFontSize: 1.1875rem;--stackCaptionFontWeight: 600;--stackLabelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--stackLabelFontSize: 1.0625rem;--stackShareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;"
+        >
+          66,7 %
+        </span>
+         
+      </span>
+       
+    </li>
+     
+  </ul>
+   
+</figure>
+`;
