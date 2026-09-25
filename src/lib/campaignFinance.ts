@@ -6,7 +6,7 @@
  * formatting keeps the goldens stable wherever the site is built.
  */
 
-import type { CampaignFinance, DisplaySource, FundingSource } from '../content/campaignFinance'
+import type { Benchmark, CampaignFinance, DisplaySource, FundingSource } from '../content/campaignFinance'
 import type { Lang } from '../content/nav'
 
 import { DISPLAY_SOURCE_ORDER, financeLabels } from '../content/campaignFinance'
@@ -31,6 +31,13 @@ export interface FinanceSegment {
     id: string
     label: string
     tone: Tone
+    value: number
+}
+
+export interface BarRow {
+    /** Our own figure among the comparisons. */
+    emphasis?: boolean
+    label: string
     value: number
 }
 
@@ -139,6 +146,34 @@ export const budgetSegments = (finance: CampaignFinance, lang: Lang): { segments
         segments: [...segments, { id: 'needed', label: labels.needed, tone: 'needed', value: gapToBudget(finance) }],
         total: Math.max(finance.budget, totalRaised(finance)),
     }
+}
+
+/**
+ * Our budget against what the 2023 campaigns cost: our own figure first, then the
+ * median and the mean of each comparison set. Built here rather than in each of the
+ * three pages, so the labels and the order cannot drift between locales.
+ */
+export const benchmarkRows = (finance: CampaignFinance, benchmark: Benchmark, lang: Lang): BarRow[] => {
+    const labels = financeLabels[lang]
+
+    return [
+        { emphasis: true, label: labels.budgetRow, value: finance.budget },
+        ...benchmark.sets.flatMap((set) => [
+            { label: `${labels.sets[set.id]}, ${labels.median}`, value: set.median },
+            { label: `${labels.sets[set.id]}, ${labels.mean}`, value: set.mean },
+        ]),
+    ]
+}
+
+/**
+ * How the 2023 campaigns were funded, as the same six display rows the budget stack
+ * uses — so a reader can compare our sources with theirs row by row.
+ */
+export const benchmarkShareRows = (benchmark: Benchmark, lang: Lang): BarRow[] => {
+    const merged = mergeParty(benchmark.shares)
+    const labels = financeLabels[lang]
+
+    return DISPLAY_SOURCE_ORDER.map((source) => ({ label: labels.sources[source], value: merged[source] }))
 }
 
 /**

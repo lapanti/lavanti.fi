@@ -1,10 +1,12 @@
-import type { CampaignFinance } from '../content/campaignFinance'
+import type { Benchmark, CampaignFinance } from '../content/campaignFinance'
 
 import { describe, expect, it } from 'vitest'
 
 import {
     barsMax,
     barWidth,
+    benchmarkRows,
+    benchmarkShareRows,
     budgetSegments,
     formatDate,
     formatEuro,
@@ -26,6 +28,16 @@ const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => (
     spent: 5000,
     ...overrides,
 })
+
+const benchmark: Benchmark = {
+    retrievedDate: '2026-09-25',
+    sets: [
+        { id: 'all', mean: 37540, median: 32634, n: 273 },
+        { id: 'uusimaa', mean: 42517, median: 36355, n: 46 },
+    ],
+    shares: { companies: 20.1, loans: 1.1, other: 22.9, own: 24.7, party: 3, partyAssociations: 8.3, private: 19.9 },
+    sourceUrl: 'https://www.vaalirahoitusvalvonta.fi/example.csv',
+}
 
 describe('totalRaised', () => {
     it('should sum every funding category', () => {
@@ -252,6 +264,50 @@ describe('budgetSegments', () => {
         for (const segment of budgetSegments(finance(), 'fi').segments) {
             expect(toneColors[segment.tone]).toMatch(/^(#|rgb)/)
         }
+    })
+})
+
+describe('benchmarkRows', () => {
+    it('should lead with our own budget and emphasise it', () => {
+        const rows = benchmarkRows(finance(), benchmark, 'fi')
+
+        expect(rows[0]).toEqual({ emphasis: true, label: 'Oma budjettimme', value: 30000 })
+        expect(rows.filter((row) => row.emphasis)).toHaveLength(1)
+    })
+
+    it('should follow with the median and mean of every set', () => {
+        const rows = benchmarkRows(finance(), benchmark, 'fi')
+
+        expect(rows.slice(1)).toEqual([
+            { label: 'Koko Suomi, mediaani', value: 32634 },
+            { label: 'Koko Suomi, keskiarvo', value: 37540 },
+            { label: 'Uudenmaan vaalipiiri, mediaani', value: 36355 },
+            { label: 'Uudenmaan vaalipiiri, keskiarvo', value: 42517 },
+        ])
+    })
+
+    it('should label the rows in the requested language', () => {
+        expect(benchmarkRows(finance(), benchmark, 'en')[1].label).toBe('All of Finland, median')
+        expect(benchmarkRows(finance(), benchmark, 'sv')[3].label).toBe('Nylands valkrets, median')
+    })
+})
+
+describe('benchmarkShareRows', () => {
+    it('should give the six display sources in statutory order', () => {
+        expect(benchmarkShareRows(benchmark, 'fi')).toEqual([
+            { label: 'Omat varat', value: 24.7 },
+            { label: 'Lainat', value: 1.1 },
+            { label: 'Yksityishenkilöt', value: 19.9 },
+            { label: 'Yritykset', value: 20.1 },
+            { label: 'Puolue ja puolueyhdistykset', value: 11.3 },
+            { label: 'Yhdistykset ja muut tahot', value: 22.9 },
+        ])
+    })
+
+    it('should still sum to the whole after merging the party rows', () => {
+        const total = benchmarkShareRows(benchmark, 'fi').reduce((sum, row) => sum + row.value, 0)
+
+        expect(total).toBeCloseTo(100, 1)
     })
 })
 
