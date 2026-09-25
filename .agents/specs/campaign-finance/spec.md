@@ -185,7 +185,8 @@ export interface CampaignFinance {
     spent: number                             // paid out so far, whole euros
 }
 
-export interface BenchmarkSet {
+/** Internal: `Benchmark` carries the shape consumers need, so this stays unexported. */
+interface BenchmarkSet {
     id: 'all' | 'uusimaa'
     mean: number
     median: number
@@ -263,7 +264,7 @@ Component props:
 | `FinanceStats` | `items: { label, value, note? }[]` |
 | `FinanceBars` | `caption`, `rows: { emphasis?, label, value }[]`, `unit: 'eur' \| 'percent'`, `lang`; computes `max` via `barsMax` |
 | `FinanceStack` | `caption`, `segments: { id, label, tone, value }[]`, `total`, `lang`; every segment in the legend, only `value > 0` in the bar |
-| `FinanceTeaser` | `href`, `lang` |
+| `FinanceTeaser` | `href`, `id` (localized section anchor: rahoitus / finansiering / finance), `lang` |
 
 ---
 
@@ -283,7 +284,8 @@ Component props:
 - **Do not** put figures in `description`, `intro` or FAQ text that is not generated from the data module — they go stale on the next update.
 - **Do not** make the bars the only carrier of a number — bars are `aria-hidden` decoration; the legend/value text is the content.
 - **Do not** drop zero-value categories from the legend — the zero is the statement.
-- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts`.
+- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero. Figures from the 2023 benchmark are final and may be quoted in prose.
+- **Do not** give a segment a tone that matches the plate it sits on — the `oat` ground hides an `oat` swatch.
 - **Do not** use `Dataset` JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types. Breadcrumbs are out of scope by issue, not blocked by the check.
 - **Do not** use `@media` widths outside the `breakpoints` map — `src/lib/mediaQueries.spec.ts` fails.
 - **Do not** write unhyphenated long compounds in `heading=` props — `scripts/check-overflow.mjs` measures them; use soft hyphens.
@@ -302,4 +304,5 @@ Component props:
 | Date | Change |
 |------|--------|
 | 2026-09-25 | Initial draft |
+| 2026-09-25 | Implementation drift: BenchmarkSet unexported, FinanceTeaser takes a section id, DISPLAY_SOURCE_ORDER replaces key order, loans tone moved off oat |
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
