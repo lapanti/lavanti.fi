@@ -8,11 +8,13 @@ export class ElectionEnPage extends AnyPage {
     readonly electionTitle: Locator
     readonly briefPlate: Locator
     readonly eventCalendar: Locator
+    readonly financeTeaser: Locator
 
     constructor(page: Page) {
         super(page)
         this.electionTitle = page.getByRole('heading', { level: 1 })
         this.briefPlate = page.locator('#inbrief')
+        this.financeTeaser = page.locator('#finance')
         this.eventCalendar = page.locator('#events')
     }
 
@@ -25,6 +27,7 @@ export class ElectionEnPage extends AnyPage {
 
     async checkContent() {
         await expect(this.briefPlate).toBeVisible()
+        await expect(this.financeTeaser).toBeVisible()
         await expect(this.eventCalendar).toBeVisible()
     }
 }
