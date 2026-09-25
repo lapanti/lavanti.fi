@@ -3,6 +3,8 @@ import type { Lang } from '../content/nav'
 
 import {
     footerAriaLabel,
+    footerCampaignFinanceHref,
+    footerCampaignFinanceLabel,
     footerColumnLabels,
     footerLanguageLinks,
     footerLinks,
@@ -193,6 +195,7 @@ const licenseText: Record<Lang, string> = {
                             /* Footer-only by design: the archive is for readers who already care; the nav stays the signup funnel. */
                         }
                         <li><a href={archivePath(lang)}>{footerNewsletterArchiveLabel[lang]}</a></li>
+                        <li><a href={footerCampaignFinanceHref[lang]}>{footerCampaignFinanceLabel[lang]}</a></li>
                     </ul>
                 </div>
                 <div>
