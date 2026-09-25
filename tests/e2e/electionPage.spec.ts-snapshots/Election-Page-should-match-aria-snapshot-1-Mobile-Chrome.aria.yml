@@ -22,7 +22,7 @@
       - text: .
     - paragraph: Olen kirkkonummelainen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
     - paragraph:
-      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
+      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta ja etenee eduskunnan käsittelyyn keväällä \d+\. Lisää taustastani löydät/
       - link "Laurista-sivulta":
         - /url: /fi/laurista/
       - text: ja
@@ -104,6 +104,19 @@
       - link "kirjoituksia":
         - /url: /fi/blog/
       - text: ja tilata uutiskirje alta.
+    - text: Avoimuus
+    - heading "Kuka rahoittaa tämän kampanjan?" [level=2]
+    - term: Kampanjabudjetti
+    - definition: /\d+ \d+ €/
+    - term: Kerätty tähän asti
+    - definition: /\d+ \d+ €/
+    - term: Käytetty tähän asti
+    - definition: /5 \d+ €/
+    - term: Vielä kerättävä
+    - definition: /\d+ \d+ €/
+    - paragraph:
+      - link "Katso kampanjan rahoitus":
+        - /url: /fi/eduskuntavaalit/vaalirahoitus/
     - text: Tapahtumat
     - heading "Kampanjan tapahtumakalenteri" [level=2]
     - list:
@@ -126,7 +139,7 @@
     - heading "Voiko Lauri Lavantia äänestää ennakkoon?" [level=3]
     - paragraph: /Kyllä\. Ennakkoäänestys on kotimaassa 7\.–\d+\. huhtikuuta \d+, ja ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa\. Vaalipäivänä \d+\.\d+\.\d+ äänestetään omassa äänestyspaikassa, joka kerrotaan äänioikeusilmoituksessa\./
     - heading "Miten Lauri Lavannin kampanjaa voi tukea?" [level=3]
-    - paragraph: Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle — lahjoituslinkki julkaistaan myöhemmin tällä sivulla. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.
+    - paragraph: Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle — lahjoituslinkki julkaistaan vaalirahoitussivulla. Sama sivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.
     - heading "Tilaa uutiskirje" [level=2]
     - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
     - text: Sähköposti
