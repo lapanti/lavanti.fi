@@ -43,10 +43,8 @@ import {
     benchmarkShareRows,
     budgetSegments,
     formatDate,
-    formatEuro,
-    gapToBudget,
     spendingSegments,
-    totalRaised,
+    summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.sv
@@ -54,18 +52,7 @@ export const budget = budgetSegments(campaignFinance, 'sv')
 export const spending = spendingSegments(campaignFinance, 'sv')
 
 <Plate eyebrow="Situationen" ground="offWhite" heading="Hur ser kampanjens ekonomi ut just nu?" id="ikorthet">
-    <FinanceStats
-        items={[
-            { label: labels.budget, value: formatEuro(campaignFinance.budget, 'sv') },
-            { label: labels.raised, value: formatEuro(totalRaised(campaignFinance), 'sv') },
-            { label: labels.spent, value: formatEuro(campaignFinance.spent, 'sv') },
-            {
-                label: labels.gap,
-                note: labels.asOf(formatDate(campaignFinance.asOf, 'sv')),
-                value: formatEuro(gapToBudget(campaignFinance), 'sv'),
-            },
-        ]}
-    />
+    <FinanceStats items={summaryTiles(campaignFinance, 'sv')} />
 </Plate>
 
 <Plate eyebrow="Varför" ground="sand" heading="Varför offentliggör jag siffrorna?">
@@ -100,8 +87,9 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 </Plate>
 
 <Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?">
-    <FinanceStack caption="Så har de insamlade pengarna använts, andelar av det insamlade" lang="sv" segments={spending.segments} total={spending.total} />
+    {spending && <FinanceStack caption="Så har de insamlade pengarna använts, andelar av det insamlade" lang="sv" segments={spending.segments} total={spending.total} />}
     <Prose>
+        {!spending && <p>{labels.spentPending}</p>}
         <p>Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till valreklam vid vägarna, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.</p>
     </Prose>
 </Plate>
