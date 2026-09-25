@@ -22,7 +22,7 @@ faq:
     - q: 'Kuka rahoittaa Lauri Lavannin kampanjaa?'
       a: 'Kampanjaa rahoittavat Lauri Lavanti itse sekä sitä tukevat yksityishenkilöt, yritykset ja yhdistykset. Lainaa kampanja ei ota. Jokaisen lähteen summa on eritelty ja merkitty päivämäärällä, jolloin tilanne on tarkistettu, ja jokainen vähintään 1 500 euron tuki julkistetaan tukijan nimellä.'
     - q: 'Ottaako Lauri Lavanti vastaan yritysrahoitusta?'
-      a: 'Kyllä. Kampanja ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä. Lauri Lavanti julkistaa jokaisen vähintään 1 500 euron tuen tukijan nimellä myös silloin, kun laki ei sitä ehdokkaalta ennen vaaleja edellytä. Ratkaisevaa ei ole se, mistä raha tulee, vaan se, että äänestäjä näkee lähteen ja voi arvioida sen itse. Lainaa kampanja ei ota.'
+      a: 'Kyllä. Kampanja ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä. Lauri Lavanti julkistaa jokaisen vähintään 1 500 euron tuen tukijan nimellä jo kampanjan aikana ja tekee kampanjasta vapaaehtoisen ennakkoilmoituksen Valtiontalouden tarkastusvirastolle. Laki ei vaadi ehdokkaalta kumpaakaan ennen vaaleja. Ratkaisevaa ei ole se, mistä raha tulee, vaan se, että äänestäjä näkee lähteen ja voi arvioida sen itse. Lainaa kampanja ei ota.'
     - q: 'Missä vaalirahoitusilmoitus julkaistaan?'
       a: 'Valtiontalouden tarkastusvirasto ylläpitää vaalirahoitusilmoitusrekisteriä osoitteessa vaalirahoitusvalvonta.fi. Valituilla kansanedustajilla ja varaedustajilla on lakisääteinen velvollisuus tehdä ilmoitus kahden kuukauden kuluessa vaalituloksen vahvistamisesta. Ehdokas voi tehdä myös vapaaehtoisen ennakkoilmoituksen ennen vaaleja.'
     - q: 'Paljonko eduskuntavaalikampanja maksaa?'
@@ -92,14 +92,15 @@ export const spending = spendingSegments(campaignFinance, 'fi')
     <FinanceStack caption="Kampanjabudjetin rahoitus lähteittäin" lang="fi" segments={budget.segments} total={budget.total} />
     <Prose>
         <p>Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. Yksi luokka pysyy nollassa koko kampanjan ajan, sillä lainaa en ota.</p>
-        <p>Lahjoitukset ovat tervetulleita yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Julkaisen lahjoituslinkin tässä osiossa ja julkistan jokaisen vähintään 1 500 euron tuen tukijan nimellä.</p>
+        <p>Lahjoitukset ovat tervetulleita yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Julkistan jokaisen vähintään 1 500 euron tuen tukijan nimellä jo kampanjan aikana ja teen kampanjasta vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle. Laki ei vaadi ehdokkaalta kumpaakaan ennen vaaleja.</p>
+        <p>{campaignFinance.donationUrl ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Kulut" ground="offWhite" heading="Mihin rahaa on käytetty?">
     <FinanceStack caption="Kerätyistä varoista käytetty ja käyttämätön osuus" lang="fi" segments={spending.segments} total={spending.total} />
     <Prose>
-        <p>Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat vaalimainonta verkossa, painetut materiaalit ja vaalitilaisuudet. Julkaisen kuluerittelyn samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
+        <p>Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat tienvarsimainokset, painetut materiaalit, digimainonta ja vaalitilaisuudet. Julkaisen kuluerittelyn samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
     </Prose>
 </Plate>
 

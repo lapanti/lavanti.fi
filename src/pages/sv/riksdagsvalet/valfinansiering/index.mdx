@@ -22,7 +22,7 @@ faq:
     - q: 'Vem finansierar Lauri Lavantis kampanj?'
       a: 'Kampanjen finansieras av Lauri Lavanti själv och av de privatpersoner, företag och föreningar som stöder den. Lån tar kampanjen inte. Beloppet för varje källa redovisas separat med datumet då situationen kontrollerades, och varje stöd på minst 1 500 euro offentliggörs med stödjarens namn.'
     - q: 'Tar Lauri Lavanti emot företagsstöd?'
-      a: 'Ja. Kampanjen tar emot stöd av företag, privatpersoner och föreningar. Lauri Lavanti offentliggör varje stöd på minst 1 500 euro med stödjarens namn också när lagen inte kräver det av en kandidat före valet. Det avgörande är inte varifrån pengarna kommer, utan att väljaren ser källan och kan bedöma den själv. Lån tar kampanjen inte.'
+      a: 'Ja. Kampanjen tar emot stöd av företag, privatpersoner och föreningar. Lauri Lavanti offentliggör varje stöd på minst 1 500 euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsanmälan till Statens revisionsverk. Lagen kräver ingetdera av en kandidat före valet. Det avgörande är inte varifrån pengarna kommer, utan att väljaren ser källan och kan bedöma den själv. Lån tar kampanjen inte.'
     - q: 'Var offentliggörs valfinansieringsanmälan?'
       a: 'Statens revisionsverk upprätthåller registret över valfinansieringsanmälningar på vaalirahoitusvalvonta.fi. Valda riksdagsledamöter och ersättare är skyldiga att lämna in anmälan inom två månader efter att valresultatet fastställts. En kandidat kan också lämna in en frivillig förhandsanmälan före valet.'
     - q: 'Hur mycket kostar en riksdagsvalskampanj?'
@@ -92,14 +92,15 @@ export const spending = spendingSegments(campaignFinance, 'sv')
     <FinanceStack caption="Kampanjbudgetens finansiering per källa" lang="sv" segments={budget.segments} total={budget.total} />
     <Prose>
         <p>Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte.</p>
-        <p>Donationer är välkomna från privatpersoner, företag och föreningar. Jag publicerar donationslänken i det här avsnittet och offentliggör varje stöd på minst 1 500 euro med stödjarens namn.</p>
+        <p>Donationer är välkomna från privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 1 500 euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsanmälan till revisionsverket. Lagen kräver ingetdera av en kandidat före valet.</p>
+        <p>{campaignFinance.donationUrl ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?">
     <FinanceStack caption="Använd och oanvänd andel av de insamlade medlen" lang="sv" segments={spending.segments} total={spending.total} />
     <Prose>
-        <p>Kostnaderna preciseras under kampanjen. De största posterna är valreklam på nätet, tryckt material och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i valfinansieringsanmälan.</p>
+        <p>Kostnaderna preciseras under kampanjen. De största posterna är vägskyltar, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i valfinansieringsanmälan.</p>
     </Prose>
 </Plate>
 

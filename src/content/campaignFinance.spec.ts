@@ -46,6 +46,19 @@ describe('campaign finance data', () => {
     })
 })
 
+describe('donation channel', () => {
+    /*
+     * The page is not meant to ship without a working donation link. While the field
+     * is unset the pages fall back to the "coming soon" label rather than rendering a
+     * dead button, so an accidental publish degrades instead of breaking.
+     */
+    it('should be an absolute https URL once it is set', () => {
+        const url = campaignFinance.donationUrl ?? 'https://placeholder.invalid'
+
+        expect(url).toMatch(/^https:\/\/\S+$/)
+    })
+})
+
 describe('DISPLAY_SOURCE_ORDER', () => {
     it('should list the six display sources in statutory order', () => {
         expect(DISPLAY_SOURCE_ORDER).toEqual(['own', 'loans', 'private', 'companies', 'party', 'other'])
@@ -116,6 +129,8 @@ describe('finance labels', () => {
             expect(labels.sets.all).toBeTruthy()
             expect(labels.sets.uusimaa).toBeTruthy()
             expect(labels.sourceLinkText).toBeTruthy()
+            expect(labels.donate.cta).toBeTruthy()
+            expect(labels.donate.pending).toBeTruthy()
             expect(labels.teaser.cta).toBeTruthy()
             expect(labels.teaser.eyebrow).toBeTruthy()
             expect(labels.teaser.heading).toBeTruthy()
