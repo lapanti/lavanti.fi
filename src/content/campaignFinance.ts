@@ -121,6 +121,8 @@ export interface FinanceLabels {
     sets: Record<BenchmarkSet['id'], string>
     /** Receives `formatDate(retrievedDate, lang)` output. */
     source: (retrieved: string) => string
+    /** Link text for the CSV itself, so the anchor is short and readable. */
+    sourceLinkText: string
     sources: Record<DisplaySource, string>
     spent: string
     teaser: { cta: string; eyebrow: string; heading: string }
@@ -144,6 +146,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         sets: { all: 'All of Finland', uusimaa: 'Uusimaa district' },
         source: (retrieved) =>
             `Source: campaign finance disclosures for the 2023 election, VTV. Retrieved ${retrieved}.`,
+        sourceLinkText: 'Open the disclosure data',
         sources: {
             companies: 'Companies',
             loans: 'Loans',
@@ -172,6 +175,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         sets: { all: 'Koko Suomi', uusimaa: 'Uudenmaan vaalipiiri' },
         source: (retrieved) =>
             `Lähde: vuoden 2023 eduskuntavaalien vaalirahoitusilmoitukset, VTV. Haettu ${retrieved}.`,
+        sourceLinkText: 'Avaa ilmoitusaineisto',
         sources: {
             companies: 'Yritykset',
             loans: 'Lainat',
@@ -199,6 +203,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         raised: 'Insamlat hittills',
         sets: { all: 'Hela Finland', uusimaa: 'Nylands valkrets' },
         source: (retrieved) => `Källa: valfinansieringsanmälningarna för riksdagsvalet 2023, VTV. Hämtat ${retrieved}.`,
+        sourceLinkText: 'Öppna anmälningsmaterialet',
         sources: {
             companies: 'Företag',
             loans: 'Lån',
