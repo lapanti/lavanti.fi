@@ -38,7 +38,7 @@ export interface CampaignFinance {
     spent: number
 }
 
-export interface BenchmarkSet {
+interface BenchmarkSet {
     id: 'all' | 'uusimaa'
     mean: number
     median: number
