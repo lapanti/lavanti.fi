@@ -3,7 +3,7 @@
   - heading "Vaalirahoitus avoimesti" [level=1]:
     - text: ""
     - emphasis: avoimesti
-  - paragraph: Kampanjani rahoitus tulee omista varoistani ja yksityishenkilöiden lahjoituksista. En ota vastaan yritystukea enkä lainaa. Kerron tässä, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.
+  - paragraph: "Otan kampanjaani vastaan tukea yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Lainaa en ota. Kerron tällä sivulla jokaisen euron lähteen: paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty."
   - article:
     - text: Tilanne
     - heading "Missä kampanjan rahat ovat nyt?" [level=2]
@@ -54,8 +54,8 @@
         - listitem: /Puolue ja puolueyhdistykset 0 € \d+,\d+ %/
         - listitem: /Yhdistykset ja muut tahot 0 € \d+,\d+ %/
         - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
-    - paragraph: "Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. En ota vastaan yritystukea enkä lainaa."
-    - paragraph: /Yksityishenkilöiden lahjoitukset ovat tervetulleita\. Julkaisen lahjoituslinkin tässä osiossa ja julkistan jokaisen vähintään 1 \d+ euron tuen lahjoittajan nimellä\./
+    - paragraph: "Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. Yksi luokka pysyy nollassa koko kampanjan ajan, sillä lainaa en ota."
+    - paragraph: /Lahjoitukset ovat tervetulleita yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä\. Julkaisen lahjoituslinkin tässä osiossa ja julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä\./
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
     - figure "Kerätyistä varoista käytetty ja käyttämätön osuus":
@@ -75,13 +75,13 @@
         - listitem: /Yritykset \d+,\d+ %/
         - listitem: /Puolue ja puolueyhdistykset \d+,\d+ %/
         - listitem: /Yhdistykset ja muut tahot \d+,\d+ %/
-    - paragraph: /Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä\. Yhdistykset ja muut tahot rahoittivat \d+,\d+ prosenttia, enemmän kuin yritykset, ja yksityishenkilöiden osuus jäi \d+,\d+ prosenttiin\. Oma kampanjani rakentuu juuri siitä osuudesta, jonka moni muu kattaa yritysrahalla\./
+    - paragraph: /Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä\. Yhdistykset ja muut tahot rahoittivat \d+,\d+ prosenttia, enemmän kuin yritykset, ja yksityishenkilöiden osuus jäi \d+,\d+ prosenttiin\. Samat lähteet ovat auki myös minun kampanjalleni\. Ero on siinä, että minun lukuni näkyvät jo kampanjan aikana eivätkä vasta vaalien jälkeen\./
     - text: Q & A
     - heading "Usein kysyttyä vaalirahoituksesta" [level=2]
     - heading "Kuka rahoittaa Lauri Lavannin kampanjaa?" [level=3]
-    - paragraph: Lauri Lavannin kampanjan rahoitus tulee hänen omista varoistaan ja yksityishenkilöiden lahjoituksista. Kampanja ei ota vastaan yritystukea eikä lainaa. Jokaisen lähteen summa on eritelty ja merkitty päivämäärällä, jolloin tilanne on tarkistettu.
+    - paragraph: /Kampanjaa rahoittavat Lauri Lavanti itse sekä sitä tukevat yksityishenkilöt, yritykset ja yhdistykset\. Lainaa kampanja ei ota\. Jokaisen lähteen summa on eritelty ja merkitty päivämäärällä, jolloin tilanne on tarkistettu, ja jokainen vähintään 1 \d+ euron tuki julkistetaan tukijan nimellä\./
     - heading "Ottaako Lauri Lavanti vastaan yritysrahoitusta?" [level=3]
-    - paragraph: /Kampanja ei ota vastaan yritystukea eikä lainaa\. Yksityishenkilöiden lahjoitukset ovat tervetulleita, ja Lauri Lavanti julkistaa jokaisen vähintään 1 \d+ euron tuen lahjoittajan nimellä, vaikka laki ei sitä ehdokkaalta ennen vaaleja edellytä\./
+    - paragraph: /Kyllä\. Kampanja ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä\. Lauri Lavanti julkistaa jokaisen vähintään 1 \d+ euron tuen tukijan nimellä myös silloin, kun laki ei sitä ehdokkaalta ennen vaaleja edellytä\. Ratkaisevaa ei ole se, mistä raha tulee, vaan se, että äänestäjä näkee lähteen ja voi arvioida sen itse\. Lainaa kampanja ei ota\./
     - heading "Missä vaalirahoitusilmoitus julkaistaan?" [level=3]
     - paragraph: Valtiontalouden tarkastusvirasto ylläpitää vaalirahoitusilmoitusrekisteriä osoitteessa vaalirahoitusvalvonta.fi. Valituilla kansanedustajilla ja varaedustajilla on lakisääteinen velvollisuus tehdä ilmoitus kahden kuukauden kuluessa vaalituloksen vahvistamisesta. Ehdokas voi tehdä myös vapaaehtoisen ennakkoilmoituksen ennen vaaleja.
     - heading "Paljonko eduskuntavaalikampanja maksaa?" [level=3]
