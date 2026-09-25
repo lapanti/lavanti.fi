@@ -109,11 +109,11 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
+    - definition: 0 €
+    - term: Oma sitoumukseni
     - definition: /\d+ \d+ €/
-    - term: Käytetty
-    - definition: /5 \d+ €/
     - term: Vielä kerättävä
-    - definition: /\d+ \d+ €/
+    - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
     - paragraph:
       - link "Katso kampanjan rahoitus":
         - /url: /fi/eduskuntavaalit/vaalirahoitus/
