@@ -12,10 +12,12 @@ import FinanceStats from './FinanceStats.astro'
 
 interface Props {
     href: string
+    /** Section anchor; localized like every other section id on the election pages. */
+    id: string
     lang: Lang
 }
 
-const { href, lang } = Astro.props
+const { href, id, lang } = Astro.props
 const labels = financeLabels[lang]
 const items = [
     { label: labels.budget, value: formatEuro(campaignFinance.budget, lang) },
@@ -31,7 +33,7 @@ const items = [
     }
 </style>
 
-<Plate eyebrow={labels.teaser.eyebrow} ground="gray" heading={labels.teaser.heading} id="rahoitus">
+<Plate eyebrow={labels.teaser.eyebrow} ground="gray" heading={labels.teaser.heading} id={id}>
     <FinanceStats items={items} />
     <p class="foot">
         <a class="link-rule" href={href}>{labels.teaser.cta}</a>
