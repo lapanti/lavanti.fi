@@ -1,0 +1,117 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Campaign finance – budget and donations'
+title: 'Campaign finance'
+emphasis: 'in the open'
+intro: 'The campaign budget is 30 000 euros. This page shows how much has been raised, where it came from and what it has been spent on. The figures are updated during the campaign.'
+description: 'The finances of Lauri Lavanti’s parliamentary election campaign in the open: budget, funds raised by source, money spent and a comparison with 2023.'
+slug: 'en/elections/campaign-finance'
+updatedDate: '2026-09-25'
+type: 'WebPage'
+heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
+alt: 'Lauri Lavanti stands on a lawn in front of apartment buildings with his hands in his pockets, wearing a dark blue blazer and a floral shirt.'
+plated: true
+variant: 'split'
+langAlternates:
+    en: '/en/elections/campaign-finance/'
+    fi: '/fi/eduskuntavaalit/vaalirahoitus/'
+    sv: '/sv/riksdagsvalet/valfinansiering/'
+faq:
+    - q: 'Who funds Lauri Lavanti’s campaign?'
+      a: 'The campaign is currently funded entirely from Lauri Lavanti’s own money. It has received no support from companies, private individuals, the party, party associations or other associations. Every figure, and the date it was confirmed, is on the campaign finance page.'
+    - q: 'Does Lauri Lavanti accept corporate funding?'
+      a: 'The campaign does not accept corporate funding. Donations from private individuals are accepted, and every contribution of 1 500 euros or more is published with the donor’s name, as the Act on a Candidate’s Election Funding requires. The campaign takes no loans either.'
+    - q: 'Where is the election funding disclosure published?'
+      a: 'The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.'
+    - q: 'How much does a parliamentary election campaign cost?'
+      a: 'In the 2023 parliamentary election, campaigns of elected members and alternates cost a median of 32 634 euros and an average of 37 540 euros. In the Uusimaa district the median was 36 355 euros and the average 42 517 euros. The figures come from the audit office disclosures.'
+---
+
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import Prose from '../../../../components/Prose.astro'
+import FinanceBars from '../../../../components/campaignFinance/FinanceBars.astro'
+import FinanceStack from '../../../../components/campaignFinance/FinanceStack.astro'
+import FinanceStats from '../../../../components/campaignFinance/FinanceStats.astro'
+import { benchmark2023, campaignFinance, financeLabels } from '../../../../content/campaignFinance'
+import {
+    benchmarkRows,
+    benchmarkShareRows,
+    budgetSegments,
+    formatDate,
+    formatEuro,
+    gapToBudget,
+    spendingSegments,
+    totalRaised,
+} from '../../../../lib/campaignFinance'
+
+export const labels = financeLabels.en
+export const budget = budgetSegments(campaignFinance, 'en')
+export const spending = spendingSegments(campaignFinance, 'en')
+
+<Plate eyebrow="Situation" ground="offWhite" heading="Where does the campaign money stand?" id="inbrief">
+    <FinanceStats
+        items={[
+            { label: labels.budget, value: formatEuro(campaignFinance.budget, 'en') },
+            { label: labels.raised, value: formatEuro(totalRaised(campaignFinance), 'en') },
+            { label: labels.spent, value: formatEuro(campaignFinance.spent, 'en') },
+            {
+                label: labels.gap,
+                note: labels.asOf(formatDate(campaignFinance.asOf, 'en')),
+                value: formatEuro(gapToBudget(campaignFinance), 'en'),
+            },
+        ]}
+    />
+</Plate>
+
+<Plate eyebrow="Why" ground="sand" heading="Why publish the figures at all?">
+    <Prose>
+        <p>I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from members who are elected and their alternates. I publish the figures during the campaign, whether or not I win a seat.</p>
+        <p>Money is not a neutral instrument in politics. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return. So I name the source of every euro and keep the campaign small: 30 000 euros is roughly what an average winning campaign cost in 2023.</p>
+        <p>My aim is that a voter can judge me through the money as well. If a figure on this page is wrong, I will correct it at once — <a href="/en/contact/">get in touch</a>. There is more about the campaign on the <a href="/en/elections/">election page</a>.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Comparison" ground="offWhite" heading="How much does a campaign cost?">
+    <FinanceBars caption="The campaign budget against what the 2023 campaigns cost" lang="en" rows={benchmarkRows(campaignFinance, benchmark2023, 'en')} unit="eur">
+        <p class="source">
+            {labels.source(formatDate(benchmark2023.retrievedDate, 'en'))}{' '}
+            <a class="link-rule" href={benchmark2023.sourceUrl}>{labels.sourceLinkText}</a>
+        </p>
+    </FinanceBars>
+    <Prose>
+        <p>The 2023 figures cover all 273 people required to file: the members elected and their alternates. Campaigns in the Uusimaa district were among the most expensive in the country, with a median of 36 355 euros. The single most expensive campaign nationally cost 136 739 euros.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Sources" ground="oat" heading="Where does the money come from?">
+    <FinanceStack caption="Funding of the campaign budget by source" lang="en" segments={budget.segments} total={budget.total} />
+    <Prose>
+        <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: the campaign has taken no corporate support and no loans, and it has received nothing from the party or from party associations.</p>
+        <p>Donations from private individuals are welcome. The donation link will be published on this page, and every contribution of 1 500 euros or more is published with the donor’s name.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Spending" ground="offWhite" heading="What has the money been spent on?">
+    <FinanceStack caption="Spent and unspent share of the funds raised" lang="en" segments={spending.segments} total={spending.total} />
+    <Prose>
+        <p>Costs become more detailed as the campaign goes on. The largest items are online advertising, printed material and campaign events. A breakdown will be published here at the same level of detail as in the statutory disclosure.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Background" ground="sand" heading="How did MPs fund their campaigns in 2023?">
+    <FinanceBars caption="Funding of the 2023 campaigns by source, share of all financing" lang="en" rows={benchmarkShareRows(benchmark2023, 'en')} unit="percent" />
+    <Prose>
+        <p>A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for almost as much. The comparison shows where my own campaign sits: self-funded, and without corporate support.</p>
+    </Prose>
+</Plate>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Questions about campaign finance" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="en" />
+</NewsletterPlate>
