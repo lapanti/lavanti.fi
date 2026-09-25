@@ -17,7 +17,7 @@ export type Tone = 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' 
 
 export const toneColors: Record<Tone, string> = {
     companies: colors.signalBlue,
-    loans: colors.oat,
+    loans: colors.darkMoss,
     needed: colors.sand,
     other: colors.aquaBlue,
     own: colors.darkGreen,
