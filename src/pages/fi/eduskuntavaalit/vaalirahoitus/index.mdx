@@ -4,7 +4,7 @@ lang: fi
 pageTitle: 'Vaalirahoitus – kampanjan budjetti ja tuet'
 title: 'Vaali­rahoitus'
 emphasis: 'avoimesti'
-intro: 'Tällä sivulla kerron, paljonko kampanjaan on kerätty rahaa, mistä se on tullut ja mihin se on käytetty. Luvut ja niiden päivämäärä ovat heti sivun alussa, ja ne päivitetään kampanjan aikana.'
+intro: 'Kampanjani rahoitus tulee omista varoistani ja yksityishenkilöiden lahjoituksista. En ota vastaan yritystukea enkä lainaa. Kerron tässä, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.'
 description: 'Lauri Lavannin eduskuntavaalikampanjan rahoitus avoimesti: budjetti, kerätyt varat lähteittäin, käytetyt rahat ja vertailu vuoden 2023 kampanjoihin.'
 slug: 'fi/eduskuntavaalit/vaalirahoitus'
 updatedDate: '2026-09-25'
@@ -20,9 +20,9 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Kuka rahoittaa Lauri Lavannin kampanjaa?'
-      a: 'Rahoituksen lähteet ja niiden summat ovat vaalirahoitussivulla, ja jokaisen luvun vieressä on päivämäärä, jolloin tilanne on tarkistettu. Luokat ovat samat kuin Valtiontalouden tarkastusvirastolle tehtävässä vaalirahoitusilmoituksessa: omat varat, lainat, yksityishenkilöt, yritykset, puolue ja puolueyhdistykset sekä muut tahot.'
+      a: 'Lauri Lavannin kampanjan rahoitus tulee hänen omista varoistaan ja yksityishenkilöiden lahjoituksista. Kampanja ei ota vastaan yritystukea eikä lainaa. Jokaisen lähteen summa on eritelty ja merkitty päivämäärällä, jolloin tilanne on tarkistettu.'
     - q: 'Ottaako Lauri Lavanti vastaan yritysrahoitusta?'
-      a: 'Kampanja ei ota vastaan yritystukea. Yksityishenkilöiden lahjoitukset otetaan vastaan ja jokainen vähintään 1 500 euron tuki julkistetaan lahjoittajan nimellä, kuten laki ehdokkaan vaalirahoituksesta vaatii. Kampanja ei myöskään ota lainaa.'
+      a: 'Kampanja ei ota vastaan yritystukea eikä lainaa. Yksityishenkilöiden lahjoitukset ovat tervetulleita, ja Lauri Lavanti julkistaa jokaisen vähintään 1 500 euron tuen lahjoittajan nimellä, vaikka laki ei sitä ehdokkaalta ennen vaaleja edellytä.'
     - q: 'Missä vaalirahoitusilmoitus julkaistaan?'
       a: 'Valtiontalouden tarkastusvirasto ylläpitää vaalirahoitusilmoitusrekisteriä osoitteessa vaalirahoitusvalvonta.fi. Valituilla kansanedustajilla ja varaedustajilla on lakisääteinen velvollisuus tehdä ilmoitus kahden kuukauden kuluessa vaalituloksen vahvistamisesta. Ehdokas voi tehdä myös vapaaehtoisen ennakkoilmoituksen ennen vaaleja.'
     - q: 'Paljonko eduskuntavaalikampanja maksaa?'
@@ -71,8 +71,8 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 <Plate eyebrow="Miksi" ground="sand" heading="Miksi julkaisen rahoitustiedot?">
     <Prose>
         <p>Vaadin politiikalta avoimuutta rahan käytöstä, joten aloitan omasta kampanjastani. Laki velvoittaa ilmoittamaan vaalirahoituksen vasta vaalien jälkeen ja vain valitut kansanedustajat ja varaedustajat. Minä kerron luvut jo kampanjan aikana, riippumatta siitä, tulenko valituksi.</p>
-        <p>Raha ei ole politiikassa neutraali väline. Se ratkaisee, kenen viesti näkyy ja kuuluu, ja iso lahjoitus luo väistämättä odotuksen vastapalveluksesta. Siksi kerron jokaisen euron lähteen ja pidän kampanjan pienenä. Vertailu vuoden 2023 kampanjoihin on alempana tällä sivulla.</p>
-        <p>Tavoitteeni on, että äänestäjä voi arvioida minua myös rahan kautta. Jos jokin luku tällä sivulla on virheellinen, korjaan sen heti — <a href="/fi/yhteystiedot/">ota yhteyttä</a>. Lisää kampanjan taustasta löydät <a href="/fi/eduskuntavaalit/">eduskuntavaalisivulta</a>.</p>
+        <p>Raha ei ole politiikassa neutraali väline. Se ratkaisee, kenen viesti näkyy ja kuuluu, ja iso lahjoitus luo väistämättä odotuksen vastapalveluksesta. Siksi kerron jokaisen euron lähteen ja pidän kampanjan pienenä.</p>
+        <p>Tavoitteeni on, että äänestäjä voi arvioida minua myös rahan kautta. Jos jokin luku on virheellinen, korjaan sen heti: <a href="/fi/yhteystiedot/">ota yhteyttä</a>. Lisää kampanjan taustasta löydät <a href="/fi/eduskuntavaalit/">eduskuntavaalisivulta</a>.</p>
     </Prose>
 </Plate>
 
@@ -84,29 +84,29 @@ export const spending = spendingSegments(campaignFinance, 'fi')
         </p>
     </FinanceBars>
     <Prose>
-        <p>Vuoden 2023 luvut kattavat kaikki 273 ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat. Uudenmaan vaalipiirissä kampanjat olivat maan kalleimpia: mediaani 36 355 euroa. Kallein yksittäinen kampanja koko maassa kustansi 136 739 euroa.</p>
+        <p>Vuoden 2023 luvut kattavat kaikki 273 ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat. Uudenmaan vaalipiirin mediaani, 36 355 euroa, oli koko maan mediaania korkeampi. Kallein yksittäinen kampanja koko maassa maksoi 136 739 euroa.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Lähteet" ground="oat" heading="Mistä rahat tulevat?">
     <FinanceStack caption="Kampanjabudjetin rahoitus lähteittäin" lang="fi" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. Kampanja ei ota vastaan yritystukea eikä lainaa.</p>
-        <p>Yksityishenkilöiden lahjoitukset ovat tervetulleita. Lahjoituslinkki julkaistaan tällä sivulla, ja jokainen vähintään 1 500 euron tuki julkistetaan lahjoittajan nimellä.</p>
+        <p>Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. En ota vastaan yritystukea enkä lainaa.</p>
+        <p>Yksityishenkilöiden lahjoitukset ovat tervetulleita. Julkaisen lahjoituslinkin tässä osiossa ja julkistan jokaisen vähintään 1 500 euron tuen lahjoittajan nimellä.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Kulut" ground="offWhite" heading="Mihin rahaa on käytetty?">
     <FinanceStack caption="Kerätyistä varoista käytetty ja käyttämätön osuus" lang="fi" segments={spending.segments} total={spending.total} />
     <Prose>
-        <p>Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat vaalimainonta verkossa, painetut materiaalit ja vaalitilaisuudet. Kuluerittely julkaistaan tällä sivulla samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
+        <p>Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat vaalimainonta verkossa, painetut materiaalit ja vaalitilaisuudet. Julkaisen kuluerittelyn samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Taustaa" ground="sand" heading="Miten kansanedustajat rahoittivat kampanjansa 2023?">
     <FinanceBars caption="Vuoden 2023 kampanjoiden rahoitus lähteittäin, osuus kaikesta rahoituksesta" lang="fi" rows={benchmarkShareRows(benchmark2023, 'fi')} unit="percent" />
     <Prose>
-        <p>Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä. Yhdistykset ja muut tahot rahoittivat lähes yhtä suuren osuuden. Vertailu kertoo, mihin oma kampanjani asettuu: omarahoitteiseksi ja ilman yritystukea.</p>
+        <p>Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä. Yhdistykset ja muut tahot rahoittivat 22,9 prosenttia, enemmän kuin yritykset, ja yksityishenkilöiden osuus jäi 19,9 prosenttiin. Oma kampanjani rakentuu juuri siitä osuudesta, jonka moni muu kattaa yritysrahalla.</p>
     </Prose>
 </Plate>
 
