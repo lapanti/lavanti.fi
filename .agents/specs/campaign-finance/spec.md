@@ -11,7 +11,7 @@
 
 Lauri campaigns on transparency and against corruption. The campaign's own money must therefore be visible on the site before anyone asks: how much the campaign plans to spend, how much it has, where each euro came from, how much has been spent, and how those numbers compare with what previous MPs' campaigns cost.
 
-The page uses the same seven funding categories as the statutory vaalirahoitusilmoitus (laki ehdokkaan vaalirahoituksesta 273/2009 §6), so a reader can later check the site line by line against the disclosure at vaalirahoitusvalvonta.fi. A category that is zero is printed as zero: "no loans, no party money" is itself the message.
+The page uses the same seven funding categories as the statutory vaalirahoitusilmoitus (laki ehdokkaan vaalirahoituksesta 273/2009 §6), so a reader can later check the site line by line against the disclosure at vaalirahoitusvalvonta.fi. A category with nothing in it is printed as zero rather than hidden, so the reader sees the full set of sources either way. The campaign accepts support from private individuals, companies and associations; it takes no loans.
 
 Figures change throughout the campaign. Every number on the page and in the teaser must come from one typed data module so an update is a one-file edit plus an `updatedDate` bump. FAQ answers and page descriptions therefore never quote figures.
 
