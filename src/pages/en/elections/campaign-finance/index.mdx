@@ -4,7 +4,7 @@ lang: en
 pageTitle: 'Campaign finance – budget and donations'
 title: 'Campaign finance'
 emphasis: 'in the open'
-intro: 'I accept support from private individuals, companies and associations. I take no loans. Here I set out the source of every euro: how much has been raised, where it came from and what it has been spent on.'
+intro: 'I accept support from private individuals, companies and associations. I do not borrow. Here I set out the source of every euro: how much has been raised, where it came from and what it has been spent on.'
 description: 'The finances of Lauri Lavanti’s parliamentary election campaign in the open: budget, funds raised by source, money spent and a comparison with 2023.'
 slug: 'en/elections/campaign-finance'
 updatedDate: '2026-09-25'
@@ -20,9 +20,9 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Who funds Lauri Lavanti’s campaign?'
-      a: 'The campaign is funded by Lauri Lavanti himself and by the private individuals, companies and associations that support it. It takes no loans. The amount for each source is itemised separately, with the date the situation was checked, and every contribution of 1,500 euros or more is published with the supporter’s name.'
+      a: 'The campaign is funded by Lauri Lavanti himself and by the private individuals, companies and associations that support it. The campaign does not borrow. The amount for each source is itemised separately, with the date the figures were last checked, and every contribution of 1,500 euros or more is published with the supporter’s name.'
     - q: 'Does Lauri Lavanti accept corporate funding?'
-      a: 'Yes. The campaign accepts support from companies, private individuals and associations. Lauri Lavanti publishes every contribution of 1,500 euros or more with the supporter’s name during the campaign, and files a voluntary advance disclosure with the National Audit Office of Finland. The law requires neither of a candidate before the election. What matters is not where the money comes from, but that a voter sees the source and can judge it. The campaign takes no loans.'
+      a: 'Yes. The campaign accepts support from companies, private individuals and associations. Lauri Lavanti publishes every contribution of 1,500 euros or more with the supporter’s name during the campaign, and files a voluntary advance disclosure with the National Audit Office of Finland. The law requires neither of these of a candidate before the election. He is also campaigning to change the law so that election funding comes from those entitled to vote. As long as corporate funding is open to every candidate, he sets no limit on himself alone, and discloses the money instead. The campaign does not borrow.'
     - q: 'Where is the election funding disclosure published?'
       a: 'The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.'
     - q: 'How much does a parliamentary election campaign cost?'
@@ -70,44 +70,46 @@ export const spending = spendingSegments(campaignFinance, 'en')
 
 <Plate eyebrow="Why" ground="sand" heading="Why publish the figures at all?">
     <Prose>
-        <p>I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from members who are elected and their alternates. I publish the figures during the campaign, whether or not I win a seat.</p>
-        <p>Money is not a neutral instrument in politics. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return. So I name the source of every euro and keep the campaign small.</p>
+        <p>I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from elected members and their alternates. I publish the figures during the campaign, whether or not I win a seat.</p>
+        <p>Money is not a neutral instrument in politics. It shapes whose message is heard, and a large donation can create an expectation of something in return. So I name the source of every euro.</p>
+        <p>I am also campaigning to change the law. Election funding should come from the people who have a vote, and every donor should be published. As long as corporate funding is open to every candidate, I will not limit myself alone. I disclose the money instead.</p>
         <p>My aim is that a voter can judge me through the money as well. If a figure is wrong, I will correct it at once: <a href="/en/contact/">get in touch</a>. There is more about the campaign on the <a href="/en/elections/">election page</a>.</p>
     </Prose>
 </Plate>
 
-<Plate eyebrow="Comparison" ground="offWhite" heading="How much does an election campaign cost?">
-    <FinanceBars caption="The campaign budget against what the 2023 campaigns cost" lang="en" rows={benchmarkRows(campaignFinance, benchmark2023, 'en')} unit="eur">
+<Plate eyebrow="Comparison" ground="offWhite" heading="What did a campaign that won a seat cost?">
+    <FinanceBars caption="My planned budget against the 2023 median costs" lang="en" rows={benchmarkRows(campaignFinance, benchmark2023, 'en')} unit="eur">
         <p>
             {labels.source(formatDate(benchmark2023.retrievedDate, 'en'))}{' '}
             <a class="link-rule" href={benchmark2023.sourceUrl}>{labels.sourceLinkText}</a>
         </p>
     </FinanceBars>
     <Prose>
-        <p>The 2023 figures cover all 273 people required to file: the members elected and their alternates. The median in the Uusimaa district, 36,355 euros, was above the national median. The single most expensive campaign nationally cost 136,739 euros, according to the same disclosures.</p>
+        <p>The figures cover all 273 people required to file: the members elected and their alternates. They show what the campaigns that won a seat cost, not what campaigning costs. The Uusimaa figures are part of the national ones, not a separate group beside them.</p>
+        <p>Half of the campaigns fell between 19,801 and 48,986 euros. The cheapest cost nothing and the most expensive 136,739 euros, and it is those few very expensive campaigns that pull the average above the median. That is why I compare my budget with the median. My own figure is a plan; the 2023 figures are money actually spent.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Sources" ground="oat" heading="Where does the money come from?">
-    <FinanceStack caption="Funding of the campaign budget by source" lang="en" segments={budget.segments} total={budget.total} />
+    <FinanceStack caption="The budget by source, shares of the whole budget" lang="en" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I take no loans.</p>
-        <p>Donations are welcome from private individuals, companies and associations. I publish every contribution of 1,500 euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office. The law requires neither of a candidate before the election.</p>
+        <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I do not borrow.</p>
+        <p>Donations are welcome from private individuals, companies and associations. I publish every contribution of 1,500 euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office. The law requires neither of these of a candidate before the election.</p>
         <p>{campaignFinance.donationUrl ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Spending" ground="offWhite" heading="What has the money been spent on?">
-    <FinanceStack caption="Spent and unspent share of the funds raised" lang="en" segments={spending.segments} total={spending.total} />
+    <FinanceStack caption="How the money raised has been used, shares of the money raised" lang="en" segments={spending.segments} total={spending.total} />
     <Prose>
-        <p>Costs become more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.</p>
+        <p>The cost breakdown becomes more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Background" ground="sand" heading="How did MPs fund their campaigns in 2023?">
-    <FinanceBars caption="Funding of the 2023 campaigns by source, share of all financing" lang="en" rows={benchmarkShareRows(benchmark2023, 'en')} unit="percent" />
+    <FinanceBars caption="The 2023 campaigns by source, share of all the money they raised" lang="en" rows={benchmarkShareRows(benchmark2023, 'en')} unit="percent" />
     <Prose>
-        <p>A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for 22.9 per cent, more than companies did, while private individuals stopped at 19.9 per cent. The same sources are open to my campaign. The difference is that my figures are visible during the campaign rather than only after it.</p>
+        <p>The shares are computed from the 273 campaigns’ money added together, so the largest campaigns weigh most in them. A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for 22.9 per cent, more than companies did, while private individuals accounted for just 19.9 per cent. The same sources are open to my campaign. The difference is that my figures are visible during the campaign rather than only after it.</p>
     </Prose>
 </Plate>
 
