@@ -13,6 +13,8 @@ Lauri campaigns on transparency and against corruption. The campaign's own money
 
 The page uses the same seven funding categories as the statutory vaalirahoitusilmoitus (laki ehdokkaan vaalirahoituksesta 273/2009 §6), so a reader can later check the site line by line against the disclosure at vaalirahoitusvalvonta.fi. A category with nothing in it is printed as zero rather than hidden, so the reader sees the full set of sources either way. The campaign accepts support from private individuals, companies and associations; it takes no loans.
 
+The page separates three states of money, because conflating them would overstate what the campaign has. `raised` is money banked. `ownCommitment` is the candidate's own undertaking, which he will put in unless donations cover the budget instead: it closes the gap to the budget but is never added to `raised`, and it is hatched rather than filled so a solid block on the bar always means money that has arrived. `spent` is optional, and while no figure is confirmed the page says so instead of printing a zero it cannot stand behind.
+
 Figures change throughout the campaign. Every number on the page and in the teaser must come from one typed data module so an update is a one-file edit plus an `updatedDate` bump. FAQ answers and page descriptions therefore never quote figures.
 
 ---
@@ -32,7 +34,7 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - Breadcrumb trail or breadcrumb JSON-LD (`PageLayout` only emits `BreadcrumbList` for `CollectionPage` trails; adding an election trail touches `breadcrumbs.ts` and the layout). `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
-- Real campaign figures. Initial values are placeholders: budget 30 000 €, own funds 10 000 €, spent 5 000 €, every other source 0 €.
+- Real received figures. The state at launch is the true one: nothing received from any source, a 10 000 € own commitment, and no confirmed spending.
 - Client-side JavaScript of any kind.
 
 ---
@@ -55,6 +57,19 @@ Feature: Campaign finance transparency page
     When the summary section (fi #lyhyesti, sv #ikorthet, en #inbrief) is read
     Then budget, raised total, spent and gap-to-budget are readable as text with a euro sign
     And the as-of date is printed in the page locale
+
+  Scenario: A pledge is not a receipt
+    Given ownCommitment is 10000 and every raised category is 0
+    When the funding stack renders
+    Then the own-funds row prints 0 €, a separate commitment row prints 10 000 €, and the gap row prints 20 000 €
+    And the commitment and gap segments are hatched while every received source would be solid
+    And the stack total is the budget, so the segments still sum to 100 %
+
+  Scenario: No confirmed spending means no figure
+    Given spent is undefined
+    When the spending section renders
+    Then spendingSegments returns undefined, no stack is drawn, and the section prints the pending line
+    And the summary tiles never carry a spending figure, confirmed or not
 
   Scenario: Every funding category is listed, zeros included
     Given raised.loans, raised.party, raised.partyAssociations, raised.private, raised.companies and raised.other are all 0
@@ -324,6 +339,7 @@ Component props:
 | Date | Change |
 |------|--------|
 | 2026-09-25 | Initial draft |
+| 2026-09-25 | Real state: received money, an own commitment and optional spending are three separate things; pledged money is hatched; summaryTiles replaces the per-page tile arrays |
 | 2026-09-25 | Statistical review: percent bars scale to 100, means dropped from the comparison in favour of stated quartiles, denominators named in both stack captions, comparison reframed as the cost of winning campaigns; scroll-driven bar reveal added behind @supports |
 | 2026-09-25 | Implementation drift: BenchmarkSet unexported, FinanceTeaser takes a section id, DISPLAY_SOURCE_ORDER replaces key order, loans tone moved off oat |
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
