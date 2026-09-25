@@ -7,8 +7,8 @@ import FinanceStats from './FinanceStats.astro'
 describe('<FinanceStats />', () => {
     const items = [
         { label: 'Kampanjabudjetti', value: '30 000 €' },
-        { label: 'Kerätty tähän asti', value: '10 000 €' },
-        { label: 'Käytetty tähän asti', note: 'Tilanne 25.9.2026', value: '5 000 €' },
+        { label: 'Kerätty', value: '10 000 €' },
+        { label: 'Käytetty', note: 'Tilanne 25.9.2026', value: '5 000 €' },
     ]
 
     it('should render', async () => {

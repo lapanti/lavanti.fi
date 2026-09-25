@@ -3,7 +3,7 @@
  * One labelled figure — a term and its amount, rendered as a description-list pair.
  * Lives inside FinanceStats, which supplies the <dl>.
  */
-import { colors, signalBandFontFamilies, typographics } from '../../lib/styles'
+import { colors, signalBandFontFamilies, sizes, typographics } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 
 interface Props {
@@ -22,6 +22,8 @@ const { label, note, value } = Astro.props
         colorsForestGreen: colors.forestGreen,
         colorsTextSecondary: colors.textSecondary,
         statFontFamily: signalBandFontFamilies.heading,
+        statFontSize: sizes[2.25],
+        statFontSizeMobile: sizes[1.875],
         statFontWeight: typographics.headline.fontWeight,
         statLetterSpacing: typographics.headline.letterSpacing,
         statNoteFontFamily: typographics.textSmall.fontFamily,
@@ -36,7 +38,7 @@ const { label, note, value } = Astro.props
     .stat dd {
         color: var(--colorsForestGreen);
         font-family: var(--statFontFamily);
-        font-size: 2.25rem;
+        font-size: var(--statFontSize);
         font-weight: var(--statFontWeight);
         letter-spacing: var(--statLetterSpacing);
         line-height: 1;
@@ -56,7 +58,7 @@ const { label, note, value } = Astro.props
 
     @media (max-width: 768px) {
         .stat dd {
-            font-size: 1.875rem;
+            font-size: var(--statFontSizeMobile);
         }
     }
 </style>

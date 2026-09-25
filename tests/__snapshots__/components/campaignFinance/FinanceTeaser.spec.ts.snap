@@ -38,17 +38,18 @@ exports[`<FinanceTeaser /> > should render 1`] = `
       <dl
         class="stats"
         data-astro-cid-qqjntedy=""
+        style="--columnGap: 1rem;--desktopGap: 2rem;--rowGap: 1.5rem;--sectionPad: 1.5rem;"
       >
          
         <div
           class="stat"
           data-astro-cid-6h6fow7g=""
-          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
         >
            
           <dt
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             <span
               class="eyebrow"
@@ -61,7 +62,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
            
           <dd
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             30 000 €
           </dd>
@@ -70,25 +71,25 @@ exports[`<FinanceTeaser /> > should render 1`] = `
         <div
           class="stat"
           data-astro-cid-6h6fow7g=""
-          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
         >
            
           <dt
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
               style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
             >
-              Kerätty tähän asti
+              Kerätty
             </span>
           </dt>
            
           <dd
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             10 000 €
           </dd>
@@ -97,25 +98,25 @@ exports[`<FinanceTeaser /> > should render 1`] = `
         <div
           class="stat"
           data-astro-cid-6h6fow7g=""
-          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
         >
            
           <dt
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
               style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
             >
-              Käytetty tähän asti
+              Käytetty
             </span>
           </dt>
            
           <dd
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             5 000 €
           </dd>
@@ -124,12 +125,12 @@ exports[`<FinanceTeaser /> > should render 1`] = `
         <div
           class="stat"
           data-astro-cid-6h6fow7g=""
-          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+          style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
         >
            
           <dt
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             <span
               class="eyebrow"
@@ -142,7 +143,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
            
           <dd
             data-astro-cid-6h6fow7g=""
-            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
+            style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--statFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--statFontSize: 2.25rem;--statFontSizeMobile: 1.875rem;--statFontWeight: 900;--statLetterSpacing: -0.015em;--statNoteFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--statNoteFontSize: 0.9375rem;"
           >
             20 000 €
           </dd>
