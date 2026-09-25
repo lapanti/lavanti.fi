@@ -10,8 +10,8 @@
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
-    - definition: /€\d+,\d+/
-    - term: Spent so far
+    - definition: €0
+    - term: My own commitment
     - definition: /€\d+,\d+/
     - term: Still to raise
     - definition: /€\d+,\d+ As of \d+ September \d+/
@@ -47,23 +47,20 @@
     - figure "The budget by source, shares of the whole budget":
       - text: ""
       - list:
-        - listitem: /My own funds €\d+,\d+ \d+\.\d+%/
+        - listitem: My own funds €0 0.0%
         - listitem: Loans €0 0.0%
         - listitem: Private individuals €0 0.0%
         - listitem: Companies €0 0.0%
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
+        - listitem: /My own commitment €\d+,\d+ \d+\.\d+%/
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
     - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I do not borrow."
     - paragraph: /Donations are welcome from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office\. The law requires neither of these of a candidate before the election\./
     - paragraph: The donation link is published here as soon as the campaign account is open.
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
-    - figure "How the money raised has been used, shares of the money raised":
-      - text: ""
-      - list:
-        - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
-        - listitem: /Not yet spent €\d+,\d+ \d+\.\d+%/
+    - paragraph: No spending figure is confirmed yet. It appears here, itemised, once the campaign account is open.
     - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]

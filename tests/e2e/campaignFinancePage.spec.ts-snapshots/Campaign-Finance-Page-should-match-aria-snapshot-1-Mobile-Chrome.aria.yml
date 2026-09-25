@@ -10,9 +10,9 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
+    - definition: 0 €
+    - term: Oma sitoumukseni
     - definition: /\d+ \d+ €/
-    - term: Käytetty
-    - definition: /5 \d+ €/
     - term: Vielä kerättävä
     - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
     - text: Miksi
@@ -47,23 +47,20 @@
     - figure "Budjetin rahat lähteittäin, osuudet koko budjetista":
       - text: ""
       - list:
-        - listitem: /Omat varat \d+ \d+ € \d+,\d+ %/
+        - listitem: /Omat varat 0 € \d+,\d+ %/
         - listitem: /Lainat 0 € \d+,\d+ %/
         - listitem: /Yksityishenkilöt 0 € \d+,\d+ %/
         - listitem: /Yritykset 0 € \d+,\d+ %/
         - listitem: /Puolue ja puolueyhdistykset 0 € \d+,\d+ %/
         - listitem: /Yhdistykset ja muut tahot 0 € \d+,\d+ %/
+        - listitem: /Oma sitoumukseni \d+ \d+ € \d+,\d+ %/
         - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
     - paragraph: Erittelen rahat samoilla riveillä kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa. Jos jostakin lähteestä ei ole tullut euroakaan, rivi näkyy silti nollana. Lainaa en ota.
     - paragraph: /Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana\. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan näistä ennen vaaleja\./
     - paragraph: Lahjoituslinkki tulee tälle sivulle heti, kun kampanjatili on auki.
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
-    - figure "Kerätyn rahan käyttö, osuudet kerätystä rahasta":
-      - text: ""
-      - list:
-        - listitem: /Käytetty 5 \d+ € \d+,\d+ %/
-        - listitem: /Käyttämättä 5 \d+ € \d+,\d+ %/
+    - paragraph: Kuluja ei ole vielä vahvistettu. Ne tulevat tähän eriteltyinä heti, kun kampanjatili on auki.
     - paragraph: Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa \d+\?/ [level=2]
