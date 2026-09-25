@@ -1,0 +1,67 @@
+---
+/**
+ * One labelled figure — a term and its amount, rendered as a description-list pair.
+ * Lives inside FinanceStats, which supplies the <dl>.
+ */
+import { colors, signalBandFontFamilies, typographics } from '../../lib/styles'
+import Eyebrow from '../Eyebrow.astro'
+
+interface Props {
+    label: string
+    /** Small print under the figure — a date, a share, a caveat. */
+    note?: string
+    /** Already formatted for the locale; this component does no arithmetic. */
+    value: string
+}
+
+const { label, note, value } = Astro.props
+---
+
+<style
+    define:vars={{
+        colorsForestGreen: colors.forestGreen,
+        colorsTextSecondary: colors.textSecondary,
+        statFontFamily: signalBandFontFamilies.heading,
+        statFontWeight: typographics.headline.fontWeight,
+        statLetterSpacing: typographics.headline.letterSpacing,
+        statNoteFontFamily: typographics.textSmall.fontFamily,
+        statNoteFontSize: typographics.textSmall.fontSize,
+    }}
+>
+    .stat {
+        display: grid;
+        gap: 0.375rem;
+    }
+
+    .stat dd {
+        color: var(--colorsForestGreen);
+        font-family: var(--statFontFamily);
+        font-size: 2.25rem;
+        font-weight: var(--statFontWeight);
+        letter-spacing: var(--statLetterSpacing);
+        line-height: 1;
+        margin: 0;
+    }
+
+    .note {
+        color: var(--colorsTextSecondary);
+        display: block;
+        font-family: var(--statNoteFontFamily);
+        font-size: var(--statNoteFontSize);
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 1.5;
+        padding-top: 0.375rem;
+    }
+
+    @media (max-width: 768px) {
+        .stat dd {
+            font-size: 1.875rem;
+        }
+    }
+</style>
+
+<div class="stat">
+    <dt><Eyebrow>{label}</Eyebrow></dt>
+    <dd>{value}{note && <span class="note">{note}</span>}</dd>
+</div>
