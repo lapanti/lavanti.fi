@@ -4,7 +4,7 @@ lang: fi
 pageTitle: 'Vaalirahoitus – kampanjan budjetti ja tuet'
 title: 'Vaali­rahoitus'
 emphasis: 'avoimesti'
-intro: 'Kampanjan budjetti on 30 000 euroa. Tällä sivulla kerron, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty. Luvut päivitetään kampanjan aikana.'
+intro: 'Tällä sivulla kerron, paljonko kampanjaan on kerätty rahaa, mistä se on tullut ja mihin se on käytetty. Luvut ja niiden päivämäärä ovat heti sivun alussa, ja ne päivitetään kampanjan aikana.'
 description: 'Lauri Lavannin eduskuntavaalikampanjan rahoitus avoimesti: budjetti, kerätyt varat lähteittäin, käytetyt rahat ja vertailu vuoden 2023 kampanjoihin.'
 slug: 'fi/eduskuntavaalit/vaalirahoitus'
 updatedDate: '2026-09-25'
@@ -20,7 +20,7 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Kuka rahoittaa Lauri Lavannin kampanjaa?'
-      a: 'Tällä hetkellä kampanjan rahoitus on kokonaan Lauri Lavannin omista varoista. Kampanja ei ole saanut tukea yrityksiltä, yksityishenkilöiltä, puolueelta, puolueyhdistyksiltä eikä muilta yhdistyksiltä. Kaikki luvut ja niiden päivämäärä ovat vaalirahoitussivulla.'
+      a: 'Rahoituksen lähteet ja niiden summat ovat vaalirahoitussivulla, ja jokaisen luvun vieressä on päivämäärä, jolloin tilanne on tarkistettu. Luokat ovat samat kuin Valtiontalouden tarkastusvirastolle tehtävässä vaalirahoitusilmoituksessa: omat varat, lainat, yksityishenkilöt, yritykset, puolue ja puolueyhdistykset sekä muut tahot.'
     - q: 'Ottaako Lauri Lavanti vastaan yritysrahoitusta?'
       a: 'Kampanja ei ota vastaan yritystukea. Yksityishenkilöiden lahjoitukset otetaan vastaan ja jokainen vähintään 1 500 euron tuki julkistetaan lahjoittajan nimellä, kuten laki ehdokkaan vaalirahoituksesta vaatii. Kampanja ei myöskään ota lainaa.'
     - q: 'Missä vaalirahoitusilmoitus julkaistaan?'
@@ -71,14 +71,14 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 <Plate eyebrow="Miksi" ground="sand" heading="Miksi julkaisen rahoitustiedot?">
     <Prose>
         <p>Vaadin politiikalta avoimuutta rahan käytöstä, joten aloitan omasta kampanjastani. Laki velvoittaa ilmoittamaan vaalirahoituksen vasta vaalien jälkeen ja vain valitut kansanedustajat ja varaedustajat. Minä kerron luvut jo kampanjan aikana, riippumatta siitä, tulenko valituksi.</p>
-        <p>Raha ei ole politiikassa neutraali väline. Se ratkaisee, kenen viesti näkyy ja kuuluu, ja iso lahjoitus luo väistämättä odotuksen vastapalveluksesta. Siksi kerron jokaisen euron lähteen ja pidän kampanjan pienenä: 30 000 euroa on suunnilleen se, mitä keskimääräinen läpimennyt kampanja kustansi vuonna 2023.</p>
+        <p>Raha ei ole politiikassa neutraali väline. Se ratkaisee, kenen viesti näkyy ja kuuluu, ja iso lahjoitus luo väistämättä odotuksen vastapalveluksesta. Siksi kerron jokaisen euron lähteen ja pidän kampanjan pienenä. Vertailu vuoden 2023 kampanjoihin on alempana tällä sivulla.</p>
         <p>Tavoitteeni on, että äänestäjä voi arvioida minua myös rahan kautta. Jos jokin luku tällä sivulla on virheellinen, korjaan sen heti — <a href="/fi/yhteystiedot/">ota yhteyttä</a>. Lisää kampanjan taustasta löydät <a href="/fi/eduskuntavaalit/">eduskuntavaalisivulta</a>.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Vertailu" ground="offWhite" heading="Paljonko eduskunta­vaali­kampanja maksaa?">
     <FinanceBars caption="Kampanjan budjetti ja vuoden 2023 kampanjoiden kulut" lang="fi" rows={benchmarkRows(campaignFinance, benchmark2023, 'fi')} unit="eur">
-        <p class="source">
+        <p>
             {labels.source(formatDate(benchmark2023.retrievedDate, 'fi'))}{' '}
             <a class="link-rule" href={benchmark2023.sourceUrl}>{labels.sourceLinkText}</a>
         </p>
@@ -91,7 +91,7 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 <Plate eyebrow="Lähteet" ground="oat" heading="Mistä rahat tulevat?">
     <FinanceStack caption="Kampanjabudjetin rahoitus lähteittäin" lang="fi" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: kampanja ei ole ottanut yritystukea eikä lainaa, eikä se ole saanut rahaa puolueelta tai puolueyhdistyksiltä.</p>
+        <p>Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. Kampanja ei ota vastaan yritystukea eikä lainaa.</p>
         <p>Yksityishenkilöiden lahjoitukset ovat tervetulleita. Lahjoituslinkki julkaistaan tällä sivulla, ja jokainen vähintään 1 500 euron tuki julkistetaan lahjoittajan nimellä.</p>
     </Prose>
 </Plate>

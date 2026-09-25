@@ -4,7 +4,7 @@ lang: en
 pageTitle: 'Campaign finance – budget and donations'
 title: 'Campaign finance'
 emphasis: 'in the open'
-intro: 'The campaign budget is 30 000 euros. This page shows how much has been raised, where it came from and what it has been spent on. The figures are updated during the campaign.'
+intro: 'This page shows how much the campaign has raised, where the money came from and what it has been spent on. The figures and the date they were confirmed are at the top of the page, and they are updated during the campaign.'
 description: 'The finances of Lauri Lavanti’s parliamentary election campaign in the open: budget, funds raised by source, money spent and a comparison with 2023.'
 slug: 'en/elections/campaign-finance'
 updatedDate: '2026-09-25'
@@ -20,13 +20,13 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Who funds Lauri Lavanti’s campaign?'
-      a: 'The campaign is currently funded entirely from Lauri Lavanti’s own money. It has received no support from companies, private individuals, the party, party associations or other associations. Every figure, and the date it was confirmed, is on the campaign finance page.'
+      a: 'The funding sources and the amounts are on the campaign finance page, and every figure carries the date the situation was checked. The categories are the ones used in the disclosure filed with the National Audit Office of Finland: own funds, loans, private individuals, companies, the party and party associations, and other bodies.'
     - q: 'Does Lauri Lavanti accept corporate funding?'
-      a: 'The campaign does not accept corporate funding. Donations from private individuals are accepted, and every contribution of 1 500 euros or more is published with the donor’s name, as the Act on a Candidate’s Election Funding requires. The campaign takes no loans either.'
+      a: 'The campaign does not accept corporate funding. Donations from private individuals are accepted, and every contribution of 1,500 euros or more is published with the donor’s name, as the Act on a Candidate’s Election Funding requires. The campaign takes no loans either.'
     - q: 'Where is the election funding disclosure published?'
       a: 'The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.'
     - q: 'How much does a parliamentary election campaign cost?'
-      a: 'In the 2023 parliamentary election, campaigns of elected members and alternates cost a median of 32 634 euros and an average of 37 540 euros. In the Uusimaa district the median was 36 355 euros and the average 42 517 euros. The figures come from the audit office disclosures.'
+      a: 'In the 2023 parliamentary election, campaigns of elected members and alternates cost a median of 32,634 euros and an average of 37,540 euros. In the Uusimaa district the median was 36,355 euros and the average 42,517 euros. The figures come from the audit office disclosures.'
 ---
 
 import Faq from '../../../../components/Faq.astro'
@@ -71,28 +71,28 @@ export const spending = spendingSegments(campaignFinance, 'en')
 <Plate eyebrow="Why" ground="sand" heading="Why publish the figures at all?">
     <Prose>
         <p>I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from members who are elected and their alternates. I publish the figures during the campaign, whether or not I win a seat.</p>
-        <p>Money is not a neutral instrument in politics. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return. So I name the source of every euro and keep the campaign small: 30 000 euros is roughly what an average winning campaign cost in 2023.</p>
+        <p>Money is not a neutral instrument in politics. It decides whose message is seen and heard, and a large donation inevitably creates an expectation of something in return. So I name the source of every euro and keep the campaign small. A comparison with the 2023 campaigns is further down this page.</p>
         <p>My aim is that a voter can judge me through the money as well. If a figure on this page is wrong, I will correct it at once — <a href="/en/contact/">get in touch</a>. There is more about the campaign on the <a href="/en/elections/">election page</a>.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Comparison" ground="offWhite" heading="How much does a campaign cost?">
     <FinanceBars caption="The campaign budget against what the 2023 campaigns cost" lang="en" rows={benchmarkRows(campaignFinance, benchmark2023, 'en')} unit="eur">
-        <p class="source">
+        <p>
             {labels.source(formatDate(benchmark2023.retrievedDate, 'en'))}{' '}
             <a class="link-rule" href={benchmark2023.sourceUrl}>{labels.sourceLinkText}</a>
         </p>
     </FinanceBars>
     <Prose>
-        <p>The 2023 figures cover all 273 people required to file: the members elected and their alternates. Campaigns in the Uusimaa district were among the most expensive in the country, with a median of 36 355 euros. The single most expensive campaign nationally cost 136 739 euros.</p>
+        <p>The 2023 figures cover all 273 people required to file: the members elected and their alternates. Campaigns in the Uusimaa district were among the most expensive in the country, with a median of 36,355 euros. The single most expensive campaign nationally cost 136,739 euros.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Sources" ground="oat" heading="Where does the money come from?">
     <FinanceStack caption="Funding of the campaign budget by source" lang="en" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: the campaign has taken no corporate support and no loans, and it has received nothing from the party or from party associations.</p>
-        <p>Donations from private individuals are welcome. The donation link will be published on this page, and every contribution of 1 500 euros or more is published with the donor’s name.</p>
+        <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as nothing. The campaign accepts no corporate support and takes no loans.</p>
+        <p>Donations from private individuals are welcome. The donation link will be published on this page, and every contribution of 1,500 euros or more is published with the donor’s name.</p>
     </Prose>
 </Plate>
 
