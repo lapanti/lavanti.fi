@@ -38,10 +38,19 @@ export interface CampaignFinance {
      * is not meant to go live without it.
      */
     donationUrl?: string
-    /** Received so far per §6 category, whole euros. */
+    /**
+     * Money the candidate has undertaken to put in but has not paid in yet. It is a
+     * backstop rather than a receipt: it shrinks if donations cover the budget
+     * instead, so it is counted separately from `raised` and never added to it.
+     */
+    ownCommitment: number
+    /** Received so far per §6 category, whole euros. Nothing pledged, only banked. */
     raised: Record<FundingSource, number>
-    /** Paid out so far, whole euros. */
-    spent: number
+    /**
+     * Paid out so far, whole euros. Undefined while no spending has been confirmed —
+     * the page then says so instead of printing a zero it cannot stand behind.
+     */
+    spent?: number
 }
 
 interface BenchmarkSet {
@@ -65,23 +74,26 @@ export interface Benchmark {
 }
 
 /**
- * Placeholders until the campaign account is open. Every figure is a whole euro:
- * cents on a transparency page invite precision the campaign cannot promise.
+ * The state on `asOf`: nothing has been received from any source, because the campaign
+ * account is not open yet. The 10 000 € is the candidate's own undertaking, not money
+ * banked, and no spending figure is confirmed. Every figure is a whole euro; cents on a
+ * transparency page invite precision the campaign cannot promise.
  */
 export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-25',
     budget: 30000,
     // TODO: set donationUrl before this page is published.
+    ownCommitment: 10000,
     raised: {
         companies: 0,
         loans: 0,
         other: 0,
-        own: 10000,
+        own: 0,
         party: 0,
         partyAssociations: 0,
         private: 0,
     },
-    spent: 5000,
+    // spent stays unset until the campaign can stand behind a figure.
 }
 
 /**
@@ -126,6 +138,8 @@ export interface FinanceLabels {
     budget: string
     /** Row label for our own budget in the benchmark comparison. */
     budgetRow: string
+    /** Money undertaken but not yet paid in. */
+    committed: string
     /** Donation call to action, and what to say while the channel is still closed. */
     donate: { cta: string; pending: string }
     gap: string
@@ -140,6 +154,8 @@ export interface FinanceLabels {
     sourceLinkText: string
     sources: Record<DisplaySource, string>
     spent: string
+    /** Stands in for the spending figure while none is confirmed. */
+    spentPending: string
     teaser: { cta: string; eyebrow: string; heading: string }
     unspent: string
 }
@@ -153,6 +169,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `As of ${formatted}`,
         budget: 'Campaign budget',
         budgetRow: 'Our budget',
+        committed: 'My own commitment',
         donate: {
             cta: 'Support the campaign',
             pending: 'The donation link is published here as soon as the campaign account is open.',
@@ -175,6 +192,8 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             private: 'Private individuals',
         },
         spent: 'Spent so far',
+        spentPending:
+            'No spending figure is confirmed yet. It appears here, itemised, once the campaign account is open.',
         teaser: {
             cta: 'See the campaign finances',
             eyebrow: 'Transparency',
@@ -186,6 +205,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Tilanne ${formatted}`,
         budget: 'Kampanjabudjetti',
         budgetRow: 'Oma budjettini',
+        committed: 'Oma sitoumukseni',
         donate: {
             cta: 'Tue kampanjaa',
             pending: 'Lahjoituslinkki tulee tälle sivulle heti, kun kampanjatili on auki.',
@@ -208,6 +228,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             private: 'Yksityishenkilöt',
         },
         spent: 'Käytetty',
+        spentPending: 'Kuluja ei ole vielä vahvistettu. Ne tulevat tähän eriteltyinä heti, kun kampanjatili on auki.',
         teaser: {
             cta: 'Katso kampanjan rahoitus',
             eyebrow: 'Avoimuus',
@@ -219,6 +240,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Situationen ${formatted}`,
         budget: 'Kampanjbudget',
         budgetRow: 'Vår egen budget',
+        committed: 'Mitt eget åtagande',
         donate: {
             cta: 'Stöd kampanjen',
             pending: 'Donationslänken publiceras här så snart kampanjkontot är öppet.',
@@ -241,6 +263,8 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             private: 'Privatpersoner',
         },
         spent: 'Använt hittills',
+        spentPending:
+            'Ingen kostnadssiffra är bekräftad än. Den kommer hit, specificerad, så snart kampanjkontot är öppet.',
         teaser: {
             cta: 'Se kampanjens finansiering',
             eyebrow: 'Öppenhet',

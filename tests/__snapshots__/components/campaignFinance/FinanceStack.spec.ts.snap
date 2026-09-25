@@ -4,12 +4,12 @@ exports[`<FinanceStack /> > should render 1`] = `
 <figure
   class="stack"
   data-astro-cid-hvjct2tw=""
-  style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+  style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
 >
    
   <figcaption
     data-astro-cid-hvjct2tw=""
-    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
   >
     Mistä rahat tulevat?
   </figcaption>
@@ -18,18 +18,23 @@ exports[`<FinanceStack /> > should render 1`] = `
     aria-hidden="true"
     class="bar"
     data-astro-cid-hvjct2tw=""
-    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
   >
      
     <div
       class="seg"
       data-astro-cid-hvjct2tw=""
-      style="--tone: #006845; flex: 10000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--tone: #006845; flex: 10000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     />
     <div
-      class="seg seg--needed"
+      class="seg seg--pledged"
       data-astro-cid-hvjct2tw=""
-      style="--tone: rgb(214, 210, 196); flex: 20000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--tone: #006845; flex: 5000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+    />
+    <div
+      class="seg seg--pledged"
+      data-astro-cid-hvjct2tw=""
+      style="--tone: rgb(214, 210, 196); flex: 15000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     />
      
   </div>
@@ -37,26 +42,26 @@ exports[`<FinanceStack /> > should render 1`] = `
   <ul
     class="legend"
     data-astro-cid-hvjct2tw=""
-    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+    style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
   >
      
     <li
       class="item"
       data-astro-cid-hvjct2tw=""
-      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     >
        
       <span
         aria-hidden="true"
         class="swatch"
         data-astro-cid-hvjct2tw=""
-        style="--tone: #006845; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--tone: #006845; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       />
        
       <span
         class="name"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
         Omat varat
       </span>
@@ -64,13 +69,13 @@ exports[`<FinanceStack /> > should render 1`] = `
       <span
         class="figures"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
          10 000 € 
         <span
           class="share"
           data-astro-cid-hvjct2tw=""
-          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
         >
           33,3 %
         </span>
@@ -81,20 +86,20 @@ exports[`<FinanceStack /> > should render 1`] = `
     <li
       class="item"
       data-astro-cid-hvjct2tw=""
-      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     >
        
       <span
         aria-hidden="true"
         class="swatch"
         data-astro-cid-hvjct2tw=""
-        style="--tone: rgb(72, 75, 0); --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--tone: rgb(72, 75, 0); --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       />
        
       <span
         class="name"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
         Lainat
       </span>
@@ -102,13 +107,13 @@ exports[`<FinanceStack /> > should render 1`] = `
       <span
         class="figures"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
          0 € 
         <span
           class="share"
           data-astro-cid-hvjct2tw=""
-          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
         >
           0,0 %
         </span>
@@ -119,20 +124,20 @@ exports[`<FinanceStack /> > should render 1`] = `
     <li
       class="item"
       data-astro-cid-hvjct2tw=""
-      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     >
        
       <span
         aria-hidden="true"
         class="swatch"
         data-astro-cid-hvjct2tw=""
-        style="--tone: #009639; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--tone: #009639; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       />
        
       <span
         class="name"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
         Yksityishenkilöt
       </span>
@@ -140,13 +145,13 @@ exports[`<FinanceStack /> > should render 1`] = `
       <span
         class="figures"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
          0 € 
         <span
           class="share"
           data-astro-cid-hvjct2tw=""
-          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
         >
           0,0 %
         </span>
@@ -157,20 +162,58 @@ exports[`<FinanceStack /> > should render 1`] = `
     <li
       class="item"
       data-astro-cid-hvjct2tw=""
-      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     >
        
       <span
         aria-hidden="true"
-        class="swatch swatch--needed"
+        class="swatch swatch--pledged"
         data-astro-cid-hvjct2tw=""
-        style="--tone: rgb(214, 210, 196); --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--tone: #006845; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       />
        
       <span
         class="name"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      >
+        Oma sitoumukseni
+      </span>
+       
+      <span
+        class="figures"
+        data-astro-cid-hvjct2tw=""
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      >
+         5 000 € 
+        <span
+          class="share"
+          data-astro-cid-hvjct2tw=""
+          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        >
+          16,7 %
+        </span>
+         
+      </span>
+       
+    </li>
+    <li
+      class="item"
+      data-astro-cid-hvjct2tw=""
+      style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+    >
+       
+      <span
+        aria-hidden="true"
+        class="swatch swatch--pledged"
+        data-astro-cid-hvjct2tw=""
+        style="--tone: rgb(214, 210, 196); --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      />
+       
+      <span
+        class="name"
+        data-astro-cid-hvjct2tw=""
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
         Vielä kerättävä
       </span>
@@ -178,15 +221,15 @@ exports[`<FinanceStack /> > should render 1`] = `
       <span
         class="figures"
         data-astro-cid-hvjct2tw=""
-        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
-         20 000 € 
+         15 000 € 
         <span
           class="share"
           data-astro-cid-hvjct2tw=""
-          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+          style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen: rgb(22, 62, 53);--colorsForestGreen70: rgba(22, 62, 53, 0.7);--colorsTextPrimary: #1B211C;--colorsTextSecondary: #4A4E45;--colorsWhite: rgb(255, 255, 255);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--sectionPad: 1.5rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
         >
-          66,7 %
+          50,0 %
         </span>
          
       </span>

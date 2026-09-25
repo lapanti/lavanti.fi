@@ -12,7 +12,8 @@ const segments: FinanceSegment[] = [
     { id: 'own', label: 'Omat varat', tone: 'own', value: 10000 },
     { id: 'loans', label: 'Lainat', tone: 'loans', value: 0 },
     { id: 'private', label: 'Yksityishenkilöt', tone: 'private', value: 0 },
-    { id: 'needed', label: 'Vielä kerättävä', tone: 'needed', value: 20000 },
+    { id: 'committed', label: 'Oma sitoumukseni', tone: 'committed', value: 5000 },
+    { id: 'needed', label: 'Vielä kerättävä', tone: 'needed', value: 15000 },
 ]
 
 describe('<FinanceStack />', () => {
@@ -50,7 +51,20 @@ describe('<FinanceStack />', () => {
             props: { caption: 'Mistä rahat tulevat?', lang: 'fi', segments, total: 30000 },
         })
 
-        expect(result.querySelectorAll('.seg')).toHaveLength(2)
+        expect(result.querySelectorAll('.seg')).toHaveLength(3)
+    })
+
+    /*
+     * Pledged money and the shortfall are outlined, so the solid part of the bar is
+     * exactly what has arrived.
+     */
+    it('should draw money that is not in the account yet as an outline', async () => {
+        const result = await renderAstroComponent(FinanceStack, {
+            props: { caption: 'Mistä rahat tulevat?', lang: 'fi', segments, total: 30000 },
+        })
+
+        expect(result.querySelectorAll('.seg--pledged')).toHaveLength(2)
+        expect(result.querySelectorAll('.swatch--pledged')).toHaveLength(2)
     })
 
     it('should size drawn segments by their value', async () => {
@@ -61,7 +75,8 @@ describe('<FinanceStack />', () => {
         const styles = [...result.querySelectorAll('.seg')].map((seg) => seg.getAttribute('style'))
 
         expect(styles[0]).toContain('flex: 10000 1 0%')
-        expect(styles[1]).toContain('flex: 20000 1 0%')
+        expect(styles[1]).toContain('flex: 5000 1 0%')
+        expect(styles[2]).toContain('flex: 15000 1 0%')
     })
 
     it('should hide the bar and the swatches from assistive technology', async () => {

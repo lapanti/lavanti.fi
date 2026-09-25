@@ -18,9 +18,11 @@ import { colors } from './styles'
  * against the oat and off-white plates, so FinanceStack outlines every swatch and
  * segment rather than substituting an off-palette colour. `needed` is outlined dashed.
  */
-export type Tone = 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' | 'private' | 'spent' | 'unspent'
+export type Tone =
+    'committed' | 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' | 'private' | 'spent' | 'unspent'
 
 export const toneColors: Record<Tone, string> = {
+    committed: colors.darkGreen,
     companies: colors.signalBlue,
     loans: colors.darkMoss,
     needed: colors.sand,
@@ -68,10 +70,14 @@ export const totalRaised = (finance: CampaignFinance): number =>
     Object.values(finance.raised).reduce((sum, value) => sum + value, 0)
 
 /**
- * What is left to raise. Clamped at zero: a campaign that overshoots its budget has
- * nothing left to collect, and a negative "still needed" row would read as a debt.
+ * What is left to find from other people. The candidate's own undertaking counts
+ * towards it, because it is money the budget can already rely on.
+ *
+ * Clamped at zero: a campaign that overshoots its budget has nothing left to collect,
+ * and a negative "still needed" row would read as a debt.
  */
-export const gapToBudget = (finance: CampaignFinance): number => Math.max(0, finance.budget - totalRaised(finance))
+export const gapToBudget = (finance: CampaignFinance): number =>
+    Math.max(0, finance.budget - totalRaised(finance) - finance.ownCommitment)
 
 /** One decimal. A whole that is zero or negative has no parts, so the share is 0. */
 export const percentOf = (part: number, whole: number): number =>
@@ -131,11 +137,13 @@ export const mergeParty = (amounts: Record<FundingSource, number>): Record<Displ
 })
 
 /**
- * Where the budget stands: every funding source in statutory order, then what is
- * still missing. Zero sources stay in the list — the zero is the disclosure.
+ * Where the budget stands: every funding source in statutory order, then the
+ * candidate's own undertaking, then what is still missing. Zero sources stay in the
+ * list — the zero is the disclosure.
  *
- * The total is `max(budget, raised)` so an overshooting campaign still renders a bar
- * whose segments sum to the whole.
+ * The undertaking is its own segment rather than part of `own`, so pledged money is
+ * never shown as received. The total is `max(budget, …)` so an overshooting campaign
+ * still renders a bar whose segments sum to the whole.
  */
 export const budgetSegments = (finance: CampaignFinance, lang: Lang): { segments: FinanceSegment[]; total: number } => {
     const merged = mergeParty(finance.raised)
@@ -148,8 +156,12 @@ export const budgetSegments = (finance: CampaignFinance, lang: Lang): { segments
     }))
 
     return {
-        segments: [...segments, { id: 'needed', label: labels.needed, tone: 'needed', value: gapToBudget(finance) }],
-        total: Math.max(finance.budget, totalRaised(finance)),
+        segments: [
+            ...segments,
+            { id: 'committed', label: labels.committed, tone: 'committed', value: finance.ownCommitment },
+            { id: 'needed', label: labels.needed, tone: 'needed', value: gapToBudget(finance) },
+        ],
+        total: Math.max(finance.budget, totalRaised(finance) + finance.ownCommitment),
     }
 }
 
@@ -182,14 +194,18 @@ export const benchmarkShareRows = (benchmark: Benchmark, lang: Lang): BarRow[] =
 }
 
 /**
- * Spent against raised. No clamping: the data module's own spec refuses to build a
- * campaign that reports more spent than it has raised, so a negative here is a bug
- * worth seeing rather than hiding.
+ * Spent against raised, or undefined while no spending figure is confirmed: the page
+ * then prints the pending line instead of a figure it cannot stand behind.
+ *
+ * No clamping. The data module's own spec refuses to build a campaign that reports
+ * more spent than it has raised, so a negative here is a bug worth seeing.
  */
 export const spendingSegments = (
     finance: CampaignFinance,
     lang: Lang
-): { segments: FinanceSegment[]; total: number } => {
+): { segments: FinanceSegment[]; total: number } | undefined => {
+    if (finance.spent === undefined) return undefined
+
     const raised = totalRaised(finance)
     const labels = financeLabels[lang]
 
@@ -200,4 +216,27 @@ export const spendingSegments = (
         ],
         total: raised,
     }
+}
+
+/**
+ * The four headline figures, in one place rather than composed in each of the three
+ * pages and again in the teaser. Spending is not among them: it has a section of its
+ * own, and while it is unconfirmed there is no figure to show.
+ */
+export const summaryTiles = (
+    finance: CampaignFinance,
+    lang: Lang
+): { label: string; note?: string; value: string }[] => {
+    const labels = financeLabels[lang]
+
+    return [
+        { label: labels.budget, value: formatEuro(finance.budget, lang) },
+        { label: labels.raised, value: formatEuro(totalRaised(finance), lang) },
+        { label: labels.committed, value: formatEuro(finance.ownCommitment, lang) },
+        {
+            label: labels.gap,
+            note: labels.asOf(formatDate(finance.asOf, lang)),
+            value: formatEuro(gapToBudget(finance), lang),
+        },
+    ]
 }
