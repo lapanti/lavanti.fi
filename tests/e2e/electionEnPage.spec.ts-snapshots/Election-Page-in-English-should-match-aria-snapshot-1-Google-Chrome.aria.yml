@@ -22,7 +22,7 @@
       - text: .
     - paragraph: I am a municipal councillor in Kirkkonummi, chair of the Green council group, and a father of four. To me, politics means taking care of shared matters, sustainably and across party lines — openness, honesty, and listening to different views matter, especially on hard questions.
     - paragraph:
-      - text: /I am also one of the founders of the Digital Independence citizens’ initiative\. In July \d+ it gathered the \d+,\d+ signatures required for parliamentary consideration\. It will be submitted to parliament after the spring \d+ election, so that the new parliament has time to consider it in full\. You can find more about my background on the/
+      - text: /I am also one of the founders of the Digital Independence citizens’ initiative\. In July \d+ it gathered the \d+,\d+ signatures required for parliamentary consideration and goes before parliament in spring \d+\. You can find more about my background on the/
       - link "About Lauri":
         - /url: /en/about/
       - text: page and among the
@@ -104,6 +104,19 @@
       - link "posts":
         - /url: /en/blog/
       - text: and subscribe to the newsletter below.
+    - text: Transparency
+    - heading "Who funds this campaign?" [level=2]
+    - term: Campaign budget
+    - definition: /€\d+,\d+/
+    - term: Raised so far
+    - definition: /€\d+,\d+/
+    - term: Spent so far
+    - definition: /€\d+,\d+/
+    - term: Still to raise
+    - definition: /€\d+,\d+/
+    - paragraph:
+      - link "See the campaign finances":
+        - /url: /en/elections/campaign-finance/
     - text: Events
     - heading "Campaign event calendar" [level=2]
     - list:
@@ -126,7 +139,7 @@
     - heading "Can I vote for Lauri Lavanti in advance?" [level=3]
     - paragraph: /Yes\. Advance voting runs in Finland on 7–\d+ April \d+, and you can vote in advance at any general advance polling station\. On election day, \d+ April \d+, you vote at your assigned polling station, stated in your notice of the right to vote\./
     - heading "How can I support Lauri Lavanti's campaign?" [level=3]
-    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on this page later. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
+    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on the campaign finance page. That page also shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
     - heading "Subscribe to the newsletter" [level=2]
     - paragraph: Subscribe to my newsletter and get analysis on the latest developments in AI and technology, and their impact on society, straight to your inbox.
     - text: Email
