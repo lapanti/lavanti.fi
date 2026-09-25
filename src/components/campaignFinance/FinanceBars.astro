@@ -8,21 +8,15 @@
  * loses nothing.
  */
 import type { Lang } from '../../content/nav'
+import type { BarRow } from '../../lib/campaignFinance'
 
 import { barsMax, barWidth, formatEuro, formatPercent } from '../../lib/campaignFinance'
 import { colors, typographics } from '../../lib/styles'
 
-interface Row {
-    /** Our own figure among the comparisons — drawn in the campaign's green. */
-    emphasis?: boolean
-    label: string
-    value: number
-}
-
 interface Props {
     caption: string
     lang: Lang
-    rows: Row[]
+    rows: BarRow[]
     unit: 'eur' | 'percent'
 }
 
