@@ -7,6 +7,9 @@ import { BlogEnPage } from './pages/blogEnPage'
 import { BlogPage } from './pages/blogPage'
 import { BlogPostPage } from './pages/blogPostPage'
 import { BlogSwePage } from './pages/blogSwePage'
+import { CampaignFinanceEnPage } from './pages/campaignFinanceEnPage'
+import { CampaignFinancePage } from './pages/campaignFinancePage'
+import { CampaignFinanceSwePage } from './pages/campaignFinanceSwePage'
 import { ContactEnPage } from './pages/contactEnPage'
 import { ContactPage } from './pages/contactPage'
 import { ContactSwePage } from './pages/contactSwePage'
@@ -116,6 +119,24 @@ test.describe('Horizontal scroll on mobile', () => {
 
     test('election page (sv)', async ({ page }) => {
         const p = new ElectionSwePage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('campaign finance page (fi)', async ({ page }) => {
+        const p = new CampaignFinancePage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('campaign finance page (en)', async ({ page }) => {
+        const p = new CampaignFinanceEnPage(page)
+        await p.goTo()
+        await p.checkNoHorizontalScroll()
+    })
+
+    test('campaign finance page (sv)', async ({ page }) => {
+        const p = new CampaignFinanceSwePage(page)
         await p.goTo()
         await p.checkNoHorizontalScroll()
     })
