@@ -31,9 +31,10 @@ faq:
     - q: 'Voiko Lauri Lavantia äänestää ennakkoon?'
       a: 'Kyllä. Ennakkoäänestys on kotimaassa 7.–13. huhtikuuta 2027, ja ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa. Vaalipäivänä 18.4.2027 äänestetään omassa äänestyspaikassa, joka kerrotaan äänioikeusilmoituksessa.'
     - q: 'Miten Lauri Lavannin kampanjaa voi tukea?'
-      a: 'Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle — lahjoituslinkki julkaistaan myöhemmin tällä sivulla. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.'
+      a: 'Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle — lahjoituslinkki julkaistaan vaalirahoitussivulla. Sama sivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.'
 ---
 
+import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
 import FactsList from '../../../components/FactsList.astro'
@@ -128,6 +129,8 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Lauri Lavantia voivat äänestää Uudenmaan vaalipiirissä äänioikeutetut. Äänestyspäätöksen tueksi kannattaa lukea <a href="/fi/blog/">kirjoituksia</a> ja tilata uutiskirje alta.</p>
     </Prose>
 </Plate>
+
+<FinanceTeaser href="/fi/eduskuntavaalit/vaalirahoitus/" id="rahoitus" lang="fi" />
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Tapahtumat" heading="Kampanjan tapahtuma­kalenteri" id="tapahtumat" lang="fi" />
 

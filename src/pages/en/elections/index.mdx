@@ -31,9 +31,10 @@ faq:
     - q: 'Can I vote for Lauri Lavanti in advance?'
       a: 'Yes. Advance voting runs in Finland on 7–13 April 2027, and you can vote in advance at any general advance polling station. On election day, 18 April 2027, you vote at your assigned polling station, stated in your notice of the right to vote.'
     - q: "How can I support Lauri Lavanti's campaign?"
-      a: 'You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on this page later. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.'
+      a: 'You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on the campaign finance page. That page also shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.'
 ---
 
+import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
 import FactsList from '../../../components/FactsList.astro'
@@ -128,6 +129,8 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Voters registered in the Uusimaa electoral district can vote for Lauri Lavanti. To inform your decision, read the <a href="/en/blog/">posts</a> and subscribe to the newsletter below.</p>
     </Prose>
 </Plate>
+
+<FinanceTeaser href="/en/elections/campaign-finance/" id="finance" lang="en" />
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Events" heading="Campaign event calendar" id="events" lang="en" />
 
