@@ -115,6 +115,7 @@ describe('finance labels', () => {
             expect(labels.unspent).toBeTruthy()
             expect(labels.sets.all).toBeTruthy()
             expect(labels.sets.uusimaa).toBeTruthy()
+            expect(labels.sourceLinkText).toBeTruthy()
             expect(labels.teaser.cta).toBeTruthy()
             expect(labels.teaser.eyebrow).toBeTruthy()
             expect(labels.teaser.heading).toBeTruthy()
