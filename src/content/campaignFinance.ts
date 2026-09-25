@@ -74,26 +74,31 @@ export interface Benchmark {
 }
 
 /**
- * The state on `asOf`: nothing has been received from any source, because the campaign
- * account is not open yet. The 10 000 € is the candidate's own undertaking, not money
- * banked, and no spending figure is confirmed. Every figure is a whole euro; cents on a
- * transparency page invite precision the campaign cannot promise.
+ * The state on `asOf`. No donations have come in: the campaign account is not open, so
+ * every outside source is zero. The 2 000 € already spent came from the candidate's own
+ * pocket, which is why it appears under `own` — money paid in, not pledged — while the
+ * remaining 8 000 € of his 10 000 € undertaking stays in `ownCommitment`. The spending
+ * figure is provisional and is to be replaced with the exact one before launch.
+ *
+ * Every figure is a whole euro; cents on a transparency page invite precision the
+ * campaign cannot promise.
  */
 export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-25',
     budget: 30000,
     // TODO: set donationUrl before this page is published.
-    ownCommitment: 10000,
+    ownCommitment: 8000,
     raised: {
         companies: 0,
         loans: 0,
         other: 0,
-        own: 0,
+        own: 2000,
         party: 0,
         partyAssociations: 0,
         private: 0,
     },
-    // spent stays unset until the campaign can stand behind a figure.
+    // TODO: replace with the exact figure before launch.
+    spent: 2000,
 }
 
 /**
