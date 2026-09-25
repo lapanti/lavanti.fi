@@ -22,7 +22,7 @@
       - text: .
     - paragraph: Jag är kommunfullmäktigeledamot i Kyrkslätt, ordförande för De Grönas fullmäktigegrupp och far till fyra barn. För mig handlar politik om att sköta gemensamma angelägenheter hållbart och över partigränserna — öppenhet, ärlighet och att lyssna på olika åsikter är avgörande också i svåra frågor.
     - paragraph:
-      - text: /Jag är också initiativtagare till medborgarinitiativet Digital självständighet\. Initiativet samlade i juli \d+ in de \d+ \d+ underskrifter som krävs för riksdagsbehandling\. Det lämnas till riksdagen efter valet våren \d+, så att den nya riksdagen hinner behandla det i sin helhet\. Mer om min bakgrund hittar du på sidan/
+      - text: /Jag är också initiativtagare till medborgarinitiativet Digital självständighet\. Initiativet samlade i juli \d+ in de \d+ \d+ underskrifter som krävs för riksdagsbehandling och behandlas i riksdagen våren \d+\. Mer om min bakgrund hittar du på sidan/
       - link "Om Lauri":
         - /url: /sv/om-lauri/
       - text: och bland
@@ -104,6 +104,19 @@
       - link "inläggen":
         - /url: /sv/blog/
       - text: och prenumerera på nyhetsbrevet nedan.
+    - text: Öppenhet
+    - heading "Vem finansierar den här kampanjen?" [level=2]
+    - term: Kampanjbudget
+    - definition: /\d+ \d+ €/
+    - term: Insamlat hittills
+    - definition: /\d+ \d+ €/
+    - term: Använt hittills
+    - definition: /5 \d+ €/
+    - term: Kvar att samla in
+    - definition: /\d+ \d+ €/
+    - paragraph:
+      - link "Se kampanjens finansiering":
+        - /url: /sv/riksdagsvalet/valfinansiering/
     - text: Evenemang
     - heading "Kampanjens evenemangskalender" [level=2]
     - list:
@@ -126,7 +139,7 @@
     - heading "Kan man förhandsrösta på Lauri Lavanti?" [level=3]
     - paragraph: /Ja\. Förhandsröstningen pågår i Finland 7–\d+ april \d+, och man kan förhandsrösta på vilket allmänt förhandsröstningsställe som helst\. På valdagen \d+\.\d+\.\d+ röstar man på sitt eget röstningsställe, som anges i meddelandet om rösträtt\./
     - heading "Hur kan man stödja Lauri Lavantis kampanj?" [level=3]
-    - paragraph: Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen — donationslänken publiceras senare på den här sidan. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.
+    - paragraph: Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen — donationslänken publiceras på sidan om valfinansiering. Samma sida visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.
     - heading "Prenumerera på nyhetsbrevet" [level=2]
     - paragraph: Prenumerera på mitt nyhetsbrev och få analyser av den senaste utvecklingen inom AI och teknik, samt dess påverkan på samhället, direkt till din inkorg.
     - text: E-post
