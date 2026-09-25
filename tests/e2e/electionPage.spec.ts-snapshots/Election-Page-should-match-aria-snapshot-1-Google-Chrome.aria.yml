@@ -108,9 +108,9 @@
     - heading "Kuka rahoittaa tämän kampanjan?" [level=2]
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
-    - term: Kerätty tähän asti
+    - term: Kerätty
     - definition: /\d+ \d+ €/
-    - term: Käytetty tähän asti
+    - term: Käytetty
     - definition: /5 \d+ €/
     - term: Vielä kerättävä
     - definition: /\d+ \d+ €/
