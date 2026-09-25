@@ -55,7 +55,8 @@
         - listitem: Associations and other bodies €0 0.0%
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
     - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I take no loans."
-    - paragraph: /Donations are welcome from private individuals, companies and associations\. I will publish the donation link in this section, and I publish every contribution of \d+,\d+ euros or more with the supporter’s name\./
+    - paragraph: /Donations are welcome from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office\. The law requires neither of a candidate before the election\./
+    - paragraph: The donation link is published here as soon as the campaign account is open.
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "Spent and unspent share of the funds raised":
@@ -63,7 +64,7 @@
       - list:
         - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
         - listitem: /Not yet spent €\d+,\d+ \d+\.\d+%/
-    - paragraph: Costs become more detailed as the campaign goes on. The largest items are online advertising, printed material and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
+    - paragraph: Costs become more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
     - figure /Funding of the \d+ campaigns by source, share of all financing/:
@@ -81,7 +82,7 @@
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
     - paragraph: /The campaign is funded by Lauri Lavanti himself and by the private individuals, companies and associations that support it\. It takes no loans\. The amount for each source is itemised separately, with the date the situation was checked, and every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
-    - paragraph: /Yes\. The campaign accepts support from companies, private individuals and associations\. Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the supporter’s name, including when the law does not require that of a candidate before the election\. What matters is not where the money comes from, but that a voter sees the source and can judge it\. The campaign takes no loans\./
+    - paragraph: /Yes\. The campaign accepts support from companies, private individuals and associations\. Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and files a voluntary advance disclosure with the National Audit Office of Finland\. The law requires neither of a candidate before the election\. What matters is not where the money comes from, but that a voter sees the source and can judge it\. The campaign takes no loans\./
     - heading "Where is the election funding disclosure published?" [level=3]
     - paragraph: The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.
     - heading "How much does a parliamentary election campaign cost?" [level=3]

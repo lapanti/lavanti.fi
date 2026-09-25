@@ -55,7 +55,8 @@
         - listitem: /Yhdistykset ja muut tahot 0 € \d+,\d+ %/
         - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
     - paragraph: "Luokat ovat samat kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa: jos jostakin lähteestä ei ole tullut euroakaan, se näkyy listassa nollana. Yksi luokka pysyy nollassa koko kampanjan ajan, sillä lainaa en ota."
-    - paragraph: /Lahjoitukset ovat tervetulleita yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä\. Julkaisen lahjoituslinkin tässä osiossa ja julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä\./
+    - paragraph: /Lahjoitukset ovat tervetulleita yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä\. Julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana ja teen kampanjasta vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan ennen vaaleja\./
+    - paragraph: Lahjoituslinkki julkaistaan tähän heti, kun kampanjatili on auki.
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
     - figure "Kerätyistä varoista käytetty ja käyttämätön osuus":
@@ -63,7 +64,7 @@
       - list:
         - listitem: /Käytetty tähän asti 5 \d+ € \d+,\d+ %/
         - listitem: /Käyttämättä 5 \d+ € \d+,\d+ %/
-    - paragraph: Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat vaalimainonta verkossa, painetut materiaalit ja vaalitilaisuudet. Julkaisen kuluerittelyn samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
+    - paragraph: Kulut tarkentuvat kampanjan edetessä. Suurimmat erät ovat tienvarsimainokset, painetut materiaalit, digimainonta ja vaalitilaisuudet. Julkaisen kuluerittelyn samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa \d+\?/ [level=2]
     - figure /Vuoden \d+ kampanjoiden rahoitus lähteittäin, osuus kaikesta rahoituksesta/:
@@ -81,7 +82,7 @@
     - heading "Kuka rahoittaa Lauri Lavannin kampanjaa?" [level=3]
     - paragraph: /Kampanjaa rahoittavat Lauri Lavanti itse sekä sitä tukevat yksityishenkilöt, yritykset ja yhdistykset\. Lainaa kampanja ei ota\. Jokaisen lähteen summa on eritelty ja merkitty päivämäärällä, jolloin tilanne on tarkistettu, ja jokainen vähintään 1 \d+ euron tuki julkistetaan tukijan nimellä\./
     - heading "Ottaako Lauri Lavanti vastaan yritysrahoitusta?" [level=3]
-    - paragraph: /Kyllä\. Kampanja ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä\. Lauri Lavanti julkistaa jokaisen vähintään 1 \d+ euron tuen tukijan nimellä myös silloin, kun laki ei sitä ehdokkaalta ennen vaaleja edellytä\. Ratkaisevaa ei ole se, mistä raha tulee, vaan se, että äänestäjä näkee lähteen ja voi arvioida sen itse\. Lainaa kampanja ei ota\./
+    - paragraph: /Kyllä\. Kampanja ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä\. Lauri Lavanti julkistaa jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana ja tekee kampanjasta vapaaehtoisen ennakkoilmoituksen Valtiontalouden tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan ennen vaaleja\. Ratkaisevaa ei ole se, mistä raha tulee, vaan se, että äänestäjä näkee lähteen ja voi arvioida sen itse\. Lainaa kampanja ei ota\./
     - heading "Missä vaalirahoitusilmoitus julkaistaan?" [level=3]
     - paragraph: Valtiontalouden tarkastusvirasto ylläpitää vaalirahoitusilmoitusrekisteriä osoitteessa vaalirahoitusvalvonta.fi. Valituilla kansanedustajilla ja varaedustajilla on lakisääteinen velvollisuus tehdä ilmoitus kahden kuukauden kuluessa vaalituloksen vahvistamisesta. Ehdokas voi tehdä myös vapaaehtoisen ennakkoilmoituksen ennen vaaleja.
     - heading "Paljonko eduskuntavaalikampanja maksaa?" [level=3]
