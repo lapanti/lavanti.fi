@@ -1,0 +1,34 @@
+---
+/**
+ * The headline figures of the campaign's finances, two per row on a phone and four
+ * across from tablet up.
+ */
+import FinanceStat from './FinanceStat.astro'
+
+interface Props {
+    items: { label: string; note?: string; value: string }[]
+}
+
+const { items } = Astro.props
+---
+
+<style>
+    .stats {
+        display: grid;
+        gap: 1.5rem 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0;
+        padding-top: 1.5rem;
+    }
+
+    @media (min-width: 769px) {
+        .stats {
+            gap: 2rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+</style>
+
+<dl class="stats">
+    {items.map((item) => <FinanceStat label={item.label} note={item.note} value={item.value} />)}
+</dl>
