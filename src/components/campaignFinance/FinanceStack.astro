@@ -29,6 +29,7 @@ const drawn = segments.filter((segment) => segment.value > 0)
     define:vars={{
         colorsForestGreen: colors.forestGreen,
         colorsForestGreen10: colors.forestGreen10,
+        colorsForestGreen70: colors.forestGreen70,
         colorsTextPrimary: colors.textPrimary,
         colorsTextSecondary: colors.textSecondary,
         stackCaptionFontFamily: typographics.title.fontFamily,
@@ -65,6 +66,12 @@ const drawn = segments.filter((segment) => segment.value > 0)
         background: var(--tone);
         box-shadow: inset 0 0 0 1px var(--colorsForestGreen10);
         min-width: 3px;
+    }
+
+    /* What is still missing is drawn as an outline, not a solid block. */
+    .seg--needed,
+    .swatch--needed {
+        border: 2px dashed var(--colorsForestGreen70);
     }
 
     .legend {
@@ -118,7 +125,10 @@ const drawn = segments.filter((segment) => segment.value > 0)
     <div aria-hidden="true" class="bar">
         {
             drawn.map((segment) => (
-                <div class="seg" style={`--tone: ${toneColors[segment.tone]}; flex: ${segment.value} 1 0%`} />
+                <div
+                    class:list={['seg', { 'seg--needed': segment.tone === 'needed' }]}
+                    style={`--tone: ${toneColors[segment.tone]}; flex: ${segment.value} 1 0%`}
+                />
             ))
         }
     </div>
@@ -126,7 +136,11 @@ const drawn = segments.filter((segment) => segment.value > 0)
         {
             segments.map((segment) => (
                 <li class="item">
-                    <span aria-hidden="true" class="swatch" style={`--tone: ${toneColors[segment.tone]}`} />
+                    <span
+                        aria-hidden="true"
+                        class:list={['swatch', { 'swatch--needed': segment.tone === 'needed' }]}
+                        style={`--tone: ${toneColors[segment.tone]}`}
+                    />
                     <span class="name">{segment.label}</span>
                     <span class="figures">
                         {formatEuro(segment.value, lang)}
