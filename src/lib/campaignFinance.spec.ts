@@ -15,6 +15,7 @@ import {
     mergeParty,
     percentOf,
     spendingSegments,
+    summaryTiles,
     toneColors,
     totalRaised,
 } from './campaignFinance'
@@ -24,6 +25,7 @@ const NBSP = '\u00A0'
 const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => ({
     asOf: '2026-09-25',
     budget: 30000,
+    ownCommitment: 0,
     raised: { companies: 0, loans: 0, other: 0, own: 10000, party: 0, partyAssociations: 0, private: 0 },
     spent: 5000,
     ...overrides,
@@ -74,12 +76,21 @@ describe('gapToBudget', () => {
         expect(gapToBudget(finance())).toBe(20000)
     })
 
+    /* An undertaking is money the budget can rely on, so it closes the gap. */
+    it('should count the candidate own commitment towards the budget', () => {
+        expect(gapToBudget(finance({ ownCommitment: 5000 }))).toBe(15000)
+    })
+
     it('should clamp at zero when the campaign has raised more than it budgeted', () => {
         const over = finance({
             raised: { companies: 0, loans: 0, other: 0, own: 32000, party: 0, partyAssociations: 0, private: 0 },
         })
 
         expect(gapToBudget(over)).toBe(0)
+    })
+
+    it('should clamp at zero when raised and committed together exceed the budget', () => {
+        expect(gapToBudget(finance({ ownCommitment: 25000 }))).toBe(0)
     })
 })
 
@@ -225,6 +236,7 @@ describe('budgetSegments', () => {
             'companies',
             'party',
             'other',
+            'committed',
             'needed',
         ])
     })
@@ -242,6 +254,24 @@ describe('budgetSegments', () => {
 
         expect(total).toBe(30000)
         expect(segments.reduce((sum, segment) => sum + segment.value, 0)).toBe(30000)
+    })
+
+    /*
+     * A pledge is not a receipt: it gets its own segment so the solid part of the bar
+     * stays exactly the money that has arrived.
+     */
+    it('should keep the commitment out of the received sources', () => {
+        const pledged = finance({
+            ownCommitment: 10000,
+            raised: { companies: 0, loans: 0, other: 0, own: 0, party: 0, partyAssociations: 0, private: 0 },
+        })
+        const { segments, total } = budgetSegments(pledged, 'fi')
+        const byId = Object.fromEntries(segments.map((segment) => [segment.id, segment.value]))
+
+        expect(byId.own).toBe(0)
+        expect(byId.committed).toBe(10000)
+        expect(byId.needed).toBe(20000)
+        expect(total).toBe(30000)
     })
 
     it('should total the raised sum when the campaign has overshot the budget', () => {
@@ -314,8 +344,13 @@ describe('benchmarkShareRows', () => {
 })
 
 describe('spendingSegments', () => {
+    /* No confirmed figure means no figure on the page, not a zero. */
+    it('should give nothing while no spending is confirmed', () => {
+        expect(spendingSegments(finance({ spent: undefined }), 'fi')).toBeUndefined()
+    })
+
     it('should split the raised sum into spent and unspent', () => {
-        const { segments, total } = spendingSegments(finance(), 'fi')
+        const { segments, total } = spendingSegments(finance(), 'fi')!
 
         expect(total).toBe(10000)
         expect(segments.map((segment) => [segment.id, segment.value])).toEqual([
@@ -329,14 +364,40 @@ describe('spendingSegments', () => {
             raised: { companies: 0, loans: 0, other: 0, own: 0, party: 0, partyAssociations: 0, private: 0 },
             spent: 0,
         })
-        const { segments, total } = spendingSegments(empty, 'fi')
+        const { segments, total } = spendingSegments(empty, 'fi')!
 
         expect(total).toBe(0)
         expect(segments.every((segment) => segment.value === 0)).toBe(true)
     })
 
     it('should label the segments in the requested language', () => {
-        expect(spendingSegments(finance(), 'en').segments[0].label).toBe('Spent so far')
-        expect(spendingSegments(finance(), 'sv').segments[1].label).toBe('Oanvänt')
+        expect(spendingSegments(finance(), 'en')!.segments[0].label).toBe('Spent so far')
+        expect(spendingSegments(finance(), 'sv')!.segments[1].label).toBe('Oanvänt')
+    })
+})
+
+describe('summaryTiles', () => {
+    it('should give budget, received, commitment and gap, and date the gap', () => {
+        const tiles = summaryTiles(finance({ ownCommitment: 10000 }), 'fi')
+
+        expect(tiles.map((tile) => tile.label)).toEqual([
+            'Kampanjabudjetti',
+            'Kerätty',
+            'Oma sitoumukseni',
+            'Vielä kerättävä',
+        ])
+        expect(tiles[3].note).toBe('Tilanne 25.9.2026')
+    })
+
+    /* Spending has a section of its own, and no figure while it is unconfirmed. */
+    it('should leave spending out, confirmed or not', () => {
+        for (const spent of [5000, undefined]) {
+            expect(summaryTiles(finance({ spent }), 'en').map((tile) => tile.label)).not.toContain('Spent so far')
+        }
+    })
+
+    it('should format every value for the requested locale', () => {
+        expect(summaryTiles(finance(), 'en')[0].value).toBe('€30,000')
+        expect(summaryTiles(finance(), 'fi')[0].value).toBe(`30${NBSP}000${NBSP}€`)
     })
 })

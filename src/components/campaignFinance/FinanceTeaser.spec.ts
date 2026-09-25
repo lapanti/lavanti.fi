@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { renderAstroComponent } from '../../../tests/helpers'
 import { campaignFinance, financeLabels } from '../../content/campaignFinance'
-import { formatEuro, gapToBudget, totalRaised } from '../../lib/campaignFinance'
+import { summaryTiles } from '../../lib/campaignFinance'
 import FinanceTeaser from './FinanceTeaser.astro'
 
 const LANGS = ['en', 'fi', 'sv'] as const
@@ -17,7 +17,7 @@ describe('<FinanceTeaser />', () => {
         expect(result.firstChild).toMatchSnapshot()
     })
 
-    it('should show budget, raised, spent and the gap', async () => {
+    it('should show budget, raised, the commitment and the gap', async () => {
         const result = await renderAstroComponent(FinanceTeaser, {
             props: { href: '/fi/eduskuntavaalit/vaalirahoitus/', id: 'rahoitus', lang: 'fi' },
         })
@@ -27,7 +27,7 @@ describe('<FinanceTeaser />', () => {
         expect(labels).toEqual([
             financeLabels.fi.budget,
             financeLabels.fi.raised,
-            financeLabels.fi.spent,
+            financeLabels.fi.committed,
             financeLabels.fi.gap,
         ])
     })
@@ -37,13 +37,9 @@ describe('<FinanceTeaser />', () => {
             props: { href: '/fi/eduskuntavaalit/vaalirahoitus/', id: 'rahoitus', lang: 'fi' },
         })
         const definitions = getAllByRole(result, 'definition').map((node) => node.textContent)
+        const tiles = summaryTiles(campaignFinance, 'fi')
 
-        expect(definitions).toEqual([
-            formatEuro(campaignFinance.budget, 'fi'),
-            formatEuro(totalRaised(campaignFinance), 'fi'),
-            formatEuro(campaignFinance.spent, 'fi'),
-            formatEuro(gapToBudget(campaignFinance), 'fi'),
-        ])
+        expect(definitions).toEqual(tiles.map((tile) => `${tile.value}${tile.note ?? ''}`))
     })
 
     it('should use the section id it is given', async () => {
