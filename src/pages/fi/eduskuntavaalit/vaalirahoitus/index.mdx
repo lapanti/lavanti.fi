@@ -43,10 +43,8 @@ import {
     benchmarkShareRows,
     budgetSegments,
     formatDate,
-    formatEuro,
-    gapToBudget,
     spendingSegments,
-    totalRaised,
+    summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.fi
@@ -54,18 +52,7 @@ export const budget = budgetSegments(campaignFinance, 'fi')
 export const spending = spendingSegments(campaignFinance, 'fi')
 
 <Plate eyebrow="Tilanne" ground="offWhite" heading="Missä kampanjan rahat ovat nyt?" id="lyhyesti">
-    <FinanceStats
-        items={[
-            { label: labels.budget, value: formatEuro(campaignFinance.budget, 'fi') },
-            { label: labels.raised, value: formatEuro(totalRaised(campaignFinance), 'fi') },
-            { label: labels.spent, value: formatEuro(campaignFinance.spent, 'fi') },
-            {
-                label: labels.gap,
-                note: labels.asOf(formatDate(campaignFinance.asOf, 'fi')),
-                value: formatEuro(gapToBudget(campaignFinance), 'fi'),
-            },
-        ]}
-    />
+    <FinanceStats items={summaryTiles(campaignFinance, 'fi')} />
 </Plate>
 
 <Plate eyebrow="Miksi" ground="sand" heading="Miksi julkaisen rahoitustiedot?">
@@ -100,8 +87,9 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 </Plate>
 
 <Plate eyebrow="Kulut" ground="offWhite" heading="Mihin rahaa on käytetty?">
-    <FinanceStack caption="Kerätyn rahan käyttö, osuudet kerätystä rahasta" lang="fi" segments={spending.segments} total={spending.total} />
+    {spending && <FinanceStack caption="Kerätyn rahan käyttö, osuudet kerätystä rahasta" lang="fi" segments={spending.segments} total={spending.total} />}
     <Prose>
+        {!spending && <p>{labels.spentPending}</p>}
         <p>Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
     </Prose>
 </Plate>

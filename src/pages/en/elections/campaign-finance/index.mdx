@@ -43,10 +43,8 @@ import {
     benchmarkShareRows,
     budgetSegments,
     formatDate,
-    formatEuro,
-    gapToBudget,
     spendingSegments,
-    totalRaised,
+    summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.en
@@ -54,18 +52,7 @@ export const budget = budgetSegments(campaignFinance, 'en')
 export const spending = spendingSegments(campaignFinance, 'en')
 
 <Plate eyebrow="Situation" ground="offWhite" heading="What is the state of the campaign finances?" id="inbrief">
-    <FinanceStats
-        items={[
-            { label: labels.budget, value: formatEuro(campaignFinance.budget, 'en') },
-            { label: labels.raised, value: formatEuro(totalRaised(campaignFinance), 'en') },
-            { label: labels.spent, value: formatEuro(campaignFinance.spent, 'en') },
-            {
-                label: labels.gap,
-                note: labels.asOf(formatDate(campaignFinance.asOf, 'en')),
-                value: formatEuro(gapToBudget(campaignFinance), 'en'),
-            },
-        ]}
-    />
+    <FinanceStats items={summaryTiles(campaignFinance, 'en')} />
 </Plate>
 
 <Plate eyebrow="Why" ground="sand" heading="Why publish the figures at all?">
@@ -100,8 +87,9 @@ export const spending = spendingSegments(campaignFinance, 'en')
 </Plate>
 
 <Plate eyebrow="Spending" ground="offWhite" heading="What has the money been spent on?">
-    <FinanceStack caption="How the money raised has been used, shares of the money raised" lang="en" segments={spending.segments} total={spending.total} />
+    {spending && <FinanceStack caption="How the money raised has been used, shares of the money raised" lang="en" segments={spending.segments} total={spending.total} />}
     <Prose>
+        {!spending && <p>{labels.spentPending}</p>}
         <p>The cost breakdown becomes more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.</p>
     </Prose>
 </Plate>
