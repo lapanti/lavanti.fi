@@ -4,7 +4,7 @@ lang: sv
 pageTitle: 'Valfinansiering – kampanjbudget och stöd'
 title: 'Val­finansiering'
 emphasis: 'öppet'
-intro: 'Kampanjens budget är 30 000 euro. På den här sidan berättar jag hur mycket som samlats in, varifrån pengarna kommer och vad de använts till. Siffrorna uppdateras under kampanjen.'
+intro: 'På den här sidan berättar jag hur mycket kampanjen samlat in, varifrån pengarna kommer och vad de använts till. Siffrorna och deras datum står i början av sidan och uppdateras under kampanjen.'
 description: 'Finansieringen av Lauri Lavantis riksdagsvalskampanj öppet: budget, insamlade medel per källa, använda pengar och en jämförelse med kampanjerna 2023.'
 slug: 'sv/riksdagsvalet/valfinansiering'
 updatedDate: '2026-09-25'
@@ -20,7 +20,7 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Vem finansierar Lauri Lavantis kampanj?'
-      a: 'För tillfället finansieras kampanjen helt med Lauri Lavantis egna medel. Kampanjen har inte fått stöd av företag, privatpersoner, partiet, partiföreningar eller andra föreningar. Alla siffror och datumet för dem finns på sidan om valfinansiering.'
+      a: 'Finansieringskällorna och beloppen finns på sidan om valfinansiering, och vid varje siffra står datumet då situationen kontrollerades. Kategorierna är desamma som i valfinansieringsanmälan till Statens revisionsverk: egna medel, lån, privatpersoner, företag, partiet och partiföreningar samt andra aktörer.'
     - q: 'Tar Lauri Lavanti emot företagsstöd?'
       a: 'Kampanjen tar inte emot företagsstöd. Donationer från privatpersoner tas emot, och varje stöd på minst 1 500 euro offentliggörs med donatorns namn så som lagen om kandidaters valfinansiering kräver. Kampanjen tar inte heller lån.'
     - q: 'Var offentliggörs valfinansieringsanmälan?'
@@ -71,14 +71,14 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 <Plate eyebrow="Varför" ground="sand" heading="Varför offentliggör jag siffrorna?">
     <Prose>
         <p>Jag kräver öppenhet om pengar i politiken, så jag börjar med min egen kampanj. Lagen kräver en redovisning först efter valet och bara av valda ledamöter och ersättare. Jag berättar siffrorna redan under kampanjen, oberoende av om jag blir vald.</p>
-        <p>Pengar är inte ett neutralt verktyg i politiken. De avgör vems budskap som syns och hörs, och en stor donation skapar oundvikligen en förväntan om en gentjänst. Därför redovisar jag varje euros källa och håller kampanjen liten: 30 000 euro motsvarar ungefär vad en genomsnittlig vald kampanj kostade 2023.</p>
+        <p>Pengar är inte ett neutralt verktyg i politiken. De avgör vems budskap som syns och hörs, och en stor donation skapar oundvikligen en förväntan om en gentjänst. Därför redovisar jag varje euros källa och håller kampanjen liten. En jämförelse med kampanjerna 2023 finns längre ner på sidan.</p>
         <p>Mitt mål är att väljaren också ska kunna bedöma mig genom pengarna. Om någon siffra här är fel korrigerar jag den genast — <a href="/sv/kontakt/">ta kontakt</a>. Mer om kampanjen finns på <a href="/sv/riksdagsvalet/">sidan om riksdagsvalet</a>.</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Jämförelse" ground="offWhite" heading="Hur mycket kostar en riksdags­valskampanj?">
     <FinanceBars caption="Kampanjens budget och kostnaderna för kampanjerna 2023" lang="sv" rows={benchmarkRows(campaignFinance, benchmark2023, 'sv')} unit="eur">
-        <p class="source">
+        <p>
             {labels.source(formatDate(benchmark2023.retrievedDate, 'sv'))}{' '}
             <a class="link-rule" href={benchmark2023.sourceUrl}>{labels.sourceLinkText}</a>
         </p>
@@ -91,7 +91,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 <Plate eyebrow="Källor" ground="oat" heading="Varifrån kommer pengarna?">
     <FinanceStack caption="Kampanjbudgetens finansiering per källa" lang="sv" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: kampanjen har inte tagit emot företagsstöd eller lån, och den har inte fått pengar av partiet eller partiföreningarna.</p>
+        <p>Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro står den som noll i listan. Kampanjen tar inte emot företagsstöd och inte lån.</p>
         <p>Donationer från privatpersoner är välkomna. Donationslänken publiceras på den här sidan, och varje stöd på minst 1 500 euro offentliggörs med donatorns namn.</p>
     </Prose>
 </Plate>
