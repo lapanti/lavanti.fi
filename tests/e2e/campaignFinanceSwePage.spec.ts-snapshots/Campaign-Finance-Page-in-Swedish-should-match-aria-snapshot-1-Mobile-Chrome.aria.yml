@@ -3,10 +3,10 @@
   - heading "Valfinansiering öppet" [level=1]:
     - text: ""
     - emphasis: öppet
-  - paragraph: På den här sidan berättar jag hur mycket kampanjen samlat in, varifrån pengarna kommer och vad de använts till. Siffrorna och deras datum står i början av sidan och uppdateras under kampanjen.
+  - paragraph: Min kampanj finansieras med mina egna medel och donationer från privatpersoner. Jag tar varken emot företagsstöd eller lån. Här berättar jag hur mycket som samlats in, varifrån pengarna kommer och vad de använts till.
   - article:
     - text: Situationen
-    - heading "Var står kampanjens pengar nu?" [level=2]
+    - heading "Hur ser kampanjens ekonomi ut just nu?" [level=2]
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
@@ -18,9 +18,9 @@
     - text: Varför
     - heading "Varför offentliggör jag siffrorna?" [level=2]
     - paragraph: Jag kräver öppenhet om pengar i politiken, så jag börjar med min egen kampanj. Lagen kräver en redovisning först efter valet och bara av valda ledamöter och ersättare. Jag berättar siffrorna redan under kampanjen, oberoende av om jag blir vald.
-    - paragraph: /Pengar är inte ett neutralt verktyg i politiken\. De avgör vems budskap som syns och hörs, och en stor donation skapar oundvikligen en förväntan om en gentjänst\. Därför redovisar jag varje euros källa och håller kampanjen liten\. En jämförelse med kampanjerna \d+ finns längre ner på sidan\./
+    - paragraph: Pengar är inte ett neutralt verktyg i politiken. De avgör vems budskap som syns och hörs, och en stor donation skapar oundvikligen en förväntan om en gentjänst. Därför redovisar jag varje euros källa och håller kampanjen liten.
     - paragraph:
-      - text: Mitt mål är att väljaren också ska kunna bedöma mig genom pengarna. Om någon siffra här är fel korrigerar jag den genast —
+      - text: "Mitt mål är att väljaren också ska kunna bedöma mig genom pengarna. Om någon siffra är fel korrigerar jag den genast:"
       - link "ta kontakt":
         - /url: /sv/kontakt/
       - text: . Mer om kampanjen finns på
@@ -41,7 +41,7 @@
         - text: "/Källa: valfinansieringsanmälningarna för riksdagsvalet \\d+, VTV\\. Hämtat \\d+\\.\\d+\\.\\d+\\./"
         - link "Öppna anmälningsmaterialet":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
-    - paragraph: "/Siffrorna för \\d+ omfattar alla \\d+ anmälningsskyldiga, alltså valda riksdagsledamöter och ersättare\\. I Nylands valkrets hörde kampanjerna till landets dyraste: medianen var \\d+ \\d+ euro\\. Den dyraste enskilda kampanjen i hela landet kostade \\d+ \\d+ euro\\./"
+    - paragraph: /Siffrorna för \d+ omfattar alla \d+ anmälningsskyldiga, alltså valda riksdagsledamöter och ersättare\. Medianen i Nylands valkrets, \d+ \d+ euro, låg över medianen för hela landet\. Den dyraste enskilda kampanjen i hela landet kostade \d+ \d+ euro\./
     - text: Källor
     - heading "Varifrån kommer pengarna?" [level=2]
     - figure "Kampanjbudgetens finansiering per källa":
@@ -54,8 +54,8 @@
         - listitem: /Partiet och partiföreningar 0 € \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
-    - paragraph: "Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro står den som noll i listan. Kampanjen tar inte emot företagsstöd och inte lån."
-    - paragraph: /Donationer från privatpersoner är välkomna\. Donationslänken publiceras på den här sidan, och varje stöd på minst 1 \d+ euro offentliggörs med donatorns namn\./
+    - paragraph: "Kategorierna är desamma som i valfinansieringsanmälan som valda ledamöter lämnar till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro står den som noll i listan. Jag tar varken emot företagsstöd eller lån."
+    - paragraph: /Donationer från privatpersoner är välkomna\. Jag publicerar donationslänken i det här avsnittet och offentliggör varje stöd på minst 1 \d+ euro med donatorns namn\./
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
     - figure "Använd och oanvänd andel av de insamlade medlen":
@@ -63,7 +63,7 @@
       - list:
         - listitem: /Använt hittills 5 \d+ € \d+,\d+ %/
         - listitem: /Oanvänt 5 \d+ € \d+,\d+ %/
-    - paragraph: Kostnaderna preciseras under kampanjen. De största posterna är valreklam på nätet, tryckt material och valtillställningar. En kostnadsspecifikation publiceras här med samma noggrannhet som i valfinansieringsanmälan.
+    - paragraph: Kostnaderna preciseras under kampanjen. De största posterna är valreklam på nätet, tryckt material och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i valfinansieringsanmälan.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]
     - figure /Kampanjernas finansiering per källa \d+, andel av all finansiering/:
@@ -75,13 +75,13 @@
         - listitem: /Företag \d+,\d+ %/
         - listitem: /Partiet och partiföreningar \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer \d+,\d+ %/
-    - paragraph: "En fjärdedel av finansieringen kom ur kandidaternas egna medel och en femtedel från företag. Föreningar och andra aktörer stod för nästan lika stor andel. Jämförelsen visar var min egen kampanj placerar sig: självfinansierad och utan företagsstöd."
+    - paragraph: /En fjärdedel av finansieringen kom ur kandidaternas egna medel och en femtedel från företag\. Föreningar och andra aktörer stod för \d+,\d+ procent, mer än företagen, medan privatpersonerna stannade på \d+,\d+ procent\. Min egen kampanj bygger på just den andel som många andra täcker med företagspengar\./
     - text: Q & A
     - heading "Vanliga frågor om valfinansiering" [level=2]
     - heading "Vem finansierar Lauri Lavantis kampanj?" [level=3]
-    - paragraph: "Finansieringskällorna och beloppen finns på sidan om valfinansiering, och vid varje siffra står datumet då situationen kontrollerades. Kategorierna är desamma som i valfinansieringsanmälan till Statens revisionsverk: egna medel, lån, privatpersoner, företag, partiet och partiföreningar samt andra aktörer."
+    - paragraph: Lauri Lavantis kampanj finansieras med hans egna medel och donationer från privatpersoner. Kampanjen tar varken emot företagsstöd eller lån. Beloppet för varje källa redovisas separat med datumet då situationen kontrollerades.
     - heading "Tar Lauri Lavanti emot företagsstöd?" [level=3]
-    - paragraph: /Kampanjen tar inte emot företagsstöd\. Donationer från privatpersoner tas emot, och varje stöd på minst 1 \d+ euro offentliggörs med donatorns namn så som lagen om kandidaters valfinansiering kräver\. Kampanjen tar inte heller lån\./
+    - paragraph: /Kampanjen tar varken emot företagsstöd eller lån\. Donationer från privatpersoner är välkomna, och Lauri Lavanti offentliggör varje stöd på minst 1 \d+ euro med donatorns namn, trots att lagen inte kräver det av en kandidat före valet\./
     - heading "Var offentliggörs valfinansieringsanmälan?" [level=3]
     - paragraph: Statens revisionsverk upprätthåller registret över valfinansieringsanmälningar på vaalirahoitusvalvonta.fi. Valda riksdagsledamöter och ersättare är skyldiga att lämna in anmälan inom två månader efter att valresultatet fastställts. En kandidat kan också lämna in en frivillig förhandsanmälan före valet.
     - heading "Hur mycket kostar en riksdagsvalskampanj?" [level=3]
