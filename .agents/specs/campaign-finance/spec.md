@@ -87,7 +87,7 @@ Feature: Campaign finance transparency page
   Scenario: Spending stack
     Given spent is 5000 and raised total is 10000
     When the spending stack renders
-    Then two legend rows appear: spent 5 000 € (50,0 %) and unspent 5 000 € (50,0 %)
+    Then two legend rows appear: fi/sv "5 000 € (50,0 %)" for spent and unspent, en "€5,000 (50.0%)"
 
   Scenario: Raised exceeds budget
     Given budget is 30000 and totalRaised is 32000
@@ -198,7 +198,7 @@ export type Tone = 'own' | 'loans' | 'private' | 'companies' | 'party' | 'other'
 export const toneColors: Record<Tone, string> = {
     companies: colors.signalBlue,
     loans: colors.oat,
-    needed: colors.sand,        // plus dashed forestGreen70 outline
+    needed: colors.sand,        // FinanceStack adds a dashed outline to this tone
     other: colors.aquaBlue,
     own: colors.darkGreen,
     party: colors.brightSky,
@@ -208,7 +208,7 @@ export const toneColors: Record<Tone, string> = {
 }
 
 export interface FinanceLabels {
-    asOf: (date: string) => string          // "Tilanne 25.9.2026"
+    asOf: (formatted: string) => string     // receives formatDate(iso, lang) output; "Tilanne 25.9.2026"
     budget: string
     budgetRow: string                       // benchmark row label for the campaign budget
     gap: string
@@ -247,7 +247,7 @@ Helper signatures (`src/lib/campaignFinance.ts`):
 | `formatDate(iso, lang)` | hand-rolled: fi/sv `25.9.2026`, en `25 September 2026` (month table); no `Intl.DateTimeFormat`, so aria goldens are ICU-independent |
 | `mergeParty(r)` | `Record<DisplaySource, number>`, party + partyAssociations summed and rounded to one decimal |
 | `budgetSegments(f, lang)` | six display sources + `needed`, each `{ id, label, tone, value }`; stack total = `max(budget, totalRaised)` |
-| `spendingSegments(f, lang)` | `spent` + `unspent` (`max(0, totalRaised − spent)`); total = `totalRaised` |
+| `spendingSegments(f, lang)` | `spent` + `unspent` (`totalRaised − spent`); total = `totalRaised`. The data-module invariant `spent ≤ totalRaised` is the guard; the helper does not clamp |
 
 Component props:
 
