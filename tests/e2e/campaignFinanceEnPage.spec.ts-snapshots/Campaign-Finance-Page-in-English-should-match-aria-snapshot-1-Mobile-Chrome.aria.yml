@@ -3,7 +3,7 @@
   - heading "Campaign finance in the open" [level=1]:
     - text: ""
     - emphasis: in the open
-  - paragraph: My campaign is funded from my own money and from donations by private individuals. I accept no corporate support and take no loans. Here I set out how much has been raised, where it came from and what it has been spent on.
+  - paragraph: "I accept support from private individuals, companies and associations. I take no loans. Here I set out the source of every euro: how much has been raised, where it came from and what it has been spent on."
   - article:
     - text: Situation
     - heading "What is the state of the campaign finances?" [level=2]
@@ -54,8 +54,8 @@
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
-    - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. I accept no corporate support and take no loans."
-    - paragraph: /Donations from private individuals are welcome\. I will publish the donation link in this section, and I publish every contribution of \d+,\d+ euros or more with the donor’s name\./
+    - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I take no loans."
+    - paragraph: /Donations are welcome from private individuals, companies and associations\. I will publish the donation link in this section, and I publish every contribution of \d+,\d+ euros or more with the supporter’s name\./
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "Spent and unspent share of the funds raised":
@@ -75,13 +75,13 @@
         - listitem: /Companies \d+\.\d+%/
         - listitem: /The party and party associations \d+\.\d+%/
         - listitem: /Associations and other bodies \d+\.\d+%/
-    - paragraph: /A quarter of the funding came from the candidates’ own money and a fifth from companies\. Associations and other bodies accounted for \d+\.\d+ per cent, more than companies did, while private individuals stopped at \d+\.\d+ per cent\. My own campaign rests on exactly the share that many others cover with corporate money\./
+    - paragraph: /A quarter of the funding came from the candidates’ own money and a fifth from companies\. Associations and other bodies accounted for \d+\.\d+ per cent, more than companies did, while private individuals stopped at \d+\.\d+ per cent\. The same sources are open to my campaign\. The difference is that my figures are visible during the campaign rather than only after it\./
     - text: Q & A
     - heading "Questions about campaign finance" [level=2]
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
-    - paragraph: Lauri Lavanti’s campaign is funded from his own money and from donations by private individuals. It accepts no corporate support and takes no loans. The amount for each source is itemised separately, with the date the situation was checked.
+    - paragraph: /The campaign is funded by Lauri Lavanti himself and by the private individuals, companies and associations that support it\. It takes no loans\. The amount for each source is itemised separately, with the date the situation was checked, and every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
-    - paragraph: /The campaign accepts neither corporate funding nor loans\. Donations from private individuals are welcome, and Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the donor’s name, even though the law does not require that of a candidate before the election\./
+    - paragraph: /Yes\. The campaign accepts support from companies, private individuals and associations\. Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the supporter’s name, including when the law does not require that of a candidate before the election\. What matters is not where the money comes from, but that a voter sees the source and can judge it\. The campaign takes no loans\./
     - heading "Where is the election funding disclosure published?" [level=3]
     - paragraph: The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.
     - heading "How much does a parliamentary election campaign cost?" [level=3]
