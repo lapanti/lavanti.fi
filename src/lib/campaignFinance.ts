@@ -12,7 +12,12 @@ import type { Lang } from '../content/nav'
 import { DISPLAY_SOURCE_ORDER, financeLabels } from '../content/campaignFinance'
 import { colors } from './styles'
 
-/** Segment colours. `needed` also gets a dashed outline from FinanceStack. */
+/**
+ * Segment colours, all from the Signal Band palette: the five signal colours for the
+ * funding sources, the grounds for the neutral rows. The palest of them would vanish
+ * against the oat and off-white plates, so FinanceStack outlines every swatch and
+ * segment rather than substituting an off-palette colour. `needed` is outlined dashed.
+ */
 export type Tone = 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' | 'private' | 'spent' | 'unspent'
 
 export const toneColors: Record<Tone, string> = {
@@ -24,7 +29,7 @@ export const toneColors: Record<Tone, string> = {
     party: colors.brightSky,
     private: colors.brightGreen,
     spent: colors.peach,
-    unspent: colors.lightSand,
+    unspent: colors.sand,
 }
 
 export interface FinanceSegment {
@@ -150,18 +155,18 @@ export const budgetSegments = (finance: CampaignFinance, lang: Lang): { segments
 
 /**
  * Our budget against what the 2023 campaigns cost: our own figure first, then the
- * median and the mean of each comparison set. Built here rather than in each of the
- * three pages, so the labels and the order cannot drift between locales.
+ * median of each comparison set.
+ *
+ * Medians only. The distribution is right-skewed, so a mean drawn beside a median
+ * invites the reader to treat two numbers as the shape of the data when they cannot
+ * show it; the spread belongs in the quartiles the page states in words.
  */
 export const benchmarkRows = (finance: CampaignFinance, benchmark: Benchmark, lang: Lang): BarRow[] => {
     const labels = financeLabels[lang]
 
     return [
         { emphasis: true, label: labels.budgetRow, value: finance.budget },
-        ...benchmark.sets.flatMap((set) => [
-            { label: `${labels.sets[set.id]}, ${labels.median}`, value: set.median },
-            { label: `${labels.sets[set.id]}, ${labels.mean}`, value: set.mean },
-        ]),
+        ...benchmark.sets.map((set) => ({ label: `${labels.sets[set.id]}, ${labels.median}`, value: set.median })),
     ]
 }
 

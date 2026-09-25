@@ -8,7 +8,7 @@ const NBSP = '\u00A0'
 
 describe('<FinanceBars />', () => {
     const rows = [
-        { emphasis: true, label: 'Oma budjettimme', value: 30000 },
+        { emphasis: true, label: 'Oma budjettini', value: 30000 },
         { label: 'Koko Suomi, mediaani', value: 32634 },
         { label: 'Uusimaa, keskiarvo', value: 42517 },
     ]
@@ -56,6 +56,29 @@ describe('<FinanceBars />', () => {
         const amounts = [...result.querySelectorAll('.amount')].map((amount) => amount.textContent)
 
         expect(amounts).toEqual([`24,7${NBSP}%`, `11,3${NBSP}%`])
+    })
+
+    /*
+     * A quarter must be drawn as a quarter. Scaling shares to the largest row would
+     * paint 24.7 % as a full track and inflate every bar by the same factor.
+     */
+    it('should draw percentages against the whole, not against the largest share', async () => {
+        const result = await renderAstroComponent(FinanceBars, {
+            props: {
+                caption: 'Mistä rahat tulivat?',
+                lang: 'fi',
+                rows: [
+                    { label: 'Omat varat', value: 24.7 },
+                    { label: 'Puolue', value: 11.3 },
+                ],
+                unit: 'percent',
+            },
+        })
+
+        const widths = [...result.querySelectorAll('.fill')].map((fill) => fill.getAttribute('style'))
+
+        expect(widths[0]).toContain('--w: 25%')
+        expect(widths[1]).toContain('--w: 11%')
     })
 
     it('should hide the bars from assistive technology', async () => {

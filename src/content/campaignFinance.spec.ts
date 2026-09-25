@@ -95,6 +95,20 @@ describe('2023 benchmark', () => {
         }
     })
 
+    it('should bracket the median with the quartiles', () => {
+        for (const set of benchmark2023.sets) {
+            expect(set.q1).toBeLessThan(set.median)
+            expect(set.median).toBeLessThan(set.q3)
+        }
+    })
+
+    /* A right-skewed distribution: the tail pulls the mean above the middle value. */
+    it('should record a mean above the median, as a skewed distribution gives', () => {
+        for (const set of benchmark2023.sets) {
+            expect(set.mean).toBeGreaterThan(set.median)
+        }
+    })
+
     /*
      * 2.8 (mediated support) is excluded from `shares` because it double-counts money
      * already reported under 2.3–2.7; with it the total would exceed 100.
@@ -149,7 +163,7 @@ describe('finance labels', () => {
         for (const lang of LANGS) {
             expect(financeLabels[lang].asOf('25.9.2026')).toContain('25.9.2026')
             expect(financeLabels[lang].source('25.9.2026')).toContain('25.9.2026')
-            expect(financeLabels[lang].source('25.9.2026')).toContain('VTV')
+            expect(financeLabels[lang].source('25.9.2026')).toMatch(/VTV|revisionsverk|National Audit Office/)
         }
     })
 

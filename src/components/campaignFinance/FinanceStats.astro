@@ -3,6 +3,7 @@
  * The headline figures of the campaign's finances, two per row on a phone and four
  * across from tablet up.
  */
+import { sizes } from '../../lib/styles'
 import FinanceStat from './FinanceStat.astro'
 
 interface Props {
@@ -12,18 +13,18 @@ interface Props {
 const { items } = Astro.props
 ---
 
-<style>
+<style define:vars={{ columnGap: sizes[1], desktopGap: sizes[2], rowGap: sizes[1.5], sectionPad: sizes[1.5] }}>
     .stats {
         display: grid;
-        gap: 1.5rem 1rem;
+        gap: var(--rowGap) var(--columnGap);
         grid-template-columns: repeat(2, minmax(0, 1fr));
         margin: 0;
-        padding-top: 1.5rem;
+        padding-top: var(--sectionPad);
     }
 
     @media (min-width: 769px) {
         .stats {
-            gap: 2rem;
+            gap: var(--desktopGap);
             grid-template-columns: repeat(4, minmax(0, 1fr));
         }
     }

@@ -11,7 +11,7 @@ import type { Lang } from '../../content/nav'
 import type { FinanceSegment } from '../../lib/campaignFinance'
 
 import { formatEuro, formatPercent, percentOf, toneColors } from '../../lib/campaignFinance'
-import { colors, typographics } from '../../lib/styles'
+import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
 
 interface Props {
     caption: string
@@ -27,44 +27,51 @@ const drawn = segments.filter((segment) => segment.value > 0)
 
 <style
     define:vars={{
+        barHeight: sizes[1.75],
+        captionFontFamily: typographics.title.fontFamily,
+        captionFontSize: typographics.title.fontSize,
+        captionFontWeight: typographics.title.fontWeight,
+        captionPad: sizes[1],
         colorsForestGreen: colors.forestGreen,
-        colorsForestGreen10: colors.forestGreen10,
         colorsForestGreen70: colors.forestGreen70,
         colorsTextPrimary: colors.textPrimary,
         colorsTextSecondary: colors.textSecondary,
-        stackCaptionFontFamily: typographics.title.fontFamily,
-        stackCaptionFontSize: typographics.title.fontSize,
-        stackCaptionFontWeight: typographics.title.fontWeight,
-        stackLabelFontFamily: typographics.text.fontFamily,
-        stackLabelFontSize: typographics.text.fontSize,
-        stackShareFontFamily: typographics.meta.fontFamily,
+        figuresFontSize: typographics.text.fontSize,
+        figuresFontWeight: fontWeights.bold,
+        labelFontFamily: typographics.text.fontFamily,
+        labelFontSize: typographics.text.fontSize,
+        legendPad: sizes[1.25],
+        legendWidth: sizes[35],
+        sectionPad: sizes[1.5],
+        shareFontFamily: typographics.meta.fontFamily,
+        swatchSize: sizes[0.875],
     }}
 >
     .stack {
         margin: 0;
-        padding-top: 1.5rem;
+        padding-top: var(--sectionPad);
     }
 
     .stack figcaption {
         color: var(--colorsForestGreen);
-        font-family: var(--stackCaptionFontFamily);
-        font-size: var(--stackCaptionFontSize);
-        font-weight: var(--stackCaptionFontWeight);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        font-weight: var(--captionFontWeight);
         line-height: 1.3;
-        padding-bottom: 1rem;
+        padding-bottom: var(--captionPad);
     }
 
     .bar {
         border-radius: 3px;
         display: flex;
         gap: 2px;
-        height: 1.75rem;
+        height: var(--barHeight);
         overflow: hidden;
     }
 
     .seg {
         background: var(--tone);
-        box-shadow: inset 0 0 0 1px var(--colorsForestGreen10);
+        box-shadow: inset 0 0 0 1px var(--colorsForestGreen70);
         min-width: 3px;
     }
 
@@ -79,36 +86,45 @@ const drawn = segments.filter((segment) => segment.value > 0)
         gap: 0.75rem;
         list-style: none;
         margin: 0;
-        padding: 1.25rem 0 0;
+        /*
+         * Narrower than the bar on purpose: at full plate width the amount drifts a
+         * screen away from the label it belongs to, and the eye stops connecting them.
+         */
+        max-width: var(--legendWidth);
+        padding: var(--legendPad) 0 0;
     }
 
     .item {
         align-items: baseline;
         display: grid;
         gap: 0.25rem 0.75rem;
-        grid-template-columns: 0.875rem 1fr auto;
+        grid-template-columns: var(--swatchSize) 1fr auto;
     }
 
+    /*
+     * The outline carries the pale tones: a light swatch on the oat or off-white plate
+     * would otherwise read as an empty gap in the list.
+     */
     .swatch {
         background: var(--tone);
         border-radius: 2px;
-        box-shadow: inset 0 0 0 1px var(--colorsForestGreen10);
-        height: 0.875rem;
-        width: 0.875rem;
+        box-shadow: inset 0 0 0 1px var(--colorsForestGreen70);
+        height: var(--swatchSize);
+        width: var(--swatchSize);
     }
 
     .name {
         color: var(--colorsTextPrimary);
-        font-family: var(--stackLabelFontFamily);
-        font-size: var(--stackLabelFontSize);
+        font-family: var(--labelFontFamily);
+        font-size: var(--labelFontSize);
         line-height: 1.4;
     }
 
     .figures {
         color: var(--colorsForestGreen);
-        font-family: var(--stackShareFontFamily);
-        font-size: 1.0625rem;
-        font-weight: 700;
+        font-family: var(--shareFontFamily);
+        font-size: var(--figuresFontSize);
+        font-weight: var(--figuresFontWeight);
         justify-self: end;
         white-space: nowrap;
     }
@@ -117,6 +133,32 @@ const drawn = segments.filter((segment) => segment.value > 0)
         color: var(--colorsTextSecondary);
         font-weight: 400;
         padding-left: 0.375rem;
+    }
+
+    /*
+     * One sweep across the whole bar rather than a per-segment reveal: the segments are
+     * parts of a single amount, and staggering them would imply an order the data does
+     * not have. Same @supports and reduced-motion guards as the comparison bars.
+     */
+    @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+            .bar {
+                animation: sweep linear both;
+                animation-range: entry 20% cover 30%;
+                animation-timeline: view();
+                transform-origin: left center;
+            }
+        }
+    }
+
+    @keyframes sweep {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
     }
 </style>
 

@@ -32,8 +32,8 @@ const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => (
 const benchmark: Benchmark = {
     retrievedDate: '2026-09-25',
     sets: [
-        { id: 'all', mean: 37540, median: 32634, n: 273 },
-        { id: 'uusimaa', mean: 42517, median: 36355, n: 46 },
+        { id: 'all', mean: 37540, median: 32634, n: 273, q1: 19801, q3: 48986 },
+        { id: 'uusimaa', mean: 42517, median: 36355, n: 46, q1: 25566, q3: 59106 },
     ],
     shares: { companies: 20.1, loans: 1.1, other: 22.9, own: 24.7, party: 3, partyAssociations: 8.3, private: 19.9 },
     sourceUrl: 'https://www.vaalirahoitusvalvonta.fi/example.csv',
@@ -271,24 +271,26 @@ describe('benchmarkRows', () => {
     it('should lead with our own budget and emphasise it', () => {
         const rows = benchmarkRows(finance(), benchmark, 'fi')
 
-        expect(rows[0]).toEqual({ emphasis: true, label: 'Oma budjettimme', value: 30000 })
+        expect(rows[0]).toEqual({ emphasis: true, label: 'Oma budjettini', value: 30000 })
         expect(rows.filter((row) => row.emphasis)).toHaveLength(1)
     })
 
-    it('should follow with the median and mean of every set', () => {
+    /*
+     * Medians only: the costs are right-skewed, so a mean drawn beside a median reads
+     * as the shape of the data without being able to show it.
+     */
+    it('should follow with the median of every set and no mean', () => {
         const rows = benchmarkRows(finance(), benchmark, 'fi')
 
         expect(rows.slice(1)).toEqual([
             { label: 'Koko Suomi, mediaani', value: 32634 },
-            { label: 'Koko Suomi, keskiarvo', value: 37540 },
             { label: 'Uudenmaan vaalipiiri, mediaani', value: 36355 },
-            { label: 'Uudenmaan vaalipiiri, keskiarvo', value: 42517 },
         ])
     })
 
     it('should label the rows in the requested language', () => {
         expect(benchmarkRows(finance(), benchmark, 'en')[1].label).toBe('All of Finland, median')
-        expect(benchmarkRows(finance(), benchmark, 'sv')[3].label).toBe('Nylands valkrets, median')
+        expect(benchmarkRows(finance(), benchmark, 'sv')[2].label).toBe('Nylands valkrets, median')
     })
 })
 
