@@ -139,7 +139,7 @@ Feature: Campaign finance transparency page
   Scenario: Invariants hold
     Given the data module
     When its spec runs
-    Then spent ≤ totalRaised ≤ budget, every figure is a non-negative integer, asOf and retrievedDate are ISO dates, benchmark shares sum to 100 ± 0.2, and raised keys are in §6 order
+    Then spent ≤ totalRaised ≤ budget, every figure is a non-negative integer, asOf and retrievedDate are ISO dates, benchmark shares sum to 100 ± 0.2, and DISPLAY_SOURCE_ORDER lists the six display sources in §6 order
 
   Scenario: Layout survives narrow viewports
     Given a 360 px viewport
@@ -166,11 +166,17 @@ Feature: Campaign finance transparency page
 import type { Lang } from '../content/nav'
 import { colors } from '../lib/styles'
 
-/** Order and names follow laki ehdokkaan vaalirahoituksesta 273/2009 §6 (2.1–2.7). */
+/** Names follow laki ehdokkaan vaalirahoituksesta 273/2009 §6 (2.1–2.7). */
 export type FundingSource = 'own' | 'loans' | 'private' | 'companies' | 'party' | 'partyAssociations' | 'other'
 
 /** What the page shows: party and partyAssociations merged into `party`. */
 export type DisplaySource = Exclude<FundingSource, 'partyAssociations'>
+
+/**
+ * Reading order on the page, following §6. Object literals cannot carry it:
+ * eslint `sort-keys` forces every record into alphabetical order.
+ */
+export const DISPLAY_SOURCE_ORDER: readonly DisplaySource[]
 
 export interface CampaignFinance {
     asOf: string                              // ISO date the figures were last confirmed
