@@ -213,7 +213,11 @@ const label = menuLabel[lang]
 
     @media (min-width: 769px) {
         .container,
-        .links,
+        .links {
+            display: none;
+        }
+        /* own rule: a browser without :popover-open drops the whole selector list,
+           which would put the mobile bar back on desktop */
         .links:popover-open {
             display: none;
         }
