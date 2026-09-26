@@ -78,6 +78,25 @@ All visual design tokens — spacing, colours, typography, and layout grid const
 
 - **Dependencies:** Almost all components import from `styles.ts`. Changes here propagate everywhere.
 
+- **Motion** — the brand is "a builder, not a commentator": calm, declarative, no hype. Motion follows the Signal Band print metaphor — flat at rest, inverted on hover, a press when held — and is quick, mechanical, and never decorative.
+
+  **Tokens** live in raw CSS on `:root` in `src/components/GlobalStyle.astro` (not `styles.ts`, because the reduced-motion switch is a media query):
+  ```css
+  --dur-base: 0.18s;  /* colour / background / border inverts */
+  --dur-fast: 0.12s;  /* press transforms */
+  --dur-menu: 0.28s;  /* mobile menu opening (closing uses --dur-base) */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --press: 2px;       /* :active offset; 1px presses use calc(var(--press) / 2) */
+  ```
+  `@media (prefers-reduced-motion: reduce)` zeroes all three durations and `--press` in one place. Components consume the tokens directly and never carry their own reduced-motion override. Smooth scrolling and view transitions are declared only under `no-preference`.
+
+  **Approved patterns:**
+  - Hover/focus inverts over `--dur-base`; `:active` presses by `--press` over `--dur-fast`.
+  - Cross-page crossfade: `@view-transition { navigation: auto }`, 200ms. The solid header holds `view-transition-name: site-header`; hero headers stay unnamed.
+  - Signal stripe: the full-size `.stripes` band draws in once, scroll-driven (`animation-timeline: view()`), complete once fully visible. The slim and vertical bands are static. Keep `animation-timeline` out of the rule that sets the `animation` shorthand — the minifier folds it in and Chrome drops the declaration.
+  - Content links thicken their underline to 3px on hover.
+  - Mobile menu: `<button popovertarget="mobile-nav">` + `<nav id="mobile-nav" popover>`, no JS. The button is a printed text button labelled from `menuLabel` in `src/content/nav.ts`. The panel unrolls with `clip-path` (`@starting-style`, `display`/`overlay` `allow-discrete`); links stagger by `var(--dur-fast) / 3`. Without the Popover API the links render inline.
+
 ### Anti-Patterns
 - Do not hardcode pixel or rem values in component `<style>` blocks — always pull from `styles.ts` via `define:vars`
 - Do not add new colours without including a semantic name that describes the use case, not just the value
@@ -85,6 +104,9 @@ All visual design tokens — spacing, colours, typography, and layout grid const
 - Do not add a second breakpoint — the design is intentionally single-breakpoint at 1200px
 - Do not export CSS strings directly from `styles.ts` — only export TypeScript constants that get injected via `define:vars`
 - Do not duplicate `typographics` values inline in a component — if a typographic style is needed, it should exist in `styles.ts`
+- Do not hardcode transition durations or press offsets — use the motion tokens so reduced motion keeps working
+- Do not add scroll-reveal fade-ins, entrance animations on hero content, parallax, zoom/scale hovers, or looping motion — they hide content from crawlers and answer engines, hurt perceived LCP, read as hype, and break the screenshot goldens
+- Do not animate layout properties (`height`, `top`, `width`) — use `transform`, `opacity` or `clip-path`
 
 ---
 
@@ -97,7 +119,8 @@ All visual design tokens — spacing, colours, typography, and layout grid const
 - [ ] Lint and type-check are enforced by pre-commit hooks and CI
 
 ### Regression Guardrails
-- `HEADER_SIZE = sizes[5]` is used for both the `<header>` height and the mobile menu top offset — changing this value changes both simultaneously; test both on mobile and desktop
+- `HEADER_SIZE = sizes[3.75]` (60px) is used for both the mobile `<header>` height and the mobile menu popover's top offset — changing this value changes both simultaneously; test both on mobile and desktop
+- Closed mobile menu links must stay out of the tab order and accessibility tree; the `*-banner-Mobile-Chrome.aria.yml` snapshots and `tests/e2e/mobileMenu.spec.ts` guard this
 - `gridTemplateColumnsArticle` uses `CONTENT_SIZE` and `CONTENT_PADDING` inline — changing any of those three values changes the article column layout for every page
 - Social platform colour tokens (`colors.bluesky`, `colors.facebook`, etc.) are consumed by Footer and SocialShare — changing a colour value changes every appearance of that platform's branding
 
