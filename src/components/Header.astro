@@ -53,27 +53,28 @@ const links = navLinks[lang]
         inset: 0 0 auto 0;
     }
 
-    /* named only on solid pages: between two of them the bar holds still while the
-       page crossfades. Hero bars stay unnamed so a transparent bar never morphs into
-       a solid one. */
+    /* Deliberately unnamed for view transitions. The bar is in flow, not sticky, so on
+       a page scrolled 2 000px its old snapshot sits 2 000px above the viewport, and a
+       named group would swoop the header down from there on every navigation. It
+       crossfades with the rest of the page instead. */
     header.solid {
         background-color: var(--colorsLightSand);
         position: relative;
-        view-transition-name: site-header;
     }
 
     /* desktop: the same 68px bar as the hero — the wordmark overhangs (DesktopMenu) */
-    @media (min-width: 1000px) {
+    @media (min-width: 1200px) {
         header.solid {
             height: 68px;
         }
     }
 
-    /* tablet (769–999px): the desktop nav does not fit beside the wordmark, so the
+    /* tablet (769–1199px): the desktop nav does not fit beside the wordmark, so the
        header keeps the phone bar and menu while the page below is already in its
-       desktop layout. The hero bar stays out of flow (absolute) — the desktop hero
-       reserves no room for a fixed bar. */
-    @media (min-width: 769px) and (max-width: 999px) {
+       desktop layout. At 1000px "Ota yhteyttä" already wrapped; 1200px is the one
+       desktop breakpoint the brand names. The hero bar stays out of flow (absolute) —
+       the desktop hero reserves no room for a fixed bar. */
+    @media (min-width: 769px) and (max-width: 1199px) {
         header.hero {
             background-color: var(--colorsDeepForest);
             height: var(--headerSize);
@@ -85,6 +86,16 @@ const links = navLinks[lang]
             background-color: var(--colorsDeepForest);
             height: var(--headerSize);
             position: fixed;
+        }
+    }
+
+    /* Without the Popover API the phone links render inline (MobileMenu). A fixed,
+       60px bar would then pin them over the page, so the bar grows to fit them and
+       scrolls away with the page. */
+    @supports not selector(:popover-open) {
+        header.hero {
+            height: auto;
+            position: absolute;
         }
     }
 </style>
