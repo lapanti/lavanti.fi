@@ -22,7 +22,7 @@
       - text: .
     - paragraph: I am a municipal councillor in Kirkkonummi, chair of the Green council group, and a father of four. To me, politics means taking care of shared matters, sustainably and across party lines — openness, honesty, and listening to different views matter, especially on hard questions.
     - paragraph:
-      - text: /I am also one of the founders of the Digital Independence citizens’ initiative\. In July \d+ it gathered the \d+,\d+ signatures required for parliamentary consideration and goes before parliament in spring \d+\. You can find more about my background on the/
+      - text: /I am also one of the founders of the Digital Independence citizens’ initiative\. In July \d+ it gathered the \d+,\d+ signatures required for parliamentary consideration\. It will be submitted to parliament after the spring \d+ election, so that the new parliament has time to consider it in full\. You can find more about my background on the/
       - link "About Lauri":
         - /url: /en/about/
       - text: page and among the
@@ -104,6 +104,15 @@
       - link "posts":
         - /url: /en/blog/
       - text: and subscribe to the newsletter below.
+    - text: Events
+    - heading "Campaign event calendar" [level=2]
+    - list:
+      - listitem:
+        - time: /Monday, \d+ November \d+/
+        - heading "Event at Fyyri library" [level=3]
+        - paragraph: Fyyri library, Mörne hall, Kirkkonummi
+        - paragraph: A campaign event in the Mörne hall at Fyyri, the main library of Kirkkonummi. Open to all and free of charge.
+        - text: The topic will be confirmed later.
     - text: Q & A
     - heading "Frequently asked questions about the election" [level=2]
     - heading /In which electoral district is Lauri Lavanti running in the \d+ parliamentary election\?/ [level=3]
