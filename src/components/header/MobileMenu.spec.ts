@@ -20,14 +20,32 @@ describe('<MobileMenu />', () => {
         expect(result.firstChild).toMatchSnapshot()
     })
 
-    it('should render the menu input', async () => {
+    it('should render a menu button that toggles the nav popover', async () => {
         const result = await renderAstroComponent(MobileMenu, {
             props: {
                 links,
             },
         })
 
-        expect(getByRole(result, 'checkbox', { name: /Avaa valikko/i })).not.toBeChecked()
+        const button = getByRole(result, 'button', { name: 'Valikko' })
+        const nav = result.querySelector('nav[popover]')
+        expect(button).toHaveAttribute('popovertarget', 'mobile-nav')
+        expect(nav).toHaveAttribute('id', 'mobile-nav')
+        expect(nav).toHaveAttribute('aria-label', 'Valikko')
+    })
+
+    it.each([
+        ['en', 'Menu'],
+        ['sv', 'Meny'],
+    ] as const)('should localize the menu button for %s', async (lang, label) => {
+        const result = await renderAstroComponent(MobileMenu, {
+            props: {
+                lang,
+                links,
+            },
+        })
+
+        expect(getByRole(result, 'button', { name: label })).toHaveAttribute('popovertarget', 'mobile-nav')
     })
 
     it('should render the main link', async () => {

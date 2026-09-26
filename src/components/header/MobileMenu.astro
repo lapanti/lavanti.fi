@@ -2,6 +2,7 @@
 /* eslint-disable astro/no-unused-css-selector */
 import type { Lang, NavLink } from '../../content/nav'
 
+import { menuLabel } from '../../content/nav'
 import { colors, CONTENT_PADDING, CONTENT_SIZE, HEADER_SIZE, sizes } from '../../lib/styles'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
@@ -12,24 +13,22 @@ interface Props {
     variant?: 'hero' | 'solid'
 }
 
-const { lang, links, variant = 'solid' } = Astro.props
+const { lang = 'fi', links, variant = 'solid' } = Astro.props
 const navLinks = links.filter((link) => !link.switchToLang)
 const langLinks = links.filter((link) => link.switchToLang)
 const tone = variant === 'hero' ? 'light' : 'dark'
+const label = menuLabel[lang]
 ---
 
 <style
     define:vars={{
-        colorsBrightGreen: colors.brightGreen,
         colorsDarkGreen: colors.darkGreen,
         colorsDeepForest: colors.forestGreen,
-        colorsWhite: colors.white,
+        colorsLightSand: colors.lightSand,
         contentPadding: CONTENT_PADDING,
         contentSize: CONTENT_SIZE,
         headerSize: HEADER_SIZE,
         sizes05: sizes[0.5],
-        sizes025: sizes[0.25],
-        sizes3: sizes[3],
         sizes25: sizes[2.5],
     }}
 >
@@ -65,68 +64,72 @@ const tone = variant === 'hero' ? 'light' : 'dark'
         justify-content: flex-end;
     }
 
-    input[type='checkbox'] {
-        position: absolute;
-        display: block;
-        height: var(--sizes3);
-        width: var(--sizes3);
-        right: var(--sizes05);
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 5;
-        opacity: 0;
+    /* menu button — the printed .btn at header size: flat at rest, inverted while the
+       menu is open, a press when held. Light sand on the hero's forest bar. */
+    .menu-btn {
+        background: transparent;
+        border: 2px solid currentcolor;
+        color: var(--colorsDeepForest);
         cursor: pointer;
+        font-family: var(--buttonFontFamily);
+        font-size: 1rem;
+        font-weight: var(--buttonFontWeight);
+        letter-spacing: var(--buttonLetterSpacing);
+        line-height: 1;
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+        padding: 0 0.875rem;
+        text-transform: uppercase;
+        transition:
+            background var(--dur-base) var(--ease),
+            color var(--dur-base) var(--ease),
+            transform var(--dur-fast) var(--ease);
     }
-
-    .hamburger-lines-container {
-        height: var(--sizes25);
-        width: var(--sizes3);
-        right: var(--sizes05);
-        top: 50%;
-        padding: var(--sizes05);
-        position: absolute;
-        transform: translateY(-50%);
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .menu-btn.light {
+        color: var(--colorsLightSand);
     }
-
-    .line1,
-    .line2,
-    .line3 {
-        display: block;
-        height: var(--sizes025);
-        width: 100%;
-        background: var(--colorsWhite);
-    }
-
-    .hamburger-lines-container.dark .line1,
-    .hamburger-lines-container.dark .line2,
-    .hamburger-lines-container.dark .line3 {
+    .menu-btn:has(+ .links:popover-open) {
         background: var(--colorsDeepForest);
+        border-color: var(--colorsDeepForest);
+        color: var(--colorsLightSand);
+    }
+    .menu-btn.light:has(+ .links:popover-open) {
+        background: var(--colorsLightSand);
+        border-color: var(--colorsLightSand);
+        color: var(--colorsDeepForest);
+    }
+    .menu-btn:active {
+        transform: translate(var(--press), var(--press));
     }
 
+    /* the panel — a native popover, so the browser owns Escape, tap-outside, focus
+       return and hiding the closed links from the tab order and the a11y tree. It
+       sits in the top layer under the 60px bar: absolute (scrolls with the page) under
+       the in-flow solid header, fixed under the hero's fixed bar. */
     .links {
         align-items: center;
         background-color: var(--colorsDeepForest);
-        border-bottom: 0 solid var(--colorsDarkGreen);
-        display: flex;
+        border: 0;
+        border-bottom: 4px solid var(--colorsDarkGreen);
+        box-sizing: border-box;
+        color: inherit;
         flex-direction: column;
         gap: var(--sizes25);
+        height: calc(100dvh - var(--headerSize));
+        inset: var(--headerSize) 0 auto 0;
         justify-content: center;
-        left: 0;
-        overflow: hidden;
+        margin: 0;
+        overflow: auto;
+        overscroll-behavior: contain;
+        padding: var(--sizes05);
         position: absolute;
-        top: var(--headerSize);
-        transition: height 0.3s ease-in-out;
-        width: 100vw;
-        height: 0;
+        width: 100%;
     }
-
-    .links a {
-        transition: opacity 0.3s ease-in-out;
-        opacity: 0;
+    .links.hero {
+        position: fixed;
+    }
+    .links:popover-open {
+        display: flex;
     }
 
     .langs {
@@ -134,32 +137,98 @@ const tone = variant === 'hero' ? 'light' : 'dark'
         gap: var(--sizes05);
     }
 
-    /* Open state mirrors the language switcher's active chip (bright green fill)
-       rather than morphing the lines into a close icon. */
-    .container input[type='checkbox']:checked ~ .hamburger-lines-container {
-        background-color: var(--colorsBrightGreen);
+    /* The page behind the open panel does not scroll. */
+    :global(html:has(#mobile-nav:popover-open)) {
+        overflow: hidden;
     }
 
-    .container input[type='checkbox']:checked ~ .links {
-        border-bottom-width: 4px;
-        height: calc(100dvh - var(--headerSize));
+    /* Motion: the panel unrolls downward over --dur-menu and rolls back up over the
+       shorter --dur-base; links settle in behind it, 40ms apart. clip-path keeps it off
+       the layout path, and display/overlay transition discretely so the close plays
+       out before the panel leaves the top layer. Reduced motion zeroes every duration
+       and the stagger, leaving an instant show/hide. */
+    .links {
+        clip-path: inset(0 0 100% 0);
+        transition:
+            clip-path var(--dur-base) var(--ease),
+            display var(--dur-base) allow-discrete,
+            overlay var(--dur-base) allow-discrete;
+    }
+    .links:popover-open {
+        clip-path: inset(0);
+        transition-duration: var(--dur-menu);
+    }
+    @starting-style {
+        .links:popover-open {
+            clip-path: inset(0 0 100% 0);
+        }
     }
 
-    .container input[type='checkbox']:checked ~ .links a {
-        opacity: 100%;
+    .links > :global(*) {
+        opacity: 0;
+        transform: translateY(-0.25rem);
+        transition:
+            opacity var(--dur-base) var(--ease),
+            transform var(--dur-base) var(--ease);
+    }
+    .links:popover-open > :global(*) {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(var(--i, 0) * var(--dur-fast) / 3);
+    }
+    @starting-style {
+        .links:popover-open > :global(*) {
+            opacity: 0;
+            transform: translateY(-0.25rem);
+        }
+    }
+    .links > :global(:nth-child(2)) {
+        --i: 1;
+    }
+    .links > :global(:nth-child(3)) {
+        --i: 2;
+    }
+    .links > :global(:nth-child(4)) {
+        --i: 3;
+    }
+    .links > :global(:nth-child(5)) {
+        --i: 4;
+    }
+    .links > :global(:nth-child(6)) {
+        --i: 5;
+    }
+    .links > :global(:nth-child(n + 7)) {
+        --i: 6;
+    }
+
+    /* Without the Popover API the button would do nothing — drop it and show the
+       links inline under the bar instead, so navigation is never unreachable. */
+    @supports not selector(:popover-open) {
+        .container {
+            flex-wrap: wrap;
+        }
+        .menu-btn {
+            display: none;
+        }
+        .links {
+            clip-path: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: auto;
+            position: static;
+        }
+        .links > :global(*) {
+            opacity: 1;
+            transform: none;
+        }
     }
 
     @media (min-width: 769px) {
         .container,
-        .links {
-            display: none;
-        }
-    }
-
-    @media (prefers-reduced-motion) {
         .links,
-        .links a {
-            transition: none;
+        .links:popover-open {
+            display: none;
         }
     }
 </style>
@@ -168,13 +237,10 @@ const tone = variant === 'hero' ? 'light' : 'dark'
         <MainNavigationLink lang={lang} tone={tone} />
     </div>
     <div>
-        <input aria-label="Avaa valikko. Sulje valikko kun valittu." name="" type="checkbox" />
-        <div class:list={['hamburger-lines-container', { dark: variant === 'solid' }]}>
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
-        <div class="links on-dark">
+        <button class:list={['menu-btn', { light: tone === 'light' }]} popovertarget="mobile-nav" type="button">
+            {label}
+        </button>
+        <nav aria-label={label} class:list={['links', 'on-dark', { hero: variant === 'hero' }]} id="mobile-nav" popover>
             {
                 navLinks.map((link) => (
                     <NavigationLink context="mobile" href={link.href} label={link.label} title={link.title} />
@@ -193,6 +259,6 @@ const tone = variant === 'hero' ? 'light' : 'dark'
                     ))
                 }
             </div>
-        </div>
+        </nav>
     </div>
 </div>
