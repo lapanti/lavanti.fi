@@ -22,7 +22,7 @@
       - text: .
     - paragraph: Olen kirkkonummelainen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
     - paragraph:
-      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta ja etenee eduskunnan käsittelyyn keväällä \d+\. Lisää taustastani löydät/
+      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
       - link "Laurista-sivulta":
         - /url: /fi/laurista/
       - text: ja
@@ -109,7 +109,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /2 \d+ €/
+    - definition: /1 \d+ €/
     - term: Oma sitoumukseni
     - definition: /8 \d+ €/
     - term: Vielä kerättävä

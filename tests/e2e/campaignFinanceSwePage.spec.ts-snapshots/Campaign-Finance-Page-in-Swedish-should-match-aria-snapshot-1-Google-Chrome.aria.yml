@@ -10,7 +10,7 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /2 \d+ €/
+    - definition: /1 \d+ €/
     - term: Mitt eget åtagande
     - definition: /8 \d+ €/
     - term: Kvar att samla in
@@ -47,7 +47,7 @@
     - figure "Budgetens pengar per källa, andelar av hela budgeten":
       - text: ""
       - list:
-        - listitem: /Egna medel 2 \d+ € \d+,\d+ %/
+        - listitem: /Egna medel 1 \d+ € \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
         - listitem: /Privatpersoner 0 € \d+,\d+ %/
         - listitem: /Företag 0 € \d+,\d+ %/
@@ -63,7 +63,7 @@
     - figure "Så har de insamlade pengarna använts, andelar av det insamlade":
       - text: ""
       - list:
-        - listitem: /Använt hittills 2 \d+ € \d+,\d+ %/
+        - listitem: /Använt hittills 1 \d+ € \d+,\d+ %/
         - listitem: /Oanvänt 0 € \d+,\d+ %/
     - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till valreklam vid vägarna, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
     - text: Bakgrund
