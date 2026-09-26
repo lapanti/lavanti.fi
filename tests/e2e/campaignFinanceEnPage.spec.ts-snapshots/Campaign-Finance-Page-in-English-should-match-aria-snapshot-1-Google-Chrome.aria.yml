@@ -47,7 +47,7 @@
     - figure "The budget by source, shares of the whole budget":
       - text: ""
       - list:
-        - listitem: /My own funds €\d+,\d+ 6\.7%/
+        - listitem: /My own funds €\d+,\d+ 4\.0%/
         - listitem: Loans €0 0.0%
         - listitem: Private individuals €0 0.0%
         - listitem: Companies €0 0.0%

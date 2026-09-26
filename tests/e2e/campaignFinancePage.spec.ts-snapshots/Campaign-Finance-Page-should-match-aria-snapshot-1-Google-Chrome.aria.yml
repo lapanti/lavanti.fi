@@ -10,7 +10,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /2 \d+ €/
+    - definition: /1 \d+ €/
     - term: Oma sitoumukseni
     - definition: /8 \d+ €/
     - term: Vielä kerättävä
@@ -47,7 +47,7 @@
     - figure "Budjetin rahat lähteittäin, osuudet koko budjetista":
       - text: ""
       - list:
-        - listitem: /Omat varat 2 \d+ € \d+,\d+ %/
+        - listitem: /Omat varat 1 \d+ € \d+,\d+ %/
         - listitem: /Lainat 0 € \d+,\d+ %/
         - listitem: /Yksityishenkilöt 0 € \d+,\d+ %/
         - listitem: /Yritykset 0 € \d+,\d+ %/
@@ -63,7 +63,7 @@
     - figure "Kerätyn rahan käyttö, osuudet kerätystä rahasta":
       - text: ""
       - list:
-        - listitem: /Käytetty 2 \d+ € \d+,\d+ %/
+        - listitem: /Käytetty 1 \d+ € \d+,\d+ %/
         - listitem: /Käyttämättä 0 € \d+,\d+ %/
     - paragraph: Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
     - text: Taustaa
