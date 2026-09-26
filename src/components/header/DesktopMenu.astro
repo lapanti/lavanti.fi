@@ -78,8 +78,9 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
         margin-left: 2rem;
     }
 
-    /* below 1000px the nav does not fit beside the wordmark; MobileMenu takes over */
-    @media (min-width: 1000px) {
+    /* below 1200px the nav does not fit beside the wordmark on one line (at 1000px
+       "Ota yhteyttä" wrapped); MobileMenu takes over */
+    @media (min-width: 1200px) {
         .container {
             display: flex;
         }

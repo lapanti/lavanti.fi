@@ -311,9 +311,10 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
             scroll-behavior: smooth;
         }
 
-        /* page to page — a short crossfade instead of a white flash; the solid header
-           carries its own view-transition-name (Header.astro) so it holds still.
-           Browsers without cross-document view transitions navigate as before. */
+        /* page to page — a short crossfade instead of a white flash. The header is not
+           named: it is in flow rather than sticky, so a named group would swoop it in
+           from wherever the old page was scrolled (see Header.astro). Browsers without
+           cross-document view transitions navigate as before. */
         @view-transition {
             navigation: auto;
         }
@@ -467,7 +468,7 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         }
     }
 
-    /* single pass — the full-size band draws in once, left to right, dark green first,
+    /* draw-in — the full-size band draws in once, left to right, dark green first,
        as it scrolls into view, and is complete by the time the whole band is visible.
        Scroll-driven, so it never replays on a timer; the slim band that tops inner
        pages stays static. Unsupported browsers and reduced motion get the static band. */
