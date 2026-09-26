@@ -63,17 +63,17 @@ const links = navLinks[lang]
     }
 
     /* desktop: the same 68px bar as the hero — the wordmark overhangs (DesktopMenu) */
-    @media (min-width: 1024px) {
+    @media (min-width: 1000px) {
         header.solid {
             height: 68px;
         }
     }
 
-    /* tablet (769–1023px): the desktop nav does not fit beside the wordmark, so the
+    /* tablet (769–999px): the desktop nav does not fit beside the wordmark, so the
        header keeps the phone bar and menu while the page below is already in its
        desktop layout. The hero bar stays out of flow (absolute) — the desktop hero
        reserves no room for a fixed bar. */
-    @media (min-width: 769px) and (max-width: 1023px) {
+    @media (min-width: 769px) and (max-width: 999px) {
         header.hero {
             background-color: var(--colorsDeepForest);
             height: var(--headerSize);
