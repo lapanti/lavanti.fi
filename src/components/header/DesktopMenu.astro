@@ -1,6 +1,7 @@
 ---
 import type { Lang, NavLink } from '../../content/nav'
 
+import { mainNavLabel } from '../../content/nav'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
 
@@ -98,7 +99,7 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
     >
         <MainNavigationLink lang={lang} scale={2.43} tone={tone} />
     </div>
-    <nav aria-label="Päävalikko">
+    <nav aria-label={mainNavLabel[lang ?? 'fi']}>
         {
             navLinks.map((link) => (
                 <NavigationLink

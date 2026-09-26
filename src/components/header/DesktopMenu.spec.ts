@@ -20,6 +20,21 @@ describe('<DesktopMenu />', () => {
         expect(result.firstChild).toMatchSnapshot()
     })
 
+    it.each([
+        ['fi', 'Päävalikko'],
+        ['en', 'Main menu'],
+        ['sv', 'Huvudmeny'],
+    ] as const)('should name the nav landmark in the page language (%s)', async (lang, label) => {
+        const result = await renderAstroComponent(DesktopMenu, {
+            props: {
+                lang,
+                links,
+            },
+        })
+
+        expect(result.querySelector('nav')).toHaveAttribute('aria-label', label)
+    })
+
     it('should render the main link', async () => {
         const result = await renderAstroComponent(DesktopMenu, {
             props: {

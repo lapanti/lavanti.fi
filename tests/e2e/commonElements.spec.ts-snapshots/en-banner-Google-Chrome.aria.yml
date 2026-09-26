@@ -5,7 +5,7 @@
     - /url: "#footer"
   - link "Lauri Lavanti":
     - /url: /en/
-  - navigation "Päävalikko":
+  - navigation "Main menu":
     - link /Elections – Parliamentary election \d+/:
       - /url: /en/elections/
       - text: ""
