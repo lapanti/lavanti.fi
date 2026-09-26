@@ -6,6 +6,13 @@ export const skipLinks: Record<Lang, { main: string; footer: string }> = {
     sv: { footer: 'Hoppa till sidfoten &#x27A1;', main: 'Hoppa till huvudinnehållet &#x27A1;' },
 }
 
+/** Visible label of the mobile menu button, which is also the mobile nav's accessible name. */
+export const menuLabel: Record<Lang, string> = {
+    en: 'Menu',
+    fi: 'Valikko',
+    sv: 'Meny',
+}
+
 export interface NavLink {
     href: string
     label: string
