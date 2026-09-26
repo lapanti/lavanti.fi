@@ -6,6 +6,7 @@ export class AnyPage {
     readonly page: Page
     readonly isMobile: boolean
     readonly navButton: Locator
+    readonly mobileNav: Locator
     readonly navLinkHome: Locator
     readonly navLinkAboutMe: Locator
     readonly navLinkBlog: Locator
@@ -31,7 +32,8 @@ export class AnyPage {
          * On mobile the desktop container is display:none (nth 0 → mobile link).
          */
         const navIdx = this.isMobile ? 0 : 1
-        this.navButton = page.locator('header input[type="checkbox"]')
+        this.navButton = page.locator('header button[popovertarget="mobile-nav"]')
+        this.mobileNav = page.locator('#mobile-nav')
         this.navLinkHome = page.locator(`header a[href="/${lang}/"]`).nth(navIdx)
         this.navLinkAboutMe = page.locator('a[href="/fi/laurista/"]').nth(navIdx)
         this.navLinkBlog = page.locator('a[href="/fi/blog/"]').nth(navIdx)
@@ -62,9 +64,9 @@ export class AnyPage {
     }
 
     async openMainNavigation() {
-        await expect(this.navButton).not.toBeChecked()
+        await expect(this.mobileNav).toBeHidden()
         await this.navButton.click()
-        await expect(this.navButton).toBeChecked()
+        await expect(this.mobileNav).toBeVisible()
     }
 
     async checkMainNavigationLinks() {
@@ -90,9 +92,9 @@ export class AnyPage {
     }
 
     async closeMainNavigation() {
-        await expect(this.navButton).toBeChecked()
+        await expect(this.mobileNav).toBeVisible()
         await this.navButton.click()
-        await expect(this.navButton).not.toBeChecked()
+        await expect(this.mobileNav).toBeHidden()
     }
 
     async checkMainNavigation() {
