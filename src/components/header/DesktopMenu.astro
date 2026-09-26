@@ -46,7 +46,10 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
     /* The front page's hero has its own in-image wordmark, so the nav's copy is
        redundant there. Every other hero-variant page has no in-image mark — the nav's
        brand is its only logo, positioned to overhang the top of the dark hero column
-       (package 20260824 8pm/Site/laurista.html: ".top .brand", Figma 2067:47750). */
+       (package 20260824 8pm/Site/laurista.html: ".top .brand", Figma 2067:47750).
+       Solid pages overhang the same way, so the bar keeps the hero's 68px height and
+       the nav sits at the same height on every page instead of the in-flow wordmark
+       stretching the bar to ~83px. */
     .brand.hidden {
         display: none;
     }
@@ -55,6 +58,12 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
         left: var(--desktopPadX);
         position: absolute;
         top: 14px;
+    }
+
+    /* the overhanging mark is out of flow, so reserve its width (~171px at scale
+       2.43, plus the row gap) or a narrow desktop nav slides underneath it */
+    .container:has(> .brand.overhang) {
+        padding-left: calc(var(--desktopPadX) + 10.75rem + 1.5rem);
     }
 
     nav {
@@ -69,7 +78,8 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
         margin-left: 2rem;
     }
 
-    @media (min-width: 769px) {
+    /* below 1024px the nav does not fit beside the wordmark; MobileMenu takes over */
+    @media (min-width: 1024px) {
         .container {
             display: flex;
         }
@@ -79,7 +89,10 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
     <div
         class:list={[
             'brand',
-            { hidden: variant === 'hero' && heroShowsMark, overhang: variant === 'hero' && !heroShowsMark },
+            {
+                hidden: variant === 'hero' && heroShowsMark,
+                overhang: variant === 'solid' || (variant === 'hero' && !heroShowsMark),
+            },
         ]}
     >
         <MainNavigationLink lang={lang} scale={2.43} tone={tone} />

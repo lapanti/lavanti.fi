@@ -8,7 +8,7 @@ exports[`<DesktopMenu /> > should render 1`] = `
 >
    
   <div
-    class="brand"
+    class="brand overhang"
     data-astro-cid-ci3p74oi=""
     style="--desktopPadX: 56px;"
   >
