@@ -2,7 +2,7 @@ import test from '@playwright/test'
 
 test.describe('Mobile menu', () => {
     test.beforeEach(({ isMobile }) => {
-        test.skip(!isMobile, 'the popover menu only renders below 769px')
+        test.skip(!isMobile, 'the popover menu only renders below 1200px')
     })
 
     test('keeps closed links out of the tab order, opens, and closes on Escape', async ({ page }) => {
@@ -11,6 +11,11 @@ test.describe('Mobile menu', () => {
         const nav = page.getByRole('navigation', { name: 'Menu' })
 
         await test.expect(nav).toBeHidden()
+
+        // Tab from the closed button: focus must leave the banner, not land on a hidden link.
+        await button.focus()
+        await page.keyboard.press('Tab')
+        test.expect(await nav.evaluate((el) => el.contains(document.activeElement))).toBe(false)
 
         await button.click()
         await test.expect(nav).toBeVisible()
