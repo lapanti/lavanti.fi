@@ -95,7 +95,7 @@ All visual design tokens — spacing, colours, typography, and layout grid const
   - Cross-page crossfade: `@view-transition { navigation: auto }`, 200ms. The solid header holds `view-transition-name: site-header`; hero headers stay unnamed.
   - Signal stripe: the full-size `.stripes` band draws in once, scroll-driven (`animation-timeline: view()`), complete once fully visible. The slim and vertical bands are static. Keep `animation-timeline` out of the rule that sets the `animation` shorthand — the minifier folds it in and Chrome drops the declaration.
   - Content links thicken their underline to 3px on hover.
-  - Mobile menu: `<button popovertarget="mobile-nav">` + `<nav id="mobile-nav" popover>`, no JS. The button is a printed text button labelled from `menuLabel` in `src/content/nav.ts`. The panel unrolls with `clip-path` (`@starting-style`, `display`/`overlay` `allow-discrete`); links stagger by `var(--dur-fast) / 3`. Without the Popover API the links render inline.
+  - Mobile menu: `<button popovertarget="mobile-nav">` + `<nav id="mobile-nav" popover>`, no JS. The button is a printed text button labelled from `menuLabel` in `src/content/nav.ts`. The panel unrolls with a `clip-path` keyframe animation and closes with a `clip-path` transition (`display`/`overlay` `allow-discrete`); links stagger by `var(--dur-fast) / 3`. Do not use `@starting-style`: Siteimprove Alfa (the e2e a11y gate) cannot parse it and drops the rest of the stylesheet, failing sia-r73 site-wide. Without the Popover API the links render inline.
 
 ### Anti-Patterns
 - Do not hardcode pixel or rem values in component `<style>` blocks — always pull from `styles.ts` via `define:vars`

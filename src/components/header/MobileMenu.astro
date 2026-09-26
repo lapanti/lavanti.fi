@@ -143,9 +143,11 @@ const label = menuLabel[lang]
 
     /* Motion: the panel unrolls downward over --dur-menu and rolls back up over the
        shorter --dur-base; links settle in behind it, 40ms apart. clip-path keeps it off
-       the layout path, and display/overlay transition discretely so the close plays
-       out before the panel leaves the top layer. Reduced motion zeroes every duration
-       and the stagger, leaving an instant show/hide. */
+       the layout path. Opening is a keyframe animation rather than a transition from
+       @starting-style — Siteimprove Alfa (e2e a11y gate) cannot parse @starting-style
+       and drops the rest of the stylesheet. Closing transitions display/overlay
+       discretely so it plays out before the panel leaves the top layer. Reduced motion
+       zeroes every duration and the stagger, leaving an instant show/hide. */
     .links {
         clip-path: inset(0 0 100% 0);
         transition:
@@ -154,29 +156,19 @@ const label = menuLabel[lang]
             overlay var(--dur-base) allow-discrete;
     }
     .links:popover-open {
+        animation: menu-unroll var(--dur-menu) var(--ease);
         clip-path: inset(0);
-        transition-duration: var(--dur-menu);
     }
-    @starting-style {
-        .links:popover-open {
+    .links:popover-open > :global(*) {
+        animation: menu-settle var(--dur-base) var(--ease) calc(var(--i, 0) * var(--dur-fast) / 3) backwards;
+    }
+    @keyframes menu-unroll {
+        from {
             clip-path: inset(0 0 100% 0);
         }
     }
-
-    .links > :global(*) {
-        opacity: 0;
-        transform: translateY(-0.25rem);
-        transition:
-            opacity var(--dur-base) var(--ease),
-            transform var(--dur-base) var(--ease);
-    }
-    .links:popover-open > :global(*) {
-        opacity: 1;
-        transform: none;
-        transition-delay: calc(var(--i, 0) * var(--dur-fast) / 3);
-    }
-    @starting-style {
-        .links:popover-open > :global(*) {
+    @keyframes menu-settle {
+        from {
             opacity: 0;
             transform: translateY(-0.25rem);
         }
@@ -216,10 +208,6 @@ const label = menuLabel[lang]
             flex-wrap: wrap;
             height: auto;
             position: static;
-        }
-        .links > :global(*) {
-            opacity: 1;
-            transform: none;
         }
     }
 
