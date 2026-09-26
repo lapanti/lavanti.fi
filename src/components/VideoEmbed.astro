@@ -160,7 +160,11 @@ const videoEmbedScript = `(function(){
     .facade:focus-visible .glyph {
         background: var(--colorsBrightGreen);
         color: var(--colorsOffWhite);
-        transform: scale(1.06);
+    }
+
+    /* the site's press, not a zoom — the glyph lands like every other control */
+    .facade:active .glyph {
+        transform: translate(var(--press), var(--press));
     }
 
     .glyph svg {
@@ -188,17 +192,6 @@ const videoEmbedScript = `(function(){
         line-height: var(--buttonLineHeight);
         padding: var(--sizes025) var(--sizes05);
         text-transform: uppercase;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .glyph {
-            transition: none;
-        }
-
-        .facade:hover .glyph,
-        .facade:focus-visible .glyph {
-            transform: none;
-        }
     }
 </style>
 <div class="video-embed">
