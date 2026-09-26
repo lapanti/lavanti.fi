@@ -75,10 +75,10 @@ export interface Benchmark {
 
 /**
  * The state on `asOf`. No donations have come in: the campaign account is not open, so
- * every outside source is zero. The 2 000 € already spent came from the candidate's own
- * pocket, which is why it appears under `own` — money paid in, not pledged — while the
- * remaining 8 000 € of his 10 000 € undertaking stays in `ownCommitment`. The spending
- * figure is provisional and is to be replaced with the exact one before launch.
+ * every outside source is zero. Only money from the reporting period (from 18.10.2026,
+ * six months before election day) is shown. `spent` holds the items billed in that period;
+ * `own` is still a placeholder for the candidate's paid-in share of his 10 000 € undertaking,
+ * the rest of which stays in `ownCommitment`.
  *
  * Every figure is a whole euro; cents on a transparency page invite precision the
  * campaign cannot promise.
@@ -97,8 +97,11 @@ export const campaignFinance: CampaignFinance = {
         partyAssociations: 0,
         private: 0,
     },
-    // TODO: replace with the exact figure before launch.
-    spent: 2000,
+    /*
+     * Liehut 523,80 € + kampanjan visuaalinen suunnittelu 1 255 € (budget sheet), billed after
+     * the reporting period opens on 18.10.2026. Spending before that date is not reported.
+     */
+    spent: 1779,
 }
 
 /**
