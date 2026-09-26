@@ -73,10 +73,11 @@ const links = navLinks[lang]
        header keeps the phone bar and menu while the page below is already in its
        desktop layout. At 1000px "Ota yhteyttä" already wrapped; 1200px is the one
        desktop breakpoint the brand names. The hero bar stays out of flow (absolute) —
-       the desktop hero reserves no room for a fixed bar. */
+       the desktop hero reserves no room for a fixed bar — and transparent, exactly as
+       on desktop: an opaque deep-forest bar here covered the top of the front page's
+       in-image wordmark, because that hero starts at the very top of the page. */
     @media (min-width: 769px) and (max-width: 1199px) {
         header.hero {
-            background-color: var(--colorsDeepForest);
             height: var(--headerSize);
         }
     }

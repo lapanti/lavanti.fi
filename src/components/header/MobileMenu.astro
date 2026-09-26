@@ -102,6 +102,22 @@ const label = menuLabel[lang]
     .menu-btn:active {
         transform: translate(var(--press), var(--press));
     }
+    /* tablet hero: the bar is transparent over the hero (Header.astro), so the button
+       takes the desktop nav's treatment — a light-sand chip with deep-forest text,
+       legible over both the dark photo column and the sand text column. Open, it
+       inverts to deep forest. */
+    @media (min-width: 769px) and (max-width: 1199px) {
+        .menu-btn.light {
+            background: var(--colorsLightSand);
+            border-color: var(--colorsLightSand);
+            color: var(--colorsDeepForest);
+        }
+        .menu-btn.light:has(+ .links:popover-open) {
+            background: var(--colorsDeepForest);
+            border-color: var(--colorsDeepForest);
+            color: var(--colorsLightSand);
+        }
+    }
 
     /* the panel — a native popover, so the browser owns Escape, tap-outside, focus
        return and hiding the closed links from the tab order and the a11y tree. It
