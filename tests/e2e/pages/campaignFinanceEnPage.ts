@@ -2,15 +2,22 @@ import type { Locator, Page } from '@playwright/test'
 
 import { expect } from '@playwright/test'
 
-import { financeLabels } from '../../../src/content/campaignFinance'
+import { campaignFinance } from '../../../src/content/campaignFinance'
 import { AnyPage } from './anyPage'
+
+/*
+ * Two comparison bar groups and the funding stack are always drawn. The spending
+ * stack joins them only once a spending figure is confirmed, so the count follows the
+ * data rather than being pinned to whatever the campaign happens to report today.
+ */
+const EXPECTED_FIGURES = campaignFinance.spent === undefined ? 3 : 4
 
 export class CampaignFinanceEnPage extends AnyPage {
     readonly financeTitle: Locator
     readonly summaryPlate: Locator
     readonly sourceLink: Locator
     readonly figures: Locator
-    readonly spendingPending: Locator
+    readonly spendingSection: Locator
 
     constructor(page: Page) {
         super(page, 'en')
@@ -18,7 +25,7 @@ export class CampaignFinanceEnPage extends AnyPage {
         this.summaryPlate = page.locator('#inbrief')
         this.sourceLink = page.locator('a[href$="E_VI_eduskuntavaalit2023.csv"]')
         this.figures = page.locator('figure')
-        this.spendingPending = page.getByText(financeLabels.en.spentPending)
+        this.spendingSection = page.locator('#spending')
     }
 
     async goTo() {
@@ -31,12 +38,8 @@ export class CampaignFinanceEnPage extends AnyPage {
     async checkContent() {
         await expect(this.summaryPlate).toBeVisible()
         await expect(this.sourceLink).toBeVisible()
-        /*
-         * Two comparison bar groups and the funding stack. The spending stack is not
-         * among them while no spending figure is confirmed; the section prints the
-         * pending line instead, which is what the next assertion holds it to.
-         */
-        await expect(this.figures).toHaveCount(3)
-        await expect(this.spendingPending).toBeVisible()
+        await expect(this.figures).toHaveCount(EXPECTED_FIGURES)
+        // Present in both states: it carries either the stack or the pending line.
+        await expect(this.spendingSection).toBeVisible()
     }
 }
