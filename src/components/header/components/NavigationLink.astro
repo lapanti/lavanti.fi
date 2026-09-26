@@ -95,12 +95,20 @@ const isLang = Boolean(switchToLang)
 
     /* mobile dropdown link (content) — oat yellow on the deep forest panel */
     .mobile.nav-link {
+        box-shadow: inset 4px 0 transparent;
         color: var(--colorsOat);
         font-size: var(--navMobileFontSize);
         padding-block: 0.5rem;
+        padding-inline: 0.875rem 0;
     }
     .mobile.nav-link:hover,
     .mobile.nav-link:focus-visible {
+        color: var(--colorsWhite);
+    }
+    /* current page — the mobile twin of the desktop underline: an aqua rule on the
+       leading edge (aqua, not bright green, for contrast on deep forest) */
+    .mobile.nav-link[aria-current='page'] {
+        box-shadow: inset 4px 0 var(--colorsAquaBlue);
         color: var(--colorsWhite);
     }
 

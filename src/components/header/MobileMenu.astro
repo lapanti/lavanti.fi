@@ -105,26 +105,30 @@ const label = menuLabel[lang]
        return and hiding the closed links from the tab order and the a11y tree. It
        sits in the top layer under the 60px bar: absolute (scrolls with the page) under
        the in-flow solid header, fixed under the hero's fixed bar. */
+    /* layout: a top-aligned, left-aligned list (not the old brand's centred
+       full-screen stack, which clipped its first link once the list outgrew the
+       panel), language chips pinned low, the signal stripe as the closing edge. */
     .links {
-        align-items: center;
+        align-items: flex-start;
         background-color: var(--colorsDeepForest);
         border: 0;
-        border-bottom: 4px solid var(--colorsDarkGreen);
         box-sizing: border-box;
         color: inherit;
         flex-direction: column;
-        gap: var(--sizes25);
+        gap: 0.25rem;
         height: calc(100dvh - var(--headerSize));
         inset: var(--headerSize) 0 auto 0;
-        justify-content: center;
+        justify-content: flex-start;
         margin: 0;
         overflow: auto;
         overscroll-behavior: contain;
-        padding: var(--sizes05);
+        padding: 1.5rem var(--pad-x) 0;
         position: absolute;
         width: 100%;
     }
+    /* the hero bar is deep forest too — a hairline marks where bar ends and panel begins */
     .links.hero {
+        border-top: 2px solid var(--colorsDarkGreen);
         position: fixed;
     }
     .links:popover-open {
@@ -134,6 +138,36 @@ const label = menuLabel[lang]
     .langs {
         display: flex;
         gap: var(--sizes05);
+        margin-block: auto 1.5rem;
+        padding-top: 1.5rem;
+    }
+
+    /* the panel's closing edge — the five signal bands at menu scale, static */
+    .menu-stripe {
+        align-self: stretch;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        height: 1.25rem;
+        margin-inline: calc(var(--pad-x) * -1);
+    }
+    .menu-stripe i {
+        flex: 1;
+    }
+    .menu-stripe i:nth-child(1) {
+        background: var(--colorsDarkGreen);
+    }
+    .menu-stripe i:nth-child(2) {
+        background: var(--colorsBrightGreen);
+    }
+    .menu-stripe i:nth-child(3) {
+        background: var(--colorsAquaBlue);
+    }
+    .menu-stripe i:nth-child(4) {
+        background: var(--colorsBrightSky);
+    }
+    .menu-stripe i:nth-child(5) {
+        background: var(--colorsSignalBlue);
     }
 
     /* The page behind the open panel does not scroll. */
@@ -159,7 +193,7 @@ const label = menuLabel[lang]
         animation: menu-unroll var(--dur-menu) var(--ease);
         clip-path: inset(0);
     }
-    .links:popover-open > :global(*) {
+    .links:popover-open > :global(*:not(.menu-stripe)) {
         animation: menu-settle var(--dur-base) var(--ease) calc(var(--i, 0) * var(--dur-fast) / 3) backwards;
     }
     @keyframes menu-unroll {
@@ -182,14 +216,9 @@ const label = menuLabel[lang]
     .links > :global(:nth-child(4)) {
         --i: 3;
     }
-    .links > :global(:nth-child(5)) {
+    /* capped at 4 so the last link lands within ~340ms */
+    .links > :global(:nth-child(n + 5)) {
         --i: 4;
-    }
-    .links > :global(:nth-child(6)) {
-        --i: 5;
-    }
-    .links > :global(:nth-child(n + 7)) {
-        --i: 6;
     }
 
     /* Without the Popover API the button would do nothing — drop it and show the
@@ -250,6 +279,7 @@ const label = menuLabel[lang]
                     ))
                 }
             </div>
+            <div aria-hidden="true" class="menu-stripe"><i></i><i></i><i></i><i></i><i></i></div>
         </nav>
     </div>
 </div>

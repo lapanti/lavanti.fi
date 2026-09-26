@@ -21,6 +21,30 @@ test.describe('Mobile menu', () => {
         await test.expect(button).toBeFocused()
     })
 
+    test('keeps every link reachable on a short screen', async ({ page }) => {
+        await page.setViewportSize({ height: 568, width: 320 })
+        await page.goto('/fi/laurista/')
+        await page.getByRole('banner').getByRole('button', { name: 'Valikko' }).click()
+        const nav = page.getByRole('navigation', { name: 'Valikko' })
+
+        const navBox = await nav.boundingBox()
+        const firstBox = await nav.getByRole('link').first().boundingBox()
+        test.expect(firstBox?.y).toBeGreaterThanOrEqual(navBox?.y ?? 0)
+
+        const lastLang = nav.getByRole('group').getByRole('link').last()
+        await lastLang.scrollIntoViewIfNeeded()
+        await test.expect(lastLang).toBeInViewport()
+    })
+
+    test('marks the current page in the panel', async ({ page }) => {
+        await page.goto('/en/about/')
+        await page.getByRole('banner').getByRole('button', { name: 'Menu' }).click()
+
+        await test
+            .expect(page.getByRole('navigation', { name: 'Menu' }).getByRole('link', { name: 'About Lauri' }))
+            .toHaveAttribute('aria-current', 'page')
+    })
+
     test('labels the menu button in the page language', async ({ page }) => {
         await page.goto('/fi/laurista/')
         await test.expect(page.getByRole('banner').getByRole('button', { name: 'Valikko' })).toBeVisible()

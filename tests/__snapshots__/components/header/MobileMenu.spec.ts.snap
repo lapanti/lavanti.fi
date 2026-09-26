@@ -97,6 +97,34 @@ exports[`<MobileMenu /> > should render 1`] = `
           
       </div>
        
+      <div
+        aria-hidden="true"
+        class="menu-stripe"
+        data-astro-cid-t7vk6yyn=""
+        style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+      >
+        <i
+          data-astro-cid-t7vk6yyn=""
+          style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        />
+        <i
+          data-astro-cid-t7vk6yyn=""
+          style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        />
+        <i
+          data-astro-cid-t7vk6yyn=""
+          style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        />
+        <i
+          data-astro-cid-t7vk6yyn=""
+          style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        />
+        <i
+          data-astro-cid-t7vk6yyn=""
+          style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        />
+      </div>
+       
     </nav>
      
   </div>
