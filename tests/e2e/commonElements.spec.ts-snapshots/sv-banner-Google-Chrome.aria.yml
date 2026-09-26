@@ -5,7 +5,7 @@
     - /url: "#footer"
   - link "Lauri Lavanti":
     - /url: /sv/
-  - navigation "Päävalikko":
+  - navigation "Huvudmeny":
     - link /Valet – Riksdagsvalet \d+/:
       - /url: /sv/riksdagsvalet/
       - text: ""

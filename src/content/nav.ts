@@ -13,6 +13,13 @@ export const menuLabel: Record<Lang, string> = {
     sv: 'Meny',
 }
 
+/** Accessible name of the desktop nav landmark, in the page's language. */
+export const mainNavLabel: Record<Lang, string> = {
+    en: 'Main menu',
+    fi: 'Päävalikko',
+    sv: 'Huvudmeny',
+}
+
 export interface NavLink {
     href: string
     label: string
