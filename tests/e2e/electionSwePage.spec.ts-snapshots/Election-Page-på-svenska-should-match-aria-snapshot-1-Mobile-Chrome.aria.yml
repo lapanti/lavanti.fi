@@ -109,9 +109,9 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: 0 €
+    - definition: /2 \d+ €/
     - term: Mitt eget åtagande
-    - definition: /\d+ \d+ €/
+    - definition: /8 \d+ €/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Situationen \d+\.\d+\.\d+/
     - paragraph:

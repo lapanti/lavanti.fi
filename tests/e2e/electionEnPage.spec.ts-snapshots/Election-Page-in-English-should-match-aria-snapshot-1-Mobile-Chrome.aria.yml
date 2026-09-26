@@ -109,7 +109,7 @@
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
-    - definition: €0
+    - definition: /€\d+,\d+/
     - term: My own commitment
     - definition: /€\d+,\d+/
     - term: Still to raise

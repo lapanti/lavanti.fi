@@ -10,9 +10,9 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: 0 €
+    - definition: /2 \d+ €/
     - term: Mitt eget åtagande
-    - definition: /\d+ \d+ €/
+    - definition: /8 \d+ €/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Situationen \d+\.\d+\.\d+/
     - text: Varför
@@ -47,20 +47,24 @@
     - figure "Budgetens pengar per källa, andelar av hela budgeten":
       - text: ""
       - list:
-        - listitem: /Egna medel 0 € \d+,\d+ %/
+        - listitem: /Egna medel 2 \d+ € \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
         - listitem: /Privatpersoner 0 € \d+,\d+ %/
         - listitem: /Företag 0 € \d+,\d+ %/
         - listitem: /Partiet och partiföreningar 0 € \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
-        - listitem: /Mitt eget åtagande \d+ \d+ € \d+,\d+ %/
+        - listitem: /Mitt eget åtagande 8 \d+ € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
     - paragraph: "Kategorierna är desamma som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro, står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte."
     - paragraph: /Donationer är välkomna från privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsredovisning till revisionsverket\. Lagen kräver ingetdera av en kandidat före valet\./
     - paragraph: Donationslänken publiceras här så snart kampanjkontot är öppet.
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
-    - paragraph: Ingen kostnadssiffra är bekräftad än. Den kommer hit, specificerad, så snart kampanjkontot är öppet.
+    - figure "Så har de insamlade pengarna använts, andelar av det insamlade":
+      - text: ""
+      - list:
+        - listitem: /Använt hittills 2 \d+ € \d+,\d+ %/
+        - listitem: /Oanvänt 0 € \d+,\d+ %/
     - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till valreklam vid vägarna, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]

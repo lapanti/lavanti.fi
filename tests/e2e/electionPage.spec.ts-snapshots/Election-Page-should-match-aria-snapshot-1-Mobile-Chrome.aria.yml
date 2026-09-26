@@ -109,9 +109,9 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: 0 €
+    - definition: /2 \d+ €/
     - term: Oma sitoumukseni
-    - definition: /\d+ \d+ €/
+    - definition: /8 \d+ €/
     - term: Vielä kerättävä
     - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
     - paragraph:
