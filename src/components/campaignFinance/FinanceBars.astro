@@ -147,6 +147,17 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
      */
     @supports (animation-timeline: view()) {
         @media (prefers-reduced-motion: no-preference) {
+            /*
+             * The row, not the fill, carries the timeline. `view()` resolves against the
+             * nearest scroll container, and `.track` is one: `overflow: hidden` makes it
+             * scrollable in principle, so a fill inside it reported itself as permanently
+             * in view and sat at full length. Naming the timeline on the row measures the
+             * row against the page instead, which is what a reader is scrolling anyway.
+             */
+            .row {
+                view-timeline: --finance-row block;
+            }
+
             .fill {
                 animation: grow linear both;
                 animation-range: entry 20% cover 30%;
@@ -154,14 +165,12 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
             }
 
             /*
-             * The timeline sits in a rule of its own because the CSS minifier folds
-             * adjacent animation declarations into the shorthand, and the shorthand
-             * cannot carry a timeline: `animation: grow linear both view()` is invalid,
-             * so the browser dropped the whole declaration and nothing animated. A
-             * separate selector is not foldable.
+             * Kept in a rule of its own: the CSS minifier folds adjacent animation
+             * declarations into the shorthand, and the shorthand cannot carry a timeline,
+             * so the merged declaration is invalid and the browser drops all of it.
              */
             .track .fill {
-                animation-timeline: view();
+                animation-timeline: --finance-row;
             }
         }
     }
