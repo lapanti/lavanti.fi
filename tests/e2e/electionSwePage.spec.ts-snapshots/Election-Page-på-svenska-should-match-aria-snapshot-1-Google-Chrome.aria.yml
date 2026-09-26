@@ -22,7 +22,7 @@
       - text: .
     - paragraph: Jag är kommunfullmäktigeledamot i Kyrkslätt, ordförande för De Grönas fullmäktigegrupp och far till fyra barn. För mig handlar politik om att sköta gemensamma angelägenheter hållbart och över partigränserna — öppenhet, ärlighet och att lyssna på olika åsikter är avgörande också i svåra frågor.
     - paragraph:
-      - text: /Jag är också initiativtagare till medborgarinitiativet Digital självständighet\. Initiativet samlade i juli \d+ in de \d+ \d+ underskrifter som krävs för riksdagsbehandling och behandlas i riksdagen våren \d+\. Mer om min bakgrund hittar du på sidan/
+      - text: /Jag är också initiativtagare till medborgarinitiativet Digital självständighet\. Initiativet samlade i juli \d+ in de \d+ \d+ underskrifter som krävs för riksdagsbehandling\. Det lämnas till riksdagen efter valet våren \d+, så att den nya riksdagen hinner behandla det i sin helhet\. Mer om min bakgrund hittar du på sidan/
       - link "Om Lauri":
         - /url: /sv/om-lauri/
       - text: och bland
@@ -104,6 +104,15 @@
       - link "inläggen":
         - /url: /sv/blog/
       - text: och prenumerera på nyhetsbrevet nedan.
+    - text: Evenemang
+    - heading "Kampanjens evenemangskalender" [level=2]
+    - list:
+      - listitem:
+        - time: /måndag \d+ november \d+/
+        - heading "Evenemang i bibliotekshuset Fyyri" [level=3]
+        - paragraph: Bibliotekshuset Fyyri, Mörnesalen, Kyrkslätt
+        - paragraph: Kampanjens evenemang i Mörnesalen i Kyrkslätts huvudbibliotek Fyyri. Tillställningen är öppen och avgiftsfri.
+        - text: Ämnet bekräftas senare.
     - text: Q & A
     - heading "Vanliga frågor om riksdagsvalet" [level=2]
     - heading /I vilken valkrets kandiderar Lauri Lavanti i riksdagsvalet \d+\?/ [level=3]

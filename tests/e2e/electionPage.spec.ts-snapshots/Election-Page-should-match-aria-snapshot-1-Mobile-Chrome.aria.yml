@@ -22,7 +22,7 @@
       - text: .
     - paragraph: Olen kirkkonummelainen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
     - paragraph:
-      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta ja etenee eduskunnan käsittelyyn keväällä \d+\. Lisää taustastani löydät/
+      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
       - link "Laurista-sivulta":
         - /url: /fi/laurista/
       - text: ja
@@ -104,6 +104,15 @@
       - link "kirjoituksia":
         - /url: /fi/blog/
       - text: ja tilata uutiskirje alta.
+    - text: Tapahtumat
+    - heading "Kampanjan tapahtumakalenteri" [level=2]
+    - list:
+      - listitem:
+        - time: /maanantaina \d+\. marraskuuta \d+/
+        - heading "Tapahtuma kirjastotalo Fyyrissä" [level=3]
+        - paragraph: Kirjastotalo Fyyri, Mörne-sali, Kirkkonummi
+        - paragraph: Kampanjan tilaisuus Kirkkonummen pääkirjaston Fyyrin Mörne-salissa. Tilaisuus on avoin ja maksuton.
+        - text: Aihe vahvistetaan myöhemmin.
     - text: Q & A
     - heading "Usein kysyttyä eduskuntavaaleista" [level=2]
     - heading /Missä vaalipiirissä Lauri Lavanti on ehdolla eduskuntavaaleissa \d+\?/ [level=3]
