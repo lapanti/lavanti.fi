@@ -4,13 +4,13 @@ exports[`<MobileMenu /> > should render 1`] = `
 <div
   class="container"
   data-astro-cid-t7vk6yyn=""
-  style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+  style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
 >
    
   <div
     class="brand"
     data-astro-cid-t7vk6yyn=""
-    style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+    style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
   >
      
     <a
@@ -47,47 +47,26 @@ exports[`<MobileMenu /> > should render 1`] = `
    
   <div
     data-astro-cid-t7vk6yyn=""
-    style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+    style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
   >
      
-    <input
-      aria-label="Avaa valikko. Sulje valikko kun valittu."
+    <button
+      class="menu-btn"
       data-astro-cid-t7vk6yyn=""
-      name=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
-      type="checkbox"
-    />
-     
-    <div
-      class="hamburger-lines-container dark"
-      data-astro-cid-t7vk6yyn=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+      popovertarget="mobile-nav"
+      style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+      type="button"
     >
-       
-      <span
-        class="line1"
-        data-astro-cid-t7vk6yyn=""
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
-      />
-       
-      <span
-        class="line2"
-        data-astro-cid-t7vk6yyn=""
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
-      />
-       
-      <span
-        class="line3"
-        data-astro-cid-t7vk6yyn=""
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
-      />
-       
-    </div>
+       Valikko 
+    </button>
      
-    <div
+    <nav
+      aria-label="Valikko"
       class="links on-dark"
       data-astro-cid-t7vk6yyn=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+      id="mobile-nav"
+      popover=""
+      style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
     >
        
       <a
@@ -113,12 +92,12 @@ exports[`<MobileMenu /> > should render 1`] = `
         class="langs"
         data-astro-cid-t7vk6yyn=""
         role="group"
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes3: 3rem;--sizes25: 2.5rem;"
+        style="--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
       >
           
       </div>
        
-    </div>
+    </nav>
      
   </div>
    
