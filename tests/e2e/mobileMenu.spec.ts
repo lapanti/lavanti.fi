@@ -15,7 +15,11 @@ test.describe('Mobile menu', () => {
         // Tab from the closed button: focus must leave the banner, not land on a hidden link.
         await button.focus()
         await page.keyboard.press('Tab')
-        test.expect(await nav.evaluate((el) => el.contains(document.activeElement))).toBe(false)
+        // by id: role queries skip hidden elements, so the closed nav would never resolve
+        const focusInsideNav = await page.evaluate(() =>
+            Boolean(document.getElementById('mobile-nav')?.contains(document.activeElement))
+        )
+        test.expect(focusInsideNav).toBe(false)
 
         await button.click()
         await test.expect(nav).toBeVisible()
