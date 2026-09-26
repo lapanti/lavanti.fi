@@ -104,6 +104,19 @@
       - link "posts":
         - /url: /en/blog/
       - text: and subscribe to the newsletter below.
+    - text: Transparency
+    - heading "Who funds this campaign?" [level=2]
+    - term: Campaign budget
+    - definition: /€\d+,\d+/
+    - term: Raised so far
+    - definition: /€\d+,\d+/
+    - term: My own commitment
+    - definition: /€\d+,\d+/
+    - term: Still to raise
+    - definition: /€\d+,\d+ As of \d+ September \d+/
+    - paragraph:
+      - link "See the campaign finances":
+        - /url: /en/elections/campaign-finance/
     - text: Events
     - heading "Campaign event calendar" [level=2]
     - list:
@@ -126,7 +139,7 @@
     - heading "Can I vote for Lauri Lavanti in advance?" [level=3]
     - paragraph: /Yes\. Advance voting runs in Finland on 7–\d+ April \d+, and you can vote in advance at any general advance polling station\. On election day, \d+ April \d+, you vote at your assigned polling station, stated in your notice of the right to vote\./
     - heading "How can I support Lauri Lavanti's campaign?" [level=3]
-    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on this page later. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
+    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on the campaign finance page. That page also shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
     - heading "Subscribe to the newsletter" [level=2]
     - paragraph: Subscribe to my newsletter and get analysis on the latest developments in AI and technology, and their impact on society, straight to your inbox.
     - text: Email

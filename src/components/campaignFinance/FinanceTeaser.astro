@@ -1,0 +1,36 @@
+---
+/**
+ * The campaign's finances in four figures, for the election page. Reads the same data
+ * module as the finance page itself, so the two can never disagree.
+ */
+import type { Lang } from '../../content/nav'
+
+import { campaignFinance, financeLabels } from '../../content/campaignFinance'
+import { summaryTiles } from '../../lib/campaignFinance'
+import Plate from '../Plate.astro'
+import FinanceStats from './FinanceStats.astro'
+
+interface Props {
+    href: string
+    /** Section anchor; localized like every other section id on the election pages. */
+    id: string
+    lang: Lang
+}
+
+const { href, id, lang } = Astro.props
+const labels = financeLabels[lang]
+const items = summaryTiles(campaignFinance, lang)
+---
+
+<style>
+    .foot {
+        padding-top: 1.5rem;
+    }
+</style>
+
+<Plate eyebrow={labels.teaser.eyebrow} ground="gray" heading={labels.teaser.heading} id={id}>
+    <FinanceStats items={items} />
+    <p class="foot">
+        <a class="link-rule" href={href}>{labels.teaser.cta}</a>
+    </p>
+</Plate>

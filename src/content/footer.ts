@@ -31,6 +31,22 @@ export const footerLogoAlt: Record<Lang, string> = {
     sv: 'De Gröna logotyp och text',
 }
 
+/**
+ * Footer-only, like the newsletter archive: the campaign finance page is for readers
+ * who want to check the money, while the header nav stays at the six main sections.
+ */
+export const footerCampaignFinanceLabel: Record<Lang, string> = {
+    en: 'Campaign finance',
+    fi: 'Vaalirahoitus',
+    sv: 'Valfinansiering',
+}
+
+export const footerCampaignFinanceHref: Record<Lang, string> = {
+    en: '/en/elections/campaign-finance/',
+    fi: '/fi/eduskuntavaalit/vaalirahoitus/',
+    sv: '/sv/riksdagsvalet/valfinansiering/',
+}
+
 export const footerColumnLabels: Record<Lang, { contact: string; languages: string; site: string }> = {
     en: { contact: 'Contact', languages: 'Languages', site: 'Lauri Lavanti' },
     fi: { contact: 'Yhteys', languages: 'Kielet', site: 'Lauri Lavanti' },

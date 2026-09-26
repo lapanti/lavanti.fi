@@ -27,6 +27,28 @@ test.describe('Language swap links', () => {
         test.expect(await langSwapPage.getLangLinkHref(langSwapPage.langLinkSv)).toBe('/sv/om-lauri/')
     })
 
+    test('swap from fi/eduskuntavaalit/vaalirahoitus to the sv and en finance pages', async ({ page }) => {
+        const langSwapPage = new LangSwapPage(page)
+        await langSwapPage.goTo('/fi/eduskuntavaalit/vaalirahoitus/')
+
+        test.expect(await langSwapPage.getLangLinkHref(langSwapPage.langLinkSv)).toBe(
+            '/sv/riksdagsvalet/valfinansiering/'
+        )
+        test.expect(await langSwapPage.getLangLinkHref(langSwapPage.langLinkEn)).toBe('/en/elections/campaign-finance/')
+    })
+
+    test('swap from en/elections/campaign-finance to the fi and sv finance pages', async ({ page }) => {
+        const langSwapPage = new LangSwapPage(page)
+        await langSwapPage.goTo('/en/elections/campaign-finance/')
+
+        test.expect(await langSwapPage.getLangLinkHref(langSwapPage.langLinkFi)).toBe(
+            '/fi/eduskuntavaalit/vaalirahoitus/'
+        )
+        test.expect(await langSwapPage.getLangLinkHref(langSwapPage.langLinkSv)).toBe(
+            '/sv/riksdagsvalet/valfinansiering/'
+        )
+    })
+
     test('swap from fi/blog/ to sv/blog/ and en/blog/', async ({ page }) => {
         const langSwapPage = new LangSwapPage(page)
         await langSwapPage.goTo('/fi/blog/')

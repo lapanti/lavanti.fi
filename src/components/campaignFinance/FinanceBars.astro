@@ -1,0 +1,211 @@
+---
+/**
+ * A row of labelled bars for comparing amounts — our budget against what campaigns
+ * cost in 2023, or how those campaigns were funded.
+ *
+ * The bars are decoration: each one is aria-hidden, and the label and the amount next
+ * to it carry the same information as text. A reader with no CSS, or a screen reader,
+ * loses nothing.
+ */
+import type { Lang } from '../../content/nav'
+import type { BarRow } from '../../lib/campaignFinance'
+
+import { barsMax, barWidth, formatEuro, formatPercent } from '../../lib/campaignFinance'
+import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
+
+interface Props {
+    caption: string
+    lang: Lang
+    rows: BarRow[]
+    unit: 'eur' | 'percent'
+}
+
+const { caption, lang, rows, unit } = Astro.props
+
+/*
+ * Percentages are drawn against the whole: scaling shares to the largest row would
+ * paint a quarter as a full track and inflate every bar by the same factor. Amounts
+ * have no natural ceiling, so there the largest row sets the scale and the tallest
+ * bar fills the track.
+ */
+const max = unit === 'percent' ? 100 : barsMax(rows.map((row) => row.value))
+const format = (value: number): string => (unit === 'eur' ? formatEuro(value, lang) : formatPercent(value, lang))
+---
+
+<style
+    define:vars={{
+        amountFontFamily: typographics.meta.fontFamily,
+        amountFontSize: typographics.text.fontSize,
+        amountFontWeight: fontWeights.bold,
+        captionFontFamily: typographics.title.fontFamily,
+        captionFontSize: typographics.title.fontSize,
+        captionFontWeight: typographics.title.fontWeight,
+        captionPad: sizes[1],
+        colorsBrightGreen: colors.brightGreen,
+        colorsDarkGreen: colors.darkGreen,
+        colorsForestGreen: colors.forestGreen,
+        colorsForestGreen10: colors.forestGreen10,
+        colorsTextPrimary: colors.textPrimary,
+        labelColumn: sizes[14],
+        labelFontFamily: typographics.text.fontFamily,
+        labelFontSize: typographics.text.fontSize,
+        sectionPad: sizes[1.5],
+    }}
+>
+    .bars {
+        margin: 0;
+        padding-top: var(--sectionPad);
+    }
+
+    .bars figcaption {
+        color: var(--colorsForestGreen);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        font-weight: var(--captionFontWeight);
+        line-height: 1.3;
+        padding-bottom: var(--captionPad);
+    }
+
+    .rows {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .row {
+        align-items: center;
+        display: grid;
+        gap: 0.375rem 0.75rem;
+        grid-template-columns: 1fr auto;
+    }
+
+    .label {
+        color: var(--colorsTextPrimary);
+        font-family: var(--labelFontFamily);
+        font-size: var(--labelFontSize);
+        line-height: 1.4;
+    }
+
+    .amount {
+        color: var(--colorsForestGreen);
+        font-family: var(--amountFontFamily);
+        font-size: var(--amountFontSize);
+        font-weight: var(--amountFontWeight);
+        justify-self: end;
+        white-space: nowrap;
+    }
+
+    .track {
+        background: var(--colorsForestGreen10);
+        border-radius: 2px;
+        display: block;
+        grid-column: 1 / -1;
+        height: 0.75rem;
+        overflow: hidden;
+    }
+
+    .fill {
+        background: var(--colorsDarkGreen);
+        border-radius: 2px;
+        display: block;
+        height: 100%;
+        width: var(--w);
+    }
+
+    .row--emphasis .label {
+        font-weight: var(--amountFontWeight);
+    }
+
+    .row--emphasis .fill {
+        background: var(--colorsBrightGreen);
+    }
+
+    .foot {
+        padding-top: var(--captionPad);
+    }
+
+    @media (min-width: 769px) {
+        .row {
+            grid-template-columns: minmax(0, var(--labelColumn)) 1fr auto;
+        }
+
+        .track {
+            grid-column: 2;
+        }
+    }
+
+    /*
+     * The length of a bar is the message, so it is worth drawing the eye along it. The
+     * reveal is tied to the scroll position rather than to load, because these sections
+     * sit well below the fold and a load-time animation would finish unseen.
+     *
+     * Wrapped in @supports on purpose: where scroll-driven animation is unavailable the
+     * bars simply render at full length, which is the correct picture either way. The
+     * reduced-motion guard opts the whole thing out rather than shortening it.
+     */
+    @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+            /*
+             * The row, not the fill, carries the timeline. `view()` resolves against the
+             * nearest scroll container, and `.track` is one: `overflow: hidden` makes it
+             * scrollable in principle, so a fill inside it reported itself as permanently
+             * in view and sat at full length. Naming the timeline on the row measures the
+             * row against the page instead, which is what a reader is scrolling anyway.
+             */
+            .row {
+                view-timeline: --finance-row block;
+            }
+
+            .fill {
+                animation: grow linear both;
+                animation-range: entry 20% cover 30%;
+                transform-origin: left center;
+            }
+
+            /*
+             * Kept in a rule of its own: the CSS minifier folds adjacent animation
+             * declarations into the shorthand, and the shorthand cannot carry a timeline,
+             * so the merged declaration is invalid and the browser drops all of it.
+             */
+            .track .fill {
+                animation-timeline: --finance-row;
+            }
+        }
+    }
+
+    @keyframes grow {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
+    }
+</style>
+
+<figure class="bars">
+    <figcaption>{caption}</figcaption>
+    <ol class="rows">
+        {
+            rows.map((row) => (
+                <li class:list={['row', { 'row--emphasis': row.emphasis }]}>
+                    <span class="label">{row.label}</span>
+                    <span aria-hidden="true" class="track">
+                        <span class="fill" style={`--w: ${barWidth(row.value, max)}%`} />
+                    </span>
+                    <span class="amount">{format(row.value)}</span>
+                </li>
+            ))
+        }
+    </ol>
+    {
+        Astro.slots.has('default') && (
+            <div class="foot">
+                <slot />
+            </div>
+        )
+    }
+</figure>

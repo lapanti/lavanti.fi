@@ -1,0 +1,100 @@
+- main:
+  - img "Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki ja kukkakuvioinen paita."
+  - heading "Vaalirahoitus avoimesti" [level=1]:
+    - text: ""
+    - emphasis: avoimesti
+  - paragraph: Otan vastaan tukea yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Lainaa en ota. Kerron tällä sivulla, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.
+  - article:
+    - text: Tilanne
+    - heading "Missä kampanjan rahat ovat nyt?" [level=2]
+    - term: Kampanjabudjetti
+    - definition: /\d+ \d+ €/
+    - term: Kerätty
+    - definition: /1 \d+ €/
+    - term: Oma sitoumukseni
+    - definition: /8 \d+ €/
+    - term: Vielä kerättävä
+    - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
+    - text: Miksi
+    - heading "Miksi julkaisen rahoitustiedot?" [level=2]
+    - paragraph: Vaadin politiikalta avoimuutta rahan käytöstä, joten aloitan omasta kampanjastani. Laki velvoittaa vain valitut kansanedustajat ja varaedustajat ilmoittamaan rahoituksensa, ja vasta vaalien jälkeen. Minä kerron luvut jo kampanjan aikana, tulen valituksi tai en.
+    - paragraph: Raha ei ole politiikassa neutraali väline. Se vaikuttaa siihen, kenen viesti kuuluu, ja iso lahjoitus voi luoda odotuksen vastapalveluksesta. Siksi kerron jokaisen euron lähteen.
+    - paragraph: Ajan samalla lakimuutosta. Vaalirahoituksen pitäisi tulla niiltä, joilla on äänioikeus, ja jokainen lahjoittaja pitäisi julkaista. Niin kauan kuin yritysrahoitus on avoinna kaikille ehdokkaille, en rajaa itseäni yksin. Kerron rahat avoimesti.
+    - paragraph:
+      - text: Haluan, että äänestäjä voi arvioida minua myös rahan kautta. Jos jokin luku on väärin, korjaan sen heti.
+      - link "Ota yhteyttä":
+        - /url: /fi/yhteystiedot/
+      - text: . Lisää kampanjan taustasta löydät
+      - link "eduskuntavaalisivulta":
+        - /url: /fi/eduskuntavaalit/
+      - text: .
+    - text: Vertailu
+    - heading "Paljonko eduskuntaan päässeen kampanja maksoi?" [level=2]
+    - figure /Suunniteltu budjettini ja vuoden \d+ mediaanikulut/:
+      - text: ""
+      - list:
+        - listitem: /Oma budjettini \d+ \d+ €/
+        - listitem: /Koko Suomi, mediaani \d+ \d+ €/
+        - listitem: /Uudenmaan vaalipiiri, mediaani \d+ \d+ €/
+      - paragraph:
+        - text: "/Lähde: vuoden \\d+ eduskuntavaalien vaalirahoitusilmoitukset, VTV\\. Haettu \\d+\\.\\d+\\.\\d+\\./"
+        - link "Avaa ilmoitusaineisto":
+          - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
+    - paragraph: /Luvut kattavat kaikki \d+ ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat\. Ne kertovat siis läpi menneiden kampanjoiden hinnan, eivät kampanjoinnin hintaa yleensä\. Uudenmaan luvut sisältyvät koko maan lukuihin, eivätkä ne ole siitä erillinen ryhmä\./
+    - paragraph: /Puolet kampanjoista asettui \d+ \d+ ja \d+ \d+ euron välille\. Halvin maksoi nolla euroa ja kallein \d+ \d+ euroa, ja juuri muutama hyvin kallis kampanja nostaa keskiarvon mediaanin yläpuolelle\. Siksi vertaan budjettiani mediaaniin\. Oma lukuni on suunnitelma, vuoden \d+ luvut toteutuneita kuluja\./
+    - text: Lähteet
+    - heading "Mistä rahat tulevat?" [level=2]
+    - figure "Budjetin rahat lähteittäin, osuudet koko budjetista":
+      - text: ""
+      - list:
+        - listitem: /Omat varat 1 \d+ € \d+,\d+ %/
+        - listitem: /Lainat 0 € \d+,\d+ %/
+        - listitem: /Yksityishenkilöt 0 € \d+,\d+ %/
+        - listitem: /Yritykset 0 € \d+,\d+ %/
+        - listitem: /Puolue ja puolueyhdistykset 0 € \d+,\d+ %/
+        - listitem: /Yhdistykset ja muut tahot 0 € \d+,\d+ %/
+        - listitem: /Oma sitoumukseni 8 \d+ € \d+,\d+ %/
+        - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
+    - paragraph: Erittelen rahat samoilla riveillä kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa. Jos jostakin lähteestä ei ole tullut euroakaan, rivi näkyy silti nollana. Lainaa en ota.
+    - paragraph: /Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana\. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan näistä ennen vaaleja\./
+    - paragraph: Lahjoituslinkki tulee tälle sivulle heti, kun kampanjatili on auki.
+    - text: Kulut
+    - heading "Mihin rahaa on käytetty?" [level=2]
+    - figure "Kerätyn rahan käyttö, osuudet kerätystä rahasta":
+      - text: ""
+      - list:
+        - listitem: /Käytetty 1 \d+ € \d+,\d+ %/
+        - listitem: /Käyttämättä 0 € \d+,\d+ %/
+    - paragraph: Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
+    - text: Taustaa
+    - heading /Miten kansanedustajat rahoittivat kampanjansa \d+\?/ [level=2]
+    - figure /Vuoden \d+ kampanjoiden rahat lähteittäin, osuus kaikesta kerätystä rahasta/:
+      - text: ""
+      - list:
+        - listitem: /Omat varat \d+,\d+ %/
+        - listitem: /Lainat \d+,\d+ %/
+        - listitem: /Yksityishenkilöt \d+,\d+ %/
+        - listitem: /Yritykset \d+,\d+ %/
+        - listitem: /Puolue ja puolueyhdistykset \d+,\d+ %/
+        - listitem: /Yhdistykset ja muut tahot \d+,\d+ %/
+    - paragraph: /Osuudet on laskettu kaikkien \d+ kampanjan yhteenlasketusta rahasta, joten suuret kampanjat painavat niissä eniten\. Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä\. Yhdistykset ja muut tahot rahoittivat \d+,\d+ prosenttia eli enemmän kuin yritykset\. Yksityishenkilöiden osuus jäi \d+,\d+ prosenttiin\. Samat lähteet ovat avoinna myös minulle\. Ero on siinä, että omat lukuni näkyvät jo kampanjan aikana, eivät vasta vaalien jälkeen\./
+    - text: Q & A
+    - heading "Usein kysyttyä vaalirahoituksesta" [level=2]
+    - heading "Kuka rahoittaa Lauri Lavannin kampanjaa?" [level=3]
+    - paragraph: /Kampanjaa rahoittaa Lauri Lavanti itse, ja tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Kampanja ei ota lainaa\. Jokainen lähde on eritelty summineen ja päivämäärineen, ja jokainen vähintään 1 \d+ euron tuki julkistetaan tukijan nimellä jo kampanjan aikana\./
+    - heading "Ottaako Lauri Lavanti vastaan yritysrahoitusta?" [level=3]
+    - paragraph: /Kyllä\. Lauri Lavanti ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä, mutta ei lainaa\. Hän julkistaa jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana\. Lisäksi hän tekee kampanjasta vapaaehtoisen ennakkoilmoituksen Valtiontalouden tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan näistä ennen vaaleja\. Hän ajaa samalla lakimuutosta, joka rajaisi vaalirahoituksen äänioikeutettuihin\. Niin kauan kuin yritysrahoitus on avoinna kaikille ehdokkaille, hän ei rajaa itseään yksin vaan kertoo rahoituksen avoimesti\./
+    - heading "Missä vaalirahoitusilmoitus julkaistaan?" [level=3]
+    - paragraph: Valtiontalouden tarkastusvirasto ylläpitää ilmoitusrekisteriä osoitteessa vaalirahoitusvalvonta.fi. Valitut kansanedustajat ja varaedustajat ovat lain mukaan velvollisia tekemään ilmoituksen kahden kuukauden kuluessa vaalituloksen vahvistamisesta. Ehdokas voi tehdä myös vapaaehtoisen ennakkoilmoituksen ennen vaaleja.
+    - heading "Paljonko eduskuntavaalikampanja maksaa?" [level=3]
+    - paragraph: /Vuoden \d+ eduskuntavaaleissa valittujen kansanedustajien ja varaedustajien kampanjoiden mediaanikulut olivat \d+ \d+ euroa ja keskiarvo \d+ \d+ euroa\. Uudenmaan vaalipiirissä mediaani oli \d+ \d+ euroa ja keskiarvo \d+ \d+ euroa\. Luvut perustuvat tarkastusviraston vaalirahoitusilmoituksiin\./
+    - heading "Tilaa uutiskirje" [level=2]
+    - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
+    - text: Sähköposti
+    - textbox "Sähköposti"
+    - button "Tilaa"
+    - paragraph:
+      - text: Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue
+      - link "tietosuojaseloste":
+        - /url: /fi/privacy-policy/
+      - text: .

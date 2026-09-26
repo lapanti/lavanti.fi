@@ -31,9 +31,10 @@ faq:
     - q: 'Kan man förhandsrösta på Lauri Lavanti?'
       a: 'Ja. Förhandsröstningen pågår i Finland 7–13 april 2027, och man kan förhandsrösta på vilket allmänt förhandsröstningsställe som helst. På valdagen 18.4.2027 röstar man på sitt eget röstningsställe, som anges i meddelandet om rösträtt.'
     - q: 'Hur kan man stödja Lauri Lavantis kampanj?'
-      a: 'Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen — donationslänken publiceras senare på den här sidan. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.'
+      a: 'Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen — donationslänken publiceras på sidan om valfinansiering. Samma sida visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.'
 ---
 
+import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
 import FactsList from '../../../components/FactsList.astro'
@@ -128,6 +129,8 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Röstberättigade i Nylands valkrets kan rösta på Lauri Lavanti. Som stöd för röstningsbeslutet lönar det sig att läsa <a href="/sv/blog/">inläggen</a> och prenumerera på nyhetsbrevet nedan.</p>
     </Prose>
 </Plate>
+
+<FinanceTeaser href="/sv/riksdagsvalet/valfinansiering/" id="finansiering" lang="sv" />
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Evenemang" heading="Kampanjens evenemangs­kalender" id="evenemang" lang="sv" />
 
