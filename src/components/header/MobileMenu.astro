@@ -249,14 +249,14 @@ const label = menuLabel[lang]
 
     /* tablet: the front page's desktop hero already shows the large wordmark — the
        bar's copy would repeat it (desktop hides its nav mark the same way) */
-    @media (min-width: 769px) and (max-width: 1023px) {
+    @media (min-width: 769px) and (max-width: 999px) {
         .brand.hero-mark {
             visibility: hidden;
         }
     }
 
-    /* the phone menu serves tablets too — the desktop nav takes over at 1024px */
-    @media (min-width: 1024px) {
+    /* the phone menu serves tablets too — the desktop nav takes over at 1000px */
+    @media (min-width: 1000px) {
         .container,
         .links {
             display: none;
