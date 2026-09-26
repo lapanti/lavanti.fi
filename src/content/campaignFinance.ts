@@ -84,8 +84,8 @@ export interface Benchmark {
  * campaign cannot promise.
  */
 export const campaignFinance: CampaignFinance = {
-    asOf: '2026-09-25',
-    budget: 30000,
+    asOf: '2026-09-26',
+    budget: 45000,
     // TODO: set donationUrl before this page is published.
     ownCommitment: 8000,
     raised: {
