@@ -120,10 +120,10 @@ const mastodonFallbackHref = `https://${personMastodonInstance}/share?text=${enc
         text-decoration: none;
         text-transform: uppercase;
         transition:
-            background 0.18s var(--ease),
-            border-color 0.18s var(--ease),
-            color 0.18s var(--ease),
-            transform 0.12s var(--ease);
+            background var(--dur-base) var(--ease),
+            border-color var(--dur-base) var(--ease),
+            color var(--dur-base) var(--ease),
+            transform var(--dur-fast) var(--ease);
     }
 
     .share a:hover {
@@ -133,7 +133,7 @@ const mastodonFallbackHref = `https://${personMastodonInstance}/share?text=${enc
     }
 
     .share a:active {
-        transform: translate(1px, 1px);
+        transform: translate(calc(var(--press) / 2), calc(var(--press) / 2));
     }
 </style>
 <aside aria-label={ariaLabel} class="share">
