@@ -150,8 +150,18 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
             .fill {
                 animation: grow linear both;
                 animation-range: entry 20% cover 30%;
-                animation-timeline: view();
                 transform-origin: left center;
+            }
+
+            /*
+             * The timeline sits in a rule of its own because the CSS minifier folds
+             * adjacent animation declarations into the shorthand, and the shorthand
+             * cannot carry a timeline: `animation: grow linear both view()` is invalid,
+             * so the browser dropped the whole declaration and nothing animated. A
+             * separate selector is not foldable.
+             */
+            .track .fill {
+                animation-timeline: view();
             }
         }
     }
