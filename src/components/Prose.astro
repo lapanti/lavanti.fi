@@ -26,11 +26,16 @@ import { colors, typographics } from '../lib/styles'
     :global(.prose a) {
         color: var(--colorsDarkGreen);
         text-decoration: underline;
+        text-decoration-thickness: 1.5px;
         text-underline-offset: 0.1875rem;
+        transition:
+            color var(--dur-base) var(--ease),
+            text-decoration-thickness var(--dur-base) var(--ease);
     }
 
     :global(.prose a:hover) {
         color: var(--colorsDeepForest);
+        text-decoration-thickness: 3px;
     }
 
     /* Block flow rather than a grid: Paragraph carries an inline grid-column-start
