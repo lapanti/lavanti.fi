@@ -128,14 +128,20 @@ const label = menuLabel[lang]
         position: absolute;
         width: 100%;
     }
-    /* the hero bar is deep forest too — a hairline marks where bar ends and panel begins */
+    /* the hero bar is deep forest too — a hairline marks where bar ends and panel
+       begins. Aqua, the metsä theme's accent: dark green on deep forest is the one
+       pairing the brand rules out (1.7:1), and it barely showed. */
     .links.hero {
-        border-top: 2px solid var(--colorsDarkGreen);
+        border-top: 1px solid var(--colorsAquaBlue);
     }
-    /* only the phone hero bar is fixed; on tablets it scrolls with the page */
-    @media (max-width: 768px) {
-        .links.hero {
-            position: fixed;
+    /* only the phone hero bar is fixed; on tablets it scrolls with the page. Gated on
+       popover support: without it the links render inline, and a fixed panel would
+       pin them over the page with no way to dismiss it. */
+    @supports selector(:popover-open) {
+        @media (max-width: 768px) {
+            .links.hero {
+                position: fixed;
+            }
         }
     }
     .links:popover-open {
@@ -234,7 +240,14 @@ const label = menuLabel[lang]
         .container {
             flex-wrap: wrap;
         }
-        .menu-btn {
+        /* the nav's column takes a line of its own; at 50% the links were squeezed
+           into the right half of the bar */
+        .container > div ~ div {
+            justify-content: flex-start;
+            width: 100%;
+        }
+        .menu-btn,
+        .menu-stripe {
             display: none;
         }
         .links {
@@ -243,20 +256,21 @@ const label = menuLabel[lang]
             flex-direction: row;
             flex-wrap: wrap;
             height: auto;
+            padding-bottom: 1rem;
             position: static;
         }
     }
 
     /* tablet: the front page's desktop hero already shows the large wordmark — the
        bar's copy would repeat it (desktop hides its nav mark the same way) */
-    @media (min-width: 769px) and (max-width: 999px) {
+    @media (min-width: 769px) and (max-width: 1199px) {
         .brand.hero-mark {
             visibility: hidden;
         }
     }
 
-    /* the phone menu serves tablets too — the desktop nav takes over at 1000px */
-    @media (min-width: 1000px) {
+    /* the phone menu serves tablets too — the desktop nav takes over at 1200px */
+    @media (min-width: 1200px) {
         .container,
         .links {
             display: none;
