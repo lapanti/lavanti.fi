@@ -7,12 +7,14 @@ import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
 
 interface Props {
+    /** The front page's desktop hero carries its own large wordmark from 769px up. */
+    heroShowsMark?: boolean
     lang?: Lang
     links: NavLink[]
     variant?: 'hero' | 'solid'
 }
 
-const { lang = 'fi', links, variant = 'solid' } = Astro.props
+const { heroShowsMark = false, lang = 'fi', links, variant = 'solid' } = Astro.props
 const navLinks = links.filter((link) => !link.switchToLang)
 const langLinks = links.filter((link) => link.switchToLang)
 const tone = variant === 'hero' ? 'light' : 'dark'
@@ -129,7 +131,12 @@ const label = menuLabel[lang]
     /* the hero bar is deep forest too — a hairline marks where bar ends and panel begins */
     .links.hero {
         border-top: 2px solid var(--colorsDarkGreen);
-        position: fixed;
+    }
+    /* only the phone hero bar is fixed; on tablets it scrolls with the page */
+    @media (max-width: 768px) {
+        .links.hero {
+            position: fixed;
+        }
     }
     .links:popover-open {
         display: flex;
@@ -240,7 +247,16 @@ const label = menuLabel[lang]
         }
     }
 
-    @media (min-width: 769px) {
+    /* tablet: the front page's desktop hero already shows the large wordmark — the
+       bar's copy would repeat it (desktop hides its nav mark the same way) */
+    @media (min-width: 769px) and (max-width: 1023px) {
+        .brand.hero-mark {
+            visibility: hidden;
+        }
+    }
+
+    /* the phone menu serves tablets too — the desktop nav takes over at 1024px */
+    @media (min-width: 1024px) {
         .container,
         .links {
             display: none;
@@ -253,7 +269,7 @@ const label = menuLabel[lang]
     }
 </style>
 <div class="container">
-    <div class="brand">
+    <div class:list={['brand', { 'hero-mark': variant === 'hero' && heroShowsMark }]}>
         <MainNavigationLink lang={lang} tone={tone} />
     </div>
     <div>
