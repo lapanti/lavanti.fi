@@ -19,7 +19,7 @@ The header navigation provides the primary wayfinding for all three locales. It 
 - **Footer site column:** `src/components/Footer.astro` renders `navLinks[lang]` minus the language switches, plus one footer-only item — the newsletter archive (`archivePath(lang)`, label in `src/content/footer.ts`). Anything else that should appear in both header and footer goes through `nav.ts`.
 - **Component tree:** `BaseLayout` → `src/components/Header.astro` → `src/components/header/SkipLinks.astro` + `src/components/header/MobileMenu.astro` + `src/components/header/DesktopMenu.astro` → `MainNavigationLink` + `NavigationLink`
 - **Responsive split:** MobileMenu is visible below 1200px; DesktopMenu is visible at 1200px+. Both are always in the DOM — CSS `display:none` hides the inactive one. This is why e2e selectors use `.nth(0)` (mobile) vs `.nth(1)` (desktop).
-- **Mobile menu toggle:** A CSS-only hamburger — `<input type="checkbox">` drives the open/closed state via sibling selectors. No JS.
+- **Mobile menu toggle:** A native popover — `<button popovertarget="mobile-nav">` opens `<nav id="mobile-nav" popover>`. No JS. The browser owns Escape, tap-outside, focus return, and hiding the closed links from the tab order and the accessibility tree. The button is a printed text button labelled from `menuLabel` in `nav.ts` (Valikko / Meny / Menu), and the nav takes the same accessible name. Without the Popover API the button is hidden and the links render inline under the bar.
 - **Active link state:** `aria-current="page"` is set at build time:
   - `MainNavigationLink`: `pathname === href` (exact match for home)
   - `NavigationLink`: `pathname.startsWith(href)` (prefix match for section links)
@@ -42,7 +42,8 @@ The header navigation provides the primary wayfinding for all three locales. It 
 ### Anti-Patterns
 - Do not add nav links directly in `.astro` files — always update `src/content/nav.ts`, or the language-switch script won't know about them
 - Do not extend the prefix-swap script with arbitrary per-page logic — use the `langAlternates` prop on `BaseLayout` instead (only `PostLayout` sets this)
-- Do not use JS to toggle the mobile menu — the hamburger is intentionally CSS-only (`input[type=checkbox]`) for performance and simplicity
+- Do not use JS to toggle the mobile menu — the native popover already does it, with Escape, focus return and an accessible button for free
+- Do not go back to a checkbox toggle — screen readers announced it as a checkbox, its closed links stayed in the tab order, and it had no Escape
 - Do not use `aria-current="true"` — the correct value is `"page"` for navigation links
 - Do not render only one menu variant and hide it — both must be in the DOM for the `isMobile` test selector pattern to work
 
@@ -55,7 +56,7 @@ The header navigation provides the primary wayfinding for all three locales. It 
 - [ ] Language-switch links have `switchToLang` set and their `href` points to the locale's home page (script overwrites it at runtime, but fallback must be valid)
 - [ ] Active link has `aria-current="page"` on the correct link for the current page
 - [ ] Skip links to `#main` and `#footer` are present and focusable via keyboard
-- [ ] Mobile hamburger opens/closes purely via CSS checkbox state
+- [ ] Mobile menu opens and closes through the native popover, with no JS; closed links are out of the tab order
 - [ ] E2E tests pass: `npm run test:e2e`
 - [ ] Accessibility scan passes (no axe violations)
 
@@ -72,10 +73,10 @@ The header navigation provides the primary wayfinding for all three locales. It 
 - When: The page renders
 - Then: The about nav link has `aria-current="page"`; other links have `aria-current="false"`
 
-**Scenario: Mobile hamburger opens menu**
-- Given: A visitor is on a mobile viewport (< 1200px)
-- When: They click the hamburger checkbox
-- Then: The `.links` container height expands to `100dvh - headerSize`; nav links become visible (`opacity: 100%`); no JavaScript is involved
+**Scenario: Mobile menu opens and closes**
+- Given: A visitor is on a viewport under 1200px
+- When: They press the menu button (Valikko / Meny / Menu)
+- Then: The `#mobile-nav` popover opens below the 60px bar with every link reachable, even on a 320×568 screen; Escape or a tap outside closes it and returns focus to the button; no JavaScript is involved
 
 **Scenario: Language switch on a blog post resolves translated slug**
 - Given: A visitor is on `/fi/blog/10/sote-on-hyvinvointiyhteiskunnan-kulmakivi/`
