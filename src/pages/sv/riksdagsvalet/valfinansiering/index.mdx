@@ -86,7 +86,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
     </Prose>
 </Plate>
 
-<Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?">
+<Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?" id="kostnader">
     {spending && <FinanceStack caption="Så har de insamlade pengarna använts, andelar av det insamlade" lang="sv" segments={spending.segments} total={spending.total} />}
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
