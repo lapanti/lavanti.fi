@@ -53,9 +53,13 @@ const links = navLinks[lang]
         inset: 0 0 auto 0;
     }
 
+    /* named only on solid pages: between two of them the bar holds still while the
+       page crossfades. Hero bars stay unnamed so a transparent bar never morphs into
+       a solid one. */
     header.solid {
         background-color: var(--colorsLightSand);
         position: relative;
+        view-transition-name: site-header;
     }
 
     @media (max-width: 768px) {

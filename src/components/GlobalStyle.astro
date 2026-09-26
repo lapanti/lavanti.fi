@@ -310,6 +310,18 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         html {
             scroll-behavior: smooth;
         }
+
+        /* page to page — a short crossfade instead of a white flash; the solid header
+           carries its own view-transition-name (Header.astro) so it holds still.
+           Browsers without cross-document view transitions navigate as before. */
+        @view-transition {
+            navigation: auto;
+        }
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 200ms;
+            animation-timing-function: var(--ease);
+        }
     }
     html {
         scrollbar-color: var(--colorsSand) var(--colorsLightSand);
