@@ -76,9 +76,9 @@ export interface Benchmark {
 /**
  * The state on `asOf`. No donations have come in: the campaign account is not open, so
  * every outside source is zero. Only money from the reporting period (from 18.10.2026,
- * six months before election day) is shown. `spent` holds the items billed in that period;
- * `own` is still a placeholder for the candidate's paid-in share of his 10 000 € undertaking,
- * the rest of which stays in `ownCommitment`.
+ * six months before election day) is shown. `spent` holds the items billed in that period,
+ * paid from the candidate's own funds: that is the `own` figure, and the rest of his
+ * 10 000 € undertaking stays in `ownCommitment`.
  *
  * Every figure is a whole euro; cents on a transparency page invite precision the
  * campaign cannot promise.
@@ -87,12 +87,12 @@ export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-26',
     budget: 45000,
     // TODO: set donationUrl before this page is published.
-    ownCommitment: 8000,
+    ownCommitment: 8221,
     raised: {
         companies: 0,
         loans: 0,
         other: 0,
-        own: 2000,
+        own: 1779,
         party: 0,
         partyAssociations: 0,
         private: 0,
