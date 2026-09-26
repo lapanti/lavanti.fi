@@ -466,4 +466,47 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
             height: 72px;
         }
     }
+
+    /* single pass — the full-size band draws in once, left to right, dark green first,
+       as it scrolls into view, and is complete by the time the whole band is visible.
+       Scroll-driven, so it never replays on a timer; the slim band that tops inner
+       pages stays static. Unsupported browsers and reduced motion get the static band. */
+    @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+            /* animation-timeline sits in the per-band rules, not here: the minifier folds
+               it into the `animation` shorthand, where it is invalid and drops the rule */
+            .stripes:not(.stripes--slim, .stripe--vertical) i {
+                animation: stripe-draw linear both;
+                transform-origin: left center;
+            }
+            .stripes:not(.stripes--slim, .stripe--vertical) i:nth-child(1) {
+                animation-range: entry 0% entry 60%;
+                animation-timeline: view();
+            }
+            .stripes:not(.stripes--slim, .stripe--vertical) i:nth-child(2) {
+                animation-range: entry 10% entry 70%;
+                animation-timeline: view();
+            }
+            .stripes:not(.stripes--slim, .stripe--vertical) i:nth-child(3) {
+                animation-range: entry 20% entry 80%;
+                animation-timeline: view();
+            }
+            .stripes:not(.stripes--slim, .stripe--vertical) i:nth-child(4) {
+                animation-range: entry 30% entry 90%;
+                animation-timeline: view();
+            }
+            .stripes:not(.stripes--slim, .stripe--vertical) i:nth-child(5) {
+                animation-range: entry 40% entry 100%;
+                animation-timeline: view();
+            }
+        }
+    }
+    @keyframes stripe-draw {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
 </style>
