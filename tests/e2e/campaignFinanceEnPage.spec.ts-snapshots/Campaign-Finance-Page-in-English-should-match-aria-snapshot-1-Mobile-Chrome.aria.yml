@@ -10,7 +10,7 @@
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
-    - definition: €0
+    - definition: /€\d+,\d+/
     - term: My own commitment
     - definition: /€\d+,\d+/
     - term: Still to raise
@@ -47,7 +47,7 @@
     - figure "The budget by source, shares of the whole budget":
       - text: ""
       - list:
-        - listitem: My own funds €0 0.0%
+        - listitem: /My own funds €\d+,\d+ 6\.7%/
         - listitem: Loans €0 0.0%
         - listitem: Private individuals €0 0.0%
         - listitem: Companies €0 0.0%
@@ -60,7 +60,11 @@
     - paragraph: The donation link is published here as soon as the campaign account is open.
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
-    - paragraph: No spending figure is confirmed yet. It appears here, itemised, once the campaign account is open.
+    - figure "How the money raised has been used, shares of the money raised":
+      - text: ""
+      - list:
+        - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
+        - listitem: Not yet spent €0 0.0%
     - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items are roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
