@@ -273,7 +273,13 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
        SIGNAL BAND — layout tokens, base treatments, shared primitives
        (visual rebrand)
        ============================================================ */
+    /* motion — quick and flat: colour inverts over --dur-base, a press lands in
+       --dur-fast, the mobile menu opens over --dur-menu. Reduced motion zeroes all
+       three and the press offset, so components never need their own override. */
     :root {
+        --dur-base: 0.18s;
+        --dur-fast: 0.12s;
+        --dur-menu: 0.28s;
         --ease: cubic-bezier(0.16, 1, 0.3, 1);
         --measure: 72rem;
         --pad-x: 3.5rem;
@@ -293,20 +299,19 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         }
     }
     @media (prefers-reduced-motion: reduce) {
+        :root {
+            --dur-base: 0s;
+            --dur-fast: 0s;
+            --dur-menu: 0s;
+            --press: 0px;
+        }
+    }
+    @media (prefers-reduced-motion: no-preference) {
         html {
-            scroll-behavior: auto;
-        }
-        .btn,
-        .link-rule {
-            transition: none;
-        }
-        .btn:active,
-        .link-rule:active {
-            transform: none;
+            scroll-behavior: smooth;
         }
     }
     html {
-        scroll-behavior: smooth;
         scrollbar-color: var(--colorsSand) var(--colorsLightSand);
         scrollbar-width: thin;
     }
@@ -363,9 +368,9 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         text-decoration: none;
         text-transform: uppercase;
         transition:
-            background 0.18s var(--ease),
-            color 0.18s var(--ease),
-            transform 0.12s var(--ease);
+            background var(--dur-base) var(--ease),
+            color var(--dur-base) var(--ease),
+            transform var(--dur-fast) var(--ease);
     }
     .btn:hover {
         background: var(--colorsDeepForest);
@@ -402,14 +407,14 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         text-decoration: none;
         text-transform: uppercase;
         transition:
-            color 0.18s var(--ease),
-            transform 0.12s var(--ease);
+            color var(--dur-base) var(--ease),
+            transform var(--dur-fast) var(--ease);
     }
     .link-rule:hover {
         color: var(--colorsDeepForest);
     }
     .link-rule:active {
-        transform: translate(1px, 1px);
+        transform: translate(calc(var(--press) / 2), calc(var(--press) / 2));
     }
 
     /* the signal band stripe — five equal flex children, one per signal color */
