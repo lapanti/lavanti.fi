@@ -160,8 +160,13 @@ const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
             .bar {
                 animation: sweep linear both;
                 animation-range: entry 20% cover 30%;
-                animation-timeline: view();
                 transform-origin: left center;
+            }
+
+            /* Separate rule: see the note in FinanceBars — the shorthand cannot carry
+               a timeline, and the minifier folds adjacent animation declarations. */
+            .stack .bar {
+                animation-timeline: view();
             }
         }
     }
