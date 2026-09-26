@@ -223,23 +223,15 @@ const privacyHref = `/${lang}/privacy-policy/`
         padding: 0.95rem 2rem !important;
         text-transform: uppercase !important;
         transition:
-            background-color 0.18s ease,
-            transform 0.12s ease;
+            background-color var(--dur-base) var(--ease),
+            transform var(--dur-fast) var(--ease);
         width: 100%;
     }
     .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
         background-color: var(--colorsDarkGreen) !important;
     }
     .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:active {
-        transform: translate(2px, 2px);
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
-            transition: none;
-        }
-        .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:active {
-            transform: none;
-        }
+        transform: translate(var(--press), var(--press));
     }
     @media only screen and (max-width: 1199px) {
         .ml-form-formContent.horozintalForm {
