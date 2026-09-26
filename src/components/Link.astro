@@ -19,6 +19,13 @@ const { ariaLabel, external = false, heading, href, rel } = Astro.props
         color: var(--colorsDarkMoss);
         text-decoration: underline;
         text-decoration-thickness: var(--sizes0125);
+        transition:
+            color var(--dur-base) var(--ease),
+            text-decoration-thickness var(--dur-base) var(--ease);
+    }
+    /* hover thickens the rule rather than swapping it for a box — the printed link */
+    a:hover {
+        text-decoration-thickness: 3px;
     }
     a.heading {
         display: block;
@@ -34,6 +41,7 @@ const { ariaLabel, external = false, heading, href, rel } = Astro.props
 
     :global(.prose) a:hover {
         color: var(--colorsDarkGreen);
+        text-decoration-thickness: 3px;
     }
 </style>
 <a
