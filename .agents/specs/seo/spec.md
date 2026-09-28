@@ -23,7 +23,7 @@ Every page emits structured metadata for search engines and social platforms: JS
   | `BlogPosting` | `datePublished`, `dateModified`, `mainEntityOfPage`, `image` (ImageObject), `primaryImageOfPage` (ImageObject) |
   | `CollectionPage` | no extras (base fields only) |
   | `WebSite` | `name`, `sameAs` (all social profiles) |
-  | `Person` | `jobTitle` (locale-specific), `description` (locale-specific), `knowsAbout[]`, `memberOf` (PoliticalParty), `sameAs` |
+  | `Person` | `jobTitle` (locale-specific), `description` (locale-specific), `knowsAbout[]`, `memberOf[]` (PoliticalParty Vihreä liitto, Organization Markkinavihreät), `sameAs` |
   | `WebPage` | no extras (base fields only) |
 
 - **Supplemental FAQPage schema:** When a `BlogPosting` page includes a `faq` prop with 2 or more `{q, a}` entries, a second `<script type="application/ld+json">` block is emitted with `@type: FAQPage`. This block coexists alongside the primary `BlogPosting` schema — it does not replace it. The `FAQPAGE` constant is exported from `src/lib/jsonld.ts` but is **not** added to `JSON_LD_TYPES` (which lists only primary page types). The `faq` prop flows from MDX frontmatter → `PostLayout` → `BaseLayout` → `Head`.
@@ -96,7 +96,7 @@ Every page emits structured metadata for search engines and social platforms: JS
 **Scenario: Home page (Person type) metadata**
 - Given: `src/pages/fi/index.mdx` with `type: 'Person'`, `slug: 'fi'`
 - When: The page is built
-- Then: JSON-LD type is `Person`; `jobTitle` is the Finnish value from `personJobTitle` in `src/content/person.ts` (currently `'eduskuntavaaliehdokas, kunnanvaltuutettu ja johtava ohjelmistokehittäjä ja DI'`); `memberOf` is `Vihreä liitto`; canonical URL is `https://lavanti.fi/fi/`; hreflang for `sv` points to `https://lavanti.fi/sv/`
+- Then: JSON-LD type is `Person`; `jobTitle` is the Finnish value from `personJobTitle` in `src/content/person.ts` (currently `'eduskuntavaaliehdokas, kunnanvaltuutettu ja johtava ohjelmistokehittäjä ja DI'`); `memberOf` lists `Vihreä liitto` and `Markkinavihreät`; canonical URL is `https://lavanti.fi/fi/`; hreflang for `sv` points to `https://lavanti.fi/sv/`
 
 **Scenario: Page without slug**
 - Given: A page rendered without a `slug` prop
