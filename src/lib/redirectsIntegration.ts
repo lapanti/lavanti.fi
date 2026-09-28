@@ -2,8 +2,23 @@ import type { AstroIntegration } from 'astro'
 
 import { writeFile } from 'node:fs/promises'
 
+import { campaignFinance } from '../content/campaignFinance'
 import { CATEGORY_SEGMENTS, tags } from '../content/tags'
 import { redirects } from './redirects'
+
+/*
+ * Short, shareable URLs that leave the site. Emitted as 302, not 301: the
+ * destination is someone else's page and may still move (the donation page can
+ * sit on vihreat.fi or uudenmaanvihreat.fi), and a 301 would be cached by
+ * browsers for good. Kept out of redirects.ts on purpose — plain Node scripts
+ * load that file and cannot resolve the data module's extensionless imports.
+ *
+ * `/lahjoita` follows the finance page's own donation link, so the button and the
+ * vanity URL always point to the same place. While the link is unset, the
+ * redirect is not emitted at all rather than pointing somewhere provisional.
+ */
+export const externalRedirects = (donationUrl: string | undefined): Record<string, string> =>
+    donationUrl ? { '/lahjoita': donationUrl } : {}
 
 /*
  * Old English-id category URLs → localised segment + slug (FI/SV only; the EN
@@ -56,12 +71,23 @@ const normalise = (pathname: string): string => {
  * Pure and deterministic (sorted, de-duplicated) so it can be unit-tested
  * without running a full Astro build.
  */
-export const buildRedirectLines = (map: Record<string, string>, pagePathnames: readonly string[]): string[] => {
+export const buildRedirectLines = (
+    map: Record<string, string>,
+    pagePathnames: readonly string[],
+    external: Record<string, string> = {}
+): string[] => {
     const lines = new Set<string>()
-    const mapSources = new Set(Object.keys(map).map(normalise))
+    const mapSources = new Set([...Object.keys(map), ...Object.keys(external)].map(normalise))
 
     for (const [from, to] of Object.entries(map)) {
         lines.add(`${from} ${to} 301`)
+    }
+
+    // Off-site targets: both slash forms, temporary, so a changed destination takes effect at once.
+    for (const [from, to] of Object.entries(external)) {
+        const bare = normalise(from).replace(/\/$/, '')
+        lines.add(`${bare} ${to} 302`)
+        lines.add(`${bare}/ ${to} 302`)
     }
 
     for (const pathname of pagePathnames) {
@@ -101,7 +127,8 @@ export const redirectsFile = (): AstroIntegration => ({
         'astro:build:done': async ({ pages, dir, logger }) => {
             const lines = buildRedirectLines(
                 { ...categoryRenames, ...redirects },
-                pages.map((page) => page.pathname)
+                pages.map((page) => page.pathname),
+                externalRedirects(campaignFinance.donationUrl)
             )
             await writeFile(new URL('_redirects', dir), `${lines.join('\n')}\n`, 'utf-8')
             logger.info(`wrote _redirects (${lines.length} rules)`)
