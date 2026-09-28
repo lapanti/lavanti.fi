@@ -177,7 +177,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
     en: {
         asOf: (formatted) => `As of ${formatted}`,
         budget: 'Campaign budget',
-        budgetRow: 'Our budget',
+        budgetRow: 'My budget',
         committed: 'My own commitment',
         donate: 'Support the campaign',
         gap: 'Still to raise',
@@ -240,9 +240,9 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         unspent: 'Käyttämättä',
     },
     sv: {
-        asOf: (formatted) => `Situationen ${formatted}`,
+        asOf: (formatted) => `Läget ${formatted}`,
         budget: 'Kampanjbudget',
-        budgetRow: 'Vår egen budget',
+        budgetRow: 'Min budget',
         committed: 'Mitt eget åtagande',
         donate: 'Stöd kampanjen',
         gap: 'Kvar att samla in',
