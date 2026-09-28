@@ -82,7 +82,7 @@ export const spending = spendingSegments(campaignFinance, 'fi')
     <Prose>
         <p>Erittelen rahat samoilla riveillä kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa. Jos jostakin lähteestä ei ole tullut euroakaan, rivi näkyy silti nollana. Lainaa en ota.</p>
         <p>Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset. Julkistan jokaisen vähintään 1 500 euron tuen tukijan nimellä jo kampanjan aikana. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle. Laki ei vaadi ehdokkaalta kumpaakaan näistä ennen vaaleja.</p>
-        <p>{campaignFinance.donationUrl ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
+        <p><a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate}</a></p>
     </Prose>
 </Plate>
 
