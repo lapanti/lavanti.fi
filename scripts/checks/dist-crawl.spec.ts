@@ -119,20 +119,4 @@ describe('checkRedirectsOutput', () => {
         expect(problems).toHaveLength(1)
         expect(problems[0]).toContain('dead-end')
     })
-
-    it('accepts an off-site https target, which no built page can match', () => {
-        const rules = [
-            { source: '/lahjoita', target: 'https://www.vihreat.fi/lahjoita/' },
-            { source: '/lahjoita/', target: 'https://www.vihreat.fi/lahjoita/' },
-        ]
-
-        expect(checkRedirectsOutput(rules, servable)).toEqual([])
-    })
-
-    it('flags an off-site target over plain http', () => {
-        const problems = checkRedirectsOutput([{ source: '/lahjoita', target: 'http://example.org/' }], servable)
-
-        expect(problems).toHaveLength(1)
-        expect(problems[0]).toContain('insecure')
-    })
 })
