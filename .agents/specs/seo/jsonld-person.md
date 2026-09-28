@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-05-23
+> **Last updated**: 2026-09-28
 
 ---
 
@@ -20,7 +20,7 @@ The goal is maximum E-E-A-T entity reconciliation: LLMs and answer engines shoul
 
 ### In scope
 - `src/content/person.ts` — new file, single source of truth for all canonical Person data
-- `PERSON_ID = 'https://lavanti.fi/fi/about/#person'` — stable entity identifier; `id="person"` anchor added to FI About page to make fragment resolvable
+- `PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'` — stable entity identifier; `id="person"` anchor added to FI About page to make fragment resolvable
 - `src/lib/jsonld.ts` — add `PROFILEPAGE = 'ProfilePage'` constant
 - `src/components/Head.astro` — consume `person.ts`; emit `ProfilePage > mainEntity Person` branch; emit `BlogPosting.author` as Person id-reference array; emit `<meta property="article:author">` once per author
 - `src/content.config.ts` — `authors` field (optional) on the posts collection schema, shared per post id via `meta.json` (with `role` resolved per locale — see the posts spec's Data Model)
@@ -52,7 +52,7 @@ Feature: Canonical Person JSON-LD entity
 
   Scenario: person.ts exports canonical Person data
     Given src/content/person.ts exists
-    Then it exports PERSON_ID = 'https://lavanti.fi/fi/about/#person'
+    Then it exports PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'
     And it exports personGivenName = 'Lauri', personFamilyName = 'Lavanti'
     And it exports personBirthDate = '1991-10-01'
     And it exports personBirthPlace as a Place with name 'Jyväskylä'
@@ -61,7 +61,10 @@ Feature: Canonical Person JSON-LD entity
     And it exports personAlumniOf as an array of 3 educational orgs (Aalto-yliopisto, Omnia, Masalan lukio)
     And it exports personSameAs containing 'https://fi.wikipedia.org/wiki/Lauri_Lavanti'
     And it exports personSameAs containing 'https://www.wikidata.org/wiki/Q139711658'
+    And it exports personSameAs containing 'https://markkinavihreat.fi/ketka/lauri-lavanti/'
+    And socialUrls does NOT contain 'https://markkinavihreat.fi/ketka/lauri-lavanti/' (it drives the footer's rel="me" links)
     And personSameAs does NOT contain 'https://digitaalinenitsenaisyys.fi/'
+    And it exports personMemberOf as an array: PoliticalParty { name: 'Vihreä liitto', url: 'https://www.vihreat.fi' } and Organization { '@id': 'https://markkinavihreat.fi/#organization', name: 'Markkinavihreät', url: 'https://markkinavihreat.fi/' }
     And it exports personAffiliation containing { '@type': 'Organization', name: 'Digitaalinen itsenäisyys -kansalaisaloite', url: 'https://digitaalinenitsenaisyys.fi/' }
     And it exports personKnowsAbout as a Record<Lang, string[]> with distinct values per locale
     And it exports personHasOccupation as a Record<Lang, array> with two Occupation entries (politician, lead developer)
@@ -74,21 +77,21 @@ Feature: Canonical Person JSON-LD entity
     When the page is rendered
     Then the JSON-LD contains @type: 'ProfilePage'
     And the JSON-LD contains mainEntity with @type: 'Person'
-    And mainEntity['@id'] = 'https://lavanti.fi/fi/about/#person'
+    And mainEntity['@id'] = 'https://lavanti.fi/fi/laurista/#person'
     And mainEntity contains name, givenName, familyName, birthDate, birthPlace, nationality
-    And mainEntity contains worksFor, alumniOf (3 entries), memberOf, affiliation
+    And mainEntity contains worksFor, alumniOf (3 entries), memberOf (2 entries: Vihreä liitto, Markkinavihreät), affiliation
     And mainEntity contains knowsAbout localised to the page's lang
     And mainEntity contains hasOccupation localised to the page's lang
     And mainEntity contains knowsLanguage: ['fi', 'en', 'sv']
-    And mainEntity.sameAs includes Wikipedia and Wikidata URLs
+    And mainEntity.sameAs includes Wikipedia, Wikidata and Markkinavihreät person page URLs
     And mainEntity.sameAs does NOT include 'https://digitaalinenitsenaisyys.fi/'
     And mainEntity.image is a Cloudinary URL with g_north crop, 1200×1200
 
   Scenario: PERSON_ID fragment resolves on FI About page
-    Given the FI About page at /fi/about/
+    Given the FI About page at /fi/laurista/
     When the HTML is rendered
     Then an element with id="person" exists in the page (wrapping the bio/hero section)
-    And navigating to /fi/about/#person anchors to that element
+    And navigating to /fi/laurista/#person anchors to that element
 
   # ── BlogPosting author ────────────────────────────────────────────────────────
 
@@ -96,7 +99,7 @@ Feature: Canonical Person JSON-LD entity
     Given a BlogPosting with no authors frontmatter field
     When the page is rendered
     Then BlogPosting.author is an array with one entry
-    And that entry is { '@type': 'Person', '@id': 'https://lavanti.fi/fi/about/#person' }
+    And that entry is { '@type': 'Person', '@id': 'https://lavanti.fi/fi/laurista/#person' }
     And there is exactly one <meta property="article:author"> in the HTML
     And that meta content attribute is 'Lauri Lavanti'
 
@@ -105,7 +108,7 @@ Feature: Canonical Person JSON-LD entity
     When the page is rendered
     Then BlogPosting.author is an array with two entries
     And the first entry is { '@type': 'Person', name: 'Miisa Jeremejew' }
-    And the second entry is { '@type': 'Person', '@id': 'https://lavanti.fi/fi/about/#person' }
+    And the second entry is { '@type': 'Person', '@id': 'https://lavanti.fi/fi/laurista/#person' }
     And there are exactly two <meta property="article:author"> tags in the HTML
     And the first meta content is 'Miisa Jeremejew'
     And the second meta content is 'Lauri Lavanti'
@@ -192,7 +195,7 @@ Feature: Canonical Person JSON-LD entity
     When the page is rendered
     Then the JSON-LD contains @type: 'WebSite'
     And the JSON-LD contains name: 'Lauri Lavanti'
-    And the JSON-LD contains sameAs with every socialProfiles URL plus Wikipedia and Wikidata
+    And the JSON-LD contains sameAs with every socialProfiles URL plus Wikipedia, Wikidata and the Markkinavihreät person page
 
   # ── Co-authored posts migration ──────────────────────────────────────────────
 
@@ -255,7 +258,7 @@ Feature: Canonical Person JSON-LD entity
 ```typescript
 // src/content/person.ts
 
-export const PERSON_ID = 'https://lavanti.fi/fi/about/#person'
+export const PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'
 
 // Co-author entry in post frontmatter
 // String shorthand 'lauri' resolves to the canonical PERSON_ID reference
@@ -312,6 +315,14 @@ type ResolvedAuthor =
 // 7. https://www.tiktok.com/@laurilavanti
 // 8. https://fi.wikipedia.org/wiki/Lauri_Lavanti
 // 9. https://www.wikidata.org/wiki/Q139711658
+// 10. https://markkinavihreat.fi/ketka/lauri-lavanti/  ← not in socialUrls (no rel="me")
+
+// memberOf array:
+// 1. { '@type': 'PoliticalParty', name: 'Vihreä liitto', url: 'https://www.vihreat.fi' }
+// 2. { '@type': 'Organization', '@id': 'https://markkinavihreat.fi/#organization',
+//      name: 'Markkinavihreät', url: 'https://markkinavihreat.fi/' }
+// Markkinavihreät's own Person node (https://markkinavihreat.fi/ketka/lauri-lavanti/#person)
+// links back with sameAs → https://lavanti.fi/fi/laurista/ and Wikidata Q139711658.
 ```
 
 ---
@@ -347,3 +358,4 @@ type ResolvedAuthor =
 | 2026-05-23 | Drop shared-suffix byline format; drop place field; Lauri sentinel = name-only; per-author role in parentheses only |
 | 2026-05-23 | Fix stale Given example (remove place); clarify fi/sv posts also had inline bylines requiring removal |
 | 2026-05-23 | Lauri sentinel always required; sentinel gets personJobTitle[lang] role injected when any co-author has a role |
+| 2026-09-28 | memberOf becomes an array with Markkinavihreät (`https://markkinavihreat.fi/#organization`); sameAs adds the Markkinavihreät person page (JSON-LD only, not rel="me"); PERSON_ID and About path corrected from `/fi/about/` to `/fi/laurista/` |
