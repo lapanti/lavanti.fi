@@ -1,8 +1,36 @@
 import { describe, expect, it } from 'vitest'
 
-import { buildRedirectLines } from './redirectsIntegration'
+import { buildRedirectLines, externalRedirects } from './redirectsIntegration'
+
+describe('externalRedirects', () => {
+    it('sends /lahjoita to the donation link once it exists', () => {
+        expect(externalRedirects('https://www.vihreat.fi/lahjoita/')).toEqual({
+            '/lahjoita': 'https://www.vihreat.fi/lahjoita/',
+        })
+    })
+
+    /* No provisional target: until the link exists, /lahjoita simply is not a redirect. */
+    it('emits nothing while the donation link is unset', () => {
+        expect(externalRedirects(undefined)).toEqual({})
+    })
+})
 
 describe('buildRedirectLines', () => {
+    it('emits off-site redirects as temporary 302s, with and without the trailing slash', () => {
+        const lines = buildRedirectLines({}, [], { '/lahjoita': 'https://www.vihreat.fi/lahjoita/' })
+
+        expect(lines).toContain('/lahjoita https://www.vihreat.fi/lahjoita/ 302')
+        expect(lines).toContain('/lahjoita/ https://www.vihreat.fi/lahjoita/ 302')
+    })
+
+    it('never lets a locale-less page alias shadow an off-site redirect', () => {
+        const lines = buildRedirectLines({}, ['/fi/lahjoita/'], { '/lahjoita': 'https://www.vihreat.fi/lahjoita/' })
+
+        expect(lines.filter((line) => line.startsWith('/lahjoita '))).toEqual([
+            '/lahjoita https://www.vihreat.fi/lahjoita/ 302',
+        ])
+    })
+
     it('emits a "<from> <to> 301" line for every static redirect map entry', () => {
         const lines = buildRedirectLines({ '/blogi/': '/fi/blog/', '/minusta/': '/fi/about/' }, [])
 
