@@ -146,16 +146,6 @@ export function checkRedirectsOutput(rules: RedirectRule[], servable: Set<string
     const problems: string[] = []
     const sources = new Set(rules.map((rule) => normalizePath(rule.source)))
     for (const { source, target } of rules) {
-        /*
-         * Off-site targets (the /lahjoita donation link) cannot resolve to a built
-         * page; the only thing to hold them to here is https.
-         */
-        if (/^[a-z]+:\/\//i.test(target)) {
-            if (!target.startsWith('https://')) {
-                problems.push(`insecure: "${source}" -> "${target}" leaves the site over plain http`)
-            }
-            continue
-        }
         const normalizedTarget = normalizePath(target)
         if (sources.has(normalizedTarget)) {
             problems.push(`chain: "${source}" -> "${target}", whose target is itself a redirect source`)
