@@ -57,7 +57,9 @@
         - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
     - paragraph: Erittelen rahat samoilla riveillä kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Nolla tarkoittaa nollaa. Jos jostakin lähteestä ei ole tullut euroakaan, rivi näkyy silti nollana. Lainaa en ota.
     - paragraph: /Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Julkistan jokaisen vähintään 1 \d+ euron tuen tukijan nimellä jo kampanjan aikana\. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Laki ei vaadi ehdokkaalta kumpaakaan näistä ennen vaaleja\./
-    - paragraph: Lahjoituslinkki tulee tälle sivulle heti, kun kampanjatili on auki.
+    - paragraph:
+      - link "Tue kampanjaa":
+        - /url: https://lavanti.fi/lahjoita
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
     - figure "Kerätyn rahan käyttö, osuudet kerätystä rahasta":

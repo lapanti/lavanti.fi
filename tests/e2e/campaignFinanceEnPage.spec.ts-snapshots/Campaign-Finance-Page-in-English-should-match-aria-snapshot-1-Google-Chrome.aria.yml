@@ -57,7 +57,9 @@
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
     - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I do not borrow."
     - paragraph: /Donations are welcome from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office\. The law requires neither of these of a candidate before the election\./
-    - paragraph: The donation link is published here as soon as the campaign account is open.
+    - paragraph:
+      - link "Support the campaign":
+        - /url: https://lavanti.fi/lahjoita
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "How the money raised has been used, shares of the money raised":
