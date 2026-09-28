@@ -24,11 +24,16 @@ export function getPersonImageUrl(): Promise<string> {
     return Promise.resolve(getImage('Lauri-Lavanti-seisoo-suorassa-sinisella-taustalla', 'og').src)
 }
 
-// Social profiles come from the shared list; the reference entries are not profiles.
+/*
+ * Social profiles come from the shared list; the reference entries are not profiles.
+ * The Markkinavihreät person page stays out of socialUrls: that list also renders the
+ * footer's rel="me" links, and a network-run page is not Lauri's own profile.
+ */
 export const personSameAs = [
     ...socialUrls,
     'https://fi.wikipedia.org/wiki/Lauri_Lavanti',
     'https://www.wikidata.org/wiki/Q139711658',
+    'https://markkinavihreat.fi/ketka/lauri-lavanti/',
 ]
 
 export const personJobTitle: Record<Lang, string> = {
@@ -111,11 +116,19 @@ export const personAlumniOf = [
     { '@type': 'HighSchool', name: 'Masalan lukio' },
 ]
 
-export const personMemberOf = {
-    '@type': 'PoliticalParty',
-    name: 'Vihreä liitto',
-    url: 'https://www.vihreat.fi',
-}
+export const personMemberOf = [
+    {
+        '@type': 'PoliticalParty',
+        name: 'Vihreä liitto',
+        url: 'https://www.vihreat.fi',
+    },
+    {
+        '@id': 'https://markkinavihreat.fi/#organization',
+        '@type': 'Organization',
+        name: 'Markkinavihreät',
+        url: 'https://markkinavihreat.fi/',
+    },
+]
 
 export const personAffiliation = [
     {
