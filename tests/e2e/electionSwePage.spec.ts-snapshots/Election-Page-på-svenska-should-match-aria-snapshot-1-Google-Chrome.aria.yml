@@ -113,7 +113,7 @@
     - term: Mitt eget åtagande
     - definition: /8 \d+ €/
     - term: Kvar att samla in
-    - definition: /\d+ \d+ € Situationen \d+\.\d+\.\d+/
+    - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - paragraph:
       - link "Se kampanjens finansiering":
         - /url: /sv/riksdagsvalet/valfinansiering/
