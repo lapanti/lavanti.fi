@@ -28,7 +28,7 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - Pages `/fi/eduskuntavaalit/vaalirahoitus/`, `/sv/riksdagsvalet/valfinansiering/`, `/en/elections/campaign-finance/` on `PageLayout` with `langAlternates` and a FAQ.
 - Teaser section and FAQ link on the three election pages.
 - Footer link, `llms.txt` pillar link, e2e page objects and specs, `langSwap` and `horizontalScroll` cases.
-- The donation link: `campaignFinance.donationUrl` holds the off-site donation page (vihreat.fi or uudenmaanvihreat.fi). The finance page's button links straight to it. The short form `lavanti.fi/lahjoita` for print and social is a Cloudflare zone redirect to the same URL, like `/liity`, kept outside the repo: when the destination changes, update both. While the field is unset, the page says the link is coming instead of rendering a button.
+- The donation link: `campaignFinance.donationUrl` is the constant short URL `https://lavanti.fi/lahjoita`, and the finance page's button links to it. Print, social and every other reference use the same short URL. The only place that holds the real destination (the donation page on vihreat.fi or uudenmaanvihreat.fi) is a Cloudflare Single Redirect rule on the lavanti.fi zone, a 302 kept outside the repo, so changing the destination is a dashboard edit with no deploy. The rule must point at the donation page before the finance page is published.
 
 ### Out of scope
 - A donation form or payment handling on this site: donations are taken on the party's page.
