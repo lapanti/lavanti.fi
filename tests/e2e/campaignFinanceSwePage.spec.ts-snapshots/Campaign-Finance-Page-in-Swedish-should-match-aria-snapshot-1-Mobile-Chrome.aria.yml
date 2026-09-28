@@ -57,7 +57,9 @@
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
     - paragraph: "Kategorierna är desamma som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro, står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte."
     - paragraph: /Donationer är välkomna från privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsredovisning till revisionsverket\. Lagen kräver ingetdera av en kandidat före valet\./
-    - paragraph: Donationslänken publiceras här så snart kampanjkontot är öppet.
+    - paragraph:
+      - link "Stöd kampanjen":
+        - /url: https://lavanti.fi/lahjoita
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
     - figure "Så har de insamlade pengarna använts, andelar av det insamlade":
