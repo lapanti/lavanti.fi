@@ -25,6 +25,7 @@ const NBSP = '\u00A0'
 const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => ({
     asOf: '2026-09-25',
     budget: 30000,
+    donationUrl: 'https://lavanti.fi/lahjoita',
     ownCommitment: 0,
     raised: { companies: 0, loans: 0, other: 0, own: 10000, party: 0, partyAssociations: 0, private: 0 },
     spent: 5000,

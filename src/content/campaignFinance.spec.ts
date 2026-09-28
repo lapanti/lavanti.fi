@@ -63,14 +63,11 @@ describe('campaign finance data', () => {
 
 describe('donation channel', () => {
     /*
-     * The page is not meant to ship without a working donation link. While the field
-     * is unset the pages fall back to the "coming soon" label rather than rendering a
-     * dead button, so an accidental publish degrades instead of breaking.
+     * The destination lives in a Cloudflare redirect rule. The page links the short URL
+     * so that print, social and the site share one address that never changes.
      */
-    it('should be an absolute https URL once it is set', () => {
-        const url = campaignFinance.donationUrl ?? 'https://placeholder.invalid'
-
-        expect(url).toMatch(/^https:\/\/\S+$/)
+    it('should be the lavanti.fi/lahjoita short URL, not the destination', () => {
+        expect(campaignFinance.donationUrl).toBe('https://lavanti.fi/lahjoita')
     })
 })
 
@@ -158,8 +155,7 @@ describe('finance labels', () => {
             expect(labels.sets.all).toBeTruthy()
             expect(labels.sets.uusimaa).toBeTruthy()
             expect(labels.sourceLinkText).toBeTruthy()
-            expect(labels.donate.cta).toBeTruthy()
-            expect(labels.donate.pending).toBeTruthy()
+            expect(labels.donate).toBeTruthy()
             expect(labels.committed).toBeTruthy()
             expect(labels.spentPending).toBeTruthy()
             expect(labels.teaser.cta).toBeTruthy()
