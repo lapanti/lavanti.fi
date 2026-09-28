@@ -34,7 +34,13 @@ describe('surfaces derived from the shared list', () => {
     it('keeps the reference entries in sameAs alongside the profiles', () => {
         expect(personSameAs).toContain('https://fi.wikipedia.org/wiki/Lauri_Lavanti')
         expect(personSameAs).toContain('https://www.wikidata.org/wiki/Q139711658')
-        expect(personSameAs).toHaveLength(socialUrls.length + 2)
+        expect(personSameAs).toContain('https://markkinavihreat.fi/ketka/lauri-lavanti/')
+        expect(personSameAs).toHaveLength(socialUrls.length + 3)
+    })
+
+    it('keeps the Markkinavihreät person page out of the rel="me" profile list', () => {
+        expect(socialUrls).not.toContain('https://markkinavihreat.fi/ketka/lauri-lavanti/')
+        expect(footerLinks.map(({ url }) => url)).not.toContain('https://markkinavihreat.fi/ketka/lauri-lavanti/')
     })
 
     it('offers every profile as a chip', () => {
