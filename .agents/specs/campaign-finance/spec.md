@@ -28,9 +28,10 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - Pages `/fi/eduskuntavaalit/vaalirahoitus/`, `/sv/riksdagsvalet/valfinansiering/`, `/en/elections/campaign-finance/` on `PageLayout` with `langAlternates` and a FAQ.
 - Teaser section and FAQ link on the three election pages.
 - Footer link, `llms.txt` pillar link, e2e page objects and specs, `langSwap` and `horizontalScroll` cases.
+- The donation link: `campaignFinance.donationUrl` holds the off-site donation page (vihreat.fi or uudenmaanvihreat.fi). The finance page's button links straight to it, and the build emits `lavanti.fi/lahjoita` → that URL as a 302 in `_redirects`, so print and social can use the short form. 302 because the destination may still move and a 301 would stay cached in browsers. While the field is unset, neither the button nor the redirect exists.
 
 ### Out of scope
-- Donation payment link or form (separate feature; the FAQ says how to donate in words only).
+- A donation form or payment handling on this site: donations are taken on the party's page.
 - Breadcrumb trail or breadcrumb JSON-LD (`PageLayout` only emits `BreadcrumbList` for `CollectionPage` trails; adding an election trail touches `breadcrumbs.ts` and the layout). `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
