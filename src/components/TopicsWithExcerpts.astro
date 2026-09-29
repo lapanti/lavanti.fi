@@ -2,7 +2,7 @@
 import type { Lang } from '../content/nav'
 import type { LocalTag } from '../content/tags/types'
 
-import { tags } from '../content/tags'
+import { getCategoryPath, tags } from '../content/tags'
 import { getExcerptPosts, type Post } from '../lib/posts'
 import TopicNav from './blog/TopicNav.astro'
 import TopicPlate from './blog/TopicPlate.astro'
@@ -31,7 +31,6 @@ for (const id of ids) {
     sections.push({ posts, tag })
 }
 
-const categoryBasePaths: Record<Lang, string> = { en: '/en/category', fi: '/fi/category', sv: '/sv/category' }
 const seeAllLabels: Record<Lang, (name: string) => string> = {
     en: (name) => `All posts about ${name}`,
     fi: (name) => `Kaikki kirjoitukset aiheesta ${name}`,
@@ -66,7 +65,7 @@ const navItems = sections.map(({ tag }) => ({ href: `#${tag.id}`, label: tag.nam
 {
     sections.map(({ tag, posts }, index) => (
         <TopicPlate
-            allPostsHref={`${categoryBasePaths[lang]}/${tag.id}/`}
+            allPostsHref={getCategoryPath(tag.id, lang)!}
             allPostsLabel={seeAllLabels[lang](tag.names[lang])}
             ground={index % 2 === 0 ? 'sand' : 'offWhite'}
             heading={tag.names[lang]}
