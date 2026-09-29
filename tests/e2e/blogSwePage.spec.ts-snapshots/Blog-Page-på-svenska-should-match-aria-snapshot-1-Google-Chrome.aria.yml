@@ -91,7 +91,7 @@
                 - /url: /sv/kategori/digitalisering/
       - paragraph:
         - link "Alla inlägg om AI":
-          - /url: /sv/category/artificial-intelligence/
+          - /url: /sv/kategori/artificiell-intelligens/
     - region "Ekonomi":
       - heading "Ekonomi" [level=2]
       - paragraph: Finlands ekonomi måste fungera under AI-omställningen. Det betyder nya företag, nya jobb och offentliga tjänster som faktiskt använder tekniken — inte bara köper in den utifrån. Utan teknisk kompetens i riksdagen fattas beslut om AI-upphandling, datainfrastruktur och arbetslivet av människor som inte vet vad de köper.
@@ -154,7 +154,7 @@
                 - /url: /sv/kategori/vastra-nyland/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
-          - /url: /sv/category/economy/
+          - /url: /sv/kategori/ekonomi/
     - region "Lärande":
       - heading "Lärande" [level=2]
       - paragraph: Finlands styrka har alltid varit dess människor och deras kunnande. I AI-eran måste bildningen förbli sömlös — från småbarnspedagogiken till arbetslivet och ända fram till pensionen — så att alla kan utveckla sin fulla potential. På så sätt växer AI:s produktivitetsvinster för hela samhället, och ingen lämnas efter.
@@ -217,7 +217,7 @@
                 - /url: /sv/kategori/bildning/
       - paragraph:
         - link "Alla inlägg om Lärande":
-          - /url: /sv/category/enlightenment/
+          - /url: /sv/kategori/bildning/
     - region "Frihet":
       - heading "Frihet" [level=2]
       - paragraph: Frihet är en av de viktigaste frågorna under AI-eran. Det är frågan om dina data, din kommunikation och din vardag förblir dina när merparten av infrastrukturen runt dem ägs av någon annan. Integritetsskyddet är grundfallet — men den bredare frågan är om medborgerliga rättigheter överlever en teknik som gör massövervakning nästan gratis.
@@ -280,7 +280,7 @@
                 - /url: /sv/kategori/sakerhet/
       - paragraph:
         - link "Alla inlägg om Frihet":
-          - /url: /sv/category/freedom/
+          - /url: /sv/kategori/frihet/
     - region "Digital självständighet":
       - heading "Digital självständighet" [level=2]
       - paragraph: /Finland och Europa måste kontrollera sin egen digitala infrastruktur\. Det är därför jag grundade medborgarinitiativet om digital självständighet, som samlade in de \d+ \d+ underskrifter som krävs för riksdagsbehandling i juli \d+\. Med det kräver vi att Finland minskar sitt beroende av utländska leverantörer av digitala tjänster och stärker den digitala suveräniteten\./
@@ -343,7 +343,7 @@
                 - /url: /sv/kategori/ekonomi/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
-          - /url: /sv/category/digital-independence/
+          - /url: /sv/kategori/digital-sjalvstandighet/
     - region "Kyrkslätt":
       - heading "Kyrkslätt" [level=2]
       - paragraph: Jag är kommunfullmäktigeledamot i Kyrkslätt. Det innebär att jag är med och beslutar om kommunens budget, planläggning, serviceavtal och infrastruktur — beslut som direkt formar hur det är att leva här. De flesta av dessa beslut fattas utan större offentlig uppmärksamhet, och det är precis då det spelar roll vem som fattar besluten.
@@ -406,6 +406,6 @@
                 - /url: /sv/kategori/vastra-nyland/
       - paragraph:
         - link "Alla inlägg om Kyrkslätt":
-          - /url: /sv/category/kirkkonummi/
+          - /url: /sv/kategori/kyrkslatt/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
