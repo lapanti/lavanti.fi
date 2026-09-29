@@ -5,9 +5,10 @@ import { PERSON_ID, personJobTitle, personName } from '../content/person'
 import { socialUrls } from '../content/social'
 import Head from './Head.astro'
 
-/** Wikipedia, Wikidata and the Markkinavihreät person page: sameAs entries that are not social profiles. */
-const REFERENCE_SAME_AS = 3
+/** Wikipedia, Wikidata and the Markkinavihreät and Kirkkonummen Vihreät person pages: sameAs entries that are not social profiles. */
+const REFERENCE_SAME_AS = 4
 const MARKKINAVIHREAT_PERSON_URL = 'https://markkinavihreat.fi/ketka/lauri-lavanti/'
+const KIRKKONUMMEN_VIHREAT_PERSON_URL = 'https://kirkkonummenvihreat.fi/jasenet/lauri-lavanti/'
 
 describe('<Head />', () => {
     it('should render with required props', async () => {
@@ -496,6 +497,7 @@ describe('<Head />', () => {
         expect(jsonLd.sameAs).toContain('https://fi.wikipedia.org/wiki/Lauri_Lavanti')
         expect(jsonLd.sameAs).toContain('https://www.wikidata.org/wiki/Q139711658')
         expect(jsonLd.sameAs).toContain(MARKKINAVIHREAT_PERSON_URL)
+        expect(jsonLd.sameAs).toContain(KIRKKONUMMEN_VIHREAT_PERSON_URL)
         expect(jsonLd.sameAs).not.toContain('https://digitaalinenitsenaisyys.fi/')
         expect(jsonLd.memberOf).toEqual([
             { '@type': 'PoliticalParty', name: 'Vihreä liitto', url: 'https://www.vihreat.fi' },
@@ -571,6 +573,7 @@ describe('<Head />', () => {
         expect(jsonLd.mainEntity.name).toBe('Lauri Lavanti')
         expect(jsonLd.mainEntity.sameAs).toHaveLength(socialUrls.length + REFERENCE_SAME_AS)
         expect(jsonLd.mainEntity.sameAs).toContain(MARKKINAVIHREAT_PERSON_URL)
+        expect(jsonLd.mainEntity.sameAs).toContain(KIRKKONUMMEN_VIHREAT_PERSON_URL)
         expect(jsonLd.mainEntity.memberOf).toHaveLength(2)
         expect(jsonLd.mainEntity.affiliation).toHaveLength(1)
     })

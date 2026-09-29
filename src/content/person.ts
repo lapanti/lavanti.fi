@@ -26,14 +26,16 @@ export function getPersonImageUrl(): Promise<string> {
 
 /*
  * Social profiles come from the shared list; the reference entries are not profiles.
- * The Markkinavihreät person page stays out of socialUrls: that list also renders the
- * footer's rel="me" links, and a network-run page is not Lauri's own profile.
+ * The Markkinavihreät and Kirkkonummen Vihreät person pages stay out of socialUrls: that
+ * list also renders the footer's rel="me" links, and an organisation-run page is not
+ * Lauri's own profile.
  */
 export const personSameAs = [
     ...socialUrls,
     'https://fi.wikipedia.org/wiki/Lauri_Lavanti',
     'https://www.wikidata.org/wiki/Q139711658',
     'https://markkinavihreat.fi/ketka/lauri-lavanti/',
+    'https://kirkkonummenvihreat.fi/jasenet/lauri-lavanti/',
 ]
 
 export const personJobTitle: Record<Lang, string> = {
