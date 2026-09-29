@@ -76,7 +76,11 @@
       - listitem:
         - link "Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/
-    - paragraph: /Jag är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Mina viktigaste förtroendeuppdrag är att vara kommunfullmäktigeledamot i Kyrkslätt och ordförande för Gröna fullmäktigegruppen\. Vi behöver bättre förståelse för teknologins möjligheter och risker samt mod att satsa på utbildning och högproduktiv teknologisk utveckling\./
+    - paragraph:
+      - text: /Jag är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Mina viktigaste förtroendeuppdrag är att vara kommunfullmäktigeledamot i Kyrkslätt och ordförande för Gröna fullmäktigegruppen\. Jag är också med i/
+      - link "Markkinavihreät":
+        - /url: https://markkinavihreat.fi/sv/ketka/lauri-lavanti/
+      - text: (de marknadsgröna), ett nätverk inom De Gröna som förenas av tron att marknadsekonomi och ambitiös miljöpolitik går hand i hand. Vi behöver bättre förståelse för teknologins möjligheter och risker samt mod att satsa på utbildning och högproduktiv teknologisk utveckling.
     - list:
       - listitem:
         - link "De gröna – Marknadsekonomiets sanna försvarare":
@@ -259,6 +263,9 @@
       - listitem:
         - link "Threads":
           - /url: https://www.threads.com/@laurilavanti
+      - listitem:
+        - link "YouTube":
+          - /url: https://www.youtube.com/@laurilavanti
       - listitem:
         - link "LinkedIn":
           - /url: https://www.linkedin.com/in/laurilavanti/

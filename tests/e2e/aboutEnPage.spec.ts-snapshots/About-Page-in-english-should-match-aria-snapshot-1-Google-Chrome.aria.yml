@@ -76,7 +76,11 @@
       - listitem:
         - link "Digital independence":
           - /url: /en/category/digital-independence/
-    - paragraph: /I am the Greens’ parliamentary candidate in the Uusimaa electoral district in the \d+ elections\. My most important civic roles are serving as municipal councillor in Kirkkonummi and chair of the Green council group\. We need a better understanding of the opportunities and risks presented by technology, as well as the courage to invest in education and high-productivity technological development\./
+    - paragraph:
+      - text: /I am the Greens’ parliamentary candidate in the Uusimaa electoral district in the \d+ elections\. My most important civic roles are serving as municipal councillor in Kirkkonummi and chair of the Green council group\. I am also part of/
+      - link "Markkinavihreät":
+        - /url: https://markkinavihreat.fi/en/ketka/lauri-lavanti/
+      - text: ", a network within the Greens united by a belief that market economics and ambitious environmental policy belong together. We need a better understanding of the opportunities and risks presented by technology, as well as the courage to invest in education and high-productivity technological development."
     - list:
       - listitem:
         - link "Greens – The True Defenders of the Market Economy":
@@ -259,6 +263,9 @@
       - listitem:
         - link "Threads":
           - /url: https://www.threads.com/@laurilavanti
+      - listitem:
+        - link "YouTube":
+          - /url: https://www.youtube.com/@laurilavanti
       - listitem:
         - link "LinkedIn":
           - /url: https://www.linkedin.com/in/laurilavanti/
