@@ -718,16 +718,16 @@ describe('<Head />', () => {
         })
     })
 
-    it('should emit BreadcrumbList JSON-LD for a tag page (2 items)', async () => {
+    it('should emit BreadcrumbList JSON-LD for a page directly under the front page (2 items)', async () => {
         const breadcrumbs = [
             { name: 'Etusivu', url: 'https://lavanti.fi/fi/' },
-            { name: 'Kategoria', url: 'https://lavanti.fi/fi/category/tekoaly/' },
+            { name: 'Kuvapankki', url: 'https://lavanti.fi/fi/media/' },
         ]
 
         const result = await renderAstroComponent(Head, {
             props: {
                 breadcrumbs,
-                title: 'Tekoäly',
+                title: 'Kuvapankki',
                 type: 'CollectionPage',
             },
         })
