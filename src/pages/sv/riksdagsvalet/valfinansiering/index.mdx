@@ -81,7 +81,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
     <Prose>
         <p>Kategorierna är desamma som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro, står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte.</p>
         <p>Donationer är välkomna från privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 1 500 euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsredovisning till revisionsverket. Lagen kräver ingetdera av en kandidat före valet.</p>
-        <p><a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate}</a></p>
+        <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 

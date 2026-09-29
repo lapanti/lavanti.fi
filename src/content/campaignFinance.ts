@@ -33,6 +33,12 @@ export interface CampaignFinance {
     /** Planned total spend for the whole campaign, whole euros. */
     budget: number
     /**
+     * Whether the donation page behind `donationUrl` exists yet. While false the pages
+     * say the link is coming instead of rendering a button that leads nowhere useful.
+     * Flip it in the same change that points the Cloudflare rule at the donation page.
+     */
+    donationsOpen: boolean
+    /**
      * Public donation link: always the short URL, never the party's donation page
      * itself. A Cloudflare redirect rule on the lavanti.fi zone (outside this repo)
      * holds the real destination, so the page, print and social share one address
@@ -88,6 +94,7 @@ export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-26',
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
+    donationsOpen: false,
     ownCommitment: 8221,
     raised: {
         companies: 0,
@@ -149,8 +156,8 @@ export interface FinanceLabels {
     budgetRow: string
     /** Money undertaken but not yet paid in. */
     committed: string
-    /** Link text for the donation call to action. */
-    donate: string
+    /** Donation call to action, and what to say while `donationsOpen` is false. */
+    donate: { cta: string; pending: string }
     gap: string
     mean: string
     median: string
@@ -179,7 +186,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         budget: 'Campaign budget',
         budgetRow: 'My budget',
         committed: 'My own commitment',
-        donate: 'Support the campaign',
+        donate: {
+            cta: 'Support the campaign',
+            pending: 'The donation link will be published here as soon as the donation page opens.',
+        },
         gap: 'Still to raise',
         mean: 'average',
         median: 'median',
@@ -212,7 +222,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         budget: 'Kampanjabudjetti',
         budgetRow: 'Oma budjettini',
         committed: 'Oma sitoumukseni',
-        donate: 'Tue kampanjaa',
+        donate: {
+            cta: 'Tue kampanjaa',
+            pending: 'Lahjoituslinkki julkaistaan tällä sivulla heti, kun lahjoitussivu avautuu.',
+        },
         gap: 'Vielä kerättävä',
         mean: 'keskiarvo',
         median: 'mediaani',
@@ -244,7 +257,10 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         budget: 'Kampanjbudget',
         budgetRow: 'Min budget',
         committed: 'Mitt eget åtagande',
-        donate: 'Stöd kampanjen',
+        donate: {
+            cta: 'Stöd kampanjen',
+            pending: 'Donationslänken publiceras här så snart donationssidan öppnas.',
+        },
         gap: 'Kvar att samla in',
         mean: 'medeltal',
         median: 'median',
