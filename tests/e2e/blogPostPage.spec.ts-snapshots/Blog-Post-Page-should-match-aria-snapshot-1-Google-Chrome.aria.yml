@@ -6,13 +6,13 @@
   - list:
     - listitem:
       - link /Aluevaalit \d+/:
-        - /url: /fi/category/regional-elections-2022/
+        - /url: /fi/kategoria/aluevaalit-2022/
     - listitem:
       - link "Kirkkonummi":
-        - /url: /fi/category/kirkkonummi/
+        - /url: /fi/kategoria/kirkkonummi/
     - listitem:
       - link "Sote-uudistus":
-        - /url: /fi/category/health-and-social-reform/
+        - /url: /fi/kategoria/sote-uudistus/
   - figure:
     - img "Kuva Lauri Lavannista, taustalla näkyy metsää."
   - article:

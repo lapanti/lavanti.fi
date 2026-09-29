@@ -91,7 +91,7 @@
                 - /url: /fi/kategoria/digitalisaatio/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
-          - /url: /fi/category/artificial-intelligence/
+          - /url: /fi/kategoria/tekoaly/
     - region "Talous":
       - heading "Talous" [level=2]
       - paragraph: Suomen talouden on toimittava tekoälyn aikakaudella. Se tarkoittaa uusia yrityksiä, uusia työpaikkoja ja julkisia palveluita, jotka oikeasti käyttävät teknologiaa eivätkä vain osta sitä ulkopuolelta. Ilman teknologiaosaamista eduskunnassa päätökset tekoälyhankinnoista, datainfrastruktuurista ja työelämästä tekevät ihmiset, jotka eivät tiedä mitä ovat ostamassa.
@@ -154,7 +154,7 @@
                 - /url: /fi/kategoria/lansi-uusimaa/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
-          - /url: /fi/category/economy/
+          - /url: /fi/kategoria/talous/
     - region "Sivistys":
       - heading "Sivistys" [level=2]
       - paragraph: Suomen vahvuus on aina ollut sen ihmisissä ja heidän osaamisessaan. Tekoälyn aikana sivistyksen on pysyttävä saumattomana — varhaiskasvatuksesta työelämään ja aina eläkepäiville asti — niin että jokainen voi kehittää potentiaaliaan täysimääräisesti. Silloin tekoälyn tuottavuushyödyt kertautuvat koko yhteiskunnalle, eikä ketään jätetä jälkeen.
@@ -217,7 +217,7 @@
                 - /url: /fi/kategoria/sivistys/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Sivistys":
-          - /url: /fi/category/enlightenment/
+          - /url: /fi/kategoria/sivistys/
     - region "Vapaus":
       - heading "Vapaus" [level=2]
       - paragraph: Vapaus on yksi tekoälyn aikakauden tärkeimmistä kysymyksistä. Se on kysymys siitä pysyykö datasi, viestintäsi ja arkesi sinun ominasi, kun suurin osa infrastruktuurista, jossa ne ovat, on jonkun toisen omistuksessa. Yksityisyydensuoja on perusoikeus — mutta laajempi kysymys on, säilyvätkö perusoikeudet teknologiassa, joka tekee massojen valvomisen lähes ilmaiseksi.
@@ -280,7 +280,7 @@
                 - /url: /fi/kategoria/turvallisuus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Vapaus":
-          - /url: /fi/category/freedom/
+          - /url: /fi/kategoria/vapaus/
     - region "Digitaalinen itsenäisyys":
       - heading "Digitaalinen itsenäisyys" [level=2]
       - paragraph: /Suomen ja Euroopan on hallittava omaa digitaalista infrastruktuuriaan\. Siksi perustin Digitaalinen itsenäisyys -kansalaisaloitteen, joka keräsi eduskuntakäsittelyyn vaadittavat \d+ \d+ allekirjoitusta heinäkuussa \d+\. Aloitteessa vaadimme Suomea vähentämään riippuvuuttaan ulkomaisista digipalveluiden tarjoajista ja vahvistamaan digitaalista suvereniteettia\./
@@ -343,7 +343,7 @@
                 - /url: /fi/kategoria/talous/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
-          - /url: /fi/category/digital-independence/
+          - /url: /fi/kategoria/digitaalinen-itsenaisyys/
     - region "Kirkkonummi":
       - heading "Kirkkonummi" [level=2]
       - paragraph: Olen Kirkkonummen kunnanvaltuutettu. Se tarkoittaa, että olen päättämässä kunnan budjetista, kaavoituksesta, palvelusopimuksista ja infrastruktuurista — päätöksistä, jotka vaikuttavat suoraan siihen, millaista täällä on elää. Suurin osa näistä päätöksistä tehdään ilman suurempaa julkista huomiota, ja erityisesti silloin on merkityksellistä, kuka on päättämässä.
@@ -406,6 +406,6 @@
                 - /url: /fi/kategoria/lansi-uusimaa/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Kirkkonummi":
-          - /url: /fi/category/kirkkonummi/
+          - /url: /fi/kategoria/kirkkonummi/
     - link "Kaikki kirjoitukset":
       - /url: /fi/blog/all/
