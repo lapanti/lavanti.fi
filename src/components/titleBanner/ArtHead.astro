@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../../content/nav'
 
-import { getTagName } from '../../content/tags'
+import { getCategoryPath, getTagName } from '../../content/tags'
 import { colors, typographics } from '../../lib/styles'
 
 interface Props {
@@ -15,7 +15,6 @@ interface Props {
 
 const { createdAt, lang = 'fi', readingTime, tags, title, updatedDate } = Astro.props
 
-const tagBasePaths = { en: '/en/category', fi: '/fi/category', sv: '/sv/category' }
 const readingTimeLabel: Record<Lang, string> = { en: 'min read', fi: 'min lukuaika', sv: 'min' }
 const updatedLabel: Record<Lang, string> = { en: 'Updated', fi: 'Päivitetty', sv: 'Uppdaterad' }
 
@@ -27,9 +26,10 @@ const showUpdated = Boolean(updatedDate) && updatedDate !== dateOnly
 const [updYear, updMonth, updDay] = showUpdated && updatedDate ? updatedDate.split('-') : []
 const updatedDateToDisplay = showUpdated ? `${updDay}.${updMonth}.${updYear}` : ''
 
+/* Canonical category paths: the legacy /{lang}/category/{id}/ form only resolves through a 301. */
 const tagsToRender = (tags ?? [])
-    .map((tagId) => ({ id: tagId, name: getTagName(tagId, lang) }))
-    .filter((tag): tag is { id: string; name: string } => tag.name !== undefined)
+    .map((tagId) => ({ href: getCategoryPath(tagId, lang), name: getTagName(tagId, lang) }))
+    .filter((tag): tag is { href: string; name: string } => tag.href !== undefined && tag.name !== undefined)
 ---
 
 <style
@@ -203,7 +203,7 @@ const tagsToRender = (tags ?? [])
                     <ul class="topics">
                         {tagsToRender.map((tag) => (
                             <li>
-                                <a href={`${tagBasePaths[lang]}/${tag.id}/`}>{tag.name}</a>
+                                <a href={tag.href}>{tag.name}</a>
                             </li>
                         ))}
                     </ul>
