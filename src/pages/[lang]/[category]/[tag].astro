@@ -54,6 +54,8 @@ const langAlternates = {
 
 <PageLayout
     alt={tag.heroImageAlt?.[lang] ?? heroImageAltFallback[lang]}
+    breadcrumbName={tag.names[lang]}
+    breadcrumbParent="blog"
     description={metaDescription}
     heroImage={tag.heroImage ?? heroImageFallback}
     lang={lang}
