@@ -76,7 +76,11 @@
       - listitem:
         - link "Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-    - paragraph: /Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Tärkeimmät luottamustehtäväni ovat Kirkkonummen kunnanvaltuutettuna ja Vihreän valtuustoryhmän puheenjohtajana toimiminen\. Tarvitsemme parempaa ymmärrystä teknologian mahdollisuuksista ja riskeistä sekä rohkeutta panostaa koulutukseen ja korkean tuottavuuden teknologiseen kehitykseen\./
+    - paragraph:
+      - text: /Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Tärkeimmät luottamustehtäväni ovat Kirkkonummen kunnanvaltuutettuna ja Vihreän valtuustoryhmän puheenjohtajana toimiminen\. Olen myös mukana/
+      - link "Markkinavihreissä":
+        - /url: https://markkinavihreat.fi/ketka/lauri-lavanti/
+      - text: ", Vihreiden sisällä toimivassa verkostossa, jota yhdistää usko siihen, että markkinatalous ja kunnianhimoinen ympäristöpolitiikka kuuluvat yhteen. Tarvitsemme parempaa ymmärrystä teknologian mahdollisuuksista ja riskeistä sekä rohkeutta panostaa koulutukseen ja korkean tuottavuuden teknologiseen kehitykseen."
     - list:
       - listitem:
         - link "Vihreät – Markkinatalouden aito puolustaja":
@@ -259,6 +263,9 @@
       - listitem:
         - link "Threads":
           - /url: https://www.threads.com/@laurilavanti
+      - listitem:
+        - link "YouTube":
+          - /url: https://www.youtube.com/@laurilavanti
       - listitem:
         - link "LinkedIn":
           - /url: https://www.linkedin.com/in/laurilavanti/
