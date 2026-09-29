@@ -81,7 +81,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
     <Prose>
         <p>The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I do not borrow.</p>
         <p>Donations are welcome from private individuals, companies and associations. I publish every contribution of 1,500 euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office. The law requires neither of these of a candidate before the election.</p>
-        <p><a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate}</a></p>
+        <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
