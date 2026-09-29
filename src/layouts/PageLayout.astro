@@ -1,25 +1,25 @@
 ---
 import type { Lang } from '../content/nav'
-import type { BreadcrumbTrail } from '../lib/breadcrumbs'
+import type { BreadcrumbParent } from '../lib/breadcrumbs'
 import type { BreadcrumbItem, FaqItem, JsonLdType } from '../lib/jsonld'
 
 import Faq from '../components/Faq.astro'
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
 import Stripe from '../components/Stripe.astro'
 import TitleBanner from '../components/TitleBanner.astro'
-import { breadcrumbLabels } from '../lib/breadcrumbs'
+import { pageBreadcrumbs } from '../lib/breadcrumbs'
 import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { getImage } from '../lib/images'
-import { COLLECTIONPAGE } from '../lib/jsonld'
-import { landingPath } from '../lib/newsletterRoutes'
 import { ogId } from '../lib/og/id'
 import { visibleCampaignEvents } from '../lib/visibleEvents'
 import BaseLayout from './BaseLayout.astro'
 
 interface Props {
     alt?: string
-    /** Breadcrumb trail for a CollectionPage; defaults to the category trail. */
-    breadcrumbTrail?: BreadcrumbTrail
+    /** The page's own crumb; defaults to `pageTitle`. */
+    breadcrumbName?: string
+    /** Section the page sits under. Without it the page emits no BreadcrumbList. */
+    breadcrumbParent?: BreadcrumbParent
     createdAt?: string
     ctaHref?: string
     ctaLabel?: string
@@ -58,7 +58,8 @@ interface Props {
 const props: Props = ((Astro.props as any).frontmatter as Props | undefined) ?? (Astro.props as Props)
 const {
     alt,
-    breadcrumbTrail = 'category',
+    breadcrumbName,
+    breadcrumbParent,
     createdAt,
     ctaHref,
     ctaLabel,
@@ -97,18 +98,9 @@ const ogImage = slug
 const faqItems = faqSection && lang && hasFaqSection(faq) ? faq : undefined
 const faqLabels = lang ? faqSectionLabels[lang] : undefined
 
-const siteOrigin = 'https://lavanti.fi'
 const breadcrumbs: BreadcrumbItem[] | undefined =
-    type === COLLECTIONPAGE && lang && slug
-        ? [
-              { name: breadcrumbLabels.home[lang], url: `${siteOrigin}/${lang}/` },
-              ...(breadcrumbTrail === 'newsletterArchive'
-                  ? [
-                        { name: breadcrumbLabels.newsletter[lang], url: `${siteOrigin}${landingPath(lang)}` },
-                        { name: breadcrumbLabels.newsletterArchive[lang], url: `${siteOrigin}/${slug}/` },
-                    ]
-                  : [{ name: breadcrumbLabels.category[lang], url: `${siteOrigin}/${slug}/` }]),
-          ]
+    breadcrumbParent && lang && slug
+        ? pageBreadcrumbs(lang, slug, breadcrumbName ?? pageTitle, breadcrumbParent)
         : undefined
 ---
 
