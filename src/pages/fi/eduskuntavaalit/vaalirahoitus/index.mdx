@@ -42,14 +42,18 @@ import FinanceStats from '../../../../components/campaignFinance/FinanceStats.as
 import { benchmark2023, campaignFinance, financeLabels } from '../../../../content/campaignFinance'
 import {
     benchmarkRows,
+    benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
     formatDate,
+    formatDecimal,
+    formatInteger,
     spendingSegments,
     summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.fi
+export const national = benchmarkSet(benchmark2023, 'all')
 export const budget = budgetSegments(campaignFinance, 'fi')
 export const spending = spendingSegments(campaignFinance, 'fi')
 
@@ -73,8 +77,8 @@ export const spending = spendingSegments(campaignFinance, 'fi')
         </p>
     </FinanceBars>
     <Prose>
-        <p>Luvut kattavat kaikki 273 ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat. Ne kertovat siis menestyneiden kampanjoiden hinnan. Uudenmaan luvut sisältyvät myös koko maan lukuihin.</p>
-        <p>Puolet kampanjoista maksoi 19 801–48 986 euroa. Halvin kampanja oli nolla euroa ja kallein 136 739 euroa. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi. Siksi olennainen vertausluku on mediaani.</p>
+        <p>Luvut kattavat kaikki {national.n} ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat. Ne kertovat siis menestyneiden kampanjoiden hinnan. Uudenmaan luvut sisältyvät myös koko maan lukuihin.</p>
+        <p>Puolet kampanjoista maksoi {formatInteger(national.q1, 'fi')}–{formatInteger(national.q3, 'fi')} euroa. Halvin kampanja maksoi {formatInteger(benchmark2023.range.min, 'fi')} euroa ja kallein {formatInteger(benchmark2023.range.max, 'fi')} euroa. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi. Siksi olennainen vertausluku on mediaani.</p>
     </Prose>
 </Plate>
 
@@ -98,7 +102,7 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 <Plate eyebrow="Taustaa" ground="sand" heading="Miten kansanedustajat rahoittivat kampanjansa vuonna 2023?">
     <FinanceBars caption="Vuoden 2023 kampanjoiden rahat lähteittäin, osuus kaikesta kerätystä rahasta" lang="fi" rows={benchmarkShareRows(benchmark2023, 'fi')} unit="percent" />
     <Prose>
-        <p>Osuudet on laskettu kaikkien 273 kampanjan yhteenlasketusta rahasta, joten suuret kampanjat painavat niissä eniten. Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä. Yhdistykset ja muut tahot rahoittivat 22,9 prosenttia eli enemmän kuin yritykset. Yksityishenkilöiden osuus oli 19,9 prosenttia.</p>
+        <p>Osuudet on laskettu kaikkien {national.n} kampanjan yhteenlasketusta rahasta, joten suuret kampanjat painavat niissä eniten. Neljännes rahoituksesta tuli ehdokkaiden omista varoista ja viidennes yrityksiltä. Yhdistykset ja muut tahot rahoittivat {formatDecimal(benchmark2023.shares.other, 'fi')} prosenttia eli enemmän kuin yritykset. Yksityishenkilöiden osuus oli {formatDecimal(benchmark2023.shares.private, 'fi')} prosenttia.</p>
     </Prose>
 </Plate>
 

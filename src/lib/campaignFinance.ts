@@ -90,23 +90,46 @@ export const barWidth = (value: number, max: number): number =>
 /** The scale for a bar group: its largest value, so the tallest bar fills the track. */
 export const barsMax = (values: number[]): number => values.reduce((max, value) => Math.max(max, value), 0)
 
+/** A whole number grouped in threes: no-break spaces in fi/sv, commas in English. */
+export const formatInteger = (value: number, lang: Lang): string =>
+    Math.round(value)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, lang === 'en' ? ',' : NBSP)
+
+/** One decimal, with a decimal comma in fi/sv. */
+export const formatDecimal = (value: number, lang: Lang): string => {
+    const rounded = (Math.round(value * 10) / 10).toFixed(1)
+
+    return lang === 'en' ? rounded : rounded.replace('.', ',')
+}
+
 /**
  * Whole euros, grouped in threes. Finnish and Swedish put the sign last after a
  * no-break space; English puts it first, the way both locales write money.
  */
 export const formatEuro = (value: number, lang: Lang): string => {
-    const grouped = Math.round(value)
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, lang === 'en' ? ',' : NBSP)
+    const grouped = formatInteger(value, lang)
 
     return lang === 'en' ? `€${grouped}` : `${grouped}${NBSP}€`
 }
 
 /** One decimal, comma in fi/sv with a no-break space before the sign. */
 export const formatPercent = (value: number, lang: Lang): string => {
-    const rounded = (Math.round(value * 10) / 10).toFixed(1)
+    const rounded = formatDecimal(value, lang)
 
-    return lang === 'en' ? `${rounded}%` : `${rounded.replace('.', ',')}${NBSP}%`
+    return lang === 'en' ? `${rounded}%` : `${rounded}${NBSP}%`
+}
+
+/**
+ * One benchmark set by id. The pages' prose reads its figures through this, so a
+ * missing set fails the build instead of printing "undefined".
+ */
+export const benchmarkSet = (benchmark: Benchmark, id: Benchmark['sets'][number]['id']): Benchmark['sets'][number] => {
+    const set = benchmark.sets.find((candidate) => candidate.id === id)
+    if (!set) {
+        throw new Error(`campaignFinance: no benchmark set "${id}"`)
+    }
+    return set
 }
 
 /**

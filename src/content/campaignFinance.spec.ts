@@ -114,6 +114,15 @@ describe('2023 benchmark', () => {
         }
     })
 
+    it('should hold the national range outside the national quartiles', () => {
+        const national = benchmark2023.sets.find((set) => set.id === 'all')
+
+        expect(national).toBeDefined()
+        expect(benchmark2023.range.min).toBeGreaterThanOrEqual(0)
+        expect(benchmark2023.range.min).toBeLessThanOrEqual(national?.q1 ?? -1)
+        expect(benchmark2023.range.max).toBeGreaterThanOrEqual(national?.q3 ?? Infinity)
+    })
+
     /* A right-skewed distribution: the tail pulls the mean above the middle value. */
     it('should record a mean above the median, as a skewed distribution gives', () => {
         for (const set of benchmark2023.sets) {
