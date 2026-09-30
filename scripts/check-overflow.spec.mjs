@@ -81,7 +81,10 @@ describe('findOverflows', () => {
         // "konkurrenskraft" estimates 331px but does not overflow at 375px —
         // the sv about-page horizontal-scroll e2e is the ground truth.
         expect(
-            findOverflows('En teknologiexpert som förenar konkurrenskraft och integritets­skydd', PLATE_HEADING_GEOMETRIES)
+            findOverflows(
+                'En teknologiexpert som förenar konkurrenskraft och integritets­skydd',
+                PLATE_HEADING_GEOMETRIES
+            )
         ).toEqual([])
     })
 })

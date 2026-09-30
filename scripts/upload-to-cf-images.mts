@@ -37,10 +37,11 @@ async function upload(slug: string, filePath: string): Promise<void> {
     form.append('file', new Blob([buf], { type: contentType(ext) }), `${slug}${ext}`)
     form.append('id', slug)
 
-    const res = await fetch(
-        `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/images/v1`,
-        { method: 'POST', headers: { Authorization: `Bearer ${API_TOKEN}` }, body: form },
-    )
+    const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/images/v1`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${API_TOKEN}` },
+        body: form,
+    })
     const json = (await res.json()) as { success: boolean; errors: { code: number; message: string }[] }
 
     if (!res.ok) {
@@ -55,7 +56,7 @@ async function upload(slug: string, filePath: string): Promise<void> {
 
 async function main() {
     const files = await fs.readdir(ORIGINALS_DIR)
-    const images = files.filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+    const images = files.filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
 
     console.log(`\nUploading ${images.length} images to Cloudflare Images…\n`)
 
@@ -68,7 +69,7 @@ async function main() {
     console.log('\nDone.')
 }
 
-main().catch(err => {
+main().catch((err) => {
     console.error(err)
     process.exit(1)
 })
