@@ -1,5 +1,5 @@
 - main:
-  - img "Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki ja kukkakuvioinen paita."
+  - img "Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita."
   - heading "Vaalikampanjani rahoitus" [level=1]:
     - text: ""
     - emphasis: rahoitus
@@ -61,11 +61,11 @@
         - /url: https://lavanti.fi/lahjoita
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
-    - figure "Toteutuneet menot, osuudet kerätystä rahasta":
+    - figure "Toteutuneet menot":
       - text: ""
       - list:
-        - listitem: /Käytetty 1 \d+ € \d+,\d+ %/
-        - listitem: /Käyttämättä 0 € \d+,\d+ %/
+        - listitem: /Käytetty 1 \d+ €/
+        - listitem: Käyttämättä 0 €
     - paragraph: Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, muuhun painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa vuonna \d+\?/ [level=2]
