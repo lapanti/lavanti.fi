@@ -1,5 +1,5 @@
 - main:
-  - img "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i mörkblå kavaj och blommig skjorta."
+  - img "Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden."
   - heading "Min valkampanjs finansiering" [level=1]:
     - text: ""
     - emphasis: finansiering
@@ -61,11 +61,11 @@
         - /url: https://lavanti.fi/lahjoita
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
-    - figure "Verkliga utgifter, andelar av det insamlade":
+    - figure "Verkliga utgifter":
       - text: ""
       - list:
-        - listitem: /Använt hittills 1 \d+ € \d+,\d+ %/
-        - listitem: /Oanvänt 0 € \d+,\d+ %/
+        - listitem: /Använt hittills 1 \d+ €/
+        - listitem: Oanvänt 0 €
     - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]

@@ -1,5 +1,5 @@
 - main:
-  - img "Lauri Lavanti stands on a lawn in front of apartment buildings with his hands in his pockets, wearing a dark blue blazer and a floral shirt."
+  - img "Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him."
   - heading "My campaign finances" [level=1]:
     - text: ""
     - emphasis: finances
@@ -61,11 +61,11 @@
         - /url: https://lavanti.fi/lahjoita
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
-    - figure "Actual spending, shares of the money raised":
+    - figure "Actual spending":
       - text: ""
       - list:
-        - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
-        - listitem: Not yet spent €0 0.0%
+        - listitem: /Spent so far €\d+,\d+/
+        - listitem: Not yet spent €0
     - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, other printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
