@@ -1,9 +1,9 @@
 - main:
   - img "Lauri Lavanti stands on a lawn in front of apartment buildings with his hands in his pockets, wearing a dark blue blazer and a floral shirt."
-  - heading "Campaign finance in the open" [level=1]:
+  - heading "My campaign finances" [level=1]:
     - text: ""
-    - emphasis: in the open
-  - paragraph: I accept support from private individuals, companies and associations. I do not borrow. Here I set out how much has been raised, where it came from and what it has been spent on.
+    - emphasis: finances
+  - paragraph: I accept support from private individuals, companies and associations. This page always has up-to-date figures on how much has been raised, where it came from and what it has been spent on.
   - article:
     - text: At a glance
     - heading "Where do the campaign finances stand?" [level=2]
@@ -17,10 +17,10 @@
     - definition: /€\d+,\d+ As of \d+ September \d+/
     - text: Why
     - heading "Why publish the figures at all?" [level=2]
-    - paragraph: I demand openness about money in politics, so I start with my own campaign. The law requires a disclosure only after the election, and only from elected members and their alternates. I publish the figures during the campaign, whether or not I win a seat.
-    - paragraph: Money is not a neutral instrument in politics. It shapes whose message is heard, and a large donation can create an expectation of something in return. So I show where the money comes from. I am also campaigning for a change in the law that would make the advance funding disclosure mandatory for every candidate.
+    - paragraph: "Transparency and openness are essential to holding public power and public spending to account. In the same way, openness about how political actors are funded is an essential part of democracy. Yet the law only requires this information after the election. That is too late: voters should know who is funding the campaign of the candidate they choose. That is why I disclose my budget openly throughout the campaign, not only after it."
+    - paragraph: Money is not a neutral instrument in politics. It can shape which message is seen, and a large donation can create an expectation of something in return. So I show where my campaign’s money comes from. I am also campaigning for a change in the law that would make the advance funding disclosure mandatory for every candidate.
     - paragraph:
-      - text: "I want voters to be able to judge me on my funding as well. If a figure is wrong, I will correct it at once:"
+      - text: I want voters to be able to judge me on my funding as well. If you spot an error in the figures,
       - link "get in touch":
         - /url: /en/contact/
       - text: . There is more about the campaign on the
@@ -28,7 +28,7 @@
         - /url: /en/elections/
       - text: .
     - text: Comparison
-    - heading "What did a campaign that won a seat cost?" [level=2]
+    - heading /What did the elected MPs’ campaigns cost in \d+\?/ [level=2]
     - figure /My planned budget against the \d+ median costs/:
       - text: ""
       - list:
@@ -39,11 +39,11 @@
         - text: "/Source: campaign finance disclosures for the \\d+ election, National Audit Office of Finland\\. Retrieved \\d+ September \\d+\\./"
         - link "Open the disclosure data":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
-    - paragraph: "/The figures cover all \\d+ people required to file: the members elected and their alternates\\. They show what the campaigns that won a seat cost, not what campaigning costs\\. The Uusimaa figures are part of the national ones, not a separate group beside them\\./"
-    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The cheapest cost nothing and the most expensive \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That is why I compare my budget with the median\. My own figure is a plan; the \d+ figures are money actually spent\./
+    - paragraph: "/The figures cover all \\d+ people required to file: the members elected and their alternates\\. So they show what successful campaigns cost\\. The Uusimaa figures are also included in the national ones\\./"
+    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The cheapest campaign cost nothing and the most expensive \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That makes the median the figure worth comparing against\./
     - text: Sources
     - heading "Where does the money come from?" [level=2]
-    - figure "The budget by source, shares of the whole budget":
+    - figure "The budget by source and shares of the whole budget":
       - text: ""
       - list:
         - listitem: /My own funds €\d+,\d+ 4\.0%/
@@ -54,17 +54,17 @@
         - listitem: Associations and other bodies €0 0.0%
         - listitem: /My own commitment €\d+,\d+ \d+\.\d+%/
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
-    - paragraph: "The categories are the ones used in the statutory disclosure that elected members file with the audit office. Zero means zero: if a source has given nothing, it is listed as €0. One category stays at zero for the whole campaign, because I do not borrow."
-    - paragraph: /Donations are welcome from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and I file a voluntary advance disclosure with the audit office\. The law requires neither of these of a candidate before the election\./
+    - paragraph: I break the money down the same way as the statutory disclosure that elected members file with the audit office.
+    - paragraph: /Support can come from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name\. I also file a voluntary advance disclosure for the campaign with the audit office\. The advance disclosure is not mandatory\./
     - paragraph: The donation link will be published here as soon as the donation page opens.
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
-    - figure "How the money raised has been used, shares of the money raised":
+    - figure "Actual spending, shares of the money raised":
       - text: ""
       - list:
         - listitem: /Spent so far €\d+,\d+ \d+\.\d+%/
         - listitem: Not yet spent €0 0.0%
-    - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
+    - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, other printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
     - figure /The \d+ campaigns by source, share of all the money they raised/:
@@ -76,13 +76,13 @@
         - listitem: /Companies \d+\.\d+%/
         - listitem: /The party and party associations \d+\.\d+%/
         - listitem: /Associations and other bodies \d+\.\d+%/
-    - paragraph: /The shares are computed from the \d+ campaigns’ money added together, so the largest campaigns weigh most in them\. A quarter of the funding came from the candidates’ own money and a fifth from companies\. Associations and other bodies accounted for \d+\.\d+ per cent, more than companies did, while private individuals accounted for \d+\.\d+ per cent\. The same sources are open to my campaign\. The difference is that my figures are visible during the campaign rather than only after it\./
+    - paragraph: /The shares are computed from the \d+ campaigns’ money added together, so the largest campaigns weigh most in them\. A quarter of the funding came from the candidates’ own money and a fifth from companies\. Associations and other bodies accounted for \d+\.\d+ per cent, more than companies did, while private individuals accounted for \d+\.\d+ per cent\./
     - text: Q & A
     - heading "Questions about campaign finance" [level=2]
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
-    - paragraph: /The campaign is funded by Lauri Lavanti himself and by the private individuals, companies and associations that support it\. The campaign does not borrow\. The amount for each source is itemised separately, with the date the figures were last checked, and every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
+    - paragraph: /The campaign is funded by Lauri Lavanti himself\. Private individuals, companies and associations can also support it\. No loans are taken for the campaign\. The amount for each source is shown separately, as is the date the figures were last checked\. Every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
-    - paragraph: /Yes\. The campaign accepts support from companies, private individuals and associations\. Lauri Lavanti publishes every contribution of \d+,\d+ euros or more with the supporter’s name during the campaign, and files a voluntary advance disclosure with the National Audit Office of Finland\. The law requires neither of these of a candidate before the election\./
+    - paragraph: /Yes\. Lauri Lavanti accepts support from companies, private individuals and associations, but no loans\. He publishes every contribution of \d+,\d+ euros or more with the supporter’s name\. He also files a voluntary advance disclosure for the campaign with the National Audit Office of Finland\. The law does not require candidates to file an advance disclosure\./
     - heading "Where is the election funding disclosure published?" [level=3]
     - paragraph: The National Audit Office of Finland keeps the election funding register at vaalirahoitusvalvonta.fi. Elected members of parliament and their alternates must file a disclosure within two months of the result being confirmed. A candidate may also file a voluntary advance disclosure before the election.
     - heading "How much does a parliamentary election campaign cost?" [level=3]

@@ -1,9 +1,9 @@
 - main:
   - img "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i mörkblå kavaj och blommig skjorta."
-  - heading "Valfinansiering öppet" [level=1]:
+  - heading "Min valkampanjs finansiering" [level=1]:
     - text: ""
-    - emphasis: öppet
-  - paragraph: Jag tar emot stöd från privatpersoner, företag och föreningar. Lån tar jag inte. Här redovisar jag hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.
+    - emphasis: finansiering
+  - paragraph: Jag tar emot stöd från privatpersoner, företag och föreningar. På den här sidan hittar du alltid aktuella uppgifter om hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.
   - article:
     - text: Läget
     - heading "Hur ser kampanjens ekonomi ut just nu?" [level=2]
@@ -17,10 +17,10 @@
     - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - text: Varför
     - heading "Varför offentliggör jag siffrorna?" [level=2]
-    - paragraph: Jag kräver öppenhet om pengar i politiken, så jag börjar med min egen kampanj. Lagen kräver en redovisning först efter valet och bara av valda ledamöter och ersättare. Jag redovisar siffrorna redan under kampanjen, oavsett om jag blir vald eller inte.
-    - paragraph: Pengar är inte ett neutralt verktyg i politiken. De påverkar vems budskap som hörs, och en stor donation kan skapa en förväntan om en gentjänst. Därför redovisar jag varifrån pengarna kommer. Jag driver också en lagändring som skulle göra förhandsredovisningen av valfinansieringen obligatorisk för alla kandidater.
+    - paragraph: Transparens och öppenhet är avgörande för att granska den offentliga makten och hur offentliga medel används. På samma sätt är öppenhet om de politiska aktörernas finansiering en väsentlig del av demokratin. Lagen kräver ändå att uppgifterna redovisas först efter valet. Det är för sent, eftersom väljarna borde veta vem som finansierar kampanjen för den kandidat de väljer. Därför redovisar jag min budget öppet under hela kampanjen och inte först efteråt.
+    - paragraph: Pengar är inte ett neutralt verktyg i politiken. De kan påverka vilket budskap som syns, och en stor donation kan skapa en förväntan om en gentjänst. Därför redovisar jag varifrån min kampanjs pengar kommer. Jag driver också en lagändring som skulle göra förhandsredovisningen av valfinansieringen obligatorisk för alla kandidater.
     - paragraph:
-      - text: "Jag vill att väljarna också ska kunna bedöma mig utifrån min finansiering. Om någon siffra är fel korrigerar jag den genast:"
+      - text: Jag vill att väljarna också ska kunna bedöma mig utifrån min finansiering. Om du hittar ett fel i siffrorna,
       - link "kontakta mig":
         - /url: /sv/kontakt/
       - text: . Mer om kampanjen finns på
@@ -28,7 +28,7 @@
         - /url: /sv/riksdagsvalet/
       - text: .
     - text: Jämförelse
-    - heading "Hur mycket kostade kampanjerna som ledde till riksdagen?" [level=2]
+    - heading /Hur mycket kostade de valda riksdagsledamöternas kampanjer \d+\?/ [level=2]
     - figure /Min planerade budget och mediankostnaderna \d+/:
       - text: ""
       - list:
@@ -39,11 +39,11 @@
         - text: "/Källa: redovisningarna av valfinansieringen för riksdagsvalet \\d+, Statens revisionsverk\\. Hämtat \\d+\\.\\d+\\.\\d+\\./"
         - link "Öppna redovisningsuppgifterna":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
-    - paragraph: /Siffrorna omfattar alla \d+ redovisningsskyldiga, alltså valda riksdagsledamöter och ersättare\. De visar vad framgångsrika kampanjer kostade, inte vad det kostar att kampanja i allmänhet\. Nylands siffror ingår också i siffrorna för hela landet\./
-    - paragraph: /Hälften av kampanjerna kostade mellan \d+ \d+ och \d+ \d+ euro\. Den billigaste kostade noll euro och den dyraste \d+ \d+ euro, och det är just några mycket dyra kampanjer som drar medeltalet över medianen\. Därför jämför jag min budget med medianen\. Min egen siffra är en plan, siffrorna för \d+ är verkliga kostnader\./
+    - paragraph: /Siffrorna omfattar alla \d+ redovisningsskyldiga, alltså valda riksdagsledamöter och ersättare\. De visar alltså vad framgångsrika kampanjer kostade\. Nylands siffror ingår också i siffrorna för hela landet\./
+    - paragraph: /Hälften av kampanjerna kostade mellan \d+ \d+ och \d+ \d+ euro\. Den billigaste kampanjen kostade noll euro och den dyraste \d+ \d+ euro\. Några mycket dyra kampanjer drar medeltalet över medianen\. Därför är medianen den relevanta jämförelsesiffran\./
     - text: Källor
     - heading "Varifrån kommer pengarna?" [level=2]
-    - figure "Budgetens pengar per källa, andelar av hela budgeten":
+    - figure "Budgetens pengar per källa samt andelar av hela budgeten":
       - text: ""
       - list:
         - listitem: /Egna medel 1 \d+ € \d+,\d+ %/
@@ -54,17 +54,17 @@
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
         - listitem: /Mitt eget åtagande 8 \d+ € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
-    - paragraph: "Kategorierna är desamma som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Noll betyder noll: har en källa inte gett en enda euro, står den som noll i listan. En kategori förblir noll hela kampanjen ut, för lån tar jag inte."
-    - paragraph: /Donationer är välkomna från privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsredovisning till revisionsverket\. Lagen kräver ingetdera av en kandidat före valet\./
+    - paragraph: Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket.
+    - paragraph: /Stöd kan ges av privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 2 \d+ euro med stödjarens namn\. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket\. Förhandsredovisningen är inte obligatorisk\./
     - paragraph: Donationslänken publiceras här så snart donationssidan öppnas.
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
-    - figure "Så har de insamlade pengarna använts, andelar av det insamlade":
+    - figure "Verkliga utgifter, andelar av det insamlade":
       - text: ""
       - list:
         - listitem: /Använt hittills 1 \d+ € \d+,\d+ %/
         - listitem: /Oanvänt 0 € \d+,\d+ %/
-    - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
+    - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]
     - figure /Kampanjernas pengar per källa \d+, andel av alla insamlade pengar/:
@@ -76,13 +76,13 @@
         - listitem: /Företag \d+,\d+ %/
         - listitem: /Partiet och partiföreningar \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer \d+,\d+ %/
-    - paragraph: /Andelarna är räknade på de \d+ kampanjernas sammanlagda pengar, så de största kampanjerna väger tyngst i dem\. En fjärdedel av finansieringen kom från kandidaternas egna medel och en femtedel från företag\. Föreningar och andra aktörer stod för \d+,\d+ procent, mer än företagen, medan privatpersonerna stannade på \d+,\d+ procent\. Min kampanj kan använda samma källor\. Skillnaden är att mina siffror syns redan under kampanjen och inte först efter valet\./
+    - paragraph: /Andelarna är räknade på de \d+ kampanjernas sammanlagda pengar, så de största kampanjerna väger tyngst i dem\. En fjärdedel av finansieringen kom från kandidaternas egna medel och en femtedel från företag\. Föreningar och andra aktörer stod för \d+,\d+ procent, mer än företagen, medan privatpersonernas andel var \d+,\d+ procent\./
     - text: Q & A
     - heading "Vanliga frågor om valfinansiering" [level=2]
     - heading "Vem finansierar Lauri Lavantis kampanj?" [level=3]
-    - paragraph: /Kampanjen finansieras av Lauri Lavanti själv och av de privatpersoner, företag och föreningar som stöder den\. Lån tar kampanjen inte\. Beloppet för varje källa redovisas separat med datumet då uppgifterna senast kontrollerades, och varje stöd på minst 1 \d+ euro offentliggörs med stödjarens namn\./
+    - paragraph: /Kampanjen finansieras av Lauri Lavanti själv\. Dessutom kan privatpersoner, företag och föreningar stödja den\. Inga lån tas för kampanjen\. Beloppet för varje källa redovisas separat, liksom datumet då uppgifterna senast kontrollerades\. Varje stöd på minst 2 \d+ euro offentliggörs med stödjarens namn\./
     - heading "Tar Lauri Lavanti emot företagsstöd?" [level=3]
-    - paragraph: /Ja\. Kampanjen tar emot stöd av företag, privatpersoner och föreningar\. Lauri Lavanti offentliggör varje stöd på minst 1 \d+ euro med stödjarens namn redan under kampanjen och lämnar in en frivillig förhandsredovisning till Statens revisionsverk\. Lagen kräver ingetdera av en kandidat före valet\./
+    - paragraph: /Ja\. Lauri Lavanti tar emot stöd från företag, privatpersoner och föreningar, men inga lån\. Han offentliggör varje stöd på minst 2 \d+ euro med stödjarens namn\. Dessutom lämnar han in en frivillig förhandsredovisning för kampanjen till Statens revisionsverk\. Lagen kräver ingen förhandsredovisning av kandidaterna\./
     - heading "Var offentliggörs redovisningen av valfinansieringen?" [level=3]
     - paragraph: Statens revisionsverk upprätthåller registret över redovisningarna av valfinansieringen på vaalirahoitusvalvonta.fi. Valda riksdagsledamöter och ersättare är skyldiga att lämna in redovisningen inom två månader efter att valresultatet fastställts. En kandidat kan också lämna in en frivillig förhandsredovisning före valet.
     - heading "Hur mycket kostar en riksdagsvalskampanj?" [level=3]
