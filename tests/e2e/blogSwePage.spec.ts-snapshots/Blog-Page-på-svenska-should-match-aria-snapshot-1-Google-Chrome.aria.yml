@@ -72,11 +72,11 @@
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
         - listitem:
-          - article "AI hjälper trygga kommunala tjänster, men det är inte gratis":
-            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper trygga kommunala tjänster, men det är inte gratis":
+          - article "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
               - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
               - img "Lauri Lavanti står i en blommig skjorta mot vit bakgrund."
-              - heading "AI hjälper trygga kommunala tjänster, men det är inte gratis" [level=3]
+              - heading "AI hjälper till att trygga kommunala tjänster, men det är inte gratis" [level=3]
             - time: /\d+\.\d+\.\d+/
             - paragraph: I Konnevesi kortade AI handläggningstiden från två månader till dagar. Kyrkslätt är för litet att agera ensamt — men samarbete gör förändring möjlig.
           - list:

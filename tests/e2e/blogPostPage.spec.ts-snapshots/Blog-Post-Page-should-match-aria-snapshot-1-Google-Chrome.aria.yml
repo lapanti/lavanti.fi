@@ -53,13 +53,13 @@
     - paragraph:
       - text: Tietenkin sosiaali- ja terveydenhuollossa pitää myös saada rahalle mahdollisimman paljon vastinetta. Halvinta ja tehokkainta olisikin ennaltaehkäisevät toimet. Mittasuhteita antaa se, että
       - link /vuonna \d+ Uudellamaalla käytettiin 1 \d+ euroa erikoissairaanhoitoon per asukas ja \d+ euroa perusterveydenhuoltoon per asukas/:
-        - /url: https://www.kuntaliitto.fi/sosiaali-ja-terveysasiat/tilastot-ja-erillisselvitykset/kuntien-sosiaali-ja-terveydenhuollon-nettokustannukset-euroaasukas
+        - /url: https://web.archive.org/web/20220117001253/https://www.kuntaliitto.fi/sosiaali-ja-terveysasiat/tilastot-ja-erillisselvitykset/kuntien-sosiaali-ja-terveydenhuollon-nettokustannukset-euroaasukas
       - text: . Malliesimerkki tehokkaasta ennaltaehkäisystä on maksuton ehkäisy nuorille. Esimerkiksi Vantaalla se on tutkitusti
       - link "vähentänyt ei-toivottuja raskauksia":
         - /url: https://bmjopen.bmj.com/content/11/2/e043092
       - link /\d+-\d+-vuotiailla \d+% ja \d+-\d+-vuotiailla \d+%/:
         - /url: https://terveysportti.mobi/xmedia/duo/duo15044.pdf#2
-      - text: . Toinen hyvä ja ajankohtainen esimerkki on rokotukset. Esimerikiksi
+      - text: . Toinen hyvä ja ajankohtainen esimerkki on rokotukset. Esimerkiksi
       - link /2 annoksen sarja koronarokotetta maksaa enintään \d+,\d+ euroa/:
         - /url: https://www.iltalehti.fi/koronavirus/a/24f02847-25ad-466e-a160-709e51be80e7
       - text: ja

@@ -21,6 +21,15 @@
     - listitem:
       - link "Uutiskirje":
         - /url: /fi/uutiskirje/
+    - listitem:
+      - link "Uutiskirjeen arkisto":
+        - /url: /fi/uutiskirje/arkisto/
+    - listitem:
+      - link "Vaalirahoitus":
+        - /url: /fi/eduskuntavaalit/vaalirahoitus/
+    - listitem:
+      - link "Sivuston lähdekoodi":
+        - /url: https://github.com/lapanti/lavanti.fi
   - heading "Kielet" [level=2]
   - list:
     - listitem:
@@ -57,6 +66,10 @@
         - /url: https://www.threads.com/@laurilavanti
         - img
     - listitem:
+      - link "Lauri Lavanti palvelussa YouTube (linkki aukeaa uudessa välilehdessä)":
+        - /url: https://www.youtube.com/@laurilavanti
+        - img
+    - listitem:
       - link "Lauri Lavanti palvelussa LinkedIn (linkki aukeaa uudessa välilehdessä)":
         - /url: https://www.linkedin.com/in/laurilavanti/
         - img
@@ -74,7 +87,7 @@
         - /url: https://www.tiktok.com/@laurilavanti
         - img
     - listitem:
-      - link "Tilaa Lauri Lavantin RSS-syöte (linkki aukeaa uudessa välilehdessä)":
+      - link "Tilaa Lauri Lavannin RSS-syöte (linkki aukeaa uudessa välilehdessä)":
         - /url: /fi/rss.xml
         - img
   - img "Vihreiden logo ja teksti"
