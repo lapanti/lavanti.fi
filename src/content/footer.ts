@@ -47,6 +47,18 @@ export const footerCampaignFinanceHref: Record<Lang, string> = {
     sv: '/sv/riksdagsvalet/valfinansiering/',
 }
 
+/**
+ * The site's source is public as part of the campaign's openness; it sits next to the
+ * finance link for the same reader who wants to check how things are done.
+ */
+export const footerSourceCodeLabel: Record<Lang, string> = {
+    en: 'Site source code',
+    fi: 'Sivuston lähdekoodi',
+    sv: 'Webbplatsens källkod',
+}
+
+export const footerSourceCodeUrl = 'https://github.com/lapanti/lavanti.fi'
+
 export const footerColumnLabels: Record<Lang, { contact: string; languages: string; site: string }> = {
     en: { contact: 'Contact', languages: 'Languages', site: 'Lauri Lavanti' },
     fi: { contact: 'Yhteys', languages: 'Kielet', site: 'Lauri Lavanti' },

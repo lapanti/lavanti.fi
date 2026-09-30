@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { footerCampaignFinanceHref, footerCampaignFinanceLabel } from './footer'
+import {
+    footerCampaignFinanceHref,
+    footerCampaignFinanceLabel,
+    footerSourceCodeLabel,
+    footerSourceCodeUrl,
+} from './footer'
 
 const LANGS = ['en', 'fi', 'sv'] as const
 
@@ -28,5 +33,17 @@ describe('footer campaign finance link', () => {
         for (const lang of LANGS) {
             expect(footerCampaignFinanceLabel[lang]).toBeTruthy()
         }
+    })
+})
+
+describe('footer source code link', () => {
+    it('should point at the public repository over https', () => {
+        expect(footerSourceCodeUrl).toBe('https://github.com/lapanti/lavanti.fi')
+    })
+
+    it('should have a distinct label in every locale', () => {
+        const labels = LANGS.map((lang) => footerSourceCodeLabel[lang])
+        expect(labels.every(Boolean)).toBe(true)
+        expect(new Set(labels).size).toBe(LANGS.length)
     })
 })

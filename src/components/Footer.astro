@@ -14,6 +14,8 @@ import {
     footerPrivacyPolicyHref,
     footerPrivacyPolicyLabel,
     footerRssAriaLabel,
+    footerSourceCodeLabel,
+    footerSourceCodeUrl,
 } from '../content/footer'
 import { navLinks } from '../content/nav'
 import { personEmail } from '../content/person'
@@ -196,6 +198,7 @@ const licenseText: Record<Lang, string> = {
                         }
                         <li><a href={archivePath(lang)}>{footerNewsletterArchiveLabel[lang]}</a></li>
                         <li><a href={footerCampaignFinanceHref[lang]}>{footerCampaignFinanceLabel[lang]}</a></li>
+                        <li><a href={footerSourceCodeUrl}>{footerSourceCodeLabel[lang]}</a></li>
                     </ul>
                 </div>
                 <div>
