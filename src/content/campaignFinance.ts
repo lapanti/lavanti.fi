@@ -72,6 +72,8 @@ interface BenchmarkSet {
 }
 
 export interface Benchmark {
+    /** Cheapest and most expensive campaign nationally, whole euros. */
+    range: { max: number; min: number }
     /** ISO date the CSV below was fetched and the figures computed. */
     retrievedDate: string
     sets: BenchmarkSet[]
@@ -118,7 +120,7 @@ export const campaignFinance: CampaignFinance = {
  *
  * - `median`/`mean`/`q1`/`q3`: of `Vaalikampanjan kulut yhteensa`. The distribution is
  *   right-skewed — nationally the mean sits about 15 % above the median, and the range
- *   runs from 0 € to 136 739 € — so the quartiles, not the mean, carry the spread.
+ *   runs from `range.min` to `range.max` — so the quartiles, not the mean, carry the spread.
  * - `uusimaa`: rows whose `Vaalipiiri/Kunta` contains "Uudenmaan".
  * - `shares`: Σ`2.x Rahoitus sisaltaa … yhteensa` / Σ`Vaalikampanjan rahoitus yhteensa`.
  *
@@ -126,6 +128,7 @@ export const campaignFinance: CampaignFinance = {
  * appears under one of 2.3–2.7, so adding it would double-count.
  */
 export const benchmark2023: Benchmark = {
+    range: { max: 136739, min: 0 },
     retrievedDate: '2026-09-25',
     sets: [
         { id: 'all', mean: 37540, median: 32634, n: 273, q1: 19801, q3: 48986 },

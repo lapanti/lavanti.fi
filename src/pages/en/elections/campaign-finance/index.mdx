@@ -42,14 +42,18 @@ import FinanceStats from '../../../../components/campaignFinance/FinanceStats.as
 import { benchmark2023, campaignFinance, financeLabels } from '../../../../content/campaignFinance'
 import {
     benchmarkRows,
+    benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
     formatDate,
+    formatDecimal,
+    formatInteger,
     spendingSegments,
     summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.en
+export const national = benchmarkSet(benchmark2023, 'all')
 export const budget = budgetSegments(campaignFinance, 'en')
 export const spending = spendingSegments(campaignFinance, 'en')
 
@@ -73,8 +77,8 @@ export const spending = spendingSegments(campaignFinance, 'en')
         </p>
     </FinanceBars>
     <Prose>
-        <p>The figures cover all 273 people required to file: the members elected and their alternates. So they show what successful campaigns cost. The Uusimaa figures are also included in the national ones.</p>
-        <p>Half of the campaigns cost between 19,801 and 48,986 euros. The cheapest campaign cost nothing and the most expensive 136,739 euros. A few very expensive campaigns pull the average above the median. That makes the median the figure worth comparing against.</p>
+        <p>The figures cover all {national.n} people required to file: the members elected and their alternates. So they show what successful campaigns cost. The Uusimaa figures are also included in the national ones.</p>
+        <p>Half of the campaigns cost between {formatInteger(national.q1, 'en')} and {formatInteger(national.q3, 'en')} euros. The cheapest campaign cost {formatInteger(benchmark2023.range.min, 'en')} euros and the most expensive {formatInteger(benchmark2023.range.max, 'en')} euros. A few very expensive campaigns pull the average above the median. That makes the median the figure worth comparing against.</p>
     </Prose>
 </Plate>
 
@@ -98,7 +102,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
 <Plate eyebrow="Background" ground="sand" heading="How did MPs fund their campaigns in 2023?">
     <FinanceBars caption="The 2023 campaigns by source, share of all the money they raised" lang="en" rows={benchmarkShareRows(benchmark2023, 'en')} unit="percent" />
     <Prose>
-        <p>The shares are computed from the 273 campaigns’ money added together, so the largest campaigns weigh most in them. A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for 22.9 per cent, more than companies did, while private individuals accounted for 19.9 per cent.</p>
+        <p>The shares are computed from the {national.n} campaigns’ money added together, so the largest campaigns weigh most in them. A quarter of the funding came from the candidates’ own money and a fifth from companies. Associations and other bodies accounted for {formatDecimal(benchmark2023.shares.other, 'en')} per cent, more than companies did, while private individuals accounted for {formatDecimal(benchmark2023.shares.private, 'en')} per cent.</p>
     </Prose>
 </Plate>
 

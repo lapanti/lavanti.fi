@@ -6,10 +6,13 @@ import {
     barsMax,
     barWidth,
     benchmarkRows,
+    benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
     formatDate,
+    formatDecimal,
     formatEuro,
+    formatInteger,
     formatPercent,
     gapToBudget,
     mergeParty,
@@ -34,6 +37,7 @@ const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => (
 })
 
 const benchmark: Benchmark = {
+    range: { max: 136739, min: 0 },
     retrievedDate: '2026-09-25',
     sets: [
         { id: 'all', mean: 37540, median: 32634, n: 273, q1: 19801, q3: 48986 },
@@ -132,6 +136,33 @@ describe('barsMax', () => {
     it('should be zero for an empty group or all-zero values', () => {
         expect(barsMax([])).toBe(0)
         expect(barsMax([0, 0])).toBe(0)
+    })
+})
+
+describe('formatInteger', () => {
+    it('should group thousands without a currency sign', () => {
+        expect(formatInteger(136739, 'fi')).toBe(`136${NBSP}739`)
+        expect(formatInteger(136739, 'sv')).toBe(`136${NBSP}739`)
+        expect(formatInteger(136739, 'en')).toBe('136,739')
+        expect(formatInteger(273, 'fi')).toBe('273')
+    })
+})
+
+describe('formatDecimal', () => {
+    it('should print one decimal without a percent sign', () => {
+        expect(formatDecimal(22.9, 'fi')).toBe('22,9')
+        expect(formatDecimal(22.9, 'en')).toBe('22.9')
+        expect(formatDecimal(3, 'sv')).toBe('3,0')
+    })
+})
+
+describe('benchmarkSet', () => {
+    it('should return the set with the given id', () => {
+        expect(benchmarkSet(benchmark, 'uusimaa').median).toBe(36355)
+    })
+
+    it('should throw when the set is missing, so the build fails instead of printing undefined', () => {
+        expect(() => benchmarkSet({ ...benchmark, sets: [] }, 'all')).toThrow(/no benchmark set "all"/)
     })
 })
 

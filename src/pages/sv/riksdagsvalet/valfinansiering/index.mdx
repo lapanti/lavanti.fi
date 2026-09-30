@@ -42,14 +42,18 @@ import FinanceStats from '../../../../components/campaignFinance/FinanceStats.as
 import { benchmark2023, campaignFinance, financeLabels } from '../../../../content/campaignFinance'
 import {
     benchmarkRows,
+    benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
     formatDate,
+    formatDecimal,
+    formatInteger,
     spendingSegments,
     summaryTiles,
 } from '../../../../lib/campaignFinance'
 
 export const labels = financeLabels.sv
+export const national = benchmarkSet(benchmark2023, 'all')
 export const budget = budgetSegments(campaignFinance, 'sv')
 export const spending = spendingSegments(campaignFinance, 'sv')
 
@@ -73,8 +77,8 @@ export const spending = spendingSegments(campaignFinance, 'sv')
         </p>
     </FinanceBars>
     <Prose>
-        <p>Siffrorna omfattar alla 273 redovisningsskyldiga, alltså valda riksdagsledamöter och ersättare. De visar alltså vad framgångsrika kampanjer kostade. Nylands siffror ingår också i siffrorna för hela landet.</p>
-        <p>Hälften av kampanjerna kostade mellan 19 801 och 48 986 euro. Den billigaste kampanjen kostade noll euro och den dyraste 136 739 euro. Några mycket dyra kampanjer drar medeltalet över medianen. Därför är medianen den relevanta jämförelsesiffran.</p>
+        <p>Siffrorna omfattar alla {national.n} redovisningsskyldiga, alltså valda riksdagsledamöter och ersättare. De visar alltså vad framgångsrika kampanjer kostade. Nylands siffror ingår också i siffrorna för hela landet.</p>
+        <p>Hälften av kampanjerna kostade mellan {formatInteger(national.q1, 'sv')} och {formatInteger(national.q3, 'sv')} euro. Den billigaste kampanjen kostade {formatInteger(benchmark2023.range.min, 'sv')} euro och den dyraste {formatInteger(benchmark2023.range.max, 'sv')} euro. Några mycket dyra kampanjer drar medeltalet över medianen. Därför är medianen den relevanta jämförelsesiffran.</p>
     </Prose>
 </Plate>
 
@@ -98,7 +102,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 <Plate eyebrow="Bakgrund" ground="sand" heading="Hur finansierade ledamöterna sina kampanjer 2023?">
     <FinanceBars caption="Kampanjernas pengar per källa 2023, andel av alla insamlade pengar" lang="sv" rows={benchmarkShareRows(benchmark2023, 'sv')} unit="percent" />
     <Prose>
-        <p>Andelarna är räknade på de 273 kampanjernas sammanlagda pengar, så de största kampanjerna väger tyngst i dem. En fjärdedel av finansieringen kom från kandidaternas egna medel och en femtedel från företag. Föreningar och andra aktörer stod för 22,9 procent, mer än företagen, medan privatpersonernas andel var 19,9 procent.</p>
+        <p>Andelarna är räknade på de {national.n} kampanjernas sammanlagda pengar, så de största kampanjerna väger tyngst i dem. En fjärdedel av finansieringen kom från kandidaternas egna medel och en femtedel från företag. Föreningar och andra aktörer stod för {formatDecimal(benchmark2023.shares.other, 'sv')} procent, mer än företagen, medan privatpersonernas andel var {formatDecimal(benchmark2023.shares.private, 'sv')} procent.</p>
     </Prose>
 </Plate>
 
