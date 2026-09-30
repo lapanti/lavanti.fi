@@ -173,7 +173,7 @@ export const jobExperiences = [
         ],
         endYear: 2019,
         location: 'Helsingfors',
-        startYear: 2015,
+        startYear: 2018,
         title: 'Software developer',
     },
     {
