@@ -242,4 +242,7 @@ export const redirects: Record<string, string> = {
     '/sv/recommendations/': '/sv/rekommendationer/',
     // Issue #1288 — topics merged into blog
     '/sv/topics/': '/sv/blog/',
+    // Short URL for print and social; both forms so neither takes an extra trailing-slash hop
+    '/vaalirahoitus': '/fi/eduskuntavaalit/vaalirahoitus/',
+    '/vaalirahoitus/': '/fi/eduskuntavaalit/vaalirahoitus/',
 }
