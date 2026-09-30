@@ -56,7 +56,9 @@
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
     - paragraph: I break the money down the same way as the statutory disclosure that elected members file with the audit office.
     - paragraph: /Support can come from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name\. I also file a voluntary advance disclosure for the campaign with the audit office\. The advance disclosure is not mandatory\./
-    - paragraph: The donation link will be published here as soon as the donation page opens.
+    - paragraph:
+      - link "Support the campaign":
+        - /url: https://lavanti.fi/lahjoita
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "Actual spending, shares of the money raised":
