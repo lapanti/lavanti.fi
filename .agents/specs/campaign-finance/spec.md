@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-09-25
+> **Last updated**: 2026-09-30
 > **Issue**: [#1507](https://github.com/lapanti/lavanti.fi/issues/1507)
 
 ---
@@ -15,7 +15,7 @@ The page uses the same seven funding categories as the statutory vaalirahoitusil
 
 The page separates three states of money, because conflating them would overstate what the campaign has. `raised` is money banked. `ownCommitment` is the candidate's own undertaking, which he will put in unless donations cover the budget instead: it closes the gap to the budget but is never added to `raised`, and it is hatched rather than filled so a solid block on the bar always means money that has arrived. `spent` is optional, and while no figure is confirmed the page says so instead of printing a zero it cannot stand behind.
 
-Figures change throughout the campaign. Every number on the page and in the teaser must come from one typed data module so an update is a one-file edit plus an `updatedDate` bump. FAQ answers and page descriptions therefore never quote figures.
+Figures change throughout the campaign. Every number on the page and in the teaser must come from one typed data module so an update is a one-file edit plus an `updatedDate` bump. Page prose renders its figures from that module, 2023 benchmark included. FAQ answers and page descriptions never quote campaign figures. The single exception is the "how much does a campaign cost" FAQ answer: FAQ answers are frontmatter strings shared with FAQPage JSON-LD and cannot read the module, so it quotes the final 2023 medians and means, and `src/content/campaignFinance.spec.ts` fails if they differ from `benchmark2023`.
 
 ---
 
@@ -27,12 +27,13 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - Pure-CSS components `src/components/campaignFinance/`: `FinanceStat`, `FinanceStats`, `FinanceBars`, `FinanceStack`, `FinanceTeaser`.
 - Pages `/fi/eduskuntavaalit/vaalirahoitus/`, `/sv/riksdagsvalet/valfinansiering/`, `/en/elections/campaign-finance/` on `PageLayout` with `langAlternates` and a FAQ.
 - Teaser section and FAQ link on the three election pages.
+- Breadcrumb trail under the election page: the pages set `breadcrumbParent: 'elections'`, and `PageLayout` builds the trail and its `BreadcrumbList` from it.
 - Footer link, `llms.txt` pillar link, e2e page objects and specs, `langSwap` and `horizontalScroll` cases.
 - The donation link: `campaignFinance.donationUrl` is the constant short URL `https://lavanti.fi/lahjoita`, and the finance page's button links to it. Print, social and every other reference use the same short URL. The only place that holds the real destination (the donation page on vihreat.fi or uudenmaanvihreat.fi) is a Cloudflare Single Redirect rule on the lavanti.fi zone, a 302 kept outside the repo, so changing the destination is a dashboard edit with no deploy. The page may go live before the donation page exists: `campaignFinance.donationsOpen` gates the button, and while it is false the page prints a "link is coming" line instead. Opening donations is two steps done together: point the rule at the donation page, then set `donationsOpen: true`.
 
 ### Out of scope
 - A donation form or payment handling on this site: donations are taken on the party's page.
-- Breadcrumb trail or breadcrumb JSON-LD (`PageLayout` only emits `BreadcrumbList` for `CollectionPage` trails; adding an election trail touches `breadcrumbs.ts` and the layout). `Dataset` JSON-LD (`dist-head.ts` allows only known types).
+- `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
 - Real received figures. The state at launch is the true one: nothing received from any source, a 10 000 € own commitment, and no confirmed spending.
@@ -56,7 +57,7 @@ Feature: Campaign finance transparency page
   Scenario: Summary stats are text, not pixels
     Given a page is rendered with CSS disabled
     When the summary section (fi #lyhyesti, sv #ikorthet, en #inbrief) is read
-    Then budget, raised total, spent and gap-to-budget are readable as text with a euro sign
+    Then budget, raised total, own commitment and gap-to-budget are readable as text with a euro sign
     And the as-of date is printed in the page locale
 
   Scenario: A pledge is not a receipt
@@ -147,7 +148,7 @@ Feature: Campaign finance transparency page
   Scenario: Election pages link to the finance page
     Given the fi, sv and en election pages
     When they render
-    Then a FinanceTeaser section shows budget, raised and spent and links to the locale's finance page
+    Then a FinanceTeaser section shows the summaryTiles (budget, raised, own commitment, gap) and links to the locale's finance page
     And the "how can I support the campaign" FAQ answer names the finance page in plain text (FAQ answers are plain strings shared with FAQPage JSON-LD; the link lives in the teaser)
 
   Scenario: Discoverability
@@ -314,15 +315,15 @@ Component props:
 
 - **Do not** format money or the as-of date with `Intl.*` — ICU output varies by Node build and would break aria goldens.
 - **Do not** put an `<a>` inside a FAQ answer — `Faq.astro` renders `a` as plain text and the same string feeds FAQPage JSON-LD.
-- **Do not** put figures in `description`, `intro` or FAQ text that is not generated from the data module — they go stale on the next update.
+- **Do not** put figures in `description`, `intro`, prose or FAQ text that is not generated from the data module — they go stale on the next update. The one exception is the FAQ cost answer, held to `benchmark2023` by a test.
 - **Do not** make the bars the only carrier of a number — bars are `aria-hidden` decoration; the legend/value text is the content.
 - **Do not** drop zero-value categories from the legend — the zero is the statement.
-- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero. Figures from the 2023 benchmark are final and may be quoted in prose.
+- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero or which source currently carries the campaign. Prose renders 2023 benchmark figures from `benchmark2023` (`formatInteger`, `formatDecimal`, `benchmarkSet`) rather than typing them.
 - **Do not** give a segment a tone that matches the plate it sits on — the `oat` ground hides an `oat` swatch. Reach for an outline before an off-palette colour; `regionalPurple` and the other social-brand tokens are not data colours.
 - **Do not** scale a percentage bar to the largest row — a quarter drawn as a full track inflates every share by the same factor.
 - **Do not** put a mean beside a median on a skewed distribution as though the pair described it, and do not show two part-to-whole figures with different denominators without naming them.
 - **Do not** animate on load — these sections sit below the fold. Scroll-driven reveal only, inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, so the static render is always the correct picture.
-- **Do not** use `Dataset` JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types. Breadcrumbs are out of scope by issue, not blocked by the check.
+- **Do not** use `Dataset` JSON-LD — `scripts/checks/dist-head.ts` rejects unknown types.
 - **Do not** use `@media` widths outside the `breakpoints` map — `src/lib/mediaQueries.spec.ts` fails.
 - **Do not** write unhyphenated long compounds in `heading=` props — `scripts/check-overflow.mjs` measures them; use soft hyphens.
 - **Do not** regenerate e2e goldens locally — they are CI-canonical; use the Update baselines workflow.
@@ -344,3 +345,4 @@ Component props:
 | 2026-09-25 | Statistical review: percent bars scale to 100, means dropped from the comparison in favour of stated quartiles, denominators named in both stack captions, comparison reframed as the cost of winning campaigns; scroll-driven bar reveal added behind @supports |
 | 2026-09-25 | Implementation drift: BenchmarkSet unexported, FinanceTeaser takes a section id, DISPLAY_SOURCE_ORDER replaces key order, loans tone moved off oat |
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
+| 2026-09-30 | Site review: benchmark prose renders from data (`range`, `formatInteger`, `formatDecimal`, `benchmarkSet`); FAQ cost answer is the one test-guarded copy; funding FAQ no longer implies the current mix; breadcrumbs moved in scope; summary and teaser scenarios match `summaryTiles` |
