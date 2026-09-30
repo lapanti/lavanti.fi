@@ -1,0 +1,81 @@
+---
+import type { Lang } from '../content/nav'
+
+import PageLayout from '../layouts/PageLayout.astro'
+import { getAllPosts } from '../lib/posts'
+import ExcerptList from './ExcerptList.astro'
+import Plate from './Plate.astro'
+
+interface Props {
+    lang: Lang
+}
+
+/*
+ * One 404 body per locale. Cloudflare Pages serves the nearest 404.html up the path,
+ * so /sv/… and /en/… misses land on dist/sv/404.html and dist/en/404.html (renamed from
+ * Astro's directory output by notFoundPages()), and everything else on the Finnish root.
+ */
+const { lang } = Astro.props
+
+const i18n: Record<Lang, { alt: string; pageTitle: string; suggestionsHeading: string; title: string }> = {
+    en: {
+        alt: 'Lauri Lavanti stands in front of a glass wall, wearing a dark blazer and a patterned shirt. Photo: Markus Isomeri.',
+        pageTitle: 'Page not found',
+        suggestionsHeading: 'Could it be one of these?',
+        title: 'The page you were looking for was unfor­tunately not found',
+    },
+    fi: {
+        alt: 'Lauri Lavanti seisoo lasiseinän edessä tummassa pikkutakissa ja kuviollisessa paidassa. Kuva: Markus Isomeri.',
+        pageTitle: 'Sivua ei löytynyt',
+        suggestionsHeading: 'Olisiko se joku seuraavista?',
+        title: 'Etsimääsi sivua ei valitet­tavasti löytynyt',
+    },
+    sv: {
+        alt: 'Lauri Lavanti står framför en glasvägg, iklädd en mörk kavaj och en mönstrad skjorta. Foto: Markus Isomeri.',
+        pageTitle: 'Sidan hittades inte',
+        suggestionsHeading: 'Kan det vara någon av dessa?',
+        title: 'Sidan du letade efter hittades tyvärr inte',
+    },
+}
+const t = i18n[lang]
+
+// Minimal lookup table: "lang/id" → canonical URL, serialised into the page for the redirect script
+const allPosts = await getAllPosts()
+const postIndexJson = JSON.stringify(Object.fromEntries(allPosts.map((p) => [p.lang + '/' + p.id, p.url]))).replace(
+    /</g,
+    '\\u003c'
+)
+---
+
+<script is:inline set:html={'window.__postIndex=' + postIndexJson + ';'} />
+<script
+    is:inline
+    set:html={`
+    (function () {
+        var postIndex = window.__postIndex
+        var match = window.location.pathname.match(/^\\/(fi|sv|en)\\/blog\\/(\\d+)\\//)
+        if (match && postIndex) {
+            var canonical = postIndex[match[1] + '/' + match[2]]
+            if (canonical) {
+                window.location.replace(canonical)
+            }
+        }
+    })()
+`}
+/>
+
+<PageLayout
+    alt={t.alt}
+    heroImage="Lauri-Lavanti-dipolissa-lasijulkisivun-edessa-hero-pysty"
+    lang={lang}
+    mobileHeroImage="Lauri-Lavanti-dipolissa-lasijulkisivun-edessa-hero-vaaka"
+    noindex
+    pageTitle={t.pageTitle}
+    plated
+    title={t.title}
+    variant="split"
+>
+    <Plate ground="white" heading={t.suggestionsHeading}>
+        <ExcerptList lang={lang} limit={8} />
+    </Plate>
+</PageLayout>
