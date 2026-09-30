@@ -2,6 +2,7 @@
 import type { Lang } from '../../content/nav'
 import type { Slogan } from '../../content/slogan'
 
+import { campaignFinance, financeLabels } from '../../content/campaignFinance'
 import { heroCtaLabel } from '../../content/slogan'
 import { typographics } from '../../lib/styles'
 
@@ -12,6 +13,11 @@ interface Props {
 }
 
 const { description, lang, slogan } = Astro.props
+
+/* The campaign asks for donations while they are open; otherwise the button leads to the platform below. */
+const cta = campaignFinance.donationsOpen
+    ? { href: campaignFinance.donationUrl, label: financeLabels[lang].donate.cta }
+    : { href: '#driver', label: heroCtaLabel[lang] }
 ---
 
 <style
@@ -135,6 +141,6 @@ const { description, lang, slogan } = Astro.props
     </h1>
     <div class="hero-foot">
         <p>{description}</p>
-        <a class="btn" href="#driver">{heroCtaLabel[lang]}</a>
+        <a class="btn" href={cta.href}>{cta.label}</a>
     </div>
 </div>
