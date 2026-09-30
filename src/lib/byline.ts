@@ -37,8 +37,18 @@ export const languageNameIn: Record<Lang, Record<Lang, string>> = {
     sv: { en: 'på engelska', fi: 'på finska', sv: 'på svenska' },
 }
 
+/**
+ * A publication date is a calendar date, not an instant: `new Date('2026-06-17')` is UTC
+ * midnight, so it is formatted in UTC (as `formatEventDate` does) or a build run west of
+ * Greenwich would print the day before.
+ */
 export const formatPublicationDate = (date: string, lang: Lang): string =>
-    new Intl.DateTimeFormat(localeMap[lang], { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(date))
+    new Intl.DateTimeFormat(localeMap[lang], {
+        day: 'numeric',
+        month: 'long',
+        timeZone: 'UTC',
+        year: 'numeric',
+    }).format(new Date(date))
 
 export const buildPublicationBylineText = (pub: ExternalPublication, lang: Lang): string => {
     const pubLang = pub.lang ?? 'fi'
