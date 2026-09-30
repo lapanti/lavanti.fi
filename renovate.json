@@ -8,6 +8,16 @@
             "automerge": false
         },
         {
+            "description": "Hold TypeScript below 7 until @astrojs/check (peer ^5 || ^6) and typescript-eslint (peer <6.1.0) support it; TS 7 fails build, check, lint, knip and unit tests (PR #1414, 2026-09-30)",
+            "matchPackageNames": ["typescript"],
+            "allowedVersions": "<7"
+        },
+        {
+            "description": "Hold prettier-plugin-astro below 1: v1 reformats .astro templates in a way that adds whitespace to rendered text (e.g. 'Tilaa ' inside buttons), breaking 30 render tests and needing a site-wide visual review (PR #1455, 2026-09-30)",
+            "matchPackageNames": ["prettier-plugin-astro"],
+            "allowedVersions": "<1"
+        },
+        {
             "description": "Astro ecosystem",
             "groupName": "astro",
             "matchPackageNames": ["astro", "@astrojs/**", "eslint-plugin-astro"]
