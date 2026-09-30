@@ -6,7 +6,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com https://scripts.simpleanalyticscdn.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lavanti.fi https://assets.mailerlite.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://assets.mailerlite.com https://queue.simpleanalyticscdn.com https://scripts.simpleanalyticscdn.com https://cloudflareinsights.com https://*.cloudflareinsights.com; form-action 'self' https://assets.mailerlite.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com https://scripts.simpleanalyticscdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lavanti.fi https://assets.mailerlite.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://assets.mailerlite.com https://queue.simpleanalyticscdn.com https://scripts.simpleanalyticscdn.com; form-action 'self' https://assets.mailerlite.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
 # Astro build output uses content-hashed filenames; fonts are filename-versioned
 /_astro/*
