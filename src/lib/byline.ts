@@ -31,7 +31,7 @@ const localeMap: Record<Lang, string> = { en: 'en-GB', fi: 'fi-FI', sv: 'sv-SE' 
  * English phonetics. Same-language pairs are never rendered — the suffix is omitted
  * when the two match — but they are filled in so the map is total.
  */
-export const languageNameIn: Record<Lang, Record<Lang, string>> = {
+const languageNameIn: Record<Lang, Record<Lang, string>> = {
     en: { en: 'in English', fi: 'in Finnish', sv: 'in Swedish' },
     fi: { en: 'englanniksi', fi: 'suomeksi', sv: 'ruotsiksi' },
     sv: { en: 'på engelska', fi: 'på finska', sv: 'på svenska' },
