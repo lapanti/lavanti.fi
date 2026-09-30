@@ -14,7 +14,7 @@ const i18n: Record<Lang, { description: string; permalinkLabel: string }> = {
         permalinkLabel: 'Permanent link to the blog post',
     },
     fi: {
-        description: 'Lauri Lavantin blogikirjoitukset',
+        description: 'Lauri Lavannin blogikirjoitukset',
         permalinkLabel: 'Pysyvä linkki blogikirjoitukseen',
     },
     sv: {

@@ -15,7 +15,7 @@ export const footerLinks: FooterLink[] = socialProfiles
 
 export const footerRssAriaLabel: Record<Lang, string> = {
     en: "Subscribe to Lauri Lavanti's RSS feed (opens in new tab)",
-    fi: 'Tilaa Lauri Lavantin RSS-syöte (linkki aukeaa uudessa välilehdessä)',
+    fi: 'Tilaa Lauri Lavannin RSS-syöte (linkki aukeaa uudessa välilehdessä)',
     sv: 'Prenumerera på Lauri Lavantis RSS-flöde (öppnas i ny flik)',
 }
 
