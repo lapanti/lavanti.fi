@@ -40,7 +40,7 @@
         - link "Open the disclosure data":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
     - paragraph: "/The figures cover all \\d+ people required to file: the members elected and their alternates\\. So they show what successful campaigns cost\\. The Uusimaa figures are also included in the national ones\\./"
-    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The cheapest campaign cost 0 euros and the most expensive \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That makes the median the figure worth comparing against\./
+    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The most expensive campaign cost \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That makes the median the figure worth comparing against\./
     - text: Sources
     - heading "Where does the money come from?" [level=2]
     - figure "The budget by source and shares of the whole budget":

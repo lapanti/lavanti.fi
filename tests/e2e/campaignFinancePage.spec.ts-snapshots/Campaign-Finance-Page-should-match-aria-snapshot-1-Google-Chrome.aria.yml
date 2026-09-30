@@ -40,7 +40,7 @@
         - link "Avaa ilmoitusaineisto":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
     - paragraph: /Luvut kattavat kaikki \d+ ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat\. Ne kertovat siis menestyneiden kampanjoiden hinnan\. Uudenmaan luvut sisältyvät myös koko maan lukuihin\./
-    - paragraph: /Puolet kampanjoista maksoi \d+ \d+–\d+ \d+ euroa\. Halvin kampanja maksoi 0 euroa ja kallein \d+ \d+ euroa\. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi\. Siksi olennainen vertausluku on mediaani\./
+    - paragraph: /Puolet kampanjoista maksoi \d+ \d+–\d+ \d+ euroa\. Kallein kampanja maksoi \d+ \d+ euroa\. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi\. Siksi olennainen vertausluku on mediaani\./
     - text: Lähteet
     - heading "Mistä rahat tulevat?" [level=2]
     - figure "Budjetin rahat lähteittäin sekä osuudet koko budjetista":
