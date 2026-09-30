@@ -2,6 +2,7 @@ import { getByRole, getByText } from '@testing-library/dom'
 import { describe, expect, it } from 'vitest'
 
 import { renderAstroComponent } from '../../../tests/helpers'
+import { campaignFinance } from '../../content/campaignFinance'
 import Titles from './Titles.astro'
 
 describe('<Titles />', () => {
@@ -92,7 +93,7 @@ describe('<Titles />', () => {
         expect(getByText(result, description)).toBeDefined()
     })
 
-    it('should render a call-to-action link to the driver section', async () => {
+    it('should ask for donations while they are open, or else point at the platform', async () => {
         const result = await renderAstroComponent(Titles, {
             props: {
                 description,
@@ -101,6 +102,12 @@ describe('<Titles />', () => {
             },
         })
 
-        expect(getByRole(result, 'link')).toHaveAttribute('href', '#driver')
+        const expected = campaignFinance.donationsOpen
+            ? { href: 'https://lavanti.fi/lahjoita', text: 'Support the campaign' }
+            : { href: '#driver', text: 'Explore my platform' }
+        const link = getByRole(result, 'link')
+
+        expect(link).toHaveAttribute('href', expected.href)
+        expect(link).toHaveTextContent(expected.text)
     })
 })

@@ -92,10 +92,10 @@ exports[`<HeroBanner /> > should render 1`] = `
       <a
         class="btn"
         data-astro-cid-kqfumiig=""
-        href="#driver"
+        href="https://lavanti.fi/lahjoita"
         style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
       >
-        Explore my platform
+        Support the campaign
       </a>
        
     </div>
