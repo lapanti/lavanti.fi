@@ -10,6 +10,7 @@ import GlobalStyle from '../components/GlobalStyle.astro'
 import Head from '../components/Head.astro'
 import Header from '../components/Header.astro'
 import Stripe from '../components/Stripe.astro'
+import { languageSwitchHrefs } from '../lib/languageSwitch'
 import {
     gridAreas,
     gridTemplateColumns,
@@ -81,6 +82,8 @@ const {
     updatedAt,
     wordCount,
 } = Astro.props
+
+const langHrefs = languageSwitchHrefs(Astro.url.pathname, langAlternates, noindex)
 ---
 
 <html lang={lang ?? 'fi'}>
@@ -180,7 +183,7 @@ const {
             }
         </style>
         <div>
-            <Header heroShowsMark={heroShowsMark} lang={lang} variant={headerVariant} />
+            <Header heroShowsMark={heroShowsMark} lang={lang} langHrefs={langHrefs} variant={headerVariant} />
             <main class:list={{ plated }} id="main">
                 <slot name="banner" />
                 <article class:list={{ plated }}>
@@ -190,19 +193,6 @@ const {
             <Stripe />
             <Footer lang={lang} />
         </div>
-        <script is:inline set:html={'window.__langAlternates=' + JSON.stringify(langAlternates ?? null) + ';'} />
-        <script
-            is:inline
-            set:html={`
-            document.querySelectorAll('a[data-switch-to-lang]').forEach(function(a) {
-                var lang = a.getAttribute('data-switch-to-lang')
-                if (!lang) return
-                var alt = window.__langAlternates
-                if (alt && alt[lang]) { a.href = alt[lang]; return }
-                a.href = window.location.pathname.replace(/^\\/(fi|sv|en)\\//, '/' + lang + '/')
-            })
-        `}
-        />
         <!-- 100% privacy-first analytics -->
         <script async defer is:inline src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     </body>

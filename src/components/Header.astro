@@ -15,6 +15,8 @@ interface Props {
      */
     heroShowsMark?: boolean
     lang?: Lang
+    /** Build-time targets for the language links (see `languageSwitchHrefs`); front pages when absent. */
+    langHrefs?: Record<Lang, string>
     /**
      * Signal Band visual rebrand: `hero` is the transparent bar absolutely positioned
      * over a page's hero image (68px, no background of its own — legibility comes
@@ -24,8 +26,10 @@ interface Props {
     variant?: 'hero' | 'solid'
 }
 
-const { heroShowsMark = false, lang = 'fi', variant = 'solid' } = Astro.props
-const links = navLinks[lang]
+const { heroShowsMark = false, lang = 'fi', langHrefs, variant = 'solid' } = Astro.props
+const links = navLinks[lang].map((link) =>
+    link.switchToLang && langHrefs ? { ...link, href: langHrefs[link.switchToLang] } : link
+)
 ---
 
 <style
