@@ -655,6 +655,18 @@ describe('<Head />', () => {
         expect(robotsMeta).toHaveAttribute('content', 'noindex, nofollow')
     })
 
+    it('should let crawlers follow links on a noindex page when follow is set', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                follow: true,
+                noindex: true,
+                title: 'Dispatcher',
+            },
+        })
+
+        expect(result.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow')
+    })
+
     it('should not emit robots meta tag when noindex is false', async () => {
         const result = await renderAstroComponent(Head, {
             props: {
