@@ -119,6 +119,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
+      # The validators below gate every PR; their own regression tests run first.
+      - name: Test the bash content validators
+        run: bash scripts/checks/test-bash-checks.sh
       - name: Run SEO checks on all MDX files
         run: |
           find src/pages src/content -name '*.mdx' | while read -r f; do
