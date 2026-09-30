@@ -70,9 +70,9 @@
     - text: Q & A
     - heading "Usein kysyttyä" [level=2]
     - heading "Mistä Lauri Lavannin uutiskirje kertoo?" [level=3]
-    - paragraph: /Uutiskirje käsittelee yhden aiheen kerrallaan tekoälystä, työn muutoksesta ja digitaalisesta itsenäisyydestä\. Se ilmestyy noin kahden viikon välein, ja jokainen kirje julkaistaan arkistoon \d+ päivää lähetyksen jälkeen\./
+    - paragraph: /Uutiskirje käsittelee yhden aiheen kerrallaan tekoälystä, työn muutoksesta ja digitaalisesta itsenäisyydestä\. Se ilmestyy noin kerran kuukaudessa, ja jokainen kirje julkaistaan arkistoon \d+ päivää lähetyksen jälkeen\./
     - heading "Kuinka usein uutiskirje ilmestyy?" [level=3]
-    - paragraph: /Noin kahden viikon välein\. Tilaajat saavat kirjeen sähköpostiinsa lähetyspäivänä, ja arkistoon se tulee \d+ päivää myöhemmin\./
+    - paragraph: /Noin kerran kuukaudessa\. Tilaajat saavat kirjeen sähköpostiinsa lähetyspäivänä, ja arkistoon se tulee \d+ päivää myöhemmin\./
     - heading "Tilaa uutiskirje" [level=2]
     - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
     - text: Sähköposti

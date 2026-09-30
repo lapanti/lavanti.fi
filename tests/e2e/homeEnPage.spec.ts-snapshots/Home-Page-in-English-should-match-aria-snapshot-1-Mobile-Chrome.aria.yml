@@ -110,7 +110,7 @@
     - text: Q & A
     - heading "Frequently asked questions" [level=2]
     - heading "Where is Lauri Lavanti running for parliament?" [level=3]
-    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the \d+ parliamentary elections\. He is a municipal councillor in Kirkkonummi and a lead developer, working towards a digitally independent Finland where the economy, education, and rights work together in the age of AI\./
+    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the \d+ parliamentary elections\. He is a municipal councillor in Kirkkonummi and a lead developer, working towards a digitally independent Finland where the economy, education, and freedom work together in the age of AI\./
     - heading "What values does Lauri Lavanti's politics rest on?" [level=3]
     - paragraph: The values most important to Lauri Lavanti are justice, equality, and democracy, together with openness and honesty. In his thinking, the economy is a means to fund schools, care, and other shared services, and everyone's privacy and fundamental rights must be safeguarded in the age of AI as well. The goal is a digitally independent Finland where no one is left behind.
     - heading "What does AI mean for the Finnish economy?" [level=3]
@@ -247,6 +247,9 @@
           - listitem:
             - link "Economy":
               - /url: /en/category/economy/
+          - listitem:
+            - link "Technology":
+              - /url: /en/category/technology/
       - listitem:
         - article "Three ways to make entrepreneurship easier":
           - 'link "The Market Greens'' statement for Entrepreneur''s Day: Three ways to make entrepreneurship easier. Three ways to make entrepreneurship easier"':
