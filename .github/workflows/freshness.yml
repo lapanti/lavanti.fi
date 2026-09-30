@@ -40,6 +40,10 @@ jobs:
             exit "$EXIT_CODE"
           fi
 
+      - name: Record audit date
+        id: today
+        run: echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
       - name: Find existing tracking issue
         id: find-issue
         env:
@@ -54,7 +58,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BODY: |
             <!-- freshness-audit-body -->
-            Posts requiring a content refresh as of ${{ github.run_id }}:
+            Posts requiring a content refresh as of ${{ steps.today.outputs.date }}:
 
             ```
             ${{ steps.audit.outputs.output }}
