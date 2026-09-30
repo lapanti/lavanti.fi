@@ -1,12 +1,17 @@
 import type { DisplaySource, FundingSource } from './campaignFinance'
+import type { Lang } from './nav'
 
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
+import { formatInteger } from '../lib/campaignFinance'
 import { benchmark2023, campaignFinance, DISPLAY_SOURCE_ORDER, financeLabels } from './campaignFinance'
 
 const LANGS = ['en', 'fi', 'sv'] as const
 const SOURCES: FundingSource[] = ['companies', 'loans', 'other', 'own', 'party', 'partyAssociations', 'private']
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+const NBSP = ' '
 
 describe('campaign finance data', () => {
     it('should date the figures with an ISO calendar date', () => {
@@ -195,4 +200,48 @@ describe('finance labels', () => {
             expect(financeLabels[lang].teaser.heading).toMatch(/\?$/)
         }
     })
+})
+
+/*
+ * The one sanctioned copy of benchmark figures outside this module: FAQ answers are
+ * frontmatter strings that also feed FAQPage JSON-LD, so they cannot read the data.
+ * The 2023 figures are final, and this test holds the "how much does a campaign cost"
+ * answer to them so the copy cannot drift.
+ */
+describe('finance page FAQ benchmark figures', () => {
+    const PAGES: Record<Lang, { file: string; question: string }> = {
+        en: {
+            file: 'en/elections/campaign-finance',
+            question: 'How much does a parliamentary election campaign cost?',
+        },
+        fi: { file: 'fi/eduskuntavaalit/vaalirahoitus', question: 'Paljonko eduskuntavaalikampanja maksaa?' },
+        sv: { file: 'sv/riksdagsvalet/valfinansiering', question: 'Hur mycket kostar en riksdagsvalskampanj?' },
+    }
+
+    const answerTo = (file: string, question: string): string => {
+        const lines = readFileSync(join(__dirname, '..', 'pages', file, 'index.mdx'), 'utf8').split('\n')
+        const at = lines.findIndex((line) => line.includes(`q: '${question}'`))
+        const answer = lines[at + 1]?.match(/^\s+a: '(.*)'$/)?.[1]
+        if (at < 0 || !answer) {
+            throw new Error(`${file}: no FAQ answer for "${question}"`)
+        }
+        return answer
+    }
+
+    /* FAQ strings use plain spaces; formatInteger groups with no-break spaces. */
+    const plain = (value: number, lang: Lang): string => formatInteger(value, lang).split(NBSP).join(' ')
+
+    for (const lang of LANGS) {
+        it(`should quote the benchmark2023 medians and means in ${lang}`, () => {
+            const { file, question } = PAGES[lang]
+            const answer = answerTo(file, question)
+            const expected = benchmark2023.sets.flatMap((set) => [plain(set.median, lang), plain(set.mean, lang)])
+
+            for (const figure of expected) {
+                expect(answer).toContain(figure)
+            }
+            const quoted = answer.match(/\d{1,3}(?:[ ,]\d{3})+/g) ?? []
+            expect(quoted.sort()).toEqual([...expected].sort())
+        })
+    }
 })
