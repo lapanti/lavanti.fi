@@ -12,7 +12,7 @@
     "npm": "12"
   },
   "scripts": {
-    "lint": "eslint src tests",
+    "lint": "eslint src tests scripts",
     "lint:fix": "npm run lint -- --fix",
     "check": "astro check",
     "dev": "astro dev",
