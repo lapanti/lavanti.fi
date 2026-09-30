@@ -54,6 +54,21 @@ describe('<Head />', () => {
         expect(ogTitle).toHaveAttribute('content', 'Test Page')
     })
 
+    it('should strip soft hyphens from every title the head emits', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                title: 'Valtuustoaloite Kirkko­nummelle',
+                type: 'BlogPosting',
+            },
+        })
+
+        const expected = 'Valtuustoaloite Kirkkonummelle'
+        expect(result.querySelector('title')?.textContent).toBe(`${expected} | Lauri Lavanti`)
+        expect(result.querySelector('meta[property="og:title"]')).toHaveAttribute('content', expected)
+        expect(result.querySelector('meta[name="twitter:title"]')).toHaveAttribute('content', expected)
+        expect(result.innerHTML).not.toContain('­')
+    })
+
     it('should set theme-color meta tag', async () => {
         const result = await renderAstroComponent(Head, {
             props: {

@@ -42,6 +42,7 @@ import {
     WEBPAGE,
     WEBSITE,
 } from '../lib/jsonld'
+import { stripSoftHyphens } from '../lib/text'
 
 interface Props {
     authors?: AuthorEntry[]
@@ -74,7 +75,7 @@ const {
     langAlternates,
     noindex,
     tags,
-    title,
+    title: rawTitle,
     type,
     slug,
     ogImage,
@@ -85,6 +86,11 @@ const {
 } = Astro.props
 
 const lang: Lang = rawLang
+/*
+ * Soft hyphens are a line-break hint for headings on the page. In <title>, og:title and
+ * JSON-LD they are invisible bytes that break exact-match search and leak into shares.
+ */
+const title = stripSoftHyphens(rawTitle)
 
 const ogLocale: Record<Lang, string> = {
     en: 'en_GB',
