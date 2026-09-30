@@ -92,7 +92,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 </Plate>
 
 <Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?" id="kostnader">
-    {spending && <FinanceStack caption="Verkliga utgifter, andelar av det insamlade" lang="sv" segments={spending.segments} total={spending.total} />}
+    {spending && <FinanceStack caption="Verkliga utgifter" lang="sv" segments={spending.segments} showShares={false} total={spending.total} />}
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
         <p>Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.</p>

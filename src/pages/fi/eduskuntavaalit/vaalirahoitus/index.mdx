@@ -92,7 +92,7 @@ export const spending = spendingSegments(campaignFinance, 'fi')
 </Plate>
 
 <Plate eyebrow="Kulut" ground="offWhite" heading="Mihin rahaa on käytetty?" id="kulut">
-    {spending && <FinanceStack caption="Toteutuneet menot, osuudet kerätystä rahasta" lang="fi" segments={spending.segments} total={spending.total} />}
+    {spending && <FinanceStack caption="Toteutuneet menot" lang="fi" segments={spending.segments} showShares={false} total={spending.total} />}
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
         <p>Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, muuhun painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.</p>
