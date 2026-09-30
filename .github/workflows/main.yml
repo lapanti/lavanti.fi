@@ -219,7 +219,9 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
-    needs: [build]
+    # The same job deploys production on main: nothing ships until every static
+    # gate has passed, not only the build.
+    needs: [build, lint, typecheck, knip, check-overflow, validate-content, check-dist-head, unit-test]
     name: Deploy
     permissions:
       contents: read
