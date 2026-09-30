@@ -27,6 +27,11 @@ export default defineConfig([
         languageOptions: { globals: globals.browser },
         plugins: { js },
     },
+    {
+        // CLI scripts run under Node; the .js/.ts block below gives Node globals, .mjs needs its own.
+        files: ['scripts/**/*.mjs'],
+        languageOptions: { globals: globals.node },
+    },
     importX.flatConfigs.recommended,
     importX.flatConfigs.typescript,
     {
