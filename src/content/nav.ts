@@ -14,6 +14,13 @@ export const menuLabel: Record<Lang, string> = {
 }
 
 /** Accessible name of the desktop nav landmark, in the page's language. */
+/** Accessible name for the header's group of language links. */
+export const languageGroupLabel: Record<Lang, string> = {
+    en: 'Language',
+    fi: 'Kieli',
+    sv: 'Språk',
+}
+
 export const mainNavLabel: Record<Lang, string> = {
     en: 'Main menu',
     fi: 'Päävalikko',

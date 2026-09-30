@@ -89,6 +89,7 @@ exports[`<MobileMenu /> > should render 1`] = `
       </a>
        
       <div
+        aria-label="Kieli"
         class="langs"
         data-astro-cid-t7vk6yyn=""
         role="group"

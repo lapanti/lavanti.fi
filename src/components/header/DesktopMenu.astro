@@ -1,7 +1,7 @@
 ---
 import type { Lang, NavLink } from '../../content/nav'
 
-import { mainNavLabel } from '../../content/nav'
+import { languageGroupLabel, mainNavLabel } from '../../content/nav'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
 
@@ -112,7 +112,7 @@ const tone = variant === 'hero' && !heroShowsMark ? 'light' : 'dark'
             ))
         }
     </nav>
-    <div class="langs" role="group">
+    <div aria-label={languageGroupLabel[lang ?? 'fi']} class="langs" role="group">
         {
             langLinks.map((link) => (
                 <NavigationLink
