@@ -92,7 +92,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
 </Plate>
 
 <Plate eyebrow="Spending" ground="offWhite" heading="What has the money been spent on?" id="spending">
-    {spending && <FinanceStack caption="Actual spending, shares of the money raised" lang="en" segments={spending.segments} total={spending.total} />}
+    {spending && <FinanceStack caption="Actual spending" lang="en" segments={spending.segments} showShares={false} total={spending.total} />}
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
         <p>The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, other printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.</p>
