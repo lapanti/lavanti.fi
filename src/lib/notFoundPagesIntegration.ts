@@ -3,7 +3,7 @@ import type { AstroIntegration } from 'astro'
 import { rename, rmdir } from 'node:fs/promises'
 
 /** Locales whose 404 page lives under their own prefix; Finnish is the root 404.html. */
-export const LOCALISED_NOT_FOUND_LANGS = ['en', 'sv'] as const
+const LOCALISED_NOT_FOUND_LANGS = ['en', 'sv'] as const
 
 /**
  * Astro gives only the root `/404` route its `404.html` file name. `src/pages/sv/404.astro`
