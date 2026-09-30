@@ -30,7 +30,9 @@ export default getViteConfig(
                 },
             },
             environment: 'node',
-            exclude: [...configDefaults.exclude, 'tests/e2e/**'],
+            // .claude/worktrees holds agent checkouts of the whole repo; collecting them
+            // doubles the suite and runs another branch's tests.
+            exclude: [...configDefaults.exclude, 'tests/e2e/**', '.claude/**'],
             resolveSnapshotPath: (testPath, snapshotExtension) => {
                 const finalTestPath = testPath.replace('src', `tests${path.sep}__snapshots__`)
 
