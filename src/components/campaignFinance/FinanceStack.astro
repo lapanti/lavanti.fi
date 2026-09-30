@@ -17,11 +17,17 @@ interface Props {
     caption: string
     lang: Lang
     segments: FinanceSegment[]
+    /**
+     * Print each part's share of the total next to its amount. Off for the spending
+     * stack: there the whole is the money raised so far, which keeps moving, and a
+     * "100 %" spent reads as the campaign being out of money rather than as early bills.
+     */
+    showShares?: boolean
     /** The whole the segments are parts of; drives both bar widths and the shares. */
     total: number
 }
 
-const { caption, lang, segments, total } = Astro.props
+const { caption, lang, segments, showShares = true, total } = Astro.props
 const drawn = segments.filter((segment) => segment.value > 0)
 
 /** Not in the account: an undertaking, or the shortfall still to be raised. */
@@ -201,7 +207,9 @@ const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
                     <span class="name">{segment.label}</span>
                     <span class="figures">
                         {formatEuro(segment.value, lang)}
-                        <span class="share">{formatPercent(percentOf(segment.value, total), lang)}</span>
+                        {showShares && (
+                            <span class="share">{formatPercent(percentOf(segment.value, total), lang)}</span>
+                        )}
                     </span>
                 </li>
             ))

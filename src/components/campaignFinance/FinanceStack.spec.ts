@@ -46,6 +46,17 @@ describe('<FinanceStack />', () => {
         expect(loans).toContain(`0,0${NBSP}%`)
     })
 
+    it('should print amounts without shares when showShares is off', async () => {
+        const result = await renderAstroComponent(FinanceStack, {
+            props: { caption: 'Toteutuneet menot', lang: 'fi', segments, showShares: false, total: 30000 },
+        })
+
+        const own = getAllByRole(result, 'listitem')[0].textContent
+
+        expect(own).toContain(`10${NBSP}000${NBSP}€`)
+        expect(own).not.toContain('%')
+    })
+
     it('should draw only the segments that have money in them', async () => {
         const result = await renderAstroComponent(FinanceStack, {
             props: { caption: 'Mistä rahat tulevat?', lang: 'fi', segments, total: 30000 },
