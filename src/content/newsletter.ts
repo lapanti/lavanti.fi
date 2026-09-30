@@ -72,7 +72,7 @@ export const newsletterContent: Record<Lang, NewsletterLocale> = {
         emailPlaceholder: 'Sähköposti',
         eyebrow: 'Uutiskirje',
         heading: 'Tilaa uutiskirje',
-        loadingLabel: 'Lataa...',
+        loadingLabel: 'Ladataan...',
         privacyLinkText: 'tietosuojaseloste',
         privacyText: 'Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue ',
         privacyTextAfter: '.',

@@ -454,7 +454,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
                     data-astro-cid-dsoyuyhn=""
                     style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
-                    Lataa...
+                    Ladataan...
                   </span>
                    
                 </button>
@@ -502,7 +502,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
                 data-astro-cid-dsoyuyhn=""
                 style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
-                Lataa...
+                Ladataan...
               </span>
                
             </button>
@@ -1064,7 +1064,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
                     data-astro-cid-dsoyuyhn=""
                     style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
-                    Lataa...
+                    Ladataan...
                   </span>
                    
                 </button>
@@ -1112,7 +1112,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
                 data-astro-cid-dsoyuyhn=""
                 style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
-                Lataa...
+                Ladataan...
               </span>
                
             </button>
