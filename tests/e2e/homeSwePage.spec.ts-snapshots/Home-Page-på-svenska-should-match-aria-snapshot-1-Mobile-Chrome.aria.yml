@@ -247,6 +247,9 @@
           - listitem:
             - link "Ekonomi":
               - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Teknologi":
+              - /url: /sv/kategori/teknologi/
       - listitem:
         - article "Tre sätt att underlätta företagande":
           - 'link "De marknadsgrönas inlägg för Företagardagen: Tre sätt att underlätta företagande. Tre sätt att underlätta företagande"':
@@ -293,5 +296,5 @@
     - paragraph:
       - text: Du kan avsluta prenumerationen när som helst. För mer information, läs vår
       - link "integritetspolicy":
-        - /url: /sv/privacy-policy/
+        - /url: /sv/dataskydd/
       - text: .

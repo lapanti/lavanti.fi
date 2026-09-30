@@ -46,6 +46,12 @@
       - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Facebookissa":
         - /url: https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
         - text: ""
+    - text: Q & A
+    - heading "Usein kysyttyä" [level=2]
+    - heading "Viekö tekoäly asiantuntijoiden työt?" [level=3]
+    - paragraph: /Ei toistaiseksi kokonaan\. OECD:n arvion mukaan noin \d+ prosenttia korkean tulotason maiden asiantuntijatehtävistä on merkittävässä muutospaineessa seuraavan vuosikymmenen aikana\. Tekoäly lyhentää valmisteluvaiheita, mutta vastuu ja harkinta pysyvät ihmisellä\./
+    - heading "Mitkä työtehtävät tekoäly muuttaa ensin?" [level=3]
+    - paragraph: "/Valmisteluvaiheet: tiedonhaku, luonnostelu ja rutiinitarkistukset, kuten sopimustarkistus\\. OECD:n arvion mukaan noin \\d+ prosenttia korkean tulotason maiden asiantuntijatehtävistä on muutospaineessa seuraavan vuosikymmenen aikana, eikä tämä koske enää vain rutiinirooleja\\./"
     - text: Uutiskirje
     - heading "Muita uutiskirjeitä" [level=2]
     - list:
@@ -79,5 +85,5 @@
     - paragraph:
       - text: Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue
       - link "tietosuojaseloste":
-        - /url: /fi/privacy-policy/
+        - /url: /fi/tietosuoja/
       - text: .
