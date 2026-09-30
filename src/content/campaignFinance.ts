@@ -95,7 +95,7 @@ export const campaignFinance: CampaignFinance = {
     asOf: '2026-09-26',
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
-    donationsOpen: false,
+    donationsOpen: true,
     ownCommitment: 8221,
     raised: {
         companies: 0,
