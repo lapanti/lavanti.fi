@@ -3,7 +3,7 @@ import type { Lang } from '../content/nav'
 import type { AuthorEntry } from '../content/person'
 import type { ExternalPublication } from '../lib/byline'
 
-import { buildBylineText, formatPublicationDate, languageNameIn } from '../lib/byline'
+import { buildBylineText, formatPublicationDate, publicationLanguageSuffix, publicationPrefix } from '../lib/byline'
 import SmartLink from './SmartLink.astro'
 
 interface Props {
@@ -14,12 +14,6 @@ interface Props {
 
 const { authors, externalPublications, lang } = Astro.props
 const text = buildBylineText(authors, lang)
-
-const publicationPrefix: Record<string, string> = {
-    en: 'Also published in',
-    fi: 'Julkaistu myös',
-    sv: 'Publicerat även i',
-}
 ---
 
 <style>
@@ -65,8 +59,7 @@ const publicationPrefix: Record<string, string> = {
             {externalPublications && (
                 <div class="elsewhere-note">
                     {externalPublications.map((pub: ExternalPublication) => {
-                        const pubLang = pub.lang ?? 'fi'
-                        const suffix = pubLang !== lang ? ` (${languageNameIn[lang][pubLang]})` : ''
+                        const suffix = publicationLanguageSuffix(pub, lang)
 
                         return (
                             <p>

@@ -15,7 +15,7 @@ export interface ExternalPublication {
 const bylinePrefix: Record<Lang, string> = { en: 'Authors', fi: 'Tekijät', sv: 'Författare' }
 const andConjunction: Record<Lang, string> = { en: 'and', fi: 'ja', sv: 'och' }
 
-const publicationPrefix: Record<Lang, string> = {
+export const publicationPrefix: Record<Lang, string> = {
     en: 'Also published in',
     fi: 'Julkaistu myös',
     sv: 'Publicerat även i',
@@ -50,12 +50,16 @@ export const formatPublicationDate = (date: string, lang: Lang): string =>
         year: 'numeric',
     }).format(new Date(date))
 
-export const buildPublicationBylineText = (pub: ExternalPublication, lang: Lang): string => {
+/** " (in Finnish)" when the publication's language differs from the page's, else "". */
+export const publicationLanguageSuffix = (pub: ExternalPublication, lang: Lang): string => {
     const pubLang = pub.lang ?? 'fi'
-    const suffix = pubLang !== lang ? ` (${languageNameIn[lang][pubLang]})` : ''
 
-    return `${publicationPrefix[lang]}: ${pub.name}, ${formatPublicationDate(pub.date, lang)}${suffix}.`
+    return pubLang !== lang ? ` (${languageNameIn[lang][pubLang]})` : ''
 }
+
+/** The byline line as plain text; Byline.astro renders the same parts with a link on the name. */
+export const buildPublicationBylineText = (pub: ExternalPublication, lang: Lang): string =>
+    `${publicationPrefix[lang]}: ${pub.name}, ${formatPublicationDate(pub.date, lang)}${publicationLanguageSuffix(pub, lang)}.`
 
 const joinParts = (parts: string[], lang: Lang): string => {
     if (parts.length === 1) return parts[0]
