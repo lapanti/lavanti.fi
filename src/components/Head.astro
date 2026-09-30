@@ -92,6 +92,13 @@ const lang: Lang = rawLang
  */
 const title = stripSoftHyphens(rawTitle)
 
+/*
+ * JSON-LD is injected raw with set:html. Escaping `<` keeps a stray `</script>` in a
+ * title, FAQ answer or description from closing the tag early; JSON parsers read
+ * < back as `<`, so the structured data is unchanged.
+ */
+const scriptSafe = (json: string): string => json.replace(/</g, '\\u003c')
+
 const ogLocale: Record<Lang, string> = {
     en: 'en_GB',
     fi: 'fi_FI',
@@ -374,10 +381,10 @@ const breadcrumbJsonLd =
 />
 <link as="font" crossorigin="" href="/fonts/big-shoulders-display-v24-latin.woff2" rel="preload" type="font/woff2" />
 <title>{title.startsWith('Lauri Lavanti') ? title : `${title} | Lauri Lavanti`}</title>
-<script is:inline set:html={jsonLd} type="application/ld+json" />
-{faqJsonLd && <script is:inline set:html={faqJsonLd} type="application/ld+json" />}
-{eventsJsonLd.map((event) => <script is:inline set:html={event} type="application/ld+json" />)}
-{breadcrumbJsonLd && <script is:inline set:html={breadcrumbJsonLd} type="application/ld+json" />}
+<script is:inline set:html={scriptSafe(jsonLd)} type="application/ld+json" />
+{faqJsonLd && <script is:inline set:html={scriptSafe(faqJsonLd)} type="application/ld+json" />}
+{eventsJsonLd.map((event) => <script is:inline set:html={scriptSafe(event)} type="application/ld+json" />)}
+{breadcrumbJsonLd && <script is:inline set:html={scriptSafe(breadcrumbJsonLd)} type="application/ld+json" />}
 
 <link href="/sitemap-index.xml" rel="sitemap" />
 <link href={`/${lang}/rss.xml`} rel="alternate" title={rssTitles[lang]} type="application/rss+xml" />
