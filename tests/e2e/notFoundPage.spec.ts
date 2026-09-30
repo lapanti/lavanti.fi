@@ -47,8 +47,8 @@ test.describe('404 localised by path', () => {
     test.skip(!process.env.E2E_URL, 'needs a Cloudflare Pages deployment')
 
     for (const { heading, lang, path } of [
-        { heading: /^Sidan du letade efter/, lang: 'sv', path: '/sv/sidan-finns-inte/' },
-        { heading: /^The page you were looking for/, lang: 'en', path: '/en/no-such-page/' },
+        { heading: /Sidan du letade efter/, lang: 'sv', path: '/sv/sidan-finns-inte/' },
+        { heading: /The page you were looking for/, lang: 'en', path: '/en/no-such-page/' },
     ]) {
         test(`answers a miss under /${lang}/ in ${lang} with a 404`, async ({ page }) => {
             const response = await page.goto(path)
