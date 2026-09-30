@@ -4,6 +4,8 @@
     - text: ""
     - emphasis: for parliament
   - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the \d+ Finnish parliamentary election\. Election day is Sunday \d+ April \d+, with advance voting in Finland on 7–\d+ April\./
+  - link "Support the campaign":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: The election
     - heading /The \d+ parliamentary election in brief/ [level=2]
@@ -139,7 +141,7 @@
     - heading "Can I vote for Lauri Lavanti in advance?" [level=3]
     - paragraph: /Yes\. Advance voting runs in Finland on 7–\d+ April \d+, and you can vote in advance at any general advance polling station\. On election day, \d+ April \d+, you vote at your assigned polling station, stated in your notice of the right to vote\./
     - heading "How can I support Lauri Lavanti's campaign?" [level=3]
-    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign — the donation link will be published on the campaign finance page. That page also shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
+    - paragraph: You can support the campaign by joining the campaign team or donating to the campaign at lavanti.fi/lahjoita. The campaign finance page shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.
     - heading "Subscribe to the newsletter" [level=2]
     - paragraph: Subscribe to my newsletter and get analysis on the latest developments in AI and technology, and their impact on society, straight to your inbox.
     - text: Email

@@ -5,8 +5,8 @@
     - text: ""
     - emphasis: människan
   - paragraph: Mitt mål är ett digitalt självständigt Finland, där ekonomi, bildning och frihet alla fungerar tillsammans i AI-tidsåldern.
-  - link "Utforska mitt program":
-    - /url: "#driver"
+  - link "Stöd kampanjen":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: /Riksdagsvalet \d+/
     - heading "Varför kandiderar jag?" [level=2]
