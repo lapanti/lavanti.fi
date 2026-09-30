@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../content/nav'
 
+import { footerPrivacyPolicyHref } from '../content/footer'
 import { newsletterContent } from '../content/newsletter'
 import { colors, signalBandFontFamilies, sizes, typographics } from '../lib/styles'
 import Eyebrow from './Eyebrow.astro'
@@ -37,7 +38,7 @@ const takelUrl =
           ? 'https://assets.mailerlite.com/jsonp/2182645/forms/181740004170532163/takel'
           : 'https://assets.mailerlite.com/jsonp/2182645/forms/181706420545128273/takel'
 const subscribeClass = `ml-subscribe-form-${formId.replace('mlb2-', '')}`
-const privacyHref = `/${lang}/privacy-policy/`
+const privacyHref = footerPrivacyPolicyHref[lang]
 ---
 
 <style
