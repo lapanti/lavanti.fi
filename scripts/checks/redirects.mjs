@@ -62,7 +62,21 @@ for (const lang of LANGS) {
     validRoutes.add(`/${lang}/topics/`)
     const langRoot = join(root, 'src', 'pages', lang)
     for (const entry of readdirSync(langRoot, { withFileTypes: true })) {
-        if (entry.isDirectory()) validRoutes.add(`/${lang}/${entry.name}/`)
+        if (!entry.isDirectory()) continue
+        validRoutes.add(`/${lang}/${entry.name}/`)
+        addNestedPageRoutes(join(langRoot, entry.name), `/${lang}/${entry.name}/`)
+    }
+}
+
+// Nested static pages such as /fi/eduskuntavaalit/vaalirahoitus/: any sub-directory
+// with its own index page. Dynamic [param] directories are covered by the sections below.
+function addNestedPageRoutes(dir, urlPrefix) {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        if (!entry.isDirectory() || entry.name.startsWith('[')) continue
+        const sub = join(dir, entry.name)
+        const route = `${urlPrefix}${entry.name}/`
+        if (readdirSync(sub).some((f) => /^index\.(mdx|astro)$/.test(f))) validRoutes.add(route)
+        addNestedPageRoutes(sub, route)
     }
 }
 
