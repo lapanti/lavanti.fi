@@ -13,6 +13,12 @@ on:
 permissions:
   contents: read
 
+# One pipeline per ref at a time. On main, runs queue instead of cancelling, so a
+# push and the nightly fallback dispatch can never deploy production concurrently.
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
