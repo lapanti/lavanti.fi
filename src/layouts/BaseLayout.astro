@@ -10,6 +10,7 @@ import GlobalStyle from '../components/GlobalStyle.astro'
 import Head from '../components/Head.astro'
 import Header from '../components/Header.astro'
 import Stripe from '../components/Stripe.astro'
+import { campaignFinance } from '../content/campaignFinance'
 import { languageSwitchHrefs } from '../lib/languageSwitch'
 import {
     gridAreas,
@@ -84,6 +85,32 @@ const {
 } = Astro.props
 
 const langHrefs = languageSwitchHrefs(Astro.url.pathname, langAlternates, noindex)
+
+/*
+ * Counts clicks on any link to the donation short URL as a Simple Analytics "donate_click"
+ * event; the page it came from is recorded with it. The link leaves the site through a
+ * Cloudflare redirect, so no page view would show it. Navigation waits for the event for at
+ * most 500 ms. Modified clicks (new tab) are counted without being held, and Do Not Track
+ * is respected.
+ */
+const donateClickScript = `document.addEventListener('click', function (event) {
+    var link = event.target instanceof Element ? event.target.closest('a[href="${campaignFinance.donationUrl}"]') : null
+    var doNotTrack = parseInt(navigator.msDoNotTrack || window.doNotTrack || navigator.doNotTrack, 10) === 1
+    if (!link || !window.sa_loaded || doNotTrack) return
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        window.sa_event('donate_click')
+        return
+    }
+    event.preventDefault()
+    var left = false
+    var leave = function () {
+        if (left) return
+        left = true
+        window.location.href = link.href
+    }
+    setTimeout(leave, 500)
+    window.sa_event('donate_click', leave)
+})`
 ---
 
 <html lang={lang ?? 'fi'}>
@@ -195,5 +222,13 @@ const langHrefs = languageSwitchHrefs(Astro.url.pathname, langAlternates, noinde
         </div>
         <!-- 100% privacy-first analytics -->
         <script async defer is:inline src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+        <!--
+            Counts clicks on any link to the donation short URL as a Simple Analytics
+            "donate_click" event (the page it came from is recorded with it). The link
+            leaves the site through a Cloudflare redirect, so no page view would show it.
+            Navigation waits for the event, at most 500 ms; modified clicks and Do Not
+            Track are left alone.
+        -->
+        <script is:inline set:html={donateClickScript} />
     </body>
 </html>
