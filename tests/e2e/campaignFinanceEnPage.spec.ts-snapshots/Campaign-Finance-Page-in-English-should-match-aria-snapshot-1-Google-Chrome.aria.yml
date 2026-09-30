@@ -40,7 +40,7 @@
         - link "Open the disclosure data":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
     - paragraph: "/The figures cover all \\d+ people required to file: the members elected and their alternates\\. So they show what successful campaigns cost\\. The Uusimaa figures are also included in the national ones\\./"
-    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The cheapest campaign cost nothing and the most expensive \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That makes the median the figure worth comparing against\./
+    - paragraph: /Half of the campaigns cost between \d+,\d+ and \d+,\d+ euros\. The cheapest campaign cost 0 euros and the most expensive \d+,\d+ euros\. A few very expensive campaigns pull the average above the median\. That makes the median the figure worth comparing against\./
     - text: Sources
     - heading "Where does the money come from?" [level=2]
     - figure "The budget by source and shares of the whole budget":
@@ -80,7 +80,7 @@
     - text: Q & A
     - heading "Questions about campaign finance" [level=2]
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
-    - paragraph: /The campaign is funded by Lauri Lavanti himself\. Private individuals, companies and associations can also support it\. No loans are taken for the campaign\. The amount for each source is shown separately, as is the date the figures were last checked\. Every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
+    - paragraph: /The campaign’s money comes from Lauri Lavanti’s own funds and from private individuals, companies and associations\. No loans are taken for the campaign\. The amount for each source is shown separately, as is the date the figures were last checked\. Every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
     - paragraph: /Yes\. Lauri Lavanti accepts support from companies, private individuals and associations, but no loans\. He publishes every contribution of \d+,\d+ euros or more with the supporter’s name\. He also files a voluntary advance disclosure for the campaign with the National Audit Office of Finland\. The law does not require candidates to file an advance disclosure\./
     - heading "Where is the election funding disclosure published?" [level=3]

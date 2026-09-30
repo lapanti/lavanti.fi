@@ -40,7 +40,7 @@
         - link "Öppna redovisningsuppgifterna":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
     - paragraph: /Siffrorna omfattar alla \d+ redovisningsskyldiga, alltså valda riksdagsledamöter och ersättare\. De visar alltså vad framgångsrika kampanjer kostade\. Nylands siffror ingår också i siffrorna för hela landet\./
-    - paragraph: /Hälften av kampanjerna kostade mellan \d+ \d+ och \d+ \d+ euro\. Den billigaste kampanjen kostade noll euro och den dyraste \d+ \d+ euro\. Några mycket dyra kampanjer drar medeltalet över medianen\. Därför är medianen den relevanta jämförelsesiffran\./
+    - paragraph: /Hälften av kampanjerna kostade mellan \d+ \d+ och \d+ \d+ euro\. Den billigaste kampanjen kostade 0 euro och den dyraste \d+ \d+ euro\. Några mycket dyra kampanjer drar medeltalet över medianen\. Därför är medianen den relevanta jämförelsesiffran\./
     - text: Källor
     - heading "Varifrån kommer pengarna?" [level=2]
     - figure "Budgetens pengar per källa samt andelar av hela budgeten":
@@ -80,7 +80,7 @@
     - text: Q & A
     - heading "Vanliga frågor om valfinansiering" [level=2]
     - heading "Vem finansierar Lauri Lavantis kampanj?" [level=3]
-    - paragraph: /Kampanjen finansieras av Lauri Lavanti själv\. Dessutom kan privatpersoner, företag och föreningar stödja den\. Inga lån tas för kampanjen\. Beloppet för varje källa redovisas separat, liksom datumet då uppgifterna senast kontrollerades\. Varje stöd på minst 2 \d+ euro offentliggörs med stödjarens namn\./
+    - paragraph: /Kampanjens pengar kommer från Lauri Lavantis egna medel samt från privatpersoner, företag och föreningar\. Inga lån tas för kampanjen\. Beloppet för varje källa redovisas separat, liksom datumet då uppgifterna senast kontrollerades\. Varje stöd på minst 2 \d+ euro offentliggörs med stödjarens namn\./
     - heading "Tar Lauri Lavanti emot företagsstöd?" [level=3]
     - paragraph: /Ja\. Lauri Lavanti tar emot stöd från företag, privatpersoner och föreningar, men inga lån\. Han offentliggör varje stöd på minst 2 \d+ euro med stödjarens namn\. Dessutom lämnar han in en frivillig förhandsredovisning för kampanjen till Statens revisionsverk\. Lagen kräver ingen förhandsredovisning av kandidaterna\./
     - heading "Var offentliggörs redovisningen av valfinansieringen?" [level=3]
