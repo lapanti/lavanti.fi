@@ -40,7 +40,7 @@
         - link "Avaa ilmoitusaineisto":
           - /url: https://www.vaalirahoitusvalvonta.fi/fi/index/vaalirahoitus/haetietoavaalirahoitusilmoituksista/tutkitietoaineistoja/eduskuntavaalit2023/E_VI_eduskuntavaalit2023.csv
     - paragraph: /Luvut kattavat kaikki \d+ ilmoitusvelvollista eli valitut kansanedustajat ja varaedustajat\. Ne kertovat siis menestyneiden kampanjoiden hinnan\. Uudenmaan luvut sisältyvät myös koko maan lukuihin\./
-    - paragraph: /Puolet kampanjoista maksoi \d+ \d+–\d+ \d+ euroa\. Halvin kampanja oli nolla euroa ja kallein \d+ \d+ euroa\. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi\. Siksi olennainen vertausluku on mediaani\./
+    - paragraph: /Puolet kampanjoista maksoi \d+ \d+–\d+ \d+ euroa\. Halvin kampanja maksoi 0 euroa ja kallein \d+ \d+ euroa\. Muutama hyvin kallis kampanja nostaa keskiarvon mediaania korkeammaksi\. Siksi olennainen vertausluku on mediaani\./
     - text: Lähteet
     - heading "Mistä rahat tulevat?" [level=2]
     - figure "Budjetin rahat lähteittäin sekä osuudet koko budjetista":
@@ -80,7 +80,7 @@
     - text: Q & A
     - heading "Usein kysyttyä vaalirahoituksesta" [level=2]
     - heading "Kuka rahoittaa Lauri Lavannin kampanjaa?" [level=3]
-    - paragraph: /Kampanjaa rahoittaa Lauri Lavanti itse\. Lisäksi tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Kampanjaa varten ei oteta lainaa\. Jokaisen lähteen summa näkyy erikseen, samoin päivä, jolloin luvut on viimeksi tarkistettu\. Jokainen vähintään 2 \d+ euron tuki julkistetaan tukijan nimellä\./
+    - paragraph: /Kampanjan rahat tulevat Lauri Lavannin omista varoista sekä yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä\. Kampanjaa varten ei oteta lainaa\. Jokaisen lähteen summa näkyy erikseen, samoin päivä, jolloin luvut on viimeksi tarkistettu\. Jokainen vähintään 2 \d+ euron tuki julkistetaan tukijan nimellä\./
     - heading "Ottaako Lauri Lavanti vastaan yritysrahoitusta?" [level=3]
     - paragraph: /Kyllä\. Lauri Lavanti ottaa vastaan tukea yrityksiltä, yksityishenkilöiltä ja yhdistyksiltä, mutta ei lainaa\. Hän julkistaa jokaisen vähintään 2 \d+ euron tuen tukijan nimellä\. Lisäksi hän tekee kampanjasta vapaaehtoisen ennakkoilmoituksen Valtiontalouden tarkastusvirastolle\. Laki ei vaadi ehdokkailta ennakkoilmoittamista\./
     - heading "Missä vaalirahoitusilmoitus julkaistaan?" [level=3]
