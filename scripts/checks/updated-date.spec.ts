@@ -164,8 +164,13 @@ describe('findOffenders', () => {
 })
 
 describe('today', () => {
-    it('formats local time the way the frontmatter does', () => {
-        expect(today(new Date(2026, 8, 1))).toBe('2026-09-01')
-        expect(today(new Date(2026, 11, 31))).toBe('2026-12-31')
+    it('formats the date the way the frontmatter does', () => {
+        expect(today(new Date('2026-09-01T09:00:00Z'))).toBe('2026-09-01')
+        expect(today(new Date('2026-12-31T09:00:00Z'))).toBe('2026-12-31')
+    })
+
+    /* 22:30 UTC is 01:30 in Helsinki (EEST): the author has already written tomorrow's date. */
+    it('reads the Helsinki calendar, not the UTC clock CI runs on', () => {
+        expect(today(new Date('2026-09-30T22:30:00Z'))).toBe('2026-10-01')
     })
 })

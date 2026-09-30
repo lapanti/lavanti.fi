@@ -26,6 +26,9 @@
 import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 
+// eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
+import { helsinkiDateOf } from '../../src/lib/publishing.ts'
+
 export const SKIP_MARKER = '[skip-updated-date]'
 
 const ENTRY_FILE = /^src[/\\]content[/\\](posts|newsletters)[/\\](\d+)[/\\](?:fi|sv|en)\.mdx$/
@@ -103,11 +106,13 @@ export function readBlob(rev: string, path: string, cwd?: string): string | null
     }
 }
 
-/** Today in the site's date format, in local time — the same clock an author reads. */
+/**
+ * Today in the site's date format, on the Helsinki calendar the dates are written in.
+ * Not the machine clock: CI runs in UTC, where an updatedDate set just after midnight
+ * in Helsinki is still "tomorrow".
+ */
 export function today(now = new Date()): string {
-    const pad = (n: number): string => String(n).padStart(2, '0')
-
-    return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
+    return helsinkiDateOf(now)
 }
 
 export interface Revisions {
