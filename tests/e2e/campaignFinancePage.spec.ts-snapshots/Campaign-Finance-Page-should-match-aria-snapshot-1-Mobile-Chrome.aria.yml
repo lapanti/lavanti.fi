@@ -56,7 +56,9 @@
         - listitem: /Vielä kerättävä \d+ \d+ € \d+,\d+ %/
     - paragraph: Erittelen rahat samalla tavalla kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle.
     - paragraph: /Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Julkistan jokaisen vähintään 2 \d+ euron tuen tukijan nimellä\. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Ennakkoilmoitus ei ole pakollinen\./
-    - paragraph: Lahjoituslinkki julkaistaan tällä sivulla heti, kun lahjoitussivu avautuu.
+    - paragraph:
+      - link "Tue kampanjaa":
+        - /url: https://lavanti.fi/lahjoita
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
     - figure "Toteutuneet menot, osuudet kerätystä rahasta":
