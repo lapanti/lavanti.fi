@@ -23,7 +23,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
       <span
         class="eyebrow"
         data-astro-cid-2lydxdhj=""
-        style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+        style="--eyebrowColor: #5B5952;"
       >
         Avoimuus
       </span>
@@ -54,7 +54,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
-              style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+              style="--eyebrowColor: #5B5952;"
             >
               Kampanjabudjetti
             </span>
@@ -81,7 +81,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
-              style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+              style="--eyebrowColor: #5B5952;"
             >
               Kerätty
             </span>
@@ -108,7 +108,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
-              style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+              style="--eyebrowColor: #5B5952;"
             >
               Oma sitoumukseni
             </span>
@@ -135,7 +135,7 @@ exports[`<FinanceTeaser /> > should render 1`] = `
             <span
               class="eyebrow"
               data-astro-cid-2lydxdhj=""
-              style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+              style="--eyebrowColor: #5B5952;"
             >
               Vielä kerättävä
             </span>

@@ -2,7 +2,7 @@
 import type { Lang, NavLink } from '../../content/nav'
 
 import { menuLabel } from '../../content/nav'
-import { colors, CONTENT_PADDING, CONTENT_SIZE, HEADER_SIZE, sizes } from '../../lib/styles'
+import { CONTENT_PADDING, CONTENT_SIZE, HEADER_SIZE, sizes } from '../../lib/styles'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
 
@@ -23,9 +23,6 @@ const label = menuLabel[lang]
 
 <style
     define:vars={{
-        colorsDarkGreen: colors.darkGreen,
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
         contentPadding: CONTENT_PADDING,
         contentSize: CONTENT_SIZE,
         headerSize: HEADER_SIZE,

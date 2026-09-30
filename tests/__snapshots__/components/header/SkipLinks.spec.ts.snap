@@ -5,7 +5,7 @@ exports[`<SkipLinks /> > should render 1`] = `
   <a
     data-astro-cid-3ix4ccgt=""
     href="#main"
-    style="--colorsWhite: rgb(255, 255, 255);--rem05: 0.5rem;--zIndices100: 100;"
+    style="--rem05: 0.5rem;--zIndices100: 100;"
   >
     Siirry pääsisältöön ➡
   </a>
@@ -13,7 +13,7 @@ exports[`<SkipLinks /> > should render 1`] = `
   <a
     data-astro-cid-3ix4ccgt=""
     href="#footer"
-    style="--colorsWhite: rgb(255, 255, 255);--rem05: 0.5rem;--zIndices100: 100;"
+    style="--rem05: 0.5rem;--zIndices100: 100;"
   >
     Siirry alatunnisteeseen ➡
   </a>

@@ -7,7 +7,7 @@ import {
     personMastodonInstance,
     personThreadsHandle,
 } from '../content/person'
-import { colors, typographics } from '../lib/styles'
+import { colors } from '../lib/styles'
 
 interface Props {
     ariaLabel: string
@@ -77,18 +77,7 @@ const mastodonFallbackHref = `https://${personMastodonInstance}/share?text=${enc
 <style
     define:vars={{
         colorsForestGreen: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
-        colorsSand: colors.sand,
         colorsTextSecondary: colors.textSecondary,
-        eyebrowFontFamily: typographics.eyebrow.fontFamily,
-        eyebrowFontSize: typographics.eyebrow.fontSize,
-        eyebrowFontWeight: typographics.eyebrow.fontWeight,
-        eyebrowLetterSpacing: typographics.eyebrow.letterSpacing,
-        linkRuleFontFamily: typographics.linkRule.fontFamily,
-        linkRuleFontSize: typographics.linkRule.fontSize,
-        linkRuleFontWeight: typographics.linkRule.fontWeight,
-        linkRuleLetterSpacing: typographics.linkRule.letterSpacing,
-        linkRuleLineHeight: typographics.linkRule.lineHeight,
     }}
 >
     .share {

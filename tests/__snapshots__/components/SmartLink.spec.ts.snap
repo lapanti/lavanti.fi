@@ -5,7 +5,7 @@ exports[`<SmartLink /> > should render 1`] = `
   data-astro-cid-tlhisbeo=""
   href="/fi/blog/47/vuosi-2026-on-tekoalyn/"
   rel=""
-  style="--colorsDarkGreen: #006845;--colorsDarkMoss: rgb(72, 75, 0);--sizes0125: 0.125rem;"
+  style="--colorsDarkMoss: rgb(72, 75, 0);--sizes0125: 0.125rem;"
 >
   Vuosi 2026 on tekoälyn
 </a>

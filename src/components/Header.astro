@@ -2,7 +2,7 @@
 import type { Lang } from '../content/nav'
 
 import { navLinks } from '../content/nav'
-import { colors, gridAreas, HEADER_SIZE, zIndices } from '../lib/styles'
+import { gridAreas, HEADER_SIZE, zIndices } from '../lib/styles'
 import DesktopMenu from './header/DesktopMenu.astro'
 import MobileMenu from './header/MobileMenu.astro'
 import SkipLinks from './header/SkipLinks.astro'
@@ -30,8 +30,6 @@ const links = navLinks[lang]
 
 <style
     define:vars={{
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
         gridAreasHeader: gridAreas.header,
         headerSize: HEADER_SIZE,
         zIndices50: zIndices[50],

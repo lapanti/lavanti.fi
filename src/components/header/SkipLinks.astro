@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 
 import { skipLinks } from '../../content/nav'
-import { colors, sizes, zIndices } from '../../lib/styles'
+import { sizes, zIndices } from '../../lib/styles'
 
 interface Props {
     lang?: Lang
@@ -12,7 +12,7 @@ const { lang = 'fi' } = Astro.props
 const labels = skipLinks[lang]
 ---
 
-<style define:vars={{ colorsWhite: colors.white, rem05: sizes[0.5], zIndices100: zIndices[100] }}>
+<style define:vars={{ rem05: sizes[0.5], zIndices100: zIndices[100] }}>
     a {
         background-color: var(--colorsWhite);
         left: var(--rem05);

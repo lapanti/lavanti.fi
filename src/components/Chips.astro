@@ -1,6 +1,4 @@
 ---
-import { colors, typographics } from '../lib/styles'
-
 interface Props {
     ariaLabel?: string
     items: Array<{ href: string; label: string }>
@@ -9,16 +7,7 @@ interface Props {
 const { ariaLabel, items } = Astro.props
 ---
 
-<style
-    define:vars={{
-        chipFontFamily: typographics.chip.fontFamily,
-        chipFontWeight: typographics.chip.fontWeight,
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
-        colorsSand: colors.sand,
-        colorsWhite: colors.white,
-    }}
->
+<style>
     .chips {
         display: flex;
         flex-wrap: wrap;

@@ -19,7 +19,6 @@ import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
 import { archivePath, landingPath, newsletterSlug } from '../lib/newsletterRoutes'
 import { ogId } from '../lib/og/id'
 import { relatedNewsletterIds } from '../lib/related'
-import { colors } from '../lib/styles'
 import BaseLayout from './BaseLayout.astro'
 
 /**
@@ -68,7 +67,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 ---
 
-<style define:vars={{ colorsWhite: colors.white }}>
+<style>
     .prose-section {
         background: var(--colorsWhite);
         padding-bottom: 1.5rem;

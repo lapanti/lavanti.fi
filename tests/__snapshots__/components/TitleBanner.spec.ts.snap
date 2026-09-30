@@ -4,19 +4,19 @@ exports[`<TitleBanner /> > should render 1`] = `
 <div
   class="container"
   data-astro-cid-hws4xp7b=""
-  style="--colorsForestGreen: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--headerSize: 3.75rem;--sizes45: 45rem;"
+  style="--colorsForestGreen: rgb(22, 62, 53);--headerSize: 3.75rem;--sizes45: 45rem;"
 >
    
   <div
     class="content"
     data-astro-cid-hws4xp7b=""
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsWhite: rgb(255, 255, 255);--headerSize: 3.75rem;--sizes45: 45rem;"
+    style="--colorsForestGreen: rgb(22, 62, 53);--headerSize: 3.75rem;--sizes45: 45rem;"
   >
      
     <div
       class="title-container"
       data-astro-cid-bm76wmln=""
-      style="--colorsWhite: rgb(255, 255, 255);--contentPadding: 0.5rem;--sizes05: 0.5rem;--sizes1: 1rem;--sizes5: 5rem;--sizes375: 37.5rem;"
+      style="--contentPadding: 0.5rem;--sizes05: 0.5rem;--sizes1: 1rem;--sizes5: 5rem;--sizes375: 37.5rem;"
     >
        
       <h1
@@ -42,18 +42,15 @@ exports[`<TitleBanner /> > should render 1`] = `
         <ul
           class="chips"
           data-astro-cid-mh6aqaxn=""
-          style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
         >
            
           <li
             data-astro-cid-mh6aqaxn=""
-            style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
           >
              
             <a
               data-astro-cid-mh6aqaxn=""
               href="/fi/category/artificial-intelligence/"
-              style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
             >
                Tekoäly 
             </a>

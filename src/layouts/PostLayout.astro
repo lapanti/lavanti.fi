@@ -18,7 +18,6 @@ import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { BLOGPOSTING, type BreadcrumbItem } from '../lib/jsonld'
 import { ogId } from '../lib/og/id'
 import { relatedPostIds } from '../lib/related'
-import { colors } from '../lib/styles'
 import BaseLayout from './BaseLayout.astro'
 
 interface Props {
@@ -88,7 +87,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 ---
 
-<style define:vars={{ colorsWhite: colors.white }}>
+<style>
     .prose-section {
         background: var(--colorsWhite);
         padding-bottom: 1.5rem;

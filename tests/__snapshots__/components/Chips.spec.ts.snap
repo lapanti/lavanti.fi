@@ -4,18 +4,15 @@ exports[`<Chips /> > should render 1`] = `
 <ul
   class="chips"
   data-astro-cid-mh6aqaxn=""
-  style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
 >
    
   <li
     data-astro-cid-mh6aqaxn=""
-    style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
   >
      
     <a
       data-astro-cid-mh6aqaxn=""
       href="/fi/rss.xml"
-      style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
     >
        RSS-syöte 
     </a>
@@ -23,14 +20,12 @@ exports[`<Chips /> > should render 1`] = `
   </li>
   <li
     data-astro-cid-mh6aqaxn=""
-    style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
   >
      
     <a
       data-astro-cid-mh6aqaxn=""
       href="https://bsky.app/profile/lauri.lavanti.fi"
       rel="noopener"
-      style="--chipFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--chipFontWeight: 700;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);"
     >
        Bluesky 
     </a>

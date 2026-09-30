@@ -3,7 +3,7 @@
 exports[`<H2 /> > should render 1`] = `
 <h2
   data-astro-cid-zdc3o45h=""
-  style="--articleHeadlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--articleHeadlineFontWeight: 900;--articleHeadlineLetterSpacing: -0.01em;--articleHeadlineLineHeight: 1.02;--colorsDarkGreen: #006845;--h2FontFamily: "Big Shoulders Display", Trebuchet MS;--h2FontSize: 2.25rem;--h2FontWeight: 900;--h2LineHeight: 1.2;"
+  style="--articleHeadlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--articleHeadlineFontWeight: 900;--articleHeadlineLetterSpacing: -0.01em;--articleHeadlineLineHeight: 1.02;--h2FontFamily: "Big Shoulders Display", Trebuchet MS;--h2FontSize: 2.25rem;--h2FontWeight: 900;--h2LineHeight: 1.2;"
 >
    Mastodontti 
 </h2>
