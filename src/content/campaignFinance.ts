@@ -82,10 +82,9 @@ export interface Benchmark {
 
 /**
  * The state on `asOf`. No donations have come in: the campaign account is not open, so
- * every outside source is zero. Only money from the reporting period (from 18.10.2026,
- * six months before election day) is shown. `spent` holds the items billed in that period,
- * paid from the candidate's own funds: that is the `own` figure, and the rest of his
- * 10 000 € undertaking stays in `ownCommitment`.
+ * every outside source is zero. `spent` holds the items paid so far, all from the
+ * candidate's own funds: that is the `own` figure, and the rest of his 10 000 € undertaking
+ * stays in `ownCommitment`.
  *
  * Every figure is a whole euro; cents on a transparency page invite precision the
  * campaign cannot promise.
@@ -105,10 +104,7 @@ export const campaignFinance: CampaignFinance = {
         partyAssociations: 0,
         private: 0,
     },
-    /*
-     * Liehut 523,80 € + kampanjan visuaalinen suunnittelu 1 255 € (budget sheet), billed after
-     * the reporting period opens on 18.10.2026. Spending before that date is not reported.
-     */
+    /* Liehut 523,80 € + kampanjan visuaalinen suunnittelu 1 255 € (budget sheet), paid by asOf. */
     spent: 1779,
 }
 
