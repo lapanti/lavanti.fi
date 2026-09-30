@@ -590,6 +590,16 @@ describe('<Head />', () => {
         expect(jsonLd.publisher).toMatchObject({ '@id': PERSON_ID, '@type': 'Person', name: personName })
     })
 
+    it('should escape < in JSON-LD so a value cannot close the script tag', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { title: 'A </script><b>title', type: 'WebPage' },
+        })
+
+        const script = result.querySelector('script[type="application/ld+json"]')
+        expect(script?.textContent).not.toContain('</script>')
+        expect(JSON.parse(script?.textContent || '{}').headline).toBe('A </script><b>title')
+    })
+
     it('should emit ProfilePage JSON-LD with mainEntity Person when type is ProfilePage', async () => {
         const result = await renderAstroComponent(Head, {
             props: {
