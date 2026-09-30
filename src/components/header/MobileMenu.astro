@@ -1,7 +1,7 @@
 ---
 import type { Lang, NavLink } from '../../content/nav'
 
-import { menuLabel } from '../../content/nav'
+import { languageGroupLabel, menuLabel } from '../../content/nav'
 import { CONTENT_PADDING, CONTENT_SIZE, sizes } from '../../lib/styles'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
@@ -307,7 +307,7 @@ const label = menuLabel[lang]
                     <NavigationLink context="mobile" href={link.href} label={link.label} title={link.title} />
                 ))
             }
-            <div class="langs" role="group">
+            <div aria-label={languageGroupLabel[lang]} class="langs" role="group">
                 {
                     langLinks.map((link) => (
                         <NavigationLink

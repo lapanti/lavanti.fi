@@ -73,6 +73,7 @@ exports[`<DesktopMenu /> > should render 1`] = `
   </nav>
    
   <div
+    aria-label="Kieli"
     class="langs"
     data-astro-cid-ci3p74oi=""
     role="group"
