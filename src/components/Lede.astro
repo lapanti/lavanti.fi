@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../lib/styles'
+import { typographics } from '../lib/styles'
 
 interface Props {
     wide?: boolean
@@ -10,7 +10,6 @@ const { wide = false } = Astro.props
 
 <style
     define:vars={{
-        colorsTextPrimary: colors.textPrimary,
         ledeFontFamily: typographics.lede.fontFamily,
         ledeFontSize: typographics.lede.fontSize,
         ledeFontWeight: typographics.lede.fontWeight,

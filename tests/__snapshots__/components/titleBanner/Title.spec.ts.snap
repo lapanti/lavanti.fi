@@ -4,7 +4,7 @@ exports[`<Title /> > should render 1`] = `
 <div
   class="title-container"
   data-astro-cid-bm76wmln=""
-  style="--contentPadding: 0.5rem;--sizes05: 0.5rem;--sizes1: 1rem;--sizes5: 5rem;--sizes375: 37.5rem;"
+  style="--contentPadding: 0.5rem;--sizes5: 5rem;--sizes375: 37.5rem;"
 >
    
   <h1
@@ -56,7 +56,7 @@ exports[`<Title /> > should render minimal 1`] = `
 <div
   class="title-container"
   data-astro-cid-bm76wmln=""
-  style="--contentPadding: 0.5rem;--sizes05: 0.5rem;--sizes1: 1rem;--sizes5: 5rem;--sizes375: 37.5rem;"
+  style="--contentPadding: 0.5rem;--sizes5: 5rem;--sizes375: 37.5rem;"
 >
    
   <h1

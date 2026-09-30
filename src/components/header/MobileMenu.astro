@@ -2,7 +2,7 @@
 import type { Lang, NavLink } from '../../content/nav'
 
 import { menuLabel } from '../../content/nav'
-import { CONTENT_PADDING, CONTENT_SIZE, HEADER_SIZE, sizes } from '../../lib/styles'
+import { CONTENT_PADDING, CONTENT_SIZE, sizes } from '../../lib/styles'
 import MainNavigationLink from './components/MainNavigationLink.astro'
 import NavigationLink from './components/NavigationLink.astro'
 
@@ -25,8 +25,6 @@ const label = menuLabel[lang]
     define:vars={{
         contentPadding: CONTENT_PADDING,
         contentSize: CONTENT_SIZE,
-        headerSize: HEADER_SIZE,
-        sizes05: sizes[0.5],
         sizes25: sizes[2.5],
     }}
 >

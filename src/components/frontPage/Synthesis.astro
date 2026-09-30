@@ -12,15 +12,7 @@ interface Props {
 const { eyebrow, heading } = Astro.props
 ---
 
-<style
-    define:vars={{
-        colorsBlueInk: colors.blueInk,
-        textFontFamily: typographics.text.fontFamily,
-        textFontSize: typographics.text.fontSize,
-        textFontWeight: typographics.text.fontWeight,
-        textLineHeight: typographics.text.lineHeight,
-    }}
->
+<style define:vars={{ colorsBlueInk: colors.blueInk }}>
     .synth {
         background: var(--colorsOffWhite);
         overflow: hidden;

@@ -1,5 +1,5 @@
 ---
-import { colors, fontWeights, sizes, typographics } from '../lib/styles'
+import { fontWeights, sizes, typographics } from '../lib/styles'
 
 interface Props {
     heavy?: boolean
@@ -14,13 +14,7 @@ const { heavy } = Astro.props
         bodyFontSize: typographics.body.fontSize,
         bodyFontWeight: typographics.body.fontWeight,
         bodyLineHeight: typographics.body.lineHeight,
-        colorsForestGreen: colors.forestGreen,
-        colorsTextSecondary: colors.textSecondary,
-        sizes05: sizes[0.5],
         sizes125: sizes[1.25],
-        textFontFamily: typographics.text.fontFamily,
-        textFontWeight: typographics.text.fontWeight,
-        textLineHeight: typographics.text.lineHeight,
     }}
 >
     li {

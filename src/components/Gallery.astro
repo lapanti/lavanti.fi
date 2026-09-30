@@ -3,7 +3,7 @@ import type { GalleryPhoto } from '../content/gallery'
 import type { Lang } from '../content/nav'
 
 import { getDownloadUrl, getImageSrcset } from '../lib/images'
-import { colors, sizes, typographics } from '../lib/styles'
+import { sizes, typographics } from '../lib/styles'
 
 interface Props {
     lang: Lang
@@ -34,11 +34,6 @@ const aspects = ['nelio', 'pysty', 'vaaka'] as const
         buttonLetterSpacing: typographics.linkRule.letterSpacing,
         captionFontFamily: typographics.caption.fontFamily,
         captionFontSize: typographics.caption.fontSize,
-        colorsForestGreen: colors.forestGreen,
-        colorsGray: colors.gray,
-        colorsTextSecondary: colors.textSecondary,
-        sizes05: sizes[0.5],
-        sizes1: sizes[1],
         sizes2: sizes[2],
     }}
 >

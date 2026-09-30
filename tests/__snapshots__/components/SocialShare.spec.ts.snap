@@ -5,13 +5,11 @@ exports[`<SocialShare /> > should render 1`] = `
   aria-label="Kirjoituksen "Vuosi 2026 on tekoälyn" jakaminen sosiaalisessa mediassa"
   class="share"
   data-astro-cid-w7whim4q=""
-  style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
 >
    
   <span
     class="share-k"
     data-astro-cid-w7whim4q=""
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
   >
     Jaa:
   </span>
@@ -26,7 +24,6 @@ https://lavanti.fi/blogi/vuosi-2026-on-tekoalyn"
     href="https://mastodon.social/share?text=Lue%20%22Vuosi%202026%20on%20teko%C3%A4lyn%22%2C%20jonka%20%40laurilavanti%40mastodon.social%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Fblogi%2Fvuosi-2026-on-tekoalyn"
     id="mastodon-share"
     rel="noopener noreferrer"
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
     title="Jaa Mastodonissa"
   >
     
@@ -39,7 +36,6 @@ Mastodon
     data-astro-cid-w7whim4q=""
     href="https://bsky.app/intent/compose?text=Lue%20%22Vuosi%202026%20on%20teko%C3%A4lyn%22%2C%20jonka%20%40lauri.lavanti.fi%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Fblogi%2Fvuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
     title="Jaa Blueskyssa"
   >
     
@@ -52,7 +48,6 @@ Bluesky
     data-astro-cid-w7whim4q=""
     href="https://threads.com/intent/post?text=Lue%20%22Vuosi%202026%20on%20teko%C3%A4lyn%22%2C%20jonka%20%40laurilavanti%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Fblogi%2Fvuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
     title="Jaa Threadsissä"
   >
     
@@ -65,7 +60,6 @@ Threads
     data-astro-cid-w7whim4q=""
     href="https://www.linkedin.com/sharing/share-offsite/?url=https://lavanti.fi/blogi/vuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
     title="Jaa LinkedInissä"
   >
     
@@ -78,7 +72,6 @@ LinkedIn
     data-astro-cid-w7whim4q=""
     href="https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/blogi/vuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
-    style="--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;"
     title="Jaa Facebookissa"
   >
     

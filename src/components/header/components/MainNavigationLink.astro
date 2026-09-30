@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../../../content/nav'
 
-import { colors, HEADER_SIZE, sizes } from '../../../lib/styles'
+import { colors, sizes } from '../../../lib/styles'
 import NameLogo from '../../NameLogo.astro'
 
 interface Props {
@@ -18,7 +18,6 @@ const underlineColor = tone === 'light' ? colors.white : colors.forestGreen
 
 <style
     define:vars={{
-        headerSize: HEADER_SIZE,
         sizes01875: sizes[0.1875],
         sizes5: sizes[5],
         underlineColor,

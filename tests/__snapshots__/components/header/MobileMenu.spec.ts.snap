@@ -4,20 +4,20 @@ exports[`<MobileMenu /> > should render 1`] = `
 <div
   class="container"
   data-astro-cid-t7vk6yyn=""
-  style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+  style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
 >
    
   <div
     class="brand"
     data-astro-cid-t7vk6yyn=""
-    style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+    style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
   >
      
     <a
       aria-current="false"
       data-astro-cid-6wv6yc2t=""
       href="/fi/"
-      style="--headerSize: 3.75rem;--sizes01875: 0.1875rem;--sizes5: 5rem;--underlineColor: rgb(22, 62, 53);"
+      style="--sizes01875: 0.1875rem;--sizes5: 5rem;--underlineColor: rgb(22, 62, 53);"
     >
        
       <span
@@ -47,14 +47,14 @@ exports[`<MobileMenu /> > should render 1`] = `
    
   <div
     data-astro-cid-t7vk6yyn=""
-    style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+    style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
   >
      
     <button
       class="menu-btn"
       data-astro-cid-t7vk6yyn=""
       popovertarget="mobile-nav"
-      style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+      style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
       type="button"
     >
        Valikko 
@@ -66,7 +66,7 @@ exports[`<MobileMenu /> > should render 1`] = `
       data-astro-cid-t7vk6yyn=""
       id="mobile-nav"
       popover=""
-      style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+      style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
     >
        
       <a
@@ -92,7 +92,7 @@ exports[`<MobileMenu /> > should render 1`] = `
         class="langs"
         data-astro-cid-t7vk6yyn=""
         role="group"
-        style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
       >
           
       </div>
@@ -101,27 +101,27 @@ exports[`<MobileMenu /> > should render 1`] = `
         aria-hidden="true"
         class="menu-stripe"
         data-astro-cid-t7vk6yyn=""
-        style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+        style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
       >
         <i
           data-astro-cid-t7vk6yyn=""
-          style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+          style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
         />
         <i
           data-astro-cid-t7vk6yyn=""
-          style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+          style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
         />
         <i
           data-astro-cid-t7vk6yyn=""
-          style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+          style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
         />
         <i
           data-astro-cid-t7vk6yyn=""
-          style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+          style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
         />
         <i
           data-astro-cid-t7vk6yyn=""
-          style="--contentPadding: 0.5rem;--contentSize: 75rem;--headerSize: 3.75rem;--sizes05: 0.5rem;--sizes25: 2.5rem;"
+          style="--contentPadding: 0.5rem;--contentSize: 75rem;--sizes25: 2.5rem;"
         />
       </div>
        

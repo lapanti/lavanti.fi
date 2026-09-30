@@ -4,7 +4,6 @@ exports[`<HeroBanner /> > should render 1`] = `
 <section
   class="hero"
   data-astro-cid-fz4dugmu=""
-  style="--headerSize: 3.75rem;"
 >
    
   <div

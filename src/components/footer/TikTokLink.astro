@@ -1,5 +1,4 @@
 ---
-import { colors } from '../../lib/styles'
 import Link from './Link.astro'
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 const { ariaLabel, title, url } = Astro.props
 ---
 
-<style define:vars={{ colorsGray: colors.gray, tiktokRed: '#FE2C55', tiktokTurquoise: '#25F4EE' }}>
+<style define:vars={{ tiktokRed: '#FE2C55', tiktokTurquoise: '#25F4EE' }}>
     svg path {
         fill: var(--colorsGray);
     }

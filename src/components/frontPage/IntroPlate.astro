@@ -14,16 +14,7 @@ const { eyebrow, ground = 'sand', heading, id } = Astro.props
 const groundColor = ground === 'sand' ? colors.lightSand : colors.offWhite
 ---
 
-<style
-    define:vars={{
-        groundColor,
-        sizes45: sizes[45],
-        textFontFamily: typographics.text.fontFamily,
-        textFontSize: typographics.text.fontSize,
-        textFontWeight: typographics.text.fontWeight,
-        textLineHeight: typographics.text.lineHeight,
-    }}
->
+<style define:vars={{ groundColor, sizes45: sizes[45] }}>
     .plate {
         background: var(--groundColor);
     }

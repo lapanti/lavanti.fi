@@ -1,6 +1,6 @@
 ---
 import { getImageSrcset } from '../../lib/images'
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 
 interface Props {
     alt: string
@@ -16,8 +16,6 @@ const img = image ? getImageSrcset(image, '1x1', [448, 896]) : undefined
 
 <style
     define:vars={{
-        colorsTextPrimary: colors.textPrimary,
-        colorsTextSecondary: colors.textSecondary,
         quoteBodyFontFamily: typographics.quoteBody.fontFamily,
         quoteBodyFontSize: typographics.quoteBody.fontSize,
         quoteBodyFontStyle: typographics.quoteBody.fontStyle,

@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../content/nav'
 
-import { colors, HEADER_SIZE, sizes } from '../lib/styles'
+import { sizes } from '../lib/styles'
 import ArtHead from './titleBanner/ArtHead.astro'
 import HeroMedia from './titleBanner/HeroMedia.astro'
 import Image from './titleBanner/Image.astro'
@@ -45,13 +45,7 @@ const {
 } = Astro.props
 ---
 
-<style
-    define:vars={{
-        colorsForestGreen: colors.forestGreen,
-        headerSize: HEADER_SIZE,
-        sizes45: sizes[45],
-    }}
->
+<style define:vars={{ sizes45: sizes[45] }}>
     .container {
         background-color: var(--colorsForestGreen);
         grid-column: 1 / -1;
