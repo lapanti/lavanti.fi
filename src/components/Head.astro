@@ -191,48 +191,52 @@ const jsonLd = JSON.stringify(
               name: title,
               url: canonical,
           }
-        : {
-              '@context': 'https://schema.org',
-              '@type': type && JSON_LD_TYPES.includes(type) ? type : WEBSITE,
-              author: isArticle ? resolvedAuthors : { '@type': 'Person', name: personName },
-              ...(updatedAt && type !== BLOGPOSTING ? { dateModified: updatedAt } : {}),
-              description,
-              headline: title,
-              license: 'https://creativecommons.org/licenses/by-sa/4.0/',
-              url: canonical,
-              ...(ogImageUrl ? { image: ogImageUrl } : {}),
-              ...(type === BLOGPOSTING
-                  ? {
-                        ...(ogImageUrl
-                            ? {
-                                  image: { '@type': 'ImageObject', height: 630, url: ogImageUrl, width: 1200 },
-                                  primaryImageOfPage: {
-                                      '@type': 'ImageObject',
-                                      height: 630,
-                                      url: ogImageUrl,
-                                      width: 1200,
-                                  },
-                              }
-                            : {}),
-                        dateModified: updatedAt ?? createdAt,
-                        datePublished: createdAt,
-                        inLanguage: lang,
-                        mainEntityOfPage: {
-                            '@id': canonical,
-                            '@type': WEBPAGE,
-                            inLanguage: lang,
-                        },
-                        ...(wordCount ? { wordCount } : {}),
-                    }
-                  : {}),
-              ...(type === WEBSITE
-                  ? {
-                        name: personName,
-                        sameAs: personSameAs,
-                    }
-                  : {}),
-              ...(type === PERSON ? { ...canonicalPersonObject } : {}),
-          }
+        : type === PERSON
+          ? /* A Person is not a CreativeWork: author, headline and license are invalid on it. */
+            { '@context': 'https://schema.org', ...canonicalPersonObject }
+          : {
+                '@context': 'https://schema.org',
+                '@type': type && JSON_LD_TYPES.includes(type) ? type : WEBSITE,
+                author: isArticle ? resolvedAuthors : { '@type': 'Person', name: personName },
+                ...(updatedAt && type !== BLOGPOSTING ? { dateModified: updatedAt } : {}),
+                description,
+                headline: title,
+                license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+                url: canonical,
+                ...(ogImageUrl ? { image: ogImageUrl } : {}),
+                ...(type === BLOGPOSTING
+                    ? {
+                          ...(ogImageUrl
+                              ? {
+                                    image: { '@type': 'ImageObject', height: 630, url: ogImageUrl, width: 1200 },
+                                    primaryImageOfPage: {
+                                        '@type': 'ImageObject',
+                                        height: 630,
+                                        url: ogImageUrl,
+                                        width: 1200,
+                                    },
+                                }
+                              : {}),
+                          dateModified: updatedAt ?? createdAt,
+                          datePublished: createdAt,
+                          inLanguage: lang,
+                          mainEntityOfPage: {
+                              '@id': canonical,
+                              '@type': WEBPAGE,
+                              inLanguage: lang,
+                          },
+                          /* A personal blog: the author publishes it. Google accepts a Person here. */
+                          publisher: { '@id': PERSON_ID, '@type': 'Person', name: personName, url: personUrl },
+                          ...(wordCount ? { wordCount } : {}),
+                      }
+                    : {}),
+                ...(type === WEBSITE
+                    ? {
+                          name: personName,
+                          sameAs: personSameAs,
+                      }
+                    : {}),
+            }
 )
 
 const faqJsonLd = hasFaqSection(faq)

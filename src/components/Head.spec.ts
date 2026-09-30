@@ -568,6 +568,28 @@ describe('<Head />', () => {
         expect(jsonLd.knowsAbout).not.toContain('Talouspolitiikka')
     })
 
+    it('should not give a Person the CreativeWork-only author, headline or license', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { lang: 'fi', title: 'Lauri Lavanti', type: 'Person' },
+        })
+
+        const jsonLd = JSON.parse(result.querySelector('script[type="application/ld+json"]')?.textContent || '{}')
+        expect(jsonLd['@type']).toBe('Person')
+        expect(jsonLd['@id']).toBe(PERSON_ID)
+        expect(jsonLd).not.toHaveProperty('author')
+        expect(jsonLd).not.toHaveProperty('headline')
+        expect(jsonLd).not.toHaveProperty('license')
+    })
+
+    it('should name the author as publisher of a BlogPosting', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { createdAt: '2026-01-01', lang: 'fi', title: 'Post', type: 'BlogPosting' },
+        })
+
+        const jsonLd = JSON.parse(result.querySelector('script[type="application/ld+json"]')?.textContent || '{}')
+        expect(jsonLd.publisher).toMatchObject({ '@id': PERSON_ID, '@type': 'Person', name: personName })
+    })
+
     it('should emit ProfilePage JSON-LD with mainEntity Person when type is ProfilePage', async () => {
         const result = await renderAstroComponent(Head, {
             props: {
