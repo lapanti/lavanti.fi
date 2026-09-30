@@ -10,6 +10,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 
 import { tags } from './src/content/tags'
+import { notFoundPages } from './src/lib/notFoundPagesIntegration'
 import { buildPageDateMap } from './src/lib/sitemapLastmod'
 import { redirects } from './src/lib/redirects'
 import { redirectsFile } from './src/lib/redirectsIntegration'
@@ -61,6 +62,8 @@ export default defineConfig({
                 new URL(page).pathname !== '/' &&
                 // Exclude bare /{lang}/blog/{id}/ redirect pages
                 !/\/(en|fi|sv)\/blog\/\d+\/$/.test(page) &&
+                // Exclude the localised not-found pages (served as sv/404.html, en/404.html)
+                !/^\/(en|sv)\/404\/$/.test(new URL(page).pathname) &&
                 // Exclude old root-level /kategoria/ redirect pages (the localised
                 // FI category pages live under /fi/kategoria/ and must stay included)
                 !new URL(page).pathname.startsWith('/kategoria/'),
@@ -74,5 +77,6 @@ export default defineConfig({
         // bare-id → slug redirects as true 301s (the meta-refresh stubs remain
         // as an `astro preview` fallback).
         redirectsFile(),
+        notFoundPages(),
     ],
 })
