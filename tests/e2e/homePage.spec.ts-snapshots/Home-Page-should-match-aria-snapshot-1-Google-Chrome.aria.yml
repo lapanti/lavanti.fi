@@ -5,8 +5,8 @@
     - text: ""
     - emphasis: the people
   - paragraph: My goal is a digitally independent Finland, where the economy, education, and freedom all work together in the age of AI.
-  - link "Explore my platform":
-    - /url: "#driver"
+  - link "Support the campaign":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: /Parliamentary election \d+/
     - heading "Why am I running?" [level=2]

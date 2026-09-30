@@ -4,6 +4,8 @@
     - text: ""
     - emphasis: i riksdagsvalet
   - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Valdagen är söndagen den \d+\.\d+\.\d+ och förhandsröstningen i Finland pågår 7–\d+\.\d+\.\d+\./
+  - link "Stöd kampanjen":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: Valet
     - heading /Riksdagsvalet \d+ i korthet/ [level=2]
@@ -139,7 +141,7 @@
     - heading "Kan man förhandsrösta på Lauri Lavanti?" [level=3]
     - paragraph: /Ja\. Förhandsröstningen pågår i Finland 7–\d+ april \d+, och man kan förhandsrösta på vilket allmänt förhandsröstningsställe som helst\. På valdagen \d+\.\d+\.\d+ röstar man på sitt eget röstningsställe, som anges i meddelandet om rösträtt\./
     - heading "Hur kan man stödja Lauri Lavantis kampanj?" [level=3]
-    - paragraph: Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen — donationslänken publiceras på sidan om valfinansiering. Samma sida visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.
+    - paragraph: Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen på lavanti.fi/lahjoita. Sidan om valfinansiering visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.
     - heading "Prenumerera på nyhetsbrevet" [level=2]
     - paragraph: Prenumerera på mitt nyhetsbrev och få analyser av den senaste utvecklingen inom AI och teknik, samt dess påverkan på samhället, direkt till din inkorg.
     - text: E-post

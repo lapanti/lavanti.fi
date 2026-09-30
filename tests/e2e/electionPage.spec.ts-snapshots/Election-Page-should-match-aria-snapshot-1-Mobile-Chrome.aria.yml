@@ -4,6 +4,8 @@
     - text: ""
     - emphasis: eduskuntaan
   - paragraph: /Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Vaalipäivä on sunnuntai \d+\.\d+\.\d+ ja ennakkoäänestys kotimaassa 7\.–\d+\.\d+\.\d+\./
+  - link "Tue kampanjaa":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: Vaalit
     - heading /Eduskuntavaalit \d+ lyhyesti/ [level=2]
@@ -139,7 +141,7 @@
     - heading "Voiko Lauri Lavantia äänestää ennakkoon?" [level=3]
     - paragraph: /Kyllä\. Ennakkoäänestys on kotimaassa 7\.–\d+\. huhtikuuta \d+, ja ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa\. Vaalipäivänä \d+\.\d+\.\d+ äänestetään omassa äänestyspaikassa, joka kerrotaan äänioikeusilmoituksessa\./
     - heading "Miten Lauri Lavannin kampanjaa voi tukea?" [level=3]
-    - paragraph: Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle — lahjoituslinkki julkaistaan vaalirahoitussivulla. Sama sivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.
+    - paragraph: Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle osoitteessa lavanti.fi/lahjoita. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.
     - heading "Tilaa uutiskirje" [level=2]
     - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
     - text: Sähköposti
