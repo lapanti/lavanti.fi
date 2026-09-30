@@ -52,6 +52,11 @@ interface Props {
     /** Campaign events for the sibling Event JSON-LD; the section itself renders from the page body. */
     events?: CampaignEvent[]
     faq?: Array<FaqItem>
+    /**
+     * With `noindex`: let crawlers follow the page's links. For pages that are not
+     * content themselves but point at content, like the root language dispatcher.
+     */
+    follow?: boolean
     lang?: Lang
     langAlternates?: Record<Lang, string>
     noindex?: boolean
@@ -71,6 +76,7 @@ const {
     description = 'Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä, johtava ohjelmistokehittäjä. Tavoitteena digitaalisesti itsenäinen Suomi tekoälyn aikakaudella.',
     events,
     faq,
+    follow = false,
     lang: rawLang = 'fi',
     langAlternates,
     noindex,
@@ -319,7 +325,7 @@ const breadcrumbJsonLd =
 ---
 
 <meta charset="utf-8" />
-{noindex && <meta content="noindex, nofollow" name="robots" />}
+{noindex && <meta content={follow ? 'noindex, follow' : 'noindex, nofollow'} name="robots" />}
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 <meta content={title} property="og:title" />
 <meta content={personName} name="author" />
