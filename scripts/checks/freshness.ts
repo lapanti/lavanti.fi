@@ -14,6 +14,8 @@
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+
+// eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
 import { fmField, splitMdx } from './mdx-deep.ts'
 
 export const FRESHNESS_NO_UPDATE_DAYS = 90
@@ -45,7 +47,14 @@ export function checkFreshness(file: string, today: Date): StalePost | null {
     if (!updatedDateStr) {
         const ageDays = (today.getTime() - new Date(publishDateStr).getTime()) / 86_400_000
         if (ageDays > FRESHNESS_NO_UPDATE_DAYS) {
-            return { slug, lang, publishDate: publishDateStr, updatedDate: null, reason: 'no-updated-date', ageDays: Math.floor(ageDays) }
+            return {
+                ageDays: Math.floor(ageDays),
+                lang,
+                publishDate: publishDateStr,
+                reason: 'no-updated-date',
+                slug,
+                updatedDate: null,
+            }
         }
         return null
     }
@@ -53,7 +62,14 @@ export function checkFreshness(file: string, today: Date): StalePost | null {
     const updateAgeMs = today.getTime() - new Date(updatedDateStr).getTime()
     const updateAgeDays = updateAgeMs / 86_400_000
     if (updateAgeDays > FRESHNESS_STALE_UPDATE_DAYS) {
-        return { slug, lang, publishDate: publishDateStr, updatedDate: updatedDateStr, reason: 'updated-date-stale', ageDays: Math.floor(updateAgeDays) }
+        return {
+            ageDays: Math.floor(updateAgeDays),
+            lang,
+            publishDate: publishDateStr,
+            reason: 'updated-date-stale',
+            slug,
+            updatedDate: updatedDateStr,
+        }
     }
 
     return null
@@ -79,10 +95,13 @@ if (isMain) {
     process.stdout.write(`Stale posts (${stalePosts.length}):\n\n`)
     for (const post of stalePosts) {
         const updated = post.updatedDate ?? '—'
-        const reason = post.reason === 'no-updated-date'
-            ? `Case A: no updatedDate, ${post.ageDays} days since publishDate`
-            : `Case B: updatedDate ${post.ageDays} days ago`
-        process.stdout.write(`  ${post.slug}  [${post.lang}]  published: ${post.publishDate}  updated: ${updated}  — ${reason}\n`)
+        const reason =
+            post.reason === 'no-updated-date'
+                ? `Case A: no updatedDate, ${post.ageDays} days since publishDate`
+                : `Case B: updatedDate ${post.ageDays} days ago`
+        process.stdout.write(
+            `  ${post.slug}  [${post.lang}]  published: ${post.publishDate}  updated: ${updated}  — ${reason}\n`
+        )
     }
 
     process.exit(1)
