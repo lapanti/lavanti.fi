@@ -3,7 +3,7 @@
 exports[`<BlockQuote /> > should render 1`] = `
 <blockquote
   data-astro-cid-ei6756yw=""
-  style="--blockQuoteFontFamily: "IBM Plex Mono", Lucida Sans Typewriter;--blockQuoteFontSize: 1.5rem;--blockQuoteFontStyle: italic;--blockQuoteFontWeight: 400;--blockQuoteLineHeight: 1.2;--colorsTextPrimary: #1B211C;--sizes05: 0.5rem;"
+  style="--blockQuoteFontFamily: "IBM Plex Mono", Lucida Sans Typewriter;--blockQuoteFontSize: 1.5rem;--blockQuoteFontStyle: italic;--blockQuoteFontWeight: 400;--blockQuoteLineHeight: 1.2;"
 >
    Quote text 
 </blockquote>

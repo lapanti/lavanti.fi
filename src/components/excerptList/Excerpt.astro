@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 
 import { getCategoryPath, getTagName } from '../../content/tags'
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 import Banner from './excerpt/Banner.astro'
 import Description from './excerpt/Description.astro'
 
@@ -42,7 +42,6 @@ const tagsToRender = (tags ?? [])
 
 <style
     define:vars={{
-        colorsTextSecondary: colors.textSecondary,
         metaFontFamily: typographics.meta.fontFamily,
         metaFontWeight: typographics.meta.fontWeight,
         metaLetterSpacing: typographics.meta.letterSpacing,

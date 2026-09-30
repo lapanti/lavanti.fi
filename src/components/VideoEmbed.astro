@@ -3,7 +3,7 @@ import type { Lang } from '../content/nav'
 
 import { videoEmbedContent } from '../content/videoEmbed'
 import { getImageSrcset } from '../lib/images'
-import { colors, sizes, typographics } from '../lib/styles'
+import { sizes } from '../lib/styles'
 
 interface Props {
     /** Locale for the play button label and accessible name. */
@@ -75,12 +75,6 @@ const videoEmbedScript = `(function(){
 
 <style
     define:vars={{
-        colorsTextSecondary: colors.textSecondary,
-        fineFontFamily: typographics.fine.fontFamily,
-        fineFontSize: typographics.fine.fontSize,
-        fineFontWeight: typographics.fine.fontWeight,
-        fineLineHeight: typographics.fine.lineHeight,
-        sizes05: sizes[0.5],
         sizes025: sizes[0.25],
         sizes4: sizes[4],
         sizes15: sizes[1.5],

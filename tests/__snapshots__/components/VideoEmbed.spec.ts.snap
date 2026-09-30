@@ -4,21 +4,21 @@ exports[`<VideoEmbed /> > should render 1`] = `
 <div
   class="video-embed"
   data-astro-cid-2gmjvff3=""
-  style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+  style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
 >
    
   <div
     class="frame"
     data-astro-cid-2gmjvff3=""
     data-video-frame="fiLEp7wLK3I"
-    style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+    style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
   >
       
     <button
       aria-label="Toista video: Miksi olen ehdolla?"
       class="facade"
       data-astro-cid-2gmjvff3=""
-      style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+      style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
       type="button"
     >
        
@@ -26,14 +26,14 @@ exports[`<VideoEmbed /> > should render 1`] = `
         aria-hidden="true"
         class="glyph"
         data-astro-cid-2gmjvff3=""
-        style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+        style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
       >
          
         <svg
           data-astro-cid-2gmjvff3=""
           fill="currentColor"
           focusable="false"
-          style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+          style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -41,7 +41,7 @@ exports[`<VideoEmbed /> > should render 1`] = `
           <path
             d="M8 5v14l11-7z"
             data-astro-cid-2gmjvff3=""
-            style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+            style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
           />
            
         </svg>
@@ -51,7 +51,7 @@ exports[`<VideoEmbed /> > should render 1`] = `
       <span
         class="label"
         data-astro-cid-2gmjvff3=""
-        style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+        style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
       >
         Toista video
       </span>
@@ -63,7 +63,7 @@ exports[`<VideoEmbed /> > should render 1`] = `
   <p
     class="note"
     data-astro-cid-2gmjvff3=""
-    style="--colorsTextSecondary: #4A4E45;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineFontWeight: 400;--fineLineHeight: 1.68;--sizes05: 0.5rem;--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
+    style="--sizes025: 0.25rem;--sizes4: 4rem;--sizes15: 1.5rem;--sizes45: 45rem;"
   >
     Video toistetaan YouTubesta. Mitään ei ladata YouTubelta ennen kuin painat toistoa.
   </p>

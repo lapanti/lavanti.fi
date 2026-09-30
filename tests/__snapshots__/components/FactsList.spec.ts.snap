@@ -4,18 +4,18 @@ exports[`<FactsList /> > should render 1`] = `
 <ul
   class="facts"
   data-astro-cid-4dazknio=""
-  style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+  style="--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
 >
    
   <li
     data-astro-cid-4dazknio=""
-    style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+    style="--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
   >
     Johtava ohjelmistokehittäjä
   </li>
   <li
     data-astro-cid-4dazknio=""
-    style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+    style="--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
   >
     Kunnanvaltuutettu
   </li>

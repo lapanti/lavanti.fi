@@ -7,7 +7,6 @@ import {
     personMastodonInstance,
     personThreadsHandle,
 } from '../content/person'
-import { colors } from '../lib/styles'
 
 interface Props {
     ariaLabel: string
@@ -74,12 +73,7 @@ const mastodonText = l.shareText(title, shareUrl, personMastodonHandle)
 const mastodonFallbackHref = `https://${personMastodonInstance}/share?text=${encodeURIComponent(mastodonText)}`
 ---
 
-<style
-    define:vars={{
-        colorsForestGreen: colors.forestGreen,
-        colorsTextSecondary: colors.textSecondary,
-    }}
->
+<style>
     .share {
         align-items: center;
         display: flex;

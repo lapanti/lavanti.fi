@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../lib/styles'
+import { typographics } from '../lib/styles'
 
 interface Props {
     itemProp?: string
@@ -10,7 +10,6 @@ const { itemProp } = Astro.props
 
 <style
     define:vars={{
-        colorsTextPrimary: colors.textPrimary,
         h3FontFamily: typographics.h3.fontFamily,
         h3FontSize: typographics.h3.fontSize,
         h3FontWeight: typographics.h3.fontWeight,

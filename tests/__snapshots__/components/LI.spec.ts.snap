@@ -3,7 +3,7 @@
 exports[`<LI /> > should render 1`] = `
 <li
   data-astro-cid-mxyohmtp=""
-  style=";--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--sizes05: 0.5rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+  style=";--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--sizes125: 1.25rem;"
 >
    List item 
 </li>
@@ -12,7 +12,7 @@ exports[`<LI /> > should render 1`] = `
 exports[`<LI /> > should render heavy 1`] = `
 <li
   data-astro-cid-mxyohmtp=""
-  style="font-weight:900;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsForestGreen: rgb(22, 62, 53);--colorsTextSecondary: #4A4E45;--sizes05: 0.5rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+  style="font-weight:900;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--sizes125: 1.25rem;"
 >
    List item 
 </li>

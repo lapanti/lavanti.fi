@@ -11,7 +11,7 @@ import type { Lang } from '../../content/nav'
 import type { BarRow } from '../../lib/campaignFinance'
 
 import { barsMax, barWidth, formatEuro, formatPercent } from '../../lib/campaignFinance'
-import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
+import { fontWeights, sizes, typographics } from '../../lib/styles'
 
 interface Props {
     caption: string
@@ -41,12 +41,9 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
         captionFontSize: typographics.title.fontSize,
         captionFontWeight: typographics.title.fontWeight,
         captionPad: sizes[1],
-        colorsForestGreen: colors.forestGreen,
-        colorsTextPrimary: colors.textPrimary,
         labelColumn: sizes[14],
         labelFontFamily: typographics.text.fontFamily,
         labelFontSize: typographics.text.fontSize,
-        sectionPad: sizes[1.5],
     }}
 >
     .bars {

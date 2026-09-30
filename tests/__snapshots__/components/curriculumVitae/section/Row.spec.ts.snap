@@ -3,12 +3,12 @@
 exports[`<Row /> > should render 1`] = `
 <li
   data-astro-cid-s7wqb6df=""
-  style="--colorsGreen: #009639;--colorsTextSecondary: #4A4E45;--cvOrgFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--cvOrgFontWeight: 700;--cvRoleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--cvRoleFontWeight: 600;"
+  style="--colorsGreen: #009639;--cvOrgFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--cvOrgFontWeight: 700;--cvRoleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--cvRoleFontWeight: 600;"
 >
    
   <div
     data-astro-cid-s7wqb6df=""
-    style="--colorsGreen: #009639;--colorsTextSecondary: #4A4E45;--cvOrgFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--cvOrgFontWeight: 700;--cvRoleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--cvRoleFontWeight: 600;"
+    style="--colorsGreen: #009639;--cvOrgFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--cvOrgFontWeight: 700;--cvRoleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--cvRoleFontWeight: 600;"
   >
      
     <div

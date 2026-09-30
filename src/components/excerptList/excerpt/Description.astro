@@ -1,6 +1,4 @@
 ---
-import { colors, typographics } from '../../../lib/styles'
-
 interface Props {
     excerpt?: string
 }
@@ -8,14 +6,7 @@ interface Props {
 const { excerpt } = Astro.props
 ---
 
-<style
-    define:vars={{
-        colorsTextSecondary: colors.textSecondary,
-        textSmallFontFamily: typographics.textSmall.fontFamily,
-        textSmallFontWeight: typographics.textSmall.fontWeight,
-        textSmallLineHeight: typographics.textSmall.lineHeight,
-    }}
->
+<style>
     p {
         color: var(--colorsTextSecondary);
         font-family: var(--textSmallFontFamily);

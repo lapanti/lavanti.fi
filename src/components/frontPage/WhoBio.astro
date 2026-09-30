@@ -1,6 +1,6 @@
 ---
 import { getImageSrcset } from '../../lib/images'
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 
 interface Props {
     credentials?: string[]
@@ -17,15 +17,8 @@ const portrait = getImageSrcset(portraitImage, 'hero', [560, 840, 1128])
 
 <style
     define:vars={{
-        colorsTextPrimary: colors.textPrimary,
-        colorsTextSecondary: colors.textSecondary,
         displayFontFamily: typographics.headline.fontFamily,
         displayFontWeight: typographics.headline.fontWeight,
-        textFontFamily: typographics.text.fontFamily,
-        textFontWeight: typographics.text.fontWeight,
-        textLineHeight: typographics.text.lineHeight,
-        textSmallFontFamily: typographics.textSmall.fontFamily,
-        textSmallFontWeight: typographics.textSmall.fontWeight,
     }}
 >
     .who {

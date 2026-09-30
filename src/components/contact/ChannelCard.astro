@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 
 interface Props {
     href: string
@@ -13,7 +13,6 @@ const { href, kicker, note, value } = Astro.props
 
 <style
     define:vars={{
-        colorsTextSecondary: colors.textSecondary,
         displayFontFamily: typographics.display.fontFamily,
         displayFontWeight: typographics.display.fontWeight,
     }}

@@ -4,7 +4,7 @@ exports[`<Lede /> > should render 1`] = `
 <p
   class="lede"
   data-astro-cid-ixllkgkr=""
-  style="--colorsTextPrimary: #1B211C;--ledeFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--ledeFontSize: 1.1875rem;--ledeFontWeight: 400;--ledeLineHeight: 1.68;"
+  style="--ledeFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--ledeFontSize: 1.1875rem;--ledeFontWeight: 400;--ledeLineHeight: 1.68;"
 >
   Signal Band lead text.
 </p>

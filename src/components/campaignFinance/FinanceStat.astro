@@ -3,7 +3,7 @@
  * One labelled figure — a term and its amount, rendered as a description-list pair.
  * Lives inside FinanceStats, which supplies the <dl>.
  */
-import { colors, signalBandFontFamilies, sizes, typographics } from '../../lib/styles'
+import { signalBandFontFamilies, sizes, typographics } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 
 interface Props {
@@ -19,8 +19,6 @@ const { label, note, value } = Astro.props
 
 <style
     define:vars={{
-        colorsForestGreen: colors.forestGreen,
-        colorsTextSecondary: colors.textSecondary,
         statFontFamily: signalBandFontFamilies.heading,
         statFontSize: sizes[2.25],
         statFontSizeMobile: sizes[1.875],

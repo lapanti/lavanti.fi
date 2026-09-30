@@ -3,7 +3,7 @@
 exports[`<Link /> > should render 1`] = `
 <li
   data-astro-cid-kanwaajr=""
-  style="--colorsGray: rgb(235, 235, 236);--hoverColor: #0060df;--sizes0: 0px;--sizes225: 2.25rem;"
+  style="--hoverColor: #0060df;--sizes0: 0px;--sizes225: 2.25rem;"
 >
    
   <a
@@ -11,7 +11,7 @@ exports[`<Link /> > should render 1`] = `
     data-astro-cid-kanwaajr=""
     href="https://github.com/example"
     rel="me noopener noreferrer"
-    style="--colorsGray: rgb(235, 235, 236);--hoverColor: #0060df;--sizes0: 0px;--sizes225: 2.25rem;"
+    style="--hoverColor: #0060df;--sizes0: 0px;--sizes225: 2.25rem;"
     target="_blank"
     title="Follow us on GitHub"
   >

@@ -5,31 +5,31 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38366393"
   data-astro-cid-dsoyuyhn=""
   id="mlb2-38366393"
-  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
 >
    
   <div
     class="ml-form-align-center"
     data-astro-cid-dsoyuyhn=""
-    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
   >
      
     <div
       class="ml-form-embedWrapper embedForm"
       data-astro-cid-dsoyuyhn=""
-      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
     >
        
       <div
         class="ml-form-embedBody ml-form-embedBodyHorizontal row-form"
         data-astro-cid-dsoyuyhn=""
-        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-embedContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
             
           <h2
@@ -41,7 +41,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Subscribe to my newsletter and get analysis on the latest developments in AI and technology, and their impact on society, straight to your inbox. 
           </p>
@@ -54,38 +54,38 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
           data-astro-cid-dsoyuyhn=""
           data-code=""
           method="post"
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           target="_blank"
         >
            
           <div
             class="ml-form-formContent horozintalForm"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-horizontalRow"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <div
                 class="ml-input-horizontal"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <div
                   class="horizontal-fields"
                   data-astro-cid-dsoyuyhn=""
-                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                 >
                    
                   <div
                     class="ml-field-group ml-field-email ml-validate-email ml-validate-required"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                      
                     <!-- input -->
@@ -94,7 +94,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
                       class="sr-only"
                       data-astro-cid-dsoyuyhn=""
                       for="newsletter-email"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                     >
                       Email
                     </label>
@@ -107,7 +107,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
                       id="newsletter-email"
                       name="fields[email]"
                       placeholder="Email"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                       type="email"
                     />
                      
@@ -122,13 +122,13 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
               <div
                 class="ml-button-horizontal primary"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <button
                   class="primary"
                   data-astro-cid-dsoyuyhn=""
-                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="submit"
                 >
                   Subscribe
@@ -138,20 +138,20 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
                   class="loading"
                   data-astro-cid-dsoyuyhn=""
                   disabled="disabled"
-                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="button"
                 >
                    
                   <div
                     class="ml-form-embedSubmitLoad"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   />
                    
                   <span
                     class="sr-only"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                     Loading...
                   </span>
@@ -168,13 +168,13 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
             aria-hidden="true"
             class="ml-mobileButton-horizontal"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <button
               class="primary"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="submit"
             >
@@ -185,7 +185,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
               class="loading"
               data-astro-cid-dsoyuyhn=""
               disabled="disabled"
-              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="button"
             >
@@ -193,13 +193,13 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
               <div
                 class="ml-form-embedSubmitLoad"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               />
                
               <span
                 class="sr-only"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                 Loading...
               </span>
@@ -213,18 +213,18 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
           <div
             class="ml-form-embedPermissions"
             data-astro-cid-dsoyuyhn=""
-            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-embedPermissionsContent horizontal privacy-policy"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <p
                 data-astro-cid-7zjb5n2t=""
-                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
               >
                  You can unsubscribe at any time. For more information, read our 
                 <a
@@ -247,7 +247,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="ml-submit"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="1"
           />
@@ -255,7 +255,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="anticsrf"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
           />
@@ -267,13 +267,13 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
       <div
         class="ml-form-successBody row-success"
         data-astro-cid-dsoyuyhn=""
-        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-successContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
            
           <h2
@@ -285,7 +285,7 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              You have successfully subscribed 
           </p>
@@ -306,31 +306,31 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38347721"
   data-astro-cid-dsoyuyhn=""
   id="mlb2-38347721"
-  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
 >
    
   <div
     class="ml-form-align-center"
     data-astro-cid-dsoyuyhn=""
-    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
   >
      
     <div
       class="ml-form-embedWrapper embedForm"
       data-astro-cid-dsoyuyhn=""
-      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
     >
        
       <div
         class="ml-form-embedBody ml-form-embedBodyHorizontal row-form"
         data-astro-cid-dsoyuyhn=""
-        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-embedContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
             
           <h2
@@ -342,7 +342,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan. 
           </p>
@@ -355,38 +355,38 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
           data-astro-cid-dsoyuyhn=""
           data-code=""
           method="post"
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           target="_blank"
         >
            
           <div
             class="ml-form-formContent horozintalForm"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-horizontalRow"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <div
                 class="ml-input-horizontal"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <div
                   class="horizontal-fields"
                   data-astro-cid-dsoyuyhn=""
-                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                 >
                    
                   <div
                     class="ml-field-group ml-field-email ml-validate-email ml-validate-required"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                      
                     <!-- input -->
@@ -395,7 +395,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
                       class="sr-only"
                       data-astro-cid-dsoyuyhn=""
                       for="newsletter-email"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                     >
                       Sähköposti
                     </label>
@@ -408,7 +408,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
                       id="newsletter-email"
                       name="fields[email]"
                       placeholder="Sähköposti"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                       type="email"
                     />
                      
@@ -423,13 +423,13 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
               <div
                 class="ml-button-horizontal primary"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <button
                   class="primary"
                   data-astro-cid-dsoyuyhn=""
-                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="submit"
                 >
                   Tilaa
@@ -439,20 +439,20 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
                   class="loading"
                   data-astro-cid-dsoyuyhn=""
                   disabled="disabled"
-                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="button"
                 >
                    
                   <div
                     class="ml-form-embedSubmitLoad"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   />
                    
                   <span
                     class="sr-only"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                     Lataa...
                   </span>
@@ -469,13 +469,13 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
             aria-hidden="true"
             class="ml-mobileButton-horizontal"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <button
               class="primary"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="submit"
             >
@@ -486,7 +486,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
               class="loading"
               data-astro-cid-dsoyuyhn=""
               disabled="disabled"
-              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="button"
             >
@@ -494,13 +494,13 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
               <div
                 class="ml-form-embedSubmitLoad"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               />
                
               <span
                 class="sr-only"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                 Lataa...
               </span>
@@ -514,18 +514,18 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
           <div
             class="ml-form-embedPermissions"
             data-astro-cid-dsoyuyhn=""
-            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-embedPermissionsContent horizontal privacy-policy"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <p
                 data-astro-cid-7zjb5n2t=""
-                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
               >
                  Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue 
                 <a
@@ -548,7 +548,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="ml-submit"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="1"
           />
@@ -556,7 +556,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="anticsrf"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
           />
@@ -568,13 +568,13 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
       <div
         class="ml-form-successBody row-success"
         data-astro-cid-dsoyuyhn=""
-        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-successContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
            
           <h2
@@ -586,7 +586,7 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Uutiskirje tilattu onnistuneesti 
           </p>
@@ -607,31 +607,31 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38379286"
   data-astro-cid-dsoyuyhn=""
   id="mlb2-38379286"
-  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
 >
    
   <div
     class="ml-form-align-center"
     data-astro-cid-dsoyuyhn=""
-    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
   >
      
     <div
       class="ml-form-embedWrapper embedForm"
       data-astro-cid-dsoyuyhn=""
-      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
     >
        
       <div
         class="ml-form-embedBody ml-form-embedBodyHorizontal row-form"
         data-astro-cid-dsoyuyhn=""
-        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-embedContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
             
           <h2
@@ -643,7 +643,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Prenumerera på mitt nyhetsbrev och få analyser av den senaste utvecklingen inom AI och teknik, samt dess påverkan på samhället, direkt till din inkorg. 
           </p>
@@ -656,38 +656,38 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
           data-astro-cid-dsoyuyhn=""
           data-code=""
           method="post"
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           target="_blank"
         >
            
           <div
             class="ml-form-formContent horozintalForm"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-horizontalRow"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <div
                 class="ml-input-horizontal"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <div
                   class="horizontal-fields"
                   data-astro-cid-dsoyuyhn=""
-                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                 >
                    
                   <div
                     class="ml-field-group ml-field-email ml-validate-email ml-validate-required"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                      
                     <!-- input -->
@@ -696,7 +696,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
                       class="sr-only"
                       data-astro-cid-dsoyuyhn=""
                       for="newsletter-email"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                     >
                       E-post
                     </label>
@@ -709,7 +709,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
                       id="newsletter-email"
                       name="fields[email]"
                       placeholder="E-post"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                       type="email"
                     />
                      
@@ -724,13 +724,13 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
               <div
                 class="ml-button-horizontal primary"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <button
                   class="primary"
                   data-astro-cid-dsoyuyhn=""
-                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="submit"
                 >
                   Prenumerera
@@ -740,20 +740,20 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
                   class="loading"
                   data-astro-cid-dsoyuyhn=""
                   disabled="disabled"
-                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="button"
                 >
                    
                   <div
                     class="ml-form-embedSubmitLoad"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   />
                    
                   <span
                     class="sr-only"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                     Laddar...
                   </span>
@@ -770,13 +770,13 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
             aria-hidden="true"
             class="ml-mobileButton-horizontal"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <button
               class="primary"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="submit"
             >
@@ -787,7 +787,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
               class="loading"
               data-astro-cid-dsoyuyhn=""
               disabled="disabled"
-              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="button"
             >
@@ -795,13 +795,13 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
               <div
                 class="ml-form-embedSubmitLoad"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               />
                
               <span
                 class="sr-only"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                 Laddar...
               </span>
@@ -815,18 +815,18 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
           <div
             class="ml-form-embedPermissions"
             data-astro-cid-dsoyuyhn=""
-            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-embedPermissionsContent horizontal privacy-policy"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <p
                 data-astro-cid-7zjb5n2t=""
-                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
               >
                  Du kan avsluta prenumerationen när som helst. För mer information, läs vår 
                 <a
@@ -849,7 +849,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="ml-submit"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="1"
           />
@@ -857,7 +857,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="anticsrf"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
           />
@@ -869,13 +869,13 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
       <div
         class="ml-form-successBody row-success"
         data-astro-cid-dsoyuyhn=""
-        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-successContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
            
           <h2
@@ -887,7 +887,7 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Du har prenumererat framgångsrikt 
           </p>
@@ -908,31 +908,31 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38347721 news-split"
   data-astro-cid-dsoyuyhn=""
   id="mlb2-38347721"
-  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
 >
    
   <div
     class="ml-form-align-center"
     data-astro-cid-dsoyuyhn=""
-    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
   >
      
     <div
       class="ml-form-embedWrapper embedForm"
       data-astro-cid-dsoyuyhn=""
-      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
     >
        
       <div
         class="ml-form-embedBody ml-form-embedBodyHorizontal row-form"
         data-astro-cid-dsoyuyhn=""
-        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-embedContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
            
           <span
@@ -952,7 +952,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan. 
           </p>
@@ -965,38 +965,38 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
           data-astro-cid-dsoyuyhn=""
           data-code=""
           method="post"
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           target="_blank"
         >
            
           <div
             class="ml-form-formContent horozintalForm"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-horizontalRow"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <div
                 class="ml-input-horizontal"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <div
                   class="horizontal-fields"
                   data-astro-cid-dsoyuyhn=""
-                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="width: 100%;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                 >
                    
                   <div
                     class="ml-field-group ml-field-email ml-validate-email ml-validate-required"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                      
                     <!-- input -->
@@ -1005,7 +1005,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
                       class="sr-only"
                       data-astro-cid-dsoyuyhn=""
                       for="newsletter-email"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                     >
                       Sähköposti
                     </label>
@@ -1018,7 +1018,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
                       id="newsletter-email"
                       name="fields[email]"
                       placeholder="Sähköposti"
-                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                      style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                       type="email"
                     />
                      
@@ -1033,13 +1033,13 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
               <div
                 class="ml-button-horizontal primary"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                  
                 <button
                   class="primary"
                   data-astro-cid-dsoyuyhn=""
-                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="submit"
                 >
                   Tilaa
@@ -1049,20 +1049,20 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
                   class="loading"
                   data-astro-cid-dsoyuyhn=""
                   disabled="disabled"
-                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                  style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   type="button"
                 >
                    
                   <div
                     class="ml-form-embedSubmitLoad"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   />
                    
                   <span
                     class="sr-only"
                     data-astro-cid-dsoyuyhn=""
-                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                    style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
                   >
                     Lataa...
                   </span>
@@ -1079,13 +1079,13 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
             aria-hidden="true"
             class="ml-mobileButton-horizontal"
             data-astro-cid-dsoyuyhn=""
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <button
               class="primary"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="submit"
             >
@@ -1096,7 +1096,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
               class="loading"
               data-astro-cid-dsoyuyhn=""
               disabled="disabled"
-              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="display: none;; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               tabindex="-1"
               type="button"
             >
@@ -1104,13 +1104,13 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
               <div
                 class="ml-form-embedSubmitLoad"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               />
                
               <span
                 class="sr-only"
                 data-astro-cid-dsoyuyhn=""
-                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+                style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
               >
                 Lataa...
               </span>
@@ -1124,18 +1124,18 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
           <div
             class="ml-form-embedPermissions"
             data-astro-cid-dsoyuyhn=""
-            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
           >
              
             <div
               class="ml-form-embedPermissionsContent horizontal privacy-policy"
               data-astro-cid-dsoyuyhn=""
-              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+              style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             >
                
               <p
                 data-astro-cid-7zjb5n2t=""
-                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+                style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
               >
                  Voit perua uutiskirjeen koska tahansa. Lisätietoja varten lue 
                 <a
@@ -1158,7 +1158,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="ml-submit"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="1"
           />
@@ -1166,7 +1166,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
           <input
             data-astro-cid-dsoyuyhn=""
             name="anticsrf"
-            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
           />
@@ -1178,13 +1178,13 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
       <div
         class="ml-form-successBody row-success"
         data-astro-cid-dsoyuyhn=""
-        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+        style="display: none; --colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
       >
          
         <div
           class="ml-form-successContent"
           data-astro-cid-dsoyuyhn=""
-          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fineFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--fineFontSize: 0.8125rem;--fineLineHeight: 1.68;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes1: 1rem;--sizes125: 1.25rem;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textLineHeight: 1.68;"
+          style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
         >
            
           <h2
@@ -1196,7 +1196,7 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
            
           <p
             data-astro-cid-7zjb5n2t=""
-            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+            style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
           >
              Uutiskirje tilattu onnistuneesti 
           </p>

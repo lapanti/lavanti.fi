@@ -1,5 +1,4 @@
 ---
-import { colors } from '../../lib/styles'
 import Link from './Link.astro'
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 const { ariaLabel, title, url } = Astro.props
 ---
 
-<style define:vars={{ colorsGray: colors.gray }}>
+<style>
     svg {
         fill: var(--colorsGray);
     }

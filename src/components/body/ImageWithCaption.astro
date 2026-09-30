@@ -1,6 +1,6 @@
 ---
 import { getImageSrcset } from '../../lib/images'
-import { colors, sizes, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 
 interface Props {
     alt?: string
@@ -22,9 +22,6 @@ const img = image ? getImageSrcset(image, 'body', [400, 800, 1200]) : undefined
         captionFontSize: typographics.caption.fontSize,
         captionFontWeight: typographics.caption.fontWeight,
         captionLineHeight: typographics.caption.lineHeight,
-        colorsTextSecondary: colors.textSecondary,
-        sizes05: sizes[0.5],
-        sizes1: sizes[1],
     }}
 >
     figure {

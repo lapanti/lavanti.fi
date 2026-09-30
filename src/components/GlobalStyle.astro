@@ -1,13 +1,17 @@
 ---
-import { colors, typographics } from '../lib/styles'
+import { colors, HEADER_SIZE, sizes, typographics } from '../lib/styles'
 
-const { button, chip, eyebrow, linkRule } = typographics
+const { button, chip, eyebrow, fine, linkRule, text, textSmall } = typographics
 
 /**
  * GlobalStyle renders no elements of its own, so Astro's `define:vars` — which declares
  * the custom properties inline on a component's root elements — has nowhere to put them
  * and every global rule below would reference variables that are never declared. Declare
  * them on `:root` instead, from the same token modules, so the globals resolve everywhere.
+ *
+ * The same rule keeps pages small: every name declared here must not be repeated in a
+ * component's `define:vars`, which would copy it inline onto each of the component's
+ * elements. Static tokens that several components share belong here, not there.
  */
 const rootTokens: Record<string, string> = {
     buttonFontFamily: button.fontFamily,
@@ -26,23 +30,42 @@ const rootTokens: Record<string, string> = {
     colorsDarkGreen: colors.darkGreen,
     colorsDeepForest: colors.forestGreen,
     colorsEyebrowNeutral: colors.eyebrowNeutral,
+    colorsForestGreen: colors.forestGreen,
     colorsForestGreen10: colors.forestGreen10,
+    colorsGray: colors.gray,
     colorsLightSand: colors.lightSand,
     colorsOat: colors.oat,
     colorsOffWhite: colors.offWhite,
     colorsSand: colors.sand,
     colorsSignalBlue: colors.signalBlue,
+    colorsTextPrimary: colors.textPrimary,
+    colorsTextSecondary: colors.textSecondary,
     colorsWhite: colors.white,
     eyebrowFontFamily: eyebrow.fontFamily,
     eyebrowFontSize: eyebrow.fontSize,
     eyebrowFontWeight: String(eyebrow.fontWeight),
     eyebrowLetterSpacing: eyebrow.letterSpacing,
     eyebrowLineHeight: String(eyebrow.lineHeight),
+    fineFontFamily: fine.fontFamily,
+    fineFontSize: fine.fontSize,
+    fineFontWeight: String(fine.fontWeight),
+    fineLineHeight: String(fine.lineHeight),
+    headerSize: HEADER_SIZE,
     linkRuleFontFamily: linkRule.fontFamily,
     linkRuleFontSize: linkRule.fontSize,
     linkRuleFontWeight: String(linkRule.fontWeight),
     linkRuleLetterSpacing: linkRule.letterSpacing,
     linkRuleLineHeight: String(linkRule.lineHeight),
+    sectionPad: sizes[1.5],
+    sizes05: sizes[0.5],
+    sizes1: sizes[1],
+    textFontFamily: text.fontFamily,
+    textFontSize: text.fontSize,
+    textFontWeight: String(text.fontWeight),
+    textLineHeight: String(text.lineHeight),
+    textSmallFontFamily: textSmall.fontFamily,
+    textSmallFontWeight: String(textSmall.fontWeight),
+    textSmallLineHeight: String(textSmall.lineHeight),
 }
 
 const rootTokenRule = `:root{${Object.entries(rootTokens)

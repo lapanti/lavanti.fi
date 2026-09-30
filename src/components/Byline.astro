@@ -4,7 +4,6 @@ import type { AuthorEntry } from '../content/person'
 import type { ExternalPublication } from '../lib/byline'
 
 import { buildBylineText, formatPublicationDate, languageNameIn } from '../lib/byline'
-import { colors, typographics } from '../lib/styles'
 import SmartLink from './SmartLink.astro'
 
 interface Props {
@@ -23,17 +22,7 @@ const publicationPrefix: Record<string, string> = {
 }
 ---
 
-<style
-    define:vars={{
-        colorsTextSecondary: colors.textSecondary,
-        fineFontFamily: typographics.fine.fontFamily,
-        fineFontSize: typographics.fine.fontSize,
-        fineFontWeight: typographics.fine.fontWeight,
-        fineLineHeight: typographics.fine.lineHeight,
-        textFontFamily: typographics.text.fontFamily,
-        textFontWeight: typographics.text.fontWeight,
-    }}
->
+<style>
     .byline {
         display: grid;
         gap: 0.375rem;

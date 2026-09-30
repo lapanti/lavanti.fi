@@ -3,7 +3,7 @@
 exports[`<Paragraph /> > should render 1`] = `
 <p
   data-astro-cid-7zjb5n2t=""
-  style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+  style="grid-column-start:3;--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
 >
    Test content for the paragraph. 
 </p>
@@ -12,7 +12,7 @@ exports[`<Paragraph /> > should render 1`] = `
 exports[`<Paragraph /> > should render without grid 1`] = `
 <p
   data-astro-cid-7zjb5n2t=""
-  style=";--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;--colorsTextSecondary: #4A4E45;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontWeight: 400;--textLineHeight: 1.68;"
+  style=";--bodyFontFamily: "IBM Plex Sans", Trebuchet MS;--bodyFontSize: 1.25rem;--bodyFontWeight: 400;--bodyLineHeight: 1.5;"
 >
    Test content for the paragraph. 
 </p>

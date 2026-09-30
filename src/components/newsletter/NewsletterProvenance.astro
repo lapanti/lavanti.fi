@@ -2,7 +2,6 @@
 import type { Lang } from '../../content/nav'
 
 import { newsletterArchiveContent } from '../../content/newsletter'
-import { colors, typographics } from '../../lib/styles'
 
 /**
  * "Lähetetty tilaajille 14.3.2026." — the page's visible date and its JSON-LD
@@ -26,15 +25,7 @@ const sentToDisplay = `${day}.${month}.${year}`
 const { after, before } = newsletterArchiveContent[lang].provenance
 ---
 
-<style
-    define:vars={{
-        colorsTextSecondary: colors.textSecondary,
-        fineFontFamily: typographics.fine.fontFamily,
-        fineFontSize: typographics.fine.fontSize,
-        fineFontWeight: typographics.fine.fontWeight,
-        fineLineHeight: typographics.fine.lineHeight,
-    }}
->
+<style>
     .provenance {
         color: var(--colorsTextSecondary);
         font-family: var(--fineFontFamily);

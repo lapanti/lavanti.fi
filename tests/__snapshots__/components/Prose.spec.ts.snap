@@ -4,7 +4,6 @@ exports[`<Prose /> > should render 1`] = `
 <div
   class="prose"
   data-astro-cid-h3xj43oc=""
-  style="--colorsTextPrimary: #1B211C;--textFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textFontSize: 1.0625rem;--textFontWeight: 400;--textLineHeight: 1.68;"
 >
   <p>
     Reading column content.

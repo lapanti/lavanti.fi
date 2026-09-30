@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../lib/styles'
+import { typographics } from '../lib/styles'
 
 interface Props {
     inGrid?: boolean
@@ -15,10 +15,6 @@ const { inGrid = true, itemProp } = Astro.props
         bodyFontSize: typographics.body.fontSize,
         bodyFontWeight: typographics.body.fontWeight,
         bodyLineHeight: typographics.body.lineHeight,
-        colorsTextSecondary: colors.textSecondary,
-        textFontFamily: typographics.text.fontFamily,
-        textFontWeight: typographics.text.fontWeight,
-        textLineHeight: typographics.text.lineHeight,
     }}
 >
     p {

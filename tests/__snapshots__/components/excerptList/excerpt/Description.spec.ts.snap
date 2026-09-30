@@ -4,7 +4,6 @@ exports[`<Description /> > should render 1`] = `
 <p
   data-astro-cid-k5g35gv5=""
   itemprop="description"
-  style="--colorsTextSecondary: #4A4E45;--textSmallFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--textSmallFontWeight: 400;--textSmallLineHeight: 1.68;"
 >
   Test excerpt
 </p>
