@@ -138,9 +138,20 @@ interface ToneConfig {
 function toneArgs(tone: ToneConfig | undefined): string[] {
     if (!tone) return []
     return [
-        '-modulate', `${tone.brightness},${tone.saturation},100`,
-        '-channel', 'R', '-evaluate', 'multiply', String(tone.red), '+channel',
-        '-channel', 'B', '-evaluate', 'multiply', String(tone.blue), '+channel',
+        '-modulate',
+        `${tone.brightness},${tone.saturation},100`,
+        '-channel',
+        'R',
+        '-evaluate',
+        'multiply',
+        String(tone.red),
+        '+channel',
+        '-channel',
+        'B',
+        '-evaluate',
+        'multiply',
+        String(tone.blue),
+        '+channel',
     ]
 }
 
@@ -325,7 +336,7 @@ function placePysty(input: string, output: string, cfg: DesktopConfig, transpare
         throw new Error(
             `desktop placement (scale ${cfg.scale}, dx ${cfg.dx}, dy ${cfg.dy}) leaves part of the ` +
                 `${PYSTY_W}x${PYSTY_H} canvas uncovered by the ${w}x${h} source — the photo cannot ` +
-                `conform to the hero framing without synthetic background fill`,
+                `conform to the hero framing without synthetic background fill`
         )
     }
     const args = [input, '-resize', `${w}x${h}!`]
@@ -338,10 +349,20 @@ function placePysty(input: string, output: string, cfg: DesktopConfig, transpare
         y = 0
     }
     args.push(
-        '(', '-size', `${PYSTY_W}x${PYSTY_H}`, `xc:${transparent ? 'none' : 'black'}`, ')',
-        '+swap', '-compose', 'over', '-gravity', 'northwest',
-        '-geometry', geometryOffset(cfg.dx, y), '-composite',
-        output,
+        '(',
+        '-size',
+        `${PYSTY_W}x${PYSTY_H}`,
+        `xc:${transparent ? 'none' : 'black'}`,
+        ')',
+        '+swap',
+        '-compose',
+        'over',
+        '-gravity',
+        'northwest',
+        '-geometry',
+        geometryOffset(cfg.dx, y),
+        '-composite',
+        output
     )
     magick(args)
 }
@@ -363,14 +384,16 @@ function placeVaaka(input: string, output: string, cfg: MobileConfig, transparen
         throw new Error(
             `mobile window ${VAAKA_W}x${VAAKA_H}+${cfg.cropX}+${cfg.cropY} does not fit inside ` +
                 `the scaled source (${w}x${h}) — the photo cannot conform to the hero framing ` +
-                `without synthetic background fill`,
+                `without synthetic background fill`
         )
     }
     magick([
         input,
         ...(transparent ? ['-background', 'none'] : []),
-        '-resize', `${w}x${h}!`,
-        '-crop', `${VAAKA_W}x${VAAKA_H}+${cfg.cropX}+${cfg.cropY}`,
+        '-resize',
+        `${w}x${h}!`,
+        '-crop',
+        `${VAAKA_W}x${VAAKA_H}+${cfg.cropX}+${cfg.cropY}`,
         '+repage',
         output,
     ])
@@ -380,8 +403,17 @@ function placeVaaka(input: string, output: string, cfg: MobileConfig, transparen
 function fillMatteHoles(matte: string, output: string): void {
     magick([
         matte,
-        '(', '+clone', '-alpha', 'extract', '-morphology', 'Close', 'Disk:12', ')',
-        '-compose', 'CopyOpacity', '-composite',
+        '(',
+        '+clone',
+        '-alpha',
+        'extract',
+        '-morphology',
+        'Close',
+        'Disk:12',
+        ')',
+        '-compose',
+        'CopyOpacity',
+        '-composite',
         output,
     ])
 }
@@ -410,21 +442,74 @@ function generateDesktop(photo: PhotoConfig, tmpDir: string): string {
     const fadeH = Math.round(PYSTY_H * (GRADE_STOP - GRADE_HOLD))
     magick([
         bg,
-        '(', '+clone', '-colorspace', 'Gray',
-        '(', '-size', '1x256', `gradient:${RAMP_DARK}-${RAMP_LIGHT}`, ')',
-        '-clut', '-type', 'TrueColor',
-        '(', bg, ')', '-define', `compose:args=${ORIGINAL_BLEND_PCT}`, '-compose', 'blend', '-composite', ')',
+        '(',
+        '+clone',
+        '-colorspace',
+        'Gray',
+        '(',
+        '-size',
+        '1x256',
+        `gradient:${RAMP_DARK}-${RAMP_LIGHT}`,
+        ')',
+        '-clut',
+        '-type',
+        'TrueColor',
+        '(',
+        bg,
+        ')',
+        '-define',
+        `compose:args=${ORIGINAL_BLEND_PCT}`,
+        '-compose',
+        'blend',
+        '-composite',
+        ')',
         // Clear the blend args — a lingering compose:args corrupts the masked composite below.
-        '+define', 'compose:args',
-        '(', '-size', `${PYSTY_W}x${holdH}`, 'xc:white',
-        '(', '-size', `${PYSTY_W}x${fadeH}`, 'gradient:white-black', ')', '-append',
-        '-background', 'black', '-gravity', 'north', '-extent', `${PYSTY_W}x${PYSTY_H}`, ')',
-        '-compose', 'over', '-composite',
-        '(', '-size', `${PYSTY_W}x${holdH}`, `xc:${TOP_DARKEN_GRAY}`,
-        '(', '-size', `${PYSTY_W}x${fadeH}`, `gradient:${TOP_DARKEN_GRAY}-white`, ')', '-append',
-        '-background', 'white', '-gravity', 'north', '-extent', `${PYSTY_W}x${PYSTY_H}`, ')',
-        '-compose', 'multiply', '-composite',
-        '-fill', SAND, '-draw', `rectangle ${PYSTY_W - 110},0 ${PYSTY_W},${PYSTY_H}`,
+        '+define',
+        'compose:args',
+        '(',
+        '-size',
+        `${PYSTY_W}x${holdH}`,
+        'xc:white',
+        '(',
+        '-size',
+        `${PYSTY_W}x${fadeH}`,
+        'gradient:white-black',
+        ')',
+        '-append',
+        '-background',
+        'black',
+        '-gravity',
+        'north',
+        '-extent',
+        `${PYSTY_W}x${PYSTY_H}`,
+        ')',
+        '-compose',
+        'over',
+        '-composite',
+        '(',
+        '-size',
+        `${PYSTY_W}x${holdH}`,
+        `xc:${TOP_DARKEN_GRAY}`,
+        '(',
+        '-size',
+        `${PYSTY_W}x${fadeH}`,
+        `gradient:${TOP_DARKEN_GRAY}-white`,
+        ')',
+        '-append',
+        '-background',
+        'white',
+        '-gravity',
+        'north',
+        '-extent',
+        `${PYSTY_W}x${PYSTY_H}`,
+        ')',
+        '-compose',
+        'multiply',
+        '-composite',
+        '-fill',
+        SAND,
+        '-draw',
+        `rectangle ${PYSTY_W - 110},0 ${PYSTY_W},${PYSTY_H}`,
         bgGraded,
     ])
     magick([bgGraded, subj, '-compose', 'over', '-composite', '-strip', '-quality', '88', out])
@@ -452,9 +537,20 @@ function generateMobile(photo: PhotoConfig, tmpDir: string): string {
     const washH = Math.round(VAAKA_H * photo.mobile.washStop)
     magick([
         bg,
-        '(', '-size', `${VAAKA_W}x${washH}`, `gradient:${DEEP_FOREST}-none`,
-        '-background', 'none', '-gravity', 'north', '-extent', `${VAAKA_W}x${VAAKA_H}`, ')',
-        '-compose', 'over', '-composite',
+        '(',
+        '-size',
+        `${VAAKA_W}x${washH}`,
+        `gradient:${DEEP_FOREST}-none`,
+        '-background',
+        'none',
+        '-gravity',
+        'north',
+        '-extent',
+        `${VAAKA_W}x${VAAKA_H}`,
+        ')',
+        '-compose',
+        'over',
+        '-composite',
         bgWashed,
     ])
     magick([bgWashed, subj, '-compose', 'over', '-composite', '-strip', '-quality', '85', out])
