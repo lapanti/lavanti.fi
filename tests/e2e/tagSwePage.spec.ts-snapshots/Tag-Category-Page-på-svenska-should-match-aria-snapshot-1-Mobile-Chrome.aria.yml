@@ -24,11 +24,11 @@
             - link "Utbildning":
               - /url: /sv/kategori/utbildning/
       - listitem:
-        - 'article "Fullmäktigemotion: årlig Pride-flaggning i Kyrkslätt"':
-          - 'link "En grusväg som leder till ett vitt hus. Fullmäktigemotion: årlig Pride-flaggning i Kyrkslätt"':
+        - article "Ett absolut nej till terminsavgifter på andra stadiet":
+          - link "En grusväg som leder till ett vitt hus. Ett absolut nej till terminsavgifter på andra stadiet":
             - /url: /sv/blog/36/ett-absolut-nej-till-terminsavgifter-pa-andra-stadiet/
             - img "En grusväg som leder till ett vitt hus."
-            - 'heading "Fullmäktigemotion: årlig Pride-flaggning i Kyrkslätt" [level=3]'
+            - heading "Ett absolut nej till terminsavgifter på andra stadiet" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: Regeringen anser att vi borde ställa unga som studerar på andra stadiet i en ojämlik ställning beroende på om de har EU-medborgarskap eller inte.
         - list:
