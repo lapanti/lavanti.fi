@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../../lib/styles'
+import { colors } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 import PlateHeading from '../PlateHeading.astro'
 
@@ -15,17 +15,7 @@ const { allPostsHref, allPostsLabel, eyebrow, ground = 'sand', heading } = Astro
 const groundColor = { sand: colors.lightSand, white: colors.white }[ground]
 ---
 
-<style
-    define:vars={{
-        colorsDarkGreen: colors.darkGreen,
-        colorsGround: groundColor,
-        linkRuleFontFamily: typographics.linkRule.fontFamily,
-        linkRuleFontSize: typographics.linkRule.fontSize,
-        linkRuleFontWeight: typographics.linkRule.fontWeight,
-        linkRuleLetterSpacing: typographics.linkRule.letterSpacing,
-        linkRuleLineHeight: typographics.linkRule.lineHeight,
-    }}
->
+<style define:vars={{ colorsGround: groundColor }}>
     .writings {
         background: var(--colorsGround);
     }

@@ -3,7 +3,7 @@ import type { Lang } from '../../content/nav'
 import type { Slogan } from '../../content/slogan'
 
 import { heroCtaLabel } from '../../content/slogan'
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 
 interface Props {
     description: string
@@ -16,10 +16,6 @@ const { description, lang, slogan } = Astro.props
 
 <style
     define:vars={{
-        colorsBrightGreen: colors.brightGreen,
-        colorsDarkGreen: colors.darkGreen,
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
         displayFontFamily: typographics.display.fontFamily,
         displayFontWeight: typographics.display.fontWeight,
         displayLetterSpacing: typographics.display.letterSpacing,

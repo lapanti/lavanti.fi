@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../../../content/nav'
 
-import { colors, signalBandFontFamilies, typographics } from '../../../lib/styles'
+import { signalBandFontFamilies, typographics } from '../../../lib/styles'
 
 interface Props {
     /** Desktop sits on the header bar; mobile is the dark dropdown panel. */
@@ -21,13 +21,6 @@ const isLang = Boolean(switchToLang)
 
 <style
     define:vars={{
-        colorsAquaBlue: colors.aquaBlue,
-        colorsDarkGreen: colors.darkGreen,
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
-        colorsOat: colors.oat,
-        colorsSand: colors.sand,
-        colorsWhite: colors.white,
         navFontFamily: signalBandFontFamilies.heading,
         navFontSize: typographics.nav.fontSize,
         navFontWeight: typographics.nav.fontWeight,

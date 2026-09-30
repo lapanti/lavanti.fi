@@ -1,6 +1,6 @@
 ---
 import { getImageSrcset } from '../../../lib/images'
-import { colors, typographics } from '../../../lib/styles'
+import { typographics } from '../../../lib/styles'
 
 interface Props {
     alt?: string
@@ -15,7 +15,6 @@ const img = image ? getImageSrcset(image, 'postThumb', [400, 560, 750, 1120]) : 
 
 <style
     define:vars={{
-        colorsDarkGreen: colors.darkGreen,
         titleFontFamily: typographics.postTitle.fontFamily,
         titleFontWeight: typographics.postTitle.fontWeight,
         titleLineHeight: typographics.postTitle.lineHeight,

@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../../content/nav'
 
-import { colors, CONTENT_PADDING, sizes } from '../../lib/styles'
+import { CONTENT_PADDING, sizes } from '../../lib/styles'
 import Meta from '../Meta.astro'
 import H1 from './title/H1.astro'
 
@@ -19,7 +19,6 @@ const { createdAt, lang, readingTime, tags, title, updatedDate } = Astro.props
 
 <style
     define:vars={{
-        colorsWhite: colors.white,
         contentPadding: CONTENT_PADDING,
         sizes05: sizes[0.5],
         sizes1: sizes[1],

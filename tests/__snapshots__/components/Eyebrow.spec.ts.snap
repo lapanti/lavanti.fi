@@ -4,7 +4,7 @@ exports[`<Eyebrow /> > should render 1`] = `
 <span
   class="eyebrow"
   data-astro-cid-2lydxdhj=""
-  style="--eyebrowColor: #5B5952;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+  style="--eyebrowColor: #5B5952;"
 >
   Context
 </span>

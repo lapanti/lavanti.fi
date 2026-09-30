@@ -4,7 +4,7 @@ exports[`<HeroBanner /> > should render 1`] = `
 <section
   class="hero"
   data-astro-cid-fz4dugmu=""
-  style="--colorsDeepForest: rgb(22, 62, 53);--headerSize: 3.75rem;"
+  style="--headerSize: 3.75rem;"
 >
    
   <div
@@ -52,25 +52,25 @@ exports[`<HeroBanner /> > should render 1`] = `
   <div
     class="hero-right"
     data-astro-cid-kqfumiig=""
-    style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+    style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
   >
      
     <div
       class="hero-kicker"
       data-astro-cid-kqfumiig=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+      style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
     >
          Candidacy line  
     </div>
      
     <h1
       data-astro-cid-kqfumiig=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+      style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
     >
        Because technology should serve 
       <em
         data-astro-cid-kqfumiig=""
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+        style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
       >
         four
       </em>
@@ -80,12 +80,12 @@ exports[`<HeroBanner /> > should render 1`] = `
     <div
       class="hero-foot"
       data-astro-cid-kqfumiig=""
-      style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+      style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
     >
        
       <p
         data-astro-cid-kqfumiig=""
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+        style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
       >
         Description sentence.
       </p>
@@ -94,7 +94,7 @@ exports[`<HeroBanner /> > should render 1`] = `
         class="btn"
         data-astro-cid-kqfumiig=""
         href="#driver"
-        style="--colorsBrightGreen: #009639;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
+        style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;--displayLetterSpacing: -0.02em;--heroFootFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--heroFootFontSize: 1rem;--heroFootFontWeight: 400;--heroFootLineHeight: 1.5;--heroKickerFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--heroKickerFontSize: 1rem;--heroKickerFontWeight: 700;--heroKickerLetterSpacing: 0.165em;--heroKickerLineHeight: 1.4;"
       >
         Explore my platform
       </a>

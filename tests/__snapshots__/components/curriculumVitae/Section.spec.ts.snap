@@ -21,14 +21,14 @@ exports[`<Section /> > should render 1`] = `
           
       <h2
         data-astro-cid-xwk6limo=""
-        style="--colorsDeepForest: rgb(22, 62, 53);--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;"
+        style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;"
       >
         Experience
       </h2>
        
       <ul
         data-astro-cid-xwk6limo=""
-        style="--colorsDeepForest: rgb(22, 62, 53);--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;"
+        style="--displayFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--displayFontWeight: 900;"
       >
           
       </ul>

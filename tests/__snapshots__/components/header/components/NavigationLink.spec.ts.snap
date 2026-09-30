@@ -6,7 +6,7 @@ exports[`<NavigationLink /> > should render 1`] = `
   class="desktop nav-link"
   data-astro-cid-6pyyl7gu=""
   href="/fi/about/"
-  style="--colorsAquaBlue: #BFE1DE;--colorsDarkGreen: #006845;--colorsDeepForest: rgb(22, 62, 53);--colorsLightSand: #E9E4D4;--colorsOat: #E4D77E;--colorsSand: rgb(214, 210, 196);--colorsWhite: rgb(255, 255, 255);--navFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--navFontSize: 1.125rem;--navFontWeight: 700;--navLetterSpacing: 0.055em;--navLineHeight: 1.3;--navMobileFontSize: 1.625rem;"
+  style="--navFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--navFontSize: 1.125rem;--navFontWeight: 700;--navLetterSpacing: 0.055em;--navLineHeight: 1.3;--navMobileFontSize: 1.625rem;"
 >
    Laurista 
 </a>

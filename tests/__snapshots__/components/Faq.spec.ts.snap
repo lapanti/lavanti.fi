@@ -4,25 +4,25 @@ exports[`<Faq /> > should render 1`] = `
 <section
   class="faq section"
   data-astro-cid-hemr5th4=""
-  style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+  style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
 >
    
   <div
     class="sheet"
     data-astro-cid-hemr5th4=""
-    style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+    style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
   >
      
     <div
       class="inner"
       data-astro-cid-hemr5th4=""
-      style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+      style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
     >
        
       <span
         class="eyebrow"
         data-astro-cid-2lydxdhj=""
-        style="--eyebrowColor: #006845;--eyebrowFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--eyebrowFontSize: 0.9375rem;--eyebrowFontWeight: 700;--eyebrowLetterSpacing: 0.176em;--eyebrowLineHeight: 1.3;"
+        style="--eyebrowColor: #006845;"
       >
         Q & A
       </span>
@@ -37,17 +37,17 @@ exports[`<Faq /> > should render 1`] = `
       <div
         class="qa"
         data-astro-cid-hemr5th4=""
-        style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+        style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
       >
          
         <div
           data-astro-cid-hemr5th4=""
-          style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+          style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
         >
            
           <h3
             data-astro-cid-hemr5th4=""
-            style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+            style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
           >
             Why is the FAQ visible?
           </h3>
@@ -55,7 +55,7 @@ exports[`<Faq /> > should render 1`] = `
           <p
             class="a1"
             data-astro-cid-hemr5th4=""
-            style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+            style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
           >
             Because the policy requires it.
           </p>
@@ -63,12 +63,12 @@ exports[`<Faq /> > should render 1`] = `
         </div>
         <div
           data-astro-cid-hemr5th4=""
-          style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+          style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
         >
            
           <h3
             data-astro-cid-hemr5th4=""
-            style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+            style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
           >
             How many entries does it take?
           </h3>
@@ -76,7 +76,7 @@ exports[`<Faq /> > should render 1`] = `
           <p
             class="a1"
             data-astro-cid-hemr5th4=""
-            style="--colorsDeepForest: rgb(22, 62, 53);--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
+            style="--colorsLightGray: rgb(235, 235, 236);--colorsTextPrimary: #1B211C;--titleFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--titleFontWeight: 600;"
           >
             Two or more.
           </p>

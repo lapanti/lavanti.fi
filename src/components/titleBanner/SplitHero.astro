@@ -1,5 +1,5 @@
 ---
-import { colors, HEADER_SIZE, typographics } from '../../lib/styles'
+import { HEADER_SIZE, typographics } from '../../lib/styles'
 import Images from '../heroBanner/Images.astro'
 
 interface Props {
@@ -19,10 +19,6 @@ const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, intro, mobileHeroI
 
 <style
     define:vars={{
-        colorsBrightGreen: colors.brightGreen,
-        colorsDarkGreen: colors.darkGreen,
-        colorsDeepForest: colors.forestGreen,
-        colorsLightSand: colors.lightSand,
         displayFontFamily: typographics.display.fontFamily,
         displayFontWeight: typographics.display.fontWeight,
         displayLetterSpacing: typographics.display.letterSpacing,

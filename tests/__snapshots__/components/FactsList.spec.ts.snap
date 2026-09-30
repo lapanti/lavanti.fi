@@ -4,18 +4,18 @@ exports[`<FactsList /> > should render 1`] = `
 <ul
   class="facts"
   data-astro-cid-4dazknio=""
-  style="--colorsSand: rgb(214, 210, 196);--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+  style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
 >
    
   <li
     data-astro-cid-4dazknio=""
-    style="--colorsSand: rgb(214, 210, 196);--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+    style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
   >
     Johtava ohjelmistokehittäjä
   </li>
   <li
     data-astro-cid-4dazknio=""
-    style="--colorsSand: rgb(214, 210, 196);--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
+    style="--colorsTextPrimary: #1B211C;--factsFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--factsFontWeight: 500;"
   >
     Kunnanvaltuutettu
   </li>

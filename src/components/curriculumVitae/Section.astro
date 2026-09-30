@@ -1,7 +1,7 @@
 ---
 import type { CvRow } from '../../types/local'
 
-import { colors, typographics } from '../../lib/styles'
+import { typographics } from '../../lib/styles'
 import Plate from '../Plate.astro'
 import Row from './section/Row.astro'
 
@@ -16,7 +16,6 @@ const { ground = 'gray', title, items } = Astro.props
 
 <style
     define:vars={{
-        colorsDeepForest: colors.forestGreen,
         displayFontFamily: typographics.display.fontFamily,
         displayFontWeight: typographics.display.fontWeight,
     }}

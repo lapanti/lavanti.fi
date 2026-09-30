@@ -2,7 +2,7 @@
 import type { Lang } from '../content/nav'
 import type { Slogan } from '../content/slogan'
 
-import { colors, HEADER_SIZE } from '../lib/styles'
+import { HEADER_SIZE } from '../lib/styles'
 import Images from './heroBanner/Images.astro'
 import Titles from './heroBanner/Titles.astro'
 
@@ -18,7 +18,7 @@ interface Props {
 const { alt, description, heroImage, lang, mobileHeroImage, slogan } = Astro.props
 ---
 
-<style define:vars={{ colorsDeepForest: colors.forestGreen, headerSize: HEADER_SIZE }}>
+<style define:vars={{ headerSize: HEADER_SIZE }}>
     .hero {
         background: var(--colorsDeepForest);
         display: block;

@@ -1,5 +1,5 @@
 ---
-import { colors, typographics } from '../lib/styles'
+import { colors } from '../lib/styles'
 
 interface Props {
     /** Raw color override; wins over tone. */
@@ -11,16 +11,7 @@ const { color, tone = 'neutral' } = Astro.props
 const eyebrowColor = color ?? (tone === 'inherit' ? 'currentColor' : colors.eyebrowNeutral)
 ---
 
-<style
-    define:vars={{
-        eyebrowColor,
-        eyebrowFontFamily: typographics.eyebrow.fontFamily,
-        eyebrowFontSize: typographics.eyebrow.fontSize,
-        eyebrowFontWeight: typographics.eyebrow.fontWeight,
-        eyebrowLetterSpacing: typographics.eyebrow.letterSpacing,
-        eyebrowLineHeight: typographics.eyebrow.lineHeight,
-    }}
->
+<style define:vars={{ eyebrowColor }}>
     .eyebrow {
         color: var(--eyebrowColor);
         display: block;
