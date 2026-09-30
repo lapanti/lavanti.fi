@@ -207,7 +207,7 @@
             - img "Lauri Lavanti osoittamassa puita lapselle, joka on hänen sylissään."
             - 'heading "Esseitä maahanmuutosta: perhesiteeseen perustuvasta maahanmuutosta" [level=3]'
           - time: /\d+\.\d+\.\d+/
-          - paragraph: Perhesiteeseen perustuvasti maahan muuttavat ovat moninainen joukko. He ovat usein pidemmällä integraatiossa kuin muut maahanmuuttajaryhmät.
+          - paragraph: Perhesiteen perusteella maahan muuttavat ovat moninainen joukko. He ovat usein pidemmällä integraatiossa kuin muut maahanmuuttajaryhmät.
         - list:
           - listitem:
             - link /Aluevaalit \d+/:
@@ -225,7 +225,7 @@
             - img "Valkoiset ulkoportaat, jotka johtavat tielle, joka vie talolle."
             - 'heading "Esseitä maahanmuutosta: maahanmuuton määrästä" [level=3]'
           - time: /\d+\.\d+\.\d+/
-          - paragraph: Maahanmuuttoa koskevassa keskustelussa määrät jäävät usein mainitsematta. Suomen maahanmuutto on murto-osa verrokimaiden tasosta.
+          - paragraph: Maahanmuuttoa koskevassa keskustelussa määrät jäävät usein mainitsematta. Suomen maahanmuutto on murto-osa verrokkimaiden tasosta.
         - list:
           - listitem:
             - link /Aluevaalit \d+/:
