@@ -60,7 +60,7 @@ describe('<NewsletterSubscribe lang="fi" />', () => {
 
         const link = getByRole(result, 'link', { name: /tietosuojaseloste/ })
 
-        expect(link.getAttribute('href')).toBe('/fi/privacy-policy/')
+        expect(link.getAttribute('href')).toBe('/fi/tietosuoja/')
     })
 })
 
@@ -214,6 +214,6 @@ describe('<NewsletterSubscribe lang="sv" />', () => {
 
         const link = getByText(result, 'integritetspolicy')
 
-        expect(link.getAttribute('href')).toBe('/sv/privacy-policy/')
+        expect(link.getAttribute('href')).toBe('/sv/dataskydd/')
     })
 })
