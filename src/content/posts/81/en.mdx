@@ -1,0 +1,76 @@
+---
+lang: 'en'
+slug: 'why-finland-needs-a-digital-ministry'
+pageTitle: 'A Digital Ministry Would Set the AI Rules'
+title: 'Why Does Finland Need a Digital Ministry?'
+description: 'Fragmented AI policy is a regulatory risk for business. A digital ministry and a threshold set by Parliament would bring predictability and protect small firms.'
+alt: 'Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri.'
+faq:
+  - q: 'What Would a Digital Ministry Mean for Finland?'
+    a: 'A digital ministry would bring the AI and technology powers now scattered across the Ministry of Transport and Communications, the Ministry of Economic Affairs and Employment and the Ministry of Finance under one cross-government responsibility. Businesses would get one minister, one point of contact and one line of interpretation for all of AI policy.'
+  - q: 'How Would the Digital Ministry Be Built?'
+    a: 'By splitting the Ministry of Transport and Communications in two. Transport, rail and ports would move to the Ministry of the Environment, and the remaining communications and digital side would become the digital ministry. The number of ministries would stay the same.'
+  - q: 'Why Is Fragmented AI Policy a Regulatory Risk for Business?'
+    a: 'When AI policy is split across three ministries and priorities shift from one government term to the next, a company cannot price future regulation into its investment decisions. A single accountable digital minister would reduce exactly that uncertainty.'
+  - q: 'Who Would the Evaluation Body''s Thresholds Apply To?'
+    a: 'Only to models trained with more than 10^25 FLOP of compute, and to their providers. Finnish SMEs would not carry a compliance burden designed for frontier models, and they would get a two-year transition period before any new threshold applied to them.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+Finland needs a digital minister and a digital ministry: one cross-government responsibility that would pull together an AI policy now scattered across three ministries. The reason is practical. Picture a small company building AI-assisted customer service. It asks one agency about data protection, another about data use and a third about funding, and gets three timetables and three interpretations. Each of those agencies answers to a different ministry, which is why their interpretations differ too. AI policy today is split between the Ministry of Transport and Communications, the Ministry of Economic Affairs and Employment and the Ministry of Finance, and none of them is responsible for the whole.
+
+I am proposing a digital ministry because the fragmented structure is a regulatory risk for business. A company needs one clear set of rules, not three different interpretations.
+
+At first hearing, a new ministry sounds like more bureaucracy. But it is worth remembering:
+
+> A company can adapt to any rule, as long as it knows the rule in advance.
+
+What the current structure lacks is predictability. The number of rules is not the main problem. As a lead developer, [I use AI every day to build software](/en/blog/72/coder-vs-machine/), and I see up close how the playing field changes from one month to the next. In the previous part of this series I wrote about [portability in public procurement](/en/blog/80/who-owns-public-sector-data/). This part asks who in Finland is actually responsible for AI policy as a whole. Right now, the answer is "nobody".
+
+## What Would a Digital Ministry Mean for Finland?
+
+A digital ministry would bring the AI and technology powers now scattered across the Ministry of Transport and Communications, the Ministry of Economic Affairs and Employment and the Ministry of Finance under one cross-government responsibility. The ministry would host a standing technology committee in Parliament, which would deliver a regular technology assessment to Parliament. It would also host a national evaluation body to audit frontier models that cross defined thresholds.
+
+That structure would solve exactly the problem the company faces today. In its place would be one minister, one point of contact and one line of interpretation for all of AI policy. Under that single line, data protection would stay predictable too, because the company would know what is expected of it instead of having to reconcile three agencies' different priorities.
+
+## How Would the Digital Ministry Be Built?
+
+The digital ministry would be built by splitting the Ministry of Transport and Communications in two. Transport, rail and ports would move to the Ministry of the Environment, which already covers land-use planning, construction and housing policy. The state itself has tied these together in its [land use, housing and transport agreements](https://ym.fi/maankayton-asumisen-ja-liikenteen-sopimukset), where a single document settles both where to build and how people get there. The remaining communications and digital side would become the digital ministry. The number of ministries would stay the same.
+
+## Why Is Fragmented AI Policy a Regulatory Risk for Business?
+
+When AI policy is split across three ministries and priorities shift from one government term to the next, a company cannot price future regulation into its investment decisions. A single accountable digital minister would answer for the whole, which would reduce exactly the uncertainty that no individual statute removes on its own.
+
+> Regulatory clarity is a competitive advantage.
+
+This is not just a point of principle. I have written before about how [Finland builds digital independence one procurement decision at a time](/en/blog/53/digital-independence-is-built-one-step-at-a-time/), and the same logic applies to regulation. [A predictable framework attracts investment](/en/blog/77/electricity-market-google-price-cap/), while a fragmented and shifting one drives it away.
+
+## Who Would the Evaluation Body's Thresholds Apply To?
+
+The evaluation body's mandate would be limited in law to a single threshold: training compute above 10^25 FLOP. Neither parameter count nor provider turnover would serve as a threshold, because both would pull ordinary Finnish companies into scope and both would date as the technology moves on. Only frontier models above the threshold, and their providers, would be subject to evaluation, so Finnish SMEs would not carry a compliance burden designed for companies the size of OpenAI, Anthropic or Mistral.
+
+I also propose that if the European Commission changes the threshold by delegated act, the national threshold would follow, but any other update would require a decision by Parliament, not the discretion of an agency. SMEs would also get a two-year transition period written into law before a new threshold took effect for them. That would cut regulatory risk in concrete terms. Companies would know years in advance when a threshold would start to apply to them.
+
+## Has a Threshold-Based Model Been Tested Elsewhere?
+
+The 10^25 FLOP training-compute threshold is the same line at which the [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) presumes a general-purpose AI model poses systemic risk, so the model is not entirely our own. The [AI Futures Project](https://ai-futures.org/) has proposed transparency and threshold mechanisms as possible ways to govern an evolving technology regardless of how fast it develops.
+
+In 2025 Germany set up its own [Federal Ministry for Digital Transformation and Government Modernisation](https://en.wikipedia.org/wiki/Federal_Ministry_for_Digital_Transformation_and_Government_Modernisation), bringing digitalisation and federal IT, previously spread across government, under one responsibility. Telecommunications was separated from transport at the same time. Finland needs a similar consolidation so that AI policy is not left to chance.
+
+A concrete example of [what AI can deliver](/en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/) when administration is coordinated can already be found in municipalities. [In Konnevesi, AI cut the processing time for private road grants from two and a half months to days](https://yle.fi/a/74-20217687), after eight municipalities built a shared solution instead of running separate pilots. The same principle would work at national level.
+
+A digital ministry would replace shifting interpretations with a single threshold model approved by Parliament. It would bring new permanent structures, such as the standing technology committee and the evaluation body, but they would be limited to the largest players. For a small business, the whole picture would get simpler.
+
+A company that knows the rules years in advance can invest more boldly than one that has to guess them again every government term. A digital ministry would answer that problem.
+
+I am [the Greens' parliamentary candidate in the Uusimaa electoral district](/en/blog/67/my-candidacy-for-parliament/), and I intend to propose this structure for the next government programme. This is the second part of a series, which continues with other rules of the game for the age of AI.
+
+A working economy, seamless education and secure freedom are three parts of the same goal, and in the age of AI they add up to [a digitally independent Finland](/en/blog/51/digital-independence-is-a-necessity/). A digital ministry would be one concrete structure that keeps that whole predictable.
