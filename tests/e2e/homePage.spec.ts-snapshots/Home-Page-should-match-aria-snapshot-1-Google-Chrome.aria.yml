@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Who owns public sector data?":
+          - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
+            - /url: /en/blog/80/who-owns-public-sector-data/
+            - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
+            - heading "Who owns public sector data?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.
+        - list:
+          - listitem:
+            - link "Digital independence":
+              - /url: /en/category/digital-independence/
+          - listitem:
+            - link "Digitalisation":
+              - /url: /en/category/digitalisation/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+      - listitem:
         - article "YEL must not raise the entrepreneurship barrier":
           - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
             - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Marketgreen":
               - /url: /en/category/marketgreen/
-      - listitem:
-        - article "David's Sling Is Proof That Europe Has Failed":
-          - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. David''s Sling Is Proof That Europe Has Failed"':
-            - /url: /en/blog/68/davids-sling-europes-failure/
-            - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
-            - heading "David's Sling Is Proof That Europe Has Failed" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: David's Sling was the right procurement for Finland, but it reveals the failure of Europe's defence industry. A market-green view on defence procurement.
-        - list:
-          - listitem:
-            - link "Security":
-              - /url: /en/category/security/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
-          - listitem:
-            - link "Freedom":
-              - /url: /en/category/freedom/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

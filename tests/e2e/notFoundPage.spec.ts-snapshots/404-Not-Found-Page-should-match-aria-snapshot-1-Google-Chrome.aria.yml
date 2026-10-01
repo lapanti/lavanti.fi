@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Kuka omistaa julkishallinnon datan?":
+          - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
+            - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
+            - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
+            - heading "Kuka omistaa julkishallinnon datan?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.
+        - list:
+          - listitem:
+            - link "Digitaalinen itsenäisyys":
+              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+          - listitem:
+            - link "Digitalisaatio":
+              - /url: /fi/kategoria/digitalisaatio/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+      - listitem:
         - article "YEL ei saa nostaa yrittäjyyden kynnystä":
           - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
             - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
@@ -127,21 +145,6 @@
           - listitem:
             - link "Talous":
               - /url: /fi/kategoria/talous/
-      - listitem:
-        - article "Kolme keinoa yrittämisen helpottamiseen":
-          - 'link "Markkinavihreiden avaus Yrittäjän päivälle: Kolme keinoa yrittämisen helpottamiseen. Kolme keinoa yrittämisen helpottamiseen"':
-            - /url: /fi/blog/74/kolme-keinoa-yrittamisen-helpottamiseen/
-            - 'img "Markkinavihreiden avaus Yrittäjän päivälle: Kolme keinoa yrittämisen helpottamiseen."'
-            - heading "Kolme keinoa yrittämisen helpottamiseen" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Yrittäjän päivän avaus: kolme keinoa purkaa yrittämisen esteitä — YEL, konkurssin jälkeinen uusi alku ja ensimmäisen työntekijän palkkaaminen."
-        - list:
           - listitem:
-            - link "Yrittäjyys":
-              - /url: /fi/kategoria/yrittajyys/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Markkinavihreä":
-              - /url: /fi/kategoria/markkinavihrea/
+            - link "Teknologia":
+              - /url: /fi/kategoria/teknologia/
