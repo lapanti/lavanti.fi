@@ -1,0 +1,71 @@
+---
+lang: 'fi'
+slug: 'kuka-omistaa-julkishallinnon-datan'
+pageTitle: 'Kuka omistaa julkishallinnon datan?'
+title: 'Kuka omistaa julkis­hallinnon datan?'
+description: 'Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.'
+alt: 'Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia.'
+faq:
+  - q: 'Mitä julkishankintojen siirrettävyys tarkoittaa käytännössä?'
+    a: 'Siirrettävyys on hankinnan ominaisuus, joka takaa, että järjestelmän data, prosessit ja integraatiot voidaan siirtää toiselle toimittajalle ilman kohtuutonta kustannusta. Se edellyttää julkisesti dokumentoituja dataformaatteja, tunnettuja rajapintastandardeja ja sopimukseen kirjattua irtautumislauseketta.'
+  - q: 'Miksi toimittajariippuvuus tulee veronmaksajalle kalliiksi?'
+    a: 'Kun toimittajaa ei voi vaihtaa, hinta lakkaa ohjautumasta markkinaehtoisesti. Palvelun toimittaja tietää, ettei asiakas voi lähteä, ja neuvotteluasema siirtyy pysyvästi sille.'
+  - q: 'Miten kilpailu palautetaan julkisiin IT-hankintoihin?'
+    a: 'Kilpailu palautuisi, jos hankintalaki vaatisi siirrettävyyden jo tarjouspyynnöstä alkaen. Avoin lähdekoodi asetettaisiin oletukseksi kriittisissä järjestelmissä, hankinnat pilkottaisiin moduuleiksi ja jokaiseen hankintaan liitettäisiin toimittajariippuvuusarvio ennen päätöstä.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+Kun kunta tai valtio ostaa tietojärjestelmän, se ostaa samalla kodin valtavalle määrälle veronmaksajien dataa. Liian usein jää kysymättä, kuka tuota dataa lopulta hallitsee. Olen johtavana ohjelmistokehittäjänä rakentanut yli vuosikymmenen ajan järjestelmiä, joissa jokaisen kerroksen on oltava vaihdettavissa, jotta yhden komponentin tai toimittajan pettäminen ei kaada koko järjestelmää. Julkisissa IT-hankinnoissa tätä periaatetta kutsutaan **siirrettävyydeksi**: kyvyksi siirtää järjestelmän data, prosessit ja integraatiot toiselle toimittajalle, kun nykyinen ei enää palvele tarkoitustaan. Ilman sitä data on lukittu yhden toimittajan suljettuun järjestelmään, ja sen hallinta on tosiasiassa luovutettu pois. Julkishankintojen osalta siirrettävyys ja avoimet rajapinnat pitäisi kirjata hankintalakiin pakollisena ehtona jokaiselle kriittiselle järjestelmälle.
+
+## Mitä julkishankintojen siirrettävyys tarkoittaa käytännössä?
+
+Siirrettävyys on hankinnan ominaisuus, joka takaa, että järjestelmän data, prosessit ja integraatiot voidaan siirtää toiselle toimittajalle ilman kohtuutonta kustannusta. Siirrettävyys syntyy vain, jos se kirjataan sopimukseen ja tekniseen määrittelyyn jo ennen hankintapäätöstä. Käytännössä tämä edellyttäisi kolmea asiaa jokaiselta kriittiseltä hankinnalta:
+
+- Dataformaatit olisivat julkisesti dokumentoituja ja avoimesti kuvattuja.
+- Integraatiot rakentuisivat tunnettujen rajapintastandardien varaan.
+- Sopimukseen kirjattaisiin aina irtautumislauseke, joka määrittäisi, miten data ja dokumentaatio siirtyisivät seuraavalle toimittajalle.
+
+Kun nämä puuttuvat, toimittajan vaihtaminen on teoriassa mahdollista, mutta käytännössä usein liian kallista.
+
+Ohjelmistoyhtiö Haltu Oy:n toimitusjohtajan [Otso Kivekkään havainto asiasta](https://otsokivekas.fi/2025/01/avointa-koodia-julkishallintoon/) on osuva: asiakas ei saa koskaan jäädä kiinni yhteen toimittajaan, koska kyky vaihtaa toimittajaa on koko hankinnan arvolupauksen ydin. Tämä on suunnittelun perusperiaatteita. Rajapinnat suunnitellaan avoimiksi alusta asti, koska jälkikäteen se maksaa moninkertaisesti. Jokaiseen kriittiseen ICT-hankintaan kuuluisi myös pakollinen toimittajariippuvuusarvio, joka sisältäisi komponenttiluettelon, toimitusketjun varmennuksen ja päivitysprosessin kuvauksen, jotka kirjattaisiin jo tarjouspyyntöön.
+
+> Toimittajaa ei voi vaihtaa, jos sitä vaihtoehtoa ei ole sovittu alusta alkaen.
+
+## Miksi toimittajariippuvuus tulee veronmaksajalle kalliiksi?
+
+[Kun toimittajaa ei voi vaihtaa](/fi/uutiskirje/8/kun-toimittajaa-ei-voi-vaihtaa/), hinta lakkaa ohjautumasta markkinaehtoisesti. Palvelun toimittaja tietää, ettei asiakas voi lähteä, ja neuvotteluasema siirtyy pysyvästi sille. Helsingistä löytyy kaksi opettavaista esimerkkiä siitä, mitä huono hankinta maksaa. Ne ovat varhaiskasvatuksen ja perusopetuksen Asti-asiointijärjestelmä sekä henkilöstöhallinnon Sarastia365-palkkajärjestelmä. Alla oleva esimerkinomainen vertailu avoimen eVakan ja suljetun Astin välillä ei ole täysin tasapuolinen, mutta se paljastaa mallien eron.
+
+- **[eVaka](https://github.com/espoon-voltti/evaka)** (Espoo, Tampere, Oulu, Turku): avoin lähdekoodi ja jaettu ylläpito, laajuutena varhaiskasvatus. Kustannus oli [noin 9 M€ vuoteen 2023 mennessä](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi), ja järjestelmä on [runsaan kymmenen kunnan käytössä](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella).
+- **Helsingin oma asiointijärjestelmä (Asti)**: suljettu ja yksin rakennettu, laajuutena varhaiskasvatus ja perusopetus. Kustannus oli [noin 32 M€ vuosina 2019–2023, alun perin arvioitu 60 M€](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/). Kehitys keskeytettiin, eikä järjestelmä valmistunut.
+
+Järjestelmät eivät ole suoraan vertailukelpoisia. Asti kattoi varhaiskasvatuksen lisäksi myös perusopetuksen asioinnin, joten suora vertailu ei kerro koko totuutta. Olennaisin ero on kuitenkin toteutustapa. eVakan toimittajan voi vaihtaa, ja ylläpito jakautuu usean kunnan kesken. Astin kehitys sen sijaan pysähtyi yhden kaupungin sisällä ilman ulkopuolista kilpailua.
+
+[Helsingin henkilöstöhallinnon Sarastia365 HR -järjestelmä](https://yle.fi/a/74-20026642) otettiin käyttöön keväällä 2022, ja tuhannet työntekijät saivat vääriä tai kokonaan maksamattomia palkkoja. Ongelma oli pikemminkin hallitsematon käyttöönotto kuin yksittäinen toimittaja, mutta opetus on sama. Kriittinen hankinta ilman selkeää suunnitelmaa hallinnasta ja vaihdettavuudesta tulee kalliiksi. Kuvio toistuu lähes aina, kun hankitaan uusia järjestelmiä, ilman että mietitään, miten niistä pääsee tarvittaessa pois.
+
+Sama logiikka näkyy Saksassa. Schleswig-Holsteinin osavaltio investoi kertaluonteisesti noin 9 miljoonaa euroa siirtyessään pois Microsoftista avoimeen lähdekoodiin perustuviin järjestelmiin, ja osavaltion digitalisaatioministeriö [arvioi](https://www.heise.de/en/news/Goodbye-Microsoft-Schleswig-Holstein-relies-on-Open-Source-and-saves-millions-11105459.html) vuotuisiksi säästöiksi noin 15 miljoonaa euroa, jolloin investointi maksaa itsensä takaisin alle vuodessa. Komission ehdottama [Cloud and AI Development Act](https://fsfe.org/news/2026/news-20260603-01.en.html) esittää avointa lähdekoodia oletukseksi nimenomaan julkisten pilvi- ja tekoälyohjelmistohankintojen kohdalla, samasta syystä.
+
+> Kilpailu ei ole ideologiaa. Se on halvempaa.
+
+## Miten kilpailu palautetaan julkisiin IT-hankintoihin?
+
+Kilpailu palautuisi, jos hankintalaki vaatisi siirrettävyyden jo tarjouspyynnöstä alkaen. Käytännössä tarvittaisiin kolme rakenteellista muutosta, jotka yhdessä murtaisivat nykyisen toimittajakeskeisen mallin ja antaisivat myös pienemmille suomalaisille ohjelmistoyrityksille aidon mahdollisuuden tarjota osan kokonaisuudesta yhden suuren toimittajan sijaan, riippumatta siitä, kuinka pieni tai suuri hankintayksikkö on.
+
+- [Avoin lähdekoodi](/fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/) asetettaisiin oletukseksi kriittisissä järjestelmissä.
+- Hankinnat pilkottaisiin moduuleiksi yhden ison sopimuksen sijaan.
+- Jokaiseen hankintaan liitettäisiin toimittajariippuvuusarvio ennen päätöstä.
+
+Tämä ei tietenkään olisi ilmaista, mutta vaihtoehtoiskustannus pitäisi vähitellen olla kaikille selkeä. Rajapintojen dokumentointi ja riippuvuusarvioinnit vaativat hankintayksiköltä osaamista ja aikaa, jota pieneltä kunnalta voi puuttua kokonaan. Jokaisen kunnan ei tarvitse rakentaa tätä osaamista yksin. Hankintayksiköt voisivat jakaa saman arviointimallin, aivan kuten ne jo jakavat eVakan ylläpidon. Vastapainoksi avautuisi markkina, jossa suomalainen pk-yritys pystyisi tarjoamaan osan kokonaisuudesta, ilman että sen tarvitsisi voittaa koko monoliittia yksin. Usealle kunnalle jaettu ylläpito on myös [luotettavuuskysymys](/fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/). Kun yksikään yksittäinen toimittaja ei omista koko järjestelmää, kunta säilyttää otteen palvelustaan myös silloin, kun yksi kumppani ajautuu vaikeuksiin.
+
+Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä, ja aion viedä nämä vaatimukset hankintalakiin. Olen työssäni nähnyt molemmat puolet. Tiedän, mitä avoimen rajapinnan päälle voi rakentaa ja mitä suljettu musta laatikko maksaa, kun se rikkoutuu. Sama periaate pätee riippumatta siitä, rakentuuko järjestelmä yritykselle vai kunnalle.
+
+Käytännön ensimmäinen askel on pieni. Jokaiseen uuteen kriittiseen ICT-hankintaan lisättäisiin siirrettävyysvaatimus ja toimittajariippuvuusarvio jo tämän vaalikauden aikana, sen sijaan että koko hankintalaki kirjoitettaisiin uusiksi kerralla. [Digitaalinen itsenäisyys rakennetaan juuri näin, askel kerrallaan](/fi/blog/53/digitaalinen-itsenaisyys-rakennetaan-askel-kerrallaan/). Olen aiemmin kirjoittanut siitä, miten sama toimittajariippuvuuden logiikka näkyy [kuntien tekoälyhankinnoissa](/fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/).
+
+Digitaalisesti itsenäinen Suomi rakentuu, kun talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella. Se alkaa siitä, että julkishankinnat ovat järkeviä.
