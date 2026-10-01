@@ -1,0 +1,67 @@
+---
+lang: 'sv'
+slug: 'forsorjningsberedskapen-nar-inte-molnet'
+pageTitle: 'Försörjningsberedskapen når inte molnet'
+title: 'Finlands försörjnings­beredskap når inte molnet'
+description: 'Finland lagrar spannmål och läkemedel inför kriser, men inte kritiska molntjänster. Digital försörjningsberedskap är beredskap som inte kräver isolering.'
+alt: 'Närbild av servrar i ett datacenter med gröna statuslampor.'
+faq:
+  - q: 'Vad betyder digital försörjningsberedskap?'
+    a: 'Två saker. För varje system som samhället inte klarar sig utan vet man vem det är beroende av, och för vart och ett finns ett alternativ redan innan det behövs. Full självförsörjning är varken målet eller ens möjlig.'
+  - q: 'Varför är ett utländskt moln en risk för försörjningsberedskapen?'
+    a: 'För att en enda främmande makt i praktiken kan stänga av åtkomsten. Enligt Yle körs ungefär två tredjedelar av den finländska offentliga förvaltningen i amerikanska moln. Risken hänger ändå inte på leverantörens hemland: en kritisk tjänst som vilar på en enda leverantör faller lika lätt oavsett om leverantören är amerikansk, europeisk eller finländsk.'
+  - q: 'Hur bygger man försörjningsberedskap utan att Finland isolerar sig?'
+    a: 'Genom att kartlägga de kritiska digitala beroendena och se till att det för vart och ett finns ett europeiskt eller inhemskt alternativ och en plan för övergången. Ett system som bygger på öppen källkod kan drivas vidare av en ny leverantör även om den ursprungliga utvecklaren försvinner.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+Finlands spannmålslager skulle räcka till bröd i månader, och i de obligatoriska läkemedelslagren finns läkemedel, som antibiotika, för krissituationer. [Försörjningsberedskapscentralen](https://www.huoltovarmuuskeskus.fi/sv/) samordnar den här beredskapen, som i årtionden har varit ett finländskt grundvärde över partigränserna. Det kritiska digitala lagret har blivit kvar utanför. [Enligt Yle](https://yle.fi/a/74-20229273) vilar ungefär två tredjedelar av den finländska offentliga förvaltningens verksamhet på amerikanska moln, och det finns ingen motsvarande plan för att hålla tjänsterna igång. Digital försörjningsberedskap betyder att kartlägga de kritiska digitala beroendena och ha en plan som håller tjänsterna igång också när en partner blir opålitlig. Samma beredskap som gäller spannmål och läkemedel hör också hemma i det digitala lagret.
+
+I mitt arbete bygger jag system som måste hålla även när några av delarna fallerar. I den första delen av den här serien skrev jag om [möjligheten att byta leverantör i offentliga upphandlingar](/sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/) och i den andra om [ett digitaliseringsministerium](/sv/blog/81/varfor-finland-behover-ett-digitalministerium/). I den här tredje delen frågar jag vad som skulle hända med Finland om förbindelsen till ett kritiskt utländskt moln bröts helt.
+
+> Beredskap är inte ideologi. Det är ansvar.
+
+## Vad betyder digital försörjningsberedskap?
+
+I praktiken betyder det två saker. För varje system som samhället inte klarar sig utan vet man vem det är beroende av, och för vart och ett finns ett alternativ redan innan det behövs. Kartläggningen visar beroendena, planen visar vad som ska göras den dag ett av dem sviker.
+
+[Otso Kivekäs har föreslagit](https://otsokivekas.fi/2025/03/avoin-koodi-ja-digitaalinen-huoltovarmuus/) att försörjningsberedskap är ett konkretare sätt än suveränitet att tala om samma sak. Försörjningsberedskap är ett välbekant begrepp för alla som har hört talas om spannmålslager eller läkemedelsberedskap, och det håller diskussionen förankrad i praktiken. Full självförsörjning är varken målet eller ens möjlig. Fem miljoner finländare bygger inte alla system de behöver själva, och det behöver de inte heller. Till och med 500 miljoner européer måste prioritera vad det gemensamma kunnandet och pengarna används till.
+
+## Varför är ett utländskt moln en risk för försörjningsberedskapen?
+
+[Ett utländskt moln är en risk för försörjningsberedskapen](/sv/blog/79/finland-riskerar-att-forlora-kontrollen-over-sina-data/) eftersom en enda främmande makt i praktiken kan stänga av åtkomsten. EU:s teknikkommissionär Henna Virkkunen [varnade i juni 2026](https://yle.fi/a/74-20229273) för just den strömbrytaren. Ungefär två tredjedelar av Finlands offentliga förvaltning körs i amerikanska moln. Avstängningar har redan skett i enskilda fall, när tjänstemän vid Internationella brottmålsdomstolen (ICC) har förlorat åtkomsten till sina molntjänster på grund av sanktioner.
+
+ICC:s franska domare Nicolas Guillou fick amerikanska sanktioner riktade mot sig, och följderna slog direkt mot hans digitala vardag. [Enligt Euronews](https://www.euronews.com/my-europe/2026/02/18/us-sanctions-turn-international-criminal-court-judges-daily-life-into-a-nightmare) förlorade han tillgången till de flesta kreditkort och digitala tjänster. Guillou bedömer att samma situation skulle innebära en verklig civil död för en yngre europé vars hela liv finns på nätet. Han är domare från ett västligt allierat land, och ändå bröts åtkomsten helt.
+
+Danmarks cybersäkerhetschef har å sin sida [bedömt](https://yle.fi/a/74-20229273) att Danmark skulle stanna inom en timme om USA stängde sina molntjänster. Detsamma skulle gälla Finland. Risken hänger inte på leverantörens hemland. En kritisk tjänst som vilar på en enda leverantör faller lika lätt, oavsett om leverantören är amerikansk, europeisk eller finländsk.
+
+I augusti skrev jag i Kauppalehti om [molntjänsternas rättsliga jurisdiktion och den amerikanska CLOUD Act](/sv/blog/69/airbus-scaleway-jurisdiktionsskal/). Där handlade frågan om vem som kommer åt datan. Här är frågan en annan: hålls tjänsten över huvud taget igång?
+
+## Hur bygger man försörjningsberedskap utan att Finland isolerar sig?
+
+Försörjningsberedskap byggs genom att kartlägga de kritiska digitala beroendena och se till att det för vart och ett finns ett europeiskt eller inhemskt alternativ och en plan för övergången. [Ett system som bygger på öppen källkod](/sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/) kan drivas vidare av en ny leverantör även om den ursprungliga utvecklaren försvinner eller drar sig ur marknaden. Målet är inte självförsörjning.
+
+Kivekäs plan för försörjningsberedskap går igenom ett riskscenario i taget:
+
+- Samarbetet med en amerikansk aktör upphör → tjänsten flyttas till en europeisk aktör.
+- Leverantören drabbas av sanktioner → en ny leverantör upphandlas.
+- Lagstiftningen förbjuder export av personuppgifter ur landet → molntjänsten flyttas hem till Finland.
+- Utvecklarbolaget försvinner eller slutar ge support → öppen källkod gör en kontinuitetsplan och en ny förvaltare möjlig.
+
+> Öppen källkod garanterar att någon annan kan fortsätta när leverantören försvinner.
+
+Samma logik gäller rättsstatens funktionsförmåga mer allmänt. När ICC-domaren förlorade åtkomsten till sina digitala tjänster hade de europeiska institutionerna helt enkelt inget alternativ att erbjuda. Europeisk samordning, som gemensamma standarder för försörjningsberedskap och delade reservsystem, stärker just den här institutionella motståndskraften över språkgränserna.
+
+Ett konkret exempel finns i näringslivet: den europeiska flygplanstillverkaren Airbus flyttar ungefär 70 kritiska applikationer från ett amerikanskt moln till en fransk leverantör, som en del av ett program för att hålla bolagets kärnverksamhet igång också i undantagslägen ([The Register](https://www.theregister.com/paas-and-iaas/2026/07/16/airbus-migrating-70-critical-apps-from-aws-to-frances-scaleway-amid-digital-sovereignty-push/5272373)). Det är riskhantering som varje organisation med kritiska tjänster kan ägna sig åt.
+
+I Kyrkslätt har jag redan drivit frågan framåt. Jag lämnade en [fullmäktigemotion om att stärka den digitala försörjningsberedskapen](/sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/), och jag har tidigare skrivit både om hur [digital självständighet byggs upp i upphandlingsbeslut](/sv/blog/53/digital-sjalvstandighet-byggs-steg-for-steg/) och om [vardagsval som stärker samma beredskap](/sv/blog/66/digital-sjalvstandighet-vardagens-val/). Jag är De Grönas kandidat i riksdagsvalet i Nylands valkrets, och i riksdagen för jag samma princip vidare till nationell nivå. Varje kritiskt statligt system ska ha en kartläggning av försörjningsberedskapen och en kontinuitetsplan, innan en kris tvingar fram det.
+
+När marknadsekonomi, bildning och frihet stöder varandra i AI-tidsåldern växer ett [digitalt självständigt Finland](/sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/) fram. Det börjar med att vi i förväg vet vad vi gör den dag molnet inte längre svarar.

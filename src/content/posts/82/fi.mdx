@@ -1,0 +1,67 @@
+---
+lang: 'fi'
+slug: 'huoltovarmuus-ei-ulotu-pilveen'
+pageTitle: 'Digitaalinen huoltovarmuus ei ulotu pilveen'
+title: 'Suomen huoltovarmuus ei ulotu pilveen'
+description: 'Suomi varautuu kriiseihin viljalla ja lääkkeillä, mutta ei kriittisellä pilvellä. Digitaalinen huoltovarmuus on varautumista, joka ei vaadi eristäytymistä.'
+alt: 'Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja.'
+faq:
+  - q: 'Mitä digitaalinen huoltovarmuus tarkoittaa?'
+    a: 'Kahta asiaa. Jokaisesta yhteiskunnan kannalta välttämättömästä järjestelmästä tiedetään, kenen varassa se on, ja jokaiselle on olemassa vaihtoehto jo ennen kuin sitä tarvitaan. Täysi omavaraisuus ei ole tavoite eikä edes mahdollinen.'
+  - q: 'Miksi ulkomainen pilvi on huoltovarmuusriski?'
+    a: 'Koska yksi ulkovalta voi tosiasiassa katkaista pääsyn siihen. Ylen mukaan noin kaksi kolmasosaa Suomen julkishallinnosta toimii yhdysvaltalaisessa pilvessä. Riski ei silti ole sidottu toimittajan kotimaahan: yhden toimittajan varaan rakennettu kriittinen palvelu kaatuu yhtä lailla, olipa toimittaja yhdysvaltalainen, eurooppalainen tai suomalainen.'
+  - q: 'Miten huoltovarmuutta rakennetaan ilman että Suomi eristäytyy?'
+    a: 'Kartoittamalla kriittiset digitaaliset riippuvuudet ja varmistamalla, että jokaiselle on olemassa eurooppalainen tai kotimainen vaihtoehto sekä suunnitelma siirtymälle. Avoimeen lähdekoodiin nojaava järjestelmä voi jatkaa toimintaansa uuden toimittajan käsissä, vaikka alkuperäinen kehittäjä katoaisi.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+Suomen viljavarastoista riittäisi leipää kuukausiksi, ja lääkevarmuusvarastosta löytyy lääkkeitä, kuten antibiootteja, kriisin varalle. [Huoltovarmuuskeskus](https://www.huoltovarmuuskeskus.fi/) koordinoi tätä varautumista, joka on ollut suomalainen perusarvo yli puoluerajojen jo vuosikymmeniä. Kriittinen digitaalinen kerros on jäänyt tämän varautumisen ulkopuolelle. [Ylen mukaan](https://yle.fi/a/74-20229273) noin kaksi kolmasosaa Suomen julkishallinnon toiminnoista nojaa yhdysvaltalaiseen pilveen, eikä vastaavaa suunnitelmaa palvelujen pystyssä pitämiseksi ole. Digitaalinen huoltovarmuus tarkoittaa kriittisten digitaalisten riippuvuuksien kartoittamista ja suunnitelmaa, jolla palvelut pidetään toiminnassa myös silloin, kun kumppani muuttuu epäluotettavaksi. Sama varautuminen, joka koskee viljaa ja lääkkeitä, kuuluu myös digitaaliseen kerrokseen.
+
+Työkseni rakennan järjestelmiä, joiden on pysyttävä pystyssä myös silloin, kun osa palasista pettää. Kirjoitin tämän sarjan ensimmäisessä osassa [julkishankintojen siirrettävyydestä](/fi/blog/80/kuka-omistaa-julkishallinnon-datan/) ja toisessa osassa [digiministeriöstä](/fi/blog/81/miksi-suomi-tarvitsee-digiministerion/). Tässä kolmannessa osassa kysyn, mitä Suomelle tapahtuisi, jos yhteys kriittiseen ulkomaiseen pilveen katkeaisi kokonaan.
+
+> Varautuminen ei ole ideologiaa. Se on vastuullisuutta.
+
+## Mitä digitaalinen huoltovarmuus tarkoittaa?
+
+Käytännössä se tarkoittaa kahta asiaa. Jokaisesta yhteiskunnan kannalta välttämättömästä järjestelmästä tiedetään, kenen varassa se on, ja jokaiselle on olemassa vaihtoehto jo ennen kuin sitä tarvitaan. Kartoitus kertoo riippuvuudet, suunnitelma kertoo mitä tehdään sinä päivänä, kun yksi niistä pettää.
+
+[Otso Kivekäs on ehdottanut](https://otsokivekas.fi/2025/03/avoin-koodi-ja-digitaalinen-huoltovarmuus/), että huoltovarmuus on suvereniteettia konkreettisempi tapa puhua samasta asiasta. Huoltovarmuus on tuttu käsite jokaiselle, joka on kuullut viljavarastoista tai lääkevarmuudesta, ja se pitää keskustelun kiinni käytännössä. Täysi omavaraisuus ei ole tavoite eikä edes mahdollinen. Viisi miljoonaa suomalaista ei rakenna jokaista tarvitsemaansa järjestelmää itse, eikä sitä tarvitsekaan tehdä. Jopa 500 miljoonan eurooppalaisen on priorisoitava, mihin yhteinen osaaminen ja raha käytetään.
+
+## Miksi ulkomainen pilvi on huoltovarmuusriski?
+
+[Ulkomainen pilvi on huoltovarmuusriski](/fi/blog/79/suomi-vaarassa-menettaa-hallinnan-omista-tiedoistaan/), koska yksi ulkovalta voi tosiasiassa katkaista pääsyn siihen. EU:n teknologiakomissaari Henna Virkkunen [varoitti kesäkuussa 2026](https://yle.fi/a/74-20229273) juuri tästä kytkimestä. Suomen julkishallinnosta noin kaksi kolmasosaa toimii yhdysvaltalaisessa pilvessä. Katkaisuja on jo tapahtunut yksittäistapauksissa, kun Kansainvälisen rikostuomioistuimen (ICC) virkamiehet ovat menettäneet pääsynsä pilvipalveluihin pakotteiden vuoksi.
+
+ICC:n ranskalaistuomari Nicolas Guillou joutui Yhdysvaltain pakotteiden kohteeksi, ja seuraukset osuivat suoraan hänen digitaaliseen arkeensa. [Euronewsin mukaan](https://www.euronews.com/my-europe/2026/02/18/us-sanctions-turn-international-criminal-court-judges-daily-life-into-a-nightmare) hän menetti pääsyn useimpiin luottokortteihin ja digitaalisiin palveluihin. Guillou arvioi, että nuoremmalle eurooppalaiselle, jonka koko elämä on verkossa, vastaava tilanne olisi todellinen siviilikuolema. Hän on läntisen liittolaismaan tuomari, ja silti pääsy katkesi kokonaan.
+
+Toisaalla Tanskan kyberturvallisuusjohtaja on [arvioinut](https://yle.fi/a/74-20229273), että Tanska pysähtyisi tunnissa, jos Yhdysvallat sulkisi pilvipalvelunsa. Sama koskisi Suomea. Riski ei ole sidottu toimittajan kotimaahan. Yhden toimittajan varaan rakennettu kriittinen palvelu kaatuu yhtä lailla, olipa toimittaja yhdysvaltalainen, eurooppalainen tai suomalainen.
+
+Kirjoitin elokuussa Kauppalehteen [pilvipalvelujen oikeudellisesta toimivallasta ja Yhdysvaltain CLOUD Actista](/fi/blog/69/airbus-scaleway-lainsaadannon-piiri/). Siinä kysymys oli siitä, kuka pääsee dataan käsiksi. Tässä se on toinen: pysyykö palvelu ollenkaan pystyssä.
+
+## Miten huoltovarmuutta rakennetaan ilman että Suomi eristäytyy?
+
+Huoltovarmuutta rakennetaan kartoittamalla kriittiset digitaaliset riippuvuudet ja varmistamalla, että jokaiselle on olemassa eurooppalainen tai kotimainen vaihtoehto sekä suunnitelma siirtymälle. [Avoimeen lähdekoodiin nojaava järjestelmä](/fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/) voi jatkaa toimintaansa uuden toimittajan käsissä, vaikka alkuperäinen kehittäjä katoaisi tai vetäytyisi markkinalta. Tavoite ei ole omavaraisuus.
+
+Kivekkään huoltovarmuussuunnitelma etenee riskiskenaario kerrallaan:
+
+- Yhdysvaltalainen yhteistyö päättyy → palvelu siirtyy eurooppalaiselle toimijalle.
+- Toimittaja joutuu pakotteiden kohteeksi → tilalle haetaan uusi.
+- Lainsäädäntö kieltää henkilötietojen viennin maasta → pilvessä toimiva palvelu siirretään kotimaahan.
+- Kehittäjäyhtiö katoaa tai lopettaa tuen → avoin lähdekoodi mahdollistaa jatkuvuussuunnitelman ja uuden ylläpitäjän.
+
+> Avoin lähdekoodi takaa, että joku toinen voi jatkaa, kun toimittaja katoaa.
+
+Sama logiikka koskee oikeusvaltion toimintakykyä laajemmin. Kun ICC:n tuomari menetti pääsynsä digitaalisiin palveluihinsa, eurooppalaisilla instituutioilla ei yksinkertaisesti ollut tarjolla vaihtoehtoa. Eurooppalainen koordinaatio, kuten yhteiset huoltovarmuusstandardit ja jaetut varajärjestelmät, vahvistaa juuri tätä institutionaalista kestävyyttä yli kielirajojen.
+
+Konkreettinen esimerkki löytyy yritysmaailmasta: eurooppalainen lentokonevalmistaja Airbus siirtää noin 70 kriittistä sovellustaan yhdysvaltalaisesta pilvestä ranskalaiselle toimittajalle osana ohjelmaa, jonka tavoitteena on pitää yhtiön ydintoiminnot pystyssä myös poikkeustilanteessa ([The Register](https://www.theregister.com/paas-and-iaas/2026/07/16/airbus-migrating-70-critical-apps-from-aws-to-frances-scaleway-amid-digital-sovereignty-push/5272373)). Se on riskienhallintaa, jota jokainen kriittisiä palveluita ylläpitävä organisaatio voi tehdä.
+
+Kirkkonummella olen jo vienyt tätä eteenpäin. Tein [valtuustoaloitteen digitaalisen huoltovarmuuden vahvistamisesta](/fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/), ja olen kirjoittanut aiemmin sekä [digitaalisen itsenäisyyden rakentumisesta hankintapäätöksissä](/fi/blog/53/digitaalinen-itsenaisyys-rakennetaan-askel-kerrallaan/) että [arjen valinnoista, jotka vahvistavat samaa huoltovarmuutta](/fi/blog/66/digitaalinen-itsenaisyys-arjen-valinnat/). Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä, ja vien eduskunnassa saman periaatteen valtakunnalliselle tasolle. Jokaiselle kriittiselle valtion järjestelmälle huoltovarmuuskartoitus ja jatkuvuussuunnitelma, ennen kuin kriisi pakottaa siihen.
+
+Kun markkinatalous, sivistys ja vapaus tukevat toisiaan tekoälyn aikakaudella, syntyy [digitaalisesti itsenäinen Suomi](/fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/). Se alkaa siitä, että tiedämme etukäteen, mitä teemme sinä päivänä, kun pilvi ei enää vastaa.
