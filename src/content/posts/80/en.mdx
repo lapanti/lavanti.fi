@@ -1,0 +1,71 @@
+---
+lang: 'en'
+slug: 'who-owns-public-sector-data'
+pageTitle: "Who owns public administration's data?"
+title: 'Who owns public sector data?'
+description: 'Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.'
+alt: 'Close-up of a computer screen showing colorful, syntax-highlighted source code.'
+faq:
+  - q: 'What does portability in public procurement mean in practice?'
+    a: "Portability is a property of the procurement that guarantees the system's data, processes and integrations can be moved to another supplier at reasonable cost. It requires publicly documented data formats, well-known interface standards and an exit clause written into the contract."
+  - q: 'Why does vendor lock-in cost taxpayers so much?'
+    a: 'When the supplier cannot be replaced, the price stops being set by the market. The supplier knows the customer cannot leave, and the negotiating power shifts to the supplier for good.'
+  - q: 'How do we bring competition back to public IT procurement?'
+    a: 'Competition would return if the Procurement Act required portability from the call for tenders onwards. Open source would be the default for critical systems, procurements would be split into modules, and every procurement would carry a supplier dependency assessment before the decision.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+When a municipality or the state buys an information system, it is also buying a home for a vast amount of taxpayers' data. Too often nobody asks who ends up controlling that data. As a lead developer, I have spent more than a decade building systems in which every layer has to be replaceable, so that one failing component or supplier cannot bring the whole system down. In public IT procurement this principle is called **portability**: the ability to move a system's data, processes and integrations to another supplier when the current one no longer does the job. Without it, the data is locked inside one supplier's closed system, and control over it has in effect been handed away. Portability and open interfaces should be written into the Procurement Act as a mandatory condition for every critical public system.
+
+## What does portability in public procurement mean in practice?
+
+Portability is a property of the procurement that guarantees the system's data, processes and integrations can be moved to another supplier at reasonable cost. It only exists if it is written into the contract and the technical specification before the procurement decision is made. In practice, every critical procurement would need three things:
+
+- Data formats that are publicly documented and openly described.
+- Integrations built on well-known interface standards.
+- An exit clause in every contract, setting out how the data and documentation move to the next supplier.
+
+Without these, switching supplier is possible in theory but often too expensive in practice.
+
+Otso Kivekäs, CEO of the software company Haltu Oy, [puts it well](https://otsokivekas.fi/2025/01/avointa-koodia-julkishallintoon/): a customer must never get stuck with a single supplier, because the ability to switch is the core of what the procurement promises. This is a basic design principle. Interfaces are designed to be open from the start, because doing it afterwards costs many times more. Every critical ICT procurement should also include a mandatory supplier dependency assessment, covering a component inventory, supply chain verification and a description of the update process, all written into the call for tenders.
+
+> You cannot switch supplier unless that option was agreed from the start.
+
+## Why does vendor lock-in cost taxpayers so much?
+
+[When the supplier cannot be replaced](/en/newsletter/8/when-a-vendor-cannot-be-switched/), the price stops being set by the market. The supplier knows the customer cannot leave, and the negotiating power shifts to the supplier for good. Helsinki offers two instructive examples of what a bad procurement costs: Asti, the customer service system for early childhood and basic education, and Sarastia365, the payroll system used by the city's HR. The comparison below between the open eVaka and the closed Asti is illustrative and not entirely fair, but it shows how the two models differ.
+
+- **[eVaka](https://github.com/espoon-voltti/evaka)** (Espoo, Tampere, Oulu, Turku): open source with shared maintenance, covering early childhood education. It cost [about €9M by 2023](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi) and is [in use in more than ten municipalities](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella).
+- **Helsinki's own customer service system (Asti)**: closed and built alone, covering early childhood and basic education. It cost [about €32M in 2019–2023, originally estimated at €60M](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/). Development was halted and the system was never completed.
+
+The systems are not directly comparable. Asti covered basic education services as well as early childhood education, so a straight comparison does not tell the whole story. The key difference, though, is how they were built. eVaka's supplier can be replaced, and the maintenance is shared between several municipalities. Asti's development, by contrast, stalled inside a single city with no outside competition.
+
+[Helsinki's Sarastia365 HR system](https://yle.fi/a/74-20026642) went live in spring 2022, and thousands of employees were paid the wrong amount or not paid at all. The problem was an uncontrolled rollout rather than a single supplier, but the lesson is the same. A critical procurement without a clear plan for control and replaceability ends up expensive. The pattern repeats almost every time new systems are bought without anyone asking how to get out of them if needed.
+
+The same logic is visible in Germany. The state of Schleswig-Holstein made a one-off investment of about €9 million to move away from Microsoft to open source systems, and the state's digitalisation ministry [estimates](https://www.heise.de/en/news/Goodbye-Microsoft-Schleswig-Holstein-relies-on-Open-Source-and-saves-millions-11105459.html) annual savings of about €15 million, meaning the investment pays for itself in under a year. The Commission's proposed [Cloud and AI Development Act](https://fsfe.org/news/2026/news-20260603-01.en.html) makes open source the default specifically for public procurement of cloud and AI software, for the same reason.
+
+> Competition is not ideology. It is cheaper.
+
+## How do we bring competition back to public IT procurement?
+
+Competition would return if the Procurement Act required portability from the call for tenders onwards. In practice, it would take three structural changes. Together they would break today's supplier-centred model and give smaller Finnish software companies a real chance to deliver part of the whole instead of one large supplier taking everything, regardless of how small or large the contracting authority is.
+
+- [Open source](/en/blog/76/open-source-is-the-cornerstone-of-digital-independence/) becomes the default for critical systems.
+- Procurements are split into modules instead of one large contract.
+- Every procurement carries a supplier dependency assessment before the decision.
+
+This would not be free, of course, but the opportunity cost should gradually become clear to everyone. Documenting interfaces and assessing dependencies takes expertise and time from the contracting authority, which a small municipality may lack entirely. No municipality has to build that expertise alone. Contracting authorities could share the same assessment model, just as they already share the maintenance of eVaka. In return, a market would open in which a Finnish SME could deliver part of the whole without having to win the entire monolith on its own. Maintenance shared across several municipalities is also a matter of [resilience](/en/blog/59/council-initiative-strengthening-kirkkonummis-digital-resilience/). When no single supplier owns the whole system, the municipality keeps its grip on the service even when one partner runs into trouble.
+
+I am the Greens' parliamentary candidate in the Uusimaa electoral district, and I intend to write these requirements into the Procurement Act. In my work I have seen both sides. I know what can be built on top of an open interface, and what a closed black box costs when it breaks. The same principle applies whether the system is built for a company or for a municipality.
+
+The first practical step is a small one. Every new critical ICT procurement would get a portability requirement and a supplier dependency assessment within this parliamentary term, instead of rewriting the entire Procurement Act in one go. [Digital independence is built exactly like this, one step at a time](/en/blog/53/digital-independence-is-built-one-step-at-a-time/). I have written before about how the same logic of supplier dependency shows up in [municipal AI procurement](/en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/).
+
+A digitally independent Finland is built when the economy, education and freedom work together in the age of AI. It starts with public procurement that makes sense.

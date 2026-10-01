@@ -1,0 +1,71 @@
+---
+lang: 'sv'
+slug: 'vem-ager-den-offentliga-forvaltningens-data'
+pageTitle: 'Vem äger den offentliga sektorns data?'
+title: 'Vem äger den offentliga förvaltningens data?'
+description: 'Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.'
+alt: 'Närbild av en datorskärm med färgstark syntaxmarkerad källkod.'
+faq:
+  - q: 'Vad betyder portabilitet i offentliga upphandlingar i praktiken?'
+    a: 'Portabilitet är en egenskap hos upphandlingen som garanterar att systemets data, processer och integrationer kan flyttas till en annan leverantör utan orimliga kostnader. Det kräver offentligt dokumenterade dataformat, kända gränssnittsstandarder och en exitklausul i avtalet.'
+  - q: 'Varför blir leverantörsberoende dyrt för skattebetalarna?'
+    a: 'När leverantören inte går att byta slutar priset styras av marknaden. Leverantören vet att kunden inte kan lämna, och förhandlingsläget flyttas permanent över till leverantören.'
+  - q: 'Hur återställs konkurrensen i offentliga IT-upphandlingar?'
+    a: 'Konkurrensen skulle återvända om upphandlingslagen krävde portabilitet redan från anbudsförfrågan. Öppen källkod skulle vara standard i kritiska system, upphandlingar skulle delas upp i moduler och varje upphandling skulle få en bedömning av leverantörsberoendet före beslutet.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+När en kommun eller staten köper ett informationssystem köper den samtidigt ett hem för en enorm mängd data som tillhör skattebetalarna. Alltför ofta frågar ingen vem som till slut har kontrollen över den datan. Som ledande programutvecklare har jag i över tio år byggt system där varje lager måste gå att byta ut, så att en enskild komponent eller leverantör som fallerar inte fäller hela systemet. I offentliga IT-upphandlingar kallas den här principen **portabilitet**: förmågan att flytta systemets data, processer och integrationer till en annan leverantör när den nuvarande inte längre fyller sin uppgift. Utan den är datan inlåst i en enda leverantörs slutna system, och kontrollen över den har i praktiken lämnats bort. I offentliga upphandlingar borde portabilitet och öppna gränssnitt skrivas in i upphandlingslagen som ett obligatoriskt villkor för varje kritiskt system.
+
+## Vad betyder portabilitet i offentliga upphandlingar i praktiken?
+
+Portabilitet är en egenskap hos upphandlingen som garanterar att systemets data, processer och integrationer kan flyttas till en annan leverantör utan orimliga kostnader. Portabilitet uppstår bara om den skrivs in i avtalet och i den tekniska specifikationen redan före upphandlingsbeslutet. I praktiken skulle det kräva tre saker av varje kritisk upphandling:
+
+- Dataformaten är offentligt dokumenterade och öppet beskrivna.
+- Integrationerna bygger på kända gränssnittsstandarder.
+- Avtalet innehåller alltid en exitklausul som anger hur data och dokumentation förs över till nästa leverantör.
+
+Saknas de här är ett leverantörsbyte möjligt i teorin, men i praktiken ofta för dyrt.
+
+Otso Kivekäs, vd för mjukvaruföretaget Haltu Oy, [träffar rätt i frågan](https://otsokivekas.fi/2025/01/avointa-koodia-julkishallintoon/): kunden får aldrig fastna hos en enda leverantör, eftersom förmågan att byta leverantör är själva kärnan i det värde upphandlingen lovar. Det här är en grundprincip inom systemdesign. Gränssnitten utformas öppna från början, eftersom det kostar mångdubbelt att göra det i efterhand. Varje kritisk IKT-upphandling borde också omfatta en obligatorisk bedömning av leverantörsberoendet, med en komponentförteckning, en verifiering av leveranskedjan och en beskrivning av uppdateringsprocessen, inskrivna redan i anbudsförfrågan.
+
+> Leverantören går inte att byta om det alternativet inte har avtalats från början.
+
+## Varför blir leverantörsberoende dyrt för skattebetalarna?
+
+[När leverantören inte går att byta](/sv/nyhetsbrev/8/nar-leverantoren-inte-gar-att-byta/) slutar priset styras av marknaden. Leverantören vet att kunden inte kan lämna, och förhandlingsläget flyttas permanent över till leverantören. Helsingfors bjuder på två lärorika exempel på vad en dålig upphandling kostar: ärendesystemet Asti för småbarnspedagogik och grundläggande utbildning, och lönesystemet Sarastia365 inom personalförvaltningen. Jämförelsen nedan mellan öppna eVaka och slutna Asti är bara ett exempel och inte helt rättvis, men den visar skillnaden mellan modellerna.
+
+- **[eVaka](https://github.com/espoon-voltti/evaka)** (Esbo, Tammerfors, Uleåborg, Åbo): öppen källkod och delat underhåll, med småbarnspedagogik som omfattning. Kostnaden var [cirka 9 M€ fram till 2023](https://www.sttinfo.fi/tiedote/70018983/nelja-kaupunkia-kehitti-yhteisen-varhaiskasvatuksen-tietojarjestelman-nyt-myos-muut-kunnat-voivat-ottaa-sen-kayttoonsa?publisherId=3385&lang=fi), och systemet är [i bruk i drygt tio kommuner](https://www.espoo.fi/fi/uutiset/2024/10/varhaiskasvatuksen-evaka-tietojarjestelma-palkittiin-open-world-hero-2024-tunnustuksella).
+- **Helsingfors eget ärendesystem (Asti)**: slutet och byggt på egen hand, med småbarnspedagogik och grundläggande utbildning som omfattning. Kostnaden var [cirka 32 M€ åren 2019–2023, ursprungligen uppskattat till 60 M€](https://vierityspalkki.fi/2024/05/02/helsingin-kaupunki-kokeilee-kuinka-hyva-ohjelmistofirma-se-on-ja-lopputulos-on-kamalaa-katsottavaa/). Utvecklingen avbröts, och systemet blev aldrig färdigt.
+
+Systemen går inte att jämföra rakt av. Asti omfattade utöver småbarnspedagogiken även ärendena inom den grundläggande utbildningen, så en direkt jämförelse berättar inte hela sanningen. Den viktigaste skillnaden är ändå genomförandet. eVakas leverantör går att byta, och underhållet delas mellan flera kommuner. Utvecklingen av Asti stannade däremot av inom en enda stad, utan konkurrens utifrån.
+
+[Helsingfors personalsystem Sarastia365 HR](https://yle.fi/a/74-20026642) togs i bruk våren 2022, och tusentals anställda fick felaktig lön eller ingen lön alls. Problemet var snarare en okontrollerad driftsättning än en enskild leverantör, men lärdomen är densamma. En kritisk upphandling utan en tydlig plan för kontroll och utbytbarhet blir dyr. Mönstret upprepas nästan varje gång nya system köps in utan att någon funderar på hur man vid behov tar sig ur dem.
+
+Samma logik syns i Tyskland. Delstaten Schleswig-Holstein investerade engångsvis cirka 9 miljoner euro när den lämnade Microsoft för system baserade på öppen källkod, och delstatens digitaliseringsministerium [uppskattar](https://www.heise.de/en/news/Goodbye-Microsoft-Schleswig-Holstein-relies-on-Open-Source-and-saves-millions-11105459.html) de årliga besparingarna till cirka 15 miljoner euro, vilket betyder att investeringen betalar sig på under ett år. Kommissionens förslag till [Cloud and AI Development Act](https://fsfe.org/news/2026/news-20260603-01.en.html) gör öppen källkod till standard just i offentliga upphandlingar av moln- och AI-programvara, av samma skäl.
+
+> Konkurrens är inte ideologi. Den är billigare.
+
+## Hur återställs konkurrensen i offentliga IT-upphandlingar?
+
+Konkurrensen skulle återvända om upphandlingslagen krävde portabilitet redan från anbudsförfrågan. I praktiken skulle det behövas tre strukturella förändringar. Tillsammans skulle de bryta dagens leverantörscentrerade modell och ge även mindre finländska mjukvaruföretag en verklig chans att erbjuda en del av helheten i stället för att allt går till en enda stor leverantör, oavsett hur liten eller stor den upphandlande enheten är.
+
+- [Öppen källkod](/sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/) blir standard i kritiska system.
+- Upphandlingar delas upp i moduler i stället för ett enda stort avtal.
+- Varje upphandling får en bedömning av leverantörsberoendet före beslutet.
+
+Det här skulle förstås inte vara gratis, men alternativkostnaden borde så småningom stå klar för alla. Att dokumentera gränssnitt och bedöma beroenden kräver kunnande och tid av den upphandlande enheten, något som en liten kommun kan sakna helt. Alla kommuner behöver inte bygga upp det kunnandet på egen hand. De upphandlande enheterna kunde dela samma bedömningsmodell, precis som de redan delar underhållet av eVaka. I gengäld skulle en marknad öppnas där ett finländskt småföretag kan erbjuda en del av helheten, utan att behöva vinna hela monoliten ensamt. Underhåll som delas av flera kommuner är också en [fråga om driftsäkerhet](/sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/). När ingen enskild leverantör äger hela systemet behåller kommunen greppet om sin tjänst även när en partner hamnar i svårigheter.
+
+Jag är De Grönas riksdagskandidat i Nylands valkrets, och jag tänker föra in de här kraven i upphandlingslagen. I mitt arbete har jag sett båda sidorna. Jag vet vad man kan bygga ovanpå ett öppet gränssnitt och vad en sluten svart låda kostar när den går sönder. Samma princip gäller oavsett om systemet byggs för ett företag eller för en kommun.
+
+Det första praktiska steget är litet. Varje ny kritisk IKT-upphandling skulle få ett krav på portabilitet och en bedömning av leverantörsberoendet redan under den här valperioden, i stället för att hela upphandlingslagen skrivs om på en gång. [Digital självständighet byggs just så, steg för steg](/sv/blog/53/digital-sjalvstandighet-byggs-steg-for-steg/). Jag har tidigare skrivit om hur samma logik kring leverantörsberoende syns i [kommunernas AI-upphandlingar](/sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/).
+
+Ett digitalt självständigt Finland byggs när ekonomi, bildning och frihet samverkar i AI-tidsåldern. Det börjar med att de offentliga upphandlingarna är förnuftiga.
