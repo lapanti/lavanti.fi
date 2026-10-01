@@ -99,6 +99,24 @@
       - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
         - listitem:
+          - article "Kuka omistaa julkishallinnon datan?":
+            - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
+              - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
+              - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
+              - heading "Kuka omistaa julkishallinnon datan?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+        - listitem:
           - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
             - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
               - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Infra":
                 - /url: /fi/kategoria/infra/
-        - listitem:
-          - article "HSL:n matkalippujen hintojen korottaminen on virhe":
-            - link "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa. HSL:n matkalippujen hintojen korottaminen on virhe":
-              - /url: /fi/blog/70/hsln-matkalippujen-hintojen-korottaminen-on-virhe/
-              - img "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa."
-              - heading "HSL:n matkalippujen hintojen korottaminen on virhe" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /HSL esittää lippuihin noin kolmen prosentin vuosikorotusta \d+–\d+\. Tasakorotus osuu kovimmin Kirkkonummeen, jossa työmatka vaatii ABCD-lipun\./
-          - list:
-            - listitem:
-              - link "Liikenne":
-                - /url: /fi/kategoria/liikenne/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Länsi-Uusimaa":
-                - /url: /fi/kategoria/lansi-uusimaa/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/
@@ -351,6 +351,24 @@
       - paragraph: "Kirkkonummi on kaksikielinen, rannikolla sijaitseva kunta, joka kasvaa nopeasti Helsingin seudun reunalla. Sillä on paljon vahvuuksia — rantaviiva, luonto, monimuotoinen yhteisö — ja todellisia paineita: tulopohja, jolla on vaikeuksia pysyä tarpeiden perässä, ja alueelle kriittinen junarata. Paikallispolitiikka täällä ei ole pientä politiikkaa."
       - list:
         - listitem:
+          - article "HSL:n matkalippujen hintojen korottaminen on virhe":
+            - link "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa. HSL:n matkalippujen hintojen korottaminen on virhe":
+              - /url: /fi/blog/70/hsln-matkalippujen-hintojen-korottaminen-on-virhe/
+              - img "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa."
+              - heading "HSL:n matkalippujen hintojen korottaminen on virhe" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /HSL esittää lippuihin noin kolmen prosentin vuosikorotusta \d+–\d+\. Tasakorotus osuu kovimmin Kirkkonummeen, jossa työmatka vaatii ABCD-lipun\./
+          - list:
+            - listitem:
+              - link "Liikenne":
+                - /url: /fi/kategoria/liikenne/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Länsi-Uusimaa":
+                - /url: /fi/kategoria/lansi-uusimaa/
+        - listitem:
           - article "Lippu nousi salkoon. Mitä Kirkkonummi tekee seuraavaksi?":
             - link /Sateenkaarilippu liehuu Kirkkonummen kunnantalon lipputangossa kesäkuussa \d+\. Lippu nousi salkoon\. Mitä Kirkkonummi tekee seuraavaksi\?/:
               - /url: /fi/blog/64/lippu-nousi-salkoon-mita-kirkkonummi-tekee-seuraavaksi/
@@ -386,24 +404,6 @@
             - listitem:
               - link "Valtuustoaloite":
                 - /url: /fi/kategoria/valtuustoaloite/
-        - listitem:
-          - article "Äänestin Västraa vastaan":
-            - link "Kolme kolikkopinoa eri korkeuksilla valkoisella taustalla. Kuva havainnollistaa kunnan taloudellista päätöksentekoa. Äänestin Västraa vastaan":
-              - /url: /fi/blog/58/aanestin-vastraa-vastaan/
-              - img "Kolme kolikkopinoa eri korkeuksilla valkoisella taustalla. Kuva havainnollistaa kunnan taloudellista päätöksentekoa."
-              - heading "Äänestin Västraa vastaan" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Äänestin Västra-rannikkoyhteistyötä vastaan. Valtuusto päätti liittyä. Perusteluni: rahat kuuluvat sivistyspalveluihin, ei sopimukseen josta ei pääse irti."
-          - list:
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Länsi-Uusimaa":
-                - /url: /fi/kategoria/lansi-uusimaa/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Kirkkonummi":
           - /url: /fi/kategoria/kirkkonummi/

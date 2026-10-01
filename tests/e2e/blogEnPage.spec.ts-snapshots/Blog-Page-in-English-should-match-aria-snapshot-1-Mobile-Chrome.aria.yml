@@ -99,6 +99,24 @@
       - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
         - listitem:
+          - article "Who owns public sector data?":
+            - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
+              - /url: /en/blog/80/who-owns-public-sector-data/
+              - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
+              - heading "Who owns public sector data?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+        - listitem:
           - article "Data Centres Can Be Finland's Ace in International Politics":
             - link "Close-up of data centre servers with rows of green status lights. Data Centres Can Be Finland's Ace in International Politics":
               - /url: /en/blog/71/data-centres-finlands-ace-in-international-politics/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Infrastructure":
                 - /url: /en/category/infrastructure/
-        - listitem:
-          - article "Raising HSL ticket prices is a mistake":
-            - 'link "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt. Raising HSL ticket prices is a mistake"':
-              - /url: /en/blog/70/raising-hsl-ticket-prices-is-a-mistake/
-              - 'img "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt."'
-              - heading "Raising HSL ticket prices is a mistake" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /HSL plans fare rises of about three percent a year in \d+–\d+\. A flat percentage hits Kirkkonummi hardest, where commuting requires an ABCD ticket\./
-          - list:
-            - listitem:
-              - link "Transport":
-                - /url: /en/category/transportation/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Western Uusimaa":
-                - /url: /en/category/western-uusimaa/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/
@@ -351,6 +351,24 @@
       - paragraph: "Kirkkonummi is a bilingual, coastal municipality growing fast at the edge of the Helsinki region. It has plenty of real assets — shoreline, nature, a mixed community — and real pressures: a revenue base that struggles to keep up with demand, and a rail line that is critical to the region. Local politics here is not small politics."
       - list:
         - listitem:
+          - article "Raising HSL ticket prices is a mistake":
+            - 'link "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt. Raising HSL ticket prices is a mistake"':
+              - /url: /en/blog/70/raising-hsl-ticket-prices-is-a-mistake/
+              - 'img "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt."'
+              - heading "Raising HSL ticket prices is a mistake" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /HSL plans fare rises of about three percent a year in \d+–\d+\. A flat percentage hits Kirkkonummi hardest, where commuting requires an ABCD ticket\./
+          - list:
+            - listitem:
+              - link "Transport":
+                - /url: /en/category/transportation/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Western Uusimaa":
+                - /url: /en/category/western-uusimaa/
+        - listitem:
           - article "The flag is up. What does Kirkkonummi do next?":
             - link /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\. The flag is up\. What does Kirkkonummi do next\?/:
               - /url: /en/blog/64/the-flag-is-up-what-does-kirkkonummi-do-next/
@@ -386,24 +404,6 @@
             - listitem:
               - link "Council motion":
                 - /url: /en/category/council-motion/
-        - listitem:
-          - article "I voted against Västra":
-            - link "Three stacks of coins at different heights on a white background. The image illustrates municipal financial decision-making. I voted against Västra":
-              - /url: /en/blog/58/i-voted-against-vastra/
-              - img "Three stacks of coins at different heights on a white background. The image illustrates municipal financial decision-making."
-              - heading "I voted against Västra" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "I voted against Kirkkonummi joining the Västra cooperation. The council decided otherwise. My case: the money belongs in education, not a locked-in agreement."
-          - list:
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Western Uusimaa":
-                - /url: /en/category/western-uusimaa/
       - paragraph:
         - link "All posts about Kirkkonummi":
           - /url: /en/category/kirkkonummi/

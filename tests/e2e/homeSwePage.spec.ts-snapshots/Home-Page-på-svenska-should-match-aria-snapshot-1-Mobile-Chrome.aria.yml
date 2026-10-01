@@ -125,6 +125,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Vem äger den offentliga förvaltningens data?":
+          - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
+            - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
+            - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
+            - heading "Vem äger den offentliga förvaltningens data?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.
+        - list:
+          - listitem:
+            - link "Digital självständighet":
+              - /url: /sv/kategori/digital-sjalvstandighet/
+          - listitem:
+            - link "Digitalisering":
+              - /url: /sv/kategori/digitalisering/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+      - listitem:
         - article "FöPL får inte höja tröskeln för företagande":
           - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
             - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Marknadsgrön":
               - /url: /sv/kategori/marknadsgron/
-      - listitem:
-        - article "Davids slunga är ett bevis på att Europa har misslyckats":
-          - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Davids slunga är ett bevis på att Europa har misslyckats"':
-            - /url: /sv/blog/68/davids-slunga-europas-misslyckande/
-            - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
-            - heading "Davids slunga är ett bevis på att Europa har misslyckats" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Davids slunga var rätt upphandling för Finland, men den avslöjar den europeiska försvarsindustrins misslyckande. Ett marknadsgrönt perspektiv.
-        - list:
-          - listitem:
-            - link "Säkerhet":
-              - /url: /sv/kategori/sakerhet/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
-          - listitem:
-            - link "Frihet":
-              - /url: /sv/kategori/frihet/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

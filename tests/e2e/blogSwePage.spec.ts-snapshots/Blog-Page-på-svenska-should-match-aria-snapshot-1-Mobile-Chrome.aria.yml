@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Vem äger den offentliga förvaltningens data?":
+            - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
+              - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
+              - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
+              - heading "Vem äger den offentliga förvaltningens data?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+        - listitem:
           - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
             - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
               - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Infrastruktur":
                 - /url: /sv/kategori/infrastruktur/
-        - listitem:
-          - article "Det är ett misstag att höja priserna på HRT:s resebiljetter":
-            - 'link "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta. Det är ett misstag att höja priserna på HRT:s resebiljetter"':
-              - /url: /sv/blog/70/hrts-biljettpriser-hojning-ar-ett-misstag/
-              - 'img "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta."'
-              - heading "Det är ett misstag att höja priserna på HRT:s resebiljetter" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /HRT föreslår en höjning på cirka tre procent per år \d+–\d+\. En lika stor procenthöjning drabbar Kyrkslätt hårdast, där pendling kräver ABCD-biljett\./
-          - list:
-            - listitem:
-              - link "Trafik":
-                - /url: /sv/kategori/trafik/
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Västra Nyland":
-                - /url: /sv/kategori/vastra-nyland/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/
@@ -351,6 +351,24 @@
       - paragraph: "Kyrkslätt är en tvåspråkig kustkommun som växer snabbt i kanten av Helsingforsregionen. Den har gott om verkliga tillgångar — strandlinje, natur, en blandad gemenskap — och verkliga påfrestningar: en intäktsbas som har svårt att hålla jämna steg med behoven, och en järnväg som är avgörande för regionen. Lokalpolitiken här är inte småpolitik."
       - list:
         - listitem:
+          - article "Det är ett misstag att höja priserna på HRT:s resebiljetter":
+            - 'link "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta. Det är ett misstag att höja priserna på HRT:s resebiljetter"':
+              - /url: /sv/blog/70/hrts-biljettpriser-hojning-ar-ett-misstag/
+              - 'img "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta."'
+              - heading "Det är ett misstag att höja priserna på HRT:s resebiljetter" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /HRT föreslår en höjning på cirka tre procent per år \d+–\d+\. En lika stor procenthöjning drabbar Kyrkslätt hårdast, där pendling kräver ABCD-biljett\./
+          - list:
+            - listitem:
+              - link "Trafik":
+                - /url: /sv/kategori/trafik/
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Västra Nyland":
+                - /url: /sv/kategori/vastra-nyland/
+        - listitem:
           - article "Flaggan hissades. Vad gör Kyrkslätt nästa?":
             - link /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\. Flaggan hissades\. Vad gör Kyrkslätt nästa\?/:
               - /url: /sv/blog/64/flaggan-hissades-vad-gor-kyrkslatt-nasta/
@@ -386,24 +404,6 @@
             - listitem:
               - link "Fullmäktigeinitiativ":
                 - /url: /sv/kategori/fullmaktigeinitiativ/
-        - listitem:
-          - article "Jag röstade mot Västra":
-            - link "Tre myntstaplar i olika höjder på vit bakgrund. Bilden illustrerar kommunalt ekonomiskt beslutsfattande. Jag röstade mot Västra":
-              - /url: /sv/blog/58/jag-rostade-mot-vastra/
-              - img "Tre myntstaplar i olika höjder på vit bakgrund. Bilden illustrerar kommunalt ekonomiskt beslutsfattande."
-              - heading "Jag röstade mot Västra" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Jag röstade mot Västra kustsamarbetet. Fullmäktige beslutade annorlunda. Pengarna hör till bildningsservicen, inte ett avtal man inte kan lämna.
-          - list:
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Västra Nyland":
-                - /url: /sv/kategori/vastra-nyland/
       - paragraph:
         - link "Alla inlägg om Kyrkslätt":
           - /url: /sv/kategori/kyrkslatt/
