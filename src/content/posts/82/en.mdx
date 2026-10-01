@@ -1,0 +1,67 @@
+---
+lang: 'en'
+slug: 'security-of-supply-ends-at-the-cloud'
+pageTitle: 'Security of Supply Ends at the Cloud'
+title: 'Finland''s Security of Supply Stops Short of the Cloud'
+description: 'Finland stockpiles grain and medicines for a crisis, but not critical cloud services. Digital security of supply is preparedness that needs no isolation.'
+alt: 'Close-up of data centre servers with rows of green status lights.'
+faq:
+  - q: 'What Does Digital Security of Supply Mean?'
+    a: 'Two things. For every system society cannot do without, we know whom it depends on, and each one has an alternative ready before it is needed. Full self-sufficiency is neither the goal nor even possible.'
+  - q: 'Why Is a Foreign Cloud a Security of Supply Risk?'
+    a: 'Because a single foreign power can in practice cut off access to it. According to Yle, about two thirds of Finland''s public administration runs in US clouds. Yet the risk is not tied to the vendor''s home country: a critical service built on a single vendor fails just the same whether that vendor is American, European or Finnish.'
+  - q: 'How Do We Build Security of Supply Without Isolating Finland?'
+    a: 'By mapping critical digital dependencies and making sure each one has a European or domestic alternative and a plan for switching over. A system built on open source can keep running in a new vendor''s hands even if the original developer disappears.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+Finland's grain reserves would keep the country in bread for months, and the mandatory medicine stockpiles hold drugs such as antibiotics for a crisis. The [National Emergency Supply Agency](https://www.huoltovarmuuskeskus.fi/en/) coordinates this preparedness, which has been a core Finnish value across party lines for decades. The critical digital layer has been left out of it. [According to Yle](https://yle.fi/a/74-20229273), about two thirds of Finnish public administration functions rely on US clouds, and there is no comparable plan for keeping those services running. Digital security of supply means mapping critical digital dependencies and having a plan that keeps services running even when a partner becomes unreliable. The preparedness we apply to grain and medicines belongs in the digital layer too.
+
+In my work I build systems that have to stay up even when some of their parts fail. In the first part of this series I wrote about [portability in public procurement](/en/blog/80/who-owns-public-sector-data/), and in the second about [a ministry for digital affairs](/en/blog/81/why-finland-needs-a-digital-ministry/). In this third part I ask what would happen to Finland if the connection to a critical foreign cloud were cut off entirely.
+
+> Preparedness is not ideology. It is responsibility.
+
+## What Does Digital Security of Supply Mean?
+
+In practice it means two things. For every system society cannot do without, we know whom it depends on, and each one has an alternative ready before it is needed. The mapping shows the dependencies; the plan shows what to do on the day one of them fails.
+
+[Otso Kivekäs has suggested](https://otsokivekas.fi/2025/03/avoin-koodi-ja-digitaalinen-huoltovarmuus/) that security of supply is a more concrete way than sovereignty to talk about the same thing. Security of supply is a familiar idea to anyone who has heard of grain reserves or medicine stockpiles, and it keeps the debate grounded in practice. Full self-sufficiency is neither the goal nor even possible. Five million Finns will not build every system they need themselves, and they do not have to. Even 500 million Europeans have to prioritise where their shared expertise and money go.
+
+## Why Is a Foreign Cloud a Security of Supply Risk?
+
+[A foreign cloud is a security of supply risk](/en/blog/79/finland-risks-losing-control-of-its-own-data/) because a single foreign power can in practice cut off access to it. EU tech commissioner Henna Virkkunen [warned about exactly this kill switch in June 2026](https://yle.fi/a/74-20229273). About two thirds of Finland's public administration runs in US clouds. Cut-offs have already happened in individual cases, when officials of the International Criminal Court (ICC) lost access to their cloud services because of sanctions.
+
+The French ICC judge Nicolas Guillou was placed under US sanctions, and the consequences hit his digital daily life directly. [According to Euronews](https://www.euronews.com/my-europe/2026/02/18/us-sanctions-turn-international-criminal-court-judges-daily-life-into-a-nightmare), he lost access to most of his credit cards and digital services. Guillou reckons that for a younger European whose whole life is online, the same situation would amount to real civil death. He is a judge from a Western allied country, and his access was still cut off completely.
+
+Denmark's head of cyber security, for his part, has [estimated](https://yle.fi/a/74-20229273) that Denmark would grind to a halt within an hour if the United States shut down its cloud services. The same would apply to Finland. The risk is not tied to the vendor's home country. A critical service built on a single vendor fails just the same, whether that vendor is American, European or Finnish.
+
+In August I wrote in Kauppalehti about [the legal jurisdiction over cloud services and the US CLOUD Act](/en/blog/69/airbus-chose-scaleway-jurisdiction/). That piece asked who can get at the data. This one asks something else: does the service stay up at all?
+
+## How Do We Build Security of Supply Without Isolating Finland?
+
+Security of supply is built by mapping critical digital dependencies and making sure each one has a European or domestic alternative and a plan for switching over. [A system built on open source](/en/blog/76/open-source-is-the-cornerstone-of-digital-independence/) can keep running in a new vendor's hands even if the original developer disappears or leaves the market. The goal is not self-sufficiency.
+
+Kivekäs's security of supply plan works through one risk scenario at a time:
+
+- Cooperation with a US partner ends → the service moves to a European provider.
+- The vendor is hit by sanctions → a new one is procured.
+- Legislation bans exporting personal data out of the country → the cloud service is moved back to Finland.
+- The developer company disappears or ends support → open source makes a continuity plan and a new maintainer possible.
+
+> Open source guarantees that someone else can carry on when a vendor disappears.
+
+The same logic applies to the functioning of the rule of law more broadly. When the ICC judge lost access to his digital services, European institutions simply had no alternative to offer. European coordination, such as shared security of supply standards and joint backup systems, strengthens exactly this institutional resilience across language borders.
+
+Business offers a concrete example: the European aircraft maker Airbus is moving about 70 critical applications from a US cloud to a French provider, as part of a programme meant to keep the company's core operations running in an emergency too ([The Register](https://www.theregister.com/paas-and-iaas/2026/07/16/airbus-migrating-70-critical-apps-from-aws-to-frances-scaleway-amid-digital-sovereignty-push/5272373)). That is risk management any organisation running critical services can do.
+
+In Kirkkonummi I have already taken this forward. I submitted a [council initiative on strengthening digital security of supply](/en/blog/59/council-initiative-strengthening-kirkkonummis-digital-resilience/), and I have written before both about [how digital independence is built through procurement decisions](/en/blog/53/digital-independence-is-built-one-step-at-a-time/) and about [everyday choices that strengthen the same resilience](/en/blog/66/digital-independence-five-plus-one-everyday-choices/). I am the Greens' candidate in the parliamentary elections in the Uusimaa electoral district, and in Parliament I will take the same principle to the national level. Every critical state system should have a security of supply review and a continuity plan before a crisis forces one.
+
+When the market economy, education and freedom support one another in the age of AI, the result is a [digitally independent Finland](/en/blog/51/digital-independence-is-a-necessity/). It starts with knowing in advance what we will do on the day the cloud stops answering.
