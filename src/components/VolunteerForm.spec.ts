@@ -37,7 +37,7 @@ describe('<VolunteerForm lang="fi" />', () => {
         const consent = result.querySelector('input[name="consent"]')
 
         expect(consent?.hasAttribute('required')).toBe(true)
-        expect(result.querySelector('a[href="/fi/tietosuoja/#vapaaehtoiset"]')).not.toBeNull()
+        expect(result.querySelector('a[href="/fi/tietosuoja/"]')).not.toBeNull()
     })
 
     it('hides the honeypot from people and assistive tech', async () => {
