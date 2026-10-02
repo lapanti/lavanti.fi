@@ -801,6 +801,54 @@ describe('<Head />', () => {
         expect(breadcrumbSchema?.itemListElement[1].position).toBe(2)
     })
 
+    it('should give every CollectionPage inLanguage and no about or mainEntity without a collection', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { lang: 'sv', slug: 'sv/media', title: 'Mediebank', type: 'CollectionPage' },
+        })
+
+        const page = Array.from(result.querySelectorAll('script[type="application/ld+json"]'))
+            .map((s) => JSON.parse(s.textContent || '{}'))
+            .find((j) => j['@type'] === 'CollectionPage')
+        expect(page.inLanguage).toBe('sv')
+        expect(page.about).toBeUndefined()
+        expect(page.mainEntity).toBeUndefined()
+    })
+
+    it('should emit the collection topic as about and its items as an ItemList mainEntity', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                collection: {
+                    about: { name: 'Digitaalinen itse­näisyys', termSet: 'https://lavanti.fi/fi/blog/' },
+                    items: [
+                        { name: 'Uusin', url: 'https://lavanti.fi/fi/blog/2/uusin/' },
+                        { name: 'Vanhempi', url: 'https://lavanti.fi/fi/blog/1/vanhempi/' },
+                    ],
+                },
+                lang: 'fi',
+                slug: 'fi/kategoria/digitaalinen-itsenaisyys',
+                title: 'Digitaalinen itsenäisyys',
+                type: 'CollectionPage',
+            },
+        })
+
+        const page = Array.from(result.querySelectorAll('script[type="application/ld+json"]'))
+            .map((s) => JSON.parse(s.textContent || '{}'))
+            .find((j) => j['@type'] === 'CollectionPage')
+        expect(page.about).toEqual({
+            '@type': 'DefinedTerm',
+            inDefinedTermSet: 'https://lavanti.fi/fi/blog/',
+            name: 'Digitaalinen itsenäisyys',
+        })
+        expect(page.mainEntity).toEqual({
+            '@type': 'ItemList',
+            itemListElement: [
+                { '@type': 'ListItem', name: 'Uusin', position: 1, url: 'https://lavanti.fi/fi/blog/2/uusin/' },
+                { '@type': 'ListItem', name: 'Vanhempi', position: 2, url: 'https://lavanti.fi/fi/blog/1/vanhempi/' },
+            ],
+            numberOfItems: 2,
+        })
+    })
+
     it('should not emit BreadcrumbList when breadcrumbs prop is absent', async () => {
         const result = await renderAstroComponent(Head, {
             props: {

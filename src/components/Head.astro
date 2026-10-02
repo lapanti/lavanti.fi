@@ -32,6 +32,8 @@ import { hasFaqSection } from '../lib/faq'
 import {
     BLOGPOSTING,
     type BreadcrumbItem,
+    type CollectionInfo,
+    COLLECTIONPAGE,
     EVENT,
     type FaqItem,
     FAQPAGE,
@@ -47,6 +49,8 @@ import { stripSoftHyphens } from '../lib/text'
 interface Props {
     authors?: AuthorEntry[]
     breadcrumbs?: BreadcrumbItem[]
+    /** With type CollectionPage: the topic and the listed items, as `about` and an ItemList `mainEntity`. */
+    collection?: CollectionInfo
     createdAt?: string
     description?: string
     /** Campaign events for the sibling Event JSON-LD; the section itself renders from the page body. */
@@ -73,6 +77,7 @@ interface Props {
 const {
     authors,
     breadcrumbs,
+    collection,
     description = 'Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä, johtava ohjelmistokehittäjä. Tavoitteena digitaalisesti itsenäinen Suomi tekoälyn aikakaudella.',
     events,
     faq,
@@ -241,6 +246,30 @@ const jsonLd = JSON.stringify(
                           /* A personal blog: the author publishes it. Google accepts a Person here. */
                           publisher: { '@id': PERSON_ID, '@type': 'Person', name: personName, url: personUrl },
                           ...(wordCount ? { wordCount } : {}),
+                      }
+                    : {}),
+                ...(type === COLLECTIONPAGE
+                    ? {
+                          inLanguage: lang,
+                          ...(collection
+                              ? {
+                                    about: {
+                                        '@type': 'DefinedTerm',
+                                        inDefinedTermSet: collection.about.termSet,
+                                        name: stripSoftHyphens(collection.about.name),
+                                    },
+                                    mainEntity: {
+                                        '@type': 'ItemList',
+                                        itemListElement: collection.items.map((item, i) => ({
+                                            '@type': 'ListItem',
+                                            name: stripSoftHyphens(item.name),
+                                            position: i + 1,
+                                            url: item.url,
+                                        })),
+                                        numberOfItems: collection.items.length,
+                                    },
+                                }
+                              : {}),
                       }
                     : {}),
                 ...(type === WEBSITE
