@@ -29,10 +29,24 @@ describe('relatedTags', () => {
             { id: 2, tags: ['economy', 'freedom', 'technology'] },
         ]
 
-        expect(relatedTags(posts, 'economy', known, 3)).toEqual([
+        expect(relatedTags(posts, 'economy', known, new Set(), 3)).toEqual([
             { id: 'freedom', shared: 2 },
             { id: 'technology', shared: 2 },
             { id: 'kirkkonummi', shared: 1 },
+        ])
+    })
+
+    it('ranks the ids in `last` after every other sibling, even a closer one', () => {
+        const posts = [
+            { id: 1, tags: ['economy', 'kirkkonummi'] },
+            { id: 2, tags: ['economy', 'kirkkonummi'] },
+            { id: 3, tags: ['economy', 'technology'] },
+            { id: 4, tags: ['technology'] },
+        ]
+
+        expect(relatedTags(posts, 'economy', known, new Set(['kirkkonummi']))).toEqual([
+            { id: 'technology', shared: 1 },
+            { id: 'kirkkonummi', shared: 2 },
         ])
     })
 

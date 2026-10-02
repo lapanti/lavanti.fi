@@ -16,6 +16,7 @@ export const westRailwayTag: LocalTag = {
         ],
     },
     id: 'west-railway',
+    local: true,
     metaDescription: {
         en: 'Posts about the Western railway and its importance for public transport in the region.',
         fi: 'Kirjoituksia Länsiradasta ja sen merkityksestä seudun joukkoliikenteelle.',
