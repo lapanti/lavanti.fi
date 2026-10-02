@@ -2,6 +2,7 @@
 import type { Lang } from '../../../content/nav'
 import type { LocalTag } from '../../../content/tags'
 
+import Chips from '../../../components/Chips.astro'
 import ExcerptList from '../../../components/ExcerptList.astro'
 import Paragraph from '../../../components/Paragraph.astro'
 import Plate from '../../../components/Plate.astro'
@@ -10,6 +11,7 @@ import { CATEGORY_SEGMENTS, getCategoryPath, tags } from '../../../content/tags'
 import PageLayout from '../../../layouts/PageLayout.astro'
 import { type CollectionInfo, COLLECTIONPAGE } from '../../../lib/jsonld'
 import { getExcerptPosts } from '../../../lib/posts'
+import { relatedTags } from '../../../lib/tagCooccurrence'
 
 export function getStaticPaths() {
     const langs: Lang[] = ['fi', 'sv', 'en']
@@ -53,6 +55,23 @@ const featuredHeading: Record<Lang, string> = {
 }
 
 const featured = tag.featured ?? []
+
+const relatedTagsHeading: Record<Lang, string> = {
+    en: 'Related topics',
+    fi: 'Liittyvät aiheet',
+    sv: 'Relaterade ämnen',
+}
+
+/*
+ * Sibling categories by co-occurrence over the published posts of this locale;
+ * every tag with a category page qualifies, election and party tags included.
+ */
+const siblings = relatedTags(await getExcerptPosts({ lang }), tag.id, new Set(tags.map((t) => t.id))).map(({ id }) => ({
+    href: getCategoryPath(id, lang)!,
+    label: tags.find((t) => t.id === id)!.names[lang],
+}))
+/** A single sibling reads as noise, not as a map of the topic. */
+const SIBLINGS_MIN = 2
 
 /*
  * Every published post under the tag, in the order the page shows them (featured
@@ -111,4 +130,11 @@ const langAlternates = {
             <ExcerptList excludeIds={featured.length > 0 ? featured : undefined} lang={lang} tag={tag.id} />
         </PostProse>
     </Plate>
+    {
+        siblings.length >= SIBLINGS_MIN && (
+            <Plate ground="white" heading={relatedTagsHeading[lang]}>
+                <Chips ariaLabel={relatedTagsHeading[lang]} items={siblings} />
+            </Plate>
+        )
+    }
 </PageLayout>
