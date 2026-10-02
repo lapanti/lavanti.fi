@@ -44,6 +44,19 @@ const jsonLdTypes = (root: HTMLElement): string[] =>
         (s) => (JSON.parse(s.textContent ?? '{}') as { '@type': string })['@type']
     )
 
+const collectionPage = (root: HTMLElement): Record<string, unknown> =>
+    [...root.querySelectorAll('script[type="application/ld+json"]')]
+        .map((s) => JSON.parse(s.textContent ?? '{}') as Record<string, unknown>)
+        .find((node) => node['@type'] === 'CollectionPage')!
+
+describe('category page JSON-LD', () => {
+    it('carries the tag updatedDate as dateModified', async () => {
+        const result = await render(economyTag, 'fi')
+
+        expect(collectionPage(result).dateModified).toBe(economyTag.updatedDate)
+    })
+})
+
 describe('category page FAQ', () => {
     it('renders the plate and FAQPage JSON-LD beside CollectionPage for a locale with 2+ entries', async () => {
         const result = await render(fiOnly, 'fi')
