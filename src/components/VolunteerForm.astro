@@ -1,4 +1,6 @@
 ---
+import type { Lang } from '../content/nav'
+
 import { TURNSTILE_SITE_KEY, volunteerContent } from '../content/volunteer'
 import { colors } from '../lib/styles'
 import { utmFormScript } from '../lib/utmFormScript'
@@ -6,7 +8,7 @@ import { HELP_OPTIONS, MUNICIPALITIES } from '../lib/volunteers'
 import Link from './Link.astro'
 
 interface Props {
-    lang: 'fi'
+    lang: Lang
 }
 
 const { lang } = Astro.props
