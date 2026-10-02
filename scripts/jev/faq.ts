@@ -20,6 +20,8 @@ import { RANKED_MAX } from './related.ts'
 
 /** Candidates the document answers at or above this are listed. Provisional: not measured by the eval gate. */
 export const ANSWERABLE_THRESHOLD = 0.7
+/** Tag mode: candidates judged category-wide at or above this are listed. Provisional. */
+export const CATEGORY_WIDE_THRESHOLD = 0.5
 /** Existing faq questions answered below this are flagged. Provisional. */
 export const DOUBTFUL_THRESHOLD = 0.3
 /** Neighbours read from the top of the related.json entry: the whole entry, as related.ts bounds it. */
@@ -30,6 +32,10 @@ const SCORE_LEVELS = ['1', '2', '3', '4', '5']
 const ANSWERS_INSTRUCTION = 'The article answers this question directly:'
 const USEFULNESS_INSTRUCTION =
     'How likely is a voter to ask this before reading the article? (1 = never, 5 = almost always):'
+const CATEGORY_WIDE_INSTRUCTION =
+    'This question is about the category topic as a whole, not about one article, event, motion or date:'
+const CATEGORY_USEFULNESS_INSTRUCTION =
+    'How likely is a voter browsing this category to ask this? (1 = never, 5 = almost always):'
 
 /*
  * The same word lists as scripts/checks/aeo.sh:33-35; keep them in step. JS \b is
@@ -90,6 +96,48 @@ export function harvest(doc: Document, neighbours: Document[]): Candidate[] {
     }
 
     return out
+}
+
+/**
+ * Category FAQ candidates: the faq questions of every post carrying the tag,
+ * then each post's question headings, posts in the given order, each question
+ * once, questions already in the tag's faq for the locale excluded.
+ */
+export function harvestTag(existing: string[], posts: Document[]): Candidate[] {
+    const seen = new Set(existing.map(normaliseQuestion))
+    const out: Candidate[] = []
+    const add = (question: string, source: DocKey): void => {
+        const key = normaliseQuestion(question)
+        if (!key || seen.has(key)) return
+        seen.add(key)
+        out.push({ question: stripMarkup(question).trim(), source })
+    }
+    for (const post of posts) {
+        for (const question of post.faq) add(question, post.key)
+        for (const heading of questionHeadings(post)) add(heading, post.key)
+    }
+
+    return out
+}
+
+export interface TagCandidate extends Candidate {
+    categoryWide: number
+    usefulness: number
+}
+
+/** c<i> (about the topic as a whole) and u<i> (a voter on the category page asks it) per candidate. */
+export function tagFaqQuestions(candidates: Candidate[]): Record<string, QuestionSpec> {
+    const questions: Record<string, QuestionSpec> = {}
+    candidates.forEach((c, i) => {
+        questions[`c${i}`] = { instructions: `${CATEGORY_WIDE_INSTRUCTION} ${c.question}`, type: 'noul' }
+        questions[`u${i}`] = {
+            criteria: SCORE_LEVELS,
+            instructions: `${CATEGORY_USEFULNESS_INSTRUCTION} ${c.question}`,
+            type: 'score',
+        }
+    })
+
+    return questions
 }
 
 /** a<i> and u<i> per candidate, f<j> per existing faq question. */
@@ -162,4 +210,16 @@ export function doubtfulFaq(doc: Document, answers: Record<string, Answer>, opts
         .map((question, j) => ({ answers: noulOf(answers, `f${j}`), question }))
         .filter((f) => f.answers < opts.doubtful)
         .toSorted((a, b) => a.answers - b.answers)
+}
+
+/** Candidates at or above the category-wide threshold, usefulness desc, then category-wide desc, then harvest order. */
+export function rankTag(
+    candidates: Candidate[],
+    answers: Record<string, Answer>,
+    opts: { categoryWide: number }
+): TagCandidate[] {
+    return candidates
+        .map((c, i) => ({ ...c, categoryWide: noulOf(answers, `c${i}`), usefulness: scoreOf(answers, `u${i}`) }))
+        .filter((c) => c.categoryWide >= opts.categoryWide)
+        .toSorted((a, b) => b.usefulness - a.usefulness || b.categoryWide - a.categoryWide)
 }

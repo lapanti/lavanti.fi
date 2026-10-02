@@ -63,16 +63,23 @@ const isLocalTag = (value: unknown): value is LocalTag =>
     typeof value === 'object' && value !== null && 'id' in value && 'names' in value && 'descriptions' in value
 
 /**
- * The label of one tag file. The import URL carries the file's content hash:
- * the module cache would otherwise return the first version of a file that
- * changed within the same process.
+ * The LocalTag export of one tag file. The import URL carries the file's
+ * content hash: the module cache would otherwise return the first version of a
+ * file that changed within the same process.
  */
-async function loadTagLabel(dir: string, file: string): Promise<TagLabel> {
+export async function loadLocalTag(dir: string, file: string): Promise<LocalTag> {
     const path = join(dir, file)
     const version = createHash('sha256').update(readFileSync(path)).digest('hex')
     const mod = (await import(`${pathToFileURL(path).href}?sha=${version}`)) as Record<string, unknown>
     const tag = Object.values(mod).find(isLocalTag)
     if (!tag) throw new Error(`${file}: no LocalTag export`)
+
+    return tag
+}
+
+/** The label of one tag file: the English fields Jev's tag questions carry. */
+async function loadTagLabel(dir: string, file: string): Promise<TagLabel> {
+    const tag = await loadLocalTag(dir, file)
     if (typeof tag.names?.en !== 'string') throw new Error(`${file}: missing names.en`)
     if (typeof tag.descriptions?.en?.[0] !== 'string') throw new Error(`${file}: missing descriptions.en`)
 
