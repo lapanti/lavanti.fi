@@ -63,7 +63,7 @@ export const volunteerContent: { fi: VolunteerLocale } = {
         },
         name: 'Nimi',
         phone: 'Puhelinnumero (vapaaehtoinen)',
-        privacyHref: '/fi/tietosuoja/#vapaaehtoiset',
+        privacyHref: '/fi/tietosuoja/',
         submit: 'Ilmoittaudu mukaan',
     },
 }
