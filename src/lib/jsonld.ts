@@ -19,3 +19,12 @@ export type JsonLdType = (typeof JSON_LD_TYPES)[number]
 export type BreadcrumbItem = { name: string; url: string }
 
 export type FaqItem = { a: string; q: string }
+
+/**
+ * What a CollectionPage collects: the topic it is about (a DefinedTerm in the
+ * site's category set) and its items in display order, as an ItemList.
+ */
+export type CollectionInfo = {
+    about: { name: string; termSet: string }
+    items: Array<{ name: string; url: string }>
+}

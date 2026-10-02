@@ -3,7 +3,7 @@ import type { CampaignEvent } from '../content/events'
 import type { Lang } from '../content/nav'
 /* eslint-disable astro/no-unused-css-selector */
 import type { AuthorEntry } from '../content/person'
-import type { BreadcrumbItem, FaqItem, JsonLdType } from '../lib/jsonld'
+import type { BreadcrumbItem, CollectionInfo, FaqItem, JsonLdType } from '../lib/jsonld'
 
 import Footer from '../components/Footer.astro'
 import GlobalStyle from '../components/GlobalStyle.astro'
@@ -24,6 +24,7 @@ import {
 interface Props {
     authors?: AuthorEntry[]
     breadcrumbs?: BreadcrumbItem[]
+    collection?: CollectionInfo
     createdAt?: string
     description?: string
     events?: CampaignEvent[]
@@ -64,6 +65,7 @@ interface Props {
 const {
     authors,
     breadcrumbs,
+    collection,
     createdAt,
     description,
     events,
@@ -119,6 +121,7 @@ const donateClickScript = `document.addEventListener('click', function (event) {
         <Head
             authors={authors}
             breadcrumbs={breadcrumbs}
+            collection={collection}
             createdAt={createdAt}
             description={description}
             events={events}
