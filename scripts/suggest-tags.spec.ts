@@ -320,4 +320,77 @@ describe('runTags', () => {
         expect(lines.at(-1)).toMatch(/^failed at post:\d: boom$/)
         expect(Object.keys(readReceipts(receipts)!.tags)).toEqual(['freedom'])
     })
+
+    it('--intro scores every post carrying the tag, best first, marks featured and writes no receipt', async () => {
+        writePost(root, 4, '2026-04-01', ['economy'])
+        writeFileSync(
+            join(tagsDir, 'economy.ts'),
+            "export const tag = { id: 'economy', names: { en: 'Economy', fi: 'x' }, descriptions: { en: ['Economy matters.'], fi: ['x'] }, featured: [4] }\n"
+        )
+        const calls: Array<{ questions: Record<string, QuestionSpec>; state: unknown }> = []
+        const client: JevClient = {
+            ask: async (state, questions) => {
+                calls.push({ questions, state })
+                const level = JSON.stringify(state).includes('post 1') ? '5' : '2'
+
+                return {
+                    answers: { intro: { confidence: 1, probabilities: { [level]: 1 }, score: level, type: 'score' } },
+                    id: 'r',
+                    model: 'm',
+                    usage: { input_tokens: 1, output_tokens: 1 },
+                }
+            },
+            provider: { apiKey: 'k', baseUrl: 'http://x', model: 'jev-1.13', name: 'openrouter' },
+        }
+        const lines: string[] = []
+        rmSync(receipts, { force: true })
+
+        expect(
+            await runTags(
+                ['--intro', 'economy'],
+                env,
+                deps(client, (l) => lines.push(l))
+            )
+        ).toBe(0)
+        expect(calls).toHaveLength(2)
+        expect(calls[0].questions.intro).toEqual({
+            criteria: ['1', '2', '3', '4', '5'],
+            instructions: expect.stringContaining("new to the topic 'Economy': Economy matters."),
+            type: 'score',
+        })
+        expect(lines).toEqual([
+            '## intro economy — Economy',
+            '',
+            [
+                '| post | title | publishDate | intro | featured |',
+                '| --- | --- | --- | --- | --- |',
+                '| post:1 | fi post 1 | 2026-01-01 | 5.0 |  |',
+                '| post:4 | fi post 4 | 2026-04-01 | 2.0 | ✓ |',
+            ].join('\n'),
+            '',
+            'featured now: 4 (up to 3)',
+            '',
+        ])
+        expect(readReceipts(receipts)).toBeNull()
+        writeTag(tagsDir, 'economy', 'Economy')
+        rmSync(join(root, 'posts', '4'), { force: true, recursive: true })
+    })
+
+    it('--intro refuses an unknown tag and conflicts with the other modes', async () => {
+        const lines: string[] = []
+        const { calls, client } = fakeClient(() => 0)
+        const d = deps(client, (l) => lines.push(l))
+
+        expect(await runTags(['--intro', 'orphan'], env, d)).toBe(2)
+        expect(lines).toEqual(['tag orphan is not registered in src/content/tags.ts'])
+        for (const argv of [
+            ['--intro', 'economy', '--tag', 'economy'],
+            ['--intro', 'economy', 'post', '1'],
+        ]) {
+            lines.length = 0
+            expect(await runTags(argv, env, d)).toBe(2)
+            expect(lines).toEqual([USAGE])
+        }
+        expect(calls).toEqual([])
+    })
 })

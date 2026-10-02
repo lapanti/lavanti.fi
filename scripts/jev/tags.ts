@@ -115,6 +115,16 @@ export function tagQuestions(labels: TagLabel[]): Record<string, QuestionSpec> {
     return questions
 }
 
+/** The most `featured` posts a tag shows; tags.spec.ts enforces the same limit on the data. */
+export const FEATURED_MAX = 3
+
+/** The 1–5 score behind --intro: how good a first read the article is on the tag's topic. */
+export const introQuestion = (label: TagLabel): QuestionSpec => ({
+    criteria: ['1', '2', '3', '4', '5'],
+    instructions: `How good a first read is this article for a voter new to the topic '${label.name}': ${label.description} (1 = poor, 5 = the best place to start):`,
+    type: 'score',
+})
+
 /** Ids the taxonomy registers: the `from './tags/<id>'` import lines of src/content/tags.ts. */
 export function registeredTagIds(registry = TAGS_REGISTRY): Set<string> {
     const source = readFileSync(registry, 'utf8')
