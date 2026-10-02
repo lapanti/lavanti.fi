@@ -329,7 +329,7 @@ describe('runFaq tag mode', () => {
         const lines: string[] = []
         const { calls, client } = fakeClient(
             (instructions) => (instructions.includes('kirjasto') ? 0.2 : 0.9),
-            (instructions) => (instructions.includes('säästää') ? { '5': 1 } : { '3': 1 })
+            (instructions): Record<string, number> => (instructions.includes('säästää') ? { '5': 1 } : { '3': 1 })
         )
 
         expect(await runFaq(['tag', 'economy'], env, deps(client, lines))).toBe(0)

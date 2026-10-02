@@ -7,7 +7,11 @@ import { describe, expect, it, vi } from 'vitest'
 import { renderAstroComponent } from '../../../../tests/helpers'
 import { economyTag } from '../../../content/tags/economy'
 
-const { getExcerptPosts } = vi.hoisted(() => ({ getExcerptPosts: vi.fn(async () => []) }))
+/* Loosely typed on purpose: each test returns only the post fields the route reads. */
+type ExcerptQuery = { excludeIds?: number[]; lang: string; onlyIds?: number[]; rankedIds?: number[]; tag?: string }
+const { getExcerptPosts } = vi.hoisted(() => ({
+    getExcerptPosts: vi.fn<(q: ExcerptQuery) => Promise<unknown[]>>(async () => []),
+}))
 vi.mock('../../../lib/posts', async (importOriginal) => ({
     ...(await importOriginal<object>()),
     getExcerptPosts,
@@ -61,7 +65,7 @@ describe('category page JSON-LD', () => {
             { id: 2, tags: ['economy'], title: 'Toinen', url: '/fi/blog/2/toinen/' },
             { id: 1, tags: ['economy'], title: 'Ensimmäinen', url: '/fi/blog/1/ensimmainen/' },
         ]
-        getExcerptPosts.mockImplementation(async (q: { rankedIds?: number[] }) => (q.rankedIds ? posts : []) as never)
+        getExcerptPosts.mockImplementation(async (q: { rankedIds?: number[] }) => (q.rankedIds ? posts : []))
         const result = await render(economyTag, 'fi')
         getExcerptPosts.mockImplementation(async () => [])
         const page = collectionPage(result)
@@ -102,10 +106,10 @@ describe('category page related topics', () => {
         getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
             q.tag
                 ? []
-                : ([
+                : [
                       { id: 1, tags: ['economy', 'freedom', 'kirkkonummi'] },
                       { id: 2, tags: ['economy', 'freedom'] },
-                  ] as never)
+                  ]
         )
         const result = await render(economyTag, 'en')
         getExcerptPosts.mockImplementation(async () => [])
@@ -119,7 +123,7 @@ describe('category page related topics', () => {
 
     it('renders no related topics with fewer than two siblings', async () => {
         getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
-            q.tag ? [] : ([{ id: 1, tags: ['economy', 'freedom'] }] as never)
+            q.tag ? [] : [{ id: 1, tags: ['economy', 'freedom'] }]
         )
         const result = await render(economyTag, 'en')
         getExcerptPosts.mockImplementation(async () => [])
