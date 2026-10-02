@@ -12,6 +12,13 @@ test.describe('Tag/Category Page in English', () => {
         await tagPage.checkContent()
     })
 
+    test('should render the start-here, related-topics and FAQ plates with FAQPage JSON-LD', async ({ page }) => {
+        const tagPage = new TagEnPage(page)
+        await tagPage.goTo()
+
+        await tagPage.checkRichContent()
+    })
+
     test('should match aria snapshot', async ({ page }) => {
         const tagPage = new TagEnPage(page)
         await tagPage.goTo()
