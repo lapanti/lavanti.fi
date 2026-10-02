@@ -3,8 +3,43 @@
   - heading /Kommunalval \d+ – Kyrkslätt kommun/ [level=1]
   - article:
     - paragraph: /Texter om kommunalvalet \d+ i Kyrkslätt och centrala teman i kommunalpolitiken\./
-    - heading "Relaterade inlägg" [level=2]
+    - paragraph: Utbildning var valets viktigaste tema. Nu när social- och hälsovården är välfärdsområdenas ansvar är utbildningen kommunens största och viktigaste uppgift. Jag skrev om småbarnspedagogik, nedskärningarna i yrkesutbildningen och terminsavgifterna på andra stadiet, och om varför ett växande Kyrkslätt behöver ett livskraftigt centrum och långsiktig planering. Inför valet publicerade jag också en essäserie om invandring, eftersom det mesta av Kyrkslätts tillväxt kommer från invandring och en givande debatt kräver exakta begrepp.
+    - paragraph: Kommunens gemensamma pengar ska användas utifrån kunskap, inte antaganden. Därför uppmanade jag väljarna att utmana kandidaterna att berätta vad deras påståenden grundar sig på. I valet blev jag invald i Kyrkslätts kommunfullmäktige.
+    - heading "Börja här" [level=2]
     - list:
+      - listitem:
+        - article "I kommunalvalet avgörs vardagsfrågor":
+          - link "Vita utomhustrappor som leder till en väg som går till ett hus. I kommunalvalet avgörs vardagsfrågor":
+            - /url: /sv/blog/33/kommunalvalet-avgors-vardagsfragor/
+            - img "Vita utomhustrappor som leder till en väg som går till ett hus."
+            - heading "I kommunalvalet avgörs vardagsfrågor" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Kommunalvalet kan verka komplicerat, men handlar om vardagsfrågor: skolor, daghem och kommunikationer. Du har makt att påverka."
+        - list:
+          - listitem:
+            - link "Kyrkslätt":
+              - /url: /sv/kategori/kyrkslatt/
+          - listitem:
+            - link /Kommunalval \d+/:
+              - /url: /sv/kategori/kommunalval-2025/
+      - listitem:
+        - article /Jag kandiderar i kommunal- och välfärdsval \d+/:
+          - link /Lauri Lavanti i friluftsklädsel i en skog, lutar sig mot ett träd och tittar uppåt längs stammen\. Jag kandiderar i kommunal- och välfärdsval \d+/:
+            - /url: /sv/blog/20/kommun-och-valfardsvalet-2025/
+            - img "Lauri Lavanti i friluftsklädsel i en skog, lutar sig mot ett träd och tittar uppåt längs stammen."
+            - heading /Jag kandiderar i kommunal- och välfärdsval \d+/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Jag kandiderar i både kommunal- och välfärdsomradesvalet \d+\. Viktigast för mig är att säkra barn och ungdomars möjligheter i Kyrkslätt\./
+        - list:
+          - listitem:
+            - link /Regionval \d+/:
+              - /url: /sv/kategori/regionval-2025/
+          - listitem:
+            - link "Kyrkslätt":
+              - /url: /sv/kategori/kyrkslatt/
+          - listitem:
+            - link /Kommunalval \d+/:
+              - /url: /sv/kategori/kommunalval-2025/
       - listitem:
         - article "Utbildning är kommunens viktigaste uppgift":
           - link "Ett fotografi av Laajakallio skola. Utbildning är kommunens viktigaste uppgift":
@@ -23,6 +58,8 @@
           - listitem:
             - link "Utbildning":
               - /url: /sv/kategori/utbildning/
+    - heading "Relaterade inlägg" [level=2]
+    - list:
       - listitem:
         - article "Ett absolut nej till terminsavgifter på andra stadiet":
           - link "En grusväg som leder till ett vitt hus. Ett absolut nej till terminsavgifter på andra stadiet":
@@ -71,21 +108,6 @@
           - listitem:
             - link /Regionval \d+/:
               - /url: /sv/kategori/regionval-2025/
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link /Kommunalval \d+/:
-              - /url: /sv/kategori/kommunalval-2025/
-      - listitem:
-        - article "I kommunalvalet avgörs vardagsfrågor":
-          - link "Vita utomhustrappor som leder till en väg som går till ett hus. I kommunalvalet avgörs vardagsfrågor":
-            - /url: /sv/blog/33/kommunalvalet-avgors-vardagsfragor/
-            - img "Vita utomhustrappor som leder till en väg som går till ett hus."
-            - heading "I kommunalvalet avgörs vardagsfrågor" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Kommunalvalet kan verka komplicerat, men handlar om vardagsfrågor: skolor, daghem och kommunikationer. Du har makt att påverka."
-        - list:
           - listitem:
             - link "Kyrkslätt":
               - /url: /sv/kategori/kyrkslatt/
@@ -291,24 +313,6 @@
             - link /Kommunalval \d+/:
               - /url: /sv/kategori/kommunalval-2025/
       - listitem:
-        - article /Jag kandiderar i kommunal- och välfärdsval \d+/:
-          - link /Lauri Lavanti i friluftsklädsel i en skog, lutar sig mot ett träd och tittar uppåt längs stammen\. Jag kandiderar i kommunal- och välfärdsval \d+/:
-            - /url: /sv/blog/20/kommun-och-valfardsvalet-2025/
-            - img "Lauri Lavanti i friluftsklädsel i en skog, lutar sig mot ett träd och tittar uppåt längs stammen."
-            - heading /Jag kandiderar i kommunal- och välfärdsval \d+/ [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Jag kandiderar i både kommunal- och välfärdsomradesvalet \d+\. Viktigast för mig är att säkra barn och ungdomars möjligheter i Kyrkslätt\./
-        - list:
-          - listitem:
-            - link /Regionval \d+/:
-              - /url: /sv/kategori/regionval-2025/
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link /Kommunalval \d+/:
-              - /url: /sv/kategori/kommunalval-2025/
-      - listitem:
         - article "Kommunen måste planera långsiktigt":
           - link "Laajakallio skolbyggnad i Kyrkslätt Kommunen måste planera långsiktigt":
             - /url: /sv/blog/15/kommunen-maste-planera-langsiktigt/
@@ -326,3 +330,28 @@
           - listitem:
             - link "Utbildning":
               - /url: /sv/kategori/utbildning/
+    - heading "Relaterade ämnen" [level=2]
+    - list "Relaterade ämnen":
+      - listitem:
+        - link /Regionval \d+/:
+          - /url: /sv/kategori/regionval-2025/
+      - listitem:
+        - link "Immigration":
+          - /url: /sv/kategori/invandring/
+      - listitem:
+        - link "Kyrkslätt":
+          - /url: /sv/kategori/kyrkslatt/
+      - listitem:
+        - link "Västra Nyland":
+          - /url: /sv/kategori/vastra-nyland/
+      - listitem:
+        - link "Utbildning":
+          - /url: /sv/kategori/utbildning/
+    - text: Q & A
+    - heading "Vanliga frågor" [level=2]
+    - heading "Vad innebär kommunalpolitiken i vardagen?" [level=3]
+    - paragraph: Kommunalpolitiken kan kännas komplicerad, men i slutändan handlar den om vardagliga saker. Om var den lokala skolan eller dagvårdsplatsen ska finnas, var en väg eller en idrottsplan ska byggas, om unga ska ha utrymme och möjligheter att vistas tryggt och om vi investerar i framtiden och i tillväxt. I kommunalvalet väljer invånarna bland sig dem som de tror bäst kan främja kommunens och invånarnas intressen de kommande fyra åren.
+    - heading /Varför kandiderade Lauri Lavanti i kommunalvalet \d+\?/ [level=3]
+    - paragraph: Det viktigaste för mig i politiken är att värna om barns och ungas möjligheter. Grunden är ett levande Kyrkslätt som behöver företagande, jobb och kultur, inom de gränser som naturen tillåter. Eftersom det handlar om gemensamma pengar måste beslutsfattandet vara öppet, transparent och demokratiskt. Mina valteman var småbarnspedagogik, utbildning och kollektivtrafik. Jag valdes in i Kyrkslätts kommunfullmäktige, men i välfärdsområdesvalet blev jag inte invald.
+    - heading "Vad ger ett livskraftigt centrum kommunen?" [level=3]
+    - paragraph: Ett livskraftigt centrum lockar nya invånare och företag, och det är det bästa sättet att stärka Kyrkslätts ekonomi och tjänster på lång sikt. Varje ny invånare innebär mer skatteintäkter, som tryggar kvaliteten i småbarnspedagogiken och skolorna. Det är också effektivare att ordna tjänster när fler bor inom gångavstånd. Nära järnvägsstationen kunde en barnfamilj sköta sina ärenden utan bil, och både natur och tjänster skulle vara trygga.

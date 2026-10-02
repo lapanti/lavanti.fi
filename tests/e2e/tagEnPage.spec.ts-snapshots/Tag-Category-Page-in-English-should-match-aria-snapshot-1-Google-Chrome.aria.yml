@@ -3,8 +3,43 @@
   - heading /Municipal elections \d+ – Kirkkonummi/ [level=1]
   - article:
     - paragraph: /Posts about the \d+ municipal elections in Kirkkonummi and key themes in local politics\./
-    - heading "Related posts" [level=2]
+    - paragraph: Education was the central theme. Now that social welfare and health services are the responsibility of the wellbeing services counties, it is the largest and most important task left to municipalities. I wrote about early childhood education, cuts to vocational education and tuition fees in upper secondary education, and about why a growing Kirkkonummi needs a vibrant centre and long-term planning. Before the elections I also published a series of essays on immigration, because most of Kirkkonummi's growth comes from immigration and a useful debate needs precise terms.
+    - paragraph: Shared municipal money must be spent on the basis of knowledge, not assumptions, so I urged voters to challenge candidates on what their claims are based on. In the elections I was elected to Kirkkonummi municipal council.
+    - heading "Start here" [level=2]
     - list:
+      - listitem:
+        - article "Municipal elections decide everyday matters":
+          - link "White outdoor steps leading to a path that goes to a house. Municipal elections decide everyday matters":
+            - /url: /en/blog/33/municipal-elections-decide-everyday-matters/
+            - img "White outdoor steps leading to a path that goes to a house."
+            - heading "Municipal elections decide everyday matters" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Municipal elections may seem complex, but they decide everyday matters: schools, daycare and transport connections. You have the power to influence them."
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link /Municipal elections \d+/:
+              - /url: /en/category/municipal-elections-2025/
+      - listitem:
+        - article /Standing in the municipal and regional elections \d+/:
+          - link /Lauri Lavanti in outdoor clothing in a forest, leaning against a tree and looking up its trunk\. Standing in the municipal and regional elections \d+/:
+            - /url: /en/blog/20/municipal-and-regional-elections-2025/
+            - img "Lauri Lavanti in outdoor clothing in a forest, leaning against a tree and looking up its trunk."
+            - heading /Standing in the municipal and regional elections \d+/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /I am standing in both the municipal and regional elections in \d+\. My priority is securing good opportunities for children and young people\./
+        - list:
+          - listitem:
+            - link /Regional elections \d+/:
+              - /url: /en/category/regional-elections-2025/
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link /Municipal elections \d+/:
+              - /url: /en/category/municipal-elections-2025/
       - listitem:
         - article "Education is the municipality's most important task":
           - link "A photograph of Laajakallio school. Education is the municipality's most important task":
@@ -23,6 +58,8 @@
           - listitem:
             - link "Education":
               - /url: /en/category/education/
+    - heading "Related posts" [level=2]
+    - list:
       - listitem:
         - article "An absolute no to upper secondary tuition fees":
           - link "A gravel path leading to a white house. An absolute no to upper secondary tuition fees":
@@ -71,21 +108,6 @@
           - listitem:
             - link /Regional elections \d+/:
               - /url: /en/category/regional-elections-2025/
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link /Municipal elections \d+/:
-              - /url: /en/category/municipal-elections-2025/
-      - listitem:
-        - article "Municipal elections decide everyday matters":
-          - link "White outdoor steps leading to a path that goes to a house. Municipal elections decide everyday matters":
-            - /url: /en/blog/33/municipal-elections-decide-everyday-matters/
-            - img "White outdoor steps leading to a path that goes to a house."
-            - heading "Municipal elections decide everyday matters" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Municipal elections may seem complex, but they decide everyday matters: schools, daycare and transport connections. You have the power to influence them."
-        - list:
           - listitem:
             - link "Kirkkonummi":
               - /url: /en/category/kirkkonummi/
@@ -291,24 +313,6 @@
             - link /Municipal elections \d+/:
               - /url: /en/category/municipal-elections-2025/
       - listitem:
-        - article /Standing in the municipal and regional elections \d+/:
-          - link /Lauri Lavanti in outdoor clothing in a forest, leaning against a tree and looking up its trunk\. Standing in the municipal and regional elections \d+/:
-            - /url: /en/blog/20/municipal-and-regional-elections-2025/
-            - img "Lauri Lavanti in outdoor clothing in a forest, leaning against a tree and looking up its trunk."
-            - heading /Standing in the municipal and regional elections \d+/ [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /I am standing in both the municipal and regional elections in \d+\. My priority is securing good opportunities for children and young people\./
-        - list:
-          - listitem:
-            - link /Regional elections \d+/:
-              - /url: /en/category/regional-elections-2025/
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link /Municipal elections \d+/:
-              - /url: /en/category/municipal-elections-2025/
-      - listitem:
         - article "The municipality must plan for the long term":
           - link "Laajakallio school building in Kirkkonummi The municipality must plan for the long term":
             - /url: /en/blog/15/the-municipality-must-plan-for-the-long-term/
@@ -326,3 +330,28 @@
           - listitem:
             - link "Education":
               - /url: /en/category/education/
+    - heading "Related topics" [level=2]
+    - list "Related topics":
+      - listitem:
+        - link /Regional elections \d+/:
+          - /url: /en/category/regional-elections-2025/
+      - listitem:
+        - link "Immigration":
+          - /url: /en/category/immigration/
+      - listitem:
+        - link "Kirkkonummi":
+          - /url: /en/category/kirkkonummi/
+      - listitem:
+        - link "Western Uusimaa":
+          - /url: /en/category/western-uusimaa/
+      - listitem:
+        - link "Education":
+          - /url: /en/category/education/
+    - text: Q & A
+    - heading "Frequently asked questions" [level=2]
+    - heading "What does local politics mean in everyday life?" [level=3]
+    - paragraph: Local politics can feel complicated, but in the end it is about everyday matters. Where the local school or day-care centre will be, where a road or a sports field will go, whether young people have space and opportunities to be safe, and whether we invest in the future and in growth. In municipal elections, residents choose from among themselves those they believe can best promote the interests of the municipality and its residents for the next four years.
+    - heading /Why did Lauri Lavanti stand in the \d+ municipal elections\?/ [level=3]
+    - paragraph: In politics, what matters most to me is caring for the opportunities of children and young people. Underpinning this is a vibrant Kirkkonummi that needs entrepreneurship, jobs and culture, within the limits that nature allows. Because these are public funds, decision-making must be open, transparent and democratic. My election themes were early childhood education, education and public transport. I was elected to Kirkkonummi municipal council; in the regional elections I was not elected.
+    - heading "What does a vibrant centre bring to the municipality?" [level=3]
+    - paragraph: A vibrant centre attracts new residents and businesses, and it is the best way to strengthen Kirkkonummi's finances and services in the long term. Every new resident means more tax revenue, which keeps early childhood education and schools high-quality. Providing services is also more efficient when more residents live within walking distance. Near the railway station, a family with children could run errands without a car, and both nature and services would stay secure.
