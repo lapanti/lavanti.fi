@@ -32,9 +32,28 @@ Feature-specific specs (blueprint, contracts, scenarios) live at `.agents/specs/
 | Images     | Cloudflare Images (flexible resizing via CF rewrite rule, `src/lib/images.ts`) |
 | Icons      | `astro-icon` + `@iconify-json/fa7-brands`                                      |
 | Hosting    | Cloudflare Pages                                                               |
+| Functions  | Cloudflare Pages Functions (`functions/`) + D1, three routes only (below)      |
 | Unit tests | Vitest + happy-dom                                                             |
 | E2E tests  | Playwright                                                                     |
 | Linting    | ESLint + Prettier                                                              |
+
+---
+
+## Pages Functions and D1
+
+The site stays static. `functions/` holds the only server code, three thin wrappers around `src/lib/volunteers.ts` (logic and unit tests live there; `astro preview` and the e2e suite do not run functions):
+
+| Route                  | Does                                                                                                                                                                           |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `POST /api/liity`      | Volunteer sign-up from `/fi/liity/`: validation, honeypot, Turnstile, insert into D1 `volunteers`, 303 to the thank-you page. Fails closed without `DB` or `TURNSTILE_SECRET`. |
+| `GET /lahjoita`        | Logs hour + campaign link into `donate_clicks`, then 302 to the party's donation form (`DONATE_URL` env overrides the constant).                                               |
+| `GET /api/liity/stats` | Bearer `LIITY_STATS_TOKEN`; aggregate counts only, cells under 3 merged into `muu`. Read by the lavanti-2027 analytics fetch and the obsidian-notes morning brief.             |
+
+- **Configuration:** no `wrangler.toml` (one would take over the dashboard settings). In the `laurilavanti` Pages project: D1 binding `DB` → database `lavanti-fi` (EU jurisdiction), secrets `TURNSTILE_SECRET` and `LIITY_STATS_TOKEN`. The Turnstile site key is public and lives in `src/content/volunteer.ts`.
+- **Schema:** `migrations/*.sql`, applied by hand with `npx wrangler d1 execute lavanti-fi --remote --file=<file>`.
+- **Retention:** `.github/workflows/volunteer-purge.yml` runs monthly: all volunteer rows after 2027-07-31, click rows after 13 months.
+- **Deleting one person on request:** `npx wrangler d1 execute lavanti-fi --remote --command "DELETE FROM volunteers WHERE email = '<address>'"`, then reply to confirm. D1 Time Travel keeps a restorable history for 30 days; the row is gone from it after that, which the privacy notice states.
+- **Who reads the rows:** Lauri in the D1 console; Lauri, the campaign manager and the volunteer coordinator on 2027.lavanti.fi behind Cloudflare Access (lavanti-2027 repo). Nothing else reads personal rows.
 
 ---
 
