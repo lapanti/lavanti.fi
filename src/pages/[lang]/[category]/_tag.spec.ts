@@ -30,8 +30,11 @@ vi.mock('../../../lib/images', async (importOriginal) => ({
 
 const TagPage = (await import('./[tag].astro')).default
 
+/* The real tag's copy, without the content fields each test sets for itself. */
+const baseTag: LocalTag = { ...economyTag, faq: undefined, featured: undefined }
+
 const fiOnly: LocalTag = {
-    ...economyTag,
+    ...baseTag,
     faq: {
         fi: [
             { a: 'Koska talous rahoittaa hyvinvoinnin.', q: 'Miksi talous on vihreä kysymys?' },
@@ -55,7 +58,7 @@ const collectionPage = (root: HTMLElement): Record<string, unknown> =>
 
 describe('category page JSON-LD', () => {
     it('carries the tag updatedDate as dateModified', async () => {
-        const result = await render(economyTag, 'fi')
+        const result = await render(baseTag, 'fi')
 
         expect(collectionPage(result).dateModified).toBe(economyTag.updatedDate)
     })
@@ -66,7 +69,7 @@ describe('category page JSON-LD', () => {
             { id: 1, tags: ['economy'], title: 'Ensimmäinen', url: '/fi/blog/1/ensimmainen/' },
         ]
         getExcerptPosts.mockImplementation(async (q: { rankedIds?: number[] }) => (q.rankedIds ? posts : []))
-        const result = await render(economyTag, 'fi')
+        const result = await render(baseTag, 'fi')
         getExcerptPosts.mockImplementation(async () => [])
         const page = collectionPage(result)
 
@@ -85,7 +88,7 @@ describe('category page JSON-LD', () => {
 describe('category page featured posts', () => {
     it('renders a start-here list of the featured posts and leaves them out of the full list', async () => {
         getExcerptPosts.mockClear()
-        const result = await render({ ...economyTag, featured: [7, 3] }, 'en')
+        const result = await render({ ...baseTag, featured: [7, 3] }, 'en')
 
         expect(queryByText(result, 'Start here')).not.toBeNull()
         const calls = getExcerptPosts.mock.calls.map(([q]) => q)
@@ -95,7 +98,7 @@ describe('category page featured posts', () => {
     })
 
     it('renders no start-here list without featured posts', async () => {
-        const result = await render({ ...economyTag, featured: undefined }, 'en')
+        const result = await render({ ...baseTag, featured: undefined }, 'en')
 
         expect(queryByText(result, 'Start here')).toBeNull()
     })
@@ -111,7 +114,7 @@ describe('category page related topics', () => {
                       { id: 2, tags: ['economy', 'freedom'] },
                   ]
         )
-        const result = await render(economyTag, 'en')
+        const result = await render(baseTag, 'en')
         getExcerptPosts.mockImplementation(async () => [])
 
         const list = result.querySelector('ul[aria-label="Related topics"]')!
@@ -125,7 +128,7 @@ describe('category page related topics', () => {
         getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
             q.tag ? [] : [{ id: 1, tags: ['economy', 'freedom'] }]
         )
-        const result = await render(economyTag, 'en')
+        const result = await render(baseTag, 'en')
         getExcerptPosts.mockImplementation(async () => [])
 
         expect(queryByText(result, 'Related topics')).toBeNull()
@@ -150,7 +153,7 @@ describe('category page FAQ', () => {
     })
 
     it('renders neither for a tag without faq', async () => {
-        const result = await render({ ...economyTag, faq: undefined }, 'fi')
+        const result = await render({ ...baseTag, faq: undefined }, 'fi')
 
         expect(queryByText(result, 'Usein kysyttyä')).toBeNull()
         expect(jsonLdTypes(result)).not.toContain('FAQPage')
