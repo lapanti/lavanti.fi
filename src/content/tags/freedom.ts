@@ -21,7 +21,7 @@ export const freedomTag: LocalTag = {
     faq: {
         en: [
             {
-                a: 'AI makes mass surveillance technically easier, so legislation has to hold the line on fundamental rights. The same principle that made rejecting the EU’s chat control proposal the right call applies to any automatic scanning of private messages. Without strong privacy protection, democracy cannot function, and AI must never be used to weaken it. Fundamental rights have to be the starting point for all legislation, not a variable.',
+                a: 'AI makes mass surveillance technically easier, so legislation has to hold the line on fundamental rights. The same principle that made rejecting the EU’s chat control proposal the right call applies to any automatic scanning of private messages. Without strong privacy protection, democracy cannot function, and AI must never be used to weaken it. Fundamental rights have to be the starting point for all legislation.',
                 q: 'How does AI threaten fundamental rights?',
             },
             {
@@ -49,7 +49,7 @@ export const freedomTag: LocalTag = {
         ],
         sv: [
             {
-                a: 'AI gör massövervakning tekniskt enklare, så lagstiftningen måste hålla fast vid de grundläggande rättigheterna. Samma princip som gjorde det rätt att förkasta EU:s chat control-förslag gäller all automatisk skanning av privata meddelanden. Utan ett starkt integritetsskydd kan demokratin inte fungera, och AI får aldrig användas för att försvaga det. Grundläggande rättigheter ska vara utgångspunkten för all lagstiftning, inte en variabel.',
+                a: 'AI gör massövervakning tekniskt enklare, så lagstiftningen måste hålla fast vid de grundläggande rättigheterna. Samma princip som gjorde det rätt att förkasta EU:s chat control-förslag gäller all automatisk skanning av privata meddelanden. Utan ett starkt integritetsskydd kan demokratin inte fungera, och AI får aldrig användas för att försvaga det. Grundläggande rättigheter ska vara utgångspunkten för all lagstiftning.',
                 q: 'Hur hotar AI de grundläggande rättigheterna?',
             },
             {
