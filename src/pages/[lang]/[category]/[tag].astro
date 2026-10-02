@@ -46,13 +46,22 @@ const relatedPostsHeading: Record<Lang, string> = {
     sv: 'Relaterade inlägg',
 }
 
+const featuredHeading: Record<Lang, string> = {
+    en: 'Start here',
+    fi: 'Aloita näistä',
+    sv: 'Börja här',
+}
+
+const featured = tag.featured ?? []
+
 /*
- * Every published post under the tag, in the order the list shows them; the same
- * query ExcerptList runs, so scheduled posts never reach the JSON-LD early.
+ * Every published post under the tag, in the order the page shows them (featured
+ * first); the same query ExcerptList runs, so scheduled posts never reach the
+ * JSON-LD early.
  */
 const collection: CollectionInfo = {
     about: { name: tag.names[lang], termSet: new URL(`/${lang}/blog/`, Astro.site).href },
-    items: (await getExcerptPosts({ lang, tag: tag.id })).map((post) => ({
+    items: (await getExcerptPosts({ lang, rankedIds: featured, tag: tag.id })).map((post) => ({
         name: post.title,
         url: new URL(post.url, Astro.site).href,
     })),
@@ -88,9 +97,18 @@ const langAlternates = {
     <Plate ground="white">
         <PostProse>{bodyParagraphs.map((p) => <Paragraph>{p}</Paragraph>)}</PostProse>
     </Plate>
+    {
+        featured.length > 0 && (
+            <Plate ground="white" heading={featuredHeading[lang]}>
+                <PostProse>
+                    <ExcerptList lang={lang} onlyIds={featured} rankedIds={featured} tag={tag.id} />
+                </PostProse>
+            </Plate>
+        )
+    }
     <Plate ground="white" heading={relatedPostsHeading[lang]}>
         <PostProse>
-            <ExcerptList lang={lang} tag={tag.id} />
+            <ExcerptList excludeIds={featured.length > 0 ? featured : undefined} lang={lang} tag={tag.id} />
         </PostProse>
     </Plate>
 </PageLayout>

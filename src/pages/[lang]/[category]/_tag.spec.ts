@@ -64,7 +64,7 @@ describe('category page JSON-LD', () => {
         const result = await render(economyTag, 'fi')
         const page = collectionPage(result)
 
-        expect(getExcerptPosts).toHaveBeenCalledWith({ lang: 'fi', tag: 'economy' })
+        expect(getExcerptPosts).toHaveBeenCalledWith({ lang: 'fi', rankedIds: [], tag: 'economy' })
         expect(page.about).toMatchObject({ '@type': 'DefinedTerm', name: economyTag.names.fi })
         expect(page.mainEntity).toMatchObject({
             itemListElement: [
@@ -73,6 +73,25 @@ describe('category page JSON-LD', () => {
             ],
             numberOfItems: 2,
         })
+    })
+})
+
+describe('category page featured posts', () => {
+    it('renders a start-here list of the featured posts and leaves them out of the full list', async () => {
+        getExcerptPosts.mockClear()
+        const result = await render({ ...economyTag, featured: [7, 3] }, 'en')
+
+        expect(queryByText(result, 'Start here')).not.toBeNull()
+        const calls = getExcerptPosts.mock.calls.map(([q]) => q)
+        expect(calls).toContainEqual(expect.objectContaining({ onlyIds: [7, 3], rankedIds: [7, 3], tag: 'economy' }))
+        expect(calls).toContainEqual(expect.objectContaining({ excludeIds: [7, 3], tag: 'economy' }))
+        expect(calls).toContainEqual({ lang: 'en', rankedIds: [7, 3], tag: 'economy' })
+    })
+
+    it('renders no start-here list without featured posts', async () => {
+        const result = await render({ ...economyTag, featured: undefined }, 'en')
+
+        expect(queryByText(result, 'Start here')).toBeNull()
     })
 })
 
