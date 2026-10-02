@@ -4,6 +4,7 @@ import type { Lang } from '../content/nav'
 import { footerPrivacyPolicyHref } from '../content/footer'
 import { newsletterContent } from '../content/newsletter'
 import { colors, signalBandFontFamilies, sizes, typographics } from '../lib/styles'
+import { utmFormScript } from '../lib/utmFormScript'
 import Eyebrow from './Eyebrow.astro'
 import H2 from './H2.astro'
 import Link from './Link.astro'
@@ -461,6 +462,11 @@ const privacyHref = footerPrivacyPolicyHref[lang]
                     <input name="ml-submit" type="hidden" value="1" />
 
                     <input name="anticsrf" type="hidden" value="true" />
+
+                    {/* The campaign link the reader arrived through, filled from the URL by utmFormScript below. */}
+                    <input name="fields[utm_source]" type="hidden" value="" />
+
+                    <input name="fields[utm_campaign]" type="hidden" value="" />
                 </form>
             </div>
 
@@ -484,6 +490,8 @@ function ml_webform_success_${formId.replace('mlb2-', '')}() {
 }
 `}
 />
+
+<script is:inline set:html={utmFormScript} />
 
 {
     /* The embed script (and the jQuery + inputmask bundles it chains) must not compete with the LCP hero for throttled bandwidth — the form sits below the fold on every page and posts natively before the script arrives, so it loads only when scrolled near. */

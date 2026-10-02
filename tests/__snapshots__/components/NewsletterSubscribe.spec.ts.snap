@@ -257,6 +257,22 @@ exports[`<NewsletterSubscribe lang="en" /> > should render 1`] = `
             type="hidden"
             value="true"
           />
+            
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_source]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
+           
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_campaign]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
            
         </form>
          
@@ -556,6 +572,22 @@ exports[`<NewsletterSubscribe lang="fi" /> > should render 1`] = `
             type="hidden"
             value="true"
           />
+            
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_source]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
+           
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_campaign]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
            
         </form>
          
@@ -854,6 +886,22 @@ exports[`<NewsletterSubscribe lang="sv" /> > should render 1`] = `
             style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
+          />
+            
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_source]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
+           
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_campaign]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
           />
            
         </form>
@@ -1161,6 +1209,22 @@ exports[`<NewsletterSubscribe layout="split" /> > should render 1`] = `
             style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
             type="hidden"
             value="true"
+          />
+            
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_source]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
+          />
+           
+          <input
+            data-astro-cid-dsoyuyhn=""
+            name="fields[utm_campaign]"
+            style="--colorsOatSoft: #625E37;--colorsOnOatBody: #20463C;--colorsOnOatEyebrow: #3E5C4E;--fontFamiliesHeading: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--fontFamiliesSans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--headlineFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--headlineFontWeight: 900;--headlineLetterSpacing: -0.015em;--sizes125: 1.25rem;"
+            type="hidden"
+            value=""
           />
            
         </form>
