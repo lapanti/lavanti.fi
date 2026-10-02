@@ -29,7 +29,7 @@ export const kirkkonummiTag: LocalTag = {
                 q: 'Why do flat HSL fare rises hit Kirkkonummi hardest?',
             },
             {
-                a: "Local nature is Kirkkonummi's most important draw, and municipal decisions must reflect that every time zoning or budgeting is on the table. Proximity to nature is the first success factor in the municipal strategy. Almost half of the participatory budgeting proposals concerned improving local nature or moving in nature, and the forest strategy survey put recreational values ahead of income. People move here to live close to nature while staying near work and services.",
+                a: "Local nature is Kirkkonummi's most important draw, and municipal decisions must reflect that every time zoning or budgeting is on the table. In the 2022–2023 municipal strategy, proximity to nature was the first success factor. Almost half of the participatory budgeting proposals concerned improving local nature or moving in nature, and the forest strategy survey put recreational values ahead of income. People move here to live close to nature while staying near work and services.",
                 q: "How should nature feature in Kirkkonummi's decision-making?",
             },
         ],
@@ -43,7 +43,7 @@ export const kirkkonummiTag: LocalTag = {
                 q: 'Miksi HSL:n tasakorotukset osuvat kovimmin Kirkkonummeen?',
             },
             {
-                a: 'Lähiluonto on Kirkkonummen tärkein vetovoimatekijä, ja kunnan päätösten on heijastettava sitä aina, kun kaavoitetaan tai budjetoidaan. Kuntastrategian ensimmäinen menestystekijä on luonnonläheisyys. Osallistuvan budjetoinnin ehdotuksista lähes puolet koski lähiluonnon parantamista tai luonnossa liikkumista, ja metsästrategian kyselyssä virkistysarvoja pidettiin tuloja tärkeämpinä. Tänne muutetaan, koska halutaan asua lähellä luontoa mutta silti lähellä töitä ja palveluita.',
+                a: 'Lähiluonto on Kirkkonummen tärkein vetovoimatekijä, ja kunnan päätösten on heijastettava sitä aina, kun kaavoitetaan tai budjetoidaan. Vuosien 2022–2023 kuntastrategiassa luonnonläheisyys oli ensimmäinen menestystekijä. Osallistuvan budjetoinnin ehdotuksista lähes puolet koski lähiluonnon parantamista tai luonnossa liikkumista, ja metsästrategian kyselyssä virkistysarvoja pidettiin tuloja tärkeämpinä. Tänne muutetaan, koska halutaan asua lähellä luontoa mutta silti lähellä töitä ja palveluita.',
                 q: 'Miten luonto näkyy Kirkkonummen päätöksenteossa?',
             },
         ],
@@ -57,7 +57,7 @@ export const kirkkonummiTag: LocalTag = {
                 q: 'Varför drabbar lika stora HRT-prishöjningar Kyrkslätt hårdast?',
             },
             {
-                a: 'Närnaturen är Kyrkslätts viktigaste dragningskraft, och kommunens beslut måste spegla det varje gång det planläggs eller budgeteras. Naturens närhet är den första framgångsfaktorn i kommunstrategin. Nästan hälften av förslagen i deltagarbudgeteringen handlade om att förbättra närnaturen eller röra sig i naturen, och i skogsstrategins enkät ansågs rekreationsvärdena viktigare än inkomsterna. Folk flyttar hit för att bo nära naturen men ändå nära arbete och service.',
+                a: 'Närnaturen är Kyrkslätts viktigaste dragningskraft, och kommunens beslut måste spegla det varje gång det planläggs eller budgeteras. I kommunstrategin för 2022–2023 var naturens närhet den första framgångsfaktorn. Nästan hälften av förslagen i deltagarbudgeteringen handlade om att förbättra närnaturen eller röra sig i naturen, och i skogsstrategins enkät ansågs rekreationsvärdena viktigare än inkomsterna. Folk flyttar hit för att bo nära naturen men ändå nära arbete och service.',
                 q: 'Hur ska naturen synas i Kyrkslätts beslutsfattande?',
             },
         ],
