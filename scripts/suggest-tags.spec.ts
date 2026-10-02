@@ -229,7 +229,7 @@ describe('runTags', () => {
         expect(readReceipts(receipts)!.tags).toEqual({
             economy: {
                 checkedAt: '2026-09-23',
-                contentHash: hashTagFile('economy', tagsDir),
+                contentHash: await hashTagFile('economy', tagsDir),
                 model: 'typesafe/jev-1.13-20260917',
             },
         })

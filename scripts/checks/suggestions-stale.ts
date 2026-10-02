@@ -5,7 +5,8 @@
  * src/content/suggestions.json, i.e. `npm run suggest:links` was not run on
  * its final text (and, for a newsletter, `--backlinks` was not run either), or
  * when a changed tag file has no receipt that `npm run suggest:tags -- --tag`
- * was run on its current content. Pure file comparison — never calls Jev.
+ * was run on its current label (the fields Jev reads). Pure file comparison —
+ * never calls Jev.
  *
  * Usage:
  *   node --experimental-strip-types scripts/checks/suggestions-stale.ts <changed file>…   (pre-commit, from lint-staged)
@@ -51,15 +52,15 @@ export function changedDocuments(paths: string[], corpus: Document[]): Document[
         .filter((d): d is Document => d !== undefined)
 }
 
-/** The changed tag files that still exist, with their current hash. */
-export function changedTags(paths: string[], tagsDir: string): ChangedTag[] {
-    return tagIdsFromPaths(paths)
-        .filter((id) => existsSync(join(tagsDir, `${id}.ts`)))
-        .map((id) => ({ hash: hashTagFile(id, tagsDir), id }))
+/** The changed tag files that still exist, with the current hash of their label. */
+export async function changedTags(paths: string[], tagsDir: string): Promise<ChangedTag[]> {
+    const ids = tagIdsFromPaths(paths).filter((id) => existsSync(join(tagsDir, `${id}.ts`)))
+
+    return Promise.all(ids.map(async (id) => ({ hash: await hashTagFile(id, tagsDir), id })))
 }
 
 /** Returns the process exit code: 0 everything changed was checked, 1 otherwise, 2 bad arguments. */
-export function runCheck(argv: string[], deps: CheckDeps = {}): number {
+export async function runCheck(argv: string[], deps: CheckDeps = {}): Promise<number> {
     const log = deps.log ?? console.log
     const git = deps.git ?? defaultGit
     const baseIndex = argv.indexOf('--base')
@@ -74,7 +75,7 @@ export function runCheck(argv: string[], deps: CheckDeps = {}): number {
         ? git(['diff', '--name-only', '--diff-filter=ACMR', `${base}...HEAD`, '--', ...DIFF_PATHS]).split('\n')
         : files
     const tagsDir = deps.tagsDir ?? join(deps.root ?? 'src/content', 'tags')
-    const tags = changedTags(paths, tagsDir)
+    const tags = await changedTags(paths, tagsDir)
     const changed = changedDocuments(paths, buildCorpus({ root: deps.root }))
     if (changed.length === 0 && tags.length === 0) return 0
     const problems = findUnchecked(readReceipts(deps.path ?? RECEIPTS_PATH), changed, tags)
@@ -93,5 +94,5 @@ export function runCheck(argv: string[], deps: CheckDeps = {}): number {
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)
 if (isMain) {
-    process.exitCode = runCheck(process.argv.slice(2))
+    process.exitCode = await runCheck(process.argv.slice(2))
 }

@@ -123,15 +123,30 @@ describe('paths and hashing', () => {
         ).toEqual(['economy', 'nature', 'Foo_bar'])
     })
 
-    it('hashes the tag file and changes with its content', () => {
+    const tagFile = (fields: { faq?: string; firstEn?: string; name?: string; secondEn?: string }): string =>
+        [
+            'export const xTag = {',
+            "    id: 'x',",
+            `    names: { en: '${fields.name ?? 'X'}', fi: 'X' },`,
+            `    descriptions: { en: ['${fields.firstEn ?? 'One.'}', '${fields.secondEn ?? 'Two.'}'], fi: ['Yksi.'] },`,
+            fields.faq ? `    faq: { en: [{ q: '${fields.faq}', a: 'A.' }] },` : '',
+            '}',
+            '',
+        ].join('\n')
+
+    it('hashes the label fields only', async () => {
         const dir = mkdtempSync(join(tmpdir(), 'jev-taghash-'))
-        mkdirSync(dir, { recursive: true })
-        writeFileSync(join(dir, 'x.ts'), 'a')
-        const before = hashTagFile('x', dir)
-        writeFileSync(join(dir, 'x.ts'), 'b')
+        const file = join(dir, 'x.ts')
+        writeFileSync(file, tagFile({}))
+        const before = await hashTagFile('x', dir)
 
         expect(before).toHaveLength(64)
-        expect(hashTagFile('x', dir)).not.toBe(before)
+        writeFileSync(file, tagFile({ faq: 'Why?', secondEn: 'Changed.' }))
+        expect(await hashTagFile('x', dir)).toBe(before)
+        writeFileSync(file, tagFile({ firstEn: 'Changed.' }))
+        expect(await hashTagFile('x', dir)).not.toBe(before)
+        writeFileSync(file, tagFile({ name: 'Y' }))
+        expect(await hashTagFile('x', dir)).not.toBe(before)
         rmSync(dir, { force: true, recursive: true })
     })
 })
