@@ -88,11 +88,13 @@ const {
 
 /*
  * Pages with a canonical slug get a generated per-page card; slug-less pages (e.g. 404)
- * fall back to the static default social card.
+ * and noindex pages (src/lib/og/cards.ts builds no card for them) fall back to the static
+ * default social card.
  */
-const ogImage = slug
-    ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
-    : getImage('og-image-lauri-lavanti', 'ogFlat').src
+const ogImage =
+    slug && !noindex
+        ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
+        : getImage('og-image-lauri-lavanti', 'ogFlat').src
 
 // Narrowed here rather than in the template: the type guard does not carry into the JSX expression.
 const faqItems = faqSection && lang && hasFaqSection(faq) ? faq : undefined
