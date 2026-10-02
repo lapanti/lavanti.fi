@@ -57,11 +57,13 @@ describe('category page JSON-LD', () => {
     })
 
     it('lists the tag posts from the excerpt query as the ItemList and the tag as about', async () => {
-        getExcerptPosts.mockResolvedValueOnce([
-            { id: 2, title: 'Toinen', url: '/fi/blog/2/toinen/' },
-            { id: 1, title: 'Ensimmäinen', url: '/fi/blog/1/ensimmainen/' },
-        ] as never)
+        const posts = [
+            { id: 2, tags: ['economy'], title: 'Toinen', url: '/fi/blog/2/toinen/' },
+            { id: 1, tags: ['economy'], title: 'Ensimmäinen', url: '/fi/blog/1/ensimmainen/' },
+        ]
+        getExcerptPosts.mockImplementation(async (q: { rankedIds?: number[] }) => (q.rankedIds ? posts : []) as never)
         const result = await render(economyTag, 'fi')
+        getExcerptPosts.mockImplementation(async () => [])
         const page = collectionPage(result)
 
         expect(getExcerptPosts).toHaveBeenCalledWith({ lang: 'fi', rankedIds: [], tag: 'economy' })
@@ -92,6 +94,37 @@ describe('category page featured posts', () => {
         const result = await render({ ...economyTag, featured: undefined }, 'en')
 
         expect(queryByText(result, 'Start here')).toBeNull()
+    })
+})
+
+describe('category page related topics', () => {
+    it('links the sibling categories that share posts with the tag', async () => {
+        getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
+            q.tag
+                ? []
+                : ([
+                      { id: 1, tags: ['economy', 'freedom', 'kirkkonummi'] },
+                      { id: 2, tags: ['economy', 'freedom'] },
+                  ] as never)
+        )
+        const result = await render(economyTag, 'en')
+        getExcerptPosts.mockImplementation(async () => [])
+
+        const list = result.querySelector('ul[aria-label="Related topics"]')!
+        expect([...list.querySelectorAll('a')].map((a) => [a.textContent?.trim(), a.getAttribute('href')])).toEqual([
+            ['Freedom', '/en/category/freedom/'],
+            ['Kirkkonummi', '/en/category/kirkkonummi/'],
+        ])
+    })
+
+    it('renders no related topics with fewer than two siblings', async () => {
+        getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
+            q.tag ? [] : ([{ id: 1, tags: ['economy', 'freedom'] }] as never)
+        )
+        const result = await render(economyTag, 'en')
+        getExcerptPosts.mockImplementation(async () => [])
+
+        expect(queryByText(result, 'Related topics')).toBeNull()
     })
 })
 
