@@ -92,10 +92,11 @@ Images are stored in **Cloudflare Images**, served via a rewrite rule: `images/*
 
 ## Tags
 
-Defined in `src/content/tags.ts` as `LocalTag[]` with `id` and `names: { fi, sv, en }`.
+One file per tag in `src/content/tags/<id>.ts` (`LocalTag` in `types.ts`), aggregated into the `tags` array in `src/content/tags.ts`. Each tag has an English `id` plus per-locale `slugs`, `names`, and page copy.
 
-- **Never add tags anywhere else** — this is the single source of truth.
-- `buildTagCollection(lang)` returns a `TagCollection`-compatible object for components.
+- **Never add tags anywhere else** — a tag file plus its `tags` array entry is the single source of truth.
+- Link category pages with `getCategoryPath(id, lang)`; display names via `getTagName(id, lang)`.
+- Full contract: `.agents/specs/tags/spec.md`.
 
 ---
 
