@@ -25,10 +25,6 @@ export const nationalPoliticsTag: LocalTag = {
                 a: 'Money and control. The public sector pays substantial licence fees to American technology companies every year, and that money flows out of Finland instead of supporting Finnish jobs and expertise. Keeping data in Europe does not solve it, because the US CLOUD Act obliges American companies to hand data to US authorities regardless of where the servers sit. If a service becomes unavailable, we have no say in what happens. That is a lack of digital resilience.',
                 q: 'What does dependence on foreign tech companies cost Finland?',
             },
-            {
-                a: "Because education has been, and must remain, the foundation of Finland's success story. The government introduced tuition fees in upper secondary schools and vocational colleges for students from outside the EU/EEA. A young person who has lived in Finland almost their whole life and attended comprehensive school here could have to pay, since a minor's citizenship depends on their parents. The Minister of Education said the state would stop paying municipalities subsidies for these students, shifting the cost onto them.",
-                q: 'Why must upper secondary education stay free?',
-            },
         ],
         fi: [
             {
@@ -39,10 +35,6 @@ export const nationalPoliticsTag: LocalTag = {
                 a: 'Rahaa ja päätösvaltaa. Julkinen sektori maksaa vuosittain huomattavia lisenssimaksuja yhdysvaltalaisille teknologiayhtiöille, ja rahat valuvat pois Suomesta edistämättä suomalaista työtä ja osaamista. Tietojen säilyttäminen Euroopassa ei riitä, koska Yhdysvaltain CLOUD Act velvoittaa amerikkalaiset yhtiöt luovuttamaan tiedot viranomaisilleen riippumatta palvelinten sijainnista. Jos palvelun saatavuus katkeaa, meillä ei ole sananvaltaa siihen, mitä tapahtuu. Kyse on digitaalisen huoltovarmuuden puuttumisesta.',
                 q: 'Mitä riippuvuus ulkomaisista teknologiayhtiöistä maksaa Suomelle?',
             },
-            {
-                a: 'Koska koulutus on ollut ja sen pitää jatkossakin olla suomalaisen menestystarinan pohja. Hallitus toi lukukausimaksut lukioihin ja ammattikouluihin EU- ja ETA-maiden ulkopuolelta tuleville opiskelijoille. Maksu voi osua nuoreen, joka on asunut lähes koko ikänsä Suomessa ja käynyt täällä peruskoulun, koska alaikäisen kansalaisuus riippuu vanhemmista. Opetusministerin mukaan valtio ei antaisi kunnille valtionosuuksia näistä opiskelijoista, joten kulut siirtyisivät kunnille.',
-                q: 'Miksi toisen asteen koulutuksen pitää olla maksutonta?',
-            },
         ],
         sv: [
             {
@@ -52,10 +44,6 @@ export const nationalPoliticsTag: LocalTag = {
             {
                 a: 'Pengar och kontroll. Den offentliga sektorn betalar årligen stora licensavgifter till amerikanska teknikbolag, och pengarna flyter ut ur Finland i stället för att främja finländskt arbete och kunnande. Att lagra data i Europa räcker inte, eftersom den amerikanska CLOUD Act förpliktar amerikanska bolag att lämna ut data till amerikanska myndigheter oavsett var servrarna finns. Om en tjänst slutar vara tillgänglig har vi inget att säga till om. Det visar att den digitala försörjningsberedskapen saknas.',
                 q: 'Vad kostar beroendet av utländska teknikbolag Finland?',
-            },
-            {
-                a: 'Eftersom utbildningen har varit och måste fortsätta vara grunden för Finlands framgångssaga. Regeringen införde terminsavgifter i gymnasier och yrkesläroanstalter för studenter från länder utanför EU/EES. Även en ung person som bott i Finland nästan hela sitt liv och gått i grundskola här kan behöva betala, eftersom en minderårigs medborgarskap beror på föräldrarna. Enligt undervisningsministern skulle staten sluta betala statsandelar för dessa studenter, och kostnaden flyttas till kommunerna.',
-                q: 'Varför ska utbildningen på andra stadiet vara avgiftsfri?',
             },
         ],
     },
