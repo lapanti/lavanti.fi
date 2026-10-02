@@ -66,7 +66,10 @@ export default defineConfig({
                 !/^\/(en|sv)\/404\/$/.test(new URL(page).pathname) &&
                 // Exclude old root-level /kategoria/ redirect pages (the localised
                 // FI category pages live under /fi/kategoria/ and must stay included)
-                !new URL(page).pathname.startsWith('/kategoria/'),
+                !new URL(page).pathname.startsWith('/kategoria/') &&
+                // Exclude the volunteer thank-you pages (always) and, until launch, the
+                // noindex sign-up form itself — drop the form path here when noindex goes
+                !/^\/fi\/liity\/(kiitos\/)?$/.test(new URL(page).pathname),
             serialize: (item) => {
                 const path = decodeURIComponent(new URL(item.url).pathname)
                 const date = pageDateMap.get(path)
