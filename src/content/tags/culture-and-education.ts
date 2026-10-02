@@ -5,17 +5,17 @@ export const cultureAndEducationTag: LocalTag = {
         en: [
             'Posts about culture, civic education, libraries, and leisure services.',
             'Education is the largest and most important task of a municipality now that social welfare and health services belong to the wellbeing services counties. I write about the whole path: early childhood education that gives every child the foundations for school regardless of home circumstances, comprehensive school where teachers have time for their pupils, upper secondary and vocational education that must stay free of charge, and lifelong learning, which brings many adults back to municipal services when they update their skills.',
-            'Culture belongs to the same whole. A vibrant municipality is not merely a place where one goes to work or sleep; people must also enjoy being there. In Kirkkonummi, Lyyra, the House of Culture, the main library Fyyri and Rovastinpuisto form a cluster of culture, education and events. Local nature is a learning environment too: Laajakallio’s school and kindergarten go on excursions to the Keijukaispuisto forest almost daily.',
+            'Culture belongs to the same whole. A vibrant municipality is not merely a place where one goes to work or sleep; people must also enjoy being there. In Kirkkonummi, Lyyra, the House of Culture opening in early 2027, the main library Fyyri and Rovastinpuisto form a cluster of culture, education and events. Local nature is a learning environment too: Laajakallio’s school and kindergarten go on excursions to the Keijukaispuisto forest almost daily.',
         ],
         fi: [
             'Kirjoituksia sivistyksestä, kulttuurista, kirjastoista ja vapaa-ajan palveluista.',
             'Koulutus on kunnan suurin ja tärkein tehtävä nyt, kun sote-palvelut ovat hyvinvointialueiden vastuulla. Kirjoitan koko koulutuspolusta: varhaiskasvatuksesta, joka antaa jokaiselle lapselle eväät kouluun kotioloista riippumatta, peruskoulusta, jossa opettajalla on aikaa kohdata oppilaansa, toisesta asteesta, jonka pitää olla maksutonta jatkossakin, sekä elinikäisestä oppimisesta, joka tuo monen aikuisen takaisin kunnan palveluiden piiriin osaamista päivittämään.',
-            'Sivistykseen kuuluu myös kulttuuri. Elinvoimainen kunta ei ole pelkästään paikka, jossa käydään töissä tai nukkumassa, vaan siellä pitää myös viihtyä. Kirkkonummella sivistyksen talo Lyyra, pääkirjasto Fyyri ja Rovastinpuisto muodostavat kulttuurin, sivistyksen ja tapahtumien keskittymän. Myös lähiluonto on oppimisympäristö: Laajakallion koulu ja päiväkoti retkeilevät Keijukaispuiston metsässä lähes päivittäin.',
+            'Sivistykseen kuuluu myös kulttuuri. Elinvoimainen kunta ei ole pelkästään paikka, jossa käydään töissä tai nukkumassa, vaan siellä pitää myös viihtyä. Kirkkonummella alkuvuodesta 2027 avautuva sivistyksen talo Lyyra, pääkirjasto Fyyri ja Rovastinpuisto muodostavat kulttuurin, sivistyksen ja tapahtumien keskittymän. Myös lähiluonto on oppimisympäristö: Laajakallion koulu ja päiväkoti retkeilevät Keijukaispuiston metsässä lähes päivittäin.',
         ],
         sv: [
             'Texter om bildning, kultur, bibliotek och fritidstjänster.',
             'Utbildning är kommunens största och viktigaste uppgift nu när social- och hälsovårdstjänsterna är välfärdsregionernas ansvar. Jag skriver om hela utbildningsvägen: småbarnspedagogik som ger varje barn grunder för skolan oavsett hemförhållanden, en grundskola där lärarna har tid att möta sina elever, ett andra stadium som måste förbli avgiftsfritt och livslångt lärande, som för många vuxna tillbaka till kommunens tjänster när de uppdaterar sina kunskaper.',
-            'Kulturen hör till samma helhet. En livskraftig kommun är inte bara en plats där man arbetar eller sover, man ska också trivas där. I Kyrkslätt bildar bildningens hus Lyyra, huvudbiblioteket Fyyri och Provstparken ett kluster av kultur, bildning och evenemang. Även närnaturen är en lärmiljö: Laajakallio skola och daghem gör utflykter till Keijukaispuistos skog nästan dagligen.',
+            'Kulturen hör till samma helhet. En livskraftig kommun är inte bara en plats där man arbetar eller sover, man ska också trivas där. I Kyrkslätt bildar bildningens hus Lyyra, som öppnar i början av 2027, huvudbiblioteket Fyyri och Provstparken ett kluster av kultur, bildning och evenemang. Även närnaturen är en lärmiljö: Laajakallio skola och daghem gör utflykter till Keijukaispuistos skog nästan dagligen.',
         ],
     },
     faq: {
@@ -25,7 +25,7 @@ export const cultureAndEducationTag: LocalTag = {
                 q: 'Why is education the most important task of a municipality?',
             },
             {
-                a: 'Because education is the foundation of Finland’s success story and must not be eroded. The tuition fees pushed by the government apply to upper secondary and vocational students from outside the EU and EEA, including young people who have lived in Finland almost their entire life and attended comprehensive school here. A child’s citizenship depends on their parents, so they would be set apart from their classmates. The fees have since been approved; my position has not changed.',
+                a: 'Because education is the foundation of Finland’s success story and must not be eroded. The tuition fees pushed by the government apply to upper secondary and vocational students from outside the EU and EEA, including young people who have lived in Finland almost their entire life and attended comprehensive school here. A child’s citizenship depends on their parents, so they are set apart from their classmates. The fees have since been approved; my position has not changed.',
                 q: 'Why must upper secondary education stay free of charge?',
             },
             {
@@ -39,11 +39,11 @@ export const cultureAndEducationTag: LocalTag = {
                 q: 'Miksi koulutus on kunnan tärkein tehtävä?',
             },
             {
-                a: 'Koska koulutus on Suomen menestystarinan pohja, eikä sitä saa rapauttaa. Hallituksen ajamat lukukausimaksut koskevat EU- ja ETA-maiden ulkopuolelta tulevia lukio- ja ammattikouluopiskelijoita, myös nuoria, jotka ovat asuneet lähes koko ikänsä Suomessa ja käyneet täällä peruskoulun. Lapsen kansalaisuus riippuu hänen vanhemmistaan, joten nuori joutuisi eri asemaan kuin luokkakaverinsa. Lukukausimaksut on sittemmin hyväksytty, mutta kantani ei ole muuttunut.',
+                a: 'Koska koulutus on Suomen menestystarinan pohja, eikä sitä saa rapauttaa. Hallituksen ajamat lukukausimaksut koskevat EU- ja ETA-maiden ulkopuolelta tulevia lukio- ja ammattikouluopiskelijoita, myös nuoria, jotka ovat asuneet lähes koko ikänsä Suomessa ja käyneet täällä peruskoulun. Lapsen kansalaisuus riippuu hänen vanhemmistaan, joten nuori joutuu eri asemaan kuin luokkakaverinsa. Lukukausimaksut on sittemmin hyväksytty, mutta kantani ei ole muuttunut.',
                 q: 'Miksi toisen asteen koulutuksen pitää olla maksutonta?',
             },
             {
-                a: 'Elinvoimainen kunta ei ole pelkästään paikka, jossa käydään töissä tai nukkumassa, vaan siellä pitää myös viihtyä, ja siinä kulttuurilla ja yhteisöllisyydellä on äärimmäisen tärkeä tehtävä. Kirkkonummella sivistyksen talo Lyyra tarjoaa tilat molemmille lukioille, musiikkiopistolle, kuvataidekoululle ja kansalaisopistolle. Yhdessä pääkirjasto Fyyrin ja Rovastinpuiston kanssa se muodostaa kulttuurin ja tapahtumien keskittymän, joka houkuttelee alueelle uusia asukkaita ja yrityksiä.',
+                a: 'Elinvoimainen kunta ei ole pelkästään paikka, jossa käydään töissä tai nukkumassa, vaan siellä pitää myös viihtyä, ja siinä kulttuurilla ja yhteisöllisyydellä on äärimmäisen tärkeä tehtävä. Kirkkonummella sivistyksen talo Lyyra tulee tarjoamaan tilat molemmille lukioille, musiikkiopistolle, kuvataidekoululle ja kansalaisopistolle. Yhdessä pääkirjasto Fyyrin ja Rovastinpuiston kanssa se muodostaa kulttuurin ja tapahtumien keskittymän, joka houkuttelee alueelle uusia asukkaita ja yrityksiä.',
                 q: 'Miksi kulttuuri kuuluu elinvoimaiseen kuntaan?',
             },
         ],
@@ -53,11 +53,11 @@ export const cultureAndEducationTag: LocalTag = {
                 q: 'Varför är utbildning kommunens viktigaste uppgift?',
             },
             {
-                a: 'Därför att utbildningen är grunden för Finlands framgångssaga och inte får urholkas. Terminsavgifterna som regeringen driver gäller gymnasie- och yrkesstuderande från länder utanför EU och EES, även unga som har bott i Finland nästan hela sitt liv och gått i grundskola här. Barnets medborgarskap beror på föräldrarna, så den unga skulle ställas i en annan position än sina klasskamrater. Terminsavgifterna har sedan godkänts, men min ståndpunkt är oförändrad.',
+                a: 'Därför att utbildningen är grunden för Finlands framgångssaga och inte får urholkas. Terminsavgifterna som regeringen driver gäller gymnasie- och yrkesstuderande från länder utanför EU och EES, även unga som har bott i Finland nästan hela sitt liv och gått i grundskola här. Barnets medborgarskap beror på föräldrarna, så den unga ställs i en annan position än sina klasskamrater. Terminsavgifterna har sedan godkänts, men min ståndpunkt är oförändrad.',
                 q: 'Varför måste andra stadiets utbildning vara avgiftsfri?',
             },
             {
-                a: 'En livskraftig kommun är inte bara en plats där man arbetar eller sover, man ska också trivas där, och där spelar kulturen och gemenskapen en ytterst viktig roll. I Kyrkslätt erbjuder bildningens hus Lyyra lokaler för båda gymnasierna, musikinstitutet, bildkonstskolan och medborgarinstitutet. Tillsammans med huvudbiblioteket Fyyri och Provstparken bildar det ett kluster för kultur och evenemang som lockar nya invånare och företag till området.',
+                a: 'En livskraftig kommun är inte bara en plats där man arbetar eller sover, man ska också trivas där, och där spelar kulturen och gemenskapen en ytterst viktig roll. I Kyrkslätt kommer bildningens hus Lyyra att erbjuda lokaler för båda gymnasierna, musikinstitutet, bildkonstskolan och medborgarinstitutet. Tillsammans med huvudbiblioteket Fyyri och Provstparken bildar det ett kluster för kultur och evenemang som lockar nya invånare och företag till området.',
                 q: 'Varför hör kulturen till en livskraftig kommun?',
             },
         ],
