@@ -12,6 +12,7 @@
  * Usage:
  *   npm run suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]
  *   npm run suggest:tags -- --tag <id> [same flags]
+ *   npm run suggest:tags -- --intro <id> [same flags]   (ranks the tag's posts as first reads for `featured`; no receipt)
  *   npm run suggest:tags -- --changed-since <ref> [same flags]
  *
  * Spec: .agents/specs/jev/tags.md
@@ -27,13 +28,17 @@ import { parseArgs } from 'node:util'
 import { helsinkiDateOf } from '../src/lib/publishing.ts'
 import { createClient, type JevClient, mapConcurrent, NO_PROVIDER_NOTICE, resolveProvider } from './jev/client.ts'
 import { buildCorpus, type Document, type Lang, LANGS, stateFor } from './jev/corpus.ts'
+import { expectedScore } from './jev/faq.ts'
 import { docsFromPaths, renderTable } from './jev/links.ts'
 import { emptyReceipts, readReceipts, RECEIPTS_PATH, recordTagReceipt, writeReceipts } from './jev/suggestions.ts'
 import {
     CONSIDER_THRESHOLD,
     DOUBTFUL_THRESHOLD,
     EDITORIAL_TAGS,
+    FEATURED_MAX,
     hashTagFile,
+    introQuestion,
+    loadLocalTag,
     loadTagLabels,
     partition,
     registeredTagIds,
@@ -47,6 +52,7 @@ export const CONCURRENCY_DEFAULT = 4
 export const USAGE = [
     'usage: npm run suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]',
     '       npm run suggest:tags -- --tag <id> [flags]',
+    '       npm run suggest:tags -- --intro <id> [flags]',
     '       npm run suggest:tags -- --changed-since <ref> [flags]',
 ].join('\n')
 const EDITORIAL_NOTICE =
@@ -174,6 +180,59 @@ async function scanTag(client: JevClient, label: TagLabel, posts: Document[], op
     return { lines, model }
 }
 
+/**
+ * Intro ranking: one 1–5 score per post carrying the tag, "a good first read on
+ * the topic", for picking the tag's `featured` posts. No receipt: nothing gates
+ * on the pick.
+ */
+async function scoreIntro(
+    client: JevClient,
+    label: TagLabel,
+    featured: number[],
+    posts: Document[],
+    opts: Options
+): Promise<Section> {
+    const lines = [`## intro ${label.id} — ${label.name}`, '']
+    const tagged = posts.filter((post) => post.tags.includes(label.id))
+    const question = { intro: introQuestion(label) }
+    let model = ''
+    const answered = await mapConcurrent(tagged, opts.concurrency, async (post) => {
+        let res
+        try {
+            res = await client.ask(stateFor(post), question)
+        } catch (error) {
+            throw wrapError(post.key, error)
+        }
+        model = res.model
+        const answer = res.answers.intro
+        if (answer?.type !== 'score') {
+            throw new Error(`${post.key}: expected a score answer, got ${answer?.type ?? 'nothing'}`)
+        }
+
+        return { post, score: expectedScore(answer.probabilities) }
+    })
+    const rows = answered
+        .toSorted(
+            (a, b) => b.score - a.score || b.post.publishDate.localeCompare(a.post.publishDate) || b.post.id - a.post.id
+        )
+        .map((r) => [
+            r.post.key,
+            r.post.title,
+            r.post.publishDate,
+            r.score.toFixed(1),
+            featured.includes(r.post.id) ? '✓' : '',
+        ])
+    lines.push(
+        rows.length > 0
+            ? renderTable(['post', 'title', 'publishDate', 'intro', 'featured'], rows)
+            : 'no posts carry the tag',
+        ''
+    )
+    lines.push(`featured now: ${featured.join(', ') || 'none'} (up to ${FEATURED_MAX})`, '')
+
+    return { lines, model }
+}
+
 /** Returns the process exit code: 0 done or skipped, 1 failed, 2 bad arguments. */
 export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagDeps = {}): Promise<number> {
     const log = deps.log ?? console.log
@@ -186,6 +245,7 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
             concurrency: { type: 'string' },
             consider: { type: 'string' },
             doubtful: { type: 'string' },
+            intro: { type: 'string' },
             lang: { type: 'string' },
             out: { type: 'string' },
             tag: { type: 'string' },
@@ -196,9 +256,16 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
     const doubtful = values.doubtful === undefined ? DOUBTFUL_THRESHOLD : Number(values.doubtful)
     const concurrencyOk = values.concurrency === undefined || /^[1-9]\d*$/.test(values.concurrency)
     const changedSince = values['changed-since']
-    const mode = values.tag !== undefined ? 'tag' : changedSince === undefined ? 'posts' : 'changed'
-    const conflict =
-        (values.tag !== undefined && changedSince !== undefined) || (mode !== 'posts' && positionals.length > 0)
+    const modeFlags = [values.tag, values.intro, changedSince].filter((v) => v !== undefined).length
+    const mode =
+        values.tag !== undefined
+            ? 'tag'
+            : values.intro !== undefined
+              ? 'intro'
+              : changedSince === undefined
+                ? 'posts'
+                : 'changed'
+    const conflict = modeFlags > 1 || (mode !== 'posts' && positionals.length > 0)
     const postIds = mode === 'posts' ? parsePostIds(positionals) : []
     if (!isLang(lang) || !concurrencyOk || !inUnit(consider) || !inUnit(doubtful) || conflict || postIds === null) {
         log(USAGE)
@@ -234,6 +301,7 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
 
     let ids = postIds
     let tagIds = mode === 'tag' ? [values.tag!] : []
+    const introIds = mode === 'intro' ? [values.intro!] : []
     if (mode === 'changed') {
         const paths = git([
             'diff',
@@ -260,7 +328,7 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
         return 2
     }
     const registry = registeredTagIds(join(tagsDir, '..', 'tags.ts'))
-    for (const id of tagIds) {
+    for (const id of [...tagIds, ...introIds]) {
         if (!byId.has(id)) {
             log(`tag ${id} not found`)
 
@@ -302,6 +370,11 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
                 checkedAt
             )
             recorded++
+        }
+        for (const id of introIds) {
+            const tag = await loadLocalTag(tagsDir, `${id}.ts`)
+            const section = await scoreIntro(client, byId.get(id)!, tag.featured ?? [], posts, opts)
+            output.push(...section.lines)
         }
     } catch (error) {
         return finish(1, `failed at ${error instanceof Error ? error.message : String(error)}`)
