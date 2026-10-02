@@ -18,6 +18,51 @@ export const digitalIndependenceTag: LocalTag = {
             'Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.',
         ],
     },
+    faq: {
+        en: [
+            {
+                a: 'It means that we control our society. For critical services, the decision-making power over service availability and access to information must remain in Finland. It does not mean isolation: Finland decides on its own digital infrastructure, just as it decides on its own defence. That way services stay up in good times and bad, and we have the power to decide where our data goes and who controls it.',
+                q: 'What does digital independence mean?',
+            },
+            {
+                a: 'Because what matters is not only where the servers are, but whose laws and oversight apply. The US CLOUD Act obliges American technology companies to hand over data in their possession to US authorities, regardless of where the servers physically sit. If a cloud service becomes unavailable, or trust in the accuracy of its data breaks down, the digital foundation of our society weakens, and we have no say in what happens.',
+                q: 'Why is keeping data in Europe not enough?',
+            },
+            {
+                a: 'Yes, for most public sector needs, and they are often price-competitive as well. They sometimes offer a narrower range of features than the large American platforms, but in my work I have repeatedly seen the much-praised special features go unused. Migrating away from existing systems is expensive and should not be done hastily. New procurements, however, must be built correctly from the start.',
+                q: 'Are European alternatives sufficient?',
+            },
+        ],
+        fi: [
+            {
+                a: 'Sitä, että hallitsemme yhteiskuntaamme. Kriittisten palveluiden osalta päätösvallan palveluiden saatavuudesta ja tietoon pääsystä pitää sijaita Suomessa. Kyse ei ole eristäytymisestä, vaan siitä, että Suomi päättää itse omista digitaalisista perusrakenteistaan, aivan kuten se päättää omasta puolustuksestaan. Näin palvelut pysyvät pystyssä sekä hyvinä että vaikeina aikoina, ja meillä on valta päättää, mihin tietomme päätyvät ja kuka niitä hallitsee.',
+                q: 'Mitä digitaalinen itsenäisyys tarkoittaa?',
+            },
+            {
+                a: 'Koska ratkaisevaa ei ole vain palvelinten sijainti, vaan se, minkä maan lakeja ja valvontaa noudatetaan. Yhdysvaltain CLOUD Act -laki velvoittaa amerikkalaiset teknologiayhtiöt luovuttamaan hallussaan olevat tiedot Yhdysvaltojen viranomaisille riippumatta siitä, missä palvelimet fyysisesti sijaitsevat. Jos pilvipalvelun saatavuus katkeaa tai luottamus sen tietojen oikeellisuuteen rikkoutuu, yhteiskuntamme digitaalinen perusta heikkenee, eikä meillä ole sananvaltaa siihen, mitä tapahtuu.',
+                q: 'Miksi tietojen säilyttäminen Euroopassa ei riitä?',
+            },
+            {
+                a: 'Ovat, useimpiin julkisen sektorin tarpeisiin, ja usein ne ovat myös hinnaltaan kilpailukykyisiä. Niillä on paikoin suppeampi valikoima ominaisuuksia kuin suurilla yhdysvaltalaisilla alustoilla, mutta olen työssäni nähnyt toistuvasti, miten kehutut erityisominaisuudet jäävät käyttämättä. Olemassa olevista järjestelmistä irtautuminen on kallista, eikä sitä kannata tehdä hätiköiden. Uudet hankinnat pitää kuitenkin rakentaa alusta oikein.',
+                q: 'Ovatko eurooppalaiset vaihtoehdot riittäviä?',
+            },
+        ],
+        sv: [
+            {
+                a: 'Att vi kontrollerar vårt eget samhälle. Beslutsmakten över tillgången till kritiska tjänster och information måste förbli i Finland. Det betyder inte isolering, utan att Finland själv bestämmer över sin egen digitala infrastruktur, precis som landet bestämmer över sitt eget försvar. Då fungerar tjänsterna i både goda och svåra tider, och vi har makten att bestämma vart våra data tar vägen och vem som förvaltar dem.',
+                q: 'Vad innebär digital självständighet?',
+            },
+            {
+                a: 'För att det avgörande inte bara är var servrarna står, utan vilket lands lagar och tillsyn som följs. Den amerikanska CLOUD Act-lagen förpliktar amerikanska teknikbolag att lämna ut data de förvaltar till amerikanska myndigheter, oavsett var servrarna fysiskt finns. Om en molntjänst slutar vara tillgänglig, eller om förtroendet för riktigheten i dess data går förlorat, försvagas samhällets digitala grund, och vi har inget att säga till om vad som händer.',
+                q: 'Varför räcker det inte att data lagras i Europa?',
+            },
+            {
+                a: 'Ja, för de flesta behov inom den offentliga sektorn, och ofta är de också prismässigt konkurrenskraftiga. De har ibland ett snävare funktionsutbud än de stora amerikanska plattformarna, men i mitt arbete har jag gång på gång sett hur de omhyllade specialfunktionerna förblir oanvända. Att frigöra sig från befintliga system är dyrt och bör inte göras förhastat. Nya upphandlingar måste däremot byggas rätt från början.',
+                q: 'Är de europeiska alternativen tillräckliga?',
+            },
+        ],
+    },
+    featured: [51, 79, 53],
     id: 'digital-independence',
     metaDescription: {
         en: "Finland and Europe must control their own digital infrastructure — I authored the citizens' initiative for digital sovereignty and resilience.",
@@ -31,5 +76,5 @@ export const digitalIndependenceTag: LocalTag = {
         sv: 'Digital själv\u00ADständighet och resiliens',
     },
     slugs: { en: 'digital-independence', fi: 'digitaalinen-itsenaisyys', sv: 'digital-sjalvstandighet' },
-    updatedDate: '2026-07-06',
+    updatedDate: '2026-10-02',
 }
