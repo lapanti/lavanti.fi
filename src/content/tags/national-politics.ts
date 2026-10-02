@@ -15,6 +15,51 @@ export const nationalPoliticsTag: LocalTag = {
             'Parlamentariska avtal, nedskärningar och finanspolitiska regler är inte abstrakta. De syns i kommunernas budgetar, i vilka tjänster som får finansiering och vilka som skärs ned, och i vilka koalitioner som är villiga att förhandla och vilka som inte är det. Jag skriver om hur det som händer på Arkadiabacken återspeglas i praktiken i Kyrkslätt.',
         ],
     },
+    faq: {
+        en: [
+            {
+                a: 'A parliamentary agreement in which the parties committed to consolidating public finances in the next parliamentary term. The scale is decided, but the method is not. Every future government decides how to move toward the target, and the debt brake is not a rigid requirement to cut. Parliamentary agreements are in practice the only mechanism for problems that span election cycles, such as turning around public debt. Leaving the agreement would not change the scale, only who makes the choices.',
+                q: 'What is the debt-brake agreement?',
+            },
+            {
+                a: 'Money and control. The public sector pays substantial licence fees to American technology companies every year, and that money flows out of Finland instead of supporting Finnish jobs and expertise. Keeping data in Europe does not solve it, because the US CLOUD Act obliges American companies to hand data to US authorities regardless of where the servers sit. If a service becomes unavailable, we have no say in what happens. That is a lack of digital resilience.',
+                q: 'What does dependence on foreign tech companies cost Finland?',
+            },
+            {
+                a: "Because education has been, and must remain, the foundation of Finland's success story. The government introduced tuition fees in upper secondary schools and vocational colleges for students from outside the EU/EEA. A young person who has lived in Finland almost their whole life and attended comprehensive school here could have to pay, since a minor's citizenship depends on their parents. The Minister of Education said the state would stop paying municipalities subsidies for these students, shifting the cost onto them.",
+                q: 'Why must upper secondary education stay free?',
+            },
+        ],
+        fi: [
+            {
+                a: 'Velkajarru on parlamentaarinen sopimus, jossa puolueet sitoutuivat sopeuttamaan julkista taloutta ensi vaalikaudella. Määrä on päätetty, mutta tapaa ei. Jokainen tuleva hallitus päättää, miten tavoitetta kohti kuljetaan, eikä velkajarru ole jäykkä leikkauspakko. Parlamentaariset sopimukset ovat käytännössä ainoa keino ratkoa vaalikausien yli ulottuvia ongelmia, kuten julkisen velan suunnan taittamista. Sopimuksesta irtautuminen ei muuttaisi sopeutuksen määrää, vain sen, kuka valinnat tekee.',
+                q: 'Mikä velkajarrusopimus on?',
+            },
+            {
+                a: 'Rahaa ja päätösvaltaa. Julkinen sektori maksaa vuosittain huomattavia lisenssimaksuja yhdysvaltalaisille teknologiayhtiöille, ja rahat valuvat pois Suomesta edistämättä suomalaista työtä ja osaamista. Tietojen säilyttäminen Euroopassa ei riitä, koska Yhdysvaltain CLOUD Act velvoittaa amerikkalaiset yhtiöt luovuttamaan tiedot viranomaisilleen riippumatta palvelinten sijainnista. Jos palvelun saatavuus katkeaa, meillä ei ole sananvaltaa siihen, mitä tapahtuu. Kyse on digitaalisen huoltovarmuuden puuttumisesta.',
+                q: 'Mitä riippuvuus ulkomaisista teknologiayhtiöistä maksaa Suomelle?',
+            },
+            {
+                a: 'Koska koulutus on ollut ja sen pitää jatkossakin olla suomalaisen menestystarinan pohja. Hallitus toi lukukausimaksut lukioihin ja ammattikouluihin EU- ja ETA-maiden ulkopuolelta tuleville opiskelijoille. Maksu voi osua nuoreen, joka on asunut lähes koko ikänsä Suomessa ja käynyt täällä peruskoulun, koska alaikäisen kansalaisuus riippuu vanhemmista. Opetusministerin mukaan valtio ei antaisi kunnille valtionosuuksia näistä opiskelijoista, joten kulut siirtyisivät kunnille.',
+                q: 'Miksi toisen asteen koulutuksen pitää olla maksutonta?',
+            },
+        ],
+        sv: [
+            {
+                a: 'Ett parlamentariskt avtal där partierna förband sig att konsolidera de offentliga finanserna under nästa valperiod. Storleken är beslutad, men inte metoden. Varje framtida regering bestämmer hur man rör sig mot målet, och skuldbromsen är inget stelt krav på nedskärningar. Parlamentariska avtal är i praktiken det enda sättet att hantera problem som sträcker sig över valperioderna, som att vända den offentliga skuldens riktning. Att lämna avtalet ändrar inte storleken, bara vem som gör valen.',
+                q: 'Vad är skuldbromsavtalet?',
+            },
+            {
+                a: 'Pengar och kontroll. Den offentliga sektorn betalar årligen stora licensavgifter till amerikanska teknikbolag, och pengarna flyter ut ur Finland i stället för att främja finländskt arbete och kunnande. Att lagra data i Europa räcker inte, eftersom den amerikanska CLOUD Act förpliktar amerikanska bolag att lämna ut data till amerikanska myndigheter oavsett var servrarna finns. Om en tjänst slutar vara tillgänglig har vi inget att säga till om. Det visar att den digitala försörjningsberedskapen saknas.',
+                q: 'Vad kostar beroendet av utländska teknikbolag Finland?',
+            },
+            {
+                a: 'Eftersom utbildningen har varit och måste fortsätta vara grunden för Finlands framgångssaga. Regeringen införde terminsavgifter i gymnasier och yrkesläroanstalter för studenter från länder utanför EU/EES. Även en ung person som bott i Finland nästan hela sitt liv och gått i grundskola här kan behöva betala, eftersom en minderårigs medborgarskap beror på föräldrarna. Enligt undervisningsministern skulle staten sluta betala statsandelar för dessa studenter, och kostnaden flyttas till kommunerna.',
+                q: 'Varför ska utbildningen på andra stadiet vara avgiftsfri?',
+            },
+        ],
+    },
+    featured: [61, 38, 79],
     id: 'national-politics',
     metaDescription: {
         en: 'Finnish national politics — parliament, coalitions and fiscal agreements — from a councillor watching Helsinki decisions land in practice.',
@@ -28,5 +73,5 @@ export const nationalPoliticsTag: LocalTag = {
         sv: 'Nationell politik ur ett lokalt perspektiv',
     },
     slugs: { en: 'national-politics', fi: 'kansallinen-politiikka', sv: 'nationell-politik' },
-    updatedDate: '2026-05-20',
+    updatedDate: '2026-10-02',
 }
