@@ -64,6 +64,7 @@ export const municipalElections2025Tag: LocalTag = {
     },
     featured: [33, 20, 37],
     id: 'municipal-elections-2025',
+    local: true,
     metaDescription: {
         en: 'Posts about the 2025 municipal elections in Kirkkonummi and key themes in local politics.',
         fi: 'Kirjoituksia vuoden 2025 kuntavaaleista Kirkkonummella ja kunnallispolitiikan keskeisistä teemoista.',

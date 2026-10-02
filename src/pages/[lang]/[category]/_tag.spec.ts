@@ -133,6 +133,24 @@ describe('category page related topics', () => {
 
         expect(queryByText(result, 'Related topics')).toBeNull()
     })
+
+    it('lists local siblings after topical ones on a non-local page', async () => {
+        getExcerptPosts.mockImplementation(async (q: { tag?: string }) =>
+            q.tag
+                ? []
+                : [
+                      { id: 1, tags: ['economy', 'kirkkonummi'] },
+                      { id: 2, tags: ['economy', 'kirkkonummi'] },
+                      { id: 3, tags: ['economy', 'freedom'] },
+                      { id: 4, tags: ['freedom'] },
+                  ]
+        )
+        const result = await render(baseTag, 'en')
+        getExcerptPosts.mockImplementation(async () => [])
+
+        const list = result.querySelector('ul[aria-label="Related topics"]')!
+        expect([...list.querySelectorAll('a')].map((a) => a.textContent?.trim())).toEqual(['Freedom', 'Kirkkonummi'])
+    })
 })
 
 describe('category page FAQ', () => {

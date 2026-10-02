@@ -19,11 +19,13 @@ const RELATED_TAGS_MAX = 5
  * site does not top every list on raw counts alone. Ties go to the larger shared
  * count, then the id. Only ids in `known` count (tags with a category page);
  * the tag itself never does. Locale entries of the same post count once.
+ * Ids in `last` rank after every other sibling, whatever their similarity.
  */
 export function relatedTags(
     posts: TaggedPost[],
     tagId: string,
     known: ReadonlySet<string>,
+    last: ReadonlySet<string> = new Set(),
     max = RELATED_TAGS_MAX
 ): RelatedTag[] {
     const postsByTag = new Map<string, Set<number>>()
@@ -46,7 +48,13 @@ export function relatedTags(
             return { id, jaccard: shared / (own.size + ids.size - shared), shared }
         })
         .filter((t) => t.shared > 0)
-        .toSorted((a, b) => b.jaccard - a.jaccard || b.shared - a.shared || a.id.localeCompare(b.id))
+        .toSorted(
+            (a, b) =>
+                Number(last.has(a.id)) - Number(last.has(b.id)) ||
+                b.jaccard - a.jaccard ||
+                b.shared - a.shared ||
+                a.id.localeCompare(b.id)
+        )
         .slice(0, max)
         .map(({ id, shared }) => ({ id, shared }))
 }

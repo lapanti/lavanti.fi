@@ -65,11 +65,15 @@ const relatedTagsHeading: Record<Lang, string> = {
 /*
  * Sibling categories by co-occurrence over the published posts of this locale;
  * every tag with a category page qualifies, election and party tags included.
+ * A non-local page lists local (Kirkkonummi-only) siblings last.
  */
-const siblings = relatedTags(await getExcerptPosts({ lang }), tag.id, new Set(tags.map((t) => t.id))).map(({ id }) => ({
-    href: getCategoryPath(id, lang)!,
-    label: tags.find((t) => t.id === id)!.names[lang],
-}))
+const localLast = tag.local ? new Set<string>() : new Set(tags.filter((t) => t.local).map((t) => t.id))
+const siblings = relatedTags(await getExcerptPosts({ lang }), tag.id, new Set(tags.map((t) => t.id)), localLast).map(
+    ({ id }) => ({
+        href: getCategoryPath(id, lang)!,
+        label: tags.find((t) => t.id === id)!.names[lang],
+    })
+)
 /** A single sibling reads as noise, not as a map of the topic. */
 const SIBLINGS_MIN = 2
 

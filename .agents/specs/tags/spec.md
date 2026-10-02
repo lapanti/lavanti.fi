@@ -20,6 +20,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
       heroImageAlt?: { en: string; fi: string; sv: string } // required when heroImage is set
       faq?: { en?: FaqItem[]; fi?: FaqItem[]; sv?: FaqItem[] } // per-locale category FAQ; 2+ entries per present locale
       featured?: number[]                                   // up to 3 post ids shown first as "start here"
+      local?: true                                          // Kirkkonummi-only category; ranked last in other pages' related topics
   }
   ```
   Currently 34 tags.
@@ -43,7 +44,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
   1. Intro plate: each string in `tag.descriptions[lang]` as a `<Paragraph>`.
   2. "Start here" plate (localised; only with `featured`): `<ExcerptList onlyIds={featured} rankedIds={featured}>`.
   3. "Related posts" plate (localised): `<ExcerptList tag={tag.id}>`, excluding the featured ids.
-  4. "Related topics" plate (localised; only with 2+ siblings): `<Chips>` linking up to five sibling categories ranked by `relatedTags()` (`src/lib/tagCooccurrence.ts`, Jaccard over the locale's published posts; every tag with a page qualifies, election and party tags included).
+  4. "Related topics" plate (localised; only with 2+ siblings): `<Chips>` linking up to five sibling categories ranked by `relatedTags()` (`src/lib/tagCooccurrence.ts`, Jaccard over the locale's published posts; every tag with a page qualifies, election and party tags included). On a page whose tag is not `local`, `local` siblings (kirkkonummi, municipal-elections-2025, west-railway, council-motion) rank after every topical sibling, so pages read across the Uusimaa electoral district do not lead with one municipality.
   5. FAQ plate: `faq={tag.faq?.[lang]}` with the `faqSection` opt-in; `PageLayout` mounts `<Faq>` after the body when `hasFaqSection()` holds.
 - **Category JSON-LD:** CollectionPage carries `inLanguage`, `about` (a `DefinedTerm` named `names[lang]` in the set `/{lang}/blog/`) and `mainEntity`, an `ItemList` of every published post under the tag in page order (featured first), from the same `getExcerptPosts` query the lists use, so scheduled posts stay out. A locale with 2+ FAQ entries adds a sibling `FAQPage` script.
 - **Category FAQ and featured content:** answers are human-written, grounded in posts under the tag. `npm run suggest:faq -- tag <id>` ranks candidate questions from those posts and `npm run suggest:tags -- --intro <id>` ranks the posts as first reads (`.agents/specs/jev/faq.md`, `.agents/specs/jev/tags.md`); both are advisory.
@@ -147,7 +148,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 **Scenario: Related topics**
 - Given: Two or more other tags share a published post with the tag
 - When: Its category page is rendered
-- Then: A "Related topics" plate links up to five of them, most similar first by Jaccard over unique post ids; with fewer than two, the plate is left out
+- Then: A "Related topics" plate links up to five of them, most similar first by Jaccard over unique post ids; with fewer than two, the plate is left out. On a non-local page, `local` siblings come after all others regardless of similarity
 
 **Scenario: CollectionPage describes the collection**
 - Given: Any category page

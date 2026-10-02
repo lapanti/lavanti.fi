@@ -16,6 +16,12 @@ export interface LocalTag {
     heroImage?: string
     heroImageAlt?: { en: string; fi: string; sv: string }
     id: string
+    /**
+     * A Kirkkonummi-only category. A non-local category page lists local siblings
+     * under "Related topics" only after its topical ones, so pages read by voters
+     * across Uusimaa do not lead with one municipality.
+     */
+    local?: true
     metaDescription: { en: string; fi: string; sv: string }
     names: { en: string; fi: string; sv: string }
     pageTitle: { en: string; fi: string; sv: string }

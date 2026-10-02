@@ -64,6 +64,7 @@ export const kirkkonummiTag: LocalTag = {
     },
     featured: [33, 46, 70],
     id: 'kirkkonummi',
+    local: true,
     metaDescription: {
         en: 'Kirkkonummi is one of Finland’s finest municipalities. Wonderful nature, yet a short trip from Helsinki. I also have the honour of serving as a councillor here.',
         fi: 'Kirkkonummi on yksi Suomen hienoimmista kunnista. Upea luonto, mutta lyhyt matka Helsinkiin. Minulla on myös kunnia toimia kunnassa valtuutettuna.',

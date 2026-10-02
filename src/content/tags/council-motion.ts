@@ -19,6 +19,7 @@ export const councilMotionTag: LocalTag = {
         ],
     },
     id: 'council-motion',
+    local: true,
     metaDescription: {
         en: 'Council motions and posts about the work and decisions of Kirkkonummi municipal council.',
         fi: 'Valtuustoaloitteita ja kirjoituksia Kirkkonummen valtuuston toiminnasta ja päätöksistä.',
