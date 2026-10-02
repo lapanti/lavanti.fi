@@ -288,3 +288,86 @@ describe('runFaq', () => {
         expect(lines.at(-1)).toBe('failed at post:2: expected a noul answer for a0, got nothing')
     })
 })
+
+describe('runFaq tag mode', () => {
+    const root = mkdtempSync(join(tmpdir(), 'jev-suggest-faq-tag-'))
+    afterAll(() => rmSync(root, { force: true, recursive: true }))
+
+    writeDoc(root, 'posts', 1, '## Miksi eVaka säästää rahaa?\n\nx\n\n### Onko kirjasto tärkeä?\n\ny', [
+        'Mitä eVaka on?',
+    ])
+    writeDoc(root, 'posts', 2, '## Mitä eVaka on?\n\nx\n\n## Kuka maksaa?\n\ny')
+    writeDoc(root, 'newsletters', 3, '## Miksi uutiskirje?\n\nx')
+    const tagsDir = join(root, 'tags')
+    mkdirSync(tagsDir)
+    writeFileSync(join(root, 'tags.ts'), "import { economyTag } from './tags/economy'\n")
+    writeFileSync(
+        join(tagsDir, 'economy.ts'),
+        [
+            'export const economyTag = {',
+            "    id: 'economy',",
+            "    names: { en: 'Economy', fi: 'Talous', sv: 'Ekonomi' },",
+            "    descriptions: { en: ['Money.'], fi: ['Rahaa.', 'Lisää rahaa.'], sv: ['Pengar.'] },",
+            "    faq: { fi: [{ q: 'Kuka maksaa?', a: 'Me.' }] },",
+            '}',
+            '',
+        ].join('\n')
+    )
+    writeFileSync(
+        join(tagsDir, 'orphan.ts'),
+        "export const orphanTag = { id: 'orphan', names: {}, descriptions: {} }\n"
+    )
+    const env = { OPENROUTER_API_KEY: 'k' }
+    const deps = (client: JevClient, lines: string[]) => ({
+        client,
+        log: (l: string) => lines.push(l),
+        related: null,
+        root,
+    })
+
+    it('harvests faq questions and question headings from posts carrying the tag and ranks them', async () => {
+        const lines: string[] = []
+        const { calls, client } = fakeClient(
+            (instructions) => (instructions.includes('kirjasto') ? 0.2 : 0.9),
+            (instructions) => (instructions.includes('säästää') ? { '5': 1 } : { '3': 1 })
+        )
+
+        expect(await runFaq(['tag', 'economy'], env, deps(client, lines))).toBe(0)
+        expect(calls).toHaveLength(1)
+        expect(calls[0].state).toEqual({
+            category: 'Talous',
+            description: 'Rahaa.\n\nLisää rahaa.',
+            posts: 'fi posts 2\nfi posts 1',
+        })
+        expect(Object.keys(calls[0].questions)).toEqual(['c0', 'u0', 'c1', 'u1', 'c2', 'u2'])
+        expect(lines).toEqual([
+            '## tag economy — Talous',
+            '',
+            '### candidates',
+            '',
+            [
+                '| question | source | category-wide | usefulness |',
+                '| --- | --- | --- | --- |',
+                '| Miksi eVaka säästää rahaa? | post:1 | 0.90 | 5.0 |',
+                '| Mitä eVaka on? | post:2 | 0.90 | 3.0 |',
+            ].join('\n'),
+            '',
+            'faq entries: 1 (FAQPage JSON-LD needs 2) · posts: 2',
+            '',
+        ])
+    })
+
+    it('rejects an unknown, an unregistered and a malformed tag id before any request', async () => {
+        const lines: string[] = []
+        const { calls, client } = fakeClient(() => 0.9)
+
+        expect(await runFaq(['tag', 'nope', 'tag', 'orphan'], env, deps(client, lines))).toBe(2)
+        expect(lines).toEqual(['tag:nope not found', 'tag:orphan not found'])
+        lines.length = 0
+        expect(await runFaq(['tag', 'Economy'], env, deps(client, lines))).toBe(2)
+        expect(lines).toEqual([USAGE])
+        lines.length = 0
+        expect(await runFaq(['tag', 'economy', '--category-wide', '0'], env, deps(client, lines))).toBe(2)
+        expect(calls).toEqual([])
+    })
+})
