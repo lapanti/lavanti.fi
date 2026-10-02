@@ -19,7 +19,7 @@ This feature is an author-run, advisory script with two modes. **Per post**: whi
 ### In scope
 - `scripts/jev/tags.ts` — shared, network-free helpers lifted out of the eval (`loadTagLabels`, `tagQuestions`, `predictedAt`) plus partitioning of an answer into consider / doubtful / pillar, the editorial-tag exclusion, tag ids from staged paths, and Markdown rendering; no CLI
 - `scripts/suggest-tags.ts` + `npm run suggest:tags` — per-post mode and `--tag <id>` retro-scan mode; `--changed-since <ref>` for both kinds of changed files
-- `scripts/jev/suggestions.ts` — a third receipt kind `tags`, keyed by tag id, hashed over the tag file; missing kinds in an existing `suggestions.json` read as empty
+- `scripts/jev/suggestions.ts` — a third receipt kind `tags`, keyed by tag id, hashed over the tag's Jev label; missing kinds in an existing `suggestions.json` read as empty
 - `scripts/checks/suggestions-stale.ts` — changed `src/content/tags/<id>.ts` files require a matching `tags` receipt; `--base` mode diffs `src/content/tags` too
 - `.lintstagedrc.mjs` — the tags rule runs the suggestions check with the staged tag files
 - `.claude/skills/write/SKILL.md`, `.claude/skills/review-content/SKILL.md` — a "Tag suggestions" step
@@ -71,7 +71,7 @@ Feature: Tag retro-scan
     Then one request per post lacking the tag is sent (posts only, newsletters never; scheduled posts included, since they will need the tag when they go live), each with stateFor(post) as state and the single noul for that tag
     And stdout shows a Markdown table of posts that lack the tag with p ≥ 0.7, newest first, columns post, title, publishDate, p, current tags
     And posts that already carry the tag are counted on one line, not listed
-    And a receipt tags[<id>] = { checkedAt, contentHash: sha256 over src/content/tags/<id>.ts, model } is written to src/content/suggestions.json
+    And a receipt tags[<id>] = { checkedAt, contentHash: sha256 over the tag's Jev label (id, names.en, descriptions.en[0]), model } is written to src/content/suggestions.json
 
   Scenario: Unknown tag
     Given `--tag no-such-tag`
@@ -98,8 +98,13 @@ Feature: Gate and skills
   Scenario: Changed tag file needs a receipt
     Given a staged or changed src/content/tags/<id>.ts
     When check:suggestions runs (pre-commit with the staged files, CI with --base)
-    Then tags[<id>].contentHash must equal the current hash of that file
+    Then tags[<id>].contentHash must equal the current hash of that file's label
     And a missing or stale receipt exits 1 naming `npm run suggest:tags -- --tag <id>`
+
+  Scenario: Edit outside the label
+    Given a tag file whose faq, featured, updatedDate, later description paragraphs or non-English fields change, and whose id, names.en and descriptions.en[0] do not
+    When check:suggestions runs
+    Then the existing receipt still matches and no new retro-scan is needed
     And types.ts is ignored
     And the gate trusts the receipt: it compares hashes and does not re-check registration (receipts are committed and reviewed like any change)
 
@@ -168,7 +173,7 @@ export const EDITORIAL_TAGS = ['coop-elections', 'council-motion', 'green-party'
 export interface TagPartition { consider: Array<{ id: string; p: number }>; doubtful: Array<{ id: string; p: number }>; pillar: Array<{ assigned: boolean; id: string; p: number }> }
 export function partition(probabilities: Record<string, number>, assigned: string[], opts: { consider: number; doubtful: number }): TagPartition
 export function tagIdsFromPaths(paths: string[]): string[]                   // src/content/tags/<id>.ts → ids, types.ts excluded, unique
-export function hashTagFile(id: string, dir?: string): string                // sha256 over the file, hex
+export function hashTagFile(id: string, dir?: string): Promise<string>       // sha256 over JSON of the TagLabel loadTagLabels builds, hex
 export function registeredTagIds(registry?: string): Set<string>             // ids from the `from './tags/<id>'` import lines of src/content/tags.ts
 
 // scripts/jev/suggestions.ts (change)
@@ -180,7 +185,8 @@ export function recordTagReceipt(file, tag: ChangedTag, model, checkedAt): void
 export function findUnchecked(file, changed: Document[], changedTags?: ChangedTag[]): string[]
 
 // scripts/checks/suggestions-stale.ts (change)
-export function changedTags(paths: string[], tagsDir: string): ChangedTag[]  // existing src/content/tags/<id>.ts files with their current hash; deleted files skipped
+export function changedTags(paths: string[], tagsDir: string): Promise<ChangedTag[]>  // existing src/content/tags/<id>.ts files with their current label hash; deleted files skipped
+export function runCheck(argv: string[], deps?): Promise<number>
 
 // scripts/suggest-tags.ts — CLI
 //   suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]
@@ -193,7 +199,9 @@ Requests: per-post mode is one request of ~3k tokens per post (34 nouls) ≈ $0.
 
 Registration: `src/content/tags.ts` is the taxonomy's single source of truth (tags spec), but it imports its files without extensions, which Node's strip-types loader cannot resolve. `registeredTagIds()` therefore parses the import lines of `tags.ts` for `./tags/<id>` and treats that set as the registry; a tag file outside it is refused.
 
-Receipt semantics: the `tags` receipt says "the retro-scan ran against this version of the tag file". Editing a tag's English description changes the question, so the hash covers the whole file. Posts added after the scan are not covered by it — that is the per-post mode's job when the post is written.
+Receipt semantics: the `tags` receipt says "the retro-scan ran against this version of the tag's label". The label (id, `names.en`, `descriptions.en[0]`) is all Jev sees, so the hash covers exactly that: rewording the English name or first English paragraph changes the question and needs a new scan, while a category FAQ, featured posts, later paragraphs, other locales or an `updatedDate` bump do not. The label is read through the same dynamic import as `loadTagLabels`; the import URL carries the file's content hash so a file changed within one process is not served from the module cache. Posts added after the scan are not covered by it — that is the per-post mode's job when the post is written.
+
+Migration (2026-10-02): receipts written under the whole-file hash were re-stamped to the label hash only where the stored hash still equalled the current file's whole-file hash, so no receipt vouches for a version that was never scanned. All 26 matched.
 
 ---
 
@@ -237,6 +245,7 @@ Receipt semantics: the `tags` receipt says "the retro-scan ran against this vers
 
 | Date | Change |
 |------|--------|
+| 2026-10-02 | Receipt hashes the Jev label instead of the whole file (#1502); hashTagFile, changedTags and runCheck async; existing receipts re-stamped |
 | 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): tag ids from paths and the registry accept any file name so a non-kebab-case tag file cannot bypass the gate; failure path keeps completed receipts, now tested; retro-scan wording (posts lacking the tag) |
 | 2026-09-23 | Implemented; calibration runs on post 57 and the immigration tag recorded, data model aligned with the code (hashTagFile argument order, ChangedTag, changedTags) |
 | 2026-09-23 | Critic review (PASS WITH NOTES): readReceipts fills absent kinds, unregistered and malformed tag files, posts-only scan incl. scheduled, post without prose, editorial list split into measured and judged, lang default explained, issue checkboxes rewritten |
