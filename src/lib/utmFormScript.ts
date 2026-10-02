@@ -1,7 +1,7 @@
 /**
- * Copies `utm_source` and `utm_campaign` from the page's own URL into the newsletter form's
- * hidden `fields[utm_source]` / `fields[utm_campaign]` inputs, so MailerLite stores which
- * campaign link the subscriber arrived through (lapanti/lavanti-2027 conversion tracking).
+ * Copies `utm_source` and `utm_campaign` from the page's own URL into hidden form inputs: the
+ * newsletter form's `fields[utm_*]` (MailerLite) and the volunteer form's plain `utm_*`, so each
+ * sign-up records the campaign link it arrived through (lapanti/lavanti-2027 conversion tracking).
  *
  * Landing page only: nothing is written to cookies or storage, so a reader who clicks on to
  * another page before subscribing is not attributed. Values that are not short slugs are
@@ -18,7 +18,7 @@ export const utmFormScript = `(function () {
     for (var i = 0; i < keys.length; i++) {
         var value = (params.get(keys[i]) || '').trim().toLowerCase()
         if (!/^[a-z0-9._-]{1,64}$/.test(value)) continue
-        var inputs = document.querySelectorAll('input[name="fields[' + keys[i] + ']"]')
+        var inputs = document.querySelectorAll('input[name="fields[' + keys[i] + ']"], input[name="' + keys[i] + '"]')
         for (var j = 0; j < inputs.length; j++) inputs[j].value = value
     }
 })()`

@@ -21,6 +21,17 @@ const run = (url: string, doNotTrack: null | string = null) => {
 }
 
 describe('utmFormScript', () => {
+    it('also fills the plain utm_* inputs of the volunteer form', () => {
+        const window = new Window({ url: 'https://lavanti.fi/fi/liity/?utm_source=bluesky&utm_campaign=liity' })
+        window.document.body.innerHTML =
+            '<form><input name="utm_source" type="hidden" value="" /><input name="utm_campaign" type="hidden" value="" /></form>'
+        new Function('window', 'document', 'navigator', utmFormScript)(window, window.document, window.navigator)
+        const value = (name: string) =>
+            (window.document.querySelector(`input[name="${name}"]`) as unknown as HTMLInputElement).value
+
+        expect([value('utm_source'), value('utm_campaign')]).toEqual(['bluesky', 'liity'])
+    })
+
     it('copies utm_source and utm_campaign from the URL into the hidden inputs', () => {
         expect(run('https://lavanti.fi/fi/blogi/x/?utm_source=linkedin&utm_campaign=datakeskukset')).toEqual({
             campaign: 'datakeskukset',
