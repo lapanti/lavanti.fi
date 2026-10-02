@@ -398,6 +398,16 @@
       "contentHash": "2567458a27c52e4333d632609e6ffac656332578fb5d9cafbe58635058ade6bb",
       "model": "typesafe/jev-1.13-20260917"
     },
+    "coop-elections": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "7af027a1739e08fecb48dce8e1899ba7355e53ea218ab84c4969cc236da22e37",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "council-motion": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "4a73f86ab928a1d7480c64768731f514d79ae3b40a87065b7d6ef3799e04c218",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "culture-and-education": {
       "checkedAt": "2026-09-23",
       "contentHash": "113a1afb646412102c9d1eebf5f818ea84c17285ad5ba58012ffc0156280718e",
@@ -468,6 +478,11 @@
       "contentHash": "c3ae7700f08c21b6c096a23c79ea7ee06f8efb4187cfd2e92e153a4f5b86e229",
       "model": "typesafe/jev-1.13-20260917"
     },
+    "municipal-elections-2025": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "ee1564df3382cd8795f27110857382adcc4267204c62e5a050ebb7cd754baec7",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "national-politics": {
       "checkedAt": "2026-09-23",
       "contentHash": "283c8f824d19d8b8ac057bbf8dc07852e1d870891e3be138e8f659a0d2bfc740",
@@ -478,9 +493,24 @@
       "contentHash": "7566d0b8454a53d006c760701dbf3637be25922aa7402d34bc78e54375d53f6f",
       "model": "typesafe/jev-1.13-20260917"
     },
+    "parliamentary-elections-2027": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "0390737982023061bdb425b7470aae2346b7593281a7211dbb1b27d9acfd563d",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "privacy": {
       "checkedAt": "2026-09-23",
       "contentHash": "1eb91a7c16c1b893617e2b2d4097b176597cb101834b0caf653cd250a0af83eb",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "regional-elections-2022": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "99ea2c8c04eb8d9556776fd80ec7d25df043c15748eff312231efd0b6381925e",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "regional-elections-2025": {
+      "checkedAt": "2026-10-02",
+      "contentHash": "75e3179d72839047bad8f16b26e200d8f0a7eeba19cbcac9c5ffc733fa624a22",
       "model": "typesafe/jev-1.13-20260917"
     },
     "security": {
