@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-09-23
+> **Last updated**: 2026-10-02
 
 ---
 
@@ -19,7 +19,8 @@ This feature is an author-run, advisory script that ranks those existing questio
 ### In scope
 - `scripts/jev/faq.ts` — network-free helpers: question-form detection for headings (the `aeo.sh` rule), candidate harvesting from a document and its related neighbours, dedupe against the existing `faq`, request building, ranking and rendering
 - `scripts/jev/corpus.ts` — `Document.faq: string[]` (the `q` of every frontmatter `faq` entry) and `Document.h3s` alongside `h2s`, plus `bodyStateFor(doc)` (the document with its prose) for answerability
-- `scripts/suggest-faq.ts` + `npm run suggest:faq` — `post <id>… | newsletter <id>…` with `--lang`, `--answerable`, `--doubtful`, `--out`
+- `scripts/suggest-faq.ts` + `npm run suggest:faq` — `post <id>… | newsletter <id>… | tag <id>…` with `--lang`, `--answerable`, `--doubtful`, `--category-wide`, `--out`
+- Category FAQ candidates (`tag <id>`, #1502): the faq questions and question headings of every post carrying the tag, ranked for the category page's `faq` (tags spec)
 - `.claude/skills/write/SKILL.md`, `review-content/SKILL.md`, `aeo-check/SKILL.md` — a "FAQ candidates" step
 - Unit tests for the helpers and for the CLI with an injected client; no network in tests
 - `ARCHITECTURE.md` paragraph
@@ -27,7 +28,7 @@ This feature is an author-run, advisory script that ranks those existing questio
 ### Out of scope
 - Generating questions or answers — Jev returns typed decisions only; a question that nobody wrote as a heading cannot be proposed
 - Writing `faq` frontmatter or gating on it: no receipt kind, no `check:suggestions` change, no `--changed-since` (a FAQ is optional content and the AEO rule on headings is the enforced part)
-- Candidates from tag siblings (the issue's first idea): unbounded on broad tags — 51 posts carry `kirkkonummi` — and superseded by the related ranking
+- Candidates from tag siblings for a *post or issue* FAQ (the issue's first idea): unbounded on broad tags — 51 posts carry `kirkkonummi` — and superseded by the related ranking. The category mode harvests tag siblings on purpose: there the tag is the document
 - Cross-kind neighbours: `related.json` ranks same-kind documents only, so a post's neighbours are posts and an issue's are issues
 - Component heading props (`heading="…"`): no post uses them today; `aeo.sh` accepts them, the harvester does not until one exists
 - Tag, link and related suggestions (#1491, #1490, #1487)
@@ -113,6 +114,28 @@ Feature: FAQ candidates for one document
     Given /write, /review-content or /aeo-check is run on a document
     Then the skill instructs running `npm run suggest:faq -- <post|newsletter> <id>`, picking questions from the table, writing each answer by hand in the document's voice, and mentions the two-entry JSON-LD threshold
 
+Feature: FAQ candidates for a category
+
+  Scenario: Candidates for a tag
+    Given a key and `tag economy`, a tag file imported in src/content/tags.ts
+    When `npm run suggest:faq -- tag economy` runs
+    Then the candidates are, for every post carrying the tag (newsletters never), newest first by publishDate then id, the post's fi `faq` questions and then its question-form H2/H3 headings, each once, minus any that match a question already in the tag's `faq.fi`; inline markup stripped
+    And the state is { category: names.fi, description: descriptions.fi joined by blank lines, posts: the posts' titles, one per line }
+    And the questions are, per candidate i, `c<i>` = noul "This question is about the category topic as a whole, not about one article, event, motion or date: <question>" and `u<i>` = score with criteria ['1'–'5'] "How likely is a voter browsing this category to ask this? (1 = never, 5 = almost always): <question>", chunked at 40 per request
+    And stdout shows a "candidates" table of candidates with category-wide ≥ the effective --category-wide (default 0.5, provisional), sorted by usefulness desc, then category-wide desc, then harvest order, columns question, source (<post key>), category-wide (two decimals), usefulness (one decimal), or "no candidates above <category-wide>"
+    And a line "faq entries: <n> (FAQPage JSON-LD needs 2) · posts: <n>"
+    And the author writes each answer by hand, grounded in the source post, into the tag file's `faq.<lang>`
+
+  Scenario: Unknown or unregistered tag
+    Given `tag nope`, or a tag file that src/content/tags.ts does not import
+    When the script runs
+    Then it prints "tag:<id> not found" and exits 2 without a request
+
+  Scenario: Malformed tag id
+    Given `tag Economy` or `tag 1`
+    When the script runs
+    Then it prints the usage line and exits 2
+
 Feature: Common behaviour
 
   Scenario: No key
@@ -172,10 +195,18 @@ export interface RankedCandidate extends Candidate { answers: number; usefulness
 export function rank(candidates: Candidate[], answers: Record<string, Answer>, opts: { answerable: number }): RankedCandidate[]   // throws on a missing or wrongly typed answer
 export function doubtfulFaq(doc: Document, answers: Record<string, Answer>, opts: { doubtful: number }): Array<{ answers: number; question: string }>
 export const expectedScore = (probabilities: Record<string, number>): number   // Σ Number(level) × p over the keys present; not renormalised; a non-numeric key adds 0
+export const CATEGORY_WIDE_THRESHOLD = 0.5    // tag mode; provisional
+export function harvestTag(existing: string[], posts: Document[]): Candidate[]   // per post: faq questions, then question headings; deduped; existing tag faq excluded
+export function tagFaqQuestions(candidates: Candidate[]): Record<string, QuestionSpec>   // c<i>, u<i>
+export interface TagCandidate extends Candidate { categoryWide: number; usefulness: number }
+export function rankTag(candidates: Candidate[], answers: Record<string, Answer>, opts: { categoryWide: number }): TagCandidate[]
+
+// scripts/jev/tags.ts
+export async function loadLocalTag(dir: string, file: string): Promise<LocalTag>   // the LocalTag export, imported with a content-hash query
 
 // scripts/suggest-faq.ts — CLI
-//   suggest:faq -- <post|newsletter> <id>… [--lang fi|sv|en] [--answerable 0.7] [--doubtful 0.3] [--out <md>]
-export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?: RelatedFile | null; relatedPath?; root? }): Promise<number>
+//   suggest:faq -- <post|newsletter|tag> <id>… [--lang fi|sv|en] [--answerable 0.7] [--doubtful 0.3] [--category-wide 0.5] [--out <md>]
+export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; log?; related?: RelatedFile | null; relatedPath?; root?; tagsDir? }): Promise<number>
 ```
 
 Requests: per document, 2 × (own + neighbours' question headings) + existing faq nouls, typically 20–60 questions; the worst case today is 11 headings × 11 documents ≈ 240 questions, hence the 40-per-request chunking (6 requests). State is under 2,500 tokens (the longest post is 1,575 words); ≈ $0.0003–0.001 per document. Related neighbours come from `src/content/related.json` read with `readRelatedFile` in `scripts/jev/related.ts` — not `src/lib/related.ts`, whose JSON import has no `with { type: 'json' }` attribute and fails under Node's strip-types loader.
@@ -199,7 +230,8 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 - **Do not** generate or paraphrase questions — every candidate is a heading someone wrote; the script reports it verbatim
 - **Do not** write `faq` frontmatter or add a receipt — advisory content aid, as the issue says
 - **Do not** send `stateFor` for answerability — the bounded lead cannot say whether the body answers a question; send the prose
-- **Do not** harvest tag siblings — unbounded on broad tags; the related ranking is the neighbourhood
+- **Do not** harvest tag siblings for a post or issue — unbounded on broad tags; the related ranking is the neighbourhood. Only the `tag` target harvests them, because the category is the subject
+- **Do not** score category candidates for answerability — a tag description answers nothing; the category mode asks whether the question is category-wide instead
 - **Do not** mix locales — candidates, existing faq and state all come from the same `--lang` file
 - **Do not** use `\b` around Finnish or Swedish words in JS — it is ASCII-only, so "Mitä" would never match; test with ä/ö fixtures
 - **Do not** import `src/lib/related.ts` from a script — its JSON import lacks the import attribute Node requires
@@ -226,6 +258,7 @@ State: `stateFor` (title, description, headings, bounded lead) is enough for the
 
 | Date | Change |
 |------|--------|
+| 2026-10-02 | Category mode `tag <id>` for #1502: tagged posts' faq questions and question headings, scored category-wide and voter usefulness |
 | 2026-09-23 | Critic review of the implementation (FAIL → fixed): headings harvested in document order via sectionHeadingsOf, malformed related.json tested through an injected path, neighbours tested in en and for an issue, NEIGHBOUR_COUNT shares RANKED_MAX, bare faq values reject a leading quote, report-file scope stated |
 | 2026-09-23 | Implemented; calibration runs on post 57 and issue 2 recorded, thresholds kept |
 | 2026-09-23 | Critic review (FAIL → revised): readRelatedFile instead of the src/lib JSON import, Unicode question rule with ä/ö fixtures, faq parsing rule and helper named, score criteria '1'–'5' and expectedScore semantics, 40-question chunking, no-candidates-with-faq, report file and unexpected-error scenarios, tie-break and decimals, markup stripped in dedupe |
