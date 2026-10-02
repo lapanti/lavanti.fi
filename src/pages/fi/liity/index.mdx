@@ -1,0 +1,28 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Lähde mukaan – vapaaehtoiseksi kampanjaan'
+title: 'Lähde mukaan'
+intro: 'Kampanja tehdään yhdessä. Kerro, miten haluaisit auttaa, niin olen sinuun yhteydessä.'
+description: 'Ilmoittaudu vapaaehtoiseksi Lauri Lavannin eduskuntavaalikampanjaan: esitteiden jakaminen, tapahtumat, sosiaalinen media tai soittaminen.'
+slug: 'fi/liity'
+updatedDate: '2026-10-02'
+type: 'WebPage'
+noindex: true
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita.'
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../components/Plate.astro'
+import Prose from '../../../components/Prose.astro'
+import VolunteerForm from '../../../components/VolunteerForm.astro'
+
+<Plate ground="offWhite" heading="Miten voit auttaa?">
+    <Prose>
+        Vaalit voitetaan keskusteluissa: toreilla, ovilla, puhelimessa ja somessa. Jokainen tunti auttaa, eikä aiempaa kokemusta tarvita. Täytä lomake, niin otan sinuun yhteyttä ja sovitaan, mikä sopii sinulle.
+    </Prose>
+    <VolunteerForm lang="fi" />
+</Plate>

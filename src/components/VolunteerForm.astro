@@ -1,0 +1,155 @@
+---
+import { TURNSTILE_SITE_KEY, volunteerContent } from '../content/volunteer'
+import { colors } from '../lib/styles'
+import { utmFormScript } from '../lib/utmFormScript'
+import { HELP_OPTIONS, MUNICIPALITIES } from '../lib/volunteers'
+import Link from './Link.astro'
+
+interface Props {
+    lang: 'fi'
+}
+
+const { lang } = Astro.props
+const t = volunteerContent[lang]
+
+/*
+ * Shows the error the function sent the visitor back with (?virhe=<code>). The codes are a
+ * fixed list in the content file, so nothing from the URL is ever written into the page.
+ */
+const errorScript = `(function () {
+    var code = new URLSearchParams(window.location.search).get('virhe')
+    var messages = ${JSON.stringify(t.errors)}
+    if (!code || !Object.prototype.hasOwnProperty.call(messages, code)) return
+    var el = document.getElementById('volunteer-error')
+    el.textContent = messages[code]
+    el.hidden = false
+})()`
+---
+
+<style define:vars={{ errorColor: colors.darkGreen, inkColor: colors.forestGreen }}>
+    .volunteer-form {
+        display: grid;
+        gap: 1.25rem;
+        max-width: 36rem;
+    }
+
+    .volunteer-form label,
+    .volunteer-form legend {
+        color: var(--inkColor);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .volunteer-form input[type='text'],
+    .volunteer-form input[type='email'],
+    .volunteer-form input[type='tel'],
+    .volunteer-form select {
+        border: 1px solid var(--inkColor);
+        border-radius: 0.25rem;
+        font: inherit;
+        padding: 0.6rem 0.75rem;
+        width: 100%;
+    }
+
+    .volunteer-form fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .volunteer-form .choice {
+        align-items: flex-start;
+        display: flex;
+        font-weight: 400;
+        gap: 0.5rem;
+        margin: 0.35rem 0;
+    }
+
+    .volunteer-form .honeypot {
+        left: -10000px;
+        position: absolute;
+    }
+
+    .volunteer-form button {
+        background: var(--inkColor);
+        border: 0;
+        border-radius: 0.25rem;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        justify-self: start;
+        padding: 0.75rem 1.5rem;
+    }
+
+    #volunteer-error {
+        border-left: 4px solid var(--errorColor);
+        padding-left: 0.75rem;
+    }
+</style>
+
+<form action="/api/liity" class="volunteer-form" id="lomake" method="post">
+    <p hidden id="volunteer-error" role="alert"></p>
+
+    <input name="lang" type="hidden" value={lang} />
+    <input name="utm_source" type="hidden" value="" />
+    <input name="utm_campaign" type="hidden" value="" />
+
+    <div>
+        <label for="volunteer-name">{t.name}</label>
+        <input autocomplete="name" id="volunteer-name" maxlength="100" minlength="2" name="name" required type="text" />
+    </div>
+
+    <div>
+        <label for="volunteer-email">{t.email}</label>
+        <input autocomplete="email" id="volunteer-email" name="email" required type="email" />
+    </div>
+
+    <div>
+        <label for="volunteer-phone">{t.phone}</label>
+        <input autocomplete="tel" id="volunteer-phone" name="phone" type="tel" />
+    </div>
+
+    <div>
+        <label for="volunteer-municipality">{t.municipality}</label>
+        <select id="volunteer-municipality" name="municipality" required>
+            <option value=""></option>
+            {MUNICIPALITIES.map((m) => <option value={m}>{t.municipalityOptions[m]}</option>)}
+        </select>
+    </div>
+
+    <fieldset>
+        <legend>{t.helpLegend}</legend>
+        {
+            HELP_OPTIONS.map((h) => (
+                <label class="choice">
+                    <input name="help" type="checkbox" value={h} />
+                    {t.help[h]}
+                </label>
+            ))
+        }
+    </fieldset>
+
+    <div aria-hidden="true" class="honeypot">
+        <label for="volunteer-website">Website</label>
+        <input autocomplete="off" id="volunteer-website" name="website" tabindex="-1" type="text" />
+    </div>
+
+    <label class="choice">
+        <input name="consent" required type="checkbox" value="yes" />
+        <span>
+            {t.consent.before}
+            <Link href={t.privacyHref}>{t.consent.linkText}</Link>
+            {t.consent.after}
+        </span>
+    </label>
+
+    <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>
+
+    <button type="submit">{t.submit}</button>
+</form>
+
+<script async defer is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+<script is:inline set:html={errorScript} />
+<script is:inline set:html={utmFormScript} />
