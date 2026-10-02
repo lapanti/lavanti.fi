@@ -18,6 +18,51 @@ export const freedomTag: LocalTag = {
             'Att trygga friheten i AI-eran kräver noga avvägda eftergifter samt strikta gränser. Massövervakning, utvidgad användning av biometriska identifierare eller automatisk granskning av meddelanden är inte verktyg som bör tas i bruk lättvindigt, om alls. Varje steg som urholkar integriteten kräver vattentäta motiveringar och tydliga bevis för sin nytta — utan det finns ingen sak att försvara.',
         ],
     },
+    faq: {
+        en: [
+            {
+                a: 'AI makes mass surveillance technically easier, so legislation has to hold the line on fundamental rights. The same principle that made rejecting the EU’s chat control proposal the right call applies to any automatic scanning of private messages. Without strong privacy protection, democracy cannot function, and AI must never be used to weaken it. Fundamental rights have to be the starting point for all legislation, not a variable.',
+                q: 'How does AI threaten fundamental rights?',
+            },
+            {
+                a: 'Because a concrete suspicion before surveillance is the rule-of-law minimum, not special treatment for privacy. Police cannot obtain a search warrant without reasonable grounds, and wiretapping requires a court order. The same principles belong in the digital environment. Untargeted surveillance is also ineffective: organised crime has already moved to the dark web and encrypted apps that scanning does not reach, so the surveillance would fall on ordinary users.',
+                q: 'Why should surveillance not be extended without individual suspicion?',
+            },
+            {
+                a: 'A fingerprint or a face now works like a password, but it cannot be changed. Finland is one of the few EU countries that stores biometric passport data in a permanent national register, and citizens were in practice forced to hand it over. Opening it to the police erodes trust, and once a use is opened, it is likely to be widened year after year. The better model is Germany’s, where fingerprint data is destroyed once the passport has been created.',
+                q: 'Why should the use of biometric data not be expanded?',
+            },
+        ],
+        fi: [
+            {
+                a: 'Tekoäly helpottaa massavalvontaa teknisesti, ja siksi lainsäädännön on pidettävä kiinni perusoikeuksista. Sama periaate, jonka vuoksi EU:n chat control -esityksen hylkääminen oli oikea päätös, koskee kaikkea yksityisviestien automaattista skannausta. Ilman vahvaa yksityisyydensuojaa demokratia ei voi toimia, eikä tekoälyä saa missään tapauksessa käyttää sen heikentämiseen. Perusoikeuksien tulee olla kaiken lainsäädännön lähtökohta.',
+                q: 'Miten tekoäly uhkaa perusoikeuksia?',
+            },
+            {
+                a: 'Koska konkreettinen epäily ennen valvontaa on oikeusvaltion minimi, ei yksityisyyden suojan erikoiskohtelua. Poliisi ei saa kotietsintälupaa ilman perusteltua syytä, ja puhelinkuunteluun tarvitaan tuomioistuimen päätös. Samat periaatteet kuuluvat digitaaliseen ympäristöön. Kohdentamaton valvonta on myös tehotonta: järjestäytynyt rikollisuus on jo siirtynyt pimeään verkkoon ja salattuihin sovelluksiin, joita skannaus ei tavoita, joten valvonnan kohteeksi jäisivät tavalliset käyttäjät.',
+                q: 'Miksi valvontaa ei pidä laajentaa ilman yksilöityä epäilyä?',
+            },
+            {
+                a: 'Sormenjälki ja kasvot ovat nykyään kuin salasana, mutta niitä ei voi vaihtaa. Suomi on harvoja EU-maita, jotka tallentavat passien biometriset tiedot pysyvään kansalliseen rekisteriin, ja kansalaiset on käytännössä pakotettu luovuttamaan ne. Rekisterin avaaminen poliisille murentaa luottamusta, ja kerran avattua käyttöä halutaan todennäköisesti laajentaa vuosi vuodelta. Parempi malli on Saksan, jossa sormenjälkitieto tuhotaan kaikista järjestelmistä passin luomisen jälkeen.',
+                q: 'Miksi biometristen tietojen käyttöä ei pidä laajentaa?',
+            },
+        ],
+        sv: [
+            {
+                a: 'AI gör massövervakning tekniskt enklare, så lagstiftningen måste hålla fast vid de grundläggande rättigheterna. Samma princip som gjorde det rätt att förkasta EU:s chat control-förslag gäller all automatisk skanning av privata meddelanden. Utan ett starkt integritetsskydd kan demokratin inte fungera, och AI får aldrig användas för att försvaga det. Grundläggande rättigheter ska vara utgångspunkten för all lagstiftning, inte en variabel.',
+                q: 'Hur hotar AI de grundläggande rättigheterna?',
+            },
+            {
+                a: 'Därför att en konkret misstanke före övervakning är rättsstatens minimum, inte en särbehandling av integriteten. Polisen kan inte få husrannsakningstillstånd utan grundad anledning, och telefonavlyssning kräver domstolsbeslut. Samma principer hör hemma i den digitala miljön. Oriktad övervakning är dessutom ineffektiv: den organiserade brottsligheten har redan flyttat till darknet och krypterade appar som skanningen inte når, så övervakningen skulle träffa vanliga användare.',
+                q: 'Varför ska övervakningen inte utvidgas utan individuell misstanke?',
+            },
+            {
+                a: 'Fingeravtryck och ansikte fungerar i dag som ett lösenord, men de kan inte bytas ut. Finland är ett av få EU-länder som lagrar biometriska passuppgifter i ett permanent nationellt register, och medborgarna har i praktiken tvingats lämna ifrån sig uppgifterna. Att öppna registret för polisen urholkar förtroendet, och en användning som en gång öppnats vill man sannolikt utvidga år för år. Den bättre modellen är den tyska, där fingeravtrycksuppgifterna förstörs efter att passet skapats.',
+                q: 'Varför ska användningen av biometriska uppgifter inte utvidgas?',
+            },
+        ],
+    },
+    featured: [54, 48, 45],
     id: 'freedom',
     metaDescription: {
         en: 'Freedom matters more than ever in the AI era. When linking data and surveillance is a button press away, fundamental rights need strengthening.',
@@ -31,5 +76,5 @@ export const freedomTag: LocalTag = {
         sv: 'Frihet som tryggas i AI-erans Finland',
     },
     slugs: { en: 'freedom', fi: 'vapaus', sv: 'frihet' },
-    updatedDate: '2026-05-15',
+    updatedDate: '2026-10-02',
 }
