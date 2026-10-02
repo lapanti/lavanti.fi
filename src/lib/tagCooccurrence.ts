@@ -11,7 +11,7 @@ export interface RelatedTag {
 }
 
 /** Siblings shown at most on a category page. */
-export const RELATED_TAGS_MAX = 5
+const RELATED_TAGS_MAX = 5
 
 /**
  * The tags most often used together with `tagId`, by Jaccard similarity over
