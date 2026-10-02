@@ -1,0 +1,32 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Join the campaign – volunteer with Lauri'
+title: 'Join'
+intro: 'The campaign is a team effort. Tell me how you would like to help, and I will be in touch.'
+description: "Sign up as a volunteer for Lauri Lavanti's parliamentary election campaign: hand out leaflets, help at events, on social media or by phone."
+slug: 'en/join'
+langAlternates:
+    en: '/en/join/'
+    fi: '/fi/liity/'
+    sv: '/sv/bli-med/'
+updatedDate: '2026-10-02'
+type: 'WebPage'
+noindex: true
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../components/Plate.astro'
+import Prose from '../../../components/Prose.astro'
+import VolunteerForm from '../../../components/VolunteerForm.astro'
+
+<Plate ground="offWhite" heading="How can you help?">
+    <Prose>
+        Elections are won in conversations: at the market square, on the doorstep, on the phone and on social media. Every hour helps, and no previous experience is needed. Fill in the form, and I will contact you so we can agree on what suits you.
+    </Prose>
+    <VolunteerForm lang="en" />
+</Plate>
