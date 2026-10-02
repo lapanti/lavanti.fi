@@ -2,6 +2,8 @@ import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
     entry: [
+        // Cloudflare Pages Functions: wrangler bundles functions/ at deploy, nothing imports them.
+        'functions/**/*.ts',
         'scripts/generate-hero-treatments.mts',
         'scripts/upload-to-cf-images.mts',
         'scripts/lib/read-json-field.mjs',
