@@ -55,6 +55,25 @@ describe('category page JSON-LD', () => {
 
         expect(collectionPage(result).dateModified).toBe(economyTag.updatedDate)
     })
+
+    it('lists the tag posts from the excerpt query as the ItemList and the tag as about', async () => {
+        getExcerptPosts.mockResolvedValueOnce([
+            { id: 2, title: 'Toinen', url: '/fi/blog/2/toinen/' },
+            { id: 1, title: 'Ensimmäinen', url: '/fi/blog/1/ensimmainen/' },
+        ] as never)
+        const result = await render(economyTag, 'fi')
+        const page = collectionPage(result)
+
+        expect(getExcerptPosts).toHaveBeenCalledWith({ lang: 'fi', tag: 'economy' })
+        expect(page.about).toMatchObject({ '@type': 'DefinedTerm', name: economyTag.names.fi })
+        expect(page.mainEntity).toMatchObject({
+            itemListElement: [
+                { name: 'Toinen', position: 1, url: 'https://example.com/fi/blog/2/toinen/' },
+                { name: 'Ensimmäinen', position: 2, url: 'https://example.com/fi/blog/1/ensimmainen/' },
+            ],
+            numberOfItems: 2,
+        })
+    })
 })
 
 describe('category page FAQ', () => {

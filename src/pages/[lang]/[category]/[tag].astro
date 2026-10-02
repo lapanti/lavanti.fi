@@ -8,7 +8,8 @@ import Plate from '../../../components/Plate.astro'
 import PostProse from '../../../components/post/PostProse.astro'
 import { CATEGORY_SEGMENTS, getCategoryPath, tags } from '../../../content/tags'
 import PageLayout from '../../../layouts/PageLayout.astro'
-import { COLLECTIONPAGE } from '../../../lib/jsonld'
+import { type CollectionInfo, COLLECTIONPAGE } from '../../../lib/jsonld'
+import { getExcerptPosts } from '../../../lib/posts'
 
 export function getStaticPaths() {
     const langs: Lang[] = ['fi', 'sv', 'en']
@@ -45,6 +46,18 @@ const relatedPostsHeading: Record<Lang, string> = {
     sv: 'Relaterade inlägg',
 }
 
+/*
+ * Every published post under the tag, in the order the list shows them; the same
+ * query ExcerptList runs, so scheduled posts never reach the JSON-LD early.
+ */
+const collection: CollectionInfo = {
+    about: { name: tag.names[lang], termSet: new URL(`/${lang}/blog/`, Astro.site).href },
+    items: (await getExcerptPosts({ lang, tag: tag.id })).map((post) => ({
+        name: post.title,
+        url: new URL(post.url, Astro.site).href,
+    })),
+}
+
 const langAlternates = {
     en: getCategoryPath(tag.id, 'en')!,
     fi: getCategoryPath(tag.id, 'fi')!,
@@ -56,6 +69,7 @@ const langAlternates = {
     alt={tag.heroImageAlt?.[lang] ?? heroImageAltFallback[lang]}
     breadcrumbName={tag.names[lang]}
     breadcrumbParent="blog"
+    collection={collection}
     description={metaDescription}
     faq={tag.faq?.[lang]}
     faqSection
