@@ -18,8 +18,8 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
       updatedDate: string                                   // required; used by sitemap lastmod
       heroImage?: string                                    // Cloudflare Images id; fallback below
       heroImageAlt?: { en: string; fi: string; sv: string } // required when heroImage is set
-      // NOT IMPLEMENTED — planned in #1502, see the FAQ scenarios below:
-      // faq?: { en?: Array<{ q: string; a: string }>; fi?: …; sv?: … }  // per-locale
+      faq?: { en?: FaqItem[]; fi?: FaqItem[]; sv?: FaqItem[] } // per-locale category FAQ; 2+ entries per present locale
+      featured?: number[]                                   // up to 3 post ids shown first as "start here"
   }
   ```
   Currently 34 tags.
@@ -39,9 +39,16 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 
 - **Category pages:** single dynamic route `src/pages/[lang]/[category]/[tag].astro`. `getStaticPaths` maps the cross product of locales × `tags` → `{ params: { category: CATEGORY_SEGMENTS[lang], lang, tag: tag.slugs[lang] }, props: { tag } }`. URLs are `/fi/kategoria/{fi-slug}/`, `/sv/kategori/{sv-slug}/`, `/en/category/{en-slug}/`. Always build links with `getCategoryPath`. Only tags in the `tags` array get a page generated.
 
-- **Category page enrichment:** each category page renders `PageLayout` (`variant="split"`, `plated`, `type={COLLECTIONPAGE}`) with `description` from `tag.metaDescription[lang]` and `langAlternates` from `getCategoryPath` for all three locales. `heroImage` is the tag override or the fallback `Lauri-Lavanti-dipolissa-lasijulkisivun-edessa-hero-pysty`, with mobile fallback `…-hero-vaaka`. The body is two `<Plate>`s. The first renders each string in `tag.descriptions[lang]` as a `<Paragraph>`. The second, headed "Related posts" (localised), holds `<ExcerptList tag={tag.id}>`. No `faq` is passed: tags carry no FAQ data yet (see the FAQ scenarios below), so category pages emit neither the FAQ plate nor FAQPage JSON-LD.
+- **Category page enrichment:** each category page renders `PageLayout` (`variant="split"`, `plated`, `type={COLLECTIONPAGE}`) with `description` from `tag.metaDescription[lang]`, `updatedDate` from `tag.updatedDate` (CollectionPage `dateModified`) and `langAlternates` from `getCategoryPath` for all three locales. `heroImage` is the tag override or the fallback `Lauri-Lavanti-dipolissa-lasijulkisivun-edessa-hero-pysty`, with mobile fallback `…-hero-vaaka`. The body, in order:
+  1. Intro plate: each string in `tag.descriptions[lang]` as a `<Paragraph>`.
+  2. "Start here" plate (localised; only with `featured`): `<ExcerptList onlyIds={featured} rankedIds={featured}>`.
+  3. "Related posts" plate (localised): `<ExcerptList tag={tag.id}>`, excluding the featured ids.
+  4. "Related topics" plate (localised; only with 2+ siblings): `<Chips>` linking up to five sibling categories ranked by `relatedTags()` (`src/lib/tagCooccurrence.ts`, Jaccard over the locale's published posts; every tag with a page qualifies, election and party tags included).
+  5. FAQ plate: `faq={tag.faq?.[lang]}` with the `faqSection` opt-in; `PageLayout` mounts `<Faq>` after the body when `hasFaqSection()` holds.
+- **Category JSON-LD:** CollectionPage carries `inLanguage`, `about` (a `DefinedTerm` named `names[lang]` in the set `/{lang}/blog/`) and `mainEntity`, an `ItemList` of every published post under the tag in page order (featured first), from the same `getExcerptPosts` query the lists use, so scheduled posts stay out. A locale with 2+ FAQ entries adds a sibling `FAQPage` script.
+- **Category FAQ and featured content:** answers are human-written, grounded in posts under the tag. `npm run suggest:faq -- tag <id>` ranks candidate questions from those posts and `npm run suggest:tags -- --intro <id>` ranks the posts as first reads (`.agents/specs/jev/faq.md`, `.agents/specs/jev/tags.md`); both are advisory.
 
-- **Tag-suggestion receipt:** committing a new or edited `src/content/tags/*.ts` requires a receipt that `npm run suggest:tags -- --tag <id>` ran on its current content (enforced in `.lintstagedrc.mjs`).
+- **Tag-suggestion receipt:** committing a new or edited `src/content/tags/*.ts` requires a receipt that `npm run suggest:tags -- --tag <id>` ran on its current Jev label — `id`, `names.en`, `descriptions.en[0]` (enforced in `.lintstagedrc.mjs`). Edits to `faq`, `featured`, later paragraphs or other locales need no new scan.
 
 - **Legacy URLs:** the old `/blogi/<tag>/` category URLs redirect to `/fi/kategoria/<slug>/`. The redirects are hardcoded in `src/lib/redirects.ts`. `scripts/checks/redirects.mjs` derives valid category targets from the tag files.
 
@@ -117,13 +124,32 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
 - When: Called at runtime
 - Then: First returns `'Kirkkonummi'`; second returns `undefined`
 
-**Scenario: Category page with FAQ (2+ entries) — NOT IMPLEMENTED**
+**Scenario: Category page with FAQ (2+ entries)**
 - Given: A tag has `faq.fi` with 2+ entries
 - When: `/fi/kategoria/{fi-slug}/` is rendered
-- Then: Two `<script type="application/ld+json">` blocks are emitted — one `CollectionPage`, one `FAQPage`. A visible `<Faq>` plate appears below the `<ExcerptList>`.
-- Status: `LocalTag` has no `faq` field and `[tag].astro` passes none, so no category page renders either today. The rendering half exists: `PageLayout` takes `faq` plus a `faqSection: true` opt-in and mounts `src/components/Faq.astro` below the page body (#1500). What is missing is the data — the field on `LocalTag` and trilingual entries for the tags that warrant them (#1502).
+- Then: A `CollectionPage` and a `FAQPage` JSON-LD block are emitted (beside the BreadcrumbList). A visible `<Faq>` plate appears below the post lists. Tested in `src/pages/[lang]/[category]/_tag.spec.ts` and the tag e2e specs.
 
-**Scenario: Category page FAQ in only one locale — NOT IMPLEMENTED**
+**Scenario: Category page FAQ in only one locale**
 - Given: A tag has `faq.fi` with 2+ entries but no `faq.sv`
 - When: `/sv/kategori/{sv-slug}/` is rendered
-- Then: No `FAQPage` JSON-LD and no plate for the Swedish page; the Finnish page still gets both. `hasFaqSection()` (`src/lib/faq.ts`) is the single gate for both.
+- Then: No `FAQPage` JSON-LD and no plate for the Swedish page; the Finnish page still gets both. `hasFaqSection()` (`src/lib/faq.ts`) is the single gate for both. Tested with a fixture tag in `_tag.spec.ts`; real tags ship all three locales.
+
+**Scenario: Tag without faq**
+- Given: A tag has no `faq`
+- When: Its category pages are rendered
+- Then: No FAQ plate and no `FAQPage` JSON-LD
+
+**Scenario: Featured posts**
+- Given: A tag has `featured: [67, 80]`
+- When: Its category page is rendered
+- Then: A "Start here" plate lists posts 67 and 80 in that order, the "Related posts" list leaves them out, and the ItemList starts with them. `src/content/tags.spec.ts` fails a `featured` with more than 3 ids, a duplicate, or a post that is missing, scheduled, lacks the tag or lacks a locale
+
+**Scenario: Related topics**
+- Given: Two or more other tags share a published post with the tag
+- When: Its category page is rendered
+- Then: A "Related topics" plate links up to five of them, most similar first by Jaccard over unique post ids; with fewer than two, the plate is left out
+
+**Scenario: CollectionPage describes the collection**
+- Given: Any category page
+- When: It is rendered
+- Then: CollectionPage JSON-LD has `inLanguage`, `dateModified` = `tag.updatedDate`, `about` (DefinedTerm) and an `ItemList` of the published posts in page order

@@ -100,6 +100,7 @@ Feature: Intro ranking for featured posts
     When the script runs
     Then one request per post carrying the tag is sent (posts only; scheduled posts included and shown with their publishDate), each with stateFor(post) as state and one score question `intro`, criteria '1'–'5', "How good a first read is this article for a voter new to the topic '<names.en>': <descriptions.en[0]> (1 = poor, 5 = the best place to start):"
     And stdout shows a table sorted by the expected score desc, then newest first, columns post, title, publishDate, intro (one decimal), featured (✓ for ids in the tag's `featured`)
+    And the intro column reads 0–4, not 1–5: Jev keys score probabilities by criterion index ("0"–"4", Σp = 1, probed 2026-10-02 on posts 62 and 67), and expectedScore multiplies by the key. The order is unaffected. The same offset applies to suggest:faq's usefulness column
     And a line "featured now: <ids or none> (up to 3)"
     And no receipt is written: the author picks `featured` by hand, and tags.spec.ts checks the pick (≤ 3, unique, published, carries the tag, all three locales)
 
