@@ -323,6 +323,23 @@ describe('runFaq tag mode', () => {
         log: (l: string) => lines.push(l),
         related: null,
         root,
+        today: () => '2026-09-23',
+    })
+
+    it('leaves out posts that are not published yet', async () => {
+        const lines: string[] = []
+        const { calls, client } = fakeClient(() => 0.9)
+
+        expect(await runFaq(['tag', 'economy'], env, { ...deps(client, lines), today: () => '2025-12-31' })).toBe(0)
+        expect(calls).toEqual([])
+        expect(lines).toEqual([
+            '## tag economy — Talous',
+            '',
+            'no candidates',
+            '',
+            'faq entries: 1 (FAQPage JSON-LD needs 2) · posts: 0',
+            '',
+        ])
     })
 
     it('harvests faq questions and question headings from posts carrying the tag and ranks them', async () => {

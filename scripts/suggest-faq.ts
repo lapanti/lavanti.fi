@@ -26,6 +26,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
+import { helsinkiDateOf, isPublishedBy } from '../src/lib/publishing.ts'
 import { type Answer, createClient, type JevClient, NO_PROVIDER_NOTICE, resolveProvider } from './jev/client.ts'
 import { bodyStateFor, buildCorpus, type DocKey, type DocKind, type Document, type Lang, LANGS } from './jev/corpus.ts'
 import {
@@ -60,6 +61,8 @@ interface FaqDeps {
     root?: string
     /** Where tag files are read from; defaults to <root>/tags. */
     tagsDir?: string
+    /** Helsinki date that decides which posts are published; defaults to today. */
+    today?: () => string
 }
 
 interface Options {
@@ -95,13 +98,21 @@ const parseTargets = (positionals: string[]): Target[] | null => {
 }
 
 /**
- * One section for one category: candidates harvested from every post carrying
- * the tag, scored against the category (name, description, post titles).
+ * One section for one category: candidates harvested from every published post
+ * carrying the tag, scored against the category (name, description, post
+ * titles). Scheduled posts are left out: a category answer must not rest on a
+ * post that is not public yet.
  */
-async function suggestForTag(client: JevClient, tag: LocalTag, corpus: Document[], opts: Options): Promise<string[]> {
+async function suggestForTag(
+    client: JevClient,
+    tag: LocalTag,
+    corpus: Document[],
+    opts: Options,
+    today: string
+): Promise<string[]> {
     const lines = [`## tag ${tag.id} — ${tag.names[opts.lang]}`, '']
     const posts = corpus
-        .filter((d) => d.kind === 'post' && d.tags.includes(tag.id))
+        .filter((d) => d.kind === 'post' && d.tags.includes(tag.id) && isPublishedBy(d.publishDate, today))
         .toSorted((a, b) => b.publishDate.localeCompare(a.publishDate) || b.id - a.id)
     const existing = (tag.faq?.[opts.lang] ?? []).map((item) => item.q)
     const faqLine = `faq entries: ${existing.length} (FAQPage JSON-LD needs 2) · posts: ${posts.length}`
@@ -257,6 +268,7 @@ export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps: FaqDe
 
         return 2
     }
+    const today = (deps.today ?? (() => helsinkiDateOf(new Date())))()
     const tags = new Map<string, LocalTag>()
     for (const t of targets) if (t.kind === 'tag') tags.set(t.id, await loadLocalTag(tagsDir, `${t.id}.ts`))
     let related = deps.related
@@ -282,7 +294,7 @@ export async function runFaq(argv: string[], env: NodeJS.ProcessEnv, deps: FaqDe
         for (const t of targets) {
             output.push(
                 ...(t.kind === 'tag'
-                    ? await suggestForTag(client, tags.get(t.id)!, corpus, opts)
+                    ? await suggestForTag(client, tags.get(t.id)!, corpus, opts, today)
                     : await suggestForDocument(client, byKey.get(`${t.kind}:${t.id}`)!, byKey, related, opts))
             )
         }

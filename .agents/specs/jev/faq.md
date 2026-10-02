@@ -119,7 +119,7 @@ Feature: FAQ candidates for a category
   Scenario: Candidates for a tag
     Given a key and `tag economy`, a tag file imported in src/content/tags.ts
     When `npm run suggest:faq -- tag economy` runs
-    Then the candidates are, for every post carrying the tag (newsletters never), newest first by publishDate then id, the post's fi `faq` questions and then its question-form H2/H3 headings, each once, minus any that match a question already in the tag's `faq.fi`; inline markup stripped
+    Then the candidates are, for every published post carrying the tag (publishDate ≤ today in Helsinki; scheduled posts and newsletters never, since an answer must not rest on a post that is not public yet), newest first by publishDate then id, the post's fi `faq` questions and then its question-form H2/H3 headings, each once, minus any that match a question already in the tag's `faq.fi`; inline markup stripped
     And the state is { category: names.fi, description: descriptions.fi joined by blank lines, posts: the posts' titles, one per line }
     And the questions are, per candidate i, `c<i>` = noul "This question is about the category topic as a whole, not about one article, event, motion or date: <question>" and `u<i>` = score with criteria ['1'–'5'] "How likely is a voter browsing this category to ask this? (1 = never, 5 = almost always): <question>", chunked at 40 per request
     And stdout shows a "candidates" table of candidates with category-wide ≥ the effective --category-wide (default 0.5, provisional), sorted by usefulness desc, then category-wide desc, then harvest order, columns question, source (<post key>), category-wide (two decimals), usefulness (one decimal), or "no candidates above <category-wide>"
