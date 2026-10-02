@@ -1,6 +1,12 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
+import { helsinkiDateOf, isPublishedBy } from '../lib/publishing'
 import { getTagName, tags } from './tags'
+
+const POSTS_DIR = join(import.meta.dirname, 'posts')
+const FEATURED_MAX = 3
 
 const LOCALES = ['en', 'fi', 'sv'] as const
 const KEBAB_CASE = /^[a-z0-9]+(-[a-z0-9]+)*$/
@@ -79,6 +85,32 @@ describe('tags data', () => {
                     expect(a.trim(), `${id} faq.${locale} answer to "${q}"`).toBeTruthy()
                 }
                 expect(new Set(items.map((i) => i.q)).size, `${id} faq.${locale} duplicate question`).toBe(items.length)
+            }
+        }
+    )
+
+    it.each(tags.filter((t) => t.featured))(
+        '$id — featured: up to 3 unique published posts that carry the tag in every locale',
+        ({ featured, id }) => {
+            const today = helsinkiDateOf(new Date())
+            expect(featured!.length, `${id} featured`).toBeGreaterThan(0)
+            expect(featured!.length, `${id} featured`).toBeLessThanOrEqual(FEATURED_MAX)
+            expect(new Set(featured).size, `${id} featured has duplicates`).toBe(featured!.length)
+            for (const postId of featured!) {
+                const dir = join(POSTS_DIR, String(postId))
+                expect(existsSync(join(dir, 'meta.json')), `${id} featured post ${postId} does not exist`).toBe(true)
+                const meta = JSON.parse(readFileSync(join(dir, 'meta.json'), 'utf8')) as {
+                    publishDate: string
+                    tags: string[]
+                }
+                expect(meta.tags, `${id} featured post ${postId} lacks the tag`).toContain(id)
+                expect(isPublishedBy(meta.publishDate, today), `${id} featured post ${postId} is scheduled`).toBe(true)
+                for (const locale of LOCALES) {
+                    expect(
+                        existsSync(join(dir, `${locale}.mdx`)),
+                        `${id} featured post ${postId} lacks ${locale}`
+                    ).toBe(true)
+                }
             }
         }
     )

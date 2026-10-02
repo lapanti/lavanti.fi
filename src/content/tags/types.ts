@@ -7,6 +7,12 @@ export interface LocalTag {
      * only with 2+ entries (hasFaqSection); an absent locale renders neither.
      */
     faq?: { en?: FaqItem[]; fi?: FaqItem[]; sv?: FaqItem[] }
+    /**
+     * Up to three post ids shown first, in this order, as the category's "start
+     * here" reads. Each must carry the tag. Picked by hand, with
+     * `npm run suggest:tags -- --intro <id>` as the advisory ranking.
+     */
+    featured?: number[]
     heroImage?: string
     heroImageAlt?: { en: string; fi: string; sv: string }
     id: string
