@@ -67,6 +67,22 @@ describe('tags data', () => {
         }
     })
 
+    it.each(tags.filter((t) => t.faq))(
+        '$id — faq has 2+ unique, non-empty entries per present locale',
+        ({ faq, id }) => {
+            for (const locale of LOCALES) {
+                const items = faq![locale]
+                if (!items) continue
+                expect(items.length, `${id} faq.${locale} needs 2+ entries to render`).toBeGreaterThanOrEqual(2)
+                for (const { a, q } of items) {
+                    expect(q.trim(), `${id} faq.${locale} question`).toBeTruthy()
+                    expect(a.trim(), `${id} faq.${locale} answer to "${q}"`).toBeTruthy()
+                }
+                expect(new Set(items.map((i) => i.q)).size, `${id} faq.${locale} duplicate question`).toBe(items.length)
+            }
+        }
+    )
+
     it.each(tags.filter((t) => t.heroImage))(
         '$id — heroImage requires heroImageAlt in all locales',
         ({ id, heroImageAlt }) => {
