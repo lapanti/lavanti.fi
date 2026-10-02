@@ -54,3 +54,16 @@ describe('<VolunteerForm lang="fi" />', () => {
         expect(result.querySelector('.cf-turnstile')?.getAttribute('data-sitekey')).toBeTruthy()
     })
 })
+
+describe.each([
+    ['sv', '/sv/dataskydd/', 'Anmäl dig'],
+    ['en', '/en/privacy-policy/', 'Sign up'],
+] as const)('<VolunteerForm lang="%s" />', (lang, privacyHref, submit) => {
+    it('posts its language and links its own privacy page', async () => {
+        const result = await renderAstroComponent(VolunteerForm, { props: { lang } })
+
+        expect(result.querySelector('input[name="lang"]')?.getAttribute('value')).toBe(lang)
+        expect(result.querySelector(`a[href="${privacyHref}"]`)).not.toBeNull()
+        expect(result.querySelector('button[type="submit"]')?.textContent).toBe(submit)
+    })
+})

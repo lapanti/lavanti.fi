@@ -1,0 +1,32 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: sv
+pageTitle: 'Bli med – som frivillig i kampanjen'
+title: 'Bli med'
+intro: 'Kampanjen görs tillsammans. Berätta hur du vill hjälpa till, så hör jag av mig.'
+description: 'Anmäl dig som frivillig i Lauri Lavantis riksdagsvalkampanj: dela ut broschyrer, hjälp till på evenemang, i sociala medier eller genom att ringa.'
+slug: 'sv/bli-med'
+langAlternates:
+    en: '/en/join/'
+    fi: '/fi/liity/'
+    sv: '/sv/bli-med/'
+updatedDate: '2026-10-02'
+type: 'WebPage'
+noindex: true
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden.'
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../components/Plate.astro'
+import Prose from '../../../components/Prose.astro'
+import VolunteerForm from '../../../components/VolunteerForm.astro'
+
+<Plate ground="offWhite" heading="Hur kan du hjälpa till?">
+    <Prose>
+        Val vinns i samtal: på torget, vid dörren, i telefon och i sociala medier. Varje timme hjälper, och du behöver ingen tidigare erfarenhet. Fyll i formuläret, så kontaktar jag dig och vi kommer överens om vad som passar dig.
+    </Prose>
+    <VolunteerForm lang="sv" />
+</Plate>
