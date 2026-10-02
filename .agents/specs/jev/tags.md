@@ -93,6 +93,21 @@ Feature: Tag retro-scan
     When the script runs
     Then it scans and records the receipt anyway, prefixed by a notice that the tag is editorial and Jev's recall on such tags was 0.08–0.28 in the eval
 
+Feature: Intro ranking for featured posts
+
+  Scenario: Rank a tag's posts as first reads
+    Given `--intro economy`, a registered tag file
+    When the script runs
+    Then one request per post carrying the tag is sent (posts only; scheduled posts included and shown with their publishDate), each with stateFor(post) as state and one score question `intro`, criteria '1'–'5', "How good a first read is this article for a voter new to the topic '<names.en>': <descriptions.en[0]> (1 = poor, 5 = the best place to start):"
+    And stdout shows a table sorted by the expected score desc, then newest first, columns post, title, publishDate, intro (one decimal), featured (✓ for ids in the tag's `featured`)
+    And a line "featured now: <ids or none> (up to 3)"
+    And no receipt is written: the author picks `featured` by hand, and tags.spec.ts checks the pick (≤ 3, unique, published, carries the tag, all three locales)
+
+  Scenario: Intro with another mode
+    Given `--intro` together with `--tag`, `--changed-since` or positionals
+    When the script runs
+    Then it prints the usage line and exits 2
+
 Feature: Gate and skills
 
   Scenario: Changed tag file needs a receipt
@@ -191,6 +206,8 @@ export function runCheck(argv: string[], deps?): Promise<number>
 // scripts/suggest-tags.ts — CLI
 //   suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]
 //   suggest:tags -- --tag <id> [--lang] [--consider] [--concurrency] [--out]
+//   suggest:tags -- --intro <id> [--lang] [--concurrency] [--out]
+// scripts/jev/tags.ts: FEATURED_MAX = 3; introQuestion(label): QuestionSpec (score '1'–'5'); loadLocalTag(dir, file): Promise<LocalTag>
 //   suggest:tags -- --changed-since <ref> [same flags]
 export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; git?; log?; receipts?; root?; tagsDir?; today? }): Promise<number>
 ```
@@ -245,6 +262,7 @@ Migration (2026-10-02): receipts written under the whole-file hash were re-stamp
 
 | Date | Change |
 |------|--------|
+| 2026-10-02 | `--intro <id>` ranks a tag's posts as first reads for its `featured` field (#1502); no receipt |
 | 2026-10-02 | Receipt hashes the Jev label instead of the whole file (#1502); hashTagFile, changedTags and runCheck async; existing receipts re-stamped |
 | 2026-09-23 | Critic review of the implementation (PASS WITH NOTES): tag ids from paths and the registry accept any file name so a non-kebab-case tag file cannot bypass the gate; failure path keeps completed receipts, now tested; retro-scan wording (posts lacking the tag) |
 | 2026-09-23 | Implemented; calibration runs on post 57 and the immigration tag recorded, data model aligned with the code (hashTagFile argument order, ChangedTag, changedTags) |
