@@ -63,6 +63,23 @@ const isLocalTag = (value: unknown): value is LocalTag =>
     typeof value === 'object' && value !== null && 'id' in value && 'names' in value && 'descriptions' in value
 
 /**
+ * The label of one tag file. The import URL carries the file's content hash:
+ * the module cache would otherwise return the first version of a file that
+ * changed within the same process.
+ */
+async function loadTagLabel(dir: string, file: string): Promise<TagLabel> {
+    const path = join(dir, file)
+    const version = createHash('sha256').update(readFileSync(path)).digest('hex')
+    const mod = (await import(`${pathToFileURL(path).href}?sha=${version}`)) as Record<string, unknown>
+    const tag = Object.values(mod).find(isLocalTag)
+    if (!tag) throw new Error(`${file}: no LocalTag export`)
+    if (typeof tag.names?.en !== 'string') throw new Error(`${file}: missing names.en`)
+    if (typeof tag.descriptions?.en?.[0] !== 'string') throw new Error(`${file}: missing descriptions.en`)
+
+    return { description: tag.descriptions.en[0], id: tag.id, name: tag.names.en }
+}
+
+/**
  * English label per tag: option labels never change with --lang. Loads the
  * per-tag files one by one because src/content/tags.ts imports them without
  * extensions, which Node's strip-types loader cannot resolve. Throws a
@@ -73,14 +90,7 @@ export async function loadTagLabels(dir = TAGS_DIR): Promise<TagLabel[]> {
         .filter((name) => name.endsWith('.ts') && name !== 'types.ts')
         .sort()
     const labels: TagLabel[] = []
-    for (const file of files) {
-        const mod = (await import(pathToFileURL(join(dir, file)).href)) as Record<string, unknown>
-        const tag = Object.values(mod).find(isLocalTag)
-        if (!tag) throw new Error(`${file}: no LocalTag export`)
-        if (typeof tag.names?.en !== 'string') throw new Error(`${file}: missing names.en`)
-        if (typeof tag.descriptions?.en?.[0] !== 'string') throw new Error(`${file}: missing descriptions.en`)
-        labels.push({ description: tag.descriptions.en[0], id: tag.id, name: tag.names.en })
-    }
+    for (const file of files) labels.push(await loadTagLabel(dir, file))
 
     return labels
 }
@@ -156,8 +166,13 @@ export function tagIdsFromPaths(paths: string[]): string[] {
     return out
 }
 
-/** sha256 over the tag file, hex; the receipt of a retro-scan. */
-export const hashTagFile = (id: string, dir = TAGS_DIR): string =>
+/**
+ * sha256 over the tag's Jev label (id, English name, first English description
+ * paragraph), hex; the receipt of a retro-scan. Only the label reaches Jev, so
+ * an edit elsewhere in the file (faq, featured, later paragraphs, other
+ * locales, updatedDate) cannot change a scan and needs no new one.
+ */
+export const hashTagFile = async (id: string, dir = TAGS_DIR): Promise<string> =>
     createHash('sha256')
-        .update(readFileSync(join(dir, `${id}.ts`)))
+        .update(JSON.stringify(await loadTagLabel(dir, `${id}.ts`)))
         .digest('hex')

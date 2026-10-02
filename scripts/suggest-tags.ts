@@ -295,7 +295,12 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
         for (const id of tagIds) {
             const section = await scanTag(client, byId.get(id)!, posts, opts)
             output.push(...section.lines)
-            recordTagReceipt(receipts, { hash: hashTagFile(id, tagsDir), id }, section.model || 'no request', checkedAt)
+            recordTagReceipt(
+                receipts,
+                { hash: await hashTagFile(id, tagsDir), id },
+                section.model || 'no request',
+                checkedAt
+            )
             recorded++
         }
     } catch (error) {

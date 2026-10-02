@@ -20,6 +20,12 @@ const writeDoc = (root: string, kind: 'newsletters' | 'posts', id: number, body:
     }
 }
 
+const writeTag = (dir: string, id: string, firstEn: string, faq = ''): void =>
+    writeFileSync(
+        join(dir, `${id}.ts`),
+        `export const tag = { id: '${id}', names: { en: '${id}' }, descriptions: { en: ['${firstEn}'] }${faq} }\n`
+    )
+
 describe('runCheck', () => {
     const root = mkdtempSync(join(tmpdir(), 'jev-suggestions-check-'))
     const path = join(root, 'suggestions.json')
@@ -30,8 +36,8 @@ describe('runCheck', () => {
     writeDoc(root, 'newsletters', 3, 'Issue.')
     const tagsDir = join(root, 'tags')
     mkdirSync(tagsDir)
-    writeFileSync(join(tagsDir, 'economy.ts'), 'export const economy = 1\n')
-    writeFileSync(join(tagsDir, 'nature.ts'), 'export const nature = 1\n')
+    writeTag(tagsDir, 'economy', 'Money.')
+    writeTag(tagsDir, 'nature', 'Trees.')
 
     const receiptsFor = (
         ...keys: Array<'links:post:1' | 'links:post:2' | 'links:newsletter:3' | 'backlinks:newsletter:3'>
@@ -46,25 +52,25 @@ describe('runCheck', () => {
         writeReceipts(path, file)
     }
 
-    it('passes when nothing content-related changed, even without a receipts file', () => {
+    it('passes when nothing content-related changed, even without a receipts file', async () => {
         rmSync(path, { force: true })
 
         expect(
-            runCheck(['src/content/tags/types.ts', 'src/content/tags.ts', 'src/pages/fi/about.mdx'], {
+            await runCheck(['src/content/tags/types.ts', 'src/content/tags.ts', 'src/pages/fi/about.mdx'], {
                 log: () => {},
                 path,
                 root,
                 tagsDir,
             })
         ).toBe(0)
-        expect(runCheck([], { log: () => {}, path, root, tagsDir })).toBe(0)
+        expect(await runCheck([], { log: () => {}, path, root, tagsDir })).toBe(0)
     })
 
-    it('ignores meta.json-only changes: the receipt hashes the locale files, not the tags or dates', () => {
+    it('ignores meta.json-only changes: the receipt hashes the locale files, not the tags or dates', async () => {
         rmSync(path, { force: true })
 
         expect(
-            runCheck(['src/content/posts/1/meta.json', 'src/content/newsletters/3/meta.json'], {
+            await runCheck(['src/content/posts/1/meta.json', 'src/content/newsletters/3/meta.json'], {
                 log: () => {},
                 path,
                 root,
@@ -73,17 +79,20 @@ describe('runCheck', () => {
         ).toBe(0)
     })
 
-    it('requires a retro-scan receipt matching the current tag file, and skips deleted tag files', () => {
+    it('requires a retro-scan receipt matching the current tag label, and skips deleted tag files', async () => {
         const file = emptyReceipts()
-        recordTagReceipt(file, { hash: hashTagFile('economy', tagsDir), id: 'economy' }, 'm', '2026-09-23')
+        recordTagReceipt(file, { hash: await hashTagFile('economy', tagsDir), id: 'economy' }, 'm', '2026-09-23')
         recordTagReceipt(file, { hash: 'stale', id: 'nature' }, 'm', '2026-09-23')
         writeReceipts(path, file)
         const lines: string[] = []
         const deps = { log: (l: string) => lines.push(l), path, root, tagsDir }
 
-        expect(runCheck(['src/content/tags/economy.ts', 'src/content/tags/gone.ts'], deps)).toBe(0)
+        expect(await runCheck(['src/content/tags/economy.ts', 'src/content/tags/gone.ts'], deps)).toBe(0)
         expect(
-            runCheck(['src/content/tags/economy.ts', 'src/content/tags/nature.ts', 'src/content/tags/types.ts'], deps)
+            await runCheck(
+                ['src/content/tags/economy.ts', 'src/content/tags/nature.ts', 'src/content/tags/types.ts'],
+                deps
+            )
         ).toBe(1)
         expect(lines).toEqual([
             'tag retro-scan not run on the current tag file: tag nature: retro-scan changed since the last run — npm run suggest:tags -- --tag nature',
@@ -91,12 +100,25 @@ describe('runCheck', () => {
         ])
     })
 
-    it('passes when every changed document has a matching receipt', () => {
+    it('needs no new retro-scan when only fields outside the label change', async () => {
+        const file = emptyReceipts()
+        recordTagReceipt(file, { hash: await hashTagFile('economy', tagsDir), id: 'economy' }, 'm', '2026-09-23')
+        writeReceipts(path, file)
+        const deps = { log: () => {}, path, root, tagsDir }
+
+        writeTag(tagsDir, 'economy', 'Money.', ", faq: { fi: [{ q: 'Miksi?', a: 'Siksi.' }] }")
+        expect(await runCheck(['src/content/tags/economy.ts'], deps)).toBe(0)
+        writeTag(tagsDir, 'economy', 'Money, rewritten.')
+        expect(await runCheck(['src/content/tags/economy.ts'], deps)).toBe(1)
+        writeTag(tagsDir, 'economy', 'Money.')
+    })
+
+    it('passes when every changed document has a matching receipt', async () => {
         receiptsFor('links:post:1', 'links:newsletter:3', 'backlinks:newsletter:3')
         const lines: string[] = []
 
         expect(
-            runCheck(['src/content/posts/1/fi.mdx', 'src/content/newsletters/3/en.mdx'], {
+            await runCheck(['src/content/posts/1/fi.mdx', 'src/content/newsletters/3/en.mdx'], {
                 log: (l) => lines.push(l),
                 path,
                 root,
@@ -105,17 +127,20 @@ describe('runCheck', () => {
         expect(lines).toEqual([])
     })
 
-    it('fails naming the command for a never-run, a stale and a missing-backlinks document', () => {
+    it('fails naming the command for a never-run, a stale and a missing-backlinks document', async () => {
         receiptsFor('links:post:1', 'links:newsletter:3')
         writeDoc(root, 'posts', 1, 'One, edited.')
         const lines: string[] = []
 
         expect(
-            runCheck(['src/content/posts/1/fi.mdx', 'src/content/posts/2/sv.mdx', 'src/content/newsletters/3/fi.mdx'], {
-                log: (l) => lines.push(l),
-                path,
-                root,
-            })
+            await runCheck(
+                ['src/content/posts/1/fi.mdx', 'src/content/posts/2/sv.mdx', 'src/content/newsletters/3/fi.mdx'],
+                {
+                    log: (l) => lines.push(l),
+                    path,
+                    root,
+                }
+            )
         ).toBe(1)
         expect(lines).toEqual([
             'link suggestions not run on the final text: post:1: links changed since the last run — npm run suggest:links -- post 1',
@@ -126,7 +151,7 @@ describe('runCheck', () => {
         writeDoc(root, 'posts', 1, 'One.')
     })
 
-    it('reads the changed paths from git with --base and skips deleted documents', () => {
+    it('reads the changed paths from git with --base and skips deleted documents', async () => {
         receiptsFor('links:post:2')
         const git = (args: string[]): string => {
             expect(args).toEqual([
@@ -143,8 +168,8 @@ describe('runCheck', () => {
             return 'src/content/posts/2/fi.mdx\nsrc/content/posts/99/fi.mdx\nsrc/content/tags/gone.ts\n'
         }
 
-        expect(runCheck(['--base', 'origin/main'], { git, log: () => {}, path, root, tagsDir })).toBe(0)
-        expect(runCheck(['--base'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
-        expect(runCheck(['--base', 'x', 'file'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
+        expect(await runCheck(['--base', 'origin/main'], { git, log: () => {}, path, root, tagsDir })).toBe(0)
+        expect(await runCheck(['--base'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
+        expect(await runCheck(['--base', 'x', 'file'], { git, log: () => {}, path, root, tagsDir })).toBe(2)
     })
 })
