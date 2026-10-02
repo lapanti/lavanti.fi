@@ -62,6 +62,19 @@ describe('<NewsletterSubscribe lang="fi" />', () => {
 
         expect(link.getAttribute('href')).toBe('/fi/tietosuoja/')
     })
+
+    it('should post empty hidden UTM fields for the page script to fill', async () => {
+        const result = await renderAstroComponent(NewsletterSubscribe, {
+            props: { lang: 'fi' },
+        })
+
+        const form = result.querySelector('form')
+        for (const key of ['utm_source', 'utm_campaign']) {
+            const input = form?.querySelector(`input[name="fields[${key}]"]`)
+            expect(input?.getAttribute('type')).toBe('hidden')
+            expect(input?.getAttribute('value')).toBe('')
+        }
+    })
 })
 
 describe('<NewsletterSubscribe layout="split" />', () => {
