@@ -18,6 +18,51 @@ export const digitalisationTag: LocalTag = {
             'Den mänskliga dimensionen spelar också roll. Digitalisering får inte utesluta människor som har svårt med onlinegränssnitt — läkarbesök, förmånsansökningar och tillståndsansökningar måste förbli tillgängliga via icke-digitala kanaler. Effektivitetsvinster bör inte uppnås genom att tvinga de mest utsatta att anpassa sig till den kanal som är mest bekväm för leverantören.',
         ],
     },
+    faq: {
+        en: [
+            {
+                a: "When the supplier cannot be replaced, the price stops being set by the market. The supplier knows the customer cannot leave, and the negotiating power shifts to the supplier for good. When public administration builds its systems on one supplier's closed platform, switching becomes more expensive and difficult over the years. The data is then locked in, and control over it has in effect been handed away.",
+                q: 'Why does vendor lock-in cost taxpayers so much?',
+            },
+            {
+                a: "Portability is a property of the procurement that guarantees the system's data, processes and integrations can be moved to another supplier at reasonable cost. It only exists if it is written into the contract and the technical specification before the procurement decision. In practice it needs publicly documented data formats, integrations built on well-known interface standards and an exit clause in every contract. Without these, switching supplier is possible in theory but often too expensive in practice.",
+                q: 'What does portability in public procurement mean?',
+            },
+            {
+                a: 'Because digitalisation and AI do not replace a clear plan. Poorly defined processes or objectives only lead to bad outcomes faster with AI. Municipalities first need to identify which services they want to develop and design them for automation, and only then bring in the machine. There are no quick wins; it is a long-term investment that requires money. A small municipality cannot do it alone, but Konnevesi succeeded in collaboration with seven other municipalities.',
+                q: 'Why does digitalising public services require long-term planning?',
+            },
+        ],
+        fi: [
+            {
+                a: 'Kun toimittajaa ei voi vaihtaa, hinta lakkaa ohjautumasta markkinaehtoisesti. Toimittaja tietää, ettei asiakas voi lähteä, ja neuvotteluasema siirtyy pysyvästi sille. Kun julkishallinto rakentaa järjestelmänsä yhden toimittajan suljetun alustan varaan, vaihtaminen muuttuu vuosien kuluessa yhä kalliimmaksi ja vaikeammaksi. Data on silloin lukittu, ja sen hallinta on tosiasiassa luovutettu pois.',
+                q: 'Miksi toimittajalukkiutuminen tulee veronmaksajalle kalliiksi?',
+            },
+            {
+                a: 'Siirrettävyys on hankinnan ominaisuus, joka takaa, että järjestelmän data, prosessit ja integraatiot voidaan siirtää toiselle toimittajalle ilman kohtuutonta kustannusta. Se syntyy vain, jos se kirjataan sopimukseen ja tekniseen määrittelyyn ennen hankintapäätöstä. Käytännössä dataformaattien on oltava julkisesti dokumentoituja, integraatioiden nojattava tunnettuihin rajapintastandardeihin ja sopimukseen kirjattava irtautumislauseke. Ilman näitä toimittajan vaihtaminen on teoriassa mahdollista, mutta käytännössä usein liian kallista.',
+                q: 'Mitä julkishankintojen siirrettävyys tarkoittaa?',
+            },
+            {
+                a: 'Koska digitalisaatio ja tekoäly eivät korvaa selkeää suunnitelmaa. Huonosti määritellyt prosessit tai tavoitteet johtavat tekoälyllä vain nopeammin huonoihin tuloksiin. Ensin pitää tunnistaa, mitä palveluja halutaan kehittää, ja suunnitella ne automatisoitaviksi. Vasta sitten voidaan ottaa kone mukaan. Pikavoittoja ei ole tarjolla, vaan kyse on pitkäjänteisestä investoinnista, joka vaatii rahaa. Pieni kunta ei pysty siihen yksin, mutta Konnevesi onnistui yhteistyössä seitsemän muun kunnan kanssa.',
+                q: 'Miksi julkisten palveluiden digitalisointi vaatii pitkäjänteistä suunnittelua?',
+            },
+        ],
+        sv: [
+            {
+                a: 'När leverantören inte går att byta slutar priset styras av marknaden. Leverantören vet att kunden inte kan lämna, och förhandlingsläget flyttas permanent över till leverantören. När den offentliga förvaltningen bygger sina system på en enda leverantörs slutna plattform blir ett byte dyrare och svårare för varje år. Datan är då inlåst, och kontrollen över den har i praktiken lämnats bort.',
+                q: 'Varför blir leverantörsinlåsning dyrt för skattebetalarna?',
+            },
+            {
+                a: 'Portabilitet är en egenskap hos upphandlingen som garanterar att systemets data, processer och integrationer kan flyttas till en annan leverantör utan orimliga kostnader. Den uppstår bara om den skrivs in i avtalet och i den tekniska specifikationen före upphandlingsbeslutet. I praktiken krävs offentligt dokumenterade dataformat, integrationer som bygger på kända gränssnittsstandarder och en exitklausul i avtalet. Saknas de är ett leverantörsbyte möjligt i teorin, men i praktiken ofta för dyrt.',
+                q: 'Vad betyder portabilitet i offentliga upphandlingar?',
+            },
+            {
+                a: 'För att digitalisering och AI inte ersätter en tydlig plan. Dåligt definierade processer eller mål leder bara snabbare till dåliga resultat med AI. Först måste man identifiera vilka tjänster som ska utvecklas och utforma dem för automatisering, och först därefter kan maskinen tas i bruk. Det finns inga snabba vinster, utan det krävs långsiktiga investeringar och pengar. En mindre kommun klarar det inte ensam, men i Konnevesi lyckades projektet i samarbete med sju andra kommuner.',
+                q: 'Varför kräver digitaliseringen av offentliga tjänster långsiktig planering?',
+            },
+        ],
+    },
+    featured: [80, 53, 44],
     id: 'digitalisation',
     metaDescription: {
         en: 'Digitalisation is both an opportunity and a risk. Finland must lead with quality, not just speed — getting it wrong at scale is expensive and hard to reverse.',
@@ -31,5 +76,5 @@ export const digitalisationTag: LocalTag = {
         sv: 'Digitalisering – IT och in\u00ADformations\u00ADpolitik',
     },
     slugs: { en: 'digitalisation', fi: 'digitalisaatio', sv: 'digitalisering' },
-    updatedDate: '2026-05-15',
+    updatedDate: '2026-10-02',
 }
