@@ -29,7 +29,7 @@ const ogImage = getImage('og-image-lauri-lavanti', 'ogFlat').src
                     : [navigator.language || 'fi']
                 var primary = String(langs[0] || 'fi').toLowerCase().split('-')[0]
                 var target = primary === 'sv' ? 'sv' : 'fi'
-                window.location.replace('/' + target + '/')
+                window.location.replace('/' + target + '/' + window.location.search + window.location.hash)
             })()
         `}
         />
