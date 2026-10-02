@@ -28,4 +28,17 @@ export class TagPage extends AnyPage {
         await expect(this.articles.first().getByRole('link').first()).toBeVisible()
         await expect(this.articles.first().getByRole('heading').first()).toBeVisible()
     }
+
+    /** Below-fold plates: viewport screenshots and partial aria snapshots would not catch their loss. */
+    async checkRichContent() {
+        await expect(this.page.getByRole('heading', { name: 'Aloita näistä' })).toBeVisible()
+        await expect(this.page.getByRole('list', { name: 'Liittyvät aiheet' }).getByRole('link')).not.toHaveCount(0)
+        await expect(this.page.getByRole('heading', { name: 'Usein kysyttyä' })).toBeVisible()
+        const types = await this.page
+            .locator('script[type="application/ld+json"]')
+            .evaluateAll((nodes) =>
+                nodes.map((n) => (JSON.parse(n.textContent ?? '{}') as { '@type': string })['@type'])
+            )
+        expect(types).toEqual(expect.arrayContaining(['CollectionPage', 'FAQPage']))
+    }
 }
