@@ -21,10 +21,10 @@ interface VolunteerLocale {
 }
 
 /**
- * Turnstile site key (public). Placeholder is Cloudflare's always-pass test key, which the
- * production secret rejects: sign-ups fail closed until the real key is set here.
+ * Turnstile site key (public) of the `lavanti.fi` widget (hostnames lavanti.fi, www.lavanti.fi).
+ * Its secret is the Pages secret `TURNSTILE_SECRET`.
  */
-export const TURNSTILE_SITE_KEY = '1x00000000000000000000AA'
+export const TURNSTILE_SITE_KEY = '0x4AAAAAAFMh8S3Jk7UPxASR'
 
 export const volunteerContent: Record<Lang, VolunteerLocale> = {
     en: {
