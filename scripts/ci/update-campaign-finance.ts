@@ -12,7 +12,8 @@
  *
  * Env: PAYLOAD — JSON `{ asOf, raised: Record<FundingSource, number>, spent }`.
  * Prints `unchanged` and edits nothing when raised and spent already match;
- * writes `changed=true|false` to $GITHUB_OUTPUT when set.
+ * otherwise prints a before/after table, also written to TABLE_FILE when set.
+ * Writes `changed=true|false` to $GITHUB_OUTPUT when set.
  * Exit 0 on success or no-op, 1 on an invalid payload or module.
  */
 
@@ -168,6 +169,28 @@ export function setUpdatedDate(path: string, source: string, date: string): stri
     return source.replace(pattern, `updatedDate: '${date}'`)
 }
 
+/** Before/after table for the PR body, so the reviewer checks figures, not a diff. */
+export function changeTable(before: Figures, after: Figures): string {
+    const rows: [string, number, number][] = [
+        ...FUNDING_SOURCES.map((key): [string, number, number] => [
+            `raised.${key}`,
+            before.raised[key],
+            after.raised[key],
+        ]),
+        ['raised total', sum(before.raised), sum(after.raised)],
+        ['spent', before.spent, after.spent],
+        ['ownCommitment', before.ownCommitment, after.ownCommitment],
+    ]
+
+    return [
+        `Figures as of ${after.asOf} (previously ${before.asOf}), whole euros.`,
+        '',
+        '| Field | Before | After |',
+        '|---|---:|---:|',
+        ...rows.map(([field, from, to]) => `| ${from === to ? field : `**${field}**`} | ${from} | ${to} |`),
+    ].join('\n')
+}
+
 function main(): void {
     const raw = process.env.PAYLOAD
     if (!raw) {
@@ -193,11 +216,9 @@ function main(): void {
     for (const page of FINANCE_PAGES) {
         writeFileSync(page, setUpdatedDate(page, readFileSync(page, 'utf8'), today))
     }
-    const next = readFigures(readFileSync(MODULE_PATH, 'utf8'))
-    console.log(
-        `updated: raised ${sum(current.raised)} → ${sum(next.raised)}, spent ${current.spent} → ${next.spent}, ` +
-            `ownCommitment ${current.ownCommitment} → ${next.ownCommitment}, asOf ${next.asOf}`
-    )
+    const table = changeTable(current, readFigures(readFileSync(MODULE_PATH, 'utf8')))
+    console.log(table)
+    if (process.env.TABLE_FILE) writeFileSync(process.env.TABLE_FILE, `${table}\n`)
     output(true)
 }
 

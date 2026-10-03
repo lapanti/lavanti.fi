@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { campaignFinance } from '../../src/content/campaignFinance'
 import {
     applyPayload,
+    changeTable,
     figuresChanged,
     FINANCE_PAGES,
     type FinancePayload,
@@ -15,7 +16,8 @@ import {
 } from './update-campaign-finance'
 
 const source = readFileSync(MODULE_PATH, 'utf8')
-const TODAY = '2026-10-04'
+/* Far from any asOf a real update writes, so "asOf changed" always holds in these tests. */
+const TODAY = '2099-01-04'
 
 const payloadOf = (overrides: Partial<FinancePayload> = {}): FinancePayload => ({
     asOf: TODAY,
@@ -61,8 +63,8 @@ describe('parsePayload', () => {
         ['a fractional figure', { spent: 10.5 }, /spent must be/],
         ['spent above total raised', { spent: 1_000_000 }, /exceeds total raised/],
         ['total raised above budget', { raised: { ...campaignFinance.raised, private: 1_000_000 } }, /exceeds budget/],
-        ['a non-ISO asOf', { asOf: '4.10.2026' }, /ISO date/],
-        ['a future asOf', { asOf: '2026-10-05' }, /in the future/],
+        ['a non-ISO asOf', { asOf: '4.1.2099' }, /ISO date/],
+        ['a future asOf', { asOf: '2099-01-05' }, /in the future/],
     ])('rejects %s', (_name, overrides, message) => {
         expect(() => parse({ ...payloadOf(), ...overrides })).toThrow(message)
     })
@@ -112,6 +114,21 @@ describe('applyPayload', () => {
         const next = applyPayload(source, payloadOf({ spent: 1234 }))
         const changed = next.split('\n').filter((row, i) => row !== source.split('\n')[i])
         expect(changed.map((row) => row.trim())).toEqual([`asOf: '${TODAY}',`, 'spent: 1234,'])
+    })
+})
+
+describe('changeTable', () => {
+    it('bolds changed fields and totals raised', () => {
+        const before = readFigures(source)
+        const { loans, private: donated } = campaignFinance.raised
+        const after = readFigures(
+            applyPayload(source, payloadOf({ raised: { ...campaignFinance.raised, private: donated + 300 } }))
+        )
+        const table = changeTable(before, after)
+        expect(table).toContain(`Figures as of ${TODAY} (previously ${campaignFinance.asOf})`)
+        expect(table).toContain(`| **raised.private** | ${donated} | ${donated + 300} |`)
+        expect(table).toContain(`| raised.loans | ${loans} | ${loans} |`)
+        expect(table).toMatch(/\| \*\*raised total\*\* \| \d+ \| \d+ \|/)
     })
 })
 
