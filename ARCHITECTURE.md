@@ -51,7 +51,7 @@ The site stays static. `functions/` holds the only server code, three thin wrapp
 
 - **Configuration:** no `wrangler.toml` (one would take over the dashboard settings). In the `laurilavanti` Pages project: D1 binding `DB` → database `lavanti-fi` (EU jurisdiction), secrets `TURNSTILE_SECRET` and `LIITY_STATS_TOKEN`. The Turnstile site key is public and lives in `src/content/volunteer.ts`.
 - **Schema:** `migrations/*.sql`, applied by hand with `npx wrangler d1 execute lavanti-fi --remote --file=<file>`.
-- **Retention:** `.github/workflows/volunteer-purge.yml` runs monthly: all volunteer rows after 2027-07-31, click rows after 13 months.
+- **Retention:** `.github/workflows/volunteer-purge.yml` runs monthly: all volunteer rows after 2027-07-31, click rows after 13 months. It authenticates with the GitHub secret `CLOUDFLARE_D1_TOKEN` (Account · D1 · Edit only, expires 2027-09-01), separate from the deploy token.
 - **Deleting one person on request:** `npx wrangler d1 execute lavanti-fi --remote --command "DELETE FROM volunteers WHERE email = '<address>'"`, then reply to confirm. D1 Time Travel keeps a restorable history for 30 days; the row is gone from it after that, which the privacy notice states.
 - **Who reads the rows:** Lauri in the D1 console; Lauri, the campaign manager and the volunteer coordinator on 2027.lavanti.fi behind Cloudflare Access (lavanti-2027 repo). Nothing else reads personal rows.
 
