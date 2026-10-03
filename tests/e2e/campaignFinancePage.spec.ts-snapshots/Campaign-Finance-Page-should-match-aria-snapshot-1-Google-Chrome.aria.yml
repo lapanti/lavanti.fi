@@ -65,7 +65,7 @@
       - text: ""
       - list:
         - listitem: /Käytetty 1 \d+ €/
-        - listitem: Käyttämättä 0 €
+        - listitem: Käyttämättä 2 €
     - paragraph: Kulut tarkentuvat kampanjan edetessä. Rahaa menee eniten tienvarsimainoksiin, muuhun painettuun materiaaliin, digimainontaan ja vaalitilaisuuksiin. Erittelen kulut samalla tarkkuudella kuin vaalirahoitusilmoituksessa.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa vuonna \d+\?/ [level=2]

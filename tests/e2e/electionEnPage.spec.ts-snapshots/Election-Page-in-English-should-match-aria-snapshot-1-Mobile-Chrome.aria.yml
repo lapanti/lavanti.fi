@@ -115,7 +115,7 @@
     - term: My own commitment
     - definition: /€\d+,\d+/
     - term: Still to raise
-    - definition: /€\d+,\d+ As of \d+ September \d+/
+    - definition: /€\d+,\d+ As of 3 October \d+/
     - paragraph:
       - link "See the campaign finances":
         - /url: /en/elections/campaign-finance/

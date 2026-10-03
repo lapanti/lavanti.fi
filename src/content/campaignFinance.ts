@@ -95,7 +95,7 @@ export interface Benchmark {
  * campaign cannot promise.
  */
 export const campaignFinance: CampaignFinance = {
-    asOf: '2026-09-26',
+    asOf: '2026-10-03',
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: true,
@@ -110,7 +110,7 @@ export const campaignFinance: CampaignFinance = {
         private: 0,
     },
     /* Paid out per the campaign budget sheet, as of asOf. */
-    spent: 1779,
+    spent: 1777,
 }
 
 /**

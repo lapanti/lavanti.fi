@@ -65,7 +65,7 @@
       - text: ""
       - list:
         - listitem: /Använt hittills 1 \d+ €/
-        - listitem: Oanvänt 0 €
+        - listitem: Oanvänt 2 €
     - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]
