@@ -45,6 +45,9 @@ const CONSENT_VERSION = '2026-10'
 /** Smallest count a stats cell may show; smaller cells are merged into "muu". */
 const MIN_CELL = 3
 
+/** Hostnames the Turnstile widget is registered for; siteverify must report one of them. */
+const TURNSTILE_HOSTNAMES = new Set(['lavanti.fi', 'www.lavanti.fi'])
+
 const UTM_SLUG = /^[a-z0-9._-]{1,64}$/
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/
 const PHONE = /^\+?[0-9 ()-]{5,20}$/
@@ -149,14 +152,16 @@ const verifyTurnstile = async (
     body.append('response', token)
     const ip = request.headers.get('CF-Connecting-IP')
     if (ip) body.append('remoteip', ip)
+    body.append('idempotency_key', crypto.randomUUID())
     try {
         const res = await fetchFn('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
             body,
             method: 'POST',
         })
-        const data = (await res.json()) as { success?: boolean }
+        const data = (await res.json()) as { hostname?: string; success?: boolean }
 
-        return data.success === true
+        // A token solved on another site that embeds the same key must not count.
+        return data.success === true && TURNSTILE_HOSTNAMES.has(data.hostname ?? '')
     } catch {
         return false
     }
