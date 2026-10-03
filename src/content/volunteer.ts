@@ -48,7 +48,6 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
         help: {
             jakaminen: 'Handing out leaflets',
             muu: 'Something else',
-            puhelin: 'Phone calls and door-to-door',
             some: 'Social media',
             tapahtumat: 'Events and campaign stands',
         },
@@ -88,7 +87,6 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
         help: {
             jakaminen: 'Esitteiden jakaminen',
             muu: 'Jokin muu',
-            puhelin: 'Soittaminen ja ovelta ovelle',
             some: 'Sosiaalinen media',
             tapahtumat: 'Tapahtumat ja vaaliteltat',
         },
@@ -128,7 +126,6 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
         help: {
             jakaminen: 'Dela ut broschyrer',
             muu: 'Något annat',
-            puhelin: 'Ringa och knacka dörr',
             some: 'Sociala medier',
             tapahtumat: 'Evenemang och valtält',
         },

@@ -36,7 +36,7 @@ export const DONATE_URL =
     'https://www.vihreat.fi/eduskuntavaaliehdokkaat-2027/?kieli=fi&vaali=eduskuntavaalit-2027&alue=vp2&ehdokas=lavanti-lauri-10202&valilehti=donate'
 
 export const MUNICIPALITIES = ['kirkkonummi', 'espoo', 'vantaa', 'muu-uusimaa', 'muu'] as const
-export const HELP_OPTIONS = ['jakaminen', 'tapahtumat', 'some', 'puhelin', 'muu'] as const
+export const HELP_OPTIONS = ['jakaminen', 'tapahtumat', 'some', 'muu'] as const
 const LANGS = ['fi', 'sv', 'en'] as const
 
 /** Bump when the consent wording on the form or in the privacy notice changes. */
