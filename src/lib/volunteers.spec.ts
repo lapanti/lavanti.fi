@@ -103,8 +103,16 @@ describe('parseVolunteer', () => {
         })
     })
 
+    it('accepts a sign-up with only name, email and consent', () => {
+        const result = parseVolunteer(form({ ...valid, help: [], municipality: '' }), NOW)
+        expect(result.ok && result.row.municipality).toBe('')
+        expect(result.ok && result.row.help).toBe('[]')
+    })
+
     it.each([
         ['consent', { consent: '' }],
+        ['email', { email: '' }],
+        ['name', { name: '' }],
         ['email', { email: 'not-an-email' }],
         ['name', { name: 'x' }],
         ['municipality', { municipality: 'helsinki' }],
@@ -223,16 +231,16 @@ describe('handleStats', () => {
                 { key: 'sote / linkedin', n: 3 },
                 { key: '- / -', n: 1 },
             ],
-            'FROM volunteers GROUP BY municipality': [
-                { key: 'kirkkonummi', n: 3 },
-                { key: 'espoo', n: 1 },
-            ],
             'SELECT COUNT(*) AS n FROM volunteers': [{ n: 4 }],
             'SELECT help FROM volunteers': [
                 { help: '["jakaminen"]' },
                 { help: '["jakaminen","some"]' },
                 { help: '["jakaminen"]' },
                 { help: '["tapahtumat"]' },
+            ],
+            "THEN 'ei-kerrottu' ELSE municipality END AS key": [
+                { key: 'kirkkonummi', n: 3 },
+                { key: 'espoo', n: 1 },
             ],
         })
         const res = await handleStats(req('Bearer t', '?since=2026-10-01'), { DB: db, LIITY_STATS_TOKEN: 't' })
