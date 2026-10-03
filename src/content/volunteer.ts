@@ -17,7 +17,11 @@ interface VolunteerLocale {
     name: string
     phone: string
     privacyHref: string
+    /** Explains the asterisk on name, email and consent; shown above the first field. */
+    requiredNote: string
     submit: string
+    /** Under the submit button while name, email or consent is still missing. */
+    submitHint: string
 }
 
 /**
@@ -61,9 +65,11 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
             vantaa: 'Vantaa',
         },
         name: 'Name',
-        phone: 'Phone number (optional)',
+        phone: 'Phone number',
         privacyHref: '/en/privacy-policy/',
+        requiredNote: 'Fields marked with an asterisk (*) are required. Everything else is optional.',
         submit: 'Sign up',
+        submitHint: 'Fill in your name and email and give your consent to send the form.',
     },
     fi: {
         consent: {
@@ -100,9 +106,11 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
             vantaa: 'Vantaa',
         },
         name: 'Nimi',
-        phone: 'Puhelinnumero (vapaaehtoinen)',
+        phone: 'Puhelinnumero',
         privacyHref: '/fi/tietosuoja/',
+        requiredNote: 'Tähdellä (*) merkityt kohdat ovat pakollisia. Muut voit jättää tyhjiksi.',
         submit: 'Ilmoittaudu mukaan',
+        submitHint: 'Täytä nimi ja sähköposti ja anna suostumuksesi, niin voit lähettää lomakkeen.',
     },
     sv: {
         consent: {
@@ -139,8 +147,10 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
             vantaa: 'Vanda',
         },
         name: 'Namn',
-        phone: 'Telefonnummer (frivilligt)',
+        phone: 'Telefonnummer',
         privacyHref: '/sv/dataskydd/',
+        requiredNote: 'Fält märkta med asterisk (*) är obligatoriska. De övriga kan du lämna tomma.',
         submit: 'Anmäl dig',
+        submitHint: 'Fyll i namn och e-post och ge ditt samtycke för att kunna skicka formuläret.',
     },
 }
