@@ -48,6 +48,23 @@ describe('<VolunteerForm lang="fi" />', () => {
         expect(trap?.closest('[aria-hidden="true"]')).not.toBeNull()
     })
 
+    it('requires only name, email and consent, and marks exactly those', async () => {
+        const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
+        const required = [...result.querySelectorAll('[required]')].map((el) => el.getAttribute('name'))
+
+        expect(required).toEqual(['name', 'email', 'consent'])
+        expect(result.querySelectorAll('.req')).toHaveLength(3)
+        expect(result.querySelector('.required-note')?.textContent).toContain('*')
+    })
+
+    it('explains what is missing next to the submit button', async () => {
+        const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
+        const button = result.querySelector('button[type="submit"]')
+
+        expect(button?.getAttribute('aria-describedby')).toBe('volunteer-submit-hint')
+        expect(result.querySelector('#volunteer-submit-hint')?.getAttribute('aria-live')).toBe('polite')
+    })
+
     it('puts a focusable error box before the first field', async () => {
         const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
         const box = result.querySelector('#volunteer-error')

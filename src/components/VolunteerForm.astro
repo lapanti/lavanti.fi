@@ -16,8 +16,10 @@ const t = volunteerContent[lang]
 
 /*
  * Error feedback without losing what was typed.
- * - Submit: blocks a send with no help option ticked (no native "at least one" for checkboxes)
- *   and keeps the typed values in sessionStorage. Consent is never kept; it is ticked again.
+ * - Ready state: until name, email and consent are valid the button looks inactive
+ *   (aria-disabled, not disabled, so a click still runs the browser's own required-field
+ *   prompts) and the hint under it says what is missing.
+ * - Submit: keeps the typed values in sessionStorage. Consent is never kept; it is ticked again.
  * - Load with ?virhe=<code>: restores the values, shows the message from the fixed list in the
  *   content file (nothing from the URL is written into the page), marks the field it names and
  *   moves focus there. Any other load drops the stored values.
@@ -55,20 +57,27 @@ const errorScript = `(function () {
         else window.addEventListener('load', run)
     }
 
+    var button = form.querySelector('button[type="submit"]')
+    var hint = document.getElementById('volunteer-submit-hint')
+    var updateReady = function () {
+        var name = form.elements.namedItem('name')
+        var email = form.elements.namedItem('email')
+        var ready = name.value.trim().length >= 2 && email.value !== '' && email.validity.valid &&
+            form.querySelector('input[name="consent"]').checked
+        button.setAttribute('aria-disabled', ready ? 'false' : 'true')
+        hint.hidden = ready
+    }
+    form.addEventListener('input', updateReady)
+
     form.addEventListener('change', function (event) {
         var name = event.target.name
         form.querySelectorAll('[aria-invalid="true"]').forEach(function (el) {
             if (el.name === name) el.removeAttribute('aria-invalid')
         })
+        updateReady()
     })
 
-    form.addEventListener('submit', function (event) {
-        var chosen = Array.prototype.some.call(helpBoxes(), function (c) { return c.checked })
-        if (!chosen) {
-            event.preventDefault()
-            show('help')
-            return
-        }
+    form.addEventListener('submit', function () {
         var data = { help: [] }
         FIELDS.forEach(function (f) { data[f] = form.elements.namedItem(f).value })
         helpBoxes().forEach(function (c) { if (c.checked) data.help.push(c.value) })
@@ -77,6 +86,9 @@ const errorScript = `(function () {
 
     var code = new URLSearchParams(window.location.search).get('virhe')
     var saved = store(function (s) { var v = s.getItem(KEY); s.removeItem(KEY); return v })
+    // Browsers may refill fields from their own form cache, so check after load too.
+    updateReady()
+    window.addEventListener('pageshow', updateReady)
     if (!code || !Object.prototype.hasOwnProperty.call(messages, code)) return
     if (saved) {
         try {
@@ -85,11 +97,19 @@ const errorScript = `(function () {
             helpBoxes().forEach(function (c) { c.checked = (data.help || []).indexOf(c.value) >= 0 })
         } catch (e) {}
     }
+    updateReady()
     showAfterLoad(code)
 })()`
 ---
 
-<style define:vars={{ errorColor: colors.darkGreen, inkColor: colors.forestGreen, tintColor: colors.forestGreen10 }}>
+<style
+    define:vars={{
+        errorColor: colors.darkGreen,
+        inkColor: colors.forestGreen,
+        mutedColor: colors.forestGreen70,
+        tintColor: colors.forestGreen10,
+    }}
+>
     .volunteer-form {
         display: grid;
         gap: 1.5rem;
@@ -178,8 +198,32 @@ const errorScript = `(function () {
         cursor: pointer;
         font: inherit;
         font-weight: 600;
-        justify-self: start;
         padding: 0.75rem 1.5rem;
+    }
+
+    /* Required fields still missing: the button looks inactive but stays clickable, so a
+       click runs the browser's own prompt on the first missing field. Set at runtime. */
+    .volunteer-form button:global([aria-disabled='true']) {
+        background: var(--mutedColor);
+        cursor: not-allowed;
+    }
+
+    .volunteer-form .submit-row {
+        display: grid;
+        gap: 0.5rem;
+        justify-items: start;
+    }
+
+    .volunteer-form .submit-hint,
+    .volunteer-form .required-note {
+        color: var(--inkColor);
+        font-size: 0.9375rem;
+        margin: 0;
+    }
+
+    .volunteer-form .req {
+        color: var(--errorColor);
+        font-weight: 700;
     }
 
     /* Set at runtime by the error script, so it is invisible to the scoped-CSS check. */
@@ -207,17 +251,19 @@ const errorScript = `(function () {
 <form action="/api/liity" class="volunteer-form" id="lomake" method="post">
     <p hidden id="volunteer-error" role="alert" tabindex="-1"></p>
 
+    <p class="required-note">{t.requiredNote}</p>
+
     <input name="lang" type="hidden" value={lang} />
     <input name="utm_source" type="hidden" value="" />
     <input name="utm_campaign" type="hidden" value="" />
 
     <div>
-        <label for="volunteer-name">{t.name}</label>
+        <label for="volunteer-name">{t.name}<span aria-hidden="true" class="req"> *</span></label>
         <input autocomplete="name" id="volunteer-name" maxlength="100" minlength="2" name="name" required type="text" />
     </div>
 
     <div>
-        <label for="volunteer-email">{t.email}</label>
+        <label for="volunteer-email">{t.email}<span aria-hidden="true" class="req"> *</span></label>
         <input autocomplete="email" id="volunteer-email" name="email" required type="email" />
     </div>
 
@@ -228,7 +274,7 @@ const errorScript = `(function () {
 
     <div>
         <label for="volunteer-municipality">{t.municipality}</label>
-        <select id="volunteer-municipality" name="municipality" required>
+        <select id="volunteer-municipality" name="municipality">
             <option value=""></option>
             {MUNICIPALITIES.map((m) => <option value={m}>{t.municipalityOptions[m]}</option>)}
         </select>
@@ -257,12 +303,16 @@ const errorScript = `(function () {
             {t.consent.before}
             <Link href={t.privacyHref}>{t.consent.linkText}</Link>
             {t.consent.after}
+            <span aria-hidden="true" class="req"> *</span>
         </span>
     </label>
 
     <div class="cf-turnstile" data-language={lang} data-sitekey={TURNSTILE_SITE_KEY}></div>
 
-    <button type="submit">{t.submit}</button>
+    <div class="submit-row">
+        <button aria-describedby="volunteer-submit-hint" type="submit">{t.submit}</button>
+        <p aria-live="polite" class="submit-hint" id="volunteer-submit-hint">{t.submitHint}</p>
+    </div>
 </form>
 
 <script async defer is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
