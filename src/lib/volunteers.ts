@@ -314,20 +314,36 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
     for (const { help } of helpRows.results) {
         for (const h of JSON.parse(help) as string[]) byHelp[h] = (byHelp[h] ?? 0) + 1
     }
-    const volunteerLinks = await db
-        .prepare(
-            "SELECT COALESCE(utm_campaign, '-') || ' / ' || COALESCE(utm_source, '-') AS key, COUNT(*) AS n FROM volunteers GROUP BY key"
-        )
-        .all<{ key: string; n: number }>()
-    const clickLinks = await db
-        .prepare(
-            "SELECT COALESCE(utm_campaign, '-') || ' / ' || COALESCE(utm_source, '-') AS key, COUNT(*) AS n FROM donate_clicks GROUP BY key"
-        )
-        .all<{ key: string; n: number }>()
+    /*
+     * With ?since= the per-link breakdowns cover that window only (the weekly
+     * conversions fetch in lavanti-2027 reads them per week); without it, all time.
+     */
+    const linkKey = "COALESCE(utm_campaign, '-') || ' / ' || COALESCE(utm_source, '-') AS key, COUNT(*) AS n"
+    const byLink = (table: 'donate_clicks' | 'volunteers', column: 'created_at' | 'ts') => {
+        const where = sinceDate ? ` WHERE ${column} >= ?` : ''
+        const stmt = db.prepare(`SELECT ${linkKey} FROM ${table}${where} GROUP BY key`)
+
+        return (sinceDate ? stmt.bind(sinceDate) : stmt).all<{ key: string; n: number }>()
+    }
+    const volunteerLinks = await byLink('volunteers', 'created_at')
+    const clickLinks = await byLink('donate_clicks', 'ts')
     const clickTotal = (await db.prepare('SELECT COUNT(*) AS n FROM donate_clicks').first<{ n: number }>())?.n ?? 0
+    const clickSince = sinceDate
+        ? ((
+              await db
+                  .prepare('SELECT COUNT(*) AS n FROM donate_clicks WHERE ts >= ?')
+                  .bind(sinceDate)
+                  .first<{ n: number }>()
+          )?.n ?? 0)
+        : null
 
     return json({
-        donate_clicks: { by_campaign_source: suppress(tally(clickLinks.results)), total: clickTotal },
+        donate_clicks: {
+            by_campaign_source: suppress(tally(clickLinks.results)),
+            since: sinceDate,
+            since_count: clickSince,
+            total: clickTotal,
+        },
         volunteers: {
             by_campaign_source: suppress(tally(volunteerLinks.results)),
             by_help: suppress(byHelp),
