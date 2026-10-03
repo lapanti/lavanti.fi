@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-09-30
+> **Last updated**: 2026-10-03
 > **Issue**: [#1507](https://github.com/lapanti/lavanti.fi/issues/1507)
 
 ---
@@ -175,6 +175,32 @@ Feature: Campaign finance transparency page
     When its spec runs
     Then spent ≤ totalRaised ≤ budget, every figure is a non-negative integer, asOf and retrievedDate are ISO dates, benchmark shares sum to 100 ± 0.2, and DISPLAY_SOURCE_ORDER lists the six display sources in §6 order
 
+  Scenario: Automated update opens a PR for review
+    Given a campaign-finance-update payload whose raised or spent figures differ from main
+    When campaign-finance-update.yml runs
+    Then branch chore/campaign-finance-update is reset to main and carries one API-signed commit with the new figures, the three updatedDate bumps and regenerated baselines
+    And a PR from that branch is open, with auto-merge off
+
+  Scenario: Automated update with unchanged figures
+    Given a payload whose raised and spent equal main's, whatever its asOf
+    When campaign-finance-update.yml runs
+    Then nothing is pushed and no PR is opened or changed
+
+  Scenario: Automated update rejects an invalid payload
+    Given a payload with an unknown or missing category, a negative or fractional figure, spent > totalRaised, totalRaised > budget, or an asOf that is not an ISO date or lies in the future
+    When the updater runs
+    Then it exits non-zero before any push
+
+  Scenario: Own commitment follows own payments
+    Given own rises by Δ in a payload
+    When the updater rewrites the module
+    Then ownCommitment falls by Δ, floored at 0, so ownCommitment + raised.own is unchanged
+
+  Scenario: Module edits require the page bump
+    Given a commit that changes src/content/campaignFinance.ts
+    When scripts/checks/updated-date.ts runs
+    Then it fails unless updatedDate is bumped on the three finance pages
+
   Scenario: Layout survives narrow viewports
     Given a 360 px viewport
     When any of the three pages renders
@@ -299,6 +325,32 @@ Component props:
 | `FinanceBars` | `caption`, `rows: { emphasis?, label, value }[]`, `unit: 'eur' \| 'percent'`, `lang`; computes `max` via `barsMax` |
 | `FinanceStack` | `caption`, `segments: { id, label, tone, value }[]`, `total`, `lang`; every segment in the legend, only `value > 0` in the bar |
 | `FinanceTeaser` | `href`, `id` (localized section anchor: rahoitus / finansiering / finance), `lang` |
+
+---
+
+## Automated weekly update
+
+The weekly campaign digest reads the budget sheet and sends `repository_dispatch` event `campaign-finance-update` to this repo. The `workflow_dispatch` input `payload` takes the same JSON for manual runs.
+
+```typescript
+interface FinancePayload {
+    asOf: string                              // ISO date the sheet was read, Helsinki
+    raised: Record<FundingSource, number>     // all seven keys, whole euros
+    spent: number                             // whole euros
+}
+```
+
+| Step | Behaviour |
+|---|---|
+| `scripts/ci/update-campaign-finance.ts` | Validates the payload against the invariants above. Rewrites `asOf`, every `raised` value and `spent` in the `campaignFinance` literal, and derives `ownCommitment` so that `ownCommitment + raised.own` holds. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised` and `spent` equal the module's |
+| Branch | `chore/campaign-finance-update`, force-pushed from `main` on every run: an unmerged earlier week is replaced, never stacked |
+| Baselines | `.github/actions/regen-baselines` against a preview of the edited tree |
+| Commit | `scripts/ci/commit-baselines.ts` with `COMMIT_PATHS="src tests"`, API-signed |
+| PR | Opened if none is open for the branch. Never auto-merged: a person checks the figures against the budget sheet and merges |
+
+`budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits. Money pledged but not banked never enters the payload.
+
+The sender needs a fine-grained PAT scoped to this repo with Contents read/write (what `repository_dispatch` requires). The workflow reuses `SCHEDULED_PUBLISH_TOKEN`, so the PR triggers the `pull_request` workflows.
 
 ---
 
