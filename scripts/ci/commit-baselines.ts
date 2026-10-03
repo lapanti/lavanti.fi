@@ -9,10 +9,12 @@
  *
  * Env: GITHUB_TOKEN (PAT so downstream pull_request workflows trigger),
  * GITHUB_REPOSITORY (owner/name), BRANCH (existing branch at current HEAD),
- * COMMIT_MESSAGE. Changed paths are read from `git status --porcelain -- tests`.
+ * COMMIT_MESSAGE. Changed paths are read from `git status --porcelain -- <paths>`,
+ * where COMMIT_PATHS is a space-separated pathspec list (default `tests`);
+ * campaign-finance-update.yml widens it to commit its src/ edits alongside.
  */
 
-import { execSync } from 'node:child_process'
+import { execFileSync, execSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
@@ -36,6 +38,13 @@ export function parsePorcelain(status: string): FileChanges {
     return { additions, deletions }
 }
 
+/** Pathspecs to commit: COMMIT_PATHS split on whitespace, `tests` when unset or blank. */
+export function commitPaths(value: string | undefined): string[] {
+    const paths = (value ?? '').split(/\s+/).filter(Boolean)
+
+    return paths.length > 0 ? paths : ['tests']
+}
+
 const MUTATION = `mutation ($input: CreateCommitOnBranchInput!) {
     createCommitOnBranch(input: $input) { commit { oid } }
 }`
@@ -57,12 +66,17 @@ if (isMain) {
      * aria goldens like `…-på-svenska-…`), which would reach readFileSync as a
      * quoted, octal-escaped literal and fail with ENOENT.
      */
-    const status = execSync('git -c core.quotePath=false status --porcelain -uall -- tests', {
-        encoding: 'utf8',
-    })
+    const paths = commitPaths(process.env.COMMIT_PATHS)
+    const status = execFileSync(
+        'git',
+        ['-c', 'core.quotePath=false', 'status', '--porcelain', '-uall', '--', ...paths],
+        {
+            encoding: 'utf8',
+        }
+    )
     const { additions, deletions } = parsePorcelain(status)
     if (additions.length === 0 && deletions.length === 0) {
-        process.stderr.write('commit-baselines: no baseline changes under tests/ to commit\n')
+        process.stderr.write(`commit-baselines: no changes under ${paths.join(', ')} to commit\n`)
         process.exit(1)
     }
 
