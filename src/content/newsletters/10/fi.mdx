@@ -1,0 +1,66 @@
+---
+lang: 'fi'
+slug: 'digieuro-vaatii-yksityisyyden-jo-rakenteeseen'
+pageTitle: 'Kolme ehtoa, joilla digieuro kannattaa'
+title: 'Digieuro vaatii yksityisyyden jo rakenteeseen'
+description: 'Digieuro voi vähentää riippuvuutta Visasta ja Mastercardista, jos offline-maksu, yksityisyys ja maksuton peruskäyttö kirjataan lakiin.'
+faq:
+  - q: 'Korvaisiko digieuro käteisen?'
+    a: 'Ei. Digieuro olisi keskuspankin liikkeelle laskemaa rahaa sähköisessä muodossa. Se tulisi setelien ja kolikoiden rinnalle eikä poistaisi käteistä.'
+  - q: 'Näkisikö joku digieurolla tehdyt ostokset?'
+    a: 'Sen ratkaisee järjestelmän rakenne. Euroopan parlamentin kannassa yksityisyys rakennettaisiin tekniikkaan esimerkiksi nollatietotodistuksilla, joilla maksun voi todentaa paljastamatta maksajan tietoja. Offline-maksu siirtyisi laitteelta toiselle ilman yhteyttä palvelimeen.'
+  - q: 'Mitä Suomen pitäisi ajaa digieuroneuvotteluissa?'
+    a: 'Offline-maksaminen kirjataan lakiin digieuron perusominaisuudeksi, yksityisyys rakennetaan tekniikkaan niin, ettei mikään keskitetty järjestelmä näe yksittäisiä ostoksia, ja peruskäyttö pysyy kuluttajalle maksuttomana. Lisäksi digieuron kauppiasmaksuille asetetaan katto.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+Kun maksat torilla mansikat kymmenen euron setelillä, ostoksesta ei jää merkintää kenenkään tietokantaan. Sinun ei tarvitse selittää sitä myyjälle, pankille eikä valtiolle. Suomessa tätä pidetään niin itsestään selvänä, ettei siitä juuri puhuta.
+
+Käteinen on silti katoamassa arjesta, ja sen paikan on ottanut kortti. Korttimaksu kulkee yleensä yhdysvaltalaisen korttiyhtiön kautta. [Euronewsin kokoamien EKP:n tietojen mukaan](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) Visa ja Mastercard välittävät 61 prosenttia euroalueen korttimaksuista ja lähes kaikki rajat ylittävät korttimaksut. Suomessa [käytännössä lähes kaikki korttimaksut kulkevat yhdysvaltalaisen maksuvälittäjän kautta](https://dawn.fi/uutiset/2026/06/24/digitaalinen-euro-eteni-euroopan-parlamentissa).
+
+Eurooppalainen digitaalinen euro voisi muuttaa tämän asetelman ja vahvistaa Euroopan [digitaalista itsenäisyyttä](/fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/). Digieuron kanssa meidän pitää kuitenkin huolehtia, että siitä tulee digitaalinen käteinen, jolla voi maksaa ilman verkkoyhteyttä ja jonka ostoksia mikään keskitetty järjestelmä ei näe.
+
+## Digitaalisesti maksetaan joka tapauksessa
+
+Maksaminen siirtyy enenevässä määrin digitaaliseksi joka tapauksessa. Ratkaistavaksi jää, kenen järjestelmällä maksamme ja millä ehdoilla. Vuonna 2026 vastaus on kaksi yhdysvaltalaista yhtiötä.
+
+Ne toimivat hyvin, ja harva meistä on joutunut miettimään asiaa kassajonossa. Varautumisen kannalta asetelma on silti hauras. Kun koko yhteiskunnan arkinen maksaminen nojaa kahteen toimittajaan, joiden toimintaa ohjaa toisen maan lainsäädäntö, kyse on [huoltovarmuudesta](/fi/blog/82/huoltovarmuus-ei-ulotu-pilveen/) samalla tavalla kuin sähkössä tai polttoaineessa. Kauppiaalle sama asetelma näkyy [kauppiasmaksuina, joita korttiyhtiöt perivät](https://dawn.fi/uutiset/2026/06/24/digitaalinen-euro-eteni-euroopan-parlamentissa).
+
+Digieuro olisi keskuspankin liikkeelle laskemaa rahaa sähköisessä muodossa. Se tulisi setelien ja kolikoiden rinnalle, eikä siis poistaisi käteistä.
+
+[Komission esityksessä](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) digieurolla voisi maksaa sekä verkossa että ilman verkkoyhteyttä. [Parlamentin kannassa](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability) peruskäyttö olisi kuluttajalle maksutonta. [EKP:n mukaan](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) pankit toimisivat digieuron palveluntarjoajina ja saisivat siitä korvauksen. Eurooppalainen maksaminen saisi yhteisen perustan, jonka päälle pankit ja palveluyritykset voisivat rakentaa omia palvelujaan. [Pankkien huoli talletusten siirtymisestä keskuspankkirahaan](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) on aiheellinen, ja siihen vastaisi suunniteltu henkilökohtainen hallussapitoraja, jonka ansiosta säästöt pysyisivät pankissa.
+
+## Rakennetaan yksityisyys sisään alusta asti
+
+Minulla on yli vuosikymmenen kokemus turvallisten ohjelmistojen ja pankkipalvelujen rakentamisesta. Siinä työssä oppii, että järjestelmän yksityisyys ratkaistaan suunnitteluvaiheessa. Jos jokainen maksu kulkee palvelimen kautta, joka kirjaa, kuka maksoi, kenelle ja mistä, tieto on olemassa. Kun tieto on olemassa, sille löytyy ennemmin tai myöhemmin uusi käyttötarkoitus. Jos yksityisyyttä ei rakenneta sisään järjestelmällisesti, yksityisyydestä annettu lupaus on helppo myöhemmin rikkoa. Alusta asti sisään rakennettua yksityisyyttä on paljon vaikeampi purkaa, koska tietoa ei ole alun perinkään kerätty.
+
+Siksi digieuroa kannattaa arvioida yhdellä testillä: näkeekö joku keskitetysti, mitä ostat? Ihmisten ostohistoriasta voi päätellä asioita, joita he eivät haluaisi kenenkään tietävän. Yhdysvaltalainen kauppaketju Target [päätteli ostoksista jopa asiakkaidensa raskauden](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html). Kenenkään ei pidä joutua luovuttamaan sellaista tietoa vain siksi, että maksaa kahvinsa. Yksityisyys on [perusoikeus, jota ei pidä purkaa perusteettomasti](/fi/blog/45/perusoikeuksia-ei-pida-purkaa-perusteettomasti/).
+
+Euroopan parlamentin talous- ja raha-asioiden valiokunta hyväksyi digieuroa koskevan mietintönsä 23. kesäkuuta 2026 [äänin 43 puolesta, 14 vastaan ja 1 tyhjä](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability). Parlamentin tiedote nostaa yksityisyyden samalle tasolle suvereniteetin ja rahoitusvakauden kanssa. Kantaan sisältyvät täysin maksuttomat offline-maksut, maksuttomat peruspalvelut ja katto kauppiaiden ja palveluntarjoajien välisille maksuille. Yksityisyys rakennettaisiin sisään esimerkiksi nollatietotodistusten kaltaisella tekniikalla, jolla maksun voi todentaa paljastamatta maksajan tietoja. Parlamentin täysistunto antoi 9. heinäkuuta 2026 [äänin 416 puolesta, 169 vastaan ja 22 tyhjää](https://howtheyvote.eu/votes/195719) valtuudet neuvotella laista jäsenmaita edustavan neuvoston kanssa.
+
+Offline-maksu on yksityisyyden lisäksi varautumista. Käteisen vahvuus on aina ollut se, että se toimii silloinkin, kun verkko ei toimi. Digitaalinen käteinen, joka siirtyy laitteelta toiselle ilman yhteyttä palvelimeen, säilyttää tämän ominaisuuden.
+
+Jos yksityisyys taas jää neuvotteluissa vaihtorahaksi, Eurooppa saa [uuden valvontapinnan](/fi/blog/54/chat-control-parlamentti-toimi-oikein/) eikä käteisen digitaalista vastinetta.
+
+## Milloin digieuron ehdot ratkaistaan?
+
+Digieuron ehdot ratkaistaan syksyn 2026 neuvotteluissa, vaikka digieuro itse on vasta tulossa. [Euronewsin mukaan](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) digieuro voisi olla käytössä arjen maksuissa vuonna 2029, jos laki hyväksytään vielä vuonna 2026. EU-maiden johtajat ovat asettaneet tavoitteeksi juuri sen. Syksyllä 2026 parlamentti, neuvosto ja komissio neuvottelevat lopullisesta tekstistä. Kun laki on hyväksytty, sen perusratkaisut ovat lukossa.
+
+Käytännön valmistelu etenee samaan aikaan. Euroopan keskuspankki [valitsi heinäkuussa 2026 36 maksupalveluntarjoajaa digieuron pilottiin](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html), ja [Suomen Pankki ja OP Pohjola ovat sopineet osallistumisesta](https://www.suomenpankki.fi/fi/ajankohtaista/lehdistotiedotteet-ja-uutiset/uutiset/2026/suomen-pankki-ja-op-pohjola-kaynnistavat-yhteistyon-digitaalisen-euron-pilotissa/). Pilotti alkaa vuoden 2027 jälkipuoliskolla ja kestää 12 kuukautta.
+
+Suomi on siis mukana siellä, missä toteutusta testataan. Pilotti testaa kuitenkin sitä, mitä laki sallii, ja laki kirjoitetaan syksyn 2026 neuvotteluissa.
+
+## Kirjataan offline-maksut ja yksityisyys lakiin
+
+Suomen kannattaa ajaa neuvotteluissa kolmea asiaa:
+
+- Offline-maksaminen kirjataan lakiin digieuron perusominaisuudeksi.
+- Yksityisyys rakennetaan tekniikkaan niin, ettei mikään keskitetty järjestelmä näe yksittäisiä ostoksia.
+- Peruskäyttö pysyy kuluttajalle maksuttomana, ja digieuron kauppiasmaksuille asetetaan katto, jotta digieuro tuo maksamiseen aitoa kilpailua.
+
+Näillä ehdoilla digieuro säilyttäisi sen, minkä kymmenen euron seteli on aina antanut: voit maksaa ostoksesi ilman, että kukaan kirjaa sitä muistiin.

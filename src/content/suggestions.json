@@ -1,6 +1,17 @@
 {
-  "backlinks": {},
+  "backlinks": {
+    "newsletter:10": {
+      "checkedAt": "2026-10-03",
+      "contentHash": "259c44aaa4afd7c4033dfa7b67636e7bad960bd77ec66618f050ce31ac22e2b3",
+      "model": "typesafe/jev-1.13-20260917"
+    }
+  },
   "links": {
+    "newsletter:10": {
+      "checkedAt": "2026-10-03",
+      "contentHash": "259c44aaa4afd7c4033dfa7b67636e7bad960bd77ec66618f050ce31ac22e2b3",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "post:1": {
       "checkedAt": "2026-09-30",
       "contentHash": "35167a592098489de5bdd3959de88c3895fc9914383b4befd88964b663035258",
