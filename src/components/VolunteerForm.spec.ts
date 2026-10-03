@@ -48,6 +48,24 @@ describe('<VolunteerForm lang="fi" />', () => {
         expect(trap?.closest('[aria-hidden="true"]')).not.toBeNull()
     })
 
+    it('puts a focusable error box before the first field', async () => {
+        const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
+        const box = result.querySelector('#volunteer-error')
+
+        expect(box?.getAttribute('tabindex')).toBe('-1')
+        expect(box?.getAttribute('role')).toBe('alert')
+        expect(result.querySelector('#lomake')?.firstElementChild).toBe(box)
+    })
+
+    it('keeps typed values for an error round-trip but never the consent', async () => {
+        const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
+        const script = [...result.querySelectorAll('script')].map((s) => s.textContent).join('\n')
+
+        expect(script).toContain("var KEY = 'volunteer-form'")
+        expect(script).toContain("var FIELDS = ['name', 'email', 'phone', 'municipality']")
+        expect(script).not.toMatch(/data\.consent|data\[.consent.\]/)
+    })
+
     it('renders the Turnstile widget', async () => {
         const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
 
