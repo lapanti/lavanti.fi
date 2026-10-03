@@ -225,9 +225,10 @@ describe('handleStats', () => {
 
     it('returns counts only, with small cells merged', async () => {
         const { db } = fakeDb({
-            'COUNT(*) AS n FROM donate_clicks': [{ n: 7 }],
-            'COUNT(*) AS n FROM donate_clicks GROUP BY key': [{ key: 'sote / linkedin', n: 7 }],
-            'FROM volunteers GROUP BY key': [
+            'COUNT(*) AS n FROM donate_clicks': [{ n: 9 }],
+            'COUNT(*) AS n FROM donate_clicks WHERE ts >= ?': [{ n: 7 }],
+            'COUNT(*) AS n FROM donate_clicks WHERE ts >= ? GROUP BY key': [{ key: 'sote / linkedin', n: 7 }],
+            'FROM volunteers WHERE created_at >= ? GROUP BY key': [
                 { key: 'sote / linkedin', n: 3 },
                 { key: '- / -', n: 1 },
             ],
@@ -254,7 +255,28 @@ describe('handleStats', () => {
             since: '2026-10-01',
             total: 4,
         })
-        expect(body.donate_clicks).toEqual({ by_campaign_source: { 'sote / linkedin': 7 }, total: 7 })
+        expect(body.donate_clicks).toEqual({
+            by_campaign_source: { 'sote / linkedin': 7 },
+            since: '2026-10-01',
+            since_count: 7,
+            total: 9,
+        })
         expect(JSON.stringify(body)).not.toContain('@')
+    })
+
+    it('counts the per-link breakdowns over all time without ?since', async () => {
+        const { db } = fakeDb({
+            'FROM donate_clicks GROUP BY key': [{ key: 'sote / linkedin', n: 4 }],
+            'FROM donate_clicks WHERE ts >= ? GROUP BY key': [{ key: 'sote / linkedin', n: 99 }],
+            'FROM volunteers GROUP BY key': [{ key: 'sote / linkedin', n: 5 }],
+            'FROM volunteers WHERE created_at >= ? GROUP BY key': [{ key: 'sote / linkedin', n: 99 }],
+        })
+        const res = await handleStats(req('Bearer t'), { DB: db, LIITY_STATS_TOKEN: 't' })
+        const body = (await res.json()) as {
+            donate_clicks: Record<string, unknown>
+            volunteers: Record<string, unknown>
+        }
+        expect(body.volunteers.by_campaign_source).toEqual({ 'sote / linkedin': 5 })
+        expect(body.donate_clicks).toMatchObject({ by_campaign_source: { 'sote / linkedin': 4 }, since_count: null })
     })
 })

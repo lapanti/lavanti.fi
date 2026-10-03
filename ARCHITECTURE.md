@@ -43,11 +43,11 @@ Feature-specific specs (blueprint, contracts, scenarios) live at `.agents/specs/
 
 The site stays static. `functions/` holds the only server code, three thin wrappers around `src/lib/volunteers.ts` (logic and unit tests live there; `astro preview` and the e2e suite do not run functions):
 
-| Route                  | Does                                                                                                                                                                           |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `POST /api/liity`      | Volunteer sign-up from `/fi/liity/`: validation, honeypot, Turnstile, insert into D1 `volunteers`, 303 to the thank-you page. Fails closed without `DB` or `TURNSTILE_SECRET`. |
-| `GET /lahjoita`        | Logs hour + campaign link into `donate_clicks`, then 302 to the party's donation form (`DONATE_URL` env overrides the constant).                                               |
-| `GET /api/liity/stats` | Bearer `LIITY_STATS_TOKEN`; aggregate counts only, cells under 3 merged into `muu`. Read by the lavanti-2027 analytics fetch and the obsidian-notes morning brief.             |
+| Route                  | Does                                                                                                                                                                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /api/liity`      | Volunteer sign-up from `/fi/liity/`: validation, honeypot, Turnstile, insert into D1 `volunteers`, 303 to the thank-you page. Fails closed without `DB` or `TURNSTILE_SECRET`.                                                                                                     |
+| `GET /lahjoita`        | Logs hour + campaign link into `donate_clicks`, then 302 to the party's donation form (`DONATE_URL` env overrides the constant).                                                                                                                                                   |
+| `GET /api/liity/stats` | Bearer `LIITY_STATS_TOKEN`; aggregate counts only, cells under 3 merged into `muu`. `?since=YYYY-MM-DD` adds `since_count` and limits the per-link (`campaign / source`) breakdowns to that window. Read by the lavanti-2027 analytics fetch and the obsidian-notes morning brief. |
 
 - **Configuration:** no `wrangler.toml` (one would take over the dashboard settings). In the `laurilavanti` Pages project: D1 binding `DB` → database `lavanti-fi` (EU jurisdiction), secrets `TURNSTILE_SECRET` and `LIITY_STATS_TOKEN`. The Turnstile site key is public and lives in `src/content/volunteer.ts`.
 - **Schema:** `migrations/*.sql`, applied by hand with `npx wrangler d1 execute lavanti-fi --remote --file=<file>`.
