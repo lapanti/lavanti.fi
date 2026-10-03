@@ -21,6 +21,8 @@
  *   - collection entries (posts, newsletters): `updatedDate` in
  *     src/content/<collection>/<id>/meta.json, shared by the fi/sv/en siblings —
  *     so the entry, not the file, is the unit checked.
+ *
+ * src/content/campaignFinance.ts counts as content of the three finance pages.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -28,6 +30,8 @@ import { readFileSync } from 'node:fs'
 
 // eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
 import { helsinkiDateOf } from '../../src/lib/publishing.ts'
+// eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
+import { FINANCE_PAGES, MODULE_PATH as FINANCE_MODULE } from '../ci/update-campaign-finance.ts'
 
 export const SKIP_MARKER = '[skip-updated-date]'
 
@@ -55,6 +59,20 @@ export function unitOf(file: string): { unit: string; field: string } | null {
         return { field: normalised, unit: normalised }
     }
     return null
+}
+
+/**
+ * Every unit a changed file belongs to. The campaign finance data module has no
+ * date of its own: the three finance pages render its figures, so a change to it
+ * is a change to each of them.
+ */
+export function unitsOf(file: string): { unit: string; field: string }[] {
+    if (file.replace(/\\/g, '/') === FINANCE_MODULE) {
+        return FINANCE_PAGES.map((page) => ({ field: page, unit: page }))
+    }
+    const unit = unitOf(file)
+
+    return unit ? [unit] : []
 }
 
 /** Frontmatter/JSON text with the updatedDate value blanked, so a bump alone reads as "unchanged". */
@@ -132,11 +150,11 @@ export interface Revisions {
 export function findOffenders({ cwd, files, from, now = today(), to }: Revisions): Offender[] {
     const units = new Map<string, { field: string; files: string[] }>()
     for (const file of files) {
-        const resolved = unitOf(file)
-        if (!resolved) continue
-        const entry = units.get(resolved.unit) ?? { field: resolved.field, files: [] }
-        entry.files.push(file)
-        units.set(resolved.unit, entry)
+        for (const resolved of unitsOf(file)) {
+            const entry = units.get(resolved.unit) ?? { field: resolved.field, files: [] }
+            entry.files.push(file)
+            units.set(resolved.unit, entry)
+        }
     }
 
     const offenders: Offender[] = []

@@ -4,7 +4,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-import { findOffenders, readUpdatedDate, today, unitOf, withoutUpdatedDate } from './updated-date'
+import { FINANCE_PAGES } from '../ci/update-campaign-finance'
+import { findOffenders, readUpdatedDate, today, unitOf, unitsOf, withoutUpdatedDate } from './updated-date'
 
 describe('unitOf', () => {
     it('treats a page as its own unit, carrying updatedDate in its frontmatter', () => {
@@ -160,6 +161,33 @@ describe('findOffenders', () => {
         write('src/pages/fi/uusi/index.mdx', page('2026-09-11', 'Uusi'))
         git('add', '-A')
         expect(staged(['src/pages/fi/uusi/index.mdx'])).toEqual([])
+    })
+
+    it('requires the finance pages to bump when only the data module changed', () => {
+        const module = 'src/content/campaignFinance.ts'
+        write(module, 'export const campaignFinance = { spent: 1 }\n')
+        for (const financePage of FINANCE_PAGES) write(financePage, page('2026-01-01', 'Rahoitus'))
+        git('add', '-A')
+        git('commit', '-qm', 'finance seed')
+
+        write(module, 'export const campaignFinance = { spent: 2 }\n')
+        git('add', '-A')
+        expect(staged([module])).toEqual(FINANCE_PAGES.map((p) => ({ field: p, unit: p })))
+
+        for (const financePage of FINANCE_PAGES) write(financePage, page('2026-09-11', 'Rahoitus'))
+        git('add', '-A')
+        expect(staged([module, ...FINANCE_PAGES])).toEqual([])
+    })
+})
+
+describe('unitsOf', () => {
+    it('maps the campaign finance module to the three finance pages', () => {
+        expect(unitsOf('src/content/campaignFinance.ts')).toEqual(FINANCE_PAGES.map((p) => ({ field: p, unit: p })))
+    })
+
+    it('wraps unitOf for every other file', () => {
+        expect(unitsOf('src/pages/fi/yhteystiedot/index.mdx')).toEqual([unitOf('src/pages/fi/yhteystiedot/index.mdx')])
+        expect(unitsOf('README.md')).toEqual([])
     })
 })
 
