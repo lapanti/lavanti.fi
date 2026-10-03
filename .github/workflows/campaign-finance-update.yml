@@ -1,7 +1,7 @@
 name: Campaign finance update
 
-# Turns the weekly campaign digest's figures into a PR against
-# src/content/campaignFinance.ts. The digest sends a repository_dispatch event
+# Turns weekly campaign finance figures into a PR against
+# src/content/campaignFinance.ts. A weekly job outside this repo sends a repository_dispatch event
 # `campaign-finance-update` with client_payload `{ asOf, raised, spent }`;
 # workflow_dispatch takes the same JSON as the `payload` input for manual runs.
 #
@@ -116,7 +116,7 @@ jobs:
 
           body="$RUNNER_TEMP/body.md"
           {
-            echo "Automated update from the weekly campaign digest, opened by campaign-finance-update.yml."
+            echo "Automated weekly figures update, opened by campaign-finance-update.yml."
             echo
             cat "$TABLE_FILE"
             echo

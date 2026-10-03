@@ -330,7 +330,7 @@ Component props:
 
 ## Automated weekly update
 
-The weekly campaign digest reads the budget sheet and sends `repository_dispatch` event `campaign-finance-update` to this repo. The `workflow_dispatch` input `payload` takes the same JSON for manual runs.
+A weekly job outside this repo reads the budget sheet and sends `repository_dispatch` event `campaign-finance-update` to this repo. The `workflow_dispatch` input `payload` takes the same JSON for manual runs.
 
 ```typescript
 interface FinancePayload {
