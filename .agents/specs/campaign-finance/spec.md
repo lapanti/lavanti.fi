@@ -36,7 +36,6 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
-- Real received figures. The state at launch is the true one: nothing received from any source, a 10 000 € own commitment, and no confirmed spending.
 - Client-side JavaScript of any kind.
 
 ---
@@ -178,8 +177,9 @@ Feature: Campaign finance transparency page
   Scenario: Automated update opens a PR for review
     Given a campaign-finance-update payload whose raised or spent figures differ from main
     When campaign-finance-update.yml runs
-    Then branch chore/campaign-finance-update is reset to main and carries one API-signed commit with the new figures, the three updatedDate bumps and regenerated baselines
+    Then branch chore/campaign-finance-update points at one API-signed commit on top of main with the new figures, the three updatedDate bumps and regenerated baselines
     And a PR from that branch is open, with auto-merge off
+    And a PR already open from an earlier week stays open and shows the new commit, never closed or marked merged
 
   Scenario: Automated update with unchanged figures
     Given a payload whose raised and spent equal main's, whatever its asOf
@@ -343,9 +343,10 @@ interface FinancePayload {
 | Step | Behaviour |
 |---|---|
 | `scripts/ci/update-campaign-finance.ts` | Validates the payload against the invariants above. Rewrites `asOf`, every `raised` value and `spent` in the `campaignFinance` literal, and derives `ownCommitment` so that `ownCommitment + raised.own` holds. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised` and `spent` equal the module's |
-| Branch | `chore/campaign-finance-update`, force-pushed from `main` on every run: an unmerged earlier week is replaced, never stacked |
-| Baselines | `.github/actions/regen-baselines` against a preview of the edited tree |
-| Commit | `scripts/ci/commit-baselines.ts` with `COMMIT_PATHS="src tests"`, API-signed |
+| Scratch branch | `chore/campaign-finance-update-<run id>`, cut from `main`, deleted at the end of the run |
+| Baselines | `.github/actions/regen-baselines` against a preview of the edited tree, aliased to the scratch branch |
+| Commit | `scripts/ci/commit-baselines.ts` on the scratch branch, API-signed. `COMMIT_PATHS` lists the module, the three pages and `tests` |
+| Rolling branch | `chore/campaign-finance-update` moves to that commit in one ref update: an unmerged earlier week is replaced, never stacked. It never points at `main` itself, because GitHub closes or marks merged an open PR whose head is already in its base |
 | PR | Opened if none is open for the branch. Never auto-merged: a person checks the figures against the budget sheet and merges |
 
 `budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits. Money pledged but not banked never enters the payload.
