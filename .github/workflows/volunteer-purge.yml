@@ -3,7 +3,8 @@ name: Volunteer data purge
 # Retention for the D1 tables behind /api/liity and /lahjoita (privacy notice
 # § Vapaaehtoiseksi ilmoittautuminen): every volunteer row is deleted after
 # 2027-07-31, donation-click rows after 13 months. Deleted rows leave D1 Time
-# Travel within 30 days. Needs CLOUDFLARE_API_TOKEN with D1 Edit.
+# Travel within 30 days. Uses CLOUDFLARE_D1_TOKEN, a token scoped to Account ·
+# D1 · Edit only (expires 2027-09-01), not the deploy token.
 
 on:
   schedule:
@@ -21,7 +22,7 @@ jobs:
       - name: Delete expired rows
         uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: >-
             d1 execute lavanti-fi --remote --command
