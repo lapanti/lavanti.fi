@@ -71,7 +71,10 @@ const valid = {
 const post = (fields: Record<string, string | string[]>) =>
     new Request('https://lavanti.fi/api/liity', { body: form(fields), method: 'POST' })
 
-const turnstile = (success: boolean) => async () => new Response(JSON.stringify({ success }))
+const turnstile =
+    (success: boolean, hostname = 'lavanti.fi') =>
+    async () =>
+        new Response(JSON.stringify({ hostname, success }))
 
 const NOW = new Date('2026-10-02T12:34:56Z')
 
@@ -137,6 +140,13 @@ describe('handleSignup', () => {
     it('stores nothing when Turnstile fails', async () => {
         const { calls, db } = fakeDb()
         const res = await handleSignup(post(valid), env(db), turnstile(false), NOW)
+        expect(res.headers.get('Location')).toContain('virhe=varmistus')
+        expect(calls).toHaveLength(0)
+    })
+
+    it('rejects a Turnstile token solved on another hostname', async () => {
+        const { calls, db } = fakeDb()
+        const res = await handleSignup(post(valid), env(db), turnstile(true, 'example.com'), NOW)
         expect(res.headers.get('Location')).toContain('virhe=varmistus')
         expect(calls).toHaveLength(0)
     })

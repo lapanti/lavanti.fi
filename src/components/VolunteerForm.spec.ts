@@ -51,7 +51,10 @@ describe('<VolunteerForm lang="fi" />', () => {
     it('renders the Turnstile widget', async () => {
         const result = await renderAstroComponent(VolunteerForm, { props: { lang: 'fi' } })
 
-        expect(result.querySelector('.cf-turnstile')?.getAttribute('data-sitekey')).toBeTruthy()
+        const widget = result.querySelector('.cf-turnstile')
+
+        expect(widget?.getAttribute('data-sitekey')).toBe('0x4AAAAAAFMh8S3Jk7UPxASR')
+        expect(widget?.getAttribute('data-language')).toBe('fi')
     })
 })
 
