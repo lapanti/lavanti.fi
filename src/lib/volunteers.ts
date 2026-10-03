@@ -105,14 +105,17 @@ export const parseVolunteer = (form: FormData, now: Date): ParseResult => {
     const phone = text(form, 'phone')
     if (phone !== '' && !PHONE.test(phone)) return { error: 'phone', ok: false }
 
+    /*
+     * Optional: an empty municipality is stored as '' (the column is NOT NULL) and no help
+     * choice as '[]'; a value outside the fixed lists is still rejected.
+     */
     const municipality = text(form, 'municipality')
-    if (!(MUNICIPALITIES as readonly string[]).includes(municipality)) return { error: 'municipality', ok: false }
+    if (municipality !== '' && !(MUNICIPALITIES as readonly string[]).includes(municipality)) {
+        return { error: 'municipality', ok: false }
+    }
 
-    const help = form
-        .getAll('help')
-        .filter((v): v is string => typeof v === 'string')
-        .filter((v) => (HELP_OPTIONS as readonly string[]).includes(v))
-    if (help.length === 0) return { error: 'help', ok: false }
+    const help = form.getAll('help').filter((v): v is string => typeof v === 'string' && v !== '')
+    if (help.some((v) => !(HELP_OPTIONS as readonly string[]).includes(v))) return { error: 'help', ok: false }
 
     if (text(form, 'consent') !== 'yes') return { error: 'consent', ok: false }
 
@@ -302,7 +305,9 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
           )?.n ?? 0)
         : null
     const byMunicipality = await db
-        .prepare('SELECT municipality AS key, COUNT(*) AS n FROM volunteers GROUP BY municipality')
+        .prepare(
+            "SELECT CASE municipality WHEN '' THEN 'ei-kerrottu' ELSE municipality END AS key, COUNT(*) AS n FROM volunteers GROUP BY key"
+        )
         .all<{ key: string; n: number }>()
     const helpRows = await db.prepare('SELECT help FROM volunteers').all<{ help: string }>()
     const byHelp: Record<string, number> = {}
