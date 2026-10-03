@@ -4,7 +4,18 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 
-import { parsePorcelain } from './commit-baselines'
+import { commitPaths, parsePorcelain } from './commit-baselines'
+
+describe('commitPaths', () => {
+    it('defaults to tests when unset or blank', () => {
+        expect(commitPaths(undefined)).toEqual(['tests'])
+        expect(commitPaths('  ')).toEqual(['tests'])
+    })
+
+    it('splits a space-separated list', () => {
+        expect(commitPaths('src tests')).toEqual(['src', 'tests'])
+    })
+})
 
 describe('parsePorcelain', () => {
     it('splits modified and untracked files into additions', () => {
