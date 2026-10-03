@@ -28,10 +28,11 @@ const errorScript = `(function () {
 })()`
 ---
 
-<style define:vars={{ errorColor: colors.darkGreen, inkColor: colors.forestGreen }}>
+<style define:vars={{ errorColor: colors.darkGreen, inkColor: colors.forestGreen, tintColor: colors.forestGreen10 }}>
     .volunteer-form {
         display: grid;
-        gap: 1.25rem;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
         max-width: 36rem;
     }
 
@@ -40,32 +41,66 @@ const errorScript = `(function () {
         color: var(--inkColor);
         display: block;
         font-weight: 600;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .volunteer-form legend {
+        padding: 0;
     }
 
     .volunteer-form input[type='text'],
     .volunteer-form input[type='email'],
     .volunteer-form input[type='tel'],
     .volunteer-form select {
+        background-color: white;
         border: 1px solid var(--inkColor);
         border-radius: 0.25rem;
+        box-sizing: border-box;
+        color: var(--inkColor);
         font: inherit;
+        min-height: 3rem;
         padding: 0.6rem 0.75rem;
         width: 100%;
+    }
+
+    .volunteer-form input:focus-visible,
+    .volunteer-form select:focus-visible,
+    .volunteer-form button:focus-visible {
+        outline: 3px solid var(--inkColor);
+        outline-offset: 2px;
     }
 
     .volunteer-form fieldset {
         border: 0;
         margin: 0;
+        min-width: 0;
         padding: 0;
     }
 
     .volunteer-form .choice {
         align-items: flex-start;
+        cursor: pointer;
         display: flex;
         font-weight: 400;
-        gap: 0.5rem;
-        margin: 0.35rem 0;
+        gap: 0.75rem;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0.4rem 0;
+    }
+
+    /* Native checkbox, enlarged for touch and centred on the first line of its text. */
+    .volunteer-form .choice input {
+        accent-color: var(--inkColor);
+        flex-shrink: 0;
+        height: 1.375rem;
+        margin: 0.05rem 0 0;
+        width: 1.375rem;
+    }
+
+    .volunteer-form .consent {
+        background: var(--tintColor);
+        border-radius: 0.25rem;
+        padding: 0.75rem 1rem;
     }
 
     .volunteer-form .honeypot {
@@ -86,8 +121,12 @@ const errorScript = `(function () {
     }
 
     #volunteer-error {
+        background: var(--tintColor);
         border-left: 4px solid var(--errorColor);
-        padding-left: 0.75rem;
+        color: var(--inkColor);
+        font-weight: 600;
+        margin: 0;
+        padding: 0.75rem 1rem;
     }
 </style>
 
@@ -127,7 +166,7 @@ const errorScript = `(function () {
             HELP_OPTIONS.map((h) => (
                 <label class="choice">
                     <input name="help" type="checkbox" value={h} />
-                    {t.help[h]}
+                    <span>{t.help[h]}</span>
                 </label>
             ))
         }
@@ -138,7 +177,7 @@ const errorScript = `(function () {
         <input autocomplete="off" id="volunteer-website" name="website" tabindex="-1" type="text" />
     </div>
 
-    <label class="choice">
+    <label class="choice consent">
         <input name="consent" required type="checkbox" value="yes" />
         <span>
             {t.consent.before}
