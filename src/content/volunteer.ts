@@ -110,7 +110,7 @@ export const volunteerContent: Record<Lang, VolunteerLocale> = {
         privacyHref: '/fi/tietosuoja/',
         requiredNote: 'Tähdellä (*) merkityt kohdat ovat pakollisia. Muut voit jättää tyhjiksi.',
         submit: 'Ilmoittaudu mukaan',
-        submitHint: 'Täytä nimi ja sähköposti ja anna suostumuksesi, niin voit lähettää lomakkeen.',
+        submitHint: 'Täytä nimi ja sähköposti sekä anna suostumuksesi, niin voit lähettää lomakkeen.',
     },
     sv: {
         consent: {
