@@ -190,7 +190,14 @@ export const handleSignup = async (
         // A filled honeypot looks like success to the bot, and nothing is stored.
         return parsed.error === 'honeypot' ? redirect(`${origin}${THANKS_PATH[lang]}`, 303) : back(parsed.error)
     }
-    if (!env.DB || !env.TURNSTILE_SECRET) return back('palvelu')
+    /*
+     * Configuration and database failures all show the visitor `palvelu`; the log line names
+     * which one (Pages → Deployments → Functions → real-time logs). No form data is logged.
+     */
+    if (!env.DB || !env.TURNSTILE_SECRET) {
+        console.error(`liity: missing ${env.DB ? '' : 'DB binding '}${env.TURNSTILE_SECRET ? '' : 'TURNSTILE_SECRET'}`)
+        return back('palvelu')
+    }
     if (!(await verifyTurnstile(form, request, env.TURNSTILE_SECRET, fetchFn))) return back('varmistus')
 
     const r = parsed.row
@@ -213,7 +220,8 @@ export const handleSignup = async (
                 r.consent_version
             )
             .run()
-    } catch {
+    } catch (err) {
+        console.error(`liity: insert failed: ${err instanceof Error ? err.message : String(err)}`)
         return back('palvelu')
     }
 
