@@ -3,7 +3,7 @@
  *
  * Applies a weekly figures payload to src/content/campaignFinance.ts and bumps
  * updatedDate on the three finance pages. Run by campaign-finance-update.yml,
- * which the weekly campaign digest triggers with a repository_dispatch event;
+ * which a weekly job outside this repo triggers with a repository_dispatch event;
  * the workflow then regenerates baselines and opens a PR for a person to merge.
  *
  * The module is edited as text, not regenerated: only the literal values of
