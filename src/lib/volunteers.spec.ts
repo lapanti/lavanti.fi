@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import {
     type D1Like,
@@ -158,15 +158,22 @@ describe('handleSignup', () => {
         expect(calls).toHaveLength(0)
     })
 
-    it('fails closed without a database or Turnstile secret', async () => {
+    it('fails closed without a database or Turnstile secret, and logs which is missing', async () => {
+        const log = vi.spyOn(console, 'error').mockImplementation(() => undefined)
         const res = await handleSignup(post(valid), {}, turnstile(true), NOW)
         expect(res.headers.get('Location')).toContain('virhe=palvelu')
+        expect(log).toHaveBeenCalledWith('liity: missing DB binding TURNSTILE_SECRET')
+        log.mockRestore()
     })
 
-    it('reports a database error instead of thanking', async () => {
+    it('reports a database error instead of thanking, and logs it without form data', async () => {
+        const log = vi.spyOn(console, 'error').mockImplementation(() => undefined)
         const { db } = fakeDb({}, true)
         const res = await handleSignup(post(valid), env(db), turnstile(true), NOW)
         expect(res.headers.get('Location')).toContain('virhe=palvelu')
+        expect(log.mock.calls[0]?.[0]).toMatch(/^liity: insert failed: /)
+        expect(String(log.mock.calls[0]?.[0])).not.toContain('Testi')
+        log.mockRestore()
     })
 })
 
