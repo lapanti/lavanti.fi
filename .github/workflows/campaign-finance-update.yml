@@ -1,0 +1,115 @@
+name: Campaign finance update
+
+# Turns the weekly campaign digest's figures into a PR against
+# src/content/campaignFinance.ts. The digest sends a repository_dispatch event
+# `campaign-finance-update` with client_payload `{ asOf, raised, spent }`;
+# workflow_dispatch takes the same JSON as the `payload` input for manual runs.
+#
+# Unchanged figures end the run. Otherwise the run resets the fixed branch
+# chore/campaign-finance-update to main, applies the payload, regenerates
+# snapshot baselines against a preview of the edited tree, commits everything
+# via createCommitOnBranch (web-flow signature satisfies the signed-commit
+# protection) and opens a PR — or refreshes the open one. Never auto-merged:
+# a person checks the figures against the budget sheet and merges.
+# Spec: .agents/specs/campaign-finance/spec.md § Automated weekly update.
+#
+# Requires SCHEDULED_PUBLISH_TOKEN (fine-grained PAT, contents + pull-requests
+# read/write), shared with scheduled-publish.yml: pull_request workflows never
+# trigger for pushes and PRs made with the default GITHUB_TOKEN.
+
+on:
+  repository_dispatch:
+    types: [campaign-finance-update]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: 'JSON: { "asOf": "YYYY-MM-DD", "raised": { <seven §6 categories> }, "spent": <int> }'
+        required: true
+        type: string
+
+# Two runs would race on the force-push and the PR body; queue them instead.
+concurrency:
+  group: campaign-finance-update
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # Job-level: the runner ignores timeout-minutes on composite-action steps
+    # (actions/runner#1979), so the regen step can't guard itself.
+    timeout-minutes: 60
+    name: Apply figures and open PR
+    permissions:
+      contents: read
+      deployments: write # wrangler preview deploy records
+    env:
+      BRANCH: chore/campaign-finance-update
+    steps:
+      # No stored credential: the checkout would otherwise leave the PAT in
+      # .git/config through npm ci, the build and Playwright in the regen step.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: ".nvmrc"
+
+      # No npm ci yet: the updater uses node builtins only, so an unchanged week
+      # exits without installing anything.
+      - id: update
+        name: Apply payload to the data module
+        env:
+          # Through env, never interpolated into the script: the payload is data.
+          PAYLOAD: ${{ github.event_name == 'repository_dispatch' && toJSON(github.event.client_payload) || inputs.payload }}
+          TABLE_FILE: ${{ runner.temp }}/figures.md
+        run: node --experimental-strip-types scripts/ci/update-campaign-finance.ts
+
+      - name: Reset branch to main HEAD
+        if: steps.update.outputs.changed == 'true'
+        env:
+          PUBLISH_TOKEN: ${{ secrets.SCHEDULED_PUBLISH_TOKEN }}
+        # Force: an unmerged earlier week is replaced from fresh main, never
+        # stacked. The edits are still uncommitted in the working tree.
+        run: git push --force "https://x-access-token:${PUBLISH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
+
+      - id: regen
+        name: Regenerate baselines against a preview deploy
+        if: steps.update.outputs.changed == 'true'
+        uses: ./.github/actions/regen-baselines
+        with:
+          branch: ${{ env.BRANCH }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit (API-signed) and open or refresh the PR
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.SCHEDULED_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SCHEDULED_PUBLISH_TOKEN }}
+          COMMIT_PATHS: src tests
+          TABLE_FILE: ${{ runner.temp }}/figures.md
+        run: |
+          COMMIT_MESSAGE="chore(finance): update campaign finance figures" \
+            node --experimental-strip-types scripts/ci/commit-baselines.ts
+
+          body="$RUNNER_TEMP/body.md"
+          {
+            echo "Automated update from the weekly campaign digest, opened by campaign-finance-update.yml."
+            echo
+            cat "$TABLE_FILE"
+            echo
+            echo "Check the figures against the budget sheet before merging. Merging deploys them to the finance pages and the election-page teasers. Baselines were regenerated in this run; a later week's figures replace this branch while it stays unmerged."
+          } > "$body"
+
+          number="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')"
+          if [ -z "$number" ]; then
+            gh pr create --head "$BRANCH" --title "chore(finance): update campaign finance figures" --body-file "$body"
+          else
+            # gh pr edit fails on the Projects-classic deprecation and leaves
+            # the body unchanged; gh-pr.mjs PATCHes over REST and reads back.
+            node scripts/gh-pr.mjs body "$number" --file "$body"
+          fi
