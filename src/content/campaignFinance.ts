@@ -83,10 +83,13 @@ export interface Benchmark {
 }
 
 /**
- * The state on `asOf`. No donations have come in: the campaign account is not open, so
- * every outside source is zero. `spent` holds the items paid so far, all from the
- * candidate's own funds: that is the `own` figure, and the rest of his 10 000 € undertaking
- * stays in `ownCommitment`.
+ * The state on `asOf`. `raised.own` is what the candidate has paid in; the rest of his
+ * undertaking stays in `ownCommitment`, so the two always add up to the undertaking.
+ *
+ * `asOf`, `raised`, `spent` and `ownCommitment` are rewritten by the weekly automated
+ * update (scripts/ci/update-campaign-finance.ts), which replaces the literal values in
+ * place: keep each on its own line, and keep comments here free of figures that would
+ * go stale.
  *
  * Every figure is a whole euro; cents on a transparency page invite precision the
  * campaign cannot promise.
@@ -106,7 +109,7 @@ export const campaignFinance: CampaignFinance = {
         partyAssociations: 0,
         private: 0,
     },
-    /* Liehut 523,80 € + kampanjan visuaalinen suunnittelu 1 255 € (budget sheet), paid by asOf. */
+    /* Paid out per the campaign budget sheet, as of asOf. */
     spent: 1779,
 }
 
