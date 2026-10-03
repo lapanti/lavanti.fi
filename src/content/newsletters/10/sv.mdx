@@ -1,0 +1,66 @@
+---
+lang: 'sv'
+slug: 'digitala-euron-kraver-inbyggd-integritet'
+pageTitle: 'Tre villkor för en bra digital euro'
+title: 'Den digitala euron kräver integritet redan i strukturen'
+description: 'En digital euro kan minska beroendet av Visa och Mastercard, om offlinebetalning, inbyggd integritet och avgiftsfri grundanvändning skrivs in i lagen.'
+faq:
+  - q: 'Skulle den digitala euron ersätta kontanterna?'
+    a: 'Nej. Den digitala euron skulle vara pengar utgivna av centralbanken, i elektronisk form. Den skulle komplettera sedlar och mynt, inte ersätta kontanterna.'
+  - q: 'Skulle någon se vad jag köper med den digitala euron?'
+    a: 'Det avgörs av hur systemet byggs. Enligt Europaparlamentets ståndpunkt skulle integriteten byggas in i tekniken, till exempel med nollkunskapsbevis som gör det möjligt att verifiera en betalning utan att avslöja betalarens uppgifter. Offlinebetalningar skulle flyttas mellan apparater utan kontakt med en server.'
+  - q: 'Vad bör Finland driva i förhandlingarna om den digitala euron?'
+    a: 'Att offlinebetalning skrivs in i lagen som en grundegenskap, att integritet byggs in i tekniken så att inget centraliserat system ser enskilda köp, och att grundanvändningen förblir avgiftsfri för konsumenten. Dessutom bör ett tak sättas för den digitala eurons handlaravgifter.'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+
+export const components = { a: SmartLink, h2: H2, p: Paragraph }
+
+När du betalar jordgubbarna på torget med en tioeurossedel, lämnar köpet inget spår i någon databas. Du behöver inte förklara det för säljaren, banken eller staten. I Finland tas detta för så givet att det sällan diskuteras.
+
+Men kontanterna försvinner ur vardagen, och kortet har tagit deras plats. Kortbetalningar går vanligen via ett amerikanskt kortbolag. [Enligt ECB-uppgifter sammanställda av Euronews](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) förmedlar Visa och Mastercard 61 procent av euroområdets kortbetalningar och nästan alla gränsöverskridande kortbetalningar. I Finland går [i praktiken nästan alla kortbetalningar via en amerikansk betalningsförmedlare](https://dawn.fi/uutiset/2026/06/24/digitaalinen-euro-eteni-euroopan-parlamentissa).
+
+En europeisk digital euro skulle kunna ändra detta och stärka Europas [digitala självständighet](/sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/). Vi måste dock se till att den digitala euron blir digitala kontanter: att man kan betala utan nätuppkoppling och att inget centraliserat system ser vad man köper.
+
+## Betalningen digitaliseras i alla fall
+
+Betalningarna blir i allt högre grad digitala oavsett. Vad som återstår att lösa är vems system vi betalar med och på vilka villkor. År 2026 är svaret två amerikanska bolag.
+
+De fungerar bra, och få av oss tänker på saken i kassakön. Ur beredskapssynpunkt är upplägget ändå bräckligt: när hela samhällets vardagliga betalning vilar på två leverantörer, styrda av ett annat lands lagstiftning, handlar det om [försörjningsberedskap](/sv/blog/82/forsorjningsberedskapen-nar-inte-molnet/), precis som el eller bränsle. För handlaren syns detta i de [handlaravgifter som kortbolagen tar ut](https://dawn.fi/uutiset/2026/06/24/digitaalinen-euro-eteni-euroopan-parlamentissa).
+
+Den digitala euron skulle vara pengar utgivna av centralbanken, i elektronisk form. Den skulle komplettera sedlar och mynt, inte ersätta kontanterna.
+
+I [kommissionens förslag](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) kunde man betala med den både online och offline, med avgiftsfri grundanvändning enligt [parlamentets ståndpunkt](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability). [Enligt ECB](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) skulle bankerna vara tjänsteleverantörer för den digitala euron och få ersättning för det. Den europeiska betalningen skulle få en gemensam grund som banker och tjänsteföretag kunde bygga egna tjänster på. [Bankernas oro för att inlåningen flyttar till centralbankspengar](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) är berättigad, och den planerade personliga innehavsgränsen skulle möta den oron genom att hålla sparpengarna i banken.
+
+## Bygg in integriteten från början
+
+Jag har över tio års erfarenhet av att bygga säkra program och banktjänster, och den lär en att ett systems integritet avgörs redan i designskedet. Om varje betalning går via en server som registrerar vem som betalade, till vem och för vad, finns uppgiften och förr eller senare hittar den en ny användning. Byggs integriteten inte in systematiskt är löftet om den lätt att bryta senare. Integritet inbyggd från början är mycket svårare att montera ned, eftersom uppgifterna aldrig samlades in.
+
+Därför lönar det sig att bedöma den digitala euron med ett enda test: ser någon centralt vad du köper? Av människors köphistorik kan man dra slutsatser som de inte vill att någon ska känna till. Den amerikanska butikskedjan Target [räknade till och med ut att kunder var gravida utifrån deras köp](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html). Ingen ska behöva lämna ut sådant bara för att betala för sitt kaffe. Integritet är en [grundläggande rättighet som inte får rivas utan grund](/sv/blog/45/grundlaggande-rattigheter-far-inte-rivas-utan-grund/).
+
+Europaparlamentets utskott för ekonomi och valutafrågor godkände sitt betänkande om den digitala euron den 23 juni 2026, [med rösterna 43 för, 14 mot och 1 nedlagd](https://www.europarl.europa.eu/news/en/press-room/20260622IPR45912/digital-euro-meps-want-to-ensure-sovereignty-privacy-and-financial-stability). Parlamentets meddelande lyfter integriteten till samma nivå som suveränitet och finansiell stabilitet. Ståndpunkten omfattar helt avgiftsfria offlinebetalningar, avgiftsfria grundtjänster och ett tak för avgifterna mellan handlare och tjänsteleverantörer. Integriteten skulle byggas in till exempel med nollkunskapsbevis, som gör det möjligt att verifiera en betalning utan att avslöja betalarens uppgifter. Parlamentets plenum gav den 9 juli 2026, [med rösterna 416 för, 169 mot och 22 nedlagda](https://howtheyvote.eu/votes/195719), mandat att förhandla om lagen med rådet, som representerar medlemsländerna.
+
+Offlinebetalning handlar inte bara om integritet, utan också om beredskap. Kontanternas styrka har alltid varit att de fungerar även när nätet inte gör det. Digitala kontanter som flyttas mellan apparater utan kontakt med en server bevarar den egenskapen.
+
+Om integriteten däremot blir skiljemynt i förhandlingarna, får Europa en [ny övervakningsyta](/sv/blog/54/chat-control-parlamentet-handlade-ratt/) i stället för kontanternas digitala motsvarighet.
+
+## När avgörs villkoren för den digitala euron?
+
+Villkoren för den digitala euron avgörs i förhandlingarna hösten 2026, även om den digitala euron ännu bara är på väg. Enligt [Euronews](https://www.euronews.com/business/2026/05/01/europe-moves-to-break-visa-and-mastercards-grip-but-not-everyone-agrees) skulle den kunna användas i vardagliga betalningar 2029, om lagen godkänns redan 2026, vilket är just EU-ländernas mål. Hösten 2026 förhandlar parlamentet, rådet och kommissionen om den slutliga texten, och när lagen är godkänd är grundlösningarna låsta.
+
+Samtidigt framskrider den praktiska beredningen: Europeiska centralbanken [valde i juli 2026 ut 36 betaltjänstleverantörer till piloten](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260714~8cd07d9d45.en.html) för den digitala euron, och [Finlands Bank och OP Pohjola har kommit överens om att delta](https://www.suomenpankki.fi/fi/ajankohtaista/lehdistotiedotteet-ja-uutiset/uutiset/2026/suomen-pankki-ja-op-pohjola-kaynnistavat-yhteistyon-digitaalisen-euron-pilotissa/). Piloten inleds under andra halvåret 2027 och pågår i 12 månader.
+
+Finland är alltså med där genomförandet testas. Piloten testar dock det som lagen tillåter, och lagen skrivs i förhandlingarna hösten 2026.
+
+## Skriv in offlinebetalningar och integritet i lagen
+
+Finland bör i förhandlingarna driva tre saker:
+
+- Offlinebetalning skrivs in i lagen som en grundegenskap hos den digitala euron.
+- Integritet byggs in i tekniken så att inget centraliserat system ser enskilda köp.
+- Grundanvändningen förblir avgiftsfri för konsumenten, och ett tak sätts för den digitala eurons handlaravgifter, så att den ger betalningsmarknaden verklig konkurrens.
+
+På dessa villkor skulle den digitala euron bevara det som en tioeurossedel alltid har gett: du kan betala för dina inköp utan att någon antecknar det.
