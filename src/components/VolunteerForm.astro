@@ -15,16 +15,77 @@ const { lang } = Astro.props
 const t = volunteerContent[lang]
 
 /*
- * Shows the error the function sent the visitor back with (?virhe=<code>). The codes are a
- * fixed list in the content file, so nothing from the URL is ever written into the page.
+ * Error feedback without losing what was typed.
+ * - Submit: blocks a send with no help option ticked (no native "at least one" for checkboxes)
+ *   and keeps the typed values in sessionStorage. Consent is never kept; it is ticked again.
+ * - Load with ?virhe=<code>: restores the values, shows the message from the fixed list in the
+ *   content file (nothing from the URL is written into the page), marks the field it names and
+ *   moves focus there. Any other load drops the stored values.
+ * Storage may throw (private mode, blocked site data); the form then works without restore.
  */
 const errorScript = `(function () {
-    var code = new URLSearchParams(window.location.search).get('virhe')
+    var KEY = 'volunteer-form'
+    var FIELDS = ['name', 'email', 'phone', 'municipality']
     var messages = ${JSON.stringify(t.errors)}
+    var form = document.getElementById('lomake')
+    var box = document.getElementById('volunteer-error')
+    var store = function (fn) { try { return fn(window.sessionStorage) } catch (e) { return null } }
+    var helpBoxes = function () { return form.querySelectorAll('input[name="help"]') }
+    var target = function (code) {
+        if (code === 'help') return helpBoxes()[0]
+        if (code === 'consent') return form.querySelector('input[name="consent"]')
+        return FIELDS.indexOf(code) >= 0 ? form.elements.namedItem(code) : null
+    }
+    var show = function (code) {
+        box.textContent = messages[code]
+        box.hidden = false
+        var field = target(code)
+        if (field) {
+            field.setAttribute('aria-invalid', 'true')
+            field.setAttribute('aria-describedby', 'volunteer-error')
+        }
+        box.scrollIntoView({ block: 'center' })
+        ;(field || box).focus({ preventScroll: true })
+    }
+    // After the redirect the browser jumps to #lomake once the page has loaded, which would
+    // undo the scroll and focus above; run them after that jump.
+    var showAfterLoad = function (code) {
+        var run = function () { window.requestAnimationFrame(function () { show(code) }) }
+        if (document.readyState === 'complete') run()
+        else window.addEventListener('load', run)
+    }
+
+    form.addEventListener('change', function (event) {
+        var name = event.target.name
+        form.querySelectorAll('[aria-invalid="true"]').forEach(function (el) {
+            if (el.name === name) el.removeAttribute('aria-invalid')
+        })
+    })
+
+    form.addEventListener('submit', function (event) {
+        var chosen = Array.prototype.some.call(helpBoxes(), function (c) { return c.checked })
+        if (!chosen) {
+            event.preventDefault()
+            show('help')
+            return
+        }
+        var data = { help: [] }
+        FIELDS.forEach(function (f) { data[f] = form.elements.namedItem(f).value })
+        helpBoxes().forEach(function (c) { if (c.checked) data.help.push(c.value) })
+        store(function (s) { s.setItem(KEY, JSON.stringify(data)) })
+    })
+
+    var code = new URLSearchParams(window.location.search).get('virhe')
+    var saved = store(function (s) { var v = s.getItem(KEY); s.removeItem(KEY); return v })
     if (!code || !Object.prototype.hasOwnProperty.call(messages, code)) return
-    var el = document.getElementById('volunteer-error')
-    el.textContent = messages[code]
-    el.hidden = false
+    if (saved) {
+        try {
+            var data = JSON.parse(saved)
+            FIELDS.forEach(function (f) { if (typeof data[f] === 'string') form.elements.namedItem(f).value = data[f] })
+            helpBoxes().forEach(function (c) { c.checked = (data.help || []).indexOf(c.value) >= 0 })
+        } catch (e) {}
+    }
+    showAfterLoad(code)
 })()`
 ---
 
@@ -34,6 +95,7 @@ const errorScript = `(function () {
         gap: 1.5rem;
         margin-top: 2.5rem;
         max-width: 36rem;
+        scroll-margin-top: 6.5rem;
     }
 
     .volunteer-form label,
@@ -120,6 +182,11 @@ const errorScript = `(function () {
         padding: 0.75rem 1.5rem;
     }
 
+    /* Set at runtime by the error script, so it is invisible to the scoped-CSS check. */
+    .volunteer-form :global([aria-invalid='true']) {
+        box-shadow: 0 0 0 2px var(--errorColor);
+    }
+
     #volunteer-error {
         background: var(--tintColor);
         border-left: 4px solid var(--errorColor);
@@ -127,11 +194,18 @@ const errorScript = `(function () {
         font-weight: 600;
         margin: 0;
         padding: 0.75rem 1rem;
+        /* Clears the sticky header when the #lomake redirect or scrollIntoView lands here. */
+        scroll-margin-top: 6.5rem;
+    }
+
+    /* Focused by script only, to be read out; it is not a control, so no focus ring. */
+    #volunteer-error:focus {
+        outline: none;
     }
 </style>
 
 <form action="/api/liity" class="volunteer-form" id="lomake" method="post">
-    <p hidden id="volunteer-error" role="alert"></p>
+    <p hidden id="volunteer-error" role="alert" tabindex="-1"></p>
 
     <input name="lang" type="hidden" value={lang} />
     <input name="utm_source" type="hidden" value="" />
