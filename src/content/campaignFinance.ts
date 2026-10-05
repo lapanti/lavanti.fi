@@ -15,7 +15,8 @@
 
 import type { Lang } from './nav'
 
-import figures from './campaignFinanceFigures.json'
+// The attribute is for the e2e page objects, which Playwright loads through Node's own ESM loader.
+import figures from './campaignFinanceFigures.json' with { type: 'json' }
 
 /** Names follow laki ehdokkaan vaalirahoituksesta 273/2009 §6 (2.1–2.7). */
 export type FundingSource = 'companies' | 'loans' | 'other' | 'own' | 'party' | 'partyAssociations' | 'private'
