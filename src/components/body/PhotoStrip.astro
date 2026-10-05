@@ -1,0 +1,103 @@
+---
+import type { StripPhoto } from '../../content/joinPhotos'
+import type { Lang } from '../../content/nav'
+
+import { getImageSrcset } from '../../lib/images'
+import { sizes, typographics } from '../../lib/styles'
+
+interface Props {
+    lang: Lang
+    photos: StripPhoto[]
+}
+
+const { lang, photos } = Astro.props
+
+const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto' }
+---
+
+<style
+    define:vars={{
+        captionFontFamily: typographics.caption.fontFamily,
+        captionFontSize: typographics.caption.fontSize,
+        captionFontWeight: typographics.caption.fontWeight,
+        captionLineHeight: typographics.caption.lineHeight,
+        sizes05: sizes[0.5],
+        sizes1: sizes[1],
+        sizes2: sizes[2],
+    }}
+>
+    ul {
+        display: grid;
+        gap: var(--sizes2);
+        grid-template-columns: 1fr;
+        list-style: none;
+        margin: 0 0 var(--sizes2);
+        padding: 0;
+    }
+
+    figure {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sizes05);
+        margin: 0;
+        width: 100%;
+    }
+
+    img {
+        background: var(--colorsGray);
+        border-radius: 4px;
+        height: auto;
+        width: 100%;
+    }
+
+    figcaption {
+        color: var(--colorsTextSecondary);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        font-weight: var(--captionFontWeight);
+        line-height: var(--captionLineHeight);
+    }
+
+    .credit {
+        display: block;
+    }
+
+    @media (min-width: 640px) {
+        ul {
+            gap: var(--sizes1);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+</style>
+
+<ul class="photo-strip">
+    {
+        photos.map((photo) => {
+            const img = getImageSrcset(photo.slug, 'body', photo.widths)
+
+            return (
+                <li>
+                    <figure>
+                        <img
+                            alt={photo.alt[lang]}
+                            height={img.height}
+                            loading="lazy"
+                            sizes="(max-width: 639px) 100vw, 33vw"
+                            src={img.src}
+                            srcset={img.srcset}
+                            width={img.width}
+                        />
+                        <figcaption>
+                            {photo.caption[lang]}
+                            {photo.photographer && (
+                                <span class="credit">
+                                    {creditPrefix[lang]}: {photo.photographer}
+                                </span>
+                            )}
+                        </figcaption>
+                    </figure>
+                </li>
+            )
+        })
+    }
+</ul>
