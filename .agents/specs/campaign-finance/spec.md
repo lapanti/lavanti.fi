@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-10-03
+> **Last updated**: 2026-10-05
 > **Issue**: [#1507](https://github.com/lapanti/lavanti.fi/issues/1507)
 
 ---
@@ -13,17 +13,19 @@ Lauri campaigns on transparency and against corruption. The campaign's own money
 
 The page uses the same seven funding categories as the statutory vaalirahoitusilmoitus (laki ehdokkaan vaalirahoituksesta 273/2009 §6), so a reader can later check the site line by line against the disclosure at vaalirahoitusvalvonta.fi. A category with nothing in it is printed as zero rather than hidden, so the reader sees the full set of sources either way. The campaign accepts support from private individuals, companies and associations; it takes no loans.
 
-The page separates three states of money, because conflating them would overstate what the campaign has. `raised` is money banked. `ownCommitment` is the candidate's own undertaking, which he will put in unless donations cover the budget instead: it closes the gap to the budget but is never added to `raised`, and it is hatched rather than filled so a solid block on the bar always means money that has arrived. `spent` is optional, and while no figure is confirmed the page says so instead of printing a zero it cannot stand behind.
+A transparent budget shows both sides: where the money comes from and where it goes. Spending is broken down into the seven expense categories of the same statutory disclosure (Vaalimainonta medioissa, Ulkomainonta, Vaalilehtien, esitteiden ja muun painetun materiaalin hankinta, Mainonnan suunnittelu, Vaalitilaisuudet, Vastikkeellisen tuen hankintakulut, Muut kulut), each with its budgeted amount beside what has actually gone out, so a reader sees the plan and the progress against it.
 
-Figures change throughout the campaign. Every number on the page and in the teaser must come from one typed data module so an update is a one-file edit plus an `updatedDate` bump. Page prose renders its figures from that module, 2023 benchmark included. FAQ answers and page descriptions never quote campaign figures. The single exception is the "how much does a campaign cost" FAQ answer: FAQ answers are frontmatter strings shared with FAQPage JSON-LD and cannot read the module, so it quotes the final 2023 medians and means, and `src/content/campaignFinance.spec.ts` fails if they differ from `benchmark2023`.
+The page separates money that has moved from money that is bound to move, because conflating them would overstate what the campaign has or understate what it owes. On the income side, `banked` is money on the campaign account and `pending` (tilittämättä) is money contractually coming but not yet remitted. On the spending side, `banked` is money paid out and `committed` (sitouduttu) is money the campaign is bound to pay. Pending and committed money is hatched rather than filled, so a solid block always means money that has actually moved. A promise without a contract is not money in either state and never appears on the page: there is no pledge figure.
+
+Figures change throughout the campaign. Every number on the page and in the teaser comes from one typed data module, `src/content/campaignFinance.ts`, which reads the automation-owned figures (`asOf`, `raised`, `spent`) from `src/content/campaignFinanceFigures.json` and holds the manual ones itself. An update is an edit to one of the two files plus an `updatedDate` bump. Page prose renders its figures from that module, 2023 benchmark included. FAQ answers and page descriptions never quote campaign figures. The single exception is the "how much does a campaign cost" FAQ answer: FAQ answers are frontmatter strings shared with FAQPage JSON-LD and cannot read the module, so it quotes the final 2023 medians and means, and `src/content/campaignFinance.spec.ts` fails if they differ from `benchmark2023`.
 
 ---
 
 ## Scope
 
 ### In scope
-- One data module `src/content/campaignFinance.ts`: campaign figures (`budget`, `raised` per §6 category, `spent`, `asOf`) and the 2023 benchmark (median/mean for all filers and for Uudenmaan vaalipiiri, funding shares) with source URL, retrieval date and computation method.
-- Pure helpers in `src/lib/campaignFinance.ts`: totals, gap, percentages, locale-specific euro and percent formatting, party-row merge, budget segments.
+- One data module `src/content/campaignFinance.ts`: campaign figures (`budget`, `raised` banked/pending per §6 funding source, `spent` budgeted/banked/committed per expense category, `asOf`) and the 2023 benchmark (median/mean for all filers and for Uudenmaan vaalipiiri, funding shares) with source URL, retrieval date and computation method. The automation-owned figures live in `src/content/campaignFinanceFigures.json`, imported by the module.
+- Pure helpers in `src/lib/campaignFinance.ts`: totals, gap, percentages, locale-specific euro and percent formatting, party-row merge, budget, spending and category rows.
 - Pure-CSS components `src/components/campaignFinance/`: `FinanceStat`, `FinanceStats`, `FinanceBars`, `FinanceStack`, `FinanceTeaser`.
 - Pages `/fi/eduskuntavaalit/vaalirahoitus/`, `/sv/riksdagsvalet/valfinansiering/`, `/en/elections/campaign-finance/` on `PageLayout` with `langAlternates` and a FAQ.
 - Teaser section and FAQ link on the three election pages.
@@ -56,24 +58,38 @@ Feature: Campaign finance transparency page
   Scenario: Summary stats are text, not pixels
     Given a page is rendered with CSS disabled
     When the summary section (fi #lyhyesti, sv #ikorthet, en #inbrief) is read
-    Then budget, raised total, own commitment and gap-to-budget are readable as text with a euro sign
+    Then budget, raised (banked), spent (banked) and gap-to-budget are readable as text with a euro sign
+    And the raised tile notes the pending total and the spent tile the committed total, when either is above 0
     And the as-of date is printed in the page locale
 
-  Scenario: A pledge is not a receipt
-    Given ownCommitment is 10000 and every raised category is 0
+  Scenario: Pending is not banked
+    Given raised.own is { banked: 3000, pending: 7000 } and every other source is 0
     When the funding stack renders
-    Then the own-funds row prints 0 €, a separate commitment row prints 10 000 €, and the gap row prints 20 000 €
-    And the commitment and gap segments are hatched while every received source would be solid
-    And the stack total is the budget, so the segments still sum to 100 %
+    Then the own-funds row prints "3 000 € + 7 000 € tilittämättä" (sv "ej inbetalt", en "pending")
+    And the own-funds bar draws 3000 solid followed by 7000 hatched in the same tone
+    And the gap row prints budget − 10 000 €, hatched
+    And the stack total is max(budget, banked + pending), so the segments still sum to 100 %
 
-  Scenario: No confirmed spending means no figure
-    Given spent is undefined
+  Scenario: Committed is not paid
+    Given spent.media is { budgeted: 11000, banked: 1000, committed: 4000 }
+    When the category bars render
+    Then the media row prints "1 000 € + 4 000 € sitouduttu / 11 000 €" (sv "bundet", en "committed")
+    And the bar draws 1000 solid and 4000 hatched, with a marker at the budgeted amount
+
+  Scenario: Every expense category is listed, zeros included
+    Given every spent category is { budgeted: B, banked: 0, committed: 0 }
+    When the category bars render
+    Then seven rows appear in statutory order: media, outdoor, print, design, events, supportCosts, other
+    And each prints "0 € / B" in its locale's format
+
+  Scenario: No spending yet means no spending stack
+    Given Σ spent.banked + Σ spent.committed is 0
     When the spending section renders
     Then spendingSegments returns undefined, no stack is drawn, and the section prints the pending line
-    And the summary tiles never carry a spending figure, confirmed or not
+    And the category bars still render, zeros included
 
   Scenario: Every funding category is listed, zeros included
-    Given raised.loans, raised.party, raised.partyAssociations, raised.private, raised.companies and raised.other are all 0
+    Given raised.loans, raised.party, raised.partyAssociations, raised.private, raised.companies and raised.other are all { banked: 0, pending: 0 }
     When the "where the money comes from" stack renders
     Then the legend lists six rows: own funds, loans, private individuals, companies, party (incl. party associations), other entities, plus one "still needed" row
     And each zero row prints "0 €" (fi/sv) or "€0" (en)
@@ -118,12 +134,13 @@ Feature: Campaign finance transparency page
     And each row shows a percentage with one decimal
 
   Scenario: Spending stack
-    Given spent is 5000 and raised total is 10000
+    Given Σ spent.banked is 3000, Σ spent.committed is 2000 and banked + pending raised is 10000
     When the spending stack renders
-    Then two legend rows appear: fi/sv "5 000 € (50,0 %)" for spent and unspent, en "€5,000 (50.0%)"
+    Then two legend rows appear: spent "3 000 € + 2 000 € sitouduttu" (3000 solid, 2000 hatched) and unspent "5 000 €"
+    And the stack total is max(raised, spent + committed), so committed spending that runs ahead of income never draws a negative row
 
   Scenario: Raised exceeds budget
-    Given budget is 30000 and totalRaised is 32000
+    Given budget is 30000 and banked + pending raised is 32000
     When budgetSegments and the funding stack render
     Then gapToBudget is 0, the "still needed" row prints 0 €, and the stack total is 32000 so segments sum to 100 %
 
@@ -133,21 +150,21 @@ Feature: Campaign finance transparency page
     Then every bar gets --w:0% and no NaN or Infinity appears in the HTML
     And percentOf(part, 0) returns 0
 
-  Scenario: Spent never exceeds raised on the page
-    Given spent is greater than totalRaised in the data
+  Scenario: Paid-out money never exceeds banked income
+    Given Σ spent.banked is greater than Σ raised.banked in the data
     When the data-module spec runs
-    Then the spec fails (invariant spent ≤ totalRaised), so the page is never built with a negative unspent row
+    Then the spec fails; committed spending is exempt, because a contract can precede the money
 
   Scenario: One-file update
-    Given campaignFinance.budget is changed and updatedDate is bumped on the three pages
+    Given campaignFinance.budget, or a figure in campaignFinanceFigures.json, is changed and updatedDate is bumped on the three pages
     When the site is rebuilt
-    Then the summary stats, the benchmark budget row, the funding stack and the election-page teasers reflect the new value
+    Then the summary stats, the benchmark budget row, the funding and spending stacks, the category bars and the election-page teasers reflect the new value
     And no component or page file needed editing
 
   Scenario: Election pages link to the finance page
     Given the fi, sv and en election pages
     When they render
-    Then a FinanceTeaser section shows the summaryTiles (budget, raised, own commitment, gap) and links to the locale's finance page
+    Then a FinanceTeaser section shows the summaryTiles (budget, raised, spent, gap) and links to the locale's finance page
     And the "how can I support the campaign" FAQ answer names the finance page in plain text (FAQ answers are plain strings shared with FAQPage JSON-LD; the link lives in the teaser)
 
   Scenario: Discoverability
@@ -172,7 +189,7 @@ Feature: Campaign finance transparency page
   Scenario: Invariants hold
     Given the data module
     When its spec runs
-    Then spent ≤ totalRaised ≤ budget, every figure is a non-negative integer, asOf and retrievedDate are ISO dates, benchmark shares sum to 100 ± 0.2, and DISPLAY_SOURCE_ORDER lists the six display sources in §6 order
+    Then Σ spent.banked ≤ Σ raised.banked, banked + pending raised ≤ budget, every figure is a non-negative integer, asOf and retrievedDate are ISO dates, benchmark shares sum to 100 ± 0.2, DISPLAY_SOURCE_ORDER lists the six display sources in §6 order and EXPENSE_CATEGORY_ORDER the seven categories in statutory order
 
   Scenario: Automated update opens a PR for review
     Given a campaign-finance-update payload whose raised or spent figures differ from main
@@ -187,17 +204,18 @@ Feature: Campaign finance transparency page
     Then nothing is pushed and no PR is opened or changed
 
   Scenario: Automated update rejects an invalid payload
-    Given a payload with an unknown or missing category, a negative or fractional figure, spent > totalRaised, totalRaised > budget, or an asOf that is not an ISO date or lies in the future
+    Given a payload with an unknown or missing source or category, an unknown or missing field within one, a negative or fractional figure, Σ spent.banked > Σ raised.banked, banked + pending raised > budget, or an asOf that is not an ISO date or lies in the future
     When the updater runs
     Then it exits non-zero before any push
 
-  Scenario: Own commitment follows own payments
-    Given own rises by Δ in a payload
-    When the updater rewrites the module
-    Then ownCommitment falls by Δ, floored at 0, so ownCommitment + raised.own is unchanged
+  Scenario: The updater's output is already formatted
+    Given any valid payload, with its keys in any order
+    When the updater writes campaignFinanceFigures.json
+    Then sources follow §6 order, categories statutory order, and fields banked, pending / budgeted, banked, committed
+    And the file is byte-identical to Prettier's output for it under the repo config, so no format or lint check can fail on the bot's commit
 
-  Scenario: Module edits require the page bump
-    Given a commit that changes src/content/campaignFinance.ts
+  Scenario: Figure edits require the page bump
+    Given a commit that changes src/content/campaignFinance.ts or src/content/campaignFinanceFigures.json
     When scripts/checks/updated-date.ts runs
     Then it fails unless updatedDate is bumped on the three finance pages
 
@@ -210,6 +228,7 @@ Feature: Campaign finance transparency page
     Given tests/e2e/campaignFinancePage.spec.ts and its En/Swe siblings
     When CI runs
     Then each spec has exactly the tests "should render", "should match aria snapshot", "should pass accessibility test", "should pass siteimprove check" and "should match screenshot"
+    And "should render" asserts seven category rows in the spending section, which sits below the fold and so outside the viewport screenshot
     And aria and screenshot goldens were produced by the Update baselines workflow and committed, never generated locally
 
   Scenario: Page titles fit the SEO window
@@ -238,11 +257,32 @@ export type DisplaySource = Exclude<FundingSource, 'partyAssociations'>
  */
 export const DISPLAY_SOURCE_ORDER: readonly DisplaySource[]
 
-export interface CampaignFinance {
+/** The seven expense categories of the statutory disclosure, in its order. */
+export type ExpenseCategory = 'media' | 'outdoor' | 'print' | 'design' | 'events' | 'supportCosts' | 'other'
+export const EXPENSE_CATEGORY_ORDER: readonly ExpenseCategory[]
+
+export interface Income {
+    banked: number                            // on the campaign account (Toteutunut)
+    pending: number                           // contractually coming, not yet remitted (Tilittämättä)
+}
+
+export interface Expense {
+    budgeted: number                          // planned (Budjetoitu)
+    banked: number                            // paid out (Toteutunut)
+    committed: number                         // bound to be paid (Sitouduttu)
+}
+
+/** The shape of campaignFinanceFigures.json, written whole by the weekly update. */
+export interface FinanceFigures {
     asOf: string                              // ISO date the figures were last confirmed
-    budget: number                            // planned total spend, whole euros
-    raised: Record<FundingSource, number>     // received so far, whole euros
-    spent: number                             // paid out so far, whole euros
+    raised: Record<FundingSource, Income>
+    spent: Record<ExpenseCategory, Expense>
+}
+
+export interface CampaignFinance extends FinanceFigures {
+    budget: number                            // planned total spend, whole euros (manual)
+    donationsOpen: boolean                    // manual
+    donationUrl: string                       // manual
 }
 
 /** Internal: `Benchmark` carries the shape consumers need, so this stays unexported. */
@@ -260,28 +300,20 @@ export interface Benchmark {
     sourceUrl: string
 }
 
-/** Segment colours; each maps to one token in src/lib/styles.ts colors. */
+/** Segment colours; each maps to one token in src/lib/styles.ts colors. `needed` is always hatched. */
 export type Tone = 'own' | 'loans' | 'private' | 'companies' | 'party' | 'other' | 'needed' | 'spent' | 'unspent'
-export const toneColors: Record<Tone, string> = {
-    companies: colors.signalBlue,
-    loans: colors.oat,
-    needed: colors.sand,        // FinanceStack adds a dashed outline to this tone
-    other: colors.aquaBlue,
-    own: colors.darkGreen,
-    party: colors.brightSky,
-    private: colors.brightGreen,
-    spent: colors.peach,
-    unspent: colors.lightSand,
-}
 
 export interface FinanceLabels {
     asOf: (formatted: string) => string     // receives formatDate(iso, lang) output; "Tilanne 25.9.2026"
     budget: string
     budgetRow: string                       // benchmark row label for the campaign budget
+    categories: Record<ExpenseCategory, string>
+    committed: string                       // suffix after a committed amount: "sitouduttu"
     gap: string
     mean: string
     median: string
     needed: string
+    pending: string                         // suffix after a pending amount: "tilittämättä"
     raised: string
     sets: Record<BenchmarkSet['id'], string>
     source: (retrieved: string) => string  // "Lähde: VTV:n vaalirahoitusilmoitukset 2023, haettu 25.9.2026"
@@ -304,8 +336,10 @@ Helper signatures (`src/lib/campaignFinance.ts`):
 
 | Helper | Behaviour |
 |---|---|
-| `totalRaised(f)` | Σ `f.raised` |
-| `gapToBudget(f)` | `max(0, budget − totalRaised)` |
+| `totalRaised(f)` | `{ banked, pending }`, each Σ over `f.raised` |
+| `totalSpent(f)` | `{ budgeted, banked, committed }`, each Σ over `f.spent` |
+| `gapToBudget(f)` | `max(0, budget − banked − pending)` |
+| `withPending(amount, pending, suffix, lang)` | `"3 000 € + 7 000 € tilittämättä"`, or just the amount when `pending` is 0 |
 | `percentOf(part, whole)` | one decimal; `0` when `whole ≤ 0` |
 | `barWidth(value, max)` | integer percent 0–100; `0` when `max ≤ 0` |
 | `barsMax(rows)` | largest `value` in `rows`, `0` for empty |
@@ -313,8 +347,10 @@ Helper signatures (`src/lib/campaignFinance.ts`):
 | `formatPercent(p, lang)` | fi/sv `12,3 %` (U+00A0), en `12.3%` |
 | `formatDate(iso, lang)` | hand-rolled: fi/sv `25.9.2026`, en `25 September 2026` (month table); no `Intl.DateTimeFormat`, so aria goldens are ICU-independent |
 | `mergeParty(r)` | `Record<DisplaySource, number>`, party + partyAssociations summed and rounded to one decimal |
-| `budgetSegments(f, lang)` | six display sources + `needed`, each `{ id, label, tone, value }`; stack total = `max(budget, totalRaised)` |
-| `spendingSegments(f, lang)` | `spent` + `unspent` (`totalRaised − spent`); total = `totalRaised`. The data-module invariant `spent ≤ totalRaised` is the guard; the helper does not clamp |
+| `budgetSegments(f, lang)` | six display sources (value = banked, pending = pending) + `needed`, each `{ id, label, tone, value, pending?, pendingLabel? }`; stack total = `max(budget, banked + pending)` |
+| `spendingSegments(f, lang)` | undefined when Σ banked + committed is 0; else `spent` (value = banked, pending = committed) + `unspent` (`max(0, raised − banked − committed)`, raised = banked + pending); total = `max(raised, banked + committed)` |
+| `categoryRows(f, lang)` | seven `BarRow`s in `EXPENSE_CATEGORY_ORDER`: value = banked, pending = committed, target = budgeted |
+| `summaryTiles(f, lang)` | budget; raised (banked, note = pending); spent (banked, note = committed); gap (note = as-of date) |
 
 Component props:
 
@@ -322,8 +358,8 @@ Component props:
 |---|---|
 | `FinanceStat` | `label`, `value`, `note?` |
 | `FinanceStats` | `items: { label, value, note? }[]` |
-| `FinanceBars` | `caption`, `rows: { emphasis?, label, value }[]`, `unit: 'eur' \| 'percent'`, `lang`; computes `max` via `barsMax` |
-| `FinanceStack` | `caption`, `segments: { id, label, tone, value }[]`, `total`, `lang`; every segment in the legend, only `value > 0` in the bar |
+| `FinanceBars` | `caption`, `rows: { emphasis?, label, value, pending?, pendingLabel?, target? }[]`, `unit: 'eur' \| 'percent'`, `lang`; `max` = `barsMax` over each row's `max(value + pending, target)`; pending drawn hatched after the fill, target as a marker; the amount text names every part |
+| `FinanceStack` | `caption`, `segments: { id, label, tone, value, pending?, pendingLabel? }[]`, `total`, `lang`; every segment in the legend, only `value + pending > 0` in the bar; pending drawn hatched in the segment's tone, `needed` hatched whole |
 | `FinanceTeaser` | `href`, `id` (localized section anchor: rahoitus / finansiering / finance), `lang` |
 
 ---
@@ -333,25 +369,23 @@ Component props:
 A weekly job outside this repo reads the budget sheet and sends `repository_dispatch` event `campaign-finance-update` to this repo. The `workflow_dispatch` input `payload` takes the same JSON for manual runs.
 
 ```typescript
-interface FinancePayload {
-    asOf: string                              // ISO date the sheet was read, Helsinki
-    raised: Record<FundingSource, number>     // all seven keys, whole euros
-    spent: number                             // whole euros
-}
+type FinancePayload = FinanceFigures          // whole euros; asOf is the Helsinki date the sheet was read
 ```
 
 | Step | Behaviour |
 |---|---|
-| `scripts/ci/update-campaign-finance.ts` | Validates the payload against the invariants above. Rewrites `asOf`, every `raised` value and `spent` in the `campaignFinance` literal, and derives `ownCommitment` so that `ownCommitment + raised.own` holds. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised` and `spent` equal the module's |
+| `scripts/ci/update-campaign-finance.ts` | Runs before `npm ci`, so it imports nothing outside Node built-ins and `src/lib/publishing.ts`; its source and category lists mirror the module's types and a spec holds them in step. Validates the payload against the invariants above (`budget` read from the module). Writes `campaignFinanceFigures.json` whole, in canonical key order, with `JSON.stringify(…, null, 4)` plus a newline, which matches Prettier under `.prettierrc.mjs`. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised` and `spent` equal the file's, whatever `asOf` says |
 | Scratch branch | `chore/campaign-finance-update-<run id>`, cut from `main`, deleted at the end of the run |
 | Baselines | `.github/actions/regen-baselines` against a preview of the edited tree, aliased to the scratch branch |
-| Commit | `scripts/ci/commit-baselines.ts` on the scratch branch, API-signed. `COMMIT_PATHS` lists the module, the three pages and `tests` |
+| Commit | `scripts/ci/commit-baselines.ts` on the scratch branch, API-signed. `COMMIT_PATHS` lists the figures JSON, the three pages and `tests` |
 | Rolling branch | `chore/campaign-finance-update` moves to that commit in one ref update: an unmerged earlier week is replaced, never stacked. It never points at `main` itself, because GitHub closes or marks merged an open PR whose head is already in its base |
 | PR | Opened if none is open for the branch. Never auto-merged: a person checks the figures against the budget sheet and merges |
 
-`budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits. Money pledged but not banked never enters the payload.
+`budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits in `campaignFinance.ts`.
 
-Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent`, `ownCommitment`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
+Pending income and committed spending do enter the payload, because both are bound by a contract: a donation agreed but not yet remitted, an invoice the campaign has accepted. They are separate fields, never folded into banked money. A promise without a contract, such as the candidate's own undertaking before he pays it in, is in neither column of the sheet and so never reaches the page; once he transfers it, it is banked like any other money.
+
+Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent.*`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
 
 The sender needs a fine-grained PAT scoped to this repo with Contents read/write (what `repository_dispatch` requires). The workflow reuses `SCHEDULED_PUBLISH_TOKEN`, so the PR triggers the `pull_request` workflows.
 
@@ -373,7 +407,8 @@ The sender needs a fine-grained PAT scoped to this repo with Contents read/write
 - **Do not** put figures in `description`, `intro`, prose or FAQ text that is not generated from the data module — they go stale on the next update. The one exception is the FAQ cost answer, held to `benchmark2023` by a test.
 - **Do not** make the bars the only carrier of a number — bars are `aria-hidden` decoration; the legend/value text is the content.
 - **Do not** drop zero-value categories from the legend — the zero is the statement.
-- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero or which source currently carries the campaign. Prose renders 2023 benchmark figures from `benchmark2023` (`formatInteger`, `formatDecimal`, `benchmarkSet`) rather than typing them.
+- **Do not** hand-edit `src/content/campaignFinanceFigures.json` into another key order or indentation — the next weekly update rewrites it whole, and a diff of reordered keys hides the figures a reviewer should be checking.
+- **Do not** add a second copy of any figure outside `src/content/campaignFinance.ts` and `src/content/campaignFinanceFigures.json` — the page intro, the prose and the FAQ answers point at the figures rather than restating them, and they never enumerate which sources are currently zero or which source currently carries the campaign. Prose renders 2023 benchmark figures from `benchmark2023` (`formatInteger`, `formatDecimal`, `benchmarkSet`) rather than typing them.
 - **Do not** give a segment a tone that matches the plate it sits on — the `oat` ground hides an `oat` swatch. Reach for an outline before an off-palette colour; `regionalPurple` and the other social-brand tokens are not data colours.
 - **Do not** scale a percentage bar to the largest row — a quarter drawn as a full track inflates every share by the same factor.
 - **Do not** put a mean beside a median on a skewed distribution as though the pair described it, and do not show two part-to-whole figures with different denominators without naming them.
@@ -401,3 +436,4 @@ The sender needs a fine-grained PAT scoped to this repo with Contents read/write
 | 2026-09-25 | Implementation drift: BenchmarkSet unexported, FinanceTeaser takes a section id, DISPLAY_SOURCE_ORDER replaces key order, loans tone moved off oat |
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
 | 2026-09-30 | Site review: benchmark prose renders from data (`range`, `formatInteger`, `formatDecimal`, `benchmarkSet`); FAQ cost answer is the one test-guarded copy; funding FAQ no longer implies the current mix; breadcrumbs moved in scope; summary and teaser scenarios match `summaryTiles` |
+| 2026-10-05 | Both sides of the budget: `ownCommitment` removed (no pledge figure); income split into banked/pending and spending into budgeted/banked/committed per the seven statutory expense categories, pending and committed hatched; category bars with budget markers; the summary tiles now carry spending, reversing the 2026-09-25 rule, since every figure comes from the budget sheet and a zero there is confirmed; automation-owned figures moved to `campaignFinanceFigures.json`, written whole in Prettier-identical canonical order; payload reshaped accordingly |
