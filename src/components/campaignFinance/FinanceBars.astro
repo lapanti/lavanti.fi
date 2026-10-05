@@ -10,7 +10,7 @@
 import type { Lang } from '../../content/nav'
 import type { BarRow } from '../../lib/campaignFinance'
 
-import { barsMax, barWidth, formatEuro, formatPercent } from '../../lib/campaignFinance'
+import { barsMax, barWidth, formatEuro, formatPercent, withPending } from '../../lib/campaignFinance'
 import { fontWeights, sizes, typographics } from '../../lib/styles'
 
 interface Props {
@@ -28,8 +28,15 @@ const { caption, lang, rows, unit } = Astro.props
  * have no natural ceiling, so there the largest row sets the scale and the tallest
  * bar fills the track.
  */
-const max = unit === 'percent' ? 100 : barsMax(rows.map((row) => row.value))
-const format = (value: number): string => (unit === 'eur' ? formatEuro(value, lang) : formatPercent(value, lang))
+const max =
+    unit === 'percent' ? 100 : barsMax(rows.map((row) => Math.max(row.value + (row.pending ?? 0), row.target ?? 0)))
+const format = (row: BarRow): string => {
+    if (unit === 'percent') return formatPercent(row.value, lang)
+    const amount = withPending(row.value, row.pending, row.pendingLabel, lang)
+
+    return row.target === undefined ? amount : `${amount} / ${formatEuro(row.target, lang)}`
+}
+const isLong = (row: BarRow): boolean => (row.pending ?? 0) > 0 || row.target !== undefined
 ---
 
 <style
@@ -91,21 +98,44 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
         white-space: nowrap;
     }
 
+    /* Several parts and a slash outgrow one line on a phone; numbers keep their NBSPs. */
+    .amount--long {
+        text-align: end;
+        white-space: normal;
+    }
+
     .track {
         background: var(--colorsForestGreen10);
         border-radius: 2px;
-        display: block;
+        display: flex;
         grid-column: 1 / -1;
         height: 0.75rem;
         overflow: hidden;
+        position: relative;
     }
 
     .fill {
         background: var(--colorsDarkGreen);
         border-radius: 2px;
         display: block;
+        flex: none;
         height: 100%;
         width: var(--w);
+    }
+
+    /* Bound to move but not moved yet: hatched, so solid always means paid or banked. */
+    .fill--pending {
+        background: repeating-linear-gradient(135deg, var(--colorsDarkGreen) 0 4px, transparent 4px 8px);
+    }
+
+    /* The planned amount: a tick across the track, kept inside it at 0 % and 100 %. */
+    .target {
+        background: var(--colorsForestGreen);
+        height: 100%;
+        left: clamp(0px, calc(var(--t) - 1px), calc(100% - 2px));
+        position: absolute;
+        top: 0;
+        width: 2px;
     }
 
     .row--emphasis .label {
@@ -189,8 +219,14 @@ const format = (value: number): string => (unit === 'eur' ? formatEuro(value, la
                     <span class="label">{row.label}</span>
                     <span aria-hidden="true" class="track">
                         <span class="fill" style={`--w: ${barWidth(row.value, max)}%`} />
+                        {(row.pending ?? 0) > 0 && (
+                            <span class="fill fill--pending" style={`--w: ${barWidth(row.pending ?? 0, max)}%`} />
+                        )}
+                        {row.target !== undefined && (
+                            <span class="target" style={`--t: ${barWidth(row.target, max)}%`} />
+                        )}
                     </span>
-                    <span class="amount">{format(row.value)}</span>
+                    <span class:list={['amount', { 'amount--long': isLong(row) }]}>{format(row)}</span>
                 </li>
             ))
         }

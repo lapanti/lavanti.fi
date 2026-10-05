@@ -10,7 +10,7 @@
 import type { Lang } from '../../content/nav'
 import type { FinanceSegment, Tone } from '../../lib/campaignFinance'
 
-import { formatEuro, formatPercent, percentOf, toneColors } from '../../lib/campaignFinance'
+import { formatPercent, percentOf, toneColors, withPending } from '../../lib/campaignFinance'
 import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
 
 interface Props {
@@ -28,10 +28,11 @@ interface Props {
 }
 
 const { caption, lang, segments, showShares = true, total } = Astro.props
-const drawn = segments.filter((segment) => segment.value > 0)
+const size = (segment: FinanceSegment): number => segment.value + (segment.pending ?? 0)
+const drawn = segments.filter((segment) => size(segment) > 0)
 
-/** Not in the account: an undertaking, or the shortfall still to be raised. */
-const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
+/** Hatched whole: the shortfall, or an undertaking that has not moved. */
+const HATCHED_TONES = new Set<Tone>(['committed', 'needed'])
 ---
 
 <style
@@ -113,19 +114,19 @@ const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
     }
 
     /*
-     * Money that is not in the account yet — pledged, or still to be raised — is
+     * Money that has not moved yet — pending, committed, or still to be raised — is
      * hatched rather than filled, so a solid block always means money that has
-     * actually arrived. Declared after .seg and .swatch: the rules carry the same
+     * actually moved. Declared after .seg and .swatch: the rules carry the same
      * specificity, so source order is what decides which background wins.
      */
-    .seg--pledged,
-    .swatch--pledged {
+    .seg--hatched,
+    .swatch--hatched {
         background: repeating-linear-gradient(135deg, var(--tone) 0 5px, var(--colorsWhite) 5px 10px);
         box-shadow: inset 0 0 0 1px var(--colorsForestGreen70);
     }
 
     /* Coarser stripes on the 14 px swatch, where a 5 px gap would read as solid. */
-    .swatch--pledged {
+    .swatch--hatched {
         background: repeating-linear-gradient(135deg, var(--tone) 0 3px, var(--colorsWhite) 3px 6px);
     }
 
@@ -187,12 +188,22 @@ const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
     <figcaption>{caption}</figcaption>
     <div aria-hidden="true" class="bar">
         {
-            drawn.map((segment) => (
-                <div
-                    class:list={['seg', { 'seg--pledged': PLEDGED_TONES.has(segment.tone) }]}
-                    style={`--tone: ${toneColors[segment.tone]}; flex: ${segment.value} 1 0%`}
-                />
-            ))
+            drawn.flatMap((segment) => {
+                const hatched = HATCHED_TONES.has(segment.tone)
+                const tone = `--tone: ${toneColors[segment.tone]}`
+
+                return [
+                    segment.value > 0 && (
+                        <div
+                            class:list={['seg', { 'seg--hatched': hatched }]}
+                            style={`${tone}; flex: ${segment.value} 1 0%`}
+                        />
+                    ),
+                    (segment.pending ?? 0) > 0 && (
+                        <div class="seg seg--hatched" style={`${tone}; flex: ${segment.pending} 1 0%`} />
+                    ),
+                ]
+            })
         }
     </div>
     <ul class="legend">
@@ -201,14 +212,14 @@ const PLEDGED_TONES = new Set<Tone>(['committed', 'needed'])
                 <li class="item">
                     <span
                         aria-hidden="true"
-                        class:list={['swatch', { 'swatch--pledged': PLEDGED_TONES.has(segment.tone) }]}
+                        class:list={['swatch', { 'swatch--hatched': HATCHED_TONES.has(segment.tone) }]}
                         style={`--tone: ${toneColors[segment.tone]}`}
                     />
                     <span class="name">{segment.label}</span>
                     <span class="figures">
-                        {formatEuro(segment.value, lang)}
+                        {withPending(segment.value, segment.pending, segment.pendingLabel, lang)}
                         {showShares && (
-                            <span class="share">{formatPercent(percentOf(segment.value, total), lang)}</span>
+                            <span class="share">{formatPercent(percentOf(size(segment), total), lang)}</span>
                         )}
                     </span>
                 </li>
