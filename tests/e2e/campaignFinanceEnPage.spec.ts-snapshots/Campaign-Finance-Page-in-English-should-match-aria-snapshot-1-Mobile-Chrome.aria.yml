@@ -10,11 +10,11 @@
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
-    - definition: /€\d+,\d+/
+    - definition: /€\d+/
     - term: My own commitment
     - definition: /€\d+,\d+/
     - term: Still to raise
-    - definition: /€\d+,\d+ As of \d+ September \d+/
+    - definition: /€\d+,\d+ As of 4 October \d+/
     - text: Why
     - heading "Why publish the figures at all?" [level=2]
     - paragraph: "Transparency and openness are essential to holding public power and public spending to account. In the same way, openness about how political actors are funded is an essential part of democracy. Yet the law only requires this information after the election. That is too late: voters should know who is funding the campaign of the candidate they choose. That is why I disclose my budget openly throughout the campaign, not only after it."
@@ -46,9 +46,9 @@
     - figure "The budget by source and shares of the whole budget":
       - text: ""
       - list:
-        - listitem: /My own funds €\d+,\d+ 4\.0%/
+        - listitem: My own funds €0 0.0%
         - listitem: Loans €0 0.0%
-        - listitem: Private individuals €0 0.0%
+        - listitem: /Private individuals €\d+ 1\.1%/
         - listitem: Companies €0 0.0%
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
@@ -64,8 +64,8 @@
     - figure "Actual spending":
       - text: ""
       - list:
-        - listitem: /Spent so far €\d+,\d+/
-        - listitem: Not yet spent €0
+        - listitem: Spent so far €0
+        - listitem: /Not yet spent €\d+/
     - paragraph: The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, other printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
