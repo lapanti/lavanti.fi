@@ -481,7 +481,7 @@ describe('categoryRows', () => {
         const spent = spentWith({ print: expense(3000, 200, 524) })
 
         expect(categoryRows(finance({ spent }), 'en')[2]).toMatchObject({
-            label: 'Campaign papers, brochures and other print',
+            label: 'Campaign newsletters, brochures and other printed matter',
             pending: 524,
             pendingLabel: 'committed',
             target: 3000,
