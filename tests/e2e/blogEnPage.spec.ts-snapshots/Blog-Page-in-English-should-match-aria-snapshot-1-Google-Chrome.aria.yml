@@ -99,6 +99,24 @@
       - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
         - listitem:
+          - article "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
+            - link "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side. A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
+              - /url: /en/blog/84/fuel-subsidy-deepens-import-dependency/
+              - img "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side."
+              - heading "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: A VAT cut on fuel and a lower distribution obligation would cost hundreds of millions and deepen import dependency. Give the money directly to people instead.
+          - list:
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "Marketgreen":
+                - /url: /en/category/marketgreen/
+            - listitem:
+              - link "Security":
+                - /url: /en/category/security/
+        - listitem:
           - article "Who owns public sector data?":
             - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
               - /url: /en/blog/80/who-owns-public-sector-data/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
-        - listitem:
-          - article "Stability Brings Investment, Erratic Policy Drives It Away":
-            - link "Lauri Lavanti standing on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer, a floral shirt and light chinos. Stability Brings Investment, Erratic Policy Drives It Away":
-              - /url: /en/blog/77/electricity-market-google-price-cap/
-              - img "Lauri Lavanti standing on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer, a floral shirt and light chinos."
-              - heading "Stability Brings Investment, Erratic Policy Drives It Away" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Google's €\d+ billion investment came from a functioning electricity market\. A price cap would remove the price signal exactly when it is needed most\./
-          - list:
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Marketgreen":
-                - /url: /en/category/marketgreen/
-            - listitem:
-              - link "Infrastructure":
-                - /url: /en/category/infrastructure/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/
