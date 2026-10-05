@@ -125,6 +125,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
+          - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
+            - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
+            - img "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan."
+            - heading "Bensinstöd för hundratals miljoner fördjupar importberoendet" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Lägre moms på drivmedel och lägre distributionsskyldighet kostar hundratals miljoner och fördjupar importberoendet. Ge stödet direkt till människorna.
+        - list:
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Marknadsgrön":
+              - /url: /sv/kategori/marknadsgron/
+          - listitem:
+            - link "Säkerhet":
+              - /url: /sv/kategori/sakerhet/
+      - listitem:
         - article "Vem äger den offentliga förvaltningens data?":
           - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
             - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Teknologi":
               - /url: /sv/kategori/teknologi/
-      - listitem:
-        - article "Tre sätt att underlätta företagande":
-          - 'link "De marknadsgrönas inlägg för Företagardagen: Tre sätt att underlätta företagande. Tre sätt att underlätta företagande"':
-            - /url: /sv/blog/74/tre-satt-att-underlatta-foretagande/
-            - 'img "De marknadsgrönas inlägg för Företagardagen: Tre sätt att underlätta företagande."'
-            - heading "Tre sätt att underlätta företagande" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Ett inlägg för Företagardagen: tre sätt att riva hindren för företagande — FöPL, en ny start efter konkurs och att anställa den första arbetstagaren."
-        - list:
-          - listitem:
-            - link "Företagande":
-              - /url: /sv/kategori/foretagande/
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Marknadsgrön":
-              - /url: /sv/kategori/marknadsgron/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

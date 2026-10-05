@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
+          - link "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side. A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
+            - /url: /en/blog/84/fuel-subsidy-deepens-import-dependency/
+            - img "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side."
+            - heading "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: A VAT cut on fuel and a lower distribution obligation would cost hundreds of millions and deepen import dependency. Give the money directly to people instead.
+        - list:
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Marketgreen":
+              - /url: /en/category/marketgreen/
+          - listitem:
+            - link "Security":
+              - /url: /en/category/security/
+      - listitem:
         - article "Who owns public sector data?":
           - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
             - /url: /en/blog/80/who-owns-public-sector-data/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Technology":
               - /url: /en/category/technology/
-      - listitem:
-        - article "Three ways to make entrepreneurship easier":
-          - 'link "The Market Greens'' statement for Entrepreneur''s Day: Three ways to make entrepreneurship easier. Three ways to make entrepreneurship easier"':
-            - /url: /en/blog/74/three-ways-to-make-entrepreneurship-easier/
-            - 'img "The Market Greens'' statement for Entrepreneur''s Day: Three ways to make entrepreneurship easier."'
-            - heading "Three ways to make entrepreneurship easier" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "A statement for Entrepreneur's Day: three ways to dismantle barriers to entrepreneurship — YEL, a fresh start after bankruptcy, and hiring the first employee."
-        - list:
-          - listitem:
-            - link "Entrepreneurship":
-              - /url: /en/category/entrepreneurship/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Marketgreen":
-              - /url: /en/category/marketgreen/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

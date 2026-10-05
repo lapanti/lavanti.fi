@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
+            - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
+              - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
+              - img "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan."
+              - heading "Bensinstöd för hundratals miljoner fördjupar importberoendet" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Lägre moms på drivmedel och lägre distributionsskyldighet kostar hundratals miljoner och fördjupar importberoendet. Ge stödet direkt till människorna.
+          - list:
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Marknadsgrön":
+                - /url: /sv/kategori/marknadsgron/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
+        - listitem:
           - article "Vem äger den offentliga förvaltningens data?":
             - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
               - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
-        - listitem:
-          - article "En stabil miljö ger investeringar, ryckighet tar dem":
-            - link "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i en marinblå kavaj, en blommig skjorta och ljusa byxor. En stabil miljö ger investeringar, ryckighet tar dem":
-              - /url: /sv/blog/77/elmarknaden-google-pristak/
-              - img "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i en marinblå kavaj, en blommig skjorta och ljusa byxor."
-              - heading "En stabil miljö ger investeringar, ryckighet tar dem" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Googles investering på \d+ miljarder euro föddes ur en fungerande elmarknad\. Ett pristak skulle ta bort prissignalen just när den behövs som mest\./
-          - list:
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Marknadsgrön":
-                - /url: /sv/kategori/marknadsgron/
-            - listitem:
-              - link "Infrastruktur":
-                - /url: /sv/kategori/infrastruktur/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/

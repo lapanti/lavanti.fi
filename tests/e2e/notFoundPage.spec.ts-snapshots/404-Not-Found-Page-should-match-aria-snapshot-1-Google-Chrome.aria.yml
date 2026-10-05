@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
+          - link "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle. Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
+            - /url: /fi/blog/84/bensatuki-syventaisi-tuontiriippuvuutta/
+            - img "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle."
+            - heading "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Polttoaineen alv-alennus ja jakeluvelvoitteen lasku maksaisivat satoja miljoonia ja syventäisivät tuontiriippuvuutta. Raha kannattaa antaa ihmisille suoraan.
+        - list:
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Markkinavihreä":
+              - /url: /fi/kategoria/markkinavihrea/
+          - listitem:
+            - link "Turvallisuus":
+              - /url: /fi/kategoria/turvallisuus/
+      - listitem:
         - article "Kuka omistaa julkishallinnon datan?":
           - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
             - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Digitalisaatio":
               - /url: /fi/kategoria/digitalisaatio/
-      - listitem:
-        - article "Airbus valitsi Scalewayn myös lainsäädännön piirin takia":
-          - link "Airbus-tehdasrakennuksen ulkojulkisivu, jonka seinässä on Airbus-logo. Airbus valitsi Scalewayn myös lainsäädännön piirin takia":
-            - /url: /fi/blog/69/airbus-scaleway-lainsaadannon-piiri/
-            - img "Airbus-tehdasrakennuksen ulkojulkisivu, jonka seinässä on Airbus-logo."
-            - heading "Airbus valitsi Scalewayn myös lainsäädännön piirin takia" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Airbus siirsi kriittisiä järjestelmiä Scalewaylle myös lainsäädännön piirin vuoksi. Sama riskiarvio sopii jokaiselle pilvivalinnalle.
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Teknologia":
-              - /url: /fi/kategoria/teknologia/
