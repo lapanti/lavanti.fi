@@ -1,0 +1,124 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<PhotoStrip /> > should render 1`] = `
+<ul
+  class="photo-strip"
+  data-astro-cid-qqnratxs=""
+  style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+>
+   
+  <li
+    data-astro-cid-qqnratxs=""
+    style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+  >
+     
+    <figure
+      data-astro-cid-qqnratxs=""
+      style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+    >
+       
+      <img
+        alt="Kymmenen kampanjatiimin jäsentä seisoo yhdessä kampanjan beach flag -lipun edessä, Lauri Lavanti keskellä."
+        data-astro-cid-qqnratxs=""
+        height="1680"
+        loading="lazy"
+        sizes="(max-width: 639px) 100vw, 33vw"
+        src="https://lavanti.fi/images/Kampanjatiimi-ryhmakuva-2026/w=1680,h=1680,fit=crop,gravity=face"
+        srcset="https://lavanti.fi/images/Kampanjatiimi-ryhmakuva-2026/w=400,h=400,fit=crop,gravity=face 400w, https://lavanti.fi/images/Kampanjatiimi-ryhmakuva-2026/w=800,h=800,fit=crop,gravity=face 800w, https://lavanti.fi/images/Kampanjatiimi-ryhmakuva-2026/w=1200,h=1200,fit=crop,gravity=face 1200w"
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+        width="1680"
+      />
+       
+      <figcaption
+        data-astro-cid-qqnratxs=""
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+      >
+         Kampanjatiimi kick-off-tapaamisessa syyskuussa 2026. 
+        <span
+          class="credit"
+          data-astro-cid-qqnratxs=""
+          style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+        >
+           Kuva: Erkki Laine 
+        </span>
+         
+      </figcaption>
+       
+    </figure>
+     
+  </li>
+  <li
+    data-astro-cid-qqnratxs=""
+    style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+  >
+     
+    <figure
+      data-astro-cid-qqnratxs=""
+      style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+    >
+       
+      <img
+        alt="Neljä kampanjatiimin jäsentä keskustelee kokouspöydän ääressä, taustalla seinällä käsin kirjoitettuja fläppipapereita."
+        data-astro-cid-qqnratxs=""
+        height="1680"
+        loading="lazy"
+        sizes="(max-width: 639px) 100vw, 33vw"
+        src="https://lavanti.fi/images/Kampanjatiimi-suunnittelee-2026/w=1680,h=1680,fit=crop,gravity=face"
+        srcset="https://lavanti.fi/images/Kampanjatiimi-suunnittelee-2026/w=400,h=400,fit=crop,gravity=face 400w, https://lavanti.fi/images/Kampanjatiimi-suunnittelee-2026/w=800,h=800,fit=crop,gravity=face 800w, https://lavanti.fi/images/Kampanjatiimi-suunnittelee-2026/w=1200,h=1200,fit=crop,gravity=face 1200w"
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+        width="1680"
+      />
+       
+      <figcaption
+        data-astro-cid-qqnratxs=""
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+      >
+         Kampanjan teemoja suunnitellaan yhdessä. 
+        <span
+          class="credit"
+          data-astro-cid-qqnratxs=""
+          style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+        >
+           Kuva: Erkki Laine 
+        </span>
+         
+      </figcaption>
+       
+    </figure>
+     
+  </li>
+  <li
+    data-astro-cid-qqnratxs=""
+    style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+  >
+     
+    <figure
+      data-astro-cid-qqnratxs=""
+      style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+    >
+       
+      <img
+        alt="Lauri Lavanti valkoisessa kampanjaliivissä ehdokasnappi rinnassa jakamassa esitteitä torilla, taustalla ihmisiä ja lastenvaunut."
+        data-astro-cid-qqnratxs=""
+        height="1680"
+        loading="lazy"
+        sizes="(max-width: 639px) 100vw, 33vw"
+        src="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=1680,h=1680,fit=crop,gravity=face"
+        srcset="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=400,h=400,fit=crop,gravity=face 400w, https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=800,h=800,fit=crop,gravity=face 800w"
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+        width="1680"
+      />
+       
+      <figcaption
+        data-astro-cid-qqnratxs=""
+        style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
+      >
+         Esitteitä ja keskusteluja torilla.  
+      </figcaption>
+       
+    </figure>
+     
+  </li>
+   
+</ul>
+`;
