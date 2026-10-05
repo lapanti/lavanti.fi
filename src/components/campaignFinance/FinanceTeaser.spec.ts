@@ -9,14 +9,11 @@ import FinanceTeaser from './FinanceTeaser.astro'
 const LANGS = ['en', 'fi', 'sv'] as const
 
 describe('<FinanceTeaser />', () => {
-    it('should render', async () => {
-        const result = await renderAstroComponent(FinanceTeaser, {
-            props: { href: '/fi/eduskuntavaalit/vaalirahoitus/', id: 'rahoitus', lang: 'fi' },
-        })
-
-        expect(result.firstChild).toMatchSnapshot()
-    })
-
+    /*
+     * No render-snapshot test: this component reads the live campaignFinance module directly
+     * (by design, see FinanceTeaser.astro), so a literal-markup snapshot would break every
+     * weekly automated figures update. See .agents/specs/campaign-finance/spec.md.
+     */
     it('should show budget, raised, the commitment and the gap', async () => {
         const result = await renderAstroComponent(FinanceTeaser, {
             props: { href: '/fi/eduskuntavaalit/vaalirahoitus/', id: 'rahoitus', lang: 'fi' },

@@ -351,6 +351,8 @@ interface FinancePayload {
 
 `budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits. Money pledged but not banked never enters the payload.
 
+Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent`, `ownCommitment`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
+
 The sender needs a fine-grained PAT scoped to this repo with Contents read/write (what `repository_dispatch` requires). The workflow reuses `SCHEDULED_PUBLISH_TOKEN`, so the PR triggers the `pull_request` workflows.
 
 ---
