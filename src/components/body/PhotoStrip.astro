@@ -62,7 +62,7 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
         display: block;
     }
 
-    @media (min-width: 640px) {
+    @media (min-width: 769px) {
         ul {
             gap: var(--sizes1);
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -82,7 +82,7 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
                             alt={photo.alt[lang]}
                             height={img.height}
                             loading="lazy"
-                            sizes="(max-width: 639px) 100vw, 33vw"
+                            sizes="(max-width: 768px) 100vw, 33vw"
                             src={img.src}
                             srcset={img.srcset}
                             width={img.width}
