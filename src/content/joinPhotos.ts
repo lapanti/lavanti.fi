@@ -60,7 +60,7 @@ export const joinPhotos: StripPhoto[] = [
             fi: 'Esitteitä ja keskusteluja torilla.',
             sv: 'Broschyrer och samtal på torget.',
         },
-        slug: 'Lauri-Lavanti-jakaa-esitteita-torilla',
+        slug: 'Lauri-Lavanti-jakaa-esitteita-torilla-vaaka',
         widths: [400, 800],
     },
 ]

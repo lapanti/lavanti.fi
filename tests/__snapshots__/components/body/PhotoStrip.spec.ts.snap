@@ -103,8 +103,8 @@ exports[`<PhotoStrip /> > should render 1`] = `
         height="1680"
         loading="lazy"
         sizes="(max-width: 768px) 100vw, 33vw"
-        src="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=1680,h=1680,fit=crop,gravity=face"
-        srcset="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=400,h=400,fit=crop,gravity=face 400w, https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla/w=800,h=800,fit=crop,gravity=face 800w"
+        src="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla-vaaka/w=1680,h=1680,fit=crop,gravity=face"
+        srcset="https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla-vaaka/w=400,h=400,fit=crop,gravity=face 400w, https://lavanti.fi/images/Lauri-Lavanti-jakaa-esitteita-torilla-vaaka/w=800,h=800,fit=crop,gravity=face 800w"
         style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
         width="1680"
       />

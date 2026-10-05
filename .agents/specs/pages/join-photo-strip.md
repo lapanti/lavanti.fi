@@ -134,7 +134,7 @@ Photos:
 |------|--------------|--------|--------------|
 | `Kampanjatiimi-ryhmakuva-2026` | 2600 | `[400, 800, 1200]` | Erkki Laine |
 | `Kampanjatiimi-suunnittelee-2026` | 2600 | `[400, 800, 1200]` | Erkki Laine |
-| `Lauri-Lavanti-jakaa-esitteita-torilla` | 835 | `[400, 800]` | — |
+| `Lauri-Lavanti-jakaa-esitteita-torilla-vaaka` | 835 | `[400, 800]` | — |
 
 Component props:
 
@@ -165,7 +165,7 @@ Credit rendering follows `Gallery.astro`: `creditPrefix[lang]: photographer`, in
 - **Do not** name people's party background in captions or alt — a consent condition of the photo set.
 - **Do not** reuse `Gallery.astro` — it is a download gallery with licence copy and crop pickers; the strip has neither.
 - **Do not** add `fetchpriority` or a preload — the hero is the LCP element and must stay so.
-- **Do not** letterbox the portrait photo — crop to 4:3 with `fit=crop` so the row aligns.
+- **Do not** rely on `gravity=auto` to frame a portrait source — it centred the market photo and cut the head off. Pre-crop portrait sources to 4:3 with the face in frame and upload the crop as a `-vaaka` slug.
 - **Do not** mention the campaign's private repository in code, data or comments.
 - **Do not** merge before all three slugs are uploaded to Cloudflare Images — the build cannot detect a missing CF asset; the `<img>` 404s in production. The unit test checks `src/images/originals/`, not CF.
 - **Do not** add CSS `aspect-ratio` to force 4:3 — the srcset already yields 4:3 crops at every width.
@@ -184,4 +184,5 @@ None.
 |------|--------|
 | 2026-10-05 | Initial draft (issue #1560) |
 | 2026-10-05 | Critic review: 640 px breakpoint in Contract; per-photo `widths` replaces open question; missing-CF-asset moved to Anti-patterns |
+| 2026-10-05 | Market photo pre-cropped to 4:3 as `-vaaka` slug after `gravity=auto` cut the head off |
 | 2026-10-05 | Build: breakpoint 640 → 769 (`tablet`), the only sanctioned value near it; originals check is local-only (`src/images/originals/` is gitignored); credit rendered as a `<span class="credit">` inside the caption |
