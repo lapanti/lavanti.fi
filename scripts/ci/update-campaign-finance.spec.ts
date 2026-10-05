@@ -1,134 +1,199 @@
+import type { Options } from 'prettier'
+
 import { readFileSync } from 'node:fs'
+import { format } from 'prettier'
 import { describe, expect, it } from 'vitest'
 
-import { campaignFinance } from '../../src/content/campaignFinance'
+import prettierConfig from '../../.prettierrc.mjs'
+import { campaignFinance, EXPENSE_CATEGORY_ORDER } from '../../src/content/campaignFinance'
 import {
-    applyPayload,
+    canonical,
     changeTable,
+    EXPENSE_CATEGORIES,
+    FIGURES_PATH,
     figuresChanged,
     FINANCE_PAGES,
     type FinancePayload,
     FUNDING_SOURCES,
     MODULE_PATH,
     parsePayload,
+    readBudget,
     readFigures,
+    serializeFigures,
     setUpdatedDate,
 } from './update-campaign-finance'
 
-const source = readFileSync(MODULE_PATH, 'utf8')
 /* Far from any asOf a real update writes, so "asOf changed" always holds in these tests. */
 const TODAY = '2099-01-04'
+const BUDGET = 45000
 
-const payloadOf = (overrides: Partial<FinancePayload> = {}): FinancePayload => ({
+const income = (banked: number, pending = 0) => ({ banked, pending })
+const expense = (budgeted: number, banked = 0, committed = 0) => ({ banked, budgeted, committed })
+
+const fixture = (): FinancePayload => ({
     asOf: TODAY,
-    raised: { ...campaignFinance.raised },
-    spent: campaignFinance.spent ?? 0,
-    ...overrides,
+    raised: {
+        companies: income(0),
+        loans: income(0),
+        other: income(0),
+        own: income(3000, 7000),
+        party: income(0),
+        partyAssociations: income(0),
+        private: income(500, 494),
+    },
+    spent: {
+        design: expense(1655, 0, 1255),
+        events: expense(2000),
+        media: expense(11340, 1000, 4600),
+        other: expense(2825),
+        outdoor: expense(20082),
+        print: expense(3080, 200, 524),
+        supportCosts: expense(1500),
+    },
 })
 
-const parse = (value: unknown, budget = campaignFinance.budget): FinancePayload =>
-    parsePayload(JSON.stringify(value), budget, TODAY)
+const parse = (value: unknown, budget = BUDGET): FinancePayload => parsePayload(JSON.stringify(value), budget, TODAY)
 
-describe('readFigures', () => {
+describe('the lists mirror the data module', () => {
+    it('lists exactly the funding sources and categories the module records', () => {
+        expect([...FUNDING_SOURCES].sort()).toEqual(Object.keys(campaignFinance.raised).sort())
+        expect([...EXPENSE_CATEGORIES]).toEqual([...EXPENSE_CATEGORY_ORDER])
+    })
+
+    it('reads the manual budget from the module', () => {
+        expect(readBudget(readFileSync(MODULE_PATH, 'utf8'))).toBe(campaignFinance.budget)
+    })
+
     it('reads the same figures the module exports', () => {
-        const figures = readFigures(source)
+        const figures = readFigures(readFileSync(FIGURES_PATH, 'utf8'))
         expect(figures).toEqual({
             asOf: campaignFinance.asOf,
-            budget: campaignFinance.budget,
-            ownCommitment: campaignFinance.ownCommitment,
             raised: campaignFinance.raised,
             spent: campaignFinance.spent,
         })
-    })
-
-    it('lists exactly the funding sources the module records', () => {
-        expect([...FUNDING_SOURCES].sort()).toEqual(Object.keys(campaignFinance.raised).sort())
     })
 })
 
 describe('parsePayload', () => {
     it('accepts a payload that satisfies the invariants', () => {
-        const payload = payloadOf()
-        expect(parse(payload)).toEqual(payload)
+        expect(parse(fixture())).toEqual(fixture())
+    })
+
+    it('accepts committed spending that runs ahead of the account', () => {
+        const payload = fixture()
+        payload.spent.outdoor = expense(20082, 0, 20000)
+        expect(parse(payload).spent.outdoor.committed).toBe(20000)
+    })
+
+    const withRaised = (changes: Record<string, unknown>) => ({
+        ...fixture(),
+        raised: { ...fixture().raised, ...changes },
+    })
+    const withSpent = (changes: Record<string, unknown>) => ({
+        ...fixture(),
+        spent: { ...fixture().spent, ...changes },
     })
 
     it.each([
-        ['an unknown category', { raised: { ...campaignFinance.raised, crypto: 5 } }, /unknown categories: crypto/],
+        ['an unknown source', withRaised({ crypto: income(5) }), /raised has unknown keys: crypto/],
+        ['a missing source', withRaised({ loans: undefined }), /raised is missing keys: loans/],
+        ['an unknown category', withSpent({ yachts: expense(1) }), /spent has unknown keys: yachts/],
+        ['a missing field', withRaised({ own: { banked: 3000 } }), /raised\.own\.pending must be/],
         [
-            'a missing category',
-            { raised: { ...campaignFinance.raised, loans: undefined } },
-            /missing categories: loans/,
+            'an unknown field',
+            withSpent({ media: { ...expense(1), pledged: 5 } }),
+            /spent\.media has unknown fields: pledged/,
         ],
-        ['a negative figure', { raised: { ...campaignFinance.raised, private: -1 } }, /raised.private/],
-        ['a fractional figure', { spent: 10.5 }, /spent must be/],
-        ['spent above total raised', { spent: 1_000_000 }, /exceeds total raised/],
-        ['total raised above budget', { raised: { ...campaignFinance.raised, private: 1_000_000 } }, /exceeds budget/],
-        ['a non-ISO asOf', { asOf: '4.1.2099' }, /ISO date/],
-        ['a future asOf', { asOf: '2099-01-05' }, /in the future/],
-    ])('rejects %s', (_name, overrides, message) => {
-        expect(() => parse({ ...payloadOf(), ...overrides })).toThrow(message)
+        ['a negative figure', withRaised({ private: income(-1) }), /raised\.private\.banked/],
+        ['a fractional figure', withSpent({ print: expense(3080, 10.5) }), /spent\.print\.banked must be/],
+        ['a flat number for a source', withRaised({ own: 3000 }), /raised\.own must be an object/],
+        ['raised above budget', withRaised({ own: income(30000, 20000) }), /exceeds budget/],
+        [
+            'paid out above banked income',
+            withSpent({ media: expense(11340, 5000) }),
+            /spent 5200 exceeds banked raised 3500/,
+        ],
+        ['a non-ISO asOf', { ...fixture(), asOf: '4.1.2099' }, /ISO date/],
+        ['a future asOf', { ...fixture(), asOf: '2099-01-05' }, /in the future/],
+    ])('rejects %s', (_name, payload, message) => {
+        expect(() => parse(payload)).toThrow(message)
     })
 
     it('rejects text that is not JSON', () => {
-        expect(() => parsePayload('{', campaignFinance.budget, TODAY)).toThrow(/not JSON/)
+        expect(() => parsePayload('{', BUDGET, TODAY)).toThrow(/not JSON/)
+    })
+})
+
+describe('serializeFigures', () => {
+    it('writes keys in canonical order, whatever order they arrived in', () => {
+        const reversed = {
+            ...fixture(),
+            raised: Object.fromEntries(Object.entries(fixture().raised).reverse()),
+            spent: Object.fromEntries(Object.entries(fixture().spent).reverse()),
+        } as FinancePayload
+        const text = serializeFigures(reversed)
+
+        expect(text).toBe(serializeFigures(fixture()))
+        expect(Object.keys(JSON.parse(text).raised)).toEqual([...FUNDING_SOURCES])
+        expect(Object.keys(JSON.parse(text).spent)).toEqual([...EXPENSE_CATEGORIES])
+        expect(Object.keys(JSON.parse(text).spent.media)).toEqual(['budgeted', 'banked', 'committed'])
+    })
+
+    /*
+     * The bot commits this file unattended. If its bytes differ from Prettier's, a
+     * later format pass churns the diff, or a format check fails the weekly PR.
+     */
+    it("is byte-identical to Prettier's output under the repo config", async () => {
+        const text = serializeFigures(fixture())
+        expect(text).toBe(await format(text, { ...(prettierConfig as Options), filepath: FIGURES_PATH }))
+    })
+
+    it('matches the committed file, so it was written by the serializer', () => {
+        const committed = readFileSync(FIGURES_PATH, 'utf8')
+        expect(serializeFigures(readFigures(committed))).toBe(committed)
     })
 })
 
 describe('figuresChanged', () => {
     it('ignores a payload that differs only in asOf', () => {
-        expect(figuresChanged(readFigures(source), payloadOf({ asOf: '2026-10-01' }))).toBe(false)
+        expect(figuresChanged(fixture(), { ...fixture(), asOf: '2026-10-01' })).toBe(false)
     })
 
-    it('detects a changed category or spent figure', () => {
-        const current = readFigures(source)
-        expect(figuresChanged(current, payloadOf({ spent: (campaignFinance.spent ?? 0) + 1 }))).toBe(true)
-        expect(figuresChanged(current, payloadOf({ raised: { ...campaignFinance.raised, party: 500 } }))).toBe(true)
+    it('ignores key order', () => {
+        const reordered = { ...fixture(), raised: Object.fromEntries(Object.entries(fixture().raised).reverse()) }
+        expect(figuresChanged(fixture(), reordered as FinancePayload)).toBe(false)
+    })
+
+    it('detects a changed pending, committed or budgeted figure', () => {
+        const pending = fixture()
+        pending.raised.private.pending += 1
+        const committed = fixture()
+        committed.spent.events.committed = 100
+        const budgeted = fixture()
+        budgeted.spent.other.budgeted = 3000
+
+        for (const next of [pending, committed, budgeted]) expect(figuresChanged(fixture(), next)).toBe(true)
     })
 })
 
-describe('applyPayload', () => {
-    const raised = { ...campaignFinance.raised, own: campaignFinance.raised.own + 1000, private: 250 }
-    const updated = readFigures(applyPayload(source, payloadOf({ raised, spent: 2000 })))
-
-    it('writes asOf, every category and spent', () => {
-        expect(updated.asOf).toBe(TODAY)
-        expect(updated.raised).toEqual(raised)
-        expect(updated.spent).toBe(2000)
-        expect(updated.budget).toBe(campaignFinance.budget)
-    })
-
-    it('moves ownCommitment opposite to own, keeping their sum', () => {
-        expect(updated.ownCommitment).toBe(campaignFinance.ownCommitment - 1000)
-        expect(updated.ownCommitment + updated.raised.own).toBe(
-            campaignFinance.ownCommitment + campaignFinance.raised.own
-        )
-    })
-
-    it('floors ownCommitment at zero', () => {
-        const own = campaignFinance.raised.own + campaignFinance.ownCommitment + 500
-        const next = readFigures(applyPayload(source, payloadOf({ raised: { ...campaignFinance.raised, own } })))
-        expect(next.ownCommitment).toBe(0)
-    })
-
-    it('touches nothing outside the changed values', () => {
-        const next = applyPayload(source, payloadOf({ spent: 1234 }))
-        const changed = next.split('\n').filter((row, i) => row !== source.split('\n')[i])
-        expect(changed.map((row) => row.trim())).toEqual([`asOf: '${TODAY}',`, 'spent: 1234,'])
+describe('canonical', () => {
+    it('drops nothing and adds nothing', () => {
+        expect(canonical(fixture())).toEqual(fixture())
     })
 })
 
 describe('changeTable', () => {
-    it('bolds changed fields and totals raised', () => {
-        const before = readFigures(source)
-        const { loans, private: donated } = campaignFinance.raised
-        const after = readFigures(
-            applyPayload(source, payloadOf({ raised: { ...campaignFinance.raised, private: donated + 300 } }))
-        )
-        const table = changeTable(before, after)
-        expect(table).toContain(`Figures as of ${TODAY} (previously ${campaignFinance.asOf})`)
-        expect(table).toContain(`| **raised.private** | ${donated} | ${donated + 300} |`)
-        expect(table).toContain(`| raised.loans | ${loans} | ${loans} |`)
-        expect(table).toMatch(/\| \*\*raised total\*\* \| \d+ \| \d+ \|/)
+    it('bolds changed rows and shows every part', () => {
+        const after = fixture()
+        after.raised.private = income(800, 194)
+        after.asOf = '2099-01-03'
+        const table = changeTable({ ...fixture(), asOf: '2098-12-27' }, after)
+
+        expect(table).toContain('Figures as of 2099-01-03 (previously 2098-12-27)')
+        expect(table).toContain('| **raised.private** | 500 + 494 | 800 + 194 |')
+        expect(table).toContain('| raised.own | 3000 + 7000 | 3000 + 7000 |')
+        expect(table).toContain('| **raised total** | 3500 + 7494 | 3800 + 7194 |')
+        expect(table).toContain('| spent.media | 1000 + 4600 / 11340 | 1000 + 4600 / 11340 |')
     })
 })
 

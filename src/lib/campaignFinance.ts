@@ -6,23 +6,28 @@
  * formatting keeps the goldens stable wherever the site is built.
  */
 
-import type { Benchmark, CampaignFinance, DisplaySource, FundingSource } from '../content/campaignFinance'
+import type {
+    Benchmark,
+    CampaignFinance,
+    DisplaySource,
+    Expense,
+    FundingSource,
+    Income,
+} from '../content/campaignFinance'
 import type { Lang } from '../content/nav'
 
-import { DISPLAY_SOURCE_ORDER, financeLabels } from '../content/campaignFinance'
+import { DISPLAY_SOURCE_ORDER, EXPENSE_CATEGORY_ORDER, financeLabels } from '../content/campaignFinance'
 import { colors } from './styles'
 
 /**
  * Segment colours, all from the Signal Band palette: the five signal colours for the
  * funding sources, the grounds for the neutral rows. The palest of them would vanish
  * against the oat and off-white plates, so FinanceStack outlines every swatch and
- * segment rather than substituting an off-palette colour. `needed` is outlined dashed.
+ * segment rather than substituting an off-palette colour. `needed` is hatched whole.
  */
-export type Tone =
-    'committed' | 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' | 'private' | 'spent' | 'unspent'
+export type Tone = 'companies' | 'loans' | 'needed' | 'other' | 'own' | 'party' | 'private' | 'spent' | 'unspent'
 
 export const toneColors: Record<Tone, string> = {
-    committed: colors.darkGreen,
     companies: colors.signalBlue,
     loans: colors.darkMoss,
     needed: colors.sand,
@@ -78,18 +83,36 @@ const MONTHS_EN = [
     'December',
 ]
 
-export const totalRaised = (finance: CampaignFinance): number =>
-    Object.values(finance.raised).reduce((sum, value) => sum + value, 0)
+/** Banked and pending income, each summed over every funding source. */
+export const totalRaised = (finance: CampaignFinance): Income =>
+    Object.values(finance.raised).reduce(
+        (sum, income) => ({ banked: sum.banked + income.banked, pending: sum.pending + income.pending }),
+        { banked: 0, pending: 0 }
+    )
+
+/** Budgeted, paid and committed spending, each summed over every category. */
+export const totalSpent = (finance: CampaignFinance): Expense =>
+    Object.values(finance.spent).reduce(
+        (sum, expense) => ({
+            banked: sum.banked + expense.banked,
+            budgeted: sum.budgeted + expense.budgeted,
+            committed: sum.committed + expense.committed,
+        }),
+        { banked: 0, budgeted: 0, committed: 0 }
+    )
 
 /**
- * What is left to find from other people. The candidate's own undertaking counts
- * towards it, because it is money the budget can already rely on.
+ * What is left to find. Pending income counts towards the budget: it is bound by a
+ * contract, so the budget can rely on it.
  *
  * Clamped at zero: a campaign that overshoots its budget has nothing left to collect,
  * and a negative "still needed" row would read as a debt.
  */
-export const gapToBudget = (finance: CampaignFinance): number =>
-    Math.max(0, finance.budget - totalRaised(finance) - finance.ownCommitment)
+export const gapToBudget = (finance: CampaignFinance): number => {
+    const raised = totalRaised(finance)
+
+    return Math.max(0, finance.budget - raised.banked - raised.pending)
+}
 
 /** One decimal. A whole that is zero or negative has no parts, so the share is 0. */
 export const percentOf = (part: number, whole: number): number =>
@@ -185,33 +208,55 @@ export const mergeParty = (amounts: Record<FundingSource, number>): Record<Displ
     private: amounts.private,
 })
 
+/** One field of every funding source, as the plain amounts `mergeParty` takes. */
+const incomeField = (raised: Record<FundingSource, Income>, field: keyof Income): Record<FundingSource, number> =>
+    Object.fromEntries(Object.entries(raised).map(([source, income]) => [source, income[field]])) as Record<
+        FundingSource,
+        number
+    >
+
 /**
- * Where the budget stands: every funding source in statutory order, then the
- * candidate's own undertaking, then what is still missing. Zero sources stay in the
- * list — the zero is the disclosure.
+ * Where the budget stands: every funding source in statutory order, banked solid and
+ * pending hatched after it, then what is still missing. Zero sources stay in the list
+ * — the zero is the disclosure.
  *
- * The undertaking is its own segment rather than part of `own`, so pledged money is
- * never shown as received. The total is `max(budget, …)` so an overshooting campaign
- * still renders a bar whose segments sum to the whole.
+ * The total is `max(budget, …)` so an overshooting campaign still renders a bar whose
+ * segments sum to the whole.
  */
 export const budgetSegments = (finance: CampaignFinance, lang: Lang): { segments: FinanceSegment[]; total: number } => {
-    const merged = mergeParty(finance.raised)
+    const banked = mergeParty(incomeField(finance.raised, 'banked'))
+    const pending = mergeParty(incomeField(finance.raised, 'pending'))
+    const raised = totalRaised(finance)
     const labels = financeLabels[lang]
     const segments: FinanceSegment[] = DISPLAY_SOURCE_ORDER.map((source) => ({
         id: source,
         label: labels.sources[source],
+        pending: pending[source],
+        pendingLabel: labels.pending,
         tone: source,
-        value: merged[source],
+        value: banked[source],
     }))
 
     return {
-        segments: [
-            ...segments,
-            { id: 'committed', label: labels.committed, tone: 'committed', value: finance.ownCommitment },
-            { id: 'needed', label: labels.needed, tone: 'needed', value: gapToBudget(finance) },
-        ],
-        total: Math.max(finance.budget, totalRaised(finance) + finance.ownCommitment),
+        segments: [...segments, { id: 'needed', label: labels.needed, tone: 'needed', value: gapToBudget(finance) }],
+        total: Math.max(finance.budget, raised.banked + raised.pending),
     }
+}
+
+/**
+ * Where the money goes, one row per statutory expense category: paid solid, committed
+ * hatched after it, the budgeted amount as a marker. Zero categories stay listed.
+ */
+export const categoryRows = (finance: CampaignFinance, lang: Lang): BarRow[] => {
+    const labels = financeLabels[lang]
+
+    return EXPENSE_CATEGORY_ORDER.map((category) => ({
+        label: labels.categories[category],
+        pending: finance.spent[category].committed,
+        pendingLabel: labels.committed,
+        target: finance.spent[category].budgeted,
+        value: finance.spent[category].banked,
+    }))
 }
 
 /**
@@ -243,45 +288,73 @@ export const benchmarkShareRows = (benchmark: Benchmark, lang: Lang): BarRow[] =
 }
 
 /**
- * Spent against raised, or undefined while no spending figure is confirmed: the page
- * then prints the pending line instead of a figure it cannot stand behind.
+ * Spending against the money raised (banked and pending), or undefined while nothing
+ * has been paid or committed: the page then prints the pending line instead.
  *
- * No clamping. The data module's own spec refuses to build a campaign that reports
- * more spent than it has raised, so a negative here is a bug worth seeing.
+ * Committed spending may run ahead of income, since a contract can come before the
+ * money; the total then grows to cover it, so `unspent` never goes negative.
  */
 export const spendingSegments = (
     finance: CampaignFinance,
     lang: Lang
 ): { segments: FinanceSegment[]; total: number } | undefined => {
-    if (finance.spent === undefined) return undefined
+    const spent = totalSpent(finance)
+    if (spent.banked + spent.committed === 0) return undefined
 
-    const raised = totalRaised(finance)
+    const income = totalRaised(finance)
+    const raised = income.banked + income.pending
     const labels = financeLabels[lang]
 
     return {
         segments: [
-            { id: 'spent', label: labels.spent, tone: 'spent', value: finance.spent },
-            { id: 'unspent', label: labels.unspent, tone: 'unspent', value: raised - finance.spent },
+            {
+                id: 'spent',
+                label: labels.spent,
+                pending: spent.committed,
+                pendingLabel: labels.committed,
+                tone: 'spent',
+                value: spent.banked,
+            },
+            {
+                id: 'unspent',
+                label: labels.unspent,
+                tone: 'unspent',
+                value: Math.max(0, raised - spent.banked - spent.committed),
+            },
         ],
-        total: raised,
+        total: Math.max(raised, spent.banked + spent.committed),
     }
 }
 
+/** "+ 7 000 € tilittämättä", or nothing when no money is on its way. */
+const pendingNote = (pending: number, suffix: string, lang: Lang): string | undefined =>
+    pending > 0 ? `+ ${formatEuro(pending, lang)} ${suffix}` : undefined
+
 /**
  * The four headline figures, in one place rather than composed in each of the three
- * pages and again in the teaser. Spending is not among them: it has a section of its
- * own, and while it is unconfirmed there is no figure to show.
+ * pages and again in the teaser. Raised and spent show what has moved, with what is
+ * bound to move as a note under each.
  */
 export const summaryTiles = (
     finance: CampaignFinance,
     lang: Lang
 ): { label: string; note?: string; value: string }[] => {
     const labels = financeLabels[lang]
+    const raised = totalRaised(finance)
+    const spent = totalSpent(finance)
 
     return [
         { label: labels.budget, value: formatEuro(finance.budget, lang) },
-        { label: labels.raised, value: formatEuro(totalRaised(finance), lang) },
-        { label: labels.committed, value: formatEuro(finance.ownCommitment, lang) },
+        {
+            label: labels.raised,
+            note: pendingNote(raised.pending, labels.pending, lang),
+            value: formatEuro(raised.banked, lang),
+        },
+        {
+            label: labels.spent,
+            note: pendingNote(spent.committed, labels.committed, lang),
+            value: formatEuro(spent.banked, lang),
+        },
         {
             label: labels.gap,
             note: labels.asOf(formatDate(finance.asOf, lang)),
