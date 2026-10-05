@@ -63,7 +63,7 @@ export interface Expense {
 }
 
 /** The figures the weekly automated update owns: `campaignFinanceFigures.json`. */
-export interface FinanceFigures {
+interface FinanceFigures {
     /** ISO date the figures were last confirmed — printed on the page as "tilanne". */
     asOf: string
     raised: Record<FundingSource, Income>
