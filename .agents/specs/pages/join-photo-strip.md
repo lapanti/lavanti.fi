@@ -69,10 +69,11 @@ Feature: Join page photo strip
 
   Scenario: Responsive grid
     Given the join page is rendered
-    When the viewport is narrower than 640 px (e.g. 375 px)
+    When the viewport is 768 px wide or narrower (e.g. 375, 768 px)
     Then the three figures stack in one column
-    When the viewport is 640 px wide or wider (e.g. 640, 768, 1280 px)
+    When the viewport is 769 px wide or wider (e.g. 769, 1024, 1280 px)
     Then the three figures sit in one row of three equal columns
+    # 769 is the sanctioned `tablet` breakpoint (src/lib/styles.ts); mediaQueries.spec rejects others.
 
   Scenario: Uniform aspect ratio
     Given the strip is rendered at any viewport
@@ -100,6 +101,8 @@ Feature: Join page photo strip
     Then every entry has alt and caption for fi, sv and en
     And every slug has a matching file in src/images/originals/
     And every entry's srcset widths are all <= the original's pixel width
+    # src/images/originals/ is gitignored, so the last two checks run only
+    # where the directory exists (local), and are skipped in CI.
 ```
 
 ---
@@ -142,7 +145,7 @@ interface Props {
 }
 ```
 
-Image delivery: `body` variant from `src/lib/images.ts` (`w=2400,h=1800,fit=crop,gravity=auto`). Srcset widths come from each photo's `widths`; `sizes` is `(max-width: 639px) 100vw, 33vw`.
+Image delivery: `body` variant from `src/lib/images.ts` (`w=2400,h=1800,fit=crop,gravity=auto`). Srcset widths come from each photo's `widths`; `sizes` is `(max-width: 768px) 100vw, 33vw`.
 
 Credit rendering follows `Gallery.astro`: `creditPrefix[lang]: photographer`, inside the `<figcaption>` after the caption.
 
@@ -181,3 +184,4 @@ None.
 |------|--------|
 | 2026-10-05 | Initial draft (issue #1560) |
 | 2026-10-05 | Critic review: 640 px breakpoint in Contract; per-photo `widths` replaces open question; missing-CF-asset moved to Anti-patterns |
+| 2026-10-05 | Build: breakpoint 640 → 769 (`tablet`), the only sanctioned value near it; originals check is local-only (`src/images/originals/` is gitignored); credit rendered as a `<span class="credit">` inside the caption |
