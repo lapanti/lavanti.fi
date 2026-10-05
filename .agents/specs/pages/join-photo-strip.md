@@ -69,9 +69,9 @@ Feature: Join page photo strip
 
   Scenario: Responsive grid
     Given the join page is rendered
-    When the viewport is 375 px wide
+    When the viewport is narrower than 640 px (e.g. 375 px)
     Then the three figures stack in one column
-    When the viewport is 768 px wide or 1280 px wide
+    When the viewport is 640 px wide or wider (e.g. 640, 768, 1280 px)
     Then the three figures sit in one row of three equal columns
 
   Scenario: Uniform aspect ratio
@@ -79,12 +79,14 @@ Feature: Join page photo strip
     When the three images are measured
     Then each rendered image has a 4:3 aspect ratio
     And the portrait source is cropped, not letterboxed
+    # Holds without CSS: getImageSrcset derives h from the variant ratio per width,
+    # and fit=crop never upscales, so the 835 px source yields at most 835x626.
 
   Scenario: Srcset from the body variant
-    Given a strip photo with slug S
+    Given a strip photo with slug S and srcset widths W from the content file
     When its <img> is built
-    Then src and srcset use getImageSrcset(S, 'body', widths) from src/lib/images.ts
-    And the widths do not exceed the source's pixel width
+    Then src and srcset use getImageSrcset(S, 'body', W) from src/lib/images.ts
+    And no width in W exceeds the source's pixel width
 
   Scenario: Caption copy respects consent terms
     Given any strip caption or alt in any locale
@@ -97,13 +99,7 @@ Feature: Join page photo strip
     When the unit test runs
     Then every entry has alt and caption for fi, sv and en
     And every slug has a matching file in src/images/originals/
-
-  Scenario: Missing slug in Cloudflare Images
-    Given a slug in the content file that has not been uploaded
-    When the production page is viewed
-    Then the <img> 404s
-    And the build does not detect this
-    # Mitigation: upload before merge; the unit test checks originals, not CF
+    And every entry's srcset widths are all <= the original's pixel width
 ```
 
 ---
@@ -122,6 +118,8 @@ export interface StripPhoto {
     slug: string
     /** Omit when no credit applies (team member's own photo). */
     photographer?: string
+    /** Srcset widths; none may exceed the original's pixel width. */
+    widths: number[]
 }
 
 export const joinPhotos: StripPhoto[]
@@ -129,11 +127,11 @@ export const joinPhotos: StripPhoto[]
 
 Photos:
 
-| Slug | Source width | Photographer |
-|------|--------------|--------------|
-| `Kampanjatiimi-ryhmakuva-2026` | 2600 | Erkki Laine |
-| `Kampanjatiimi-suunnittelee-2026` | 2600 | Erkki Laine |
-| `Lauri-Lavanti-jakaa-esitteita-torilla` | 835 | — |
+| Slug | Source width | Widths | Photographer |
+|------|--------------|--------|--------------|
+| `Kampanjatiimi-ryhmakuva-2026` | 2600 | `[400, 800, 1200]` | Erkki Laine |
+| `Kampanjatiimi-suunnittelee-2026` | 2600 | `[400, 800, 1200]` | Erkki Laine |
+| `Lauri-Lavanti-jakaa-esitteita-torilla` | 835 | `[400, 800]` | — |
 
 Component props:
 
@@ -144,7 +142,7 @@ interface Props {
 }
 ```
 
-Image delivery: `body` variant from `src/lib/images.ts` (`w=2400,h=1800,fit=crop,gravity=auto`). Srcset widths `[400, 800, 1200]`; the component drops widths greater than the source width when a `maxWidth` is given for the photo, or the content file lists only `[400, 800]` for the 835 px source. Choose one; the Builder records the choice in the Changelog.
+Image delivery: `body` variant from `src/lib/images.ts` (`w=2400,h=1800,fit=crop,gravity=auto`). Srcset widths come from each photo's `widths`; `sizes` is `(max-width: 639px) 100vw, 33vw`.
 
 Credit rendering follows `Gallery.astro`: `creditPrefix[lang]: photographer`, inside the `<figcaption>` after the caption.
 
@@ -166,12 +164,14 @@ Credit rendering follows `Gallery.astro`: `creditPrefix[lang]: photographer`, in
 - **Do not** add `fetchpriority` or a preload — the hero is the LCP element and must stay so.
 - **Do not** letterbox the portrait photo — crop to 4:3 with `fit=crop` so the row aligns.
 - **Do not** mention the campaign's private repository in code, data or comments.
+- **Do not** merge before all three slugs are uploaded to Cloudflare Images — the build cannot detect a missing CF asset; the `<img>` 404s in production. The unit test checks `src/images/originals/`, not CF.
+- **Do not** add CSS `aspect-ratio` to force 4:3 — the srcset already yields 4:3 crops at every width.
 
 ---
 
 ## Open Questions
 
-- [ ] Srcset handling for the 835 px source: per-photo `maxWidth` prop vs a fixed `[400, 800]` list in the content file. Builder decides; either satisfies the Contract.
+None.
 
 ---
 
@@ -180,3 +180,4 @@ Credit rendering follows `Gallery.astro`: `creditPrefix[lang]: photographer`, in
 | Date | Change |
 |------|--------|
 | 2026-10-05 | Initial draft (issue #1560) |
+| 2026-10-05 | Critic review: 640 px breakpoint in Contract; per-photo `widths` replaces open question; missing-CF-asset moved to Anti-patterns |
