@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/join/'
     fi: '/fi/liity/'
     sv: '/sv/bli-med/'
-updatedDate: '2026-10-03'
+updatedDate: '2026-10-05'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
@@ -19,13 +19,16 @@ plated: true
 variant: 'split'
 ---
 
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import VolunteerForm from '../../../components/VolunteerForm.astro'
+import { joinPhotos } from '../../../content/joinPhotos'
 
 <Plate ground="offWhite" heading="Miten voit auttaa?">
     <Prose>
         Vaalit voitetaan keskusteluissa: toreilla, tapahtumissa ja somessa. Jokainen tunti auttaa, eikä aiempaa kokemusta tarvita. Täytä lomake, niin otan sinuun yhteyttä ja sovitaan, mikä sopii sinulle.
     </Prose>
+    <PhotoStrip lang="fi" photos={joinPhotos} />
     <VolunteerForm lang="fi" />
 </Plate>
