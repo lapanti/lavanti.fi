@@ -22,7 +22,8 @@
  *     src/content/<collection>/<id>/meta.json, shared by the fi/sv/en siblings —
  *     so the entry, not the file, is the unit checked.
  *
- * src/content/campaignFinance.ts counts as content of the three finance pages.
+ * src/content/campaignFinance.ts and src/content/campaignFinanceFigures.json count
+ * as content of the three finance pages.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -31,7 +32,7 @@ import { readFileSync } from 'node:fs'
 // eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
 import { helsinkiDateOf } from '../../src/lib/publishing.ts'
 // eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
-import { FINANCE_PAGES, MODULE_PATH as FINANCE_MODULE } from '../ci/update-campaign-finance.ts'
+import { FIGURES_PATH, FINANCE_PAGES, MODULE_PATH as FINANCE_MODULE } from '../ci/update-campaign-finance.ts'
 
 export const SKIP_MARKER = '[skip-updated-date]'
 
@@ -62,12 +63,13 @@ export function unitOf(file: string): { unit: string; field: string } | null {
 }
 
 /**
- * Every unit a changed file belongs to. The campaign finance data module has no
- * date of its own: the three finance pages render its figures, so a change to it
- * is a change to each of them.
+ * Every unit a changed file belongs to. The campaign finance data module and its
+ * figures file have no date of their own: the three finance pages render their
+ * figures, so a change to either is a change to each of them.
  */
 export function unitsOf(file: string): { unit: string; field: string }[] {
-    if (file.replace(/\\/g, '/') === FINANCE_MODULE) {
+    const normalised = file.replace(/\\/g, '/')
+    if (normalised === FINANCE_MODULE || normalised === FIGURES_PATH) {
         return FINANCE_PAGES.map((page) => ({ field: page, unit: page }))
     }
     const unit = unitOf(file)

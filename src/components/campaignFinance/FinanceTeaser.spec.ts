@@ -14,7 +14,7 @@ describe('<FinanceTeaser />', () => {
      * (by design, see FinanceTeaser.astro), so a literal-markup snapshot would break every
      * weekly automated figures update. See .agents/specs/campaign-finance/spec.md.
      */
-    it('should show budget, raised, the commitment and the gap', async () => {
+    it('should show budget, raised, spent and the gap', async () => {
         const result = await renderAstroComponent(FinanceTeaser, {
             props: { href: '/fi/eduskuntavaalit/vaalirahoitus/', id: 'rahoitus', lang: 'fi' },
         })
@@ -24,7 +24,7 @@ describe('<FinanceTeaser />', () => {
         expect(labels).toEqual([
             financeLabels.fi.budget,
             financeLabels.fi.raised,
-            financeLabels.fi.committed,
+            financeLabels.fi.spent,
             financeLabels.fi.gap,
         ])
     })

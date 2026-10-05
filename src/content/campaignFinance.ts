@@ -15,6 +15,8 @@
 
 import type { Lang } from './nav'
 
+import figures from './campaignFinanceFigures.json'
+
 /** Names follow laki ehdokkaan vaalirahoituksesta 273/2009 §6 (2.1–2.7). */
 export type FundingSource = 'companies' | 'loans' | 'other' | 'own' | 'party' | 'partyAssociations' | 'private'
 
@@ -27,9 +29,47 @@ export type DisplaySource = Exclude<FundingSource, 'partyAssociations'>
  */
 export const DISPLAY_SOURCE_ORDER: readonly DisplaySource[] = ['own', 'loans', 'private', 'companies', 'party', 'other']
 
-export interface CampaignFinance {
+/** The expense categories of the statutory disclosure (Vaalimainonta medioissa … Muut kulut). */
+export type ExpenseCategory = 'design' | 'events' | 'media' | 'other' | 'outdoor' | 'print' | 'supportCosts'
+
+/** Reading order of the expense categories, following the disclosure form. */
+export const EXPENSE_CATEGORY_ORDER: readonly ExpenseCategory[] = [
+    'media',
+    'outdoor',
+    'print',
+    'design',
+    'events',
+    'supportCosts',
+    'other',
+]
+
+/** One funding source. Hatched on the page while pending, solid once banked. */
+export interface Income {
+    /** On the campaign account (the budget sheet's Toteutunut). */
+    banked: number
+    /** Contractually coming but not yet remitted (Tilittämättä). A promise is neither. */
+    pending: number
+}
+
+/** One expense category: the plan, and what has gone out or is bound to. */
+export interface Expense {
+    /** Paid out (Toteutunut). */
+    banked: number
+    /** Planned (Budjetoitu). */
+    budgeted: number
+    /** Bound to be paid: an accepted offer or invoice (Sitouduttu). */
+    committed: number
+}
+
+/** The figures the weekly automated update owns: `campaignFinanceFigures.json`. */
+export interface FinanceFigures {
     /** ISO date the figures were last confirmed — printed on the page as "tilanne". */
     asOf: string
+    raised: Record<FundingSource, Income>
+    spent: Record<ExpenseCategory, Expense>
+}
+
+export interface CampaignFinance extends FinanceFigures {
     /** Planned total spend for the whole campaign, whole euros. */
     budget: number
     /**
@@ -45,19 +85,6 @@ export interface CampaignFinance {
      * that stays the same when the destination moves.
      */
     donationUrl: string
-    /**
-     * Money the candidate has undertaken to put in but has not paid in yet. It is a
-     * backstop rather than a receipt: it shrinks if donations cover the budget
-     * instead, so it is counted separately from `raised` and never added to it.
-     */
-    ownCommitment: number
-    /** Received so far per §6 category, whole euros. Nothing pledged, only banked. */
-    raised: Record<FundingSource, number>
-    /**
-     * Paid out so far, whole euros. Undefined while no spending has been confirmed —
-     * the page then says so instead of printing a zero it cannot stand behind.
-     */
-    spent?: number
 }
 
 interface BenchmarkSet {
@@ -83,34 +110,18 @@ export interface Benchmark {
 }
 
 /**
- * The state on `asOf`. `raised.own` is what the candidate has paid in; the rest of his
- * undertaking stays in `ownCommitment`, so the two always add up to the undertaking.
- *
- * `asOf`, `raised`, `spent` and `ownCommitment` are rewritten by the weekly automated
- * update (scripts/ci/update-campaign-finance.ts), which replaces the literal values in
- * place: keep each on its own line, and keep comments here free of figures that would
- * go stale.
+ * The state on `asOf`. `asOf`, `raised` and `spent` come from campaignFinanceFigures.json,
+ * which the weekly automated update (scripts/ci/update-campaign-finance.ts) rewrites
+ * whole; the rest are manual edits here. Keep comments free of figures that would go stale.
  *
  * Every figure is a whole euro; cents on a transparency page invite precision the
  * campaign cannot promise.
  */
 export const campaignFinance: CampaignFinance = {
-    asOf: '2026-10-04',
+    ...figures,
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: true,
-    ownCommitment: 10000,
-    raised: {
-        companies: 0,
-        loans: 0,
-        other: 0,
-        own: 0,
-        party: 0,
-        partyAssociations: 0,
-        private: 494,
-    },
-    /* Paid out per the campaign budget sheet, as of asOf. */
-    spent: 0,
 }
 
 /**
@@ -156,7 +167,8 @@ export interface FinanceLabels {
     budget: string
     /** Row label for our own budget in the benchmark comparison. */
     budgetRow: string
-    /** Money undertaken but not yet paid in. */
+    categories: Record<ExpenseCategory, string>
+    /** Follows a committed amount: "+ 4 000 € sitouduttu". */
     committed: string
     /** Donation call to action, and what to say while `donationsOpen` is false. */
     donate: { cta: string; pending: string }
@@ -164,6 +176,8 @@ export interface FinanceLabels {
     mean: string
     median: string
     needed: string
+    /** Follows a pending amount: "+ 7 000 € tilittämättä". */
+    pending: string
     raised: string
     sets: Record<BenchmarkSet['id'], string>
     /** Receives `formatDate(retrievedDate, lang)` output. */
@@ -187,7 +201,16 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `As of ${formatted}`,
         budget: 'Campaign budget',
         budgetRow: 'My budget',
-        committed: 'My own commitment',
+        categories: {
+            design: 'Advertising design',
+            events: 'Campaign events',
+            media: 'Advertising in the media',
+            other: 'Other costs',
+            outdoor: 'Outdoor advertising',
+            print: 'Campaign papers, brochures and other print',
+            supportCosts: 'Costs of fundraising that gives something in return',
+        },
+        committed: 'committed',
         donate: {
             cta: 'Support the campaign',
             pending: 'The donation link will be published here as soon as the donation page opens.',
@@ -196,6 +219,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         mean: 'average',
         median: 'median',
         needed: 'Still to raise',
+        pending: 'pending',
         raised: 'Raised so far',
         sets: { all: 'All of Finland', uusimaa: 'Uusimaa district' },
         source: (retrieved) =>
@@ -223,7 +247,16 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Tilanne ${formatted}`,
         budget: 'Kampanjabudjetti',
         budgetRow: 'Oma budjettini',
-        committed: 'Oma sitoumukseni',
+        categories: {
+            design: 'Mainonnan suunnittelu',
+            events: 'Vaalitilaisuudet',
+            media: 'Vaalimainonta medioissa',
+            other: 'Muut kulut',
+            outdoor: 'Ulkomainonta',
+            print: 'Vaalilehdet, esitteet ja muu painettu materiaali',
+            supportCosts: 'Vastikkeellisen tuen hankintakulut',
+        },
+        committed: 'sitouduttu',
         donate: {
             cta: 'Tue kampanjaa',
             pending: 'Lahjoituslinkki julkaistaan tällä sivulla heti, kun lahjoitussivu avautuu.',
@@ -232,6 +265,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         mean: 'keskiarvo',
         median: 'mediaani',
         needed: 'Vielä kerättävä',
+        pending: 'tilittämättä',
         raised: 'Kerätty',
         sets: { all: 'Koko Suomi', uusimaa: 'Uudenmaan vaalipiiri' },
         source: (retrieved) =>
@@ -258,7 +292,16 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         asOf: (formatted) => `Läget ${formatted}`,
         budget: 'Kampanjbudget',
         budgetRow: 'Min budget',
-        committed: 'Mitt eget åtagande',
+        categories: {
+            design: 'Planering av reklam',
+            events: 'Valmöten',
+            media: 'Valreklam i medier',
+            other: 'Övriga kostnader',
+            outdoor: 'Utomhusreklam',
+            print: 'Valtidningar, broschyrer och annat tryckt material',
+            supportCosts: 'Anskaffningskostnader för stöd mot vederlag',
+        },
+        committed: 'bundet',
         donate: {
             cta: 'Stöd kampanjen',
             pending: 'Donationslänken publiceras här så snart donationssidan öppnas.',
@@ -267,6 +310,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         mean: 'medeltal',
         median: 'median',
         needed: 'Kvar att samla in',
+        pending: 'ej inbetalt',
         raised: 'Insamlat hittills',
         sets: { all: 'Hela Finland', uusimaa: 'Nylands valkrets' },
         source: (retrieved) =>

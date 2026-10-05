@@ -27,9 +27,9 @@ exports[`<FinanceStack /> > should render 1`] = `
       style="--tone: #006845; flex: 10000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     />
     <div
-      class="seg seg--hatched"
+      class="seg"
       data-astro-cid-hvjct2tw=""
-      style="--tone: #006845; flex: 5000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+      style="--tone: #59B9F1; flex: 5000 1 0%; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
     />
     <div
       class="seg seg--hatched"
@@ -167,9 +167,9 @@ exports[`<FinanceStack /> > should render 1`] = `
        
       <span
         aria-hidden="true"
-        class="swatch swatch--hatched"
+        class="swatch"
         data-astro-cid-hvjct2tw=""
-        style="--tone: #006845; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
+        style="--tone: #59B9F1; --barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       />
        
       <span
@@ -177,7 +177,7 @@ exports[`<FinanceStack /> > should render 1`] = `
         data-astro-cid-hvjct2tw=""
         style="--barHeight: 1.75rem;--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 1.1875rem;--captionFontWeight: 600;--captionPad: 1rem;--colorsForestGreen70: rgba(22, 62, 53, 0.7);--figuresFontSize: 1.0625rem;--figuresFontWeight: 700;--labelFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--labelFontSize: 1.0625rem;--legendPad: 1.25rem;--legendWidth: 35rem;--shareFontFamily: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;--swatchSize: 0.875rem;"
       >
-        Oma sitoumukseni
+        Puolue ja puolueyhdistykset
       </span>
        
       <span

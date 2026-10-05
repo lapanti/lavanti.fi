@@ -31,8 +31,8 @@ const { caption, lang, segments, showShares = true, total } = Astro.props
 const size = (segment: FinanceSegment): number => segment.value + (segment.pending ?? 0)
 const drawn = segments.filter((segment) => size(segment) > 0)
 
-/** Hatched whole: the shortfall, or an undertaking that has not moved. */
-const HATCHED_TONES = new Set<Tone>(['committed', 'needed'])
+/** Hatched whole: the shortfall still to be raised. */
+const HATCHED_TONES = new Set<Tone>(['needed'])
 ---
 
 <style

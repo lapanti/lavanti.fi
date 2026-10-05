@@ -1,4 +1,11 @@
-import type { Benchmark, CampaignFinance } from '../content/campaignFinance'
+import type {
+    Benchmark,
+    CampaignFinance,
+    Expense,
+    ExpenseCategory,
+    FundingSource,
+    Income,
+} from '../content/campaignFinance'
 
 import { describe, expect, it } from 'vitest'
 
@@ -9,6 +16,7 @@ import {
     benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
+    categoryRows,
     formatDate,
     formatDecimal,
     formatEuro,
@@ -21,18 +29,44 @@ import {
     summaryTiles,
     toneColors,
     totalRaised,
+    totalSpent,
+    withPending,
 } from './campaignFinance'
 
 const NBSP = '\u00A0'
+
+const income = (banked: number, pending = 0): Income => ({ banked, pending })
+const expense = (budgeted: number, banked = 0, committed = 0): Expense => ({ banked, budgeted, committed })
+
+const raisedWith = (changes: Partial<Record<FundingSource, Income>> = {}): Record<FundingSource, Income> => ({
+    companies: income(0),
+    loans: income(0),
+    other: income(0),
+    own: income(0),
+    party: income(0),
+    partyAssociations: income(0),
+    private: income(0),
+    ...changes,
+})
+
+const spentWith = (changes: Partial<Record<ExpenseCategory, Expense>> = {}): Record<ExpenseCategory, Expense> => ({
+    design: expense(1000),
+    events: expense(1000),
+    media: expense(10000),
+    other: expense(1000),
+    outdoor: expense(10000),
+    print: expense(3000),
+    supportCosts: expense(1000),
+    ...changes,
+})
 
 const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => ({
     asOf: '2026-09-25',
     budget: 30000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: false,
-    ownCommitment: 0,
-    raised: { companies: 0, loans: 0, other: 0, own: 10000, party: 0, partyAssociations: 0, private: 0 },
-    spent: 5000,
+    raised: raisedWith({ own: income(10000) }),
+    spent: spentWith({ media: expense(10000, 5000) }),
     ...overrides,
 })
 
@@ -48,32 +82,34 @@ const benchmark: Benchmark = {
 }
 
 describe('totalRaised', () => {
-    it('should sum every funding category', () => {
-        expect(totalRaised(finance())).toBe(10000)
+    it('should sum banked and pending separately over every funding source', () => {
+        expect(totalRaised(finance())).toEqual({ banked: 10000, pending: 0 })
         expect(
             totalRaised(
                 finance({
-                    raised: {
-                        companies: 500,
-                        loans: 0,
-                        other: 250,
-                        own: 10000,
-                        party: 100,
-                        partyAssociations: 200,
-                        private: 1200,
-                    },
+                    raised: raisedWith({
+                        companies: income(500),
+                        other: income(250, 50),
+                        own: income(10000, 7000),
+                        party: income(100),
+                        partyAssociations: income(200),
+                        private: income(1200, 494),
+                    }),
                 })
             )
-        ).toBe(12250)
+        ).toEqual({ banked: 12250, pending: 7544 })
     })
 
     it('should be zero when nothing has come in', () => {
-        const empty = finance({
-            raised: { companies: 0, loans: 0, other: 0, own: 0, party: 0, partyAssociations: 0, private: 0 },
-            spent: 0,
-        })
+        expect(totalRaised(finance({ raised: raisedWith() }))).toEqual({ banked: 0, pending: 0 })
+    })
+})
 
-        expect(totalRaised(empty)).toBe(0)
+describe('totalSpent', () => {
+    it('should sum budgeted, paid and committed separately over every category', () => {
+        const spent = spentWith({ media: expense(10000, 5000, 2000), print: expense(3000, 0, 500) })
+
+        expect(totalSpent(finance({ spent }))).toEqual({ banked: 5000, budgeted: 27000, committed: 2500 })
     })
 })
 
@@ -82,21 +118,17 @@ describe('gapToBudget', () => {
         expect(gapToBudget(finance())).toBe(20000)
     })
 
-    /* An undertaking is money the budget can rely on, so it closes the gap. */
-    it('should count the candidate own commitment towards the budget', () => {
-        expect(gapToBudget(finance({ ownCommitment: 5000 }))).toBe(15000)
+    /* Pending income is bound by a contract, so the budget can rely on it. */
+    it('should count pending income towards the budget', () => {
+        expect(gapToBudget(finance({ raised: raisedWith({ own: income(10000, 5000) }) }))).toBe(15000)
     })
 
     it('should clamp at zero when the campaign has raised more than it budgeted', () => {
-        const over = finance({
-            raised: { companies: 0, loans: 0, other: 0, own: 32000, party: 0, partyAssociations: 0, private: 0 },
-        })
-
-        expect(gapToBudget(over)).toBe(0)
+        expect(gapToBudget(finance({ raised: raisedWith({ own: income(32000) }) }))).toBe(0)
     })
 
-    it('should clamp at zero when raised and committed together exceed the budget', () => {
-        expect(gapToBudget(finance({ ownCommitment: 25000 }))).toBe(0)
+    it('should clamp at zero when banked and pending together exceed the budget', () => {
+        expect(gapToBudget(finance({ raised: raisedWith({ own: income(10000, 25000) }) }))).toBe(0)
     })
 })
 
@@ -269,7 +301,6 @@ describe('budgetSegments', () => {
             'companies',
             'party',
             'other',
-            'committed',
             'needed',
         ])
     })
@@ -279,43 +310,48 @@ describe('budgetSegments', () => {
         const loans = segments.find((segment) => segment.id === 'loans')
 
         expect(loans?.value).toBe(0)
+        expect(loans?.pending).toBe(0)
         expect(loans?.label).toBe('Lainat')
     })
+
+    const size = (segments: { pending?: number; value: number }[]): number =>
+        segments.reduce((sum, segment) => sum + segment.value + (segment.pending ?? 0), 0)
 
     it('should total the budget while the campaign is under it', () => {
         const { segments, total } = budgetSegments(finance(), 'fi')
 
         expect(total).toBe(30000)
-        expect(segments.reduce((sum, segment) => sum + segment.value, 0)).toBe(30000)
+        expect(size(segments)).toBe(30000)
     })
 
     /*
-     * A pledge is not a receipt: it gets its own segment so the solid part of the bar
-     * stays exactly the money that has arrived.
+     * Pending is not banked: it rides on its source as a separate, hatched part, so the
+     * solid part of the bar stays exactly the money that has arrived.
      */
-    it('should keep the commitment out of the received sources', () => {
-        const pledged = finance({
-            ownCommitment: 10000,
-            raised: { companies: 0, loans: 0, other: 0, own: 0, party: 0, partyAssociations: 0, private: 0 },
-        })
-        const { segments, total } = budgetSegments(pledged, 'fi')
-        const byId = Object.fromEntries(segments.map((segment) => [segment.id, segment.value]))
+    it('should carry pending income on its source, apart from the banked amount', () => {
+        const pending = finance({ raised: raisedWith({ own: income(3000, 7000) }) })
+        const { segments, total } = budgetSegments(pending, 'fi')
+        const own = segments.find((segment) => segment.id === 'own')
 
-        expect(byId.own).toBe(0)
-        expect(byId.committed).toBe(10000)
-        expect(byId.needed).toBe(20000)
+        expect(own).toMatchObject({ pending: 7000, pendingLabel: 'tilittämättä', value: 3000 })
+        expect(segments.find((segment) => segment.id === 'needed')?.value).toBe(20000)
         expect(total).toBe(30000)
     })
 
+    it('should merge the party associations into the party row, banked and pending alike', () => {
+        const party = finance({ raised: raisedWith({ party: income(100, 10), partyAssociations: income(200, 20) }) })
+        const row = budgetSegments(party, 'fi').segments.find((segment) => segment.id === 'party')
+
+        expect(row).toMatchObject({ pending: 30, value: 300 })
+    })
+
     it('should total the raised sum when the campaign has overshot the budget', () => {
-        const over = finance({
-            raised: { companies: 0, loans: 0, other: 0, own: 32000, party: 0, partyAssociations: 0, private: 0 },
-        })
+        const over = finance({ raised: raisedWith({ own: income(30000, 2000) }) })
         const { segments, total } = budgetSegments(over, 'fi')
 
         expect(total).toBe(32000)
         expect(segments.find((segment) => segment.id === 'needed')?.value).toBe(0)
-        expect(segments.reduce((sum, segment) => sum + segment.value, 0)).toBe(32000)
+        expect(size(segments)).toBe(32000)
     })
 
     it('should label the segments in the requested language', () => {
@@ -377,30 +413,40 @@ describe('benchmarkShareRows', () => {
 })
 
 describe('spendingSegments', () => {
-    /* No confirmed figure means no figure on the page, not a zero. */
-    it('should give nothing while no spending is confirmed', () => {
-        expect(spendingSegments(finance({ spent: undefined }), 'fi')).toBeUndefined()
+    /* Nothing paid and nothing committed: the page prints the pending line instead. */
+    it('should give nothing before anything is paid or committed', () => {
+        expect(spendingSegments(finance({ spent: spentWith() }), 'fi')).toBeUndefined()
     })
 
     it('should split the raised sum into spent and unspent', () => {
         const { segments, total } = spendingSegments(finance(), 'fi')!
 
         expect(total).toBe(10000)
-        expect(segments.map((segment) => [segment.id, segment.value])).toEqual([
-            ['spent', 5000],
-            ['unspent', 5000],
+        expect(segments.map((segment) => [segment.id, segment.value, segment.pending ?? 0])).toEqual([
+            ['spent', 5000, 0],
+            ['unspent', 5000, 0],
         ])
     })
 
-    it('should render both segments as zero before any money has moved', () => {
-        const empty = finance({
-            raised: { companies: 0, loans: 0, other: 0, own: 0, party: 0, partyAssociations: 0, private: 0 },
-            spent: 0,
+    it('should carry committed spending hatched on the spent segment and count pending income', () => {
+        const committed = finance({
+            raised: raisedWith({ own: income(10000, 2000) }),
+            spent: spentWith({ media: expense(10000, 3000, 2000) }),
         })
-        const { segments, total } = spendingSegments(empty, 'fi')!
+        const { segments, total } = spendingSegments(committed, 'fi')!
 
-        expect(total).toBe(0)
-        expect(segments.every((segment) => segment.value === 0)).toBe(true)
+        expect(total).toBe(12000)
+        expect(segments[0]).toMatchObject({ id: 'spent', pending: 2000, pendingLabel: 'sitouduttu', value: 3000 })
+        expect(segments[1]).toMatchObject({ id: 'unspent', value: 7000 })
+    })
+
+    /* A contract can come before the money: the total grows rather than unspent going negative. */
+    it('should never draw a negative unspent row when commitments run ahead of income', () => {
+        const ahead = finance({ spent: spentWith({ outdoor: expense(20000, 0, 15000) }) })
+        const { segments, total } = spendingSegments(ahead, 'fi')!
+
+        expect(total).toBe(15000)
+        expect(segments[1].value).toBe(0)
     })
 
     it('should label the segments in the requested language', () => {
@@ -409,24 +455,89 @@ describe('spendingSegments', () => {
     })
 })
 
-describe('summaryTiles', () => {
-    it('should give budget, received, commitment and gap, and date the gap', () => {
-        const tiles = summaryTiles(finance({ ownCommitment: 10000 }), 'fi')
+describe('categoryRows', () => {
+    it('should list the seven categories in disclosure order, zeros included', () => {
+        const rows = categoryRows(finance(), 'fi')
 
-        expect(tiles.map((tile) => tile.label)).toEqual([
-            'Kampanjabudjetti',
-            'Kerätty',
-            'Oma sitoumukseni',
-            'Vielä kerättävä',
+        expect(rows.map((row) => row.label)).toEqual([
+            'Vaalimainonta medioissa',
+            'Ulkomainonta',
+            'Vaalilehdet, esitteet ja muu painettu materiaali',
+            'Mainonnan suunnittelu',
+            'Vaalitilaisuudet',
+            'Vastikkeellisen tuen hankintakulut',
+            'Muut kulut',
         ])
+        expect(rows[1]).toEqual({
+            label: 'Ulkomainonta',
+            pending: 0,
+            pendingLabel: 'sitouduttu',
+            target: 10000,
+            value: 0,
+        })
+    })
+
+    it('should give paid as the value, committed as pending and budgeted as the target', () => {
+        const spent = spentWith({ print: expense(3000, 200, 524) })
+
+        expect(categoryRows(finance({ spent }), 'en')[2]).toMatchObject({
+            label: 'Campaign papers, brochures and other print',
+            pending: 524,
+            pendingLabel: 'committed',
+            target: 3000,
+            value: 200,
+        })
+    })
+})
+
+describe('withPending', () => {
+    it('should name both parts when money is on its way', () => {
+        expect(withPending(3000, 7000, 'tilittämättä', 'fi')).toBe(
+            `3${NBSP}000${NBSP}€ + 7${NBSP}000${NBSP}€ tilittämättä`
+        )
+        expect(withPending(3000, 7000, 'pending', 'en')).toBe('€3,000 + €7,000 pending')
+    })
+
+    it('should give just the amount when nothing is pending', () => {
+        expect(withPending(3000, 0, 'tilittämättä', 'fi')).toBe(`3${NBSP}000${NBSP}€`)
+        expect(withPending(3000, undefined, undefined, 'en')).toBe('€3,000')
+    })
+})
+
+describe('summaryTiles', () => {
+    it('should give budget, raised, spent and gap, and date the gap', () => {
+        const tiles = summaryTiles(finance(), 'fi')
+
+        expect(tiles.map((tile) => tile.label)).toEqual(['Kampanjabudjetti', 'Kerätty', 'Käytetty', 'Vielä kerättävä'])
         expect(tiles[3].note).toBe('Tilanne 25.9.2026')
     })
 
-    /* Spending has a section of its own, and no figure while it is unconfirmed. */
-    it('should leave spending out, confirmed or not', () => {
-        for (const spent of [5000, undefined]) {
-            expect(summaryTiles(finance({ spent }), 'en').map((tile) => tile.label)).not.toContain('Spent so far')
-        }
+    it('should show what has moved, with what is bound to move as a note', () => {
+        const tiles = summaryTiles(
+            finance({
+                raised: raisedWith({ own: income(3000, 7000) }),
+                spent: spentWith({ media: expense(10000, 1000, 4000) }),
+            }),
+            'fi'
+        )
+
+        expect(tiles[1]).toEqual({
+            label: 'Kerätty',
+            note: `+ 7${NBSP}000${NBSP}€ tilittämättä`,
+            value: `3${NBSP}000${NBSP}€`,
+        })
+        expect(tiles[2]).toEqual({
+            label: 'Käytetty',
+            note: `+ 4${NBSP}000${NBSP}€ sitouduttu`,
+            value: `1${NBSP}000${NBSP}€`,
+        })
+    })
+
+    it('should leave the note out when nothing is pending or committed', () => {
+        const tiles = summaryTiles(finance(), 'en')
+
+        expect(tiles[1].note).toBeUndefined()
+        expect(tiles[2].note).toBeUndefined()
     })
 
     it('should format every value for the requested locale', () => {

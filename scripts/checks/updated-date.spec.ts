@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-import { FINANCE_PAGES } from '../ci/update-campaign-finance'
+import { FIGURES_PATH, FINANCE_PAGES } from '../ci/update-campaign-finance'
 import { findOffenders, readUpdatedDate, today, unitOf, unitsOf, withoutUpdatedDate } from './updated-date'
 
 describe('unitOf', () => {
@@ -177,6 +177,17 @@ describe('findOffenders', () => {
         for (const financePage of FINANCE_PAGES) write(financePage, page('2026-09-11', 'Rahoitus'))
         git('add', '-A')
         expect(staged([module, ...FINANCE_PAGES])).toEqual([])
+    })
+
+    it('requires the finance pages to bump when only the figures file changed', () => {
+        write(FIGURES_PATH, '{ "asOf": "2026-01-01" }\n')
+        for (const financePage of FINANCE_PAGES) write(financePage, page('2026-01-01', 'Rahoitus'))
+        git('add', '-A')
+        git('commit', '-qm', 'figures seed')
+
+        write(FIGURES_PATH, '{ "asOf": "2026-01-02" }\n')
+        git('add', '-A')
+        expect(staged([FIGURES_PATH])).toEqual(FINANCE_PAGES.map((p) => ({ field: p, unit: p })))
     })
 })
 

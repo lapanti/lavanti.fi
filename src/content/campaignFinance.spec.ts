@@ -5,8 +5,14 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
-import { formatInteger } from '../lib/campaignFinance'
-import { benchmark2023, campaignFinance, DISPLAY_SOURCE_ORDER, financeLabels } from './campaignFinance'
+import { formatInteger, totalRaised, totalSpent } from '../lib/campaignFinance'
+import {
+    benchmark2023,
+    campaignFinance,
+    DISPLAY_SOURCE_ORDER,
+    EXPENSE_CATEGORY_ORDER,
+    financeLabels,
+} from './campaignFinance'
 
 const LANGS = ['en', 'fi', 'sv'] as const
 const SOURCES: FundingSource[] = ['companies', 'loans', 'other', 'own', 'party', 'partyAssociations', 'private']
@@ -21,9 +27,12 @@ describe('campaign finance data', () => {
     it('should state every figure as a non-negative whole euro amount', () => {
         const figures = [
             campaignFinance.budget,
-            campaignFinance.ownCommitment,
-            ...Object.values(campaignFinance.raised),
-            ...(campaignFinance.spent === undefined ? [] : [campaignFinance.spent]),
+            ...Object.values(campaignFinance.raised).flatMap((income) => [income.banked, income.pending]),
+            ...Object.values(campaignFinance.spent).flatMap((expense) => [
+                expense.budgeted,
+                expense.banked,
+                expense.committed,
+            ]),
         ]
 
         for (const figure of figures) {
@@ -32,37 +41,34 @@ describe('campaign finance data', () => {
         }
     })
 
-    it('should carry every statutory funding category, zeros included', () => {
-        for (const source of SOURCES) {
-            expect(campaignFinance.raised[source]).toBeDefined()
-        }
+    it('should carry every statutory funding source and expense category, zeros included', () => {
+        expect(Object.keys(campaignFinance.raised).sort()).toEqual([...SOURCES].sort())
+        expect(Object.keys(campaignFinance.spent).sort()).toEqual([...EXPENSE_CATEGORY_ORDER].sort())
     })
 
-    /*
-     * The guard the helpers rely on: spendingSegments subtracts without clamping, so a
-     * campaign that reports more spent than raised must fail here rather than render a
-     * negative segment.
-     */
-    it('should not report more spent than raised', () => {
-        const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
-
-        expect(campaignFinance.spent ?? 0).toBeLessThanOrEqual(raised)
+    /* Committed spending is exempt: a contract can come before the money. */
+    it('should not report more paid out than banked', () => {
+        expect(totalSpent(campaignFinance).banked).toBeLessThanOrEqual(totalRaised(campaignFinance).banked)
     })
 
-    it('should not report more raised than the budget', () => {
-        const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
+    it('should not report more raised, pending included, than the budget', () => {
+        const raised = totalRaised(campaignFinance)
 
-        expect(raised).toBeLessThanOrEqual(campaignFinance.budget)
+        expect(raised.banked + raised.pending).toBeLessThanOrEqual(campaignFinance.budget)
     })
+})
 
-    /*
-     * The commitment is a backstop that shrinks as donations arrive, so together with
-     * what has been received it should never promise more than the budget.
-     */
-    it('should not promise more than the budget once the commitment is counted', () => {
-        const raised = Object.values(campaignFinance.raised).reduce((sum, value) => sum + value, 0)
-
-        expect(raised + campaignFinance.ownCommitment).toBeLessThanOrEqual(campaignFinance.budget)
+describe('EXPENSE_CATEGORY_ORDER', () => {
+    it('should list the seven categories in the order of the disclosure form', () => {
+        expect(EXPENSE_CATEGORY_ORDER).toEqual([
+            'media',
+            'outdoor',
+            'print',
+            'design',
+            'events',
+            'supportCosts',
+            'other',
+        ])
     })
 })
 
@@ -172,10 +178,19 @@ describe('finance labels', () => {
             expect(labels.donate.cta).toBeTruthy()
             expect(labels.donate.pending).toBeTruthy()
             expect(labels.committed).toBeTruthy()
+            expect(labels.pending).toBeTruthy()
             expect(labels.spentPending).toBeTruthy()
             expect(labels.teaser.cta).toBeTruthy()
             expect(labels.teaser.eyebrow).toBeTruthy()
             expect(labels.teaser.heading).toBeTruthy()
+        }
+    })
+
+    it('should name every expense category in every locale', () => {
+        for (const lang of LANGS) {
+            for (const category of EXPENSE_CATEGORY_ORDER) {
+                expect(financeLabels[lang].categories[category]).toBeTruthy()
+            }
         }
     })
 

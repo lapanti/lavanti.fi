@@ -1,8 +1,9 @@
 name: Campaign finance update
 
 # Turns weekly campaign finance figures into a PR against
-# src/content/campaignFinance.ts. A weekly job outside this repo sends a repository_dispatch event
-# `campaign-finance-update` with client_payload `{ asOf, raised, spent }`;
+# src/content/campaignFinanceFigures.json. A weekly job outside this repo sends a repository_dispatch event
+# `campaign-finance-update` with client_payload `{ asOf, raised, spent }`
+# (raised per source { banked, pending }, spent per category { budgeted, banked, committed });
 # workflow_dispatch takes the same JSON as the `payload` input for manual runs.
 #
 # Unchanged figures end the run. Otherwise the run applies the payload,
@@ -26,7 +27,7 @@ on:
   workflow_dispatch:
     inputs:
       payload:
-        description: 'JSON: { "asOf": "YYYY-MM-DD", "raised": { <seven §6 categories> }, "spent": <int> }'
+        description: 'JSON: { "asOf": "YYYY-MM-DD", "raised": { <7 sources>: { "banked", "pending" } }, "spent": { <7 categories>: { "budgeted", "banked", "committed" } } }'
         required: true
         type: string
 
@@ -95,7 +96,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SCHEDULED_PUBLISH_TOKEN }}
           # Exact files, not src/: npm ci and the build must not leak into the commit.
           COMMIT_PATHS: >-
-            src/content/campaignFinance.ts
+            src/content/campaignFinanceFigures.json
             src/pages/fi/eduskuntavaalit/vaalirahoitus/index.mdx
             src/pages/sv/riksdagsvalet/valfinansiering/index.mdx
             src/pages/en/elections/campaign-finance/index.mdx

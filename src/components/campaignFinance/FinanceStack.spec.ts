@@ -12,7 +12,7 @@ const segments: FinanceSegment[] = [
     { id: 'own', label: 'Omat varat', tone: 'own', value: 10000 },
     { id: 'loans', label: 'Lainat', tone: 'loans', value: 0 },
     { id: 'private', label: 'Yksityishenkilöt', tone: 'private', value: 0 },
-    { id: 'committed', label: 'Oma sitoumukseni', tone: 'committed', value: 5000 },
+    { id: 'party', label: 'Puolue ja puolueyhdistykset', tone: 'party', value: 5000 },
     { id: 'needed', label: 'Vielä kerättävä', tone: 'needed', value: 15000 },
 ]
 
@@ -65,17 +65,14 @@ describe('<FinanceStack />', () => {
         expect(result.querySelectorAll('.seg')).toHaveLength(3)
     })
 
-    /*
-     * Money that has not moved yet and the shortfall are hatched, so the solid part of
-     * the bar is exactly what has arrived.
-     */
-    it('should draw money that is not in the account yet hatched', async () => {
+    /* The shortfall is hatched whole, so the solid part of the bar is exactly what has arrived. */
+    it('should draw the shortfall hatched', async () => {
         const result = await renderAstroComponent(FinanceStack, {
             props: { caption: 'Mistä rahat tulevat?', lang: 'fi', segments, total: 30000 },
         })
 
-        expect(result.querySelectorAll('.seg--hatched')).toHaveLength(2)
-        expect(result.querySelectorAll('.swatch--hatched')).toHaveLength(2)
+        expect(result.querySelectorAll('.seg--hatched')).toHaveLength(1)
+        expect(result.querySelectorAll('.swatch--hatched')).toHaveLength(1)
     })
 
     describe('with pending money', () => {

@@ -1,0 +1,70 @@
+{
+    "asOf": "2026-10-05",
+    "raised": {
+        "own": {
+            "banked": 3000,
+            "pending": 7000
+        },
+        "loans": {
+            "banked": 0,
+            "pending": 0
+        },
+        "private": {
+            "banked": 0,
+            "pending": 494
+        },
+        "companies": {
+            "banked": 0,
+            "pending": 0
+        },
+        "party": {
+            "banked": 0,
+            "pending": 0
+        },
+        "partyAssociations": {
+            "banked": 0,
+            "pending": 0
+        },
+        "other": {
+            "banked": 0,
+            "pending": 0
+        }
+    },
+    "spent": {
+        "media": {
+            "budgeted": 11340,
+            "banked": 0,
+            "committed": 4600
+        },
+        "outdoor": {
+            "budgeted": 20082,
+            "banked": 0,
+            "committed": 0
+        },
+        "print": {
+            "budgeted": 3080,
+            "banked": 0,
+            "committed": 524
+        },
+        "design": {
+            "budgeted": 1655,
+            "banked": 0,
+            "committed": 1255
+        },
+        "events": {
+            "budgeted": 2000,
+            "banked": 0,
+            "committed": 0
+        },
+        "supportCosts": {
+            "budgeted": 1500,
+            "banked": 0,
+            "committed": 0
+        },
+        "other": {
+            "budgeted": 2825,
+            "banked": 0,
+            "committed": 0
+        }
+    }
+}

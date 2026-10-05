@@ -3,14 +3,15 @@ import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
 
 import { campaignFinance } from '../../../src/content/campaignFinance'
+import { spendingSegments } from '../../../src/lib/campaignFinance'
 import { AnyPage } from './anyPage'
 
 /*
  * Two comparison bar groups and the funding stack are always drawn. The spending
- * stack joins them only once a spending figure is confirmed, so the count follows the
+ * stack joins them only once something is paid or committed, so the count follows the
  * data rather than being pinned to whatever the campaign happens to report today.
  */
-const EXPECTED_FIGURES = campaignFinance.spent === undefined ? 3 : 4
+const EXPECTED_FIGURES = spendingSegments(campaignFinance, 'en') ? 4 : 3
 
 export class CampaignFinanceEnPage extends AnyPage {
     readonly financeTitle: Locator
