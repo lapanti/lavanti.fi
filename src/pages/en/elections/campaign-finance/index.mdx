@@ -45,6 +45,7 @@ import {
     benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
+    categoryRows,
     formatDate,
     formatDecimal,
     formatInteger,
@@ -85,17 +86,18 @@ export const spending = spendingSegments(campaignFinance, 'en')
 <Plate eyebrow="Sources" ground="oat" heading="Where does the money come from?">
     <FinanceStack caption="The budget by source and shares of the whole budget" lang="en" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>I break the money down the same way as the statutory disclosure that elected members file with the audit office.</p>
+        <p>I break the money down the same way as the statutory disclosure that elected members file with the audit office. The striped part is money already agreed but not yet in the campaign account.</p>
         <p>Support can come from private individuals, companies and associations. I publish every contribution of 2,000 euros or more with the supporter’s name. I also file a voluntary advance disclosure for the campaign with the audit office. The advance disclosure is not mandatory.</p>
         <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Spending" ground="offWhite" heading="What has the money been spent on?" id="spending">
-    {spending && <FinanceStack caption="Actual spending" lang="en" segments={spending.segments} showShares={false} total={spending.total} />}
+    {spending && <FinanceStack caption="Spending paid and committed, against the money raised" lang="en" segments={spending.segments} showShares={false} total={spending.total} />}
+    <FinanceBars caption="Spending by category: paid, committed and budgeted" lang="en" rows={categoryRows(campaignFinance, 'en')} unit="eur" />
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
-        <p>The cost breakdown becomes more detailed as the campaign goes on. The largest items will be roadside advertising, other printed material, digital advertising and campaign events. I will publish a breakdown at the same level of detail as in the statutory disclosure.</p>
+        <p>I break spending down into the same categories as the statutory disclosure. The solid bar is already paid, the striped part is ordered or agreed, and the vertical line marks the category’s budget.</p>
     </Prose>
 </Plate>
 

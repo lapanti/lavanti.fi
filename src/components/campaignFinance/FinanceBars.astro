@@ -150,9 +150,20 @@ const isLong = (row: BarRow): boolean => (row.pending ?? 0) > 0 || row.target !=
         padding-top: var(--captionPad);
     }
 
+    /*
+     * The columns belong to the list, not to each row: rows share them through subgrid,
+     * so the widest amount sizes one column for all and every track is the same length.
+     * Per-row columns let a longer amount shorten its own track and break the scale.
+     */
     @media (min-width: 769px) {
-        .row {
+        .rows {
+            column-gap: 0.75rem;
             grid-template-columns: minmax(0, var(--labelColumn)) 1fr auto;
+        }
+
+        .row {
+            grid-column: 1 / -1;
+            grid-template-columns: subgrid;
         }
 
         .track {

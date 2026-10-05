@@ -7,11 +7,13 @@ import { spendingSegments } from '../../../src/lib/campaignFinance'
 import { AnyPage } from './anyPage'
 
 /*
- * Two comparison bar groups and the funding stack are always drawn. The spending
- * stack joins them only once something is paid or committed, so the count follows the
- * data rather than being pinned to whatever the campaign happens to report today.
+ * Two comparison bar groups, the funding stack and the category bars are always drawn.
+ * The spending stack joins them only once something is paid or committed, so the count
+ * follows the data rather than being pinned to whatever the campaign reports today.
  */
-const EXPECTED_FIGURES = spendingSegments(campaignFinance, 'en') ? 4 : 3
+const EXPECTED_FIGURES = spendingSegments(campaignFinance, 'en') ? 5 : 4
+/* One row per statutory expense category, zeros included; below the fold, so no golden sees it. */
+const EXPECTED_CATEGORIES = 7
 
 export class CampaignFinanceEnPage extends AnyPage {
     readonly financeTitle: Locator
@@ -42,5 +44,6 @@ export class CampaignFinanceEnPage extends AnyPage {
         await expect(this.figures).toHaveCount(EXPECTED_FIGURES)
         // Present in both states: it carries either the stack or the pending line.
         await expect(this.spendingSection).toBeVisible()
+        await expect(this.spendingSection.locator('ol > li')).toHaveCount(EXPECTED_CATEGORIES)
     }
 }

@@ -45,6 +45,7 @@ import {
     benchmarkSet,
     benchmarkShareRows,
     budgetSegments,
+    categoryRows,
     formatDate,
     formatDecimal,
     formatInteger,
@@ -85,17 +86,18 @@ export const spending = spendingSegments(campaignFinance, 'sv')
 <Plate eyebrow="Källor" ground="oat" heading="Varifrån kommer pengarna?">
     <FinanceStack caption="Budgetens pengar per källa samt andelar av hela budgeten" lang="sv" segments={budget.segments} total={budget.total} />
     <Prose>
-        <p>Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket.</p>
+        <p>Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Den randiga delen är pengar som redan är överenskomna men ännu inte finns på kampanjens konto.</p>
         <p>Stöd kan ges av privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket. Förhandsredovisningen är inte obligatorisk.</p>
         <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
     </Prose>
 </Plate>
 
 <Plate eyebrow="Kostnader" ground="offWhite" heading="Vad har pengarna använts till?" id="kostnader">
-    {spending && <FinanceStack caption="Verkliga utgifter" lang="sv" segments={spending.segments} showShares={false} total={spending.total} />}
+    {spending && <FinanceStack caption="Betalda och bundna utgifter i förhållande till insamlade pengar" lang="sv" segments={spending.segments} showShares={false} total={spending.total} />}
+    <FinanceBars caption="Utgifter per kategori: betalt, bundet och budgeterat" lang="sv" rows={categoryRows(campaignFinance, 'sv')} unit="eur" />
     <Prose>
         {!spending && <p>{labels.spentPending}</p>}
-        <p>Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.</p>
+        <p>Jag specificerar utgifterna i samma kategorier som i redovisningen av valfinansieringen. Den fyllda stapeln är redan betald, den randiga delen är beställd eller avtalad, och det lodräta strecket visar kategorins budget.</p>
     </Prose>
 </Plate>
 
