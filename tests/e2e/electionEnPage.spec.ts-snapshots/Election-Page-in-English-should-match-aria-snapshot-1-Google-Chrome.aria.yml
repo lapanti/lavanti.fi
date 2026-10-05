@@ -111,11 +111,11 @@
     - term: Campaign budget
     - definition: /€\d+,\d+/
     - term: Raised so far
-    - definition: /€\d+/
-    - term: My own commitment
-    - definition: /€\d+,\d+/
+    - definition: /€\d+,\d+ \+ €\d+,\d+ pending/
+    - term: Spent so far
+    - definition: /€0 \+ €\d+,\d+ committed/
     - term: Still to raise
-    - definition: /€\d+,\d+ As of 4 October \d+/
+    - definition: /€\d+,\d+ As of 5 October \d+/
     - paragraph:
       - link "See the campaign finances":
         - /url: /en/elections/campaign-finance/

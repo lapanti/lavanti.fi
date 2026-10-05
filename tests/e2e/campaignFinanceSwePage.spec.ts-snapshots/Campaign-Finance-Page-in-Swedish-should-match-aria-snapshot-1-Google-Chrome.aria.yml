@@ -10,9 +10,9 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /\d+ €/
-    - term: Mitt eget åtagande
-    - definition: /\d+ \d+ €/
+    - definition: /3 \d+ € \+ 7 \d+ € ej inbetalt/
+    - term: Använt hittills
+    - definition: /0 € \+ 6 \d+ € bundet/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - text: Varför
@@ -46,27 +46,36 @@
     - figure "Budgetens pengar per källa samt andelar av hela budgeten":
       - text: ""
       - list:
-        - listitem: /Egna medel 0 € \d+,\d+ %/
+        - listitem: /Egna medel 3 \d+ € \+ 7 \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
-        - listitem: /Privatpersoner \d+ € \d+,\d+ %/
+        - listitem: /Privatpersoner 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Företag 0 € \d+,\d+ %/
         - listitem: /Partiet och partiföreningar 0 € \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
-        - listitem: /Mitt eget åtagande \d+ \d+ € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
-    - paragraph: Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket.
+    - paragraph: Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Den randiga delen är pengar som redan är överenskomna men ännu inte finns på kampanjens konto.
     - paragraph: /Stöd kan ges av privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 2 \d+ euro med stödjarens namn\. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket\. Förhandsredovisningen är inte obligatorisk\./
     - paragraph:
       - link "Stöd kampanjen":
         - /url: https://lavanti.fi/lahjoita
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
-    - figure "Verkliga utgifter":
+    - figure "Betalda och bundna utgifter i förhållande till insamlade pengar":
       - text: ""
       - list:
-        - listitem: Använt hittills 0 €
-        - listitem: /Oanvänt \d+ €/
-    - paragraph: Kostnadsuppgifterna preciseras under kampanjens gång. Mest pengar går till vägkantsreklam, annat tryckt material, digital reklam och valtillställningar. Jag publicerar en kostnadsspecifikation med samma noggrannhet som i redovisningen av valfinansieringen.
+        - listitem: /Använt hittills 0 € \+ 6 \d+ € bundet/
+        - listitem: /Oanvänt 4 \d+ €/
+    - 'figure "Utgifter per kategori: betalt, bundet och budgeterat"':
+      - text: ""
+      - list:
+        - listitem: /Valreklam i medier 0 € \+ 4 \d+ € bundet \/ \d+ \d+ €/
+        - listitem: /Utomhusreklam 0 € \/ \d+ \d+ €/
+        - listitem: /Valtidningar, broschyrer och annat tryckt material 0 € \+ \d+ € bundet \/ 3 \d+ €/
+        - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
+        - listitem: /Valmöten 0 € \/ 2 \d+ €/
+        - listitem: /Anskaffningskostnader för stöd mot vederlag 0 € \/ 1 \d+ €/
+        - listitem: /Övriga kostnader 0 € \/ 2 \d+ €/
+    - paragraph: Jag specificerar utgifterna i samma kategorier som i redovisningen av valfinansieringen. Den fyllda stapeln är redan betald, den randiga delen är beställd eller avtalad, och det lodräta strecket visar kategorins budget.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]
     - figure /Kampanjernas pengar per källa \d+, andel av alla insamlade pengar/:
