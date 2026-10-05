@@ -144,6 +144,43 @@ describe('<FinanceBars />', () => {
         expect(getByText(result, 'Lähde: VTV')).toBeTruthy()
     })
 
+    describe('with committed money and a budget', () => {
+        const categoryRows = [
+            { label: 'Vaalimainonta medioissa', pending: 4000, pendingLabel: 'sitouduttu', target: 11000, value: 1000 },
+            { label: 'Ulkomainonta', target: 20000, value: 0 },
+        ]
+        const props = { caption: 'Kulut luokittain', lang: 'fi', rows: categoryRows, unit: 'eur' } as const
+
+        it('should draw the committed part hatched after the paid part', async () => {
+            const result = await renderAstroComponent(FinanceBars, { props })
+            const fills = result.querySelectorAll('.track')[0].querySelectorAll('.fill')
+
+            expect(fills).toHaveLength(2)
+            expect(fills[1].classList.contains('fill--pending')).toBe(true)
+            expect(fills[0].getAttribute('style')).toContain('--w: 5%')
+            expect(fills[1].getAttribute('style')).toContain('--w: 20%')
+        })
+
+        it('should scale to the larger of the drawn amount and the budget, and mark the budget', async () => {
+            const result = await renderAstroComponent(FinanceBars, { props })
+            const targets = [...result.querySelectorAll('.target')].map((target) => target.getAttribute('style'))
+
+            expect(targets[0]).toContain('--t: 55%')
+            expect(targets[1]).toContain('--t: 100%')
+        })
+
+        it('should print every part as text, budget after a slash', async () => {
+            const result = await renderAstroComponent(FinanceBars, { props })
+            const amounts = [...result.querySelectorAll('.amount')].map((amount) => amount.textContent)
+
+            expect(amounts).toEqual([
+                `1${NBSP}000${NBSP}€ + 4${NBSP}000${NBSP}€ sitouduttu / 11${NBSP}000${NBSP}€`,
+                `0${NBSP}€ / 20${NBSP}000${NBSP}€`,
+            ])
+            expect(result.querySelectorAll('.amount--long')).toHaveLength(2)
+        })
+    })
+
     it('should omit the source area when no slot is given', async () => {
         const result = await renderAstroComponent(FinanceBars, {
             props: { caption: 'Paljonko kampanja maksaa?', lang: 'fi', rows, unit: 'eur' },

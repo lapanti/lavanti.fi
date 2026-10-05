@@ -34,17 +34,29 @@ export const toneColors: Record<Tone, string> = {
     unspent: colors.sand,
 }
 
-export interface FinanceSegment {
+/**
+ * Money bound to move but not moved yet — income contractually coming, spending the
+ * campaign is bound to pay. Drawn hatched after `value`, in the same tone, and named
+ * in the text by `pendingLabel` ("tilittämättä", "sitouduttu").
+ */
+interface Pending {
+    pending?: number
+    pendingLabel?: string
+}
+
+export interface FinanceSegment extends Pending {
     id: string
     label: string
     tone: Tone
     value: number
 }
 
-export interface BarRow {
+export interface BarRow extends Pending {
     /** Our own figure among the comparisons. */
     emphasis?: boolean
     label: string
+    /** The planned amount, drawn as a marker on the track and printed after a slash. */
+    target?: number
     value: number
 }
 
@@ -112,6 +124,20 @@ export const formatEuro = (value: number, lang: Lang): string => {
 
     return lang === 'en' ? `€${grouped}` : `${grouped}${NBSP}€`
 }
+
+/**
+ * An amount and what is still on its way: "3 000 € + 7 000 € tilittämättä". Just the
+ * amount when nothing is pending, so a settled figure reads as plainly as before.
+ */
+export const withPending = (
+    value: number,
+    pending: number | undefined,
+    suffix: string | undefined,
+    lang: Lang
+): string =>
+    pending && pending > 0
+        ? `${formatEuro(value, lang)} + ${formatEuro(pending, lang)}${suffix ? ` ${suffix}` : ''}`
+        : formatEuro(value, lang)
 
 /** One decimal, comma in fi/sv with a no-break space before the sign. */
 export const formatPercent = (value: number, lang: Lang): string => {

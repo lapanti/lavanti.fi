@@ -66,16 +66,57 @@ describe('<FinanceStack />', () => {
     })
 
     /*
-     * Pledged money and the shortfall are outlined, so the solid part of the bar is
-     * exactly what has arrived.
+     * Money that has not moved yet and the shortfall are hatched, so the solid part of
+     * the bar is exactly what has arrived.
      */
-    it('should draw money that is not in the account yet as an outline', async () => {
+    it('should draw money that is not in the account yet hatched', async () => {
         const result = await renderAstroComponent(FinanceStack, {
             props: { caption: 'Mistä rahat tulevat?', lang: 'fi', segments, total: 30000 },
         })
 
-        expect(result.querySelectorAll('.seg--pledged')).toHaveLength(2)
-        expect(result.querySelectorAll('.swatch--pledged')).toHaveLength(2)
+        expect(result.querySelectorAll('.seg--hatched')).toHaveLength(2)
+        expect(result.querySelectorAll('.swatch--hatched')).toHaveLength(2)
+    })
+
+    describe('with pending money', () => {
+        const pendingSegments: FinanceSegment[] = [
+            { id: 'own', label: 'Omat varat', pending: 7000, pendingLabel: 'tilittämättä', tone: 'own', value: 3000 },
+            {
+                id: 'private',
+                label: 'Yksityishenkilöt',
+                pending: 500,
+                pendingLabel: 'tilittämättä',
+                tone: 'private',
+                value: 0,
+            },
+            { id: 'needed', label: 'Vielä kerättävä', tone: 'needed', value: 19500 },
+        ]
+        const props = { caption: 'Mistä rahat tulevat?', lang: 'fi', segments: pendingSegments, total: 30000 } as const
+
+        it('should draw the banked part solid and the pending part hatched, in the same tone', async () => {
+            const result = await renderAstroComponent(FinanceStack, { props })
+            const segs = [...result.querySelectorAll('.seg')]
+
+            expect(segs.map((seg) => seg.classList.contains('seg--hatched'))).toEqual([false, true, true, true])
+            expect(segs[0].getAttribute('style')).toContain('flex: 3000 1 0%')
+            expect(segs[1].getAttribute('style')).toContain('flex: 7000 1 0%')
+            expect(segs[0].getAttribute('style')?.split(';')[0]).toBe(segs[1].getAttribute('style')?.split(';')[0])
+        })
+
+        it('should skip the solid part when nothing is banked yet', async () => {
+            const result = await renderAstroComponent(FinanceStack, { props })
+
+            expect(result.querySelectorAll('.seg')).toHaveLength(4)
+            expect(result.querySelectorAll('.seg[style*="flex: 0 "]')).toHaveLength(0)
+        })
+
+        it('should name both parts in the legend and share the sum', async () => {
+            const result = await renderAstroComponent(FinanceStack, { props })
+            const own = getAllByRole(result, 'listitem')[0].textContent
+
+            expect(own).toContain(`3${NBSP}000${NBSP}€ + 7${NBSP}000${NBSP}€ tilittämättä`)
+            expect(own).toContain(`33,3${NBSP}%`)
+        })
     })
 
     it('should size drawn segments by their value', async () => {
