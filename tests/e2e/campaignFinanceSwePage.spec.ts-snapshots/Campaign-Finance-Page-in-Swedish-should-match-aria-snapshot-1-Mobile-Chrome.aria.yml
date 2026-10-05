@@ -4,6 +4,8 @@
     - text: ""
     - emphasis: finansiering
   - paragraph: Jag tar emot stöd från privatpersoner, företag och föreningar. På den här sidan hittar du alltid aktuella uppgifter om hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.
+  - link "Stöd kampanjen":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: Läget
     - heading "Hur ser kampanjens ekonomi ut just nu?" [level=2]
@@ -70,10 +72,10 @@
       - list:
         - listitem: /Valreklam i medier 0 € \+ 4 \d+ € bundet \/ \d+ \d+ €/
         - listitem: /Utomhusreklam 0 € \/ \d+ \d+ €/
-        - listitem: /Valtidningar, broschyrer och annat tryckt material 0 € \+ \d+ € bundet \/ 3 \d+ €/
+        - listitem: /Valtidningar, broschyrer och andra tryckalster 0 € \+ \d+ € bundet \/ 3 \d+ €/
         - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
         - listitem: /Valmöten 0 € \/ 2 \d+ €/
-        - listitem: /Anskaffningskostnader för stöd mot vederlag 0 € \/ 1 \d+ €/
+        - listitem: /Kostnader för anskaffning av bidrag mot vederlag 0 € \/ 1 \d+ €/
         - listitem: /Övriga kostnader 0 € \/ 2 \d+ €/
     - paragraph: Jag specificerar utgifterna i samma kategorier som i redovisningen av valfinansieringen. Den fyllda stapeln är redan betald, den randiga delen är beställd eller avtalad, och det lodräta strecket visar kategorins budget.
     - text: Bakgrund

@@ -4,6 +4,8 @@
     - text: ""
     - emphasis: finances
   - paragraph: I accept support from private individuals, companies and associations. This page always has up-to-date figures on how much has been raised, where it came from and what it has been spent on.
+  - link "Support the campaign":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: At a glance
     - heading "Where do the campaign finances stand?" [level=2]
@@ -70,7 +72,7 @@
       - list:
         - listitem: /Advertising in the media €0 \+ €\d+,\d+ committed \/ €\d+,\d+/
         - listitem: /Outdoor advertising €0 \/ €\d+,\d+/
-        - listitem: /Campaign papers, brochures and other print €0 \+ €\d+ committed \/ €\d+,\d+/
+        - listitem: /Campaign newsletters, brochures and other printed matter €0 \+ €\d+ committed \/ €\d+,\d+/
         - listitem: /Advertising design €0 \+ €\d+,\d+ committed \/ €\d+,\d+/
         - listitem: /Campaign events €0 \/ €\d+,\d+/
         - listitem: /Costs of fundraising that gives something in return €0 \/ €\d+,\d+/
