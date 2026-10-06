@@ -6,6 +6,8 @@ import { getImageSrcset } from '../../lib/images'
 import { sizes, typographics } from '../../lib/styles'
 
 interface Props {
+    /** Accessible name for a scroll row, which is focusable so keyboards can scroll it. */
+    label?: string
     lang: Lang
     /**
      * `grid` wraps cells into rows; `scroll` is one horizontally scrollable, scroll-snapped row.
@@ -15,7 +17,8 @@ interface Props {
     photos: StripPhoto[]
 }
 
-const { lang, layout = Astro.props.photos.length > 3 ? 'scroll' : 'grid', photos } = Astro.props
+const { label, lang, layout = Astro.props.photos.length > 3 ? 'scroll' : 'grid', photos } = Astro.props
+const scroll = layout === 'scroll'
 
 const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto' }
 ---
@@ -85,6 +88,11 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
         scrollbar-width: thin;
     }
 
+    ul.scroll:focus-visible {
+        outline: 2px solid var(--colorsForestGreen);
+        outline-offset: 4px;
+    }
+
     ul.scroll li {
         flex: 0 0 auto;
         scroll-snap-align: start;
@@ -98,7 +106,7 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
     }
 </style>
 
-<ul class:list={['photo-strip', layout]}>
+<ul aria-label={scroll ? label : undefined} class:list={['photo-strip', layout]} tabindex={scroll ? 0 : undefined}>
     {
         photos.map((photo) => {
             const img = getImageSrcset(photo.slug, 'body', photo.widths)

@@ -85,6 +85,13 @@ Feature: About page photo strips
     Given a PhotoStrip with an explicit layout prop
     Then the prop wins over the count rule
 
+  Scenario: Scroll row is keyboard-reachable
+    Given a scroll-layout strip
+    When its <ul> is inspected
+    Then it has tabindex="0" and an aria-label equal to the strip's label prop
+    And a grid-layout strip has neither
+    # axe rule scrollable-region-focusable; the E2E axe job enforces it
+
   Scenario: Scroll row shows a partial next cell
     Given a scroll-layout strip rendered at 375, 768 and 1280 px
     When the row is at its start
@@ -160,6 +167,7 @@ export const aboutPhotosBySection: Record<AboutPhotoSection, TimelinePhoto[]>
 
 // src/components/body/PhotoStrip.astro
 interface Props {
+    label?: string               // accessible name; rendered as aria-label on scroll rows
     lang: Lang
     layout?: 'grid' | 'scroll'   // default: photos.length > 3 ? 'scroll' : 'grid'
     photos: StripPhoto[]
@@ -235,4 +243,5 @@ None.
 | Date | Change |
 |------|--------|
 | 2026-10-06 | Initial draft (issue #1564): one 12-photo grid between Background and Pillars |
+| 2026-10-06 | Critic: scroll rows get `tabindex="0"` + `aria-label` (axe scrollable-region-focusable) |
 | 2026-10-06 | Rewritten after visual review: three thematic scroll-snap strips at the page seams; `PhotoStrip` gains the count-based `layout` rule; captions revised by Lauri; Wappu photo recaptioned as the 2015 Athene board photo |
