@@ -1,0 +1,151 @@
+---
+lang: 'fi'
+slug: 'digitaalinen-itsenaisyys-happy-hacking-day'
+pageTitle: 'Digitaalinen itsenäisyys on kykyä valita'
+title: 'Digitaalinen itsenäisyys: Suomen kyky valita'
+description: 'Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat.'
+alt: 'Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose.'
+faq:
+  - q: 'Mitä digitaalinen itsenäisyys tarkoittaa?'
+    a: 'Digitaalinen itsenäisyys on kykyä valita ja tarvittaessa vaihtaa toimittajaa. Se on huoltovarmuutta, jota sovellamme jo polttoaineeseen, ruokaan ja lääkkeisiin, ja ohjelmistot ovat saman listan seuraava kohta.'
+  - q: 'Miten digitaalinen itsenäisyys rakennetaan?'
+    a: 'Kyky valita rakennetaan kolmella vivulla, jotka Suomella ja Euroopalla jo on: hankinnat, jotka ratkaisevat, millaisia teknologiamarkkinoita syntyy; standardit, jotka ratkaisevat, miten data liikkuu ja kuka pääsee kilpailemaan; ja koodi, eli avoin lähdekoodi ja eurooppalaiset vaihtoehdot.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import H3 from '../../../components/H3.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, h3: H3, li: LI, p: Paragraph, ul: UL }
+
+## Mitä digitaalinen itsenäisyys tarkoittaa?
+
+Digitaalinen itsenäisyys on kykyä valita ja tarvittaessa vaihtaa toimittajaa. Se on huoltovarmuutta, jota sovellamme jo polttoaineeseen, ruokaan ja lääkkeisiin, ja ohjelmistot ovat saman listan seuraava kohta. Syyllisen etsiminen ei sitä rakenna. Kyky valita rakennetaan kolmella vivulla, jotka Suomella ja Euroopalla jo on:
+
+- **hankinnat**, jotka ratkaisevat, millaisia teknologiamarkkinoita syntyy
+- **standardit**, jotka ratkaisevat, miten data liikkuu ja kuka pääsee kilpailemaan
+- **koodi**, eli avoin lähdekoodi ja eurooppalaiset vaihtoehdot, joita on jo olemassa
+
+Olen kirjoittanut aiheesta aiemmin: [digitaalinen itsenäisyys on välttämättömyys](/fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/), ja [se rakennetaan askel kerrallaan](/fi/blog/53/digitaalinen-itsenaisyys-rakennetaan-askel-kerrallaan/). Kaikki aiheen kirjoitukset löytyvät [digitaalisen itsenäisyyden kategoriasta](/fi/kategoria/digitaalinen-itsenaisyys/).
+
+## Mistä puhuin Happy Hacking Dayssä?
+
+Pidin 1.10.2026 Haaga-Helian Pasilan kampuksella Happy Hacking Dayssä englanninkielisen puheen digitaalisesta itsenäisyydestä. Yleisö oli teknistä väkeä. Kävin läpi, kuinka syvä riippuvuutemme Euroopan ulkopuolisesta teknologiasta on, mitä on jo tapahtunut, kun pääsy on katkaistu, ja millä keinoilla Suomi ja Eurooppa voivat rakentaa valinnanvapautta.
+
+Vanhempainvapaa näkyi lavalla: pidin suurimman osan puheesta yksivuotiasta lastani sylissä.
+
+Puheen lähtökohta oli tuttu poliittinen lausahdus: siitä on lähdettävä, että tähän on tultu. Luvut ovat karuja. Kolme yhdysvaltalaista yhtiötä hallitsee noin 70 % Euroopan pilvipalvelumarkkinasta. Tekoälyn laskentakapasiteetista EU:lla on noin 5 %, ja ennusteiden mukaan osuus pysyy samana vuoteen 2031. Kesäkuussa Yhdysvaltain hallitus määräsi katkaisemaan muiden kuin yhdysvaltalaisten pääsyn Anthropicin kehittyneimpiin tekoälymalleihin. Schleswig-Holsteinin ja Airbusin esimerkit näyttävät silti, että irtautuminen on oikeaa työtä, mutta se onnistuu.
+
+Diat ovat ladattavissa [PDF-tiedostona](/slides/2026-10-01-happy-hacking-day-digital-independence.pdf).
+
+## Mitä yleisö kysyi?
+
+Puheen jälkeisessä keskustelussa yleisö kysyi erityisesti kahdesta aiheesta. Ensimmäinen oli Chat Control, EU:n ehdotus viestien valvonnasta. Toinen oli maksujärjestelmien itsenäisyys. Molemmat palaavat puheen ydinkysymykseen: kuka viime kädessä päättää niistä digitaalisista palveluista, joiden varassa julkiset palvelut, yritykset ja kansalaiset toimivat joka päivä.
+
+Olen johtava ohjelmistokehittäjä ja Kirkkonummen kunnanvaltuutettu, ja olen ehdolla eduskuntaan Uudellamaalla.
+
+## Mitä puheessa sanottiin?
+
+*Puhe pidettiin alun perin englanniksi Happy Hacking Dayssä 1.10.2026. Tämä on suomennos.*
+
+Hyvää iltapäivää. Olen Lauri Lavanti. Koska nyt on Happy Hacking Day, ajattelin aloittaa kertomalla vähän omasta taustastani tietokoneiden ja hakkeroinnin parissa. Ensimmäiset kokemukseni tietokoneista sain isäni vanhalla Macintoshilla. En muista paljoakaan, mihin sitä käytettiin, paitsi hyvin yksinkertaisia mustavalkoisia pelejä, mutta se sytytti kipinän. Myöhemmin teininä, kun minulla oli ihan oma PC, tunsin itseni oikeaksi hakkeriksi, kun sain pelit toimimaan ilman CD-levyä. Nykyään tiedän, ettei sillä ollut juuri mitään tekemistä hakkeroinnin kanssa.
+
+Sen jälkeen olen keskittynyt ohjelmistokehitykseen. Olen kirjoittanut koodia työkseni yli vuosikymmenen, ja nykyään olen johtava ohjelmistokehittäjä suuressa suomalaisessa pankissa. Juuri nyt olen tosin vanhempainvapaalla nuorimman lapseni kanssa, ja hän on tänään täällä mukana. Vapaa-ajallani istun Kirkkonummen kunnanvaltuustossa, joten olen nähnyt sekä sisältä että ulkoa, miten julkisen sektorin teknologiapäätökset syntyvät.
+
+Puheen otsikko viittaa tunnettuun lausahdukseen suomalaisesta politiikasta: "Siitä on lähdettävä, että tähän on tultu." Se on tämän puheen henki. Puhun siitä, missä oikeasti olemme nyt, en siitä, missä toivoisimme olevamme. Minua kiinnostaa erityisesti se Venn-diagrammin leikkauskohta, jossa ohjelmistot ja teknologia kohtaavat politiikan ja koko yhteiskunnan. Väittäisin, että se on meille teknologia-alalla liian usein sokea piste.
+
+Olen myös [Digitaalinen itsenäisyys -kansalaisaloitteen](https://www.kansalaisaloite.fi/fi/aloite/16691) alullepanija ja vetäjä. Aloite keräsi tarvittavat kannatusilmoitukset heinäkuussa. Se koskee juuri tätä leikkauskohtaa: sitä, että teknologiapäätöksemme kestävät aikaa.
+
+Onko digitaalinen itsenäisyys siis pelkkä muotisana? [Suomen itsenäisyyden juhlarahasto Sitra ja Elinkeinoelämän valtuuskunta EVA kysyivät asiaa suomalaisilta](https://www.sitra.fi/uutiset/kysely-turvaa-ja-toimintakykya-suomalaiset-haluavat-vahvan-ja-omavaraisen-euroopan-unionin/). Vastaajista 79 % kannatti EU:n strategista autonomiaa kriittisissä teknologioissa, 77 % halusi vähentää riippuvuutta Yhdysvalloista teknologiassa ja taloudessa ja 76 % kannatti yhdysvaltalaisten ja kiinalaisten teknologiajättien vallan rajoittamista. Se on poikkeuksellisen laaja yksimielisyys mistä tahansa poliittisesta kysymyksestä. Vastaavia lukuja ei ole nähty sen jälkeen, kun [Suomi liittyi Natoon](https://www.verkkouutiset.fi/a/hs-gallup-naton-kannatus-noussut-uuteen-ennatykseen/).
+
+### Missä seisomme
+
+Aloitetaan luvuista. Mikä tilanne on nyt?
+
+Seitsemänkymmentä prosenttia Euroopan pilvipalvelumarkkinasta kuuluu Amazonille, Microsoftille ja Googlelle, kun eurooppalaisten palveluntarjoajien osuus on vain noin 15 %. Luvut ovat [Synergy Research Groupin vuoden 2025 markkinatiedoista](https://srgresearch.com/articles/european-cloud-providers-local-market-share-now-holds-steady-at-15). [Noin 80 % eurooppalaisten yritysten ohjelmistomenoista menee yhdysvaltalaisille toimittajille. Eurooppalaiset organisaatiot käyttävät vuodessa noin 264 miljardia euroa Euroopan ulkopuolella tehtyyn digitaaliseen teknologiaan](https://siecledigital.fr/2025/04/29/dependance-numerique-comment-leurope-perd-264-milliards-deuros-chaque-annee-au-profit-des-etats-unis/), ja lisenssikulut nousevat noin 10 % vuodessa.
+
+Sitten on tekoälyn laskentakapasiteetti, eli käytännössä ne paljon parjatut ja kiistellyt datakeskukset. EU:lla on noin 5 % maailman kapasiteetista, ja [nykyiset ennusteet vuoteen 2031](https://europe2031.ai/compute-forecast/) pitävät osuuden suunnilleen samana, vaikka maailman kapasiteetti kasvaa yli kymmenkertaiseksi. Keskisuuret vallat, kuten Arabiemiirikunnat, Saudi-Arabia, Intia, Etelä-Korea, Kanada ja Brasilia, rakentavat yhdessä enemmän kuin EU:n koko ennustettu kapasiteetti. Suhtautuipa tekoälyyn miten tahansa, meillä kaikilla taitaa jo olla käsitys siitä, kuinka tärkeää laskentateho on.
+
+Seuraavat luvut ovat [tämän vuoden toukokuulta](https://www.economist.com/europe/2026/05/21/how-europe-is-fighting-for-digital-sovereignty). Saksassa juhlittiin miljardin euron datakeskusta Münchenissä. Samana vuonna neljä suurinta yhdysvaltalaista pilvi- ja tekoälyyhtiötä investoivat yli 350 miljardia euroa, siis yli 350 kertaa enemmän. Tekoälyn kärjessä tilanne on samanlainen: edeltävän vuoden noin sadasta merkittävästä tekoälymallista EU:sta tuli tasan yksi.
+
+### Tämä ei ole hypoteettista
+
+"Eihän kukaan nyt oikeasti vetäisi töpseliä seinästä."
+
+Yhdysvaltain hallitus [määräsi 12.6.2026 kello 17.21 itärannikon aikaa](https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/) Anthropicin katkaisemaan kaikkien muiden kuin yhdysvaltalaisten kansalaisten ja organisaatioiden pääsyn sen kehittyneimpiin malleihin, Fableen ja Mythokseen. Varmistaakseen, että se noudattaa määräystä, Anthropic sulki mallit kaikilta. Sen jälkeen se avasi pääsyä hitaasti uudelleen, [ensin Yhdysvaltain hallinnolle ja valikoidulle joukolle yhdysvaltalaisia yrityksiä](https://www.computing.co.uk/news/2026/ai/anthropic-regains-approval-to-deploy-mythos-ai-to-trusted-us-organisations). [Fable avattiin pian taas kaikille](https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/), mutta etumatka olisi voinut olla pidempi, emmekä olisi voineet tehdä asialle mitään.
+
+Jopa Suomen suurimmassa sanomalehdessä, Helsingin Sanomissa, kolumnisti totesi suoraan, että niin sanottua kill switchiä oli käytetty.
+
+Voimme siis kiistellä siitä, kuinka todennäköisiä tällaiset tapahtumat ovat, kuinka laajoja ne ovat tai millainen politiikka niiden takana on. Meillä on kuitenkin todiste siitä, että näin *voi* käydä.
+
+Toinen yleinen harhakuvitelma on tämä: "Datamme on datakeskuksessa kotimaassa, joten kaikki on hyvin." Näin ajattelevat varsinkin ihmiset, jotka eivät työskentele teknologian parissa. Datan sijainti ei kuitenkaan ratkaise suvereniteettia. Ratkaisevaa on se, kuka dataan pääsee käsiksi.
+
+Yhdysvaltain CLOUD Act (Clarifying Lawful Overseas Use of Data Act) antaa viranomaisille oikeuden määrätä yhdysvaltalaiset yritykset luovuttamaan dataa riippumatta siitä, missä palvelimet sijaitsevat. Voi kiistellä, kuinka todennäköistä se on tai kuinka suurta vahinkoa siitä seuraisi, mutta mekanismi on olemassa. [Sähköpostit, jotka Hollannin digipalveluja valvovat viranomaiset lähettivät yhdysvaltalaisyrityksille, luovutettiin Yhdysvaltain edustajainhuoneelle kongressin haasteen perusteella](https://nltimes.nl/2026/05/22/state-sec-speaks-us-ambassador-microsoft-leaking-dutch-civil-servants-names).
+
+Lisäksi Atlantin yli kulkevien tietovirtojen oikeudellinen pohja murenee kerta toisensa jälkeen. Aiemmat järjestelyt, Safe Harbor ja Privacy Shield, kaatuivat tuomioistuimessa, Privacy Shield [Schrems II -tuomiossa, C-311/18](https://curia.europa.eu/juris/liste.jsf?num=C-311/18). Nykyinen Data Privacy Framework on vakavissa vaikeuksissa, koska [Yhdysvaltain korkeimman oikeuden ratkaisu](https://www.supremecourt.gov/opinions/25pdf/25-332_qn12.pdf) heikensi aiemmin tänä vuonna Yhdysvaltain kilpailu- ja kuluttajansuojaviranomaisen FTC:n (Federal Trade Commission) riippumattomuutta, jonka varaan järjestely rakentuu. Kolme järjestelyä, sama rakenteellinen ongelma: EU-oikeus ja Yhdysvaltain valvontalainsäädäntö eivät näytä sopivan yhteen, eivätkä sopimukset voi sitä korjata.
+
+### Miksi tämä on politiikkaa
+
+Mikään näyttämästäni ei tapahtunut vahingossa, eikä mikään siitä korjaannu vahingossa.
+
+Ensimmäinen keino korjata tilanne on hankinnat. Ne rakentavat markkinoita ja myös tuhoavat niitä. Julkinen sektori on valtava ostaja, niin suuri, että sen ostotavat määrittävät, millaisia teknologiamarkkinoita ylipäätään syntyy. Suomen riippuvuus ei ollut kohtalo. Se kertyi vuosikymmenten aikana yksittäisistä hankintapäätöksistä, jotka kukin näyttivät järkeviltä. En syytä ketään niistä päätöksiä tehneistä. Julkisen sektorin IT-osastot ovat useimmiten puun ja kuoren välissä.
+
+Toiseen suuntaan liikkuminen on oppikirjaesimerkki koordinaatio-ongelmasta. Yksittäisen tietohallintojohtajan ei kannata lähteä liikkeelle ensimmäisenä, eikä yksikään avoimen lähdekoodin toimittaja pysty yksin rahoittamaan puuttuvia yritysominaisuuksia. Klassinen muna vai kana -ongelma. Siksi todella uraauurtava politiikkatyö tarttuu itse koordinaatio-ongelmaan eikä yksittäiseen siirtymään. Esimerkki tästä on EuroCommons-hanke, joka kokoaa nyt eurooppalaisia siirtymäkoalitioita yhteen.
+
+Toinen keino on standardit. Standardit ratkaisevat, miten data liikkuu ja mikä teknologia ylipäätään pääsee kilpailemaan. Se on tietopolitiikkaa, jota tehdään komiteoissa eikä parlamenteissa.
+
+Anu Bradford kuvaa kirjassaan *Digital Empires* kolmea maailmanlaajuisesti kilpailevaa sääntelymallia: amerikkalaista markkinavetoista, kiinalaista valtiovetoista ja eurooppalaista oikeuksiin perustuvaa mallia. Euroopan vipuvarsi, niin sanottu Brysselin efekti, tarkoittaa, että EU:n säännöistä tulee käytännössä maailmanlaajuisia standardeja.
+
+Ajankohtainen esimerkki: [EU:n tekoälyasetus](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) on nyt vertailukohta jopa Yhdysvalloissa. Illinoisissa käsittelyssä oleva [lakiesitys SB3444](https://www.ilga.gov/legislation/BillStatus.asp?DocNum=3444&GAID=18&DocTypeID=SB&SessionID=114) antaisi kärkimallien kehittäjille mahdollisuuden täyttää vaatimukset noudattamalla EU:n tekoälyasetusta. Eurooppa tarjoaa digipalveluja selvästi vähemmän kuin Kiina tai Yhdysvallat, mutta vaikutusvaltaa meillä on silti paljon.
+
+Kolmanneksi kannattaa ajatella huoltovarmuutta: kauppasota, lokalisointilait, pakotteet ja toimittajan kaatuminen. Tämä ei tarkoita, että eristäytyisimme maailmasta tai tekisimme kaiken itse, vaikka tekoäly onkin pudottanut koodin kirjoittamisen hintaa rajusti. Kyse on huoltovarmuudesta. Tavoitteena ei ole ajaa aina omia palvelimia omassa kellarissa. Tavoitteena on varmistaa, ettei meitä yllätetä housut kintuissa, kun tilanne kärjistyy.
+
+### Nykyinen suunta
+
+Mitä siis on tulossa?
+
+Suomen hallitus laati [digitaalisen suvereniteetin tiekartan](https://vm.fi/-/ministerityoryhma-linjasi-digitaalisen-suvereniteetin-vahvistamisesta-tiekartta-ohjaa-toimia-hallituskauden-loppuun) tämän vuoden 27. huhtikuuta. Sen linjasi yhteiskunnan uudistamisen ministerityöryhmä, ja tiekartta määrittelee suvereniteetin kyvyksi hallita digitaalista infrastruktuuria, dataa ja teknologioita ilman kohtuutonta riippuvuutta EU:n ulkopuolisista toimijoista. Se nostaa esiin irtautumiskyvyn ja avoimet rajapinnat.
+
+EU:ssa yhteisten digitaalisten resurssien kerros saa institutionaalisen muodon: [EuroCommons](https://www.caissedesdepots.fr/eurocommons/en) ja [Digital Commons -konsortio](https://valtioneuvosto.fi/-/1410829/valtioneuvosto-ehdottaa-suomen-liittymista-eurooppalaiseen-digitaaliset-yhteisresurssit-digi-infrakonsortioon?languageId=fi_FI) rakentavat yhteistä eurooppalaista digi-infrastruktuuria, ja EU:lla on [avoimen lähdekoodin strategia](https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy). Tahdista voi kiistellä, mutta suunta on kirjattu paperille.
+
+Myös markkinat liikkuvat. Eurooppalaiset vaihtoehdot eivät ole enää symbolisia. Suomalainen GPU-pilviyhtiö Verda [nousi juuri yksisarviseksi](https://tech.eu/2026/09/22/verda-raises-189m-to-advance-its-ai-cloud-and-expand-compute-capacity).
+
+[Aiven kuuluu niihin eurooppalaisiin avoimen lähdekoodin yrityksiin, joihin EU:n päättäjät viittaavat](https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy), Mistralin, Nextcloudin, SUSEn, Odoon ja Arduinon kaltaisten nimien rinnalla. Jyväskyläläinen [Opinsys](https://opinsys.fi) rakentaa Linux-pohjaisia tietokoneita opetuskäyttöön Suomessa, Saksassa ja Sveitsissä.
+
+### Mitä voidaan tehdä
+
+Mitä siis voidaan tehdä, ja mitä on jo tehty? Puhumme kuitenkin pitkäjänteisistä hankkeista ja niin suurista luvuista, ettei useimpien meistä tarvitse arjessa käsitellä niitä.
+
+[Saksan Schleswig-Holsteinin osavaltio](https://heise.de/-11105459) aloitti vuonna 2024 täyden irtautumisen yhdysvaltalaisista toimisto-ohjelmistoista. Se siirsi 40 000 sähköpostitiliä noin puolessa vuodessa, ja Linux-siirtymä on käynnissä. Siirtymä vaati raporttien mukaan 9 miljoonan euron kertainvestoinnin, kun lisenssimaksut olivat noin 15 miljoonaa euroa vuodessa.
+
+Siirtymä ei ole ollut kivuton. Esimerkiksi oikoluku oli rikki kuukausia, ja ammattiliitot vaativat kunnollista koulutusta. Siirtymä on oikeaa työtä eikä budjettileikkaus. Se on kuitenkin työtä, joka pystytään tekemään: toimiva eurooppalainen osavaltiohallinto siirtyy avoimeen lähdekoodiin.
+
+Yritykset puhuvat riskienhallinnasta eivätkä ideologiasta. [Airbus laajensi kriittisten sovellustensa siirtoa AWS:ltä ranskalaiselle Scalewaylle](https://tech.slashdot.org/story/26/07/21/2050242) alun 70 sovelluksesta yli 900:aan ja perusteli sitä nimenomaan CLOUD Actilla.
+
+Sveitsiläinen internetpalveluyritys Infomaniak meni vielä pidemmälle siinä, miten lupaus saadaan kestämään. Se [siirsi äänivallan enemmistön yleishyödylliselle säätiölle](https://news.infomaniak.com/en/infomaniak-foundation-sovereign-cloud/) oikeudellisesti peruuttamattomasti, jotta lupaus suvereniteetista säilyy, vaikka yhtiö myytäisiin.
+
+### Itsenäisyys on kykyä valita
+
+Palataan alkuun. Tässä olemme nyt: 70 % pilvipalveluistamme, 80 % ohjelmistomenoistamme, yksi todistettu kill switch ja oikeudellinen todellisuus, jossa datan sijainti ei suojaa meitä.
+
+Digitaalinen itsenäisyys, jota jokainen vakavasti otettava toimija Suomen hallituksesta Airbusiin oikeasti tavoittelee, ei kuitenkaan ole eristäytymistä, eikä se ole minkään vastustamista.
+
+Se on kykyä valita ja kykyä lähteä. Tuo kyky rakennetaan arkisissa ja näkymättömissä paikoissa: tarjouspyyntöjen kriteereissä, rajapintastandardeissa ja lisenssiehdoissa. Ne ovat poliittisia valintoja, ja juuri niissä tässä salissa istuvilla on osaamista ja vaikutusvaltaa.
+
+Se, mihin suuntaan menemme seuraavaksi, on meidän päätettävissämme.
+
+---
+
+> **Toimituksen huomautus:** Julkaistu teksti poikkeaa 1.10.2026 pidetystä puheesta seuraavissa kohdissa.
+>
+> - *Puheessa kill switch -huomautus liitettiin Helsingin Sanomien kolumniin. Sen esitti LUT-yliopiston professori Paavo Ritala Uuden Jutun Pihvi-uutisohjelmassa 16.6.2026.*
+> - *Pilvimarkkinan 70 %:n luvun lähteeksi mainittiin Euroopan parlamentin selvitys. Lähde on Synergy Research Group. Puheessa mainittu jako 85 % / 15 % on korvattu lähteistetyllä vertailulla 70 % / 15 %.*
+> - *Puheessa Illinoisin SB3444 esitettiin hyväksyttynä lakina. Se on yhä osavaltion lainsäätäjän käsittelyssä oleva lakiesitys.*
+
+> - *Kahta väitettä on lievennetty: EuroCommonsin tavoite 30 miljoonasta käyttäjästä vuoteen 2030 mennessä on poistettu, eikä Aivenia enää kuvata yhdeksi EU:n avoimen lähdekoodin strategian kuudesta menestystarinasta.*
+> - *Schleswig-Holstein: siirtymän aikainen 10–20 %:n lisätyöaika on poistettu, ja Linux-siirtymä kuvataan käynnissä olevaksi eikä vuoteen 2028 jatkuvaksi.*
+> - *Vertailukohtana oleva 79 prosentin Nato-kannatus mitattiin kesäkuussa 2022 jäsenyyden hakuvaiheessa, ennen Suomen liittymistä huhtikuussa 2023.*
