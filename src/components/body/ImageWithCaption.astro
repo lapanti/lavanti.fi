@@ -22,10 +22,6 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
 
 <style
     define:vars={{
-        additionalInfoFontFamily: typographics.additionalInfo.fontFamily,
-        additionalInfoFontSize: typographics.additionalInfo.fontSize,
-        additionalInfoFontWeight: typographics.additionalInfo.fontWeight,
-        additionalInfoLineHeight: typographics.additionalInfo.lineHeight,
         captionFontFamily: typographics.caption.fontFamily,
         captionFontSize: typographics.caption.fontSize,
         captionFontWeight: typographics.caption.fontWeight,
@@ -39,10 +35,11 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
     }
 
     figcaption {
-        font-family: var(--additionalInfoFontFamily);
-        font-weight: var(--additionalInfoFontWeight);
-        font-size: var(--additionalInfoFontSize);
-        line-height: var(--additionalInfoLineHeight);
+        color: var(--colorsTextSecondary);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        font-weight: var(--captionFontWeight);
+        line-height: var(--captionLineHeight);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -61,12 +58,7 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
     }
 
     :global(.prose) figcaption {
-        color: var(--colorsTextSecondary);
-        font-family: var(--captionFontFamily);
-        font-size: var(--captionFontSize);
-        font-weight: var(--captionFontWeight);
         align-items: flex-start;
-        line-height: var(--captionLineHeight);
         text-align: left;
     }
 </style>
