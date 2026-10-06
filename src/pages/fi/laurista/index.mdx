@@ -11,7 +11,7 @@ langAlternates:
     en: '/en/about/'
     fi: '/fi/laurista/'
     sv: '/sv/om-lauri/'
-updatedDate: '2026-09-28'
+updatedDate: '2026-10-06'
 type: 'ProfilePage'
 heroImage: Lauri-Lavanti-tyoskentelee-portailla-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-tyoskentelee-portailla-hero-vaaka
@@ -20,6 +20,7 @@ plated: true
 variant: 'split'
 ---
 
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import CurriculumVitae from '../../../components/CurriculumVitae.astro'
 import Chips from '../../../components/Chips.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
@@ -30,6 +31,7 @@ import FactsList from '../../../components/FactsList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
+import { aboutPhotosBySection } from '../../../content/aboutPhotos'
 import { degrees, degreesTitle, fiduciaries, fiduciariesTitle, jobExperiences, jobExperiencesTitle } from '../../../content/fi-cv'
 import { socialChips } from '../../../content/social'
 
@@ -54,6 +56,10 @@ import { socialChips } from '../../../content/social'
         <p>Hän on <a href="/fi/eduskuntavaalit/">Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden 2027 eduskuntavaaleissa</a>, johtava ohjelmistokehittäjä, Kirkkonummen kunnanvaltuutettu sekä Vihreän valtuustoryhmän puheenjohtaja. Hän on asunut Kirkkonummella kolmevuotiaasta asti ja kävi peruskoulun, lukion ja ammattikoulun kotikunnassaan. Hän on Aalto-yliopistosta valmistunut diplomi-insinööri ja keskittyy tekoälyyn, talouteen, <a href="/fi/kategoria/yrittajyys/">yrittäjyyteen</a> sekä digitaaliseen itsenäisyyteen. Digitaalinen itsenäisyys, yksityisyyden suoja ja tekoälyn vastuullinen käyttöönotto ovat osa samaa kokonaisuutta: miten rakennamme teknologista kehitystä, joka on sekä kilpailukykyistä että kestävää.</p>
         <p>Lauri kertoi ehdokkuudestaan tarkemmin sen <a href="/fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/">julkistuksessa</a>. Laurista on myös <a href="https://fi.wikipedia.org/wiki/Lauri_Lavanti">Wikipedia-artikkeli</a>.</p>
     </Prose>
+</Plate>
+
+<Plate eyebrow="Kuvat" ground="offWhite" heading="Juuret">
+    <PhotoStrip lang="fi" photos={aboutPhotosBySection.roots} />
 </Plate>
 
 <Pillar
@@ -114,6 +120,10 @@ import { socialChips } from '../../../content/social'
     <p class="detail" slot="detail">Digitaalinen itsenäisyys tukee eurooppalaista teknologista kehitystä, vähentää riippuvuutta yksittäisistä toimittajista ja luo paremmat edellytykset kotimaiselle ohjelmistokehitykselle. Se ei ole ideologiaa, vaan käytännön edellytys toimivalle yhteiskunnalle – ja se vahvistaa myös demokratiaa ja kansalaisten oikeuksia, luoden samalla markkinoita uudelle yritystoiminnalle. Toiminnassani minua ohjaavat oikeudenmukaisuus, tasa-arvo ja demokratia: aloitteestani Kirkkonummella liputetaan sateenkaarilipuilla kahdesti vuodessa.</p>
 </Pillar>
 
+<Plate eyebrow="Kuvat" ground="offWhite" heading="Politiikassa">
+    <PhotoStrip lang="fi" photos={aboutPhotosBySection.politics} />
+</Plate>
+
 <Plate eyebrow="Koulutus" ground="offWhite" heading="Monialaisuus ja laaja-alainen näkemys">
     <Prose>
         <p>Olen koulutukseltani informaatioverkostojen diplomi-insinööri. Koulutusohjelma rakentuu tietotekniikan päälle, mutta laajentuu tekniikasta muun muassa estetiikkaan ja filosofiaan. Koulutus on opettanut katsomaan järjestelmiä sekä teknisinä että inhimillisinä kokonaisuuksina.</p>
@@ -131,6 +141,10 @@ import { socialChips } from '../../../content/social'
     <p class="bio">Vapaa-ajallani keskiössä ovat neljä lastani. Arki koostuu harrastuksista, retkistä ja yhteisistä hetkistä. Vanhemmuus opettaa minulle paljon tunnetaidoista, vuorovaikutuksesta sekä jatkuvan harjoittelun ja kehittymisen tärkeydestä.</p>
     <p class="bio">Lautapelit, videopelit, kirjallisuus ja joukkueurheilu ovat kulkeneet mukanani pitkään. Vaikka ruuhkavuodet rajaavat aikaa, pidän tärkeänä säilyttää tilaa myös näille kiinnostuksen kohteille, ja olenkin korvannut joukkueurheilua aktiivisella lenkkeilyllä. Yksi rakkaimpia harrastuksiani on ollut amerikkalainen jalkapallo, jossa pelasin puolustuksen linjamiestä sekä tukimiestä Aalto Predatorsissa ja Helsinki Wolverinesissa. Sain myös kunnian edustaa Suomea opiskelijamaajoukkueessa, muun muassa kaikkien aikojen ensimmäisissä yliopistotason MM-kisoissa Uppsalassa.</p>
 </WhoBio>
+
+<Plate eyebrow="Kuvat" ground="offWhite" heading="Vapaalla">
+    <PhotoStrip lang="fi" photos={aboutPhotosBySection.leisure} />
+</Plate>
 
 <CurriculumVitae
     degrees={degrees}

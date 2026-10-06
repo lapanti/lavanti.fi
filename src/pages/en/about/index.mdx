@@ -11,7 +11,7 @@ langAlternates:
     en: '/en/about/'
     fi: '/fi/laurista/'
     sv: '/sv/om-lauri/'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-06'
 type: 'ProfilePage'
 heroImage: 'Lauri-Lavanti-tyoskentelee-portailla-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-tyoskentelee-portailla-hero-vaaka'
@@ -28,9 +28,11 @@ import Pillar from '../../../components/frontPage/Pillar.astro'
 import WhoBio from '../../../components/frontPage/WhoBio.astro'
 import FactsList from '../../../components/FactsList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import { degrees, degreesTitle, fiduciaries, fiduciariesTitle, jobExperiences, jobExperiencesTitle } from '../../../content/en-cv'
+import { aboutPhotosBySection } from '../../../content/aboutPhotos'
 import { socialChips } from '../../../content/social'
 
 <Plate eyebrow="Who" ground="offWhite" heading="Lauri in TL;DR-format" id="brief">
@@ -54,6 +56,10 @@ import { socialChips } from '../../../content/social'
         <p>He is <a href="/en/elections/">the Greens' parliamentary candidate in the Uusimaa electoral district in the 2027 elections</a>, a lead developer, municipal councillor in Kirkkonummi, and chair of the Greens council group. He has lived in Kirkkonummi since the age of three and attended comprehensive school, upper secondary school, and vocational school in his home municipality. He graduated as a Master of Science (Tech.) from Aalto University and focuses on AI, economic policy, <a href="/en/category/entrepreneurship/">entrepreneurship</a>, and digital independence. Digital independence, privacy, and the responsible adoption of AI are all part of the same whole: how we build technological development that is both competitive and sustainable.</p>
         <p>Lauri wrote more about his candidacy in its <a href="/en/blog/67/my-candidacy-for-parliament/">announcement</a>. Lauri also has a <a href="https://fi.wikipedia.org/wiki/Lauri_Lavanti">Wikipedia article</a> (in Finnish).</p>
     </Prose>
+</Plate>
+
+<Plate eyebrow="Photos" ground="offWhite" heading="Roots">
+    <PhotoStrip lang="en" photos={aboutPhotosBySection.roots} />
 </Plate>
 
 <Pillar
@@ -114,6 +120,10 @@ import { socialChips } from '../../../content/social'
     <p class="detail" slot="detail">Digital independence supports European technological development, reduces dependence on individual vendors, and creates better conditions for domestic software development. It is not an ideology but a practical prerequisite for a functioning society — and it also strengthens democracy and citizens' rights, while creating markets for new business activity. In my work I am guided by justice, equality, and democracy: on my initiative, Kirkkonummi flies the rainbow flag twice a year.</p>
 </Pillar>
 
+<Plate eyebrow="Photos" ground="offWhite" heading="In politics">
+    <PhotoStrip lang="en" photos={aboutPhotosBySection.politics} />
+</Plate>
+
 <Plate eyebrow="Education" ground="offWhite" heading="Multi­disciplinarity and a broad perspective">
     <Prose>
         <p>By training, I am a Master of Science (Tech.) from the study programme of information networks. The program is based on information technology, but it also covers other subjects such as aesthetics and philosophy. The program has taught me to view systems as both technical and humane entities.</p>
@@ -131,6 +141,10 @@ import { socialChips } from '../../../content/social'
     <p class="bio">My four children are the focus of my free time. Everyday life consists of hobbies, excursions, and moments spent together. Parenting teaches me a lot about emotional skills, interaction, and the importance of continuous practice and development.</p>
     <p class="bio">Board games, video games, literature, and team sports have been a part of my life for a long time. Even though my busy schedule limits my time, I think it's important to make room for these interests, and I've replaced team sports with active jogging. One of my dearest hobbies has been American football, where I played defensive lineman and long snapper for Aalto Predators and the Helsinki Wolverines. I also had the honour of representing Finland on the student national team, including at the first-ever university-level World Championships in Uppsala.</p>
 </WhoBio>
+
+<Plate eyebrow="Photos" ground="offWhite" heading="Off duty">
+    <PhotoStrip lang="en" photos={aboutPhotosBySection.leisure} />
+</Plate>
 
 <CurriculumVitae
     degrees={degrees}

@@ -11,7 +11,7 @@ langAlternates:
     en: '/en/about/'
     fi: '/fi/laurista/'
     sv: '/sv/om-lauri/'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-06'
 type: 'ProfilePage'
 heroImage: 'Lauri-Lavanti-tyoskentelee-portailla-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-tyoskentelee-portailla-hero-vaaka'
@@ -28,9 +28,11 @@ import Pillar from '../../../components/frontPage/Pillar.astro'
 import WhoBio from '../../../components/frontPage/WhoBio.astro'
 import FactsList from '../../../components/FactsList.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import { degrees, degreesTitle, fiduciaries, fiduciariesTitle, jobExperiences, jobExperiencesTitle } from '../../../content/sv-cv'
+import { aboutPhotosBySection } from '../../../content/aboutPhotos'
 import { socialChips } from '../../../content/social'
 
 <Plate eyebrow="Vem" ground="offWhite" heading="Lauri i korthet" id="brief">
@@ -54,6 +56,10 @@ import { socialChips } from '../../../content/social'
         <p>Han är <a href="/sv/riksdagsvalet/">De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027</a>, ledande programutvecklare, kommunfullmäktigeledamot i Kyrkslätt samt ordförande för De Grönas fullmäktigegrupp. Han har bott i Kyrkslätt sedan tre års ålder och gick grundskolan, gymnasiet och yrkesskolan i sin hemkommun. Han är utexaminerad diplomingenjör från Aalto-universitetet och fokuserar på AI, ekonomisk politik, <a href="/sv/kategori/foretagande/">företagande</a> samt digital självständighet. Digital självständighet, integritetsskydd och ansvarsfull implementering av AI är delar av samma helhet: hur vi bygger teknologisk utveckling som är både konkurrenskraftig och hållbar.</p>
         <p>Lauri berättade mer om sin kandidatur i dess <a href="/sv/blog/67/min-kandidatur-i-riksdagsvalet/">offentliggörande</a>. Lauri har också en <a href="https://fi.wikipedia.org/wiki/Lauri_Lavanti">Wikipedia-artikel</a> (på finska).</p>
     </Prose>
+</Plate>
+
+<Plate eyebrow="Bilder" ground="offWhite" heading="Rötter">
+    <PhotoStrip lang="sv" photos={aboutPhotosBySection.roots} />
 </Plate>
 
 <Pillar
@@ -114,6 +120,10 @@ import { socialChips } from '../../../content/social'
     <p class="detail" slot="detail">Digital självständighet stöder europeisk teknologisk utveckling, minskar beroendet av enskilda leverantörer och skapar bättre förutsättningar för inhemsk mjukvaruutveckling. Det är inte en ideologi utan en praktisk förutsättning för ett fungerande samhälle – och det stärker också demokratin och medborgarnas rättigheter, samtidigt som det skapar marknader för ny företagsverksamhet. I mitt arbete vägleds jag av rättvisa, jämlikhet och demokrati: på mitt initiativ hissar Kyrkslätt regnbågsflaggan två gånger om året.</p>
 </Pillar>
 
+<Plate eyebrow="Bilder" ground="offWhite" heading="I politiken">
+    <PhotoStrip lang="sv" photos={aboutPhotosBySection.politics} />
+</Plate>
+
 <Plate eyebrow="Utbildning" ground="offWhite" heading="Mång­disciplinär och bred syn">
     <Prose>
         <p>Jag är utbildad diplomingenjör i informationsnätverk. Utbildningsprogrammet bygger på datateknik, men breddas från teknik till bland annat estetik och filosofi. Utbildningen har lärt mig att se system som både tekniska och mänskliga helheter.</p>
@@ -131,6 +141,10 @@ import { socialChips } from '../../../content/social'
     <p class="bio">På fritiden står mina fyra barn i centrum. Vardagen består av hobbyer, utflykter och gemensamma stunder. Föräldraskapet lär mig mycket om emotionella färdigheter, interaktion och vikten av ständig övning och utveckling.</p>
     <p class="bio">Brädspel, datorspel, litteratur och lagsport har följt med mig länge. Även om de hektiska åren begränsar tiden, tycker jag det är viktigt att bevara utrymme även för dessa intressen, och jag har ersatt lagsport med aktiv löpning. Ett av mina käraste fritidsintressen har varit amerikansk fotboll, där jag spelade defensive lineman och long snapper för Aalto Predators och Helsinki Wolverines. Jag hade också äran att representera Finland i studentlandslaget, bland annat vid de allra första VM på universitetsnivå i Uppsala.</p>
 </WhoBio>
+
+<Plate eyebrow="Bilder" ground="offWhite" heading="På fritiden">
+    <PhotoStrip lang="sv" photos={aboutPhotosBySection.leisure} />
+</Plate>
 
 <CurriculumVitae
     degrees={degrees}
