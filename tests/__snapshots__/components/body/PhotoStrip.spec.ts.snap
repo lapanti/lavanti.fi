@@ -2,7 +2,7 @@
 
 exports[`<PhotoStrip /> > should render 1`] = `
 <ul
-  class="photo-strip"
+  class="photo-strip grid"
   data-astro-cid-qqnratxs=""
   style="--captionFontFamily: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;--captionFontSize: 0.75rem;--captionFontWeight: 400;--captionLineHeight: 1.68;--sizes05: 0.5rem;--sizes1: 1rem;--sizes2: 2rem;"
 >

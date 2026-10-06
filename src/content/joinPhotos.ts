@@ -1,17 +1,4 @@
-import type { Lang } from './nav'
-
-export interface StripPhoto {
-    /** Localised description of the scene. */
-    alt: Record<Lang, string>
-    /** Localised visible caption. Activity first; never anyone's party background. */
-    caption: Record<Lang, string>
-    /** Omit when no credit applies (a team member's own photo). */
-    photographer?: string
-    /** Cloudflare Images slug. The original lives in src/images/originals/{slug}.jpg. */
-    slug: string
-    /** Srcset widths; none may exceed the original's pixel width. */
-    widths: number[]
-}
+import type { StripPhoto } from './photoStrips'
 
 /**
  * Join page photo strip: the campaign team and the candidate at work, shown

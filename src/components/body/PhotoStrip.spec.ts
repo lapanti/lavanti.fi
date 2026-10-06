@@ -49,6 +49,24 @@ describe('<PhotoStrip />', () => {
         }
     })
 
+    it('lays three photos out as a grid and more than three as a scroll-snapped row', async () => {
+        const three = await renderAstroComponent(PhotoStrip, { props: { lang: 'fi', photos: joinPhotos } })
+        const four = await renderAstroComponent(PhotoStrip, {
+            props: { lang: 'fi', photos: [...joinPhotos, { ...joinPhotos[0], slug: 'neljas' }] },
+        })
+
+        expect(three.querySelector('ul')!.classList.contains('grid')).toBe(true)
+        expect(four.querySelector('ul')!.classList.contains('scroll')).toBe(true)
+    })
+
+    it('lets the layout prop override the count rule', async () => {
+        const result = await renderAstroComponent(PhotoStrip, {
+            props: { lang: 'fi', layout: 'scroll', photos: joinPhotos },
+        })
+
+        expect(result.querySelector('ul')!.classList.contains('scroll')).toBe(true)
+    })
+
     // getImageSrcset is mocked globally in tests/setup.ts, so assert the call, not the URL math.
     it('requests the body variant with each photo’s own widths', async () => {
         vi.mocked(getImageSrcset).mockClear()

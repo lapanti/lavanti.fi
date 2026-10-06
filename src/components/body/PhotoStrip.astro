@@ -1,16 +1,21 @@
 ---
-import type { StripPhoto } from '../../content/joinPhotos'
 import type { Lang } from '../../content/nav'
+import type { StripPhoto } from '../../content/photoStrips'
 
 import { getImageSrcset } from '../../lib/images'
 import { sizes, typographics } from '../../lib/styles'
 
 interface Props {
     lang: Lang
+    /**
+     * `grid` wraps cells into rows; `scroll` is one horizontally scrollable, scroll-snapped row.
+     * Defaults to `scroll` when more photos than fit one desktop row (3), else `grid`.
+     */
+    layout?: 'grid' | 'scroll'
     photos: StripPhoto[]
 }
 
-const { lang, photos } = Astro.props
+const { lang, layout = Astro.props.photos.length > 3 ? 'scroll' : 'grid', photos } = Astro.props
 
 const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto' }
 ---
@@ -31,7 +36,7 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
         gap: var(--sizes2);
         grid-template-columns: 1fr;
         list-style: none;
-        margin: 0 0 var(--sizes2);
+        margin: var(--sizes1) 0 var(--sizes2);
         padding: 0;
     }
 
@@ -68,9 +73,32 @@ const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto'
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
+
+    /* One scroll-snapped row; the partly visible last cell signals that the row scrolls. */
+    ul.scroll {
+        display: flex;
+        gap: var(--sizes1);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        padding-bottom: var(--sizes05);
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+    }
+
+    ul.scroll li {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: min(calc((100% - var(--sizes1)) / 1.2), 20rem);
+    }
+
+    @media (min-width: 769px) {
+        ul.scroll li {
+            width: calc((100% - 2 * var(--sizes1)) / 3.3);
+        }
+    }
 </style>
 
-<ul class="photo-strip">
+<ul class:list={['photo-strip', layout]}>
     {
         photos.map((photo) => {
             const img = getImageSrcset(photo.slug, 'body', photo.widths)
