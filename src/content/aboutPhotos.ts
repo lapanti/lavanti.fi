@@ -87,8 +87,8 @@ export const aboutPhotos: TimelinePhoto[] = [
         },
         caption: {
             en: '2015 – On the board of Athene, the information networks guild, in charge of international students',
-            fi: '2015 – Athenen (informaatioverkostojen kilta) hallituksessa vastasin ulkomaalaisista opiskelijoista',
-            sv: '2015 – I styrelsen för Athene, informationsnätverkens gille, med ansvar för utländska studerande',
+            fi: '2015 – Athenen (informaatioverkostojen kilta) hallituksessa vastuussa ulkomaalaisista opiskelijoista',
+            sv: '2015 – I styrelsen för Athene, informationsnätverkens gille, ansvarig för utländska studerande',
         },
         section: 'leisure',
         slug: 'Lauri-Lavanti-athenen-hallituksessa-2015-vaaka',
