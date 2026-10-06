@@ -59,6 +59,19 @@ describe('<PhotoStrip />', () => {
         expect(four.querySelector('ul')!.classList.contains('scroll')).toBe(true)
     })
 
+    it('makes a scroll row focusable with an accessible name, and leaves the grid alone', async () => {
+        const four = [...joinPhotos, { ...joinPhotos[0], slug: 'neljas' }]
+        const scroll = await renderAstroComponent(PhotoStrip, { props: { label: 'Juuret', lang: 'fi', photos: four } })
+        const grid = await renderAstroComponent(PhotoStrip, {
+            props: { label: 'Tiimi', lang: 'fi', photos: joinPhotos },
+        })
+
+        expect(scroll.querySelector('ul')!.getAttribute('tabindex')).toBe('0')
+        expect(scroll.querySelector('ul')!.getAttribute('aria-label')).toBe('Juuret')
+        expect(grid.querySelector('ul')!.hasAttribute('tabindex')).toBe(false)
+        expect(grid.querySelector('ul')!.hasAttribute('aria-label')).toBe(false)
+    })
+
     it('lets the layout prop override the count rule', async () => {
         const result = await renderAstroComponent(PhotoStrip, {
             props: { lang: 'fi', layout: 'scroll', photos: joinPhotos },
