@@ -1,4 +1,6 @@
 ---
+import type { Lang } from '../../content/nav'
+
 import { getImageSrcset } from '../../lib/images'
 import { typographics } from '../../lib/styles'
 
@@ -6,10 +8,16 @@ interface Props {
     alt?: string
     caption: string
     image?: string
+    /** Selects the credit prefix; defaults to 'fi'. Ignored when photographer is omitted. */
+    lang?: Lang
+    /** Omit when no credit applies. */
+    photographer?: string
 }
 
-const { alt, caption, image } = Astro.props
+const { alt, caption, image, lang = 'fi', photographer } = Astro.props
 const img = image ? getImageSrcset(image, 'body', [400, 800, 1200]) : undefined
+
+const creditPrefix: Record<Lang, string> = { en: 'Photo', fi: 'Kuva', sv: 'Foto' }
 ---
 
 <style
@@ -36,10 +44,14 @@ const img = image ? getImageSrcset(image, 'body', [400, 800, 1200]) : undefined
         font-size: var(--additionalInfoFontSize);
         line-height: var(--additionalInfoLineHeight);
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: var(--sizes05);
         width: 100%;
+    }
+
+    .credit {
+        display: block;
     }
 
     :global(.prose) figure {
@@ -52,7 +64,7 @@ const img = image ? getImageSrcset(image, 'body', [400, 800, 1200]) : undefined
         font-family: var(--captionFontFamily);
         font-size: var(--captionFontSize);
         font-weight: var(--captionFontWeight);
-        justify-content: flex-start;
+        align-items: flex-start;
         line-height: var(--captionLineHeight);
     }
 </style>
@@ -69,7 +81,14 @@ const img = image ? getImageSrcset(image, 'body', [400, 800, 1200]) : undefined
                 style="width:100%;height:auto;"
                 width={img.width}
             />
-            <figcaption>{caption}</figcaption>
+            <figcaption>
+                {caption}
+                {photographer && (
+                    <span class="credit">
+                        {creditPrefix[lang]}: {photographer}
+                    </span>
+                )}
+            </figcaption>
         </figure>
     )
 }
