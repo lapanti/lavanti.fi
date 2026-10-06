@@ -45,7 +45,7 @@ Feature: Join thank-you page photo
   Scenario: Thank-you page shows the team photo
     Given the thank-you page in any of fi, sv, en
     When the page is built
-    Then the Plate contains exactly one <figure>
+    Then <main> contains exactly one <figure>, inside the Plate
     And its <img> alt is non-empty and in the page locale
     And its <figcaption> shows the caption in the page locale
     And the figcaption ends with "<prefix>: Erkki Laine"
@@ -93,7 +93,7 @@ interface Props {
     alt?: string
     caption: string
     image?: string
-    /** Needed only when photographer is given; selects the credit prefix. */
+    /** Selects the credit prefix; defaults to 'fi'. Ignored when photographer is omitted. */
     lang?: Lang
     /** Omit when no credit applies. */
     photographer?: string
@@ -138,3 +138,4 @@ None.
 | Date | Change |
 |------|--------|
 | 2026-10-06 | Initial draft (issue #1562) |
+| 2026-10-06 | Critic review: figure counted within `<main>`; `lang` defaults to `fi` |
