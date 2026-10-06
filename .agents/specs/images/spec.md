@@ -38,7 +38,7 @@ Hero components take their variant, `widths`, and `sizes` from **`HERO_CONFIGS` 
 | `titleBanner/Image.astro` | `hero` (`HERO_CONFIGS.pageHero`) | `[864,1080,1296,1728]` / `(max-width:1199px) 100vw, 50vw` | Fills `50vw × 45rem` box via `object-fit: cover`. |
 | `heroBanner/Images.astro` | `heroPortrait` + `heroLandscape` (`HERO_CONFIGS.portrait`/`.landscape`/`.single`) | portrait `[560,720,1120,1680]` / `470px`; landscape `[560,750,1120,1680]` / `100vw` | Art-directed `<picture>` (front page + split pages), source boundary 768/769px. |
 | `excerptList/excerpt/Banner.astro` | `1x1` | `[560,750,1120]` / `(max-width:1199px) 100vw, min(33vw, 380px)` | Square thumbnail; 3-column grid on desktop. `loading="lazy"`. |
-| `body/ImageWithCaption.astro` | `body` | `[400,800,1200]` / `(max-width:640px) 100vw, 800px` | Inline image with `<figcaption>`. `aria-label` from `caption` prop. `loading="lazy"`. |
+| `body/ImageWithCaption.astro` | `body` | `[400,800,1200]` / `(max-width:640px) 100vw, 800px` | Inline image with `<figcaption>`. `aria-label` from `caption` prop. `loading="lazy"`. Optional `photographer` + `lang` render a credit line — see `pages/join-thanks-photo.md`. |
 | `recommendations/Recommendation.astro` | `1x1` | `[448,896]` / `448px` | Circular portrait via CSS `border-radius:50%`. `loading="lazy"`. |
 | Layouts (og:image) | `og` | — | `getImage(heroImage, 'og').src` — URL string passed to `Head.astro`. |
 | `person.ts` (JSON-LD) | `og` | — | `getPersonImageUrl()` sync function called in `Head.astro`. |
