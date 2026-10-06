@@ -1,0 +1,149 @@
+---
+lang: 'en'
+slug: 'digital-independence-happy-hacking-day'
+pageTitle: 'Digital independence: the ability to choose'
+title: 'Digital independence: Finland''s ability to choose'
+description: 'Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help.'
+alt: 'Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose.'
+faq:
+  - q: 'What does digital independence mean?'
+    a: 'Digital independence is the ability to choose, and to switch providers when needed. It is security of supply, the kind we already apply to fuel, food and medicine, and software is next on that list.'
+  - q: 'How is digital independence built?'
+    a: 'The ability to choose is built with three levers Finland and Europe already have: procurement, which decides what technology markets emerge; standards, which decide how data moves and who can compete; and code, meaning open source and the European alternatives that already exist.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import H3 from '../../../components/H3.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, h3: H3, li: LI, p: Paragraph, ul: UL }
+
+## What does digital independence mean?
+
+Digital independence is the ability to choose, and to switch providers when needed. It is security of supply, the kind we already apply to fuel, food and medicine, and software is next on that list. Looking for someone to blame will not build it. The ability to choose is built with three levers Finland and Europe already have:
+
+- **procurement**, which decides what technology markets emerge
+- **standards**, which decide how data moves and who can compete
+- **code**, meaning open source and the European alternatives that already exist
+
+I have written about this before: [digital independence is a necessity](/en/blog/51/digital-independence-is-a-necessity/), and [it is built one step at a time](/en/blog/53/digital-independence-is-built-one-step-at-a-time/). All my writing on this appears in the [digital independence category](/en/category/digital-independence/).
+
+## What did I talk about at Happy Hacking Day?
+
+On 1 October 2026, at Haaga-Helia's Pasila campus, I gave an English-language talk on digital independence at Happy Hacking Day. The audience was technical. I covered how deep our dependence on non-European technology is, what has already happened when access was cut off, and how Finland and Europe can build the freedom to choose.
+
+Parental leave was visible on stage: I held my one-year-old for most of the talk.
+
+The talk started from a familiar line in Finnish politics: we have to start from the fact that this is where we've ended up. The numbers are stark. Three US companies control about 70% of Europe's cloud-services market. The EU holds about 5% of global AI compute, and forecasts put that share at roughly the same through 2031. In June, the US government ordered non-US users cut off from Anthropic's most advanced AI models. The examples of Schleswig-Holstein and Airbus still show that disentangling is real work — but achievable.
+
+The slides are available as a [PDF](/slides/2026-10-01-happy-hacking-day-digital-independence.pdf).
+
+## What did the audience ask?
+
+In the discussion after the talk, the audience asked mainly about two topics. The first was Chat Control, the EU's proposal to monitor messages. The second was independence in payment systems. Both point back to the talk's core question: who ultimately decides about the digital services that public services, businesses and citizens rely on every day.
+
+I am a lead developer and a Kirkkonummi municipal councillor, and I am running for Parliament in Uusimaa.
+
+## What did the talk say?
+
+Good afternoon. I'm Lauri Lavanti. As this is Happy Hacking Day, I thought I'd start with a bit of personal history around computers and hacking. My first experiences with a computer were with an old-school Macintosh my dad had. I don't remember much of what it was used for, other than very simple black-and-white games, but it got the fire going. Later, as a teenager with my very own PC, I felt like a true hackerman, making PC games run without the CD, which I now know had almost nothing to do with hacking.
+
+Since then I've focused on the software development side. I have been writing code for a living for over a decade, and my current job is lead developer at a large Finnish bank, though right now I'm on parental leave with my youngest child, who is with me today. In my free time I also sit on the Kirkkonummi municipal council, so I have seen how decisions about public-sector technology get made from both the inside and the outside.
+
+The title is a nod to a well-known line from Finnish politics: "Siitä on lähdettävä, että tähän on tultu", we have to start from the fact that this is where we've ended up. That's the spirit of this talk: not where we wish we were, but where we actually are now. I am especially interested in that intersection in a Venn diagram where software and tech meet politics and society at large, and I would argue that it is too often a blind spot for us in the tech industry.
+
+I was also the initiator and driving force of the [Digital Independence citizens' initiative](https://www.kansalaisaloite.fi/fi/aloite/16691), which reached the required number of signatures in July. It is about exactly that intersection: making sure our tech decisions stand the test of time.
+
+So, is digital independence just a hype word? [Sitra and EVA asked the public](https://www.sitra.fi/uutiset/kysely-turvaa-ja-toimintakykya-suomalaiset-haluavat-vahvan-ja-omavaraisen-euroopan-unionin/), and 79% supported the EU having strategic autonomy in critical technologies, while 77% wanted to reduce dependence on the US in technology and the economy, and 76% supported limiting the power of US and Chinese tech giants. That is a striking consensus for any policy question, numbers the likes of which we haven't seen since [Finland joined Nato](https://www.verkkouutiset.fi/a/hs-gallup-naton-kannatus-noussut-uuteen-ennatykseen/).
+
+### Where we stand
+
+Let's start with the numbers. What is the current situation?
+
+Seventy percent of the European cloud market belongs to Amazon, Microsoft and Google, while European providers hold only about 15%. Those figures come from [Synergy Research Group's 2025 market data](https://srgresearch.com/articles/european-cloud-providers-local-market-share-now-holds-steady-at-15). [Around 80% of European enterprise-software spend goes to US vendors. European organisations spend about €264 billion a year on digital technology made outside Europe](https://siecledigital.fr/2025/04/29/dependance-numerique-comment-leurope-perd-264-milliards-deuros-chaque-annee-au-profit-des-etats-unis/), with licence costs rising roughly 10% a year.
+
+Then there is AI compute, which basically means those pesky and controversial data centres. The EU holds about 5% of global capacity, and [current forecasts to 2031](https://europe2031.ai/compute-forecast/) keep it at about 5%, while global capacity grows more than tenfold. Middle powers like the UAE, Saudi Arabia, India, South Korea, Canada and Brazil are together building more than the EU's entire projected capacity. And regardless of how one feels about AI, I think by now we all have an inkling of how important compute is.
+
+These next numbers are [from May this year](https://www.economist.com/europe/2026/05/21/how-europe-is-fighting-for-digital-sovereignty). Germany celebrated a €1 billion data centre in Munich. In the same year, the four biggest US cloud and AI companies invested over 350 billion euros, more than 350 times as much. On the AI frontier, of roughly one hundred notable AI models released in the preceding year, exactly one came from the EU.
+
+### This is not hypothetical
+
+"But surely nobody would actually pull the plug."
+
+On June 12, 2026, at 17:21 Eastern Time, the US government ordered Anthropic to cut off all non-US citizens and organisations from its most advanced models, Fable and Mythos. To make sure it was complying, Anthropic ended up shutting those models down for everyone, then slowly opened access back up, [first to the US government and a select list of US companies](https://www.computing.co.uk/news/2026/ai/anthropic-regains-approval-to-deploy-mythos-ai-to-trusted-us-organisations). [Fable was soon opened to the public again](https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/), but the head start could have been longer, and we would have been powerless to change it.
+
+Even in the biggest newspaper in Finland, Helsingin Sanomat, a columnist stated clearly that the kill switch was used.
+
+So while we can debate the likelihood of these things happening, their scale or the policy behind them, we have proof that it *can* happen.
+
+Another common false comfort in this space is: "Our data is in a data centre in our home country, so we're fine." And this is especially something non-technical people tend to think. But residency is not sovereignty. Sovereignty is about who can access the data, not where it is stored.
+
+Under the CLOUD Act, US authorities can order US companies to hand over data regardless of where the servers are. It is debatable how likely that is, or what the damage would be, but the mechanics are there. [Emails that Dutch digital-services regulators sent to US-based companies were handed to the US House of Representatives under a congressional subpoena](https://nltimes.nl/2026/05/22/state-sec-speaks-us-ambassador-microsoft-leaking-dutch-civil-servants-names).
+
+And the legal framework for transatlantic data flows keeps collapsing. The previous frameworks, Safe Harbor and Privacy Shield, fell in court, Privacy Shield in [Schrems II, C-311/18](https://curia.europa.eu/juris/liste.jsf?num=C-311/18). The current Data Privacy Framework is in serious trouble after a [US Supreme Court ruling](https://www.supremecourt.gov/opinions/25pdf/25-332_qn12.pdf) earlier this year undermined the independence of the FTC, which the framework relies on. Three frameworks, the same structural problem: EU law and US surveillance law don't seem to fit together, and contracts can't fix that.
+
+### Why this is about politics
+
+None of what I've shown you happened by accident, and none of it gets fixed by accident either.
+
+The first mechanism to fix this is procurement, which builds markets and destroys them. The public sector is a huge buyer, so large that its purchasing habits actively shape which technology markets exist. Finland's dependency wasn't fate. It accumulated through decades of individual, rational-looking procurement decisions. And I'm not blaming any of the people making those decisions. Most times the IT departments in public sector are stuck between a rock and a hard place.
+
+The reverse mechanism is a textbook coordination failure. No single CIO benefits from moving first, and no single open-source vendor can fund the missing enterprise features alone. A real chicken-and-egg problem. That is why the truly groundbreaking policy work, like the EuroCommons initiative that is now pooling European migration coalitions, targets the coordination problem itself rather than any single migration.
+
+The second mechanism is standards. Standards decide how data moves and which technology can even compete. That is information policy, made in committee rooms rather than parliaments.
+
+Anu Bradford describes this in *Digital Empires* as three regulatory models competing globally: the American market-driven model, the Chinese state-driven model and the European rights-driven model. Europe's leverage, the "Brussels Effect", means EU rules become de facto global standards.
+
+A current example: the [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) is now a reference point even in the US. In Illinois, a pending bill, [SB3444](https://www.ilga.gov/legislation/BillStatus.asp?DocNum=3444&GAID=18&DocTypeID=SB&SessionID=114), would let frontier-model providers comply by following the EU AI Act. Europe is a significantly smaller provider of digital services than China or the US, but we are still very influential.
+
+Third, think supply security: trade war, localisation law, sanctions, vendor failure. This doesn't mean closing ourselves off from the world, or building everything ourselves, even though AI has dramatically decreased the cost of writing code. This is about supply security, or the better-known Finnish word "huoltovarmuus". The goal is not to always run our own servers in our own basement. It is to make sure that if the proverbial excrement hits the fan, we are not caught with our pants down.
+
+### Current direction
+
+So what is coming?
+
+Finland's government made a [digital sovereignty roadmap](https://vm.fi/-/ministerityoryhma-linjasi-digitaalisen-suvereniteetin-vahvistamisesta-tiekartta-ohjaa-toimia-hallituskauden-loppuun) on 27 April this year. It was adopted by the ministerial working group on societal reform, and it defines sovereignty as the capability to control digital infrastructure, data and technologies without unreasonable dependence on actors outside the EU. It names exit capability and open interfaces.
+
+In the EU, the commons layer is becoming institutional: [EuroCommons](https://www.caissedesdepots.fr/eurocommons/en) and the [Digital Commons consortium](https://valtioneuvosto.fi/-/1410829/valtioneuvosto-ehdottaa-suomen-liittymista-eurooppalaiseen-digitaaliset-yhteisresurssit-digi-infrakonsortioon?languageId=fi_FI) are building shared European digital infrastructure, and there is an [EU open-source strategy](https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy). You can argue about the pace, but the direction is written down.
+
+The market is moving too. European alternatives are no longer symbolic. Verda, the Finnish GPU-cloud company, [just became a unicorn](https://tech.eu/2026/09/22/verda-raises-189m-to-advance-its-ai-cloud-and-expand-compute-capacity).
+
+[Aiven is among the European open-source companies EU policymakers point to](https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy), alongside names like Mistral, Nextcloud, SUSE, Odoo and Arduino. [Opinsys](https://opinsys.fi), a company from Jyväskylä, builds Linux-based computers for education in Finland, Germany and Switzerland.
+
+### What can be done
+
+So what can be done, and what has already been done? We are, after all, talking about long-term endeavours and numbers so large that most of us never deal with them in our day-to-day lives.
+
+[The German state of Schleswig-Holstein](https://heise.de/-11105459) began a full exit from US office software in 2024. It migrated 40,000 email accounts in about half a year, and a Linux migration is ongoing. The migration reportedly required a one-time investment of €9 million, against roughly €15 million a year in licence fees.
+
+The transition has not been painless. The spell-checker, for example, was broken for months, and unions demanded proper training. Migration is real work, not a budget cut. But it is work that can be done: a functioning European state government is moving to open source.
+
+Companies talk about risk management, not ideology. [Airbus expanded a migration of critical applications from AWS to the French provider Scaleway](https://tech.slashdot.org/story/26/07/21/2050242), from an initial 70 applications to over 900, explicitly citing the CLOUD Act.
+
+Meanwhile the Swiss internet service provider Infomaniak went further on the durability question. It [transferred majority voting rights to a public-interest foundation](https://news.infomaniak.com/en/infomaniak-foundation-sovereign-cloud/), legally irrevocably, so that the sovereignty promise survives any acquisition.
+
+### Independence is the ability to choose
+
+To circle back to the beginning, this is where we are now: 70% of our cloud, 80% of our software spend, one demonstrated kill switch, and a legal reality where residency doesn't protect us.
+
+But digital independence, the thing every serious actor from the Finnish government to Airbus is actually pursuing, isn't isolation, and it isn't anti-anything.
+
+It's the ability to choose, and to leave. That ability is built in unglamorous places: tender criteria, interface standards, licence terms. Those are political artefacts, and they are exactly the places where the people in this room have expertise and leverage.
+
+Where we go next is a decision.
+
+---
+
+> **Editor's note:** The published text differs from the talk given on 1.10.2026 in the following places.
+>
+> - *The talk attributed the "kill switch" remark to a Helsingin Sanomat column. It was said by LUT professor Paavo Ritala on Uusi Juttu's news programme Pihvi (16.6.2026).*
+> - *The 70% cloud-market figure was credited to a European Parliament study. Its source is Synergy Research Group. The 85% / 15% split mentioned in the talk has been replaced with the sourced 70% / 15% comparison.*
+> - *The talk presented Illinois SB3444 as passed law. It is a bill still pending in the state legislature.*
+
+> - *Two claims have been softened: the EuroCommons target of 30 million users by 2030 has been removed, and Aiven is no longer described as one of six success stories named in the EU open-source strategy.*
+> - *Schleswig-Holstein: the 10–20% extra working time during the transition has been removed, and the Linux migration is described as ongoing instead of running through 2028.*
+> - *The 79% NATO support figure used for comparison was measured in June 2022, during the membership application, before Finland joined in April 2023.*
