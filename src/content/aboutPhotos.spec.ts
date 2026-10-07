@@ -1,27 +1,12 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
+import { jpegWidth } from '../../tests/jpegWidth'
 import { aboutPhotos, aboutPhotosBySection } from './aboutPhotos'
 
 const langs = ['en', 'fi', 'sv'] as const
 const originalsDir = path.resolve(__dirname, '../images/originals')
-
-/** Pixel width from the first SOF marker of a baseline or progressive JPEG. */
-const jpegWidth = (file: string): number => {
-    const buf = readFileSync(file)
-    let offset = 2
-    while (offset < buf.length) {
-        if (buf[offset] !== 0xff) throw new Error(`${file}: bad JPEG marker at ${offset}`)
-        const marker = buf[offset + 1]
-        const length = buf.readUInt16BE(offset + 2)
-        if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7)) {
-            return buf.readUInt16BE(offset + 7)
-        }
-        offset += 2 + length
-    }
-    throw new Error(`${file}: no SOF marker`)
-}
 
 describe('aboutPhotos', () => {
     it('has twelve photos with unique slugs', () => {
