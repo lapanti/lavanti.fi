@@ -7,7 +7,7 @@ emphasis: 'for parliament'
 intro: "Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the 2027 Finnish parliamentary election. Election day is Sunday 18 April 2027, with advance voting in Finland on 7–13 April."
 description: "Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa. Election day is 18 April 2027 — themes: the economy, education, and freedom in the age of AI."
 slug: 'en/elections'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
@@ -36,6 +36,8 @@ faq:
       a: 'You can support the campaign by joining the campaign team or donating to the campaign at lavanti.fi/lahjoita. The campaign finance page shows the budget, the funds raised by source and the money spent. You can also subscribe to the newsletter, share the posts, and discuss the campaign themes. To join the team, get in touch through the contact page.'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
@@ -46,6 +48,7 @@ import Pillar from '../../../components/frontPage/Pillar.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
+import { electionPhotos } from '../../../content/electionPhotos'
 import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 
 <Plate eyebrow="The election" ground="offWhite" heading="The 2027 parliamentary election in brief" id="inbrief">
@@ -67,6 +70,13 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Finland needs to secure its digital independence in the age of AI — that is why I am running. I bring to parliament more than ten years of hands-on experience building secure software and banking services, and an MSc in technology from Aalto University. I wrote more about the candidacy in its <a href="/en/blog/67/my-candidacy-for-parliament/">announcement</a>.</p>
         <p>I am a municipal councillor in Kirkkonummi, chair of the Green council group, and a father of four. To me, politics means taking care of shared matters, sustainably and across party lines — openness, honesty, and listening to different views matter, especially on hard questions.</p>
         <p>I am also the initiator of the Digital Independence citizens' initiative. In July 2026 it gathered the 50,000 signatures required for parliamentary consideration. It will be submitted to parliament after the spring 2027 election, so that the new parliament has time to consider it in full. You can find more about my background on the <a href="/en/about/">About Lauri</a> page and among the <a href="/en/recommendations/">endorsements</a>.</p>
+        <ImageWithCaption
+            alt="Lauri Lavanti smiling in front of a street billboard showing the Digital Independence citizens' initiative logo."
+            caption="An advert for the Digital Independence citizens' initiative"
+            image="Lauri-Lavanti-digitaalinen-itsenaisyys-mainoksen-edessa-vaaka"
+            lang="en"
+            photographer="Julia Kiljander"
+        />
     </Prose>
 </Plate>
 
@@ -133,6 +143,10 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 </Plate>
 
 <FinanceTeaser href="/en/elections/campaign-finance/" id="finance" lang="en" />
+
+<Plate eyebrow="Photos" ground="offWhite" heading="On the campaign trail">
+    <PhotoStrip lang="en" photos={electionPhotos} />
+</Plate>
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Events" heading="Campaign event calendar" id="events" lang="en" />
 
