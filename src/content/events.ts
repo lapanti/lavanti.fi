@@ -44,36 +44,37 @@ export interface CampaignEvent {
  * so the removal actually reaches production.
  */
 export const campaignEvents: CampaignEvent[] = [
+    // events:start
     {
-        date: '2026-09-19',
-        endTime: '17:00',
-        id: 'kampanjatiimin-aloitus',
+        date: '2026-10-19',
+        endTime: '11:15',
+        id: 'reset-helsinki-paneeli',
         locales: {
             en: {
                 description:
-                    'The campaign team meets for the first time. We go through the themes and the schedule for the election spring and agree on who does what. Anyone who wants to take part is welcome.',
-                locality: 'Espoo',
-                title: 'Campaign team kickoff',
-                venue: 'Iso Omena shopping centre',
+                    'Lauri Lavanti joins the panel "Towards greater digital independence in artistic production" at Reset! Helsinki – Reclaiming the Digital. Nitin Sawhney moderates the panel. The event is free, but advance registration is required.',
+                locality: 'Helsinki',
+                title: 'Towards greater digital independence in artistic production, Reset! Helsinki',
+                venue: 'Oranssi ry',
             },
             fi: {
                 description:
-                    'Kampanjatiimi kokoontuu ensimmäistä kertaa. Käymme läpi vaalikevään teemat ja aikataulun sekä sovimme, kuka tekee mitä. Tervetuloa mukaan, jos haluat olla rakentamassa kampanjaa.',
-                locality: 'Espoo',
-                title: 'Kampanjatiimin aloitustilaisuus',
-                venue: 'Kauppakeskus Iso Omena',
+                    'Lauri Lavanti on panelistina Reset! Helsinki – Reclaiming the Digital -tapahtuman paneelissa Towards greater digital independence in artistic production. Paneelia moderoi Nitin Sawhney. Tapahtuma on maksuton, mutta siihen pitää ilmoittautua etukäteen.',
+                locality: 'Helsinki',
+                title: 'Paneeli digitaalisesta riippumattomuudesta, Reset! Helsinki',
+                venue: 'Oranssi ry',
             },
             sv: {
                 description:
-                    'Kampanjteamet träffas för första gången. Vi går igenom valvårens teman och tidtabell och kommer överens om vem som gör vad. Välkommen med om du vill vara med och bygga kampanjen.',
-                locality: 'Esbo',
-                title: 'Kampanjteamets första träff',
-                venue: 'Köpcentret Iso Omena',
+                    'Lauri Lavanti deltar i panelen Towards greater digital independence in artistic production under evenemanget Reset! Helsinki – Reclaiming the Digital. Panelen modereras av Nitin Sawhney. Evenemanget är avgiftsfritt, men kräver förhandsanmälan.',
+                locality: 'Helsingfors',
+                title: 'Panel om digitalt oberoende, Reset! Helsinki',
+                venue: 'Oranssi ry',
             },
         },
-        postalCode: '02230',
-        startTime: '15:00',
-        streetAddress: 'Piispansilta 11',
+        postalCode: '00540',
+        startTime: '10:15',
+        streetAddress: 'Kaasutehtaankatu 1/20',
         topicConfirmed: true,
     },
     {
@@ -82,28 +83,29 @@ export const campaignEvents: CampaignEvent[] = [
         locales: {
             en: {
                 description:
-                    'A campaign event in the Mörne hall at Fyyri, the main library of Kirkkonummi. Open to all and free of charge.',
+                    'The "How are you, Kirkkonummi?" panel covers the development of the central forest. Lauri Lavanti moderates; panellists announced later. At Fyyri library\'s Mörne hall, free and open to all.',
                 locality: 'Kirkkonummi',
-                title: 'Event at Fyyri library',
+                title: 'How are you, Kirkkonummi? The development of the central forest',
                 venue: 'Fyyri library, Mörne hall',
             },
             fi: {
                 description:
-                    'Kampanjan tilaisuus Kirkkonummen pääkirjaston Fyyrin Mörne-salissa. Tilaisuus on avoin ja maksuton.',
+                    'Mitä kuuluu Kirkkonummi? -paneelikeskustelun aiheena on Keskusmetsän kehitys. Lauri Lavanti toimii keskustelun moderaattorina, ja panelistit julkistetaan myöhemmin. Tilaisuus pidetään kirjastotalo Fyyrin Mörne-salissa, ja se on avoin ja maksuton.',
                 locality: 'Kirkkonummi',
-                title: 'Tapahtuma kirjastotalo Fyyrissä',
+                title: 'Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys',
                 venue: 'Kirjastotalo Fyyri, Mörne-sali',
             },
             sv: {
                 description:
-                    'Kampanjens evenemang i Mörnesalen i Kyrkslätts huvudbibliotek Fyyri. Tillställningen är öppen och avgiftsfri.',
+                    'Panelsamtalet ”Hur mår Kyrkslätt?” handlar om utvecklingen av Centralskogen. Lauri Lavanti modererar diskussionen, och panelisterna presenteras senare. Evenemanget ordnas i Mörnesalen i Bibliotekshuset Fyyri och är öppet för alla och avgiftsfritt.',
                 locality: 'Kyrkslätt',
-                title: 'Evenemang i bibliotekshuset Fyyri',
+                title: 'Hur mår Kyrkslätt? Utvecklingen av Centralskogen',
                 venue: 'Bibliotekshuset Fyyri, Mörnesalen',
             },
         },
         postalCode: '02400',
         streetAddress: 'Kirkkotori 1',
-        topicConfirmed: false,
+        topicConfirmed: true,
     },
+    // events:end
 ]
