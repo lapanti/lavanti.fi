@@ -36,6 +36,24 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
+          - 'article "Digital independence: Finland''s ability to choose"':
+            - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
+              - /url: /en/blog/85/digital-independence-happy-hacking-day/
+              - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
+              - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
+        - listitem:
           - article "YEL must not raise the entrepreneurship barrier":
             - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
               - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digital independence":
                 - /url: /en/category/digital-independence/
-        - listitem:
-          - article "AI helps secure municipal services, but it is not free":
-            - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
-              - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
-              - img "Lauri Lavanti stands in a floral shirt against a white background."
-              - heading "AI helps secure municipal services, but it is not free" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: In Konnevesi, AI cut processing time for road grants from two months to days. Kirkkonummi is too small to act alone — but collaboration makes change possible.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
       - paragraph:
         - link "All posts about AI":
           - /url: /en/category/artificial-intelligence/
@@ -162,6 +162,24 @@
       - paragraph: Seamless enlightenment means learning never stops — it stays possible whatever stage of life you are in. AI makes that path vastly more important. The country that keeps the path open for everyone gets the full potential of its people. That is a stronger foundation than any other competitive advantage.
       - list:
         - listitem:
+          - article "AI helps secure municipal services, but it is not free":
+            - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
+              - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
+              - img "Lauri Lavanti stands in a floral shirt against a white background."
+              - heading "AI helps secure municipal services, but it is not free" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: In Konnevesi, AI cut processing time for road grants from two months to days. Kirkkonummi is too small to act alone — but collaboration makes change possible.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+        - listitem:
           - article "AI changes what developers get paid for":
             - link "A computer screen showing code. AI changes what developers get paid for":
               - /url: /en/blog/57/ai-changes-what-developers-get-paid-for/
@@ -187,24 +205,6 @@
               - heading /\d+ is the year of AI/ [level=3]
             - time: /\d+\.\d+\.\d+/
             - paragraph: AI is changing society — but perhaps not as you imagine. The biggest changes will be in private life and in the everyday lives of children.
-          - list:
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Enlightenment":
-                - /url: /en/category/enlightenment/
-        - listitem:
-          - article "AI cannot do everything":
-            - link "An illustrative image for artificial intelligence, depicting a machine resembling a human head with various electronic currents flowing in and out of it. AI cannot do everything":
-              - /url: /en/blog/44/ai-cannot-do-everything/
-              - img "An illustrative image for artificial intelligence, depicting a machine resembling a human head with various electronic currents flowing in and out of it."
-              - heading "AI cannot do everything" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI has been presented as a solution for improving public services. It may have a role, but cannot replace people or clear strategic planning.
           - list:
             - listitem:
               - link "Digitalisation":

@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - 'article "Digital självständighet: Finlands valfrihet"':
+          - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
+            - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
+            - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
+            - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
+        - list:
+          - listitem:
+            - link "Digital självständighet":
+              - /url: /sv/kategori/digital-sjalvstandighet/
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Teknologi":
+              - /url: /sv/kategori/teknologi/
+      - listitem:
         - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
           - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
             - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Digitalisering":
               - /url: /sv/kategori/digitalisering/
-      - listitem:
-        - article "Airbus valde Scaleway också av jurisdiktionsskäl":
-          - link "Fasaden på en Airbus-fabriksbyggnad med Airbus-logotypen på väggen. Airbus valde Scaleway också av jurisdiktionsskäl":
-            - /url: /sv/blog/69/airbus-scaleway-jurisdiktionsskal/
-            - img "Fasaden på en Airbus-fabriksbyggnad med Airbus-logotypen på väggen."
-            - heading "Airbus valde Scaleway också av jurisdiktionsskäl" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Airbus flyttade kritiska system till Scaleway även av jurisdiktionsskäl. Samma riskbedömning passar varje organisations molnval.
-        - list:
-          - listitem:
-            - link "Digital självständighet":
-              - /url: /sv/kategori/digital-sjalvstandighet/
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Teknologi":
-              - /url: /sv/kategori/teknologi/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
+          - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
+            - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
+            - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
+            - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
+        - list:
+          - listitem:
+            - link "Digitaalinen itsenäisyys":
+              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Teknologia":
+              - /url: /fi/kategoria/teknologia/
+      - listitem:
         - article "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
           - link "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle. Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
             - /url: /fi/blog/84/bensatuki-syventaisi-tuontiriippuvuutta/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Länsi-Uusimaa":
               - /url: /fi/kategoria/lansi-uusimaa/
-      - listitem:
-        - article "Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
-          - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
-            - /url: /fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/
-            - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
-            - heading "Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: EU:n teknologiasuvereniteettipaketti nostaa avoimen lähdekoodin digitaalisen itsenäisyyden kulmakiveksi. Miksi suljettu järjestelmä on riski ja avoin ratkaisu.
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
-          - listitem:
-            - link "Digitalisaatio":
-              - /url: /fi/kategoria/digitalisaatio/

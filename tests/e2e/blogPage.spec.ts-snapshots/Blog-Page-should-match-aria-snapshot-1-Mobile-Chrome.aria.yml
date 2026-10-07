@@ -36,6 +36,24 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
+          - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
+            - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
+              - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
+              - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
+              - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
+        - listitem:
           - article "YEL ei saa nostaa yrittäjyyden kynnystä":
             - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
               - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digitaalinen itsenäisyys":
                 - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-        - listitem:
-          - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
-            - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
-              - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
-              - img "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla."
-              - heading "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Konnevedellä tekoäly lyhensi käsittelyajan kahdesta kuukaudesta päiviin. Kirkkonummi on liian pieni yksin — mutta yhteistyöllä muutos on mahdollinen.
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
           - /url: /fi/kategoria/tekoaly/
@@ -162,6 +162,24 @@
       - paragraph: Saumaton sivistys tarkoittaa, että oppiminen ja sivistys eivät lopu koskaan, vaan se on mahdollista elämäntilanteesta riippumatta. Tekoäly tekee tästä polusta valtavan paljon tärkeämmän. Maa, joka pitää polun auki kaikille, saa käyttöönsä koko kansansa potentiaalin. Se on vahvempi pohja kuin mikään muu kilpailuetu.
       - list:
         - listitem:
+          - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
+            - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
+              - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
+              - img "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla."
+              - heading "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Konnevedellä tekoäly lyhensi käsittelyajan kahdesta kuukaudesta päiviin. Kirkkonummi on liian pieni yksin — mutta yhteistyöllä muutos on mahdollinen.
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+        - listitem:
           - article "Tekoäly muuttaa kehittäjän palkan perustan":
             - link "Kuvassa tietokoneen näyttö, jossa näkyy koodia. Tekoäly muuttaa kehittäjän palkan perustan":
               - /url: /fi/blog/57/tekoaly-ei-korvaa-koodareita-vaan-muuttaa-sen-mista-heille-maksetaan/
@@ -187,24 +205,6 @@
               - heading /Vuosi \d+ on tekoälyn/ [level=3]
             - time: /\d+\.\d+\.\d+/
             - paragraph: Tekoäly muuttaa yhteiskuntaamme – mutta et ehkä odottaisi, miten. Suurimmat muutokset näemme yksityiselämässä ja lasten arjessa.
-          - list:
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Sivistys":
-                - /url: /fi/kategoria/sivistys/
-        - listitem:
-          - article "Tekoäly ei pysty mihin tahansa":
-            - link "Kuvituskuva tekoälylle, jossa on piirretty ihmisen päätä muistuttava kone, johon tulee ja josta lähtee erilaisia sähköisiä virtauksia Tekoäly ei pysty mihin tahansa":
-              - /url: /fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/
-              - img "Kuvituskuva tekoälylle, jossa on piirretty ihmisen päätä muistuttava kone, johon tulee ja josta lähtee erilaisia sähköisiä virtauksia"
-              - heading "Tekoäly ei pysty mihin tahansa" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Tekoälyä on esitetty ratkaisuna julkisten palveluiden kehittämiseen. Sillä voi olla roolinsa, mutta se ei korvaa ihmistä eikä selkeää suunnitelmaa.
           - list:
             - listitem:
               - link "Digitalisaatio":

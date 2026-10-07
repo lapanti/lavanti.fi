@@ -36,6 +36,24 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
+          - 'article "Digital självständighet: Finlands valfrihet"':
+            - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
+              - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
+              - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
+              - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
+        - listitem:
           - article "FöPL får inte höja tröskeln för företagande":
             - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
               - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
-        - listitem:
-          - article "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-              - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
-              - img "Lauri Lavanti står i en blommig skjorta mot vit bakgrund."
-              - heading "AI hjälper till att trygga kommunala tjänster, men det är inte gratis" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: I Konnevesi kortade AI handläggningstiden från två månader till dagar. Kyrkslätt är för litet att agera ensamt — men samarbete gör förändring möjlig.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
       - paragraph:
         - link "Alla inlägg om AI":
           - /url: /sv/kategori/artificiell-intelligens/
@@ -162,6 +162,24 @@
       - paragraph: Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.
       - list:
         - listitem:
+          - article "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+              - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
+              - img "Lauri Lavanti står i en blommig skjorta mot vit bakgrund."
+              - heading "AI hjälper till att trygga kommunala tjänster, men det är inte gratis" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: I Konnevesi kortade AI handläggningstiden från två månader till dagar. Kyrkslätt är för litet att agera ensamt — men samarbete gör förändring möjlig.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+        - listitem:
           - article "AI förändrar vad utvecklare får betalt för":
             - link "En datorskärm med kod. AI förändrar vad utvecklare får betalt för":
               - /url: /sv/blog/57/ai-forandrar-vad-utvecklare-far-betalt-for/
@@ -187,24 +205,6 @@
               - heading /År \d+ är AI-året/ [level=3]
             - time: /\d+\.\d+\.\d+/
             - paragraph: AI förändrar samhället — men kanske inte som du tror. De största förändringarna ser vi i privatlivet och i barnens och ungdomarnas vardag.
-          - list:
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Lärande":
-                - /url: /sv/kategori/bildning/
-        - listitem:
-          - article "AI kan inte allt":
-            - link "En illustrationsbild för artificiell intelligens, föreställande en maskin som liknar ett mänskligt huvud med olika elektroniska strömmar som flödar in och ut ur den. AI kan inte allt":
-              - /url: /sv/blog/44/ai-kan-inte-allt/
-              - img "En illustrationsbild för artificiell intelligens, föreställande en maskin som liknar ett mänskligt huvud med olika elektroniska strömmar som flödar in och ut ur den."
-              - heading "AI kan inte allt" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: AI har presenterats som ett sätt att göra Finlands offentliga tjänster till världens bästa. Det kan ha sin roll i det, men viktigast vore en helhetsbedömning.
           - list:
             - listitem:
               - link "Digitalisering":
