@@ -29,7 +29,8 @@ have no image slot and the economy theme has no fitting photo yet.
 - Four new Cloudflare Images assets (4:3 crops; originals gitignored)
 - `updatedDate` bump on the three pages
 - Explicit e2e assertion in `tests/e2e/pages/electionPage.ts`
-- `jpegWidth` moved from the two content specs into `tests/helpers.ts`
+- `jpegWidth` moved from the two content specs into `tests/jpegWidth.ts` (not `tests/helpers.ts`:
+  every component spec imports helpers, so `vitest related` would run them all on each commit)
 
 ### Out of scope
 - Photos inside the Talous / Sivistys / Vapaus Pillars
