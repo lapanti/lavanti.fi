@@ -31,6 +31,9 @@
       - link "endorsements":
         - /url: /en/recommendations/
       - text: .
+    - figure "An advert for the Digital Independence citizens' initiative":
+      - img "Lauri Lavanti smiling in front of a street billboard showing the Digital Independence citizens' initiative logo."
+      - text: "An advert for the Digital Independence citizens' initiative Photo: Julia Kiljander"
     - text: Pillar one
     - heading "How does the economy work in the age of AI?" [level=2]
     - paragraph: The economy works in the age of AI only if Finland builds its own expertise instead of merely buying technology from outside. I demand that public AI and digital procurement be open and portable, so vendor dependency does not drain tax money year after year.
@@ -119,15 +122,34 @@
     - paragraph:
       - link "See the campaign finances":
         - /url: /en/elections/campaign-finance/
+    - text: Photos
+    - heading "On the campaign trail" [level=2]
+    - list:
+      - listitem:
+        - figure "Conversations at the Greens’ market tent":
+          - img "Lauri Lavanti in a navy blazer talking with a visitor at a green market tent, a campaign flag behind him."
+          - text: ""
+      - listitem:
+        - figure /Rainbow flags at Kirkkonummi town hall, summer \d+/:
+          - img "Lauri Lavanti in front of Kirkkonummi town hall, rainbow flags flying on the flagpoles above him."
+          - text: ""
+      - listitem:
+        - 'figure /The campaign team’s kick-off meeting, September \d+ Photo: Erkki Laine/':
+          - img "Campaign team members talking around a meeting table with laptops and papers, Lauri Lavanti standing at the back."
+          - text: ""
     - text: Events
     - heading "Campaign event calendar" [level=2]
     - list:
       - listitem:
+        - time: /Monday, \d+ October \d+ \d+:\d+–\d+:\d+/
+        - heading "Towards greater digital independence in artistic production, Reset! Helsinki" [level=3]
+        - paragraph: Oranssi ry, Helsinki
+        - paragraph: Lauri Lavanti joins the panel "Towards greater digital independence in artistic production" at Reset! Helsinki – Reclaiming the Digital. Nitin Sawhney moderates the panel. The event is free, but advance registration is required.
+      - listitem:
         - time: /Monday, \d+ November \d+/
-        - heading "Event at Fyyri library" [level=3]
+        - heading "How are you, Kirkkonummi? The development of the central forest" [level=3]
         - paragraph: Fyyri library, Mörne hall, Kirkkonummi
-        - paragraph: A campaign event in the Mörne hall at Fyyri, the main library of Kirkkonummi. Open to all and free of charge.
-        - text: The topic will be confirmed later.
+        - paragraph: The "How are you, Kirkkonummi?" panel covers the development of the central forest. Lauri Lavanti moderates; panellists announced later. At Fyyri library's Mörne hall, free and open to all.
     - text: Q & A
     - heading "Frequently asked questions about the election" [level=2]
     - heading /In which electoral district is Lauri Lavanti running in the \d+ parliamentary election\?/ [level=3]
