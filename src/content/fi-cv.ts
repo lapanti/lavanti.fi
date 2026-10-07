@@ -106,7 +106,7 @@ export const fiduciaries = [
         description: [
             'Johdin hallituksen päätöksentekoa, mukaan lukien Kirkkonummen ensimmäisen (ja Suomen kolmannen) laillisen graffitiseinän avaamisen.',
         ],
-        duty: 'Nuorisovaltuuston hallituksen puheenjohtaja',
+        duty: 'Nuorisofoorumin hallituksen puheenjohtaja',
         endYear: 2010,
         organization: 'Kirkkonummen kunta',
         startYear: 2010,

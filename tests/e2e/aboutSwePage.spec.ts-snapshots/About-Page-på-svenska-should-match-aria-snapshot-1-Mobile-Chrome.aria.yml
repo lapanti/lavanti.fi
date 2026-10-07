@@ -170,7 +170,7 @@
           - listitem: Byggde lagets externa kommunikation från grunden — matchrapporter, sociala medier och webbplats.
           - listitem: Skötte styrelseadministration och protokollföring som sekreterare.
       - listitem:
-        - text: /Ordförande för ungdomsfullmäktiges styrelse Kyrkslätt kommun · \d+/
+        - text: /Ordförande för ungdomsforumets styrelse Kyrkslätt kommun · \d+/
         - list:
           - listitem: Ledde styrelsens beslutsfattande, inklusive öppnandet av Kyrkslätts första (och Finlands tredje) lagliga graffitivägg.
     - heading "Arbetserfarenhet" [level=2]

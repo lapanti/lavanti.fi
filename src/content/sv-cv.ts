@@ -106,7 +106,7 @@ export const fiduciaries = [
         description: [
             'Ledde styrelsens beslutsfattande, inklusive öppnandet av Kyrkslätts första (och Finlands tredje) lagliga graffitivägg.',
         ],
-        duty: 'Ordförande för ungdomsfullmäktiges styrelse',
+        duty: 'Ordförande för ungdomsforumets styrelse',
         endYear: 2010,
         organization: 'Kyrkslätt kommun',
         startYear: 2010,

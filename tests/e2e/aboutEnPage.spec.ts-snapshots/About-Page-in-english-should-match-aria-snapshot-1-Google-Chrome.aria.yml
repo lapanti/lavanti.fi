@@ -170,7 +170,7 @@
           - listitem: Built the team's external communications from scratch — match reports, social media, and the website.
           - listitem: Handled board administration and record-keeping as secretary.
       - listitem:
-        - text: /Chair of the youth council board Kirkkonummi municipality · \d+/
+        - text: /Chair of the youth forum board Kirkkonummi municipality · \d+/
         - list:
           - listitem: Led the board's decision-making, including opening Kirkkonummi's first (and Finland's third) legal graffiti wall.
     - heading "Work experience" [level=2]

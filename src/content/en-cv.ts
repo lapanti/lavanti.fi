@@ -106,7 +106,7 @@ export const fiduciaries = [
         description: [
             "Led the board's decision-making, including opening Kirkkonummi's first (and Finland's third) legal graffiti wall.",
         ],
-        duty: 'Chair of the youth council board',
+        duty: 'Chair of the youth forum board',
         endYear: 2010,
         organization: 'Kirkkonummi municipality',
         startYear: 2010,

@@ -170,7 +170,7 @@
           - listitem: Rakensin joukkueen ulkoisen viestinnän tyhjästä — otteluraportit, sosiaalisen median sekä nettisivut.
           - listitem: Hoidin hallinnon ja pöytäkirjat sihteerinä.
       - listitem:
-        - text: /Nuorisovaltuuston hallituksen puheenjohtaja Kirkkonummen kunta · \d+/
+        - text: /Nuorisofoorumin hallituksen puheenjohtaja Kirkkonummen kunta · \d+/
         - list:
           - listitem: Johdin hallituksen päätöksentekoa, mukaan lukien Kirkkonummen ensimmäisen (ja Suomen kolmannen) laillisen graffitiseinän avaamisen.
     - heading "Työkokemus" [level=2]
