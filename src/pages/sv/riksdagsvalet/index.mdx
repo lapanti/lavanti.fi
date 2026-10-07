@@ -7,7 +7,7 @@ emphasis: 'i riksdagsvalet'
 intro: 'Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027. Valdagen är söndagen den 18.4.2027 och förhandsröstningen i Finland pågår 7–13.4.2027.'
 description: 'Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets. Valdagen är 18.4.2027 — teman: ekonomi, bildning och frihet i AI-tidsåldern.'
 slug: 'sv/riksdagsvalet'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
@@ -36,6 +36,8 @@ faq:
       a: 'Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen på lavanti.fi/lahjoita. Sidan om valfinansiering visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
@@ -46,6 +48,7 @@ import Pillar from '../../../components/frontPage/Pillar.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
+import { electionPhotos } from '../../../content/electionPhotos'
 import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 
 <Plate eyebrow="Valet" ground="offWhite" heading="Riksdagsvalet 2027 i korthet" id="ikorthet">
@@ -67,6 +70,13 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Finland måste trygga sin digitala självständighet i AI-tidsåldern — därför kandiderar jag. Till riksdagen för jag med mig över tio års praktisk erfarenhet av att bygga säkra mjukvaror och banktjänster samt en diplomingenjörsutbildning från Aalto-universitetet. Jag berättade mer om kandidaturen i dess <a href="/sv/blog/67/min-kandidatur-i-riksdagsvalet/">offentliggörande</a>.</p>
         <p>Jag är kommunfullmäktigeledamot i Kyrkslätt, ordförande för De Grönas fullmäktigegrupp och far till fyra barn. För mig handlar politik om att sköta gemensamma angelägenheter hållbart och över partigränserna — öppenhet, ärlighet och att lyssna på olika åsikter är avgörande också i svåra frågor.</p>
         <p>Jag är också initiativtagare till medborgarinitiativet Digital självständighet. Initiativet samlade i juli 2026 in de 50 000 underskrifter som krävs för riksdagsbehandling. Det lämnas till riksdagen efter valet våren 2027, så att den nya riksdagen hinner behandla det i sin helhet. Mer om min bakgrund hittar du på sidan <a href="/sv/om-lauri/">Om Lauri</a> och bland <a href="/sv/rekommendationer/">rekommendationerna</a>.</p>
+        <ImageWithCaption
+            alt="Lauri Lavanti ler framför en reklamtavla vid gatan med logotypen för medborgarinitiativet Digital självständighet."
+            caption="Reklam för medborgarinitiativet Digital självständighet"
+            image="Lauri-Lavanti-digitaalinen-itsenaisyys-mainoksen-edessa-vaaka"
+            lang="sv"
+            photographer="Julia Kiljander"
+        />
     </Prose>
 </Plate>
 
@@ -133,6 +143,10 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 </Plate>
 
 <FinanceTeaser href="/sv/riksdagsvalet/valfinansiering/" id="finansiering" lang="sv" />
+
+<Plate eyebrow="Bilder" ground="offWhite" heading="Kampanjens vardag">
+    <PhotoStrip lang="sv" photos={electionPhotos} />
+</Plate>
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Evenemang" heading="Kampanjens evenemangs­kalender" id="evenemang" lang="sv" />
 

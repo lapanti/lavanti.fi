@@ -7,7 +7,7 @@ emphasis: 'eduskuntaan'
 intro: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden 2027 eduskuntavaaleissa. Vaalipäivä on sunnuntai 18.4.2027 ja ennakkoäänestys kotimaassa 7.–13.4.2027.'
 description: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä. Vaalipäivä on 18.4.2027 — teemoina talous, sivistys ja vapaus tekoälyn aikana.'
 slug: 'fi/eduskuntavaalit'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
@@ -36,6 +36,8 @@ faq:
       a: 'Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle osoitteessa lavanti.fi/lahjoita. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import PhotoStrip from '../../../components/body/PhotoStrip.astro'
 import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
@@ -46,6 +48,7 @@ import Pillar from '../../../components/frontPage/Pillar.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
+import { electionPhotos } from '../../../content/electionPhotos'
 import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 
 <Plate eyebrow="Vaalit" ground="offWhite" heading="Eduskuntavaalit 2027 lyhyesti" id="lyhyesti">
@@ -67,6 +70,13 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Suomen on varmistettava digitaalinen itsenäisyytensä tekoälyn aikakaudella — siksi olen ehdolla. Tuon eduskuntaan yli kymmenen vuoden käytännön kokemuksen turvallisten ohjelmistojen ja pankkipalveluiden rakentamisesta sekä diplomi-insinöörin koulutuksen Aalto-yliopistosta. Kirjoitin ehdokkuudesta tarkemmin sen <a href="/fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/">julkistuksessa</a>.</p>
         <p>Olen kirkkonummelainen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.</p>
         <p>Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija. Aloite keräsi heinäkuussa 2026 eduskuntakäsittelyyn vaaditut 50 000 allekirjoitusta. Se viedään eduskuntaan kevään 2027 vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan. Lisää taustastani löydät <a href="/fi/laurista/">Laurista-sivulta</a> ja <a href="/fi/suositukset/">suosituksista</a>.</p>
+        <ImageWithCaption
+            alt="Lauri Lavanti hymyilee kadunvarren mainostaulun edessä, jossa on Digitaalinen itsenäisyys -kansalaisaloitteen logo."
+            caption="Digitaalinen itsenäisyys -kansalaisaloitteen mainos"
+            image="Lauri-Lavanti-digitaalinen-itsenaisyys-mainoksen-edessa-vaaka"
+            lang="fi"
+            photographer="Julia Kiljander"
+        />
     </Prose>
 </Plate>
 
@@ -133,6 +143,10 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
 </Plate>
 
 <FinanceTeaser href="/fi/eduskuntavaalit/vaalirahoitus/" id="rahoitus" lang="fi" />
+
+<Plate eyebrow="Kuvat" ground="offWhite" heading="Kampanjan arkea">
+    <PhotoStrip lang="fi" photos={electionPhotos} />
+</Plate>
 
 <EventCalendar events={visibleCampaignEvents()} eyebrow="Tapahtumat" heading="Kampanjan tapahtuma­kalenteri" id="tapahtumat" lang="fi" />
 
