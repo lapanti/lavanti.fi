@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - 'article "Digital independence: Finland''s ability to choose"':
+          - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
+            - /url: /en/blog/85/digital-independence-happy-hacking-day/
+            - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
+            - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
+        - list:
+          - listitem:
+            - link "Digital independence":
+              - /url: /en/category/digital-independence/
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Technology":
+              - /url: /en/category/technology/
+      - listitem:
         - article "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
           - link "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side. A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
             - /url: /en/blog/84/fuel-subsidy-deepens-import-dependency/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Digitalisation":
               - /url: /en/category/digitalisation/
-      - listitem:
-        - article "Airbus Chose Scaleway Partly Because of Jurisdiction":
-          - link "The exterior facade of an Airbus factory building with the Airbus logo on the wall. Airbus Chose Scaleway Partly Because of Jurisdiction":
-            - /url: /en/blog/69/airbus-chose-scaleway-jurisdiction/
-            - img "The exterior facade of an Airbus factory building with the Airbus logo on the wall."
-            - heading "Airbus Chose Scaleway Partly Because of Jurisdiction" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Airbus moved critical systems to Scaleway partly over jurisdiction. The same risk assessment applies to any cloud choice.
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Technology":
-              - /url: /en/category/technology/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
