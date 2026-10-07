@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { redirects } from './redirects'
 import { buildRedirectLines } from './redirectsIntegration'
 
 describe('buildRedirectLines', () => {
@@ -35,6 +36,13 @@ describe('buildRedirectLines', () => {
         expect(lines).toContain('/about/ /fi/about/ 301')
         expect(lines).toContain('/category/technology /fi/category/technology/ 301')
         expect(lines).toContain('/category/technology/ /fi/category/technology/ 301')
+    })
+
+    it('sends the /liity short link (both slash variants) to the join form', () => {
+        const lines = buildRedirectLines(redirects, ['/fi/liity/'])
+
+        expect(lines).toContain('/liity /fi/liity/ 301')
+        expect(lines).toContain('/liity/ /fi/liity/ 301')
     })
 
     it('aliases canonical Finnish blog posts alongside the bare-id redirect', () => {
