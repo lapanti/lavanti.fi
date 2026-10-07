@@ -24,5 +24,10 @@ export class NewsletterSwePage extends AnyPage {
 
     async checkContent() {
         await expect(this.emailInput).toBeVisible()
+
+        // The aria golden matches partially, so the below-fold photo needs an explicit check.
+        const figure = this.page.getByRole('figure', { name: 'I Kyrkslätts kommunhus' })
+        await expect(figure).toHaveCount(1)
+        await expect(figure.locator('.credit')).toHaveText('Foto: Juha Jantunen')
     }
 }
