@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-09-30'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka'
@@ -19,6 +19,7 @@ plated: true
 variant: 'split'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
 import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
@@ -35,6 +36,14 @@ import Prose from '../../../components/Prose.astro'
 <Plate ground="offWhite">
     <Prose>
         Jag tror att teknologin ska möjliggöra nya lösningar. Därför betonar jag hållbara innovationer och väcker diskussion om hur vi kan utnyttja de möjligheter som teknologin erbjuder. Mitt mål är att erbjuda tankeväckande, faktabaserat och lösningsorienterat innehåll.
+
+        <ImageWithCaption
+            alt="Lauri Lavanti i marinblå kavaj lutar sig mot ett högt bord, med broschyrhyllor och en trappa i bakgrunden."
+            caption="I Kyrkslätts kommunhus"
+            image="Lauri-Lavanti-kunnantalolla-poydan-aaressa-vaaka"
+            lang="sv"
+            photographer="Juha Jantunen"
+        />
     </Prose>
 </Plate>
 

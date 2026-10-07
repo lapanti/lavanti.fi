@@ -24,5 +24,10 @@ export class NewsletterPage extends AnyPage {
 
     async checkContent() {
         await expect(this.emailInput).toBeVisible()
+
+        // The aria golden matches partially, so the below-fold photo needs an explicit check.
+        const figure = this.page.getByRole('figure', { name: 'Kirkkonummen kunnantalolla' })
+        await expect(figure).toHaveCount(1)
+        await expect(figure.locator('.credit')).toHaveText('Kuva: Juha Jantunen')
     }
 }

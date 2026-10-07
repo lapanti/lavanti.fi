@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-09-22'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
@@ -19,6 +19,7 @@ plated: true
 variant: 'split'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
 import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
@@ -35,6 +36,14 @@ import Prose from '../../../components/Prose.astro'
 <Plate ground="offWhite">
     <Prose>
         Uskon, että teknologian tulee mahdollistaa uusia ratkaisuja. Siksi korostan kestäviä innovaatioita ja herätän keskustelua siitä, miten voimme hyödyntää teknologian tarjoamia mahdollisuuksia. Tavoitteenani on tarjota ajatuksia herättävää, faktoihin perustuvaa ja ratkaisulähtöistä sisältöä.
+
+        <ImageWithCaption
+            alt="Lauri Lavanti tummansinisessä pikkutakissa nojaa korkeaan pöytään, taustalla esitehyllyjä ja portaikko."
+            caption="Kirkkonummen kunnantalolla"
+            image="Lauri-Lavanti-kunnantalolla-poydan-aaressa-vaaka"
+            lang="fi"
+            photographer="Juha Jantunen"
+        />
     </Prose>
 </Plate>
 

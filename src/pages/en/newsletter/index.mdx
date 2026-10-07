@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/newsletter/'
     fi: '/fi/uutiskirje/'
     sv: '/sv/nyhetsbrev/'
-updatedDate: '2026-09-22'
+updatedDate: '2026-10-07'
 type: 'WebPage'
 heroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka'
@@ -19,6 +19,7 @@ plated: true
 variant: 'split'
 ---
 
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
 import Lede from '../../../components/Lede.astro'
 import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro'
 import NewsletterList from '../../../components/newsletter/NewsletterList.astro'
@@ -35,6 +36,14 @@ import Prose from '../../../components/Prose.astro'
 <Plate ground="offWhite">
     <Prose>
         I believe that technology should enable new solutions. That's why I emphasize sustainable innovations and spark conversation about how we can leverage the opportunities technology provides. My goal is to provide thought-provoking, fact-based, and solution-oriented content.
+
+        <ImageWithCaption
+            alt="Lauri Lavanti in a navy blazer leaning on a high table, brochure shelves and a staircase behind him."
+            caption="At Kirkkonummi town hall"
+            image="Lauri-Lavanti-kunnantalolla-poydan-aaressa-vaaka"
+            lang="en"
+            photographer="Juha Jantunen"
+        />
     </Prose>
 </Plate>
 
