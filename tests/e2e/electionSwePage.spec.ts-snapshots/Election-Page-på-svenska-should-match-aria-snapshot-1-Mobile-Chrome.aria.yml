@@ -31,6 +31,9 @@
       - link "rekommendationerna":
         - /url: /sv/rekommendationer/
       - text: .
+    - figure "Reklam för medborgarinitiativet Digital självständighet":
+      - img "Lauri Lavanti ler framför en reklamtavla vid gatan med logotypen för medborgarinitiativet Digital självständighet."
+      - text: "Reklam för medborgarinitiativet Digital självständighet Foto: Julia Kiljander"
     - text: Pelare ett
     - heading "Hur fungerar ekonomin i AI-tidsåldern?" [level=2]
     - paragraph: Ekonomin fungerar i AI-tidsåldern bara om Finland bygger upp sin egen kompetens i stället för att enbart köpa teknik utifrån. Jag kräver att offentliga AI- och digitaliseringsupphandlingar görs öppna och överförbara, så att leverantörsberoendet inte tär på skattemedel år efter år.
@@ -119,15 +122,34 @@
     - paragraph:
       - link "Se kampanjens finansiering":
         - /url: /sv/riksdagsvalet/valfinansiering/
+    - text: Bilder
+    - heading "Kampanjens vardag" [level=2]
+    - list:
+      - listitem:
+        - figure "Samtal vid De Grönas marknadstält":
+          - img "Lauri Lavanti i marinblå kavaj pratar med en besökare vid ett grönt marknadstält, med en kampanjflagga bakom sig."
+          - text: ""
+      - listitem:
+        - figure /Regnbågsflaggor vid Kyrkslätts kommunhus sommaren \d+/:
+          - img "Lauri Lavanti framför Kyrkslätts kommunhus, med regnbågsflaggor som vajar i flaggstängerna ovanför honom."
+          - text: ""
+      - listitem:
+        - 'figure /Kampanjteamets kick-off-träff i september \d+ Foto: Erkki Laine/':
+          - img "Medlemmar av kampanjteamet samtalar runt ett mötesbord med datorer och papper, Lauri Lavanti står i bakgrunden."
+          - text: ""
     - text: Evenemang
     - heading "Kampanjens evenemangskalender" [level=2]
     - list:
       - listitem:
+        - time: /måndag \d+ oktober \d+ kl\. \d+\.\d+–\d+\.\d+/
+        - heading "Panel om digitalt oberoende, Reset! Helsinki" [level=3]
+        - paragraph: Oranssi ry, Helsingfors
+        - paragraph: Lauri Lavanti deltar i panelen Towards greater digital independence in artistic production under evenemanget Reset! Helsinki – Reclaiming the Digital. Panelen modereras av Nitin Sawhney. Evenemanget är avgiftsfritt, men kräver förhandsanmälan.
+      - listitem:
         - time: /måndag \d+ november \d+/
-        - heading "Evenemang i bibliotekshuset Fyyri" [level=3]
+        - heading "Hur mår Kyrkslätt? Utvecklingen av Centralskogen" [level=3]
         - paragraph: Bibliotekshuset Fyyri, Mörnesalen, Kyrkslätt
-        - paragraph: Kampanjens evenemang i Mörnesalen i Kyrkslätts huvudbibliotek Fyyri. Tillställningen är öppen och avgiftsfri.
-        - text: Ämnet bekräftas senare.
+        - paragraph: Panelsamtalet ”Hur mår Kyrkslätt?” handlar om utvecklingen av Centralskogen. Lauri Lavanti modererar diskussionen, och panelisterna presenteras senare. Evenemanget ordnas i Mörnesalen i Bibliotekshuset Fyyri och är öppet för alla och avgiftsfritt.
     - text: Q & A
     - heading "Vanliga frågor om riksdagsvalet" [level=2]
     - heading /I vilken valkrets kandiderar Lauri Lavanti i riksdagsvalet \d+\?/ [level=3]

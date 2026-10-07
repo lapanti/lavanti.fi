@@ -31,6 +31,9 @@
       - link "suosituksista":
         - /url: /fi/suositukset/
       - text: .
+    - figure "Digitaalinen itsenäisyys -kansalaisaloitteen mainos":
+      - img "Lauri Lavanti hymyilee kadunvarren mainostaulun edessä, jossa on Digitaalinen itsenäisyys -kansalaisaloitteen logo."
+      - text: "Digitaalinen itsenäisyys -kansalaisaloitteen mainos Kuva: Julia Kiljander"
     - text: Pilari yksi
     - heading "Miten talous toimii tekoälyn aikakaudella?" [level=2]
     - paragraph: Talous toimii tekoälyn aikakaudella vain, jos Suomi rakentaa omaa osaamistaan eikä vain osta teknologiaa ulkopuolelta. Vaadin, että julkiset tekoäly- ja digihankinnat tehdään avoimina ja siirrettävinä, jotta toimittajariippuvuus ei kuluta verorahoja vuodesta toiseen.
@@ -119,15 +122,34 @@
     - paragraph:
       - link "Katso kampanjan rahoitus":
         - /url: /fi/eduskuntavaalit/vaalirahoitus/
+    - text: Kuvat
+    - heading "Kampanjan arkea" [level=2]
+    - list:
+      - listitem:
+        - figure "Keskusteluja Vihreiden markkinateltalla":
+          - img "Lauri Lavanti tummansinisessä pikkutakissa juttelee kävijän kanssa vihreän markkinateltan luona, taustalla kampanjalippu."
+          - text: ""
+      - listitem:
+        - figure /Sateenkaariliput Kirkkonummen kunnantalolla kesällä \d+/:
+          - img "Lauri Lavanti Kirkkonummen kunnantalon edessä, yläpuolella lipputangoissa liehuvia sateenkaarilippuja."
+          - text: ""
+      - listitem:
+        - 'figure /Kampanjatiimin kick-off-tapaaminen syyskuussa \d+ Kuva: Erkki Laine/':
+          - img "Kampanjatiimin jäseniä keskustelee kokouspöydän ääressä kannettavien ja papereiden keskellä, Lauri Lavanti seisoo taustalla."
+          - text: ""
     - text: Tapahtumat
     - heading "Kampanjan tapahtumakalenteri" [level=2]
     - list:
       - listitem:
+        - time: /maanantaina \d+\. lokakuuta \d+ klo \d+\.\d+–\d+\.\d+/
+        - heading "Paneeli digitaalisesta riippumattomuudesta, Reset! Helsinki" [level=3]
+        - paragraph: Oranssi ry, Helsinki
+        - paragraph: Lauri Lavanti on panelistina Reset! Helsinki – Reclaiming the Digital -tapahtuman paneelissa Towards greater digital independence in artistic production. Paneelia moderoi Nitin Sawhney. Tapahtuma on maksuton, mutta siihen pitää ilmoittautua etukäteen.
+      - listitem:
         - time: /maanantaina \d+\. marraskuuta \d+/
-        - heading "Tapahtuma kirjastotalo Fyyrissä" [level=3]
+        - heading "Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys" [level=3]
         - paragraph: Kirjastotalo Fyyri, Mörne-sali, Kirkkonummi
-        - paragraph: Kampanjan tilaisuus Kirkkonummen pääkirjaston Fyyrin Mörne-salissa. Tilaisuus on avoin ja maksuton.
-        - text: Aihe vahvistetaan myöhemmin.
+        - paragraph: Mitä kuuluu Kirkkonummi? -paneelikeskustelun aiheena on Keskusmetsän kehitys. Lauri Lavanti toimii keskustelun moderaattorina, ja panelistit julkistetaan myöhemmin. Tilaisuus pidetään kirjastotalo Fyyrin Mörne-salissa, ja se on avoin ja maksuton.
     - text: Q & A
     - heading "Usein kysyttyä eduskuntavaaleista" [level=2]
     - heading /Missä vaalipiirissä Lauri Lavanti on ehdolla eduskuntavaaleissa \d+\?/ [level=3]
