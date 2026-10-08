@@ -83,21 +83,21 @@ export const campaignEvents: CampaignEvent[] = [
         locales: {
             en: {
                 description:
-                    'The "How are you, Kirkkonummi?" panel covers the development of the central forest. Lauri Lavanti moderates; panellists announced later. At Fyyri library\'s Mörne hall, free and open to all.',
+                    'What should happen to Keskusmetsä (the central forest) in Kirkkonummi? The "How are you, Kirkkonummi?" discussion series from Kirkkonummen Vihreät continues with a panel discussion on the development of the central forest. The discussion will be moderated by Lauri Lavanti, chair of the Green group on Kirkkonummi municipal council and parliamentary candidate. The panellists will be announced later. Come to listen, to ask questions and to share your own views. The event is open to all and free of charge.',
                 locality: 'Kirkkonummi',
                 title: 'How are you, Kirkkonummi? The development of the central forest',
                 venue: 'Fyyri library, Mörne hall',
             },
             fi: {
                 description:
-                    'Mitä kuuluu Kirkkonummi? -paneelikeskustelun aiheena on Keskusmetsän kehitys. Lauri Lavanti toimii keskustelun moderaattorina, ja panelistit julkistetaan myöhemmin. Tilaisuus pidetään kirjastotalo Fyyrin Mörne-salissa, ja se on avoin ja maksuton.',
+                    'Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Keskustelijat julkaistaan myöhemmin. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.',
                 locality: 'Kirkkonummi',
                 title: 'Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys',
                 venue: 'Kirjastotalo Fyyri, Mörne-sali',
             },
             sv: {
                 description:
-                    'Panelsamtalet ”Hur mår Kyrkslätt?” handlar om utvecklingen av Centralskogen. Lauri Lavanti modererar diskussionen, och panelisterna presenteras senare. Evenemanget ordnas i Mörnesalen i Bibliotekshuset Fyyri och är öppet för alla och avgiftsfritt.',
+                    'Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Panelisterna presenteras senare. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.',
                 locality: 'Kyrkslätt',
                 title: 'Hur mår Kyrkslätt? Utvecklingen av Centralskogen',
                 venue: 'Bibliotekshuset Fyyri, Mörnesalen',
