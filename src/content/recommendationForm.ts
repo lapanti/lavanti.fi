@@ -30,7 +30,7 @@ export const recommendationFormContent = {
     photoNone: 'Ei kuvaa valittuna',
     privacyHref: '/fi/tietosuoja/',
     recommendation: 'Suositus',
-    recommendationHint: 'Miksi suosittelet Lauria? 20–800 merkkiä.',
+    recommendationHint: 'Muutama lause omin sanoin, 20–800 merkkiä.',
     /** Explains the asterisk; shown above the first field. */
     requiredNote: 'Tähdellä (*) merkityt kohdat ovat pakollisia. Muut voit jättää tyhjiksi.',
     submit: 'Lähetä suositus',
