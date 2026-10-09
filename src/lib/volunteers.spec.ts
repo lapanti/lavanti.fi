@@ -198,6 +198,23 @@ describe('handleDonate', () => {
         expect(calls[0].args).toEqual(['2026-10-02T12:00:00Z', 'bluesky', 'sote'])
     })
 
+    it.each([
+        ['a <link rel=prefetch>', { 'Sec-Fetch-Mode': 'no-cors', 'Sec-Purpose': 'prefetch' }],
+        ['a Safari fetch() prefetch', { 'Sec-Fetch-Mode': 'cors' }],
+    ])('redirects without counting %s', async (_, headers) => {
+        const { calls, db } = fakeDb()
+        const res = await handleDonate(new Request('https://lavanti.fi/lahjoita', { headers }), { DB: db }, NOW)
+        expect(res.status).toBe(302)
+        expect(calls).toHaveLength(0)
+    })
+
+    it('counts a followed link', async () => {
+        const { calls, db } = fakeDb()
+        const headers = { 'Sec-Fetch-Mode': 'navigate' }
+        await handleDonate(new Request('https://lavanti.fi/lahjoita', { headers }), { DB: db }, NOW)
+        expect(calls).toHaveLength(1)
+    })
+
     it('still redirects when the database fails or is missing', async () => {
         const { db } = fakeDb({}, true)
         expect((await handleDonate(new Request('https://lavanti.fi/lahjoita'), { DB: db }, NOW)).status).toBe(302)
