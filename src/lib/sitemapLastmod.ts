@@ -2,12 +2,12 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
 /* eslint-disable import-x/extensions -- imported by scripts/checks/publish-due.ts under node --experimental-strip-types, which needs the explicit extension */
+import { type Lang, LANGS } from '../content/nav.ts'
 import { newsletterPath } from './newsletterRoutes.ts'
 /* eslint-enable import-x/extensions */
 
 const UPDATED_DATE = /^updatedDate:\s*['"]?(\d{4}-\d{2}-\d{2})['"]?/m
 const SLUG = /^slug:\s*['"]?([^'"\n]+)['"]?/m
-const LANGS = ['fi', 'sv', 'en'] as const
 
 export const extractUpdatedDate = (mdxContent: string): string | undefined => UPDATED_DATE.exec(mdxContent)?.[1]
 
@@ -40,8 +40,6 @@ interface TagWithDate {
     slugs: { en: string; fi: string; sv: string }
     updatedDate: string
 }
-
-type Lang = (typeof LANGS)[number]
 
 interface BuildPageDateMapInput {
     /** src/content/newsletters — same {id}/meta.json layout as posts. */

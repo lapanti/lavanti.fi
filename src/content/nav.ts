@@ -1,5 +1,8 @@
 export type Lang = 'en' | 'fi' | 'sv'
 
+/** Every site language, Finnish first: the order of route params, hreflang lists and sitemaps. */
+export const LANGS = ['fi', 'sv', 'en'] as const satisfies readonly Lang[]
+
 export const skipLinks: Record<Lang, { main: string; footer: string }> = {
     en: { footer: 'Skip to footer &#x27A1;', main: 'Skip to main content &#x27A1;' },
     fi: { footer: 'Siirry alatunnisteeseen &#x27A1;', main: 'Siirry pääsisältöön &#x27A1;' },

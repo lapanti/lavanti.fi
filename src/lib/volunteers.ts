@@ -11,6 +11,7 @@
  * - Stats return counts, never rows; any cell below MIN_CELL is merged into "muu".
  */
 
+import { type Lang, LANGS } from '../content/nav'
 import {
     backToForm,
     type D1Like,
@@ -37,7 +38,6 @@ export const DONATE_URL =
 
 export const MUNICIPALITIES = ['kirkkonummi', 'espoo', 'vantaa', 'muu-uusimaa', 'muu'] as const
 export const HELP_OPTIONS = ['jakaminen', 'tapahtumat', 'some', 'muu'] as const
-const LANGS = ['fi', 'sv', 'en'] as const
 
 /** Bump when the consent wording on the form or in the privacy notice changes. */
 const CONSENT_VERSION = '2026-10'
@@ -48,8 +48,6 @@ const MIN_CELL = 3
 const UTM_SLUG = /^[a-z0-9._-]{1,64}$/
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/
 const PHONE = /^\+?[0-9 ()-]{5,20}$/
-
-type Lang = (typeof LANGS)[number]
 
 const FORM_PATH: Record<Lang, string> = { en: '/en/join/', fi: '/fi/liity/', sv: '/sv/bli-med/' }
 const THANKS_PATH: Record<Lang, string> = {

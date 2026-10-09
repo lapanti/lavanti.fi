@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content'
 
 import { localizedCollectionLoader } from './content/lib/postsLoader'
+import { LANGS } from './content/nav'
 import { embargoLiftDate } from './lib/publishing'
 
 const authorEntry = z.union([
@@ -17,7 +18,7 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be an ISO date (YY
 
 const externalPublication = z.object({
     date: z.string(),
-    lang: z.enum(['fi', 'sv', 'en']).default('fi'),
+    lang: z.enum(LANGS).default('fi'),
     name: z.string(),
     url: z.string().optional(),
 })
@@ -32,7 +33,7 @@ const posts = defineCollection({
         faq: z.array(z.object({ a: z.string(), q: z.string() })).optional(),
         heroImage: z.string(),
         id: z.number().int().positive(),
-        lang: z.enum(['fi', 'sv', 'en']),
+        lang: z.enum(LANGS),
         ogEmphasis: z.string().optional(),
         ogTitle: z.string().optional(),
         pageTitle: z.string(),
@@ -58,7 +59,7 @@ const newsletters = defineCollection({
             description: z.string(),
             faq: z.array(z.object({ a: z.string(), q: z.string() })).optional(),
             id: z.number().int().positive(),
-            lang: z.enum(['fi', 'sv', 'en']),
+            lang: z.enum(LANGS),
             ogEmphasis: z.string().optional(),
             ogTitle: z.string().optional(),
             pageTitle: z.string(),

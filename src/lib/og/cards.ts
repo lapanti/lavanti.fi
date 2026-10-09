@@ -1,5 +1,6 @@
 import type { Lang } from '../../content/nav'
 
+import { LANGS } from '../../content/nav'
 import { sloganContent } from '../../content/slogan'
 import { getCategoryPath, tags } from '../../content/tags'
 import { newsletterSlug } from '../newsletterRoutes'
@@ -36,8 +37,6 @@ export const HERO_PORTRAITS: Record<string, string> = {
     'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2': 'portrait-kerrostalopiha-lahikuva.jpg',
     'Lauri-Lavanti-tyoskentelee-portailla-hero-pysty-v2': 'portrait-portailla.jpg',
 }
-
-const LANGS: Lang[] = ['fi', 'sv', 'en']
 
 /**
  * Strip soft hyphens (U+00AD — authored into titles for on-page hyphenation, e.g.
