@@ -23,6 +23,7 @@ import {
     text,
     verifyTurnstile,
 } from './formHandling'
+import { helsinkiDayStartUtc } from './publishing'
 
 export type { FetchLike } from './formHandling'
 
@@ -245,14 +246,16 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
 
     const since = new URL(request.url).searchParams.get('since')
     const sinceDate = since && /^\d{4}-\d{2}-\d{2}$/.test(since) ? since : null
+    // `since` is a Helsinki calendar day; rows store UTC instants, so compare from its local midnight.
+    const sinceStart = sinceDate ? helsinkiDayStartUtc(sinceDate) : null
     const db = env.DB
 
     const total = (await db.prepare('SELECT COUNT(*) AS n FROM volunteers').first<{ n: number }>())?.n ?? 0
-    const sinceCount = sinceDate
+    const sinceCount = sinceStart
         ? ((
               await db
                   .prepare('SELECT COUNT(*) AS n FROM volunteers WHERE created_at >= ?')
-                  .bind(sinceDate)
+                  .bind(sinceStart)
                   .first<{ n: number }>()
           )?.n ?? 0)
         : null
@@ -272,19 +275,19 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
      */
     const linkKey = "COALESCE(utm_campaign, '-') || ' / ' || COALESCE(utm_source, '-') AS key, COUNT(*) AS n"
     const byLink = (table: 'donate_clicks' | 'volunteers', column: 'created_at' | 'ts') => {
-        const where = sinceDate ? ` WHERE ${column} >= ?` : ''
+        const where = sinceStart ? ` WHERE ${column} >= ?` : ''
         const stmt = db.prepare(`SELECT ${linkKey} FROM ${table}${where} GROUP BY key`)
 
-        return (sinceDate ? stmt.bind(sinceDate) : stmt).all<{ key: string; n: number }>()
+        return (sinceStart ? stmt.bind(sinceStart) : stmt).all<{ key: string; n: number }>()
     }
     const volunteerLinks = await byLink('volunteers', 'created_at')
     const clickLinks = await byLink('donate_clicks', 'ts')
     const clickTotal = (await db.prepare('SELECT COUNT(*) AS n FROM donate_clicks').first<{ n: number }>())?.n ?? 0
-    const clickSince = sinceDate
+    const clickSince = sinceStart
         ? ((
               await db
                   .prepare('SELECT COUNT(*) AS n FROM donate_clicks WHERE ts >= ?')
-                  .bind(sinceDate)
+                  .bind(sinceStart)
                   .first<{ n: number }>()
           )?.n ?? 0)
         : null

@@ -212,6 +212,27 @@ describe('handleStats', () => {
                 { key: 'espoo', n: 1 },
             ],
         })
+        // fakeDb records run() calls only; the stats queries use first()/all(), so wrap bind.
+        const binds: unknown[][] = []
+        const { db: base } = fakeDb()
+        const probe: D1Like = {
+            prepare(sql) {
+                const stmt = base.prepare(sql)
+                const bind = stmt.bind.bind(stmt)
+                stmt.bind = (...values: unknown[]) => {
+                    binds.push(values)
+
+                    return bind(...values)
+                }
+
+                return stmt
+            },
+        }
+        await handleStats(req('Bearer t', '?since=2026-10-01'), { DB: probe, LIITY_STATS_TOKEN: 't' })
+        // Helsinki midnight on 1 October (+03:00), not UTC midnight; every windowed query uses it.
+        expect(binds).toHaveLength(4)
+        expect(new Set(binds.flat())).toEqual(new Set(['2026-09-30T21:00:00.000Z']))
+
         const res = await handleStats(req('Bearer t', '?since=2026-10-01'), { DB: db, LIITY_STATS_TOKEN: 't' })
         expect(res.status).toBe(200)
         expect(res.headers.get('Cache-Control')).toBe('no-store')

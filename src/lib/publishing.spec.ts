@@ -1,6 +1,19 @@
 import { describe, expect, it } from 'vitest'
 
-import { EMBARGO_DAYS, embargoLiftDate, helsinkiDateOf, isPublishedBy } from './publishing'
+import { EMBARGO_DAYS, embargoLiftDate, helsinkiDateOf, helsinkiDayStartUtc, isPublishedBy } from './publishing'
+
+describe('helsinkiDayStartUtc', () => {
+    it.each([
+        ['winter (+02:00)', '2026-01-15', '2026-01-14T22:00:00.000Z'],
+        ['summer (+03:00)', '2026-07-01', '2026-06-30T21:00:00.000Z'],
+        // Clocks go forward at 01:00 UTC; local midnight is still on +02:00.
+        ['spring-forward day', '2026-03-29', '2026-03-28T22:00:00.000Z'],
+        // Clocks go back at 01:00 UTC; local midnight is still on +03:00.
+        ['fall-back day', '2026-10-25', '2026-10-24T21:00:00.000Z'],
+    ])('%s', (_, day, expected) => {
+        expect(helsinkiDayStartUtc(day)).toBe(expected)
+    })
+})
 
 describe('helsinkiDateOf', () => {
     it('formats as YYYY-MM-DD', () => {
