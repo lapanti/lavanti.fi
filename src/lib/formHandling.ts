@@ -20,11 +20,15 @@ export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>
 /** Hostnames the Turnstile widget is registered for; siteverify must report one of them. */
 const TURNSTILE_HOSTNAMES = new Set(['lavanti.fi', 'www.lavanti.fi'])
 
-/** A trimmed string field, or '' when it is missing or a file. */
+/**
+ * A trimmed string field, or '' when it is missing or a file. Browsers submit textarea line breaks
+ * as CRLF but count them as one character against `maxlength`; normalising to LF keeps server-side
+ * length checks in agreement with what the visitor saw.
+ */
 export const text = (form: FormData, name: string): string => {
     const v = form.get(name)
 
-    return typeof v === 'string' ? v.trim() : ''
+    return typeof v === 'string' ? v.replace(/\r\n?/g, '\n').trim() : ''
 }
 
 export const redirect = (location: string, status: 302 | 303): Response =>
