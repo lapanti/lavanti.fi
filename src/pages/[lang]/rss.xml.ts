@@ -3,6 +3,7 @@ import type { Lang } from '../../content/nav'
 
 import rss from '@astrojs/rss'
 
+import { LANGS } from '../../content/nav'
 import { rssTitles } from '../../content/rss'
 import { getImage } from '../../lib/images'
 import { getAllPosts, getPostHtml } from '../../lib/posts'
@@ -24,9 +25,7 @@ const i18n: Record<Lang, { description: string; permalinkLabel: string }> = {
 }
 
 export function getStaticPaths() {
-    const langs: Lang[] = ['fi', 'sv', 'en']
-
-    return langs.map((lang) => ({ params: { lang } }))
+    return LANGS.map((lang) => ({ params: { lang } }))
 }
 
 export async function GET(context: APIContext) {

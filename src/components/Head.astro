@@ -3,6 +3,7 @@ import type { CampaignEvent } from '../content/events'
 import type { Lang } from '../content/nav'
 import type { AuthorEntry } from '../content/person'
 
+import { LANGS } from '../content/nav'
 import {
     getPersonImageUrl,
     PERSON_ID,
@@ -127,7 +128,7 @@ const siteUrl = Astro.site?.toString()
 
 const hreflangLinks =
     !noindex && siteUrl
-        ? (['fi', 'sv', 'en'] as Lang[]).map((l) => ({
+        ? LANGS.map((l) => ({
               href: langAlternates?.[l]
                   ? new URL(langAlternates[l], siteUrl).toString()
                   : new URL(slug ? slug.replace(/^(fi|sv|en)/, l) + '/' : `${l}/`, siteUrl).toString(),
@@ -137,9 +138,7 @@ const hreflangLinks =
 
 const xDefaultHref = hreflangLinks.find((l) => l.hreflang === 'fi')?.href ?? null
 
-const ogLocaleAlternates = !noindex
-    ? (['fi', 'sv', 'en'] as Lang[]).filter((l) => l !== lang).map((l) => ogLocale[l])
-    : []
+const ogLocaleAlternates = !noindex ? LANGS.filter((l) => l !== lang).map((l) => ogLocale[l]) : []
 
 const canonical = !noindex && (slug === 'index' ? Astro.site : slug ? new URL(`${slug}/`, siteUrl) : null)
 
