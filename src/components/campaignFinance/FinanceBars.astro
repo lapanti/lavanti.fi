@@ -104,6 +104,7 @@ const isLong = (row: BarRow): boolean => (row.pending ?? 0) > 0 || row.target !=
         white-space: normal;
     }
 
+    /* Rounded bar ends are an allowed exception to the square system (design-system spec). */
     .track {
         background: var(--colorsForestGreen10);
         border-radius: 2px;
