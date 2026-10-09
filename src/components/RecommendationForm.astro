@@ -1,0 +1,380 @@
+---
+import { recommendationFormContent as t } from '../content/recommendationForm'
+import { TURNSTILE_SITE_KEY } from '../content/volunteer'
+import { MAX_PHOTO_BYTES } from '../lib/recommendationSubmissions'
+import { colors } from '../lib/styles'
+import Link from './Link.astro'
+
+/*
+ * Same error and ready-state behaviour as VolunteerForm.astro:
+ * - Ready state: until the required fields and consent are filled the button looks inactive
+ *   (aria-disabled, not disabled, so a click still runs the browser's own prompts).
+ * - Submit: keeps the typed text in sessionStorage. Consent and the photo are never kept;
+ *   a browser cannot refill a file input, so the photo error message asks for it again.
+ * - Load with ?virhe=<code>: restores the text, shows the message from the fixed list in the
+ *   content file (nothing from the URL is written into the page) and focuses the field.
+ * - Photo: previewed from an object URL (CSP img-src blob:); a file over the size limit is
+ *   cleared at once instead of failing after the upload.
+ * Storage may throw (private mode, blocked site data); the form then works without restore.
+ */
+const errorScript = `(function () {
+    var KEY = 'recommendation-form'
+    var FIELDS = ['name', 'title_fi', 'title_sv', 'title_en', 'recommendation']
+    var MAX = ${MAX_PHOTO_BYTES}
+    var messages = ${JSON.stringify(t.errors)}
+    var form = document.getElementById('lomake')
+    var box = document.getElementById('recommendation-error')
+    var photo = form.elements.namedItem('photo')
+    var preview = document.getElementById('recommendation-preview')
+    var details = form.querySelector('details')
+    var store = function (fn) { try { return fn(window.sessionStorage) } catch (e) { return null } }
+    var target = function (code) {
+        if (code === 'consent') return form.querySelector('input[name="consent"]')
+        return code === 'photo' || FIELDS.indexOf(code) >= 0 ? form.elements.namedItem(code) : null
+    }
+    var show = function (code) {
+        box.textContent = messages[code]
+        box.hidden = false
+        var field = target(code)
+        if (field) {
+            if (code === 'title_sv' || code === 'title_en') details.open = true
+            field.setAttribute('aria-invalid', 'true')
+            field.setAttribute('aria-describedby', 'recommendation-error')
+        }
+        box.scrollIntoView({ block: 'center' })
+        ;(field || box).focus({ preventScroll: true })
+    }
+    var showAfterLoad = function (code) {
+        var run = function () { window.requestAnimationFrame(function () { show(code) }) }
+        if (document.readyState === 'complete') run()
+        else window.addEventListener('load', run)
+    }
+
+    var button = form.querySelector('button[type="submit"]')
+    var hint = document.getElementById('recommendation-submit-hint')
+    var updateReady = function () {
+        var value = function (n) { return form.elements.namedItem(n).value.trim() }
+        var ready = value('name').length >= 2 && value('title_fi').length >= 2 &&
+            value('recommendation').length >= 20 && photo.files.length === 1 &&
+            form.querySelector('input[name="consent"]').checked
+        button.setAttribute('aria-disabled', ready ? 'false' : 'true')
+        hint.hidden = ready
+    }
+    form.addEventListener('input', updateReady)
+
+    var objectUrl = null
+    photo.addEventListener('change', function () {
+        if (objectUrl) URL.revokeObjectURL(objectUrl)
+        objectUrl = null
+        preview.hidden = true
+        var file = photo.files[0]
+        if (file && file.size > MAX) {
+            photo.value = ''
+            show('photo')
+        } else if (file) {
+            objectUrl = URL.createObjectURL(file)
+            preview.src = objectUrl
+            preview.hidden = false
+        }
+    })
+
+    form.addEventListener('change', function (event) {
+        var name = event.target.name
+        form.querySelectorAll('[aria-invalid="true"]').forEach(function (el) {
+            if (el.name === name) el.removeAttribute('aria-invalid')
+        })
+        updateReady()
+    })
+
+    form.addEventListener('submit', function () {
+        var data = {}
+        FIELDS.forEach(function (f) { data[f] = form.elements.namedItem(f).value })
+        store(function (s) { s.setItem(KEY, JSON.stringify(data)) })
+    })
+
+    var code = new URLSearchParams(window.location.search).get('virhe')
+    var saved = store(function (s) { var v = s.getItem(KEY); s.removeItem(KEY); return v })
+    updateReady()
+    window.addEventListener('pageshow', updateReady)
+    if (!code || !Object.prototype.hasOwnProperty.call(messages, code)) return
+    if (saved) {
+        try {
+            var data = JSON.parse(saved)
+            FIELDS.forEach(function (f) { if (typeof data[f] === 'string') form.elements.namedItem(f).value = data[f] })
+            if (data.title_sv || data.title_en) details.open = true
+        } catch (e) {}
+    }
+    updateReady()
+    showAfterLoad(code)
+})()`
+---
+
+<style
+    define:vars={{
+        errorColor: colors.darkGreen,
+        inkColor: colors.forestGreen,
+        mutedColor: colors.forestGreen70,
+        tintColor: colors.forestGreen10,
+    }}
+>
+    /* Mirrors .volunteer-form in VolunteerForm.astro; keep the two in step. */
+    .recommendation-form {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+        max-width: 36rem;
+        scroll-margin-top: 6.5rem;
+    }
+
+    .recommendation-form label,
+    .recommendation-form summary {
+        color: var(--inkColor);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    .recommendation-form summary {
+        cursor: pointer;
+        display: list-item;
+    }
+
+    .recommendation-form details > div {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .recommendation-form input[type='text'],
+    .recommendation-form textarea {
+        background-color: white;
+        border: 1px solid var(--inkColor);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        color: var(--inkColor);
+        font: inherit;
+        min-height: 3rem;
+        padding: 0.6rem 0.75rem;
+        width: 100%;
+    }
+
+    .recommendation-form textarea {
+        min-height: 9rem;
+        resize: vertical;
+    }
+
+    .recommendation-form input[type='file'] {
+        color: var(--inkColor);
+        font: inherit;
+        max-width: 100%;
+    }
+
+    .recommendation-form input:focus-visible,
+    .recommendation-form textarea:focus-visible,
+    .recommendation-form summary:focus-visible,
+    .recommendation-form button:focus-visible {
+        outline: 3px solid var(--inkColor);
+        outline-offset: 2px;
+    }
+
+    .recommendation-form .field-hint {
+        color: var(--inkColor);
+        font-size: 0.9375rem;
+        margin: 0 0 0.4rem;
+    }
+
+    .recommendation-form .preview {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: block;
+        margin-top: 0.75rem;
+        object-fit: cover;
+        width: 7rem;
+    }
+
+    .recommendation-form .preview[hidden] {
+        display: none;
+    }
+
+    .recommendation-form .choice {
+        align-items: flex-start;
+        cursor: pointer;
+        display: flex;
+        font-weight: 400;
+        gap: 0.75rem;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0.4rem 0;
+    }
+
+    .recommendation-form .choice input {
+        accent-color: var(--inkColor);
+        flex-shrink: 0;
+        height: 1.375rem;
+        margin: 0.05rem 0 0;
+        width: 1.375rem;
+    }
+
+    .recommendation-form .consent {
+        background: var(--tintColor);
+        border-radius: 0.25rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .recommendation-form .honeypot {
+        left: -10000px;
+        position: absolute;
+    }
+
+    .recommendation-form button {
+        background: var(--inkColor);
+        border: 0;
+        border-radius: 0.25rem;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .recommendation-form button:global([aria-disabled='true']) {
+        background: var(--mutedColor);
+        cursor: not-allowed;
+    }
+
+    .recommendation-form .submit-row {
+        display: grid;
+        gap: 0.5rem;
+        justify-items: start;
+    }
+
+    .recommendation-form .submit-hint,
+    .recommendation-form .required-note {
+        color: var(--inkColor);
+        font-size: 0.9375rem;
+        margin: 0;
+    }
+
+    .recommendation-form .req {
+        color: var(--errorColor);
+        font-weight: 700;
+    }
+
+    .recommendation-form :global([aria-invalid='true']) {
+        box-shadow: 0 0 0 2px var(--errorColor);
+    }
+
+    #recommendation-error {
+        background: var(--tintColor);
+        border-left: 4px solid var(--errorColor);
+        color: var(--inkColor);
+        font-weight: 600;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        scroll-margin-top: 6.5rem;
+    }
+
+    #recommendation-error:focus {
+        outline: none;
+    }
+</style>
+
+<form action="/api/suosittele" class="recommendation-form" enctype="multipart/form-data" id="lomake" method="post">
+    <p hidden id="recommendation-error" role="alert" tabindex="-1"></p>
+
+    <p class="required-note">{t.requiredNote}</p>
+
+    <div>
+        <label for="recommendation-name">{t.name}<span aria-hidden="true" class="req"> *</span></label>
+        <input
+            autocomplete="name"
+            id="recommendation-name"
+            maxlength="100"
+            minlength="2"
+            name="name"
+            required
+            type="text"
+        />
+    </div>
+
+    <div>
+        <label for="recommendation-title-fi">{t.titleFi}<span aria-hidden="true" class="req"> *</span></label>
+        <p class="field-hint" id="recommendation-title-fi-hint">{t.titleFiHint}</p>
+        <input
+            aria-describedby="recommendation-title-fi-hint"
+            autocomplete="organization-title"
+            id="recommendation-title-fi"
+            maxlength="100"
+            minlength="2"
+            name="title_fi"
+            required
+            type="text"
+        />
+    </div>
+
+    <details>
+        <summary>{t.translations}</summary>
+        <div>
+            <div>
+                <label for="recommendation-title-sv">{t.titleSv}</label>
+                <input id="recommendation-title-sv" lang="sv" maxlength="100" name="title_sv" type="text" />
+            </div>
+            <div>
+                <label for="recommendation-title-en">{t.titleEn}</label>
+                <input id="recommendation-title-en" lang="en" maxlength="100" name="title_en" type="text" />
+            </div>
+        </div>
+    </details>
+
+    <div>
+        <label for="recommendation-text">{t.recommendation}<span aria-hidden="true" class="req"> *</span></label>
+        <p class="field-hint" id="recommendation-text-hint">{t.recommendationHint}</p>
+        <textarea
+            aria-describedby="recommendation-text-hint"
+            id="recommendation-text"
+            maxlength="800"
+            minlength="20"
+            name="recommendation"
+            required
+            rows="6"></textarea>
+    </div>
+
+    <div>
+        <label for="recommendation-photo">{t.photo}<span aria-hidden="true" class="req"> *</span></label>
+        <p class="field-hint" id="recommendation-photo-hint">{t.photoHint}</p>
+        <input
+            accept="image/jpeg,image/png,image/webp"
+            aria-describedby="recommendation-photo-hint"
+            id="recommendation-photo"
+            name="photo"
+            required
+            type="file"
+        />
+        <img alt="" class="preview" hidden id="recommendation-preview" />
+    </div>
+
+    <div aria-hidden="true" class="honeypot">
+        <label for="recommendation-website">Website</label>
+        <input autocomplete="off" id="recommendation-website" name="website" tabindex="-1" type="text" />
+    </div>
+
+    <label class="choice consent">
+        <input name="consent" required type="checkbox" value="yes" />
+        <span>
+            {t.consent.before}
+            <Link href={t.privacyHref}>{t.consent.linkText}</Link>
+            {t.consent.after}
+            <span aria-hidden="true" class="req"> *</span>
+        </span>
+    </label>
+
+    <div class="cf-turnstile" data-language="fi" data-sitekey={TURNSTILE_SITE_KEY}></div>
+
+    <div class="submit-row">
+        <button aria-describedby="recommendation-submit-hint" type="submit">{t.submit}</button>
+        <p aria-live="polite" class="submit-hint" id="recommendation-submit-hint">{t.submitHint}</p>
+    </div>
+</form>
+
+<script async defer is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+<script is:inline set:html={errorScript} />
