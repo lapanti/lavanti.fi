@@ -49,7 +49,7 @@ export const sniffPhotoType = (bytes: Uint8Array): null | PhotoType => {
     return null
 }
 
-export interface SubmissionRow {
+interface SubmissionRow {
     consent_at: string
     consent_version: string
     created_at: string
