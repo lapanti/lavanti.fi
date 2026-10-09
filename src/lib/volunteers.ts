@@ -239,13 +239,24 @@ const tally = (rows: { key: null | string; n: number }[]): Record<string, number
     return out
 }
 
+/**
+ * A real YYYY-MM-DD day: 2026-13-01 fails to parse and Date rolls 2026-02-30 over to March,
+ * so the day must survive a round trip unchanged.
+ */
+const isCalendarDay = (value: string): boolean => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
+    const time = Date.parse(`${value}T00:00:00Z`)
+
+    return !Number.isNaN(time) && new Date(time).toISOString().slice(0, 10) === value
+}
+
 /** GET /api/liity/stats — aggregate counts for the analytics fetch and the morning brief. */
 export const handleStats = async (request: Request, env: VolunteerEnv): Promise<Response> => {
     if (!hasBearer(request, env.LIITY_STATS_TOKEN)) return json({ error: 'unauthorized' }, 401)
     if (!env.DB) return json({ error: 'unavailable' }, 503)
 
     const since = new URL(request.url).searchParams.get('since')
-    const sinceDate = since && /^\d{4}-\d{2}-\d{2}$/.test(since) ? since : null
+    const sinceDate = since && isCalendarDay(since) ? since : null
     // `since` is a Helsinki calendar day; rows store UTC instants, so compare from its local midnight.
     const sinceStart = sinceDate ? helsinkiDayStartUtc(sinceDate) : null
     const db = env.DB

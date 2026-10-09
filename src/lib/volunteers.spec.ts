@@ -268,4 +268,12 @@ describe('handleStats', () => {
         expect(body.volunteers.by_campaign_source).toEqual({ 'sote / linkedin': 5 })
         expect(body.donate_clicks).toMatchObject({ by_campaign_source: { 'sote / linkedin': 4 }, since_count: null })
     })
+
+    it.each(['2026-13-01', '2026-02-30', 'eilen'])('ignores ?since=%s, which is no calendar day', async (since) => {
+        const { db } = fakeDb()
+        const res = await handleStats(req('Bearer t', `?since=${since}`), { DB: db, LIITY_STATS_TOKEN: 't' })
+        expect(res.status).toBe(200)
+        const body = (await res.json()) as { donate_clicks: Record<string, unknown> }
+        expect(body.donate_clicks).toMatchObject({ since: null, since_count: null })
+    })
 })
