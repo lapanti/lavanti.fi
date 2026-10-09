@@ -10,7 +10,17 @@
  * - The stats endpoint returns the pending count only.
  */
 
-import { type D1Like, type FetchLike, hasBearer, json, redirect, text, verifyTurnstile } from './formHandling'
+import {
+    backToForm,
+    type D1Like,
+    errorMessage,
+    type FetchLike,
+    hasBearer,
+    json,
+    redirect,
+    text,
+    verifyTurnstile,
+} from './formHandling'
 
 /** Minimal R2 surface used here, so no Workers type package is needed. */
 export interface R2Like {
@@ -122,7 +132,7 @@ export const handleSubmit = async (
     newId: () => string = () => crypto.randomUUID()
 ): Promise<Response> => {
     const origin = new URL(request.url).origin
-    const back = (code: string) => redirect(`${origin}${FORM_PATH}?virhe=${code}#lomake`, 303)
+    const back = backToForm(origin, FORM_PATH)
     let form: FormData
     try {
         form = await request.formData()
@@ -152,7 +162,7 @@ export const handleSubmit = async (
     try {
         await photos.put(photoKey(id), parsed.photo, { httpMetadata: { contentType: r.photo_type } })
     } catch (err) {
-        console.error(`suosittele: photo upload failed: ${err instanceof Error ? err.message : String(err)}`)
+        console.error(`suosittele: photo upload failed: ${errorMessage(err)}`)
         return back('palvelu')
     }
     try {
@@ -175,7 +185,7 @@ export const handleSubmit = async (
             )
             .run()
     } catch (err) {
-        console.error(`suosittele: insert failed: ${err instanceof Error ? err.message : String(err)}`)
+        console.error(`suosittele: insert failed: ${errorMessage(err)}`)
         // An orphaned photo would outlive its row until the R2 lifecycle rule; remove it now.
         await photos.delete(photoKey(id)).catch(() => undefined)
         return back('palvelu')

@@ -34,6 +34,15 @@ export const text = (form: FormData, name: string): string => {
 export const redirect = (location: string, status: 302 | 303): Response =>
     new Response(null, { headers: { 'Cache-Control': 'no-store', Location: location }, status })
 
+/** 303 back to the form at `path`, with the error code the page's script turns into a message. */
+export const backToForm =
+    (origin: string, path: string) =>
+    (code: string): Response =>
+        redirect(`${origin}${path}?virhe=${code}#lomake`, 303)
+
+/** The message of a thrown value, for log lines that must not include form data. */
+export const errorMessage = (err: unknown): string => (err instanceof Error ? err.message : String(err))
+
 export const json = (body: unknown, status = 200): Response =>
     new Response(JSON.stringify(body), {
         headers: { 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' },
