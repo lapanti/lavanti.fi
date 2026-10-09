@@ -427,6 +427,31 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         background: var(--colorsDarkGreen);
         color: var(--colorsOffWhite);
     }
+    /* solid — a filled submit, as on the newsletter form: forest at rest, dark green on hover */
+    .btn--solid {
+        background: var(--colorsDeepForest);
+        border-color: var(--colorsDeepForest);
+        color: var(--colorsOat);
+        cursor: pointer;
+    }
+    .btn--solid:hover {
+        background: var(--colorsDarkGreen);
+        border-color: var(--colorsDarkGreen);
+        color: var(--colorsOat);
+    }
+    /* aria-disabled, not disabled: the button stays clickable so the browser can prompt for
+       missing fields, but it looks inactive and neither inverts nor presses. */
+    .btn--solid[aria-disabled='true'],
+    .btn--solid[aria-disabled='true']:hover {
+        background: var(--colorsForestGreen70);
+        border-color: transparent;
+        /* white keeps 5:1 on the muted fill; oat would drop to 3.4:1 */
+        color: var(--colorsWhite);
+        cursor: not-allowed;
+    }
+    .btn[aria-disabled='true']:active {
+        transform: none;
+    }
     @media (max-width: 768px) {
         .btn {
             font-size: 1.125rem;
@@ -613,22 +638,6 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
     .site-form .honeypot {
         left: -10000px;
         position: absolute;
-    }
-    .site-form button {
-        background: var(--colorsForestGreen);
-        border: 0;
-        border-radius: 0.25rem;
-        color: white;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 600;
-        padding: 0.75rem 1.5rem;
-    }
-    /* Required fields still missing: the button looks inactive but stays clickable, so a
-       click runs the browser's own prompt on the first missing field. Set at runtime. */
-    .site-form button[aria-disabled='true'] {
-        background: var(--colorsForestGreen70);
-        cursor: not-allowed;
     }
     .site-form .submit-row {
         display: grid;
