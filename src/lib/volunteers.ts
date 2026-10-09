@@ -181,11 +181,23 @@ export const handleSignup = async (
     return redirect(`${origin}${THANKS_PATH[lang]}`, 303)
 }
 
+/**
+ * Whether a request is a speculative fetch rather than a visit. Astro's hover prefetch hits
+ * /lahjoita through `<link rel="prefetch">` (`Sec-Purpose: prefetch`, mode `no-cors`) or, in
+ * Safari, `fetch()` (mode `cors`); a followed link is always mode `navigate`. Browsers that send
+ * no fetch metadata are counted.
+ */
+const isPrefetch = (request: Request): boolean => {
+    const mode = request.headers.get('Sec-Fetch-Mode')
+
+    return /prefetch/i.test(request.headers.get('Sec-Purpose') ?? '') || (mode !== null && mode !== 'navigate')
+}
+
 /** GET /lahjoita — count the click (hour + campaign link only), then 302 to the party form. */
 export const handleDonate = async (request: Request, env: VolunteerEnv, now = new Date()): Promise<Response> => {
     const url = new URL(request.url)
     const hour = `${now.toISOString().slice(0, 13)}:00:00Z`
-    if (env.DB) {
+    if (env.DB && !isPrefetch(request)) {
         try {
             await env.DB.prepare('INSERT INTO donate_clicks (ts, utm_source, utm_campaign) VALUES (?, ?, ?)')
                 .bind(hour, utmSlug(url.searchParams.get('utm_source')), utmSlug(url.searchParams.get('utm_campaign')))
