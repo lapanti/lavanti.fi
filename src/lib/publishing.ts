@@ -13,6 +13,20 @@ export const helsinkiDateOf = (date: Date): string =>
     // en-CA formats as YYYY-MM-DD, matching the publishDate schema.
     new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Helsinki' }).format(date)
 
+/**
+ * The UTC instant at which a Helsinki calendar day (YYYY-MM-DD) begins, as an ISO string —
+ * comparable with stored `toISOString()` timestamps. The offset is read at 00:00 UTC on that
+ * date: Helsinki changes offset at 01:00 UTC, so that is the offset in force at local midnight.
+ */
+export const helsinkiDayStartUtc = (day: string): string => {
+    const offset = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Helsinki', timeZoneName: 'longOffset' })
+        .formatToParts(new Date(`${day}T00:00:00Z`))
+        .find((part) => part.type === 'timeZoneName')
+        ?.value.replace('GMT', '')
+
+    return new Date(`${day}T00:00:00${offset || 'Z'}`).toISOString()
+}
+
 // Plain string comparison is correct: publishDate is regex-enforced YYYY-MM-DD.
 export const isPublishedBy = (publishDate: string, today: string): boolean => publishDate <= today
 
