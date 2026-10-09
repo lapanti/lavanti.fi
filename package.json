@@ -94,7 +94,7 @@
     "lint-staged": "17.6.0",
     "prettier": "3.9.9",
     "prettier-plugin-astro": "0.14.1",
-    "satori": "0.44.3",
+    "satori": "0.47.1",
     "sharp": "0.35.5",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.1",
