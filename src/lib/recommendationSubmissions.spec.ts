@@ -1,7 +1,6 @@
-import type { D1Like, D1Statement } from './formHandling'
-
 import { describe, expect, it, vi } from 'vitest'
 
+import { fakeDb, turnstile } from '../../tests/formFakes'
 import {
     handleDelete,
     handlePending,
@@ -13,38 +12,6 @@ import {
     type R2Like,
     sniffPhotoType,
 } from './recommendationSubmissions'
-
-interface Call {
-    args: unknown[]
-    sql: string
-}
-
-/** Records every statement run; `rows` is what `all()`/`first()` return. */
-const fakeDb = (rows: unknown[] = [], fail = false) => {
-    const calls: Call[] = []
-    const db: D1Like = {
-        prepare(sql: string) {
-            const call: Call = { args: [], sql }
-            const stmt: D1Statement = {
-                all: async <T>() => ({ results: rows as T[] }),
-                bind(...values: unknown[]) {
-                    call.args = values
-
-                    return stmt
-                },
-                first: async <T>() => (rows[0] ?? null) as null | T,
-                run: async () => {
-                    if (fail) throw new Error('db down')
-                    calls.push(call)
-                },
-            }
-
-            return stmt
-        },
-    }
-
-    return { calls, db }
-}
 
 const fakeR2 = () => {
     const objects = new Map<string, { bytes: ArrayBuffer; type?: string }>()
@@ -89,11 +56,6 @@ const form = (fields: Record<string, string>, photo: Blob | null = new File([JPE
 
 const post = (fields: Record<string, string>, photo?: Blob | null) =>
     new Request('https://lavanti.fi/api/suosittele', { body: form(fields, photo), method: 'POST' })
-
-const turnstile =
-    (success: boolean, hostname = 'lavanti.fi') =>
-    async () =>
-        new Response(JSON.stringify({ hostname, success }))
 
 const NOW = new Date('2026-10-09T12:00:00Z')
 const ID = '0b5e6a1c-2f3d-4e5f-8a9b-0c1d2e3f4a5b'
@@ -158,7 +120,7 @@ describe('parseSubmission', () => {
 
 describe('handleSubmit', () => {
     const setup = (dbFail = false) => {
-        const d = fakeDb([], dbFail)
+        const d = fakeDb({}, dbFail)
         const r = fakeR2()
 
         return { ...d, ...r, env: { DB: d.db, RECOMMENDATION_PHOTOS: r.r2, TURNSTILE_SECRET: 'secret' } }
@@ -225,7 +187,7 @@ describe('inbox endpoints', () => {
         new Request(url, { headers: { Authorization: `Bearer ${token}` }, method })
 
     const setup = (rows: unknown[] = []) => {
-        const d = fakeDb(rows)
+        const d = fakeDb({ '': rows })
         const r = fakeR2()
 
         return {
