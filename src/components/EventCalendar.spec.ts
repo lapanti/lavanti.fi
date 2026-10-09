@@ -10,6 +10,7 @@ const events: CampaignEvent[] = [
     {
         date: '2026-09-19',
         endTime: '17:00',
+        fbUrl: 'https://fb.me/e/example',
         id: 'confirmed',
         locales: {
             en: { description: 'English body.', locality: 'Espoo', title: 'Confirmed event', venue: 'Venue one' },
@@ -107,6 +108,23 @@ describe('<EventCalendar />', () => {
             'confirmed',
             'open',
         ])
+    })
+
+    it('links to the Facebook event only for events that have one', async () => {
+        const result = await renderAstroComponent(EventCalendar, { props })
+        const items = getAllByRole(result, 'listitem')
+        const link = items[0].querySelector('.event-link a')
+
+        expect(link?.getAttribute('href')).toBe('https://fb.me/e/example')
+        expect(link?.textContent?.trim()).toBe('Tapahtuma Facebookissa')
+        expect(link?.getAttribute('aria-label')).toBe('Tapahtuma Facebookissa: Vahvistettu tapahtuma')
+        expect(items[1].querySelector('.event-link')).toBeNull()
+    })
+
+    it('renders the Facebook link label in the page language', async () => {
+        const result = await renderAstroComponent(EventCalendar, { props: { ...props, lang: 'sv' } })
+
+        expect(result.querySelector('.event-link a')?.textContent?.trim()).toBe('Evenemanget på Facebook')
     })
 
     it('renders nothing when there are no events left', async () => {

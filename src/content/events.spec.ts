@@ -55,6 +55,12 @@ describe('campaign events data', () => {
         }
     })
 
+    it('every Facebook link should be an https Facebook URL', () => {
+        for (const event of campaignEvents.filter((e) => e.fbUrl)) {
+            expect(event.fbUrl).toMatch(/^https:\/\/(fb\.me|(www\.)?facebook\.com)\//)
+        }
+    })
+
     it('should not give an entry an end time without a start time', () => {
         for (const event of campaignEvents.filter((e) => e.endTime)) {
             expect(event.startTime).toBeTruthy()

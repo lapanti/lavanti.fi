@@ -333,6 +333,7 @@ const eventsJsonLd = announceableEvents.map((event) =>
         },
         name: event.locales[lang].title,
         organizer: { '@type': 'Person', name: personName, url: personUrl },
+        ...(event.fbUrl ? { sameAs: event.fbUrl } : {}),
         startDate: toHelsinkiIso(event.date, event.startTime),
         ...(canonical ? { url: canonical.toString() } : {}),
     })
