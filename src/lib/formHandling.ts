@@ -36,7 +36,7 @@ export const json = (body: unknown, status = 200): Response =>
         status,
     })
 
-export const timingSafeEqual = (a: string, b: string): boolean => {
+const timingSafeEqual = (a: string, b: string): boolean => {
     const enc = new TextEncoder()
     const x = enc.encode(a)
     const y = enc.encode(b)
