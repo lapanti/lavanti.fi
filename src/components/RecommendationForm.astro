@@ -63,11 +63,13 @@ const errorScript = `(function () {
     form.addEventListener('input', updateReady)
 
     var objectUrl = null
+    var fileName = document.getElementById('recommendation-photo-name')
     photo.addEventListener('change', function () {
         if (objectUrl) URL.revokeObjectURL(objectUrl)
         objectUrl = null
         preview.hidden = true
         var file = photo.files[0]
+        fileName.textContent = file && file.size <= MAX ? file.name : ${JSON.stringify(t.photoNone)}
         if (file && file.size > MAX) {
             photo.value = ''
             show('photo')
@@ -163,10 +165,53 @@ const errorScript = `(function () {
         resize: vertical;
     }
 
-    .recommendation-form input[type='file'] {
+    .recommendation-form .file-row {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+        position: relative;
+    }
+
+    /* Visually hidden but still focusable and validated; display: none would break both. */
+    .recommendation-form .file-input {
+        height: 1px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 1px;
+    }
+
+    .recommendation-form .file-button {
+        background: white;
+        border: 2px solid var(--inkColor);
+        border-radius: 0.25rem;
         color: var(--inkColor);
-        font: inherit;
-        max-width: 100%;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        margin: 0;
+        padding: 0.6rem 1.25rem;
+    }
+
+    .recommendation-form .file-button:hover {
+        background: var(--tintColor);
+    }
+
+    .recommendation-form .file-input:focus-visible + .file-button {
+        outline: 3px solid var(--inkColor);
+        outline-offset: 2px;
+    }
+
+    .recommendation-form .file-input:global([aria-invalid='true']) + .file-button {
+        box-shadow: 0 0 0 2px var(--errorColor);
+    }
+
+    .recommendation-form .file-name {
+        color: var(--inkColor);
+        font-size: 0.9375rem;
+        overflow-wrap: anywhere;
     }
 
     .recommendation-form input:focus-visible,
@@ -342,14 +387,20 @@ const errorScript = `(function () {
     <div>
         <label for="recommendation-photo">{t.photo}<span aria-hidden="true" class="req"> *</span></label>
         <p class="field-hint" id="recommendation-photo-hint">{t.photoHint}</p>
-        <input
-            accept="image/jpeg,image/png,image/webp"
-            aria-describedby="recommendation-photo-hint"
-            id="recommendation-photo"
-            name="photo"
-            required
-            type="file"
-        />
+        <div class="file-row">
+            <input
+                accept="image/jpeg,image/png,image/webp"
+                aria-describedby="recommendation-photo-hint recommendation-photo-name"
+                class="file-input"
+                id="recommendation-photo"
+                name="photo"
+                required
+                type="file"
+            />
+            {/* The visible button; the input above keeps the field's name, focus and validation. */}
+            <label aria-hidden="true" class="file-button" for="recommendation-photo">{t.photoButton}</label>
+            <span aria-live="polite" class="file-name" id="recommendation-photo-name">{t.photoNone}</span>
+        </div>
         <img alt="" class="preview" hidden id="recommendation-preview" />
     </div>
 
