@@ -9,7 +9,7 @@
 import type { CampaignEvent } from '../content/events'
 import type { Lang } from '../content/nav'
 
-const localeMap: Record<Lang, string> = { en: 'en-GB', fi: 'fi-FI', sv: 'sv-SE' }
+import { intlLocale } from '../content/nav'
 
 /** Reads as part of the sentence in fi/sv; English states the clock times bare. */
 const atLabel: Record<Lang, string> = { en: '', fi: 'klo ', sv: 'kl. ' }
@@ -26,7 +26,7 @@ const atLabel: Record<Lang, string> = { en: '', fi: 'klo ', sv: 'kl. ' }
  * in the zone it was parsed in.
  */
 export const formatEventDate = (date: string, lang: Lang): string =>
-    new Intl.DateTimeFormat(localeMap[lang], {
+    new Intl.DateTimeFormat(intlLocale[lang], {
         day: 'numeric',
         month: 'long',
         timeZone: 'UTC',
