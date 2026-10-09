@@ -142,10 +142,10 @@ const approve = async (id: string | undefined) => {
         const path = join(ROOT, page)
         writeFileSync(path, bumpUpdatedDate(readFileSync(path, 'utf8'), today))
     }
-    await uploadToCfImages(slug, jpeg)
-
     git('add', file, DATA, ...PAGES.map((p) => join(ROOT, p)))
+    // Commit before any external side effect: a locked GPG key fails here, with nothing uploaded.
     execFileSync('git', ['commit', '-S', '-m', `feat(recommendations): add ${s.name}`], { cwd: ROOT, stdio: 'inherit' })
+    await uploadToCfImages(slug, jpeg)
     git('push', '-u', 'origin', branch)
     execFileSync(
         'gh',
