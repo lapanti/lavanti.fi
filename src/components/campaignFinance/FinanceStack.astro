@@ -11,7 +11,7 @@ import type { Lang } from '../../content/nav'
 import type { FinanceSegment, Tone } from '../../lib/campaignFinance'
 
 import { formatPercent, percentOf, toneColors, withPending } from '../../lib/campaignFinance'
-import { colors, fontWeights, sizes, typographics } from '../../lib/styles'
+import { fontWeights, sizes, typographics } from '../../lib/styles'
 
 interface Props {
     caption: string
@@ -42,7 +42,6 @@ const HATCHED_TONES = new Set<Tone>(['needed'])
         captionFontSize: typographics.title.fontSize,
         captionFontWeight: typographics.title.fontWeight,
         captionPad: sizes[1],
-        colorsForestGreen70: colors.forestGreen70,
         figuresFontSize: typographics.text.fontSize,
         figuresFontWeight: fontWeights.bold,
         labelFontFamily: typographics.text.fontFamily,

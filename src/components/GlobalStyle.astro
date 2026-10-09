@@ -32,6 +32,7 @@ const rootTokens: Record<string, string> = {
     colorsEyebrowNeutral: colors.eyebrowNeutral,
     colorsForestGreen: colors.forestGreen,
     colorsForestGreen10: colors.forestGreen10,
+    colorsForestGreen70: colors.forestGreen70,
     colorsGray: colors.gray,
     colorsLightSand: colors.lightSand,
     colorsOat: colors.oat,
@@ -532,5 +533,130 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         to {
             transform: scaleX(1);
         }
+    }
+
+    /* site-form — the shared shell of the volunteer and recommendation forms */
+    .site-form {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+        max-width: 36rem;
+        scroll-margin-top: 6.5rem;
+    }
+    .site-form label,
+    .site-form legend,
+    .site-form summary {
+        color: var(--colorsForestGreen);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+    .site-form legend {
+        padding: 0;
+    }
+    .site-form input[type='text'],
+    .site-form input[type='email'],
+    .site-form input[type='tel'],
+    .site-form select,
+    .site-form textarea {
+        background-color: white;
+        border: 1px solid var(--colorsForestGreen);
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        color: var(--colorsForestGreen);
+        font: inherit;
+        min-height: 3rem;
+        padding: 0.6rem 0.75rem;
+        width: 100%;
+    }
+    .site-form input:focus-visible,
+    .site-form select:focus-visible,
+    .site-form textarea:focus-visible,
+    .site-form summary:focus-visible,
+    .site-form button:focus-visible {
+        outline: 3px solid var(--colorsForestGreen);
+        outline-offset: 2px;
+    }
+    .site-form fieldset {
+        border: 0;
+        margin: 0;
+        min-width: 0;
+        padding: 0;
+    }
+    .site-form .choice {
+        align-items: flex-start;
+        cursor: pointer;
+        display: flex;
+        font-weight: 400;
+        gap: 0.75rem;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0.4rem 0;
+    }
+    /* Native checkbox, enlarged for touch and centred on the first line of its text. */
+    .site-form .choice input {
+        accent-color: var(--colorsForestGreen);
+        flex-shrink: 0;
+        height: 1.375rem;
+        margin: 0.05rem 0 0;
+        width: 1.375rem;
+    }
+    .site-form .consent {
+        background: var(--colorsForestGreen10);
+        border-radius: 0.25rem;
+        padding: 0.75rem 1rem;
+    }
+    .site-form .honeypot {
+        left: -10000px;
+        position: absolute;
+    }
+    .site-form button {
+        background: var(--colorsForestGreen);
+        border: 0;
+        border-radius: 0.25rem;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+    }
+    /* Required fields still missing: the button looks inactive but stays clickable, so a
+       click runs the browser's own prompt on the first missing field. Set at runtime. */
+    .site-form button[aria-disabled='true'] {
+        background: var(--colorsForestGreen70);
+        cursor: not-allowed;
+    }
+    .site-form .submit-row {
+        display: grid;
+        gap: 0.5rem;
+        justify-items: start;
+    }
+    .site-form .submit-hint,
+    .site-form .required-note {
+        color: var(--colorsForestGreen);
+        font-size: 0.9375rem;
+        margin: 0;
+    }
+    .site-form .req {
+        color: var(--colorsDarkGreen);
+        font-weight: 700;
+    }
+    /* Set at runtime by the form's error script. */
+    .site-form [aria-invalid='true'] {
+        box-shadow: 0 0 0 2px var(--colorsDarkGreen);
+    }
+    .site-form .form-error {
+        background: var(--colorsForestGreen10);
+        border-left: 4px solid var(--colorsDarkGreen);
+        color: var(--colorsForestGreen);
+        font-weight: 600;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        /* Clears the sticky header when the #lomake redirect or scrollIntoView lands here. */
+        scroll-margin-top: 6.5rem;
+    }
+    /* Focused by script only, to be read out; it is not a control, so no focus ring. */
+    .site-form .form-error:focus {
+        outline: none;
     }
 </style>
