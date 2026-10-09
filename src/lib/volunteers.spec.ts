@@ -1,3 +1,5 @@
+import type { D1Like } from './formHandling'
+
 import { describe, expect, it, vi } from 'vitest'
 
 import { fakeDb, turnstile } from '../../tests/formFakes'
