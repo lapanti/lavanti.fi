@@ -1,6 +1,7 @@
 import type { Lang } from '../content/nav'
 import type { AuthorEntry } from '../content/person'
 
+import { intlLocale } from '../content/nav'
 import { personJobTitle, personName } from '../content/person'
 
 export type { Lang }
@@ -20,8 +21,6 @@ export const publicationPrefix: Record<Lang, string> = {
     fi: 'Julkaistu myös',
     sv: 'Publicerat även i',
 }
-
-const localeMap: Record<Lang, string> = { en: 'en-GB', fi: 'fi-FI', sv: 'sv-SE' }
 
 /**
  * How a linked article's language is named, in the language of the page doing the
@@ -43,7 +42,7 @@ const languageNameIn: Record<Lang, Record<Lang, string>> = {
  * Greenwich would print the day before.
  */
 export const formatPublicationDate = (date: string, lang: Lang): string =>
-    new Intl.DateTimeFormat(localeMap[lang], {
+    new Intl.DateTimeFormat(intlLocale[lang], {
         day: 'numeric',
         month: 'long',
         timeZone: 'UTC',
