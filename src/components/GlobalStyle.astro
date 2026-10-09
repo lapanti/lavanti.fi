@@ -1,5 +1,5 @@
 ---
-import { colors, HEADER_SIZE, sizes, typographics } from '../lib/styles'
+import { colors, fontWeights, HEADER_SIZE, sizes, typographics } from '../lib/styles'
 
 const { button, chip, eyebrow, fine, linkRule, text, textSmall } = typographics
 
@@ -51,6 +51,9 @@ const rootTokens: Record<string, string> = {
     fineFontSize: fine.fontSize,
     fineFontWeight: String(fine.fontWeight),
     fineLineHeight: String(fine.lineHeight),
+    fontWeightsBold: String(fontWeights.bold),
+    fontWeightsRegular: String(fontWeights.regular),
+    fontWeightsSemibold: String(fontWeights.semibold),
     headerSize: HEADER_SIZE,
     linkRuleFontFamily: linkRule.fontFamily,
     linkRuleFontSize: linkRule.fontSize,
@@ -65,6 +68,7 @@ const rootTokens: Record<string, string> = {
     textFontWeight: String(text.fontWeight),
     textLineHeight: String(text.lineHeight),
     textSmallFontFamily: textSmall.fontFamily,
+    textSmallFontSize: textSmall.fontSize,
     textSmallFontWeight: String(textSmall.fontWeight),
     textSmallLineHeight: String(textSmall.lineHeight),
 }
@@ -548,7 +552,7 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
     .site-form summary {
         color: var(--colorsForestGreen);
         display: block;
-        font-weight: 600;
+        font-weight: var(--fontWeightsSemibold);
         margin-bottom: 0.4rem;
     }
     .site-form legend {
@@ -559,7 +563,7 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
     .site-form input[type='tel'],
     .site-form select,
     .site-form textarea {
-        background-color: white;
+        background-color: var(--colorsWhite);
         border: 1px solid var(--colorsForestGreen);
         border-radius: 0.25rem;
         box-sizing: border-box;
@@ -587,7 +591,7 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         align-items: flex-start;
         cursor: pointer;
         display: flex;
-        font-weight: 400;
+        font-weight: var(--fontWeightsRegular);
         gap: 0.75rem;
         line-height: 1.5;
         margin: 0;
@@ -634,12 +638,12 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
     .site-form .submit-hint,
     .site-form .required-note {
         color: var(--colorsForestGreen);
-        font-size: 0.9375rem;
+        font-size: var(--textSmallFontSize);
         margin: 0;
     }
     .site-form .req {
         color: var(--colorsDarkGreen);
-        font-weight: 700;
+        font-weight: var(--fontWeightsBold);
     }
     /* Set at runtime by the form's error script. */
     .site-form [aria-invalid='true'] {
@@ -649,7 +653,7 @@ const rootTokenRule = `:root{${Object.entries(rootTokens)
         background: var(--colorsForestGreen10);
         border-left: 4px solid var(--colorsDarkGreen);
         color: var(--colorsForestGreen);
-        font-weight: 600;
+        font-weight: var(--fontWeightsSemibold);
         margin: 0;
         padding: 0.75rem 1rem;
         /* Clears the sticky header when the #lomake redirect or scrollIntoView lands here. */
