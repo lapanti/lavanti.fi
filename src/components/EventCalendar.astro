@@ -23,6 +23,13 @@ const topicPendingLabels: Record<Lang, string> = {
     fi: 'Aihe vahvistetaan myöhemmin.',
     sv: 'Ämnet bekräftas senare.',
 }
+
+/** Link to the event's Facebook page, where people RSVP and get reminders. */
+const facebookLabels: Record<Lang, string> = {
+    en: 'Event on Facebook',
+    fi: 'Tapahtuma Facebookissa',
+    sv: 'Evenemanget på Facebook',
+}
 ---
 
 <style
@@ -111,6 +118,19 @@ const topicPendingLabels: Record<Lang, string> = {
         padding-top: 0.5rem;
     }
 
+    .event-link {
+        font-family: var(--textSmallFontFamily);
+        font-size: var(--textSmallFontSize);
+        font-weight: var(--textSmallFontWeight);
+        line-height: var(--textSmallLineHeight);
+        margin: 0;
+        padding-top: 0.65rem;
+    }
+
+    .event-link a {
+        color: var(--colorsDarkGreen);
+    }
+
     @media (min-width: 769px) {
         .event-list {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -143,6 +163,19 @@ const topicPendingLabels: Record<Lang, string> = {
                                     <p class="event-description">{event.locales[lang].description}</p>
                                     {!event.topicConfirmed && (
                                         <div class="event-pending">{topicPendingLabels[lang]}</div>
+                                    )}
+                                    {event.fbUrl && (
+                                        <p class="event-link">
+                                            {/* Same visible text on every card, so the accessible
+                                                name carries the title to tell the links apart. */}
+                                            <a
+                                                aria-label={`${facebookLabels[lang]}: ${event.locales[lang].title}`}
+                                                href={event.fbUrl}
+                                                rel="noopener noreferrer"
+                                            >
+                                                {facebookLabels[lang]}
+                                            </a>
+                                        </p>
                                     )}
                                 </li>
                             )

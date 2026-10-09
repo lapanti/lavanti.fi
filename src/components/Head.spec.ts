@@ -325,6 +325,23 @@ describe('<Head />', () => {
         expect(parsed[0].location.address.addressLocality).toBe('Esbo')
     })
 
+    it('should carry the Facebook event URL as sameAs only when the event has one', async () => {
+        const withLink = { ...confirmedEvent, fbUrl: 'https://fb.me/e/example' }
+        const linked = eventScripts(
+            await renderAstroComponent(Head, {
+                props: { events: [withLink], slug: 'fi/eduskuntavaalit', title: 'Vaalit' },
+            })
+        )
+        const unlinked = eventScripts(
+            await renderAstroComponent(Head, {
+                props: { events: [confirmedEvent], slug: 'fi/eduskuntavaalit', title: 'Vaalit' },
+            })
+        )
+
+        expect(linked[0].sameAs).toBe('https://fb.me/e/example')
+        expect(unlinked[0]).not.toHaveProperty('sameAs')
+    })
+
     it('should omit an event whose topic is not confirmed', async () => {
         const result = await renderAstroComponent(Head, {
             props: { events: [openEvent], slug: 'fi/eduskuntavaalit', title: 'Vaalit' },

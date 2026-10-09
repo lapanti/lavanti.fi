@@ -16,6 +16,12 @@ export interface CampaignEvent {
     date: string
     /** 'HH:MM', omitted together with startTime while the schedule is open. */
     endTime?: string
+    /**
+     * The event's Facebook page, where people RSVP and get reminders. Optional: the
+     * card stays complete without it. Rendered as a link on the card and as the
+     * Event JSON-LD `sameAs`.
+     */
+    fbUrl?: string
     /** Stable key for the rendered list, and the marker the nightly expiry check greps for. */
     id: string
     locales: Record<Lang, CampaignEventLocale>
@@ -79,6 +85,7 @@ export const campaignEvents: CampaignEvent[] = [
     },
     {
         date: '2026-11-30',
+        fbUrl: 'https://fb.me/e/4WfF0fkf3',
         id: 'fyyri-morne',
         locales: {
             en: {
