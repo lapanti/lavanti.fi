@@ -122,6 +122,12 @@ describe('parseSubmission', () => {
         })
     })
 
+    it('counts CRLF line breaks as one character, as maxlength does', async () => {
+        const recommendation = `${'x'.repeat(794)}\r\n${'x'.repeat(5)}`
+        const r = await parseSubmission(form({ ...valid, recommendation }), NOW)
+        expect(r.ok && r.row.recommendation).toBe(`${'x'.repeat(794)}\n${'x'.repeat(5)}`)
+    })
+
     it('trusts the bytes over the browser-sent type', async () => {
         const r = await parseSubmission(form(valid, new File([PNG], 'x.jpg', { type: 'image/jpeg' })), NOW)
         expect(r.ok && r.row.photo_type).toBe('image/png')
