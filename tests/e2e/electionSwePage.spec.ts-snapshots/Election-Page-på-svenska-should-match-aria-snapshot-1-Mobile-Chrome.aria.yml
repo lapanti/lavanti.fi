@@ -149,7 +149,7 @@
         - time: /måndag \d+ november \d+/
         - heading "Hur mår Kyrkslätt? Utvecklingen av Centralskogen" [level=3]
         - paragraph: Bibliotekshuset Fyyri, Mörnesalen, Kyrkslätt
-        - paragraph: Panelsamtalet ”Hur mår Kyrkslätt?” handlar om utvecklingen av Centralskogen. Lauri Lavanti modererar diskussionen, och panelisterna presenteras senare. Evenemanget ordnas i Mörnesalen i Bibliotekshuset Fyyri och är öppet för alla och avgiftsfritt.
+        - paragraph: Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Panelisterna presenteras senare. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.
     - text: Q & A
     - heading "Vanliga frågor om riksdagsvalet" [level=2]
     - heading /I vilken valkrets kandiderar Lauri Lavanti i riksdagsvalet \d+\?/ [level=3]

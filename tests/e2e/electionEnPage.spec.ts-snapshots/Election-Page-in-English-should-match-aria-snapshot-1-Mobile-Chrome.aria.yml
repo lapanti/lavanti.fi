@@ -149,7 +149,7 @@
         - time: /Monday, \d+ November \d+/
         - heading "How are you, Kirkkonummi? The development of the central forest" [level=3]
         - paragraph: Fyyri library, Mörne hall, Kirkkonummi
-        - paragraph: The "How are you, Kirkkonummi?" panel covers the development of the central forest. Lauri Lavanti moderates; panellists announced later. At Fyyri library's Mörne hall, free and open to all.
+        - paragraph: What should happen to Keskusmetsä (the central forest) in Kirkkonummi? The "How are you, Kirkkonummi?" discussion series from Kirkkonummen Vihreät continues with a panel discussion on the development of the central forest. The discussion will be moderated by Lauri Lavanti, chair of the Green group on Kirkkonummi municipal council and parliamentary candidate. The panellists will be announced later. Come to listen, to ask questions and to share your own views. The event is open to all and free of charge.
     - text: Q & A
     - heading "Frequently asked questions about the election" [level=2]
     - heading /In which electoral district is Lauri Lavanti running in the \d+ parliamentary election\?/ [level=3]

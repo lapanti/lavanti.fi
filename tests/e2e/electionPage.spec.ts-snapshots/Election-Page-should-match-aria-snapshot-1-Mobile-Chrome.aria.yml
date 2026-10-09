@@ -149,7 +149,7 @@
         - time: /maanantaina \d+\. marraskuuta \d+/
         - heading "Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys" [level=3]
         - paragraph: Kirjastotalo Fyyri, Mörne-sali, Kirkkonummi
-        - paragraph: Mitä kuuluu Kirkkonummi? -paneelikeskustelun aiheena on Keskusmetsän kehitys. Lauri Lavanti toimii keskustelun moderaattorina, ja panelistit julkistetaan myöhemmin. Tilaisuus pidetään kirjastotalo Fyyrin Mörne-salissa, ja se on avoin ja maksuton.
+        - paragraph: Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Keskustelijat julkaistaan myöhemmin. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.
     - text: Q & A
     - heading "Usein kysyttyä eduskuntavaaleista" [level=2]
     - heading /Missä vaalipiirissä Lauri Lavanti on ehdolla eduskuntavaaleissa \d+\?/ [level=3]
