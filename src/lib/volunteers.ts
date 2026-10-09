@@ -11,7 +11,17 @@
  * - Stats return counts, never rows; any cell below MIN_CELL is merged into "muu".
  */
 
-import { type D1Like, type FetchLike, hasBearer, json, redirect, text, verifyTurnstile } from './formHandling'
+import {
+    backToForm,
+    type D1Like,
+    errorMessage,
+    type FetchLike,
+    hasBearer,
+    json,
+    redirect,
+    text,
+    verifyTurnstile,
+} from './formHandling'
 
 export type { FetchLike } from './formHandling'
 
@@ -132,11 +142,11 @@ export const handleSignup = async (
     try {
         form = await request.formData()
     } catch {
-        return redirect(`${origin}${FORM_PATH.fi}?virhe=lomake#lomake`, 303)
+        return backToForm(origin, FORM_PATH.fi)('lomake')
     }
     const langField = text(form, 'lang') as Lang
     const lang: Lang = LANGS.includes(langField) ? langField : 'fi'
-    const back = (code: string) => redirect(`${origin}${FORM_PATH[lang]}?virhe=${code}#lomake`, 303)
+    const back = backToForm(origin, FORM_PATH[lang])
 
     const parsed = parseVolunteer(form, now)
     if (!parsed.ok) {
@@ -174,7 +184,7 @@ export const handleSignup = async (
             )
             .run()
     } catch (err) {
-        console.error(`liity: insert failed: ${err instanceof Error ? err.message : String(err)}`)
+        console.error(`liity: insert failed: ${errorMessage(err)}`)
         return back('palvelu')
     }
 
