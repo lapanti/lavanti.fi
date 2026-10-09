@@ -1,8 +1,10 @@
 name: Volunteer data purge
 
-# Retention for the D1 tables behind /api/liity and /lahjoita (privacy notice
-# § Vapaaehtoiseksi ilmoittautuminen): every volunteer row is deleted after
-# 2027-07-31, donation-click rows after 13 months. Deleted rows leave D1 Time
+# Retention for the D1 tables behind /api/liity, /lahjoita and /api/suosittele
+# (privacy notice § Vapaaehtoiseksi ilmoittautuminen, § Suosituksen lähettäminen):
+# every volunteer row is deleted after 2027-07-31, donation-click rows after
+# 13 months, recommendation submissions left unhandled after 60 days (their
+# photos expire by an R2 lifecycle rule on the same schedule). Deleted rows leave D1 Time
 # Travel within 30 days. Uses CLOUDFLARE_D1_TOKEN, a token scoped to Account ·
 # D1 · Edit only (expires 2027-09-01), not the deploy token.
 
@@ -27,4 +29,5 @@ jobs:
           command: >-
             d1 execute lavanti-fi --remote --command
             "DELETE FROM volunteers WHERE date('now') > '2027-07-31';
-            DELETE FROM donate_clicks WHERE ts < strftime('%Y-%m-%dT%H:00:00Z', 'now', '-13 months');"
+            DELETE FROM donate_clicks WHERE ts < strftime('%Y-%m-%dT%H:00:00Z', 'now', '-13 months');
+            DELETE FROM recommendation_submissions WHERE created_at < strftime('%Y-%m-%dT%H:%M:%SZ', 'now', '-60 days');"
