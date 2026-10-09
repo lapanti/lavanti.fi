@@ -46,7 +46,8 @@ local  npm run recommendations -- list | approve <id> | reject <id>
   7. Calls DELETE. `reject` calls DELETE only.
 
   The slug follows the existing originals: the name with diacritics stripped and non-alphanumerics collapsed to `-`, case kept (`Roni Öberg` → `Roni-Oberg`). The CLI lives in `scripts/recommendations/cli.ts`, and its pure helpers with tests in `scripts/recommendations/entry.ts`.
-- **Retention:** pending rows older than 60 days are deleted by `volunteer-purge.yml`, and an R2 lifecycle rule deletes objects after 60 days. Approve and reject delete immediately.
+- **Retention:** pending rows older than 55 days are deleted by the monthly `volunteer-purge.yml`, so no row outlives the privacy notice's three months. An R2 lifecycle rule deletes objects after 55 days. Approve and reject delete immediately.
+- **R2 bucket:** `recommendation-photos` must be created with the **EU jurisdiction**, because the privacy notice says the data stays in the EU. Before merge, confirm that the Pages dashboard binding can select it. If it can't, the privacy wording must change.
 - **Crawlers:** both pages are `noindex: true` and have no `langAlternates`. Both are excluded in the sitemap filter. `public/_headers` sends `X-Robots-Tag: noindex` for `/fi/suosittele/*`.
 - **Photo preview:** the form shows the chosen photo from an object URL, so the CSP `img-src` includes `blob:`.
 
