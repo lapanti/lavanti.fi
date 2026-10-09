@@ -12,7 +12,7 @@ import sitemap from '@astrojs/sitemap'
 import { tags } from './src/content/tags'
 import { notFoundPages } from './src/lib/notFoundPagesIntegration'
 import { buildPageDateMap } from './src/lib/sitemapLastmod'
-import { redirects } from './src/lib/redirects'
+import { redirects, shortLinks } from './src/lib/redirects'
 import { redirectsFile } from './src/lib/redirectsIntegration'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -27,7 +27,7 @@ const pageDateMap = buildPageDateMap({
 // https://astro.build/config
 export default defineConfig({
     site: 'https://lavanti.fi/',
-    redirects,
+    redirects: { ...redirects, ...shortLinks },
     trailingSlash: 'always',
     output: 'static',
     compressHTML: true,

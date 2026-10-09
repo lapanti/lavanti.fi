@@ -242,7 +242,13 @@ export const redirects: Record<string, string> = {
     '/sv/recommendations/': '/sv/rekommendationer/',
     // Issue #1288 — topics merged into blog
     '/sv/topics/': '/sv/blog/',
-    // Short URL for print and social; both forms so neither takes an extra trailing-slash hop
-    '/vaalirahoitus': '/fi/eduskuntavaalit/vaalirahoitus/',
+}
+
+/**
+ * Short URLs for print and social, keyed by their trailing-slash form. Astro gets only that form
+ * (a stub per spelling would be two routes for one path, which Astro rejects); `_redirects` also
+ * gets the slashless spelling, so neither form takes an extra trailing-slash hop.
+ */
+export const shortLinks: Record<string, string> = {
     '/vaalirahoitus/': '/fi/eduskuntavaalit/vaalirahoitus/',
 }
