@@ -18,7 +18,7 @@
  */
 
 import { execFileSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { fileURLToPath } from 'node:url'
@@ -39,12 +39,17 @@ const PAGES = [
 const ORIGIN = process.env.RECOMMENDATIONS_URL ?? 'https://lavanti.fi'
 const MAX_EDGE = 1680
 
-const fail = (message: string): never => {
+const exit = (message: string): never => {
     console.error(message)
     process.exit(1)
 }
 
-const token = process.env.RECOMMENDATIONS_TOKEN ?? fail('Missing RECOMMENDATIONS_TOKEN (set it in .env).')
+/** Throws, so approve can clean up or report its progress; the dispatcher at the bottom exits. */
+const fail = (message: string): never => {
+    throw new Error(message)
+}
+
+const token = process.env.RECOMMENDATIONS_TOKEN ?? exit('Missing RECOMMENDATIONS_TOKEN (set it in .env).')
 const auth = { Authorization: `Bearer ${token}` }
 
 const api = async (path: string, init: RequestInit = {}): Promise<Response> => {
@@ -115,10 +120,18 @@ const approve = async (id: string | undefined) => {
     const titles = await askTitles(s)
     const entry: Entry = buildEntry(s, titles)
     const slug = entry.image
+    const relFile = `src/images/originals/${slug}.jpg`
     const file = join(ORIGINALS, `${slug}.jpg`)
-    const data = JSON.parse(readFileSync(DATA, 'utf8')) as Entry[]
-    if (existsSync(file) || data.some((e) => e.image === slug)) {
-        fail(`${slug} is already in use; rename by hand or reject the duplicate.`)
+    const branch = `feat/recommendation-${slug.toLowerCase()}`
+
+    // Check against origin/main, where the branch starts, not whatever branch this runs on.
+    git('fetch', 'origin', 'main')
+    const onMain = JSON.parse(git('show', 'origin/main:src/content/recommendations.json')) as Entry[]
+    if (git('ls-tree', '--name-only', 'origin/main', '--', relFile) !== '' || onMain.some((e) => e.image === slug)) {
+        fail(`${slug} is already in use on main; rename by hand or reject the duplicate.`)
+    }
+    if (git('branch', '--list', branch) !== '' || git('ls-remote', '--heads', 'origin', branch) !== '') {
+        fail(`${branch} already exists, probably from an earlier approve that stopped; finish or delete it first.`)
     }
 
     const photo = Buffer.from(await (await api(`/photo/${s.id}`)).arrayBuffer())
@@ -128,40 +141,69 @@ const approve = async (id: string | undefined) => {
         .jpeg({ mozjpeg: true, quality: 90 })
         .toBuffer()
 
-    const start = git('rev-parse', '--abbrev-ref', 'HEAD')
-    const branch = `feat/recommendation-${slug.toLowerCase()}`
-    git('fetch', 'origin', 'main')
-    git('switch', '-c', branch, 'origin/main')
+    const title = `feat(recommendations): add ${s.name}`
+    const body = `Adds the recommendation from ${s.name} (${s.title_fi}), sent through /suosittele on ${s.created_at.slice(0, 10)}.\n\nAlt text is the default template; refine it here if the photo needs a description.`
+    // After the commit, each step with the command that does it by hand if approve stops there.
+    const steps: { manual: string; run: () => Promise<unknown> | unknown }[] = [
+        {
+            manual: `upload ${relFile} to Cloudflare Images with id ${slug}`,
+            run: () => uploadToCfImages(slug, jpeg),
+        },
+        { manual: `git push -u origin ${branch}`, run: () => git('push', '-u', 'origin', branch) },
+        {
+            manual: `gh pr create --base main --head ${branch} --title '${title}' --fill`,
+            run: () =>
+                execFileSync('gh', ['pr', 'create', '--base', 'main', '--title', title, '--body', body], {
+                    cwd: ROOT,
+                    stdio: 'inherit',
+                }),
+        },
+        { manual: `npm run recommendations -- reject ${s.id}`, run: () => api(`/${s.id}`, { method: 'DELETE' }) },
+    ]
 
-    writeFileSync(file, jpeg)
-    // Re-read on the fresh branch: main may have entries the starting branch lacked.
-    const fresh = JSON.parse(readFileSync(DATA, 'utf8')) as Entry[]
-    writeFileSync(DATA, `${JSON.stringify([...fresh, entry], null, 4)}\n`)
-    const today = helsinkiDateOf(new Date())
-    for (const page of PAGES) {
-        const path = join(ROOT, page)
-        writeFileSync(path, bumpUpdatedDate(readFileSync(path, 'utf8'), today))
+    const start = git('rev-parse', '--abbrev-ref', 'HEAD')
+    git('switch', '-c', branch, 'origin/main')
+    let committed = false
+    let done = 0
+    try {
+        writeFileSync(file, jpeg)
+        const fresh = JSON.parse(readFileSync(DATA, 'utf8')) as Entry[]
+        writeFileSync(DATA, `${JSON.stringify([...fresh, entry], null, 4)}\n`)
+        const today = helsinkiDateOf(new Date())
+        for (const page of PAGES) {
+            const path = join(ROOT, page)
+            writeFileSync(path, bumpUpdatedDate(readFileSync(path, 'utf8'), today))
+        }
+        git('add', file, DATA, ...PAGES.map((p) => join(ROOT, p)))
+        // Commit before any external side effect: a locked GPG key fails here, with nothing uploaded.
+        execFileSync('git', ['commit', '-S', '-m', title], { cwd: ROOT, stdio: 'inherit' })
+        committed = true
+        for (const step of steps) {
+            await step.run()
+            done++
+        }
+    } catch (err) {
+        const reason = err instanceof Error ? err.message : String(err)
+        if (!committed) {
+            // Nothing has left this machine: drop the branch so approve can simply run again.
+            git('reset', '--hard', '-q')
+            if (existsSync(file)) rmSync(file)
+            git('switch', start)
+            git('branch', '-D', branch)
+            fail(
+                `${reason}\nNothing was committed or uploaded and ${branch} is removed; fix the cause and approve again.`
+            )
+        }
+        git('switch', start)
+        fail(
+            [
+                reason,
+                `Stopped after the commit${done > 0 ? ` and ${done} of ${steps.length} later steps` : ''}; ${branch} keeps the commit.`,
+                'Finish by hand:',
+                ...steps.slice(done).map((step) => `  ${step.manual}`),
+            ].join('\n')
+        )
     }
-    git('add', file, DATA, ...PAGES.map((p) => join(ROOT, p)))
-    // Commit before any external side effect: a locked GPG key fails here, with nothing uploaded.
-    execFileSync('git', ['commit', '-S', '-m', `feat(recommendations): add ${s.name}`], { cwd: ROOT, stdio: 'inherit' })
-    await uploadToCfImages(slug, jpeg)
-    git('push', '-u', 'origin', branch)
-    execFileSync(
-        'gh',
-        [
-            'pr',
-            'create',
-            '--base',
-            'main',
-            '--title',
-            `feat(recommendations): add ${s.name}`,
-            '--body',
-            `Adds the recommendation from ${s.name} (${s.title_fi}), sent through /suosittele on ${s.created_at.slice(0, 10)}.\n\nAlt text is the default template; refine it here if the photo needs a description.`,
-        ],
-        { cwd: ROOT, stdio: 'inherit' }
-    )
-    await api(`/${s.id}`, { method: 'DELETE' })
     git('switch', start)
     console.log(`Done. Submission ${s.id} deleted from the inbox; back on ${start}.`)
 }
@@ -178,4 +220,10 @@ const commands: Record<string, () => Promise<void>> = {
     list,
     reject: () => reject(id),
 }
-await (commands[command ?? ''] ?? (() => fail('Usage: npm run recommendations -- list | approve <id> | reject <id>')))()
+try {
+    await (
+        commands[command ?? ''] ?? (() => fail('Usage: npm run recommendations -- list | approve <id> | reject <id>'))
+    )()
+} catch (err) {
+    exit(err instanceof Error ? err.message : String(err))
+}
