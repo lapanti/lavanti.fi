@@ -3,7 +3,7 @@ import type { AstroIntegration } from 'astro'
 import { writeFile } from 'node:fs/promises'
 
 import { CATEGORY_SEGMENTS, tags } from '../content/tags'
-import { redirects } from './redirects'
+import { redirects, shortLinks } from './redirects'
 
 /*
  * Old English-id category URLs → localised segment + slug (FI/SV only; the EN
@@ -53,15 +53,26 @@ const normalise = (pathname: string): string => {
  * skip the Finnish root, bare-post sources, file routes, and any path already
  * defined as a static redirect source (never shadow a legacy redirect).
  *
+ * Short links (keyed by their trailing-slash form) are written in both
+ * spellings, `/x` and `/x/`, like the aliases.
+ *
  * Pure and deterministic (sorted, de-duplicated) so it can be unit-tested
  * without running a full Astro build.
  */
-export const buildRedirectLines = (map: Record<string, string>, pagePathnames: readonly string[]): string[] => {
+export const buildRedirectLines = (
+    map: Record<string, string>,
+    pagePathnames: readonly string[],
+    short: Record<string, string> = {}
+): string[] => {
     const lines = new Set<string>()
-    const mapSources = new Set(Object.keys(map).map(normalise))
+    const mapSources = new Set([...Object.keys(map), ...Object.keys(short)].map(normalise))
 
     for (const [from, to] of Object.entries(map)) {
         lines.add(`${from} ${to} 301`)
+    }
+    for (const [from, to] of Object.entries(short)) {
+        lines.add(`${from.replace(/\/$/, '')} ${to} 301`)
+        lines.add(`${normalise(from)} ${to} 301`)
     }
 
     for (const pathname of pagePathnames) {
@@ -101,7 +112,8 @@ export const redirectsFile = (): AstroIntegration => ({
         'astro:build:done': async ({ pages, dir, logger }) => {
             const lines = buildRedirectLines(
                 { ...categoryRenames, ...redirects },
-                pages.map((page) => page.pathname)
+                pages.map((page) => page.pathname),
+                shortLinks
             )
             await writeFile(new URL('_redirects', dir), `${lines.join('\n')}\n`, 'utf-8')
             logger.info(`wrote _redirects (${lines.length} rules)`)

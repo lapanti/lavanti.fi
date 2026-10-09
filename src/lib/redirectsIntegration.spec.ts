@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { redirects } from './redirects'
+import { redirects, shortLinks } from './redirects'
 import { buildRedirectLines } from './redirectsIntegration'
 
 describe('buildRedirectLines', () => {
@@ -43,6 +43,14 @@ describe('buildRedirectLines', () => {
 
         expect(lines).toContain('/liity /fi/liity/ 301')
         expect(lines).toContain('/liity/ /fi/liity/ 301')
+    })
+
+    it('writes short links in both slash spellings and never aliases over them', () => {
+        const lines = buildRedirectLines(redirects, ['/fi/vaalirahoitus/'], shortLinks)
+
+        expect(lines).toContain('/vaalirahoitus /fi/eduskuntavaalit/vaalirahoitus/ 301')
+        expect(lines).toContain('/vaalirahoitus/ /fi/eduskuntavaalit/vaalirahoitus/ 301')
+        expect(lines).not.toContain('/vaalirahoitus /fi/vaalirahoitus/ 301')
     })
 
     it('aliases canonical Finnish blog posts alongside the bare-id redirect', () => {
