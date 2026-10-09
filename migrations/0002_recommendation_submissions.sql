@@ -2,7 +2,7 @@
 -- Apply: npx wrangler d1 execute lavanti-fi --remote --file=migrations/0002_recommendation_submissions.sql
 -- The photo is the R2 object submissions/<id> in the RECOMMENDATION_PHOTOS bucket.
 -- Retention: approve and reject delete the row and the photo; anything left is deleted after
--- 60 days (.github/workflows/volunteer-purge.yml for rows, an R2 lifecycle rule for photos).
+-- 55 days (.github/workflows/volunteer-purge.yml for rows, an R2 lifecycle rule for photos).
 
 CREATE TABLE IF NOT EXISTS recommendation_submissions (
     id TEXT PRIMARY KEY,
