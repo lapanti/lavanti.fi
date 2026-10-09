@@ -17,7 +17,7 @@ All visual design tokens — spacing, colours, typography, and layout grid const
   sizes[1]    = '1rem'     // 16px
   sizes[1.5]  = '1.5rem'   // 24px
   sizes[2.5]  = '2.5rem'   // 40px
-  sizes[5]    = '5rem'     // 80px — header height
+  sizes[3.75] = '3.75rem'  // 60px — mobile header bar height
   sizes[75]   = '75rem'    // 1200px — max content width
   // ... and more
   ```
@@ -26,7 +26,7 @@ All visual design tokens — spacing, colours, typography, and layout grid const
 
   **Named layout constants:**
   ```ts
-  HEADER_SIZE     = sizes[5]      // 80px — sized to fit the two-line NameLogo wordmark (measured ~72px tall transformed) with margin
+  HEADER_SIZE     = sizes[3.75]   // 60px — Signal Band mobile header bar (desktop bar is 68px, see Regression Guardrails)
   CONTENT_SIZE    = sizes[75]     // 1200px
   CONTENT_PADDING = sizes[0.5]    // 8px
   ```
@@ -74,7 +74,13 @@ All visual design tokens — spacing, colours, typography, and layout grid const
   ```
   The variable name in `define:vars` becomes the CSS custom property name. Convention: `camelCase(exportName) + key`.
 
-- **Breakpoint:** `1200px` is the single breakpoint used throughout. It corresponds to `CONTENT_SIZE` (`sizes[75]`). Not exported as a constant — hardcoded in each component's media query.
+  **Shared root tokens:** tokens that several components use (colours, `fontWeights{Regular,Semibold,Bold}`, the `button`/`eyebrow`/`fine`/`linkRule`/`text`/`textSmall` type roles, `headerSize`) are declared once on `:root` by `rootTokens` in `src/components/GlobalStyle.astro`. A component reads them as `var(--colorsDarkGreen)` etc. and must not redeclare the same name in its own `define:vars`, which would copy it inline onto every element of the component.
+
+- **Breakpoints (`breakpoints`):** `tablet` 769 / `tabletMax` 768 (page layout), `wide` 1000 / `wideMax` 999, `desktop` 1200 / `desktopMax` 1199 (header switch, `CONTENT_SIZE`), plus legacy small-phone tweaks `phoneSmall` 380 and `phoneSmallLegacy` 400. Media queries use these literal values on the right side — `min-width` only 769/1000/1200, `max-width` only 768/999/1199/380/400 — and `src/lib/mediaQueries.spec.ts` fails any other value in a `.astro` file.
+
+- **Corners:** the system is square — fields, buttons, boxes and cards have no `border-radius`. Two deliberate exceptions: the split-hero photo (`titleBanner/HeroMedia.astro`, 8px/16px) and the campaign-finance bar ends and swatches (`campaignFinance/FinanceBars.astro`, `FinanceStack.astro`, 2–3px).
+
+- **Buttons:** `.btn` (outline, inverts on hover) and its modifiers in `GlobalStyle.astro`. `.btn--solid` is the filled submit — forest with oat text, dark green on hover — used by the volunteer and recommendation forms and matching the newsletter submit. A solid button with `aria-disabled="true"` shows the 70% forest fill with white text and neither inverts nor presses. Form fields and their shell share `.site-form`.
 
 - **Dependencies:** Almost all components import from `styles.ts`. Changes here propagate everywhere.
 
@@ -101,7 +107,9 @@ All visual design tokens — spacing, colours, typography, and layout grid const
 - Do not hardcode pixel or rem values in component `<style>` blocks — always pull from `styles.ts` via `define:vars`
 - Do not add new colours without including a semantic name that describes the use case, not just the value
 - Do not add a spacing value that isn't a multiple of 0.125rem (2px) — the scale is intentionally aligned to the 2px grid
-- Do not add a second breakpoint — the design is intentionally single-breakpoint at 1200px
+- Do not add a breakpoint outside `breakpoints` in `styles.ts`
+- Do not round corners outside the two exceptions listed under Corners
+- Do not give a form its own button, field or focus styles — use `.btn--solid`, `.site-form` and the global `:focus-visible` ring
 - Do not export CSS strings directly from `styles.ts` — only export TypeScript constants that get injected via `define:vars`
 - Do not duplicate `typographics` values inline in a component — if a typographic style is needed, it should exist in `styles.ts`
 - Do not hardcode transition durations or press offsets — use the motion tokens so reduced motion keeps working
