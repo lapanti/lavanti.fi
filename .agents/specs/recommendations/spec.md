@@ -8,7 +8,8 @@ A recommendations page presents endorsements from named individuals who vouch fo
 **Publishing status:** The page is built and accessible by direct URL but intentionally hidden from search engines and AI answer engines until explicitly published. `noindex` and `nofollow` must be set in the page `<head>` and robots must be blocked via the `X-Robots-Tag` header or equivalent until the page is ready to go public. Do not remove these restrictions without explicit instruction.
 
 ### Architecture
-- **Data file (single, shared across locales):** `src/content/recommendations.ts`
+- **Submissions:** new entries arrive through the `/suosittele` form and an approve command; see `submission-form.md`.
+- **Data file (single, shared across locales):** `src/content/recommendations.json`, typed and re-exported by `src/content/recommendations.ts`
   ```ts
   export interface RecommendationLocale {
       alt: string    // descriptive alt text for the portrait, localised
