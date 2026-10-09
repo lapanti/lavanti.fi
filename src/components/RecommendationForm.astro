@@ -169,9 +169,10 @@ const errorScript = `(function () {
         background: var(--colorsForestGreen10);
     }
 
+    /* The input is hidden, so its focus shows on the label; same ring as the global :focus-visible. */
     .recommendation-form .file-input:focus-visible + .file-button {
-        outline: 3px solid var(--colorsForestGreen);
-        outline-offset: 2px;
+        outline: 3px solid var(--colorsDarkGreen);
+        outline-offset: 3px;
     }
 
     .recommendation-form .file-input:global([aria-invalid='true']) + .file-button {
