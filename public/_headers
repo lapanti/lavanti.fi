@@ -6,7 +6,11 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com https://scripts.simpleanalyticscdn.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lavanti.fi https://assets.mailerlite.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://assets.mailerlite.com https://queue.simpleanalyticscdn.com https://scripts.simpleanalyticscdn.com https://challenges.cloudflare.com; form-action 'self' https://assets.mailerlite.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com https://scripts.simpleanalyticscdn.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://lavanti.fi https://assets.mailerlite.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://assets.mailerlite.com https://queue.simpleanalyticscdn.com https://scripts.simpleanalyticscdn.com https://challenges.cloudflare.com; form-action 'self' https://assets.mailerlite.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+# The recommendation form and its thank-you page stay out of search (also noindex meta + sitemap filter)
+/fi/suosittele/*
+  X-Robots-Tag: noindex
 
 # Astro build output uses content-hashed filenames; fonts are filename-versioned
 /_astro/*

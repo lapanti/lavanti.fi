@@ -68,7 +68,9 @@ export default defineConfig({
                 // FI category pages live under /fi/kategoria/ and must stay included)
                 !new URL(page).pathname.startsWith('/kategoria/') &&
                 // Exclude the noindex volunteer thank-you pages
-                !/^\/(fi\/liity\/kiitos|sv\/bli-med\/tack|en\/join\/thanks)\/$/.test(new URL(page).pathname),
+                !/^\/(fi\/liity\/kiitos|sv\/bli-med\/tack|en\/join\/thanks)\/$/.test(new URL(page).pathname) &&
+                // Exclude the noindex recommendation form and its thank-you page
+                !/^\/fi\/suosittele\/(kiitos\/)?$/.test(new URL(page).pathname),
             serialize: (item) => {
                 const path = decodeURIComponent(new URL(item.url).pathname)
                 const date = pageDateMap.get(path)

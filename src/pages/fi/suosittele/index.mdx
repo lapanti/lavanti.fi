@@ -1,0 +1,29 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Suosittele Lauria – lähetä oma suosituksesi'
+title: 'Suosittele Lauria'
+intro: 'Kiitos, että haluat suositella minua. Suosituksesi julkaistaan suositussivulla, kun olen käynyt sen läpi.'
+description: 'Lähetä suosituksesi Lauri Lavannista. Suositukset julkaistaan nimellä, tittelillä ja kuvalla Lauri Lavannin suositussivulla.'
+slug: 'fi/suosittele'
+updatedDate: '2026-10-09'
+type: 'WebPage'
+noindex: true
+heroImage: Lauri-Lavanti-graniittimuurin-edessa-kadet-puuskassa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-graniittimuurin-edessa-kadet-puuskassa-hero-vaaka
+alt: 'Lauri Lavanti nojaa graniittimuuriin kädet puuskassa ja katsoo ylöspäin, yllään tummansininen pikkutakki ja kukkakuvioinen paita.'
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../components/Plate.astro'
+import Prose from '../../../components/Prose.astro'
+import RecommendationForm from '../../../components/RecommendationForm.astro'
+
+<Plate ground="offWhite" heading="Miksi suosittelet minua?">
+    <Prose>
+        Kirjoita muutama lause omin sanoin ja liitä mukaan kuva itsestäsi. Luen jokaisen suosituksen ennen julkaisua, ja
+        se näkyy [suositussivulla](/fi/suositukset/) nimesi, tittelisi ja kuvasi kanssa.
+    </Prose>
+    <RecommendationForm />
+</Plate>
