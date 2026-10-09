@@ -36,14 +36,15 @@ local  npm run recommendations -- list | approve <id> | reject <id>
 - **Stored per row:** the fields above, plus `photo_key`, `photo_type`, `created_at`, `consent_at` and `consent_version`. No IP, user agent or email is stored.
 - **Error flow:** same as the volunteer form. A rejected field produces `303 /fi/suosittele/?virhe=<code>#lomake`. A filled honeypot produces `303` to the thank-you page and nothing is stored. A missing binding or failed storage produces `virhe=palvelu`, and the log line names the cause, not the form data.
 - **Data file:** `src/content/recommendations.json` holds the array. `src/content/recommendations.ts` keeps the types and re-exports it typed. The CLI appends to the JSON without touching TS source.
-- **Approve (`scripts/recommendations.mts`):**
-  1. Fetches the row and the photo.
-  2. Prompts for any missing `title_sv`/`title_en`.
-  3. Normalizes the photo with sharp (EXIF rotate, long edge ≤ 1680, JPEG) to `src/images/originals/<slug>.jpg`.
-  4. POSTs that one file to CF Images with id `<slug>`.
-  5. Appends the entry with alt `{name}, muotokuva` / `{name}, porträtt` / `Portrait of {name}` and bumps `updatedDate` on the three recommendations pages. `Kuva: X` is not used because the site uses that form for photographer credits.
-  6. Commits GPG-signed on `feat/recommendation-<slug>` from `origin/main`, pushes and opens the PR with `gh pr create`.
-  7. Calls DELETE. `reject` calls DELETE only.
+- **Approve (`npm run recommendations -- approve <id>`):**
+  1. Fetches the row and the photo, and prompts for any missing `title_sv`/`title_en`.
+  2. Stops if `src/images/originals/<slug>.jpg` exists locally, the slug is already in `recommendations.json` on `origin/main`, or `feat/recommendation-<slug>` exists locally or on origin.
+  3. Normalizes the photo with sharp (EXIF rotate, long edge ≤ 1680, JPEG) to `src/images/originals/<slug>.jpg`. Originals are a local, gitignored archive; the photo is never committed.
+  4. Appends the entry with alt `{name}, muotokuva` / `{name}, porträtt` / `Portrait of {name}` and bumps `updatedDate` on the three recommendations pages. `Kuva: X` is not used because the site uses that form for photographer credits.
+  5. Commits GPG-signed on `feat/recommendation-<slug>` from `origin/main`.
+  6. POSTs the photo to CF Images with id `<slug>`, pushes, opens the PR with `gh pr create` and calls DELETE.
+
+  A failure before the commit removes the branch and the photo and returns to the start branch, so approve can run again. A failure after it keeps the branch, returns to the start branch and prints the remaining steps as commands. `reject` calls DELETE only.
 
   The slug follows the existing originals: the name with diacritics stripped and non-alphanumerics collapsed to `-`, case kept (`Roni Öberg` → `Roni-Oberg`). The CLI lives in `scripts/recommendations/cli.ts`, and its pure helpers with tests in `scripts/recommendations/entry.ts`.
 - **Retention:** pending rows older than 50 days are deleted by the daily `volunteer-purge.yml`, well inside the privacy notice's three months. An R2 lifecycle rule (dashboard) deletes objects after 55 days, so a row is always purged before its photo expires and `approve` never meets a pending row without a photo. Approve and reject delete immediately.
@@ -97,7 +98,12 @@ local  npm run recommendations -- list | approve <id> | reject <id>
 **Scenario: Approve**
 - Given: a pending submission
 - When: `npm run recommendations -- approve <id>` runs with the GPG key unlocked
-- Then: a PR adds one JSON entry and `src/images/originals/<slug>.jpg`, CF Images serves `<slug>`, and the submission is deleted
+- Then: a PR adds one JSON entry, `src/images/originals/<slug>.jpg` is kept locally, CF Images serves `<slug>`, and the submission is deleted
+
+**Scenario: Approve stops partway**
+- Given: a pending submission
+- When: approve fails before the commit (e.g. the GPG key is locked), or after it (e.g. the CF Images upload fails)
+- Then: before the commit, the branch and photo are removed and the start branch is checked out; after it, the branch keeps the commit, the start branch is checked out and the remaining steps are printed as commands
 
 **Scenario: Morning brief count**
 - Given: 2 pending rows
