@@ -23,6 +23,10 @@ describe('makeSlug', () => {
     ])('%s → %s', (name, slug) => {
         expect(makeSlug(name)).toBe(slug)
     })
+
+    it('throws when no Latin letters remain', () => {
+        expect(() => makeSlug('Ли Мин')).toThrow(/no Latin letters/)
+    })
 })
 
 describe('buildEntry', () => {

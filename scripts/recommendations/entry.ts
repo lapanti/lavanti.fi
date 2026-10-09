@@ -21,13 +21,20 @@ export interface Entry {
     recommendation: string
 }
 
-/** The CF Images id and originals filename: `Juho Makkonen` → `Juho-Makkonen`, `Roni Öberg` → `Roni-Oberg`. */
-export const makeSlug = (name: string): string =>
-    name
+/**
+ * The CF Images id and originals filename: `Juho Makkonen` → `Juho-Makkonen`, `Roni Öberg` → `Roni-Oberg`.
+ * Throws when nothing Latin is left (e.g. a name in Cyrillic), which would otherwise name the photo `.jpg`.
+ */
+export const makeSlug = (name: string): string => {
+    const slug = name
         .normalize('NFD')
         .replace(/[̀-ͯ]/g, '')
         .replace(/[^A-Za-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '')
+    if (slug === '') throw new Error(`"${name}" has no Latin letters for a slug; add this entry by hand.`)
+
+    return slug
+}
 
 /*
  * Alt text stays a plain template the reviewer can refine in the PR. The name is never
