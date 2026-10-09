@@ -75,6 +75,11 @@ const find = async (id: string | undefined): Promise<Submission> => {
 
 const git = (...args: string[]): string => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' }).trim()
 
+const errorText = (err: unknown): string => (err instanceof Error ? err.message : String(err))
+
+/** POSIX single-quoting, so a printed command survives apostrophes and newlines in names. */
+const shellQuote = (value: string): string => `'${value.replaceAll("'", `'\\''`)}'`
+
 const list = async () => {
     const all = await pending()
     if (all.length === 0) return console.log('No pending recommendations.')
@@ -157,7 +162,7 @@ const approve = async (id: string | undefined) => {
         },
         { manual: `git push -u origin ${branch}`, run: () => git('push', '-u', 'origin', branch) },
         {
-            manual: `gh pr create --base main --head ${branch} --title '${title}' --fill`,
+            manual: `gh pr create --base main --head ${branch} --title ${shellQuote(title)} --body ${shellQuote(body)}`,
             run: () =>
                 execFileSync('gh', ['pr', 'create', '--base', 'main', '--title', title, '--body', body], {
                     cwd: ROOT,
@@ -168,6 +173,7 @@ const approve = async (id: string | undefined) => {
     ]
 
     const start = git('rev-parse', '--abbrev-ref', 'HEAD')
+    if (start === 'HEAD') fail('HEAD is detached; check out a branch first so approve can return to it.')
     git('switch', '-c', branch, 'origin/main')
     let committed = false
     let done = 0
@@ -190,25 +196,39 @@ const approve = async (id: string | undefined) => {
             done++
         }
     } catch (err) {
-        const reason = err instanceof Error ? err.message : String(err)
+        const reason = errorText(err)
+        // A cleanup step that fails is reported after the original reason, never instead of it.
+        const cleanupErrors: string[] = []
+        const cleanup = (...args: string[]) => {
+            try {
+                git(...args)
+            } catch (cleanupErr) {
+                cleanupErrors.push(`  git ${args.join(' ')}: ${errorText(cleanupErr)}`)
+            }
+        }
+        const withCleanup = (lines: string[]) =>
+            [...lines, ...(cleanupErrors.length > 0 ? ['Cleanup also failed:', ...cleanupErrors] : [])].join('\n')
         if (!committed) {
             // Nothing has left this machine: drop the branch so approve can simply run again.
-            git('reset', '--hard', '-q')
+            cleanup('reset', '--hard', '-q')
             if (existsSync(file)) rmSync(file)
-            git('switch', start)
-            git('branch', '-D', branch)
+            cleanup('switch', start)
+            cleanup('branch', '-D', branch)
             fail(
-                `${reason}\nNothing was committed or uploaded and ${branch} is removed; fix the cause and approve again.`
+                withCleanup([
+                    reason,
+                    `Nothing was committed or uploaded and ${branch} is removed; fix the cause and approve again.`,
+                ])
             )
         }
-        git('switch', start)
+        cleanup('switch', start)
         fail(
-            [
+            withCleanup([
                 reason,
                 `Stopped after the commit${done > 0 ? ` and ${done} of ${steps.length} later steps` : ''}; ${branch} keeps the commit.`,
                 'Finish by hand:',
                 ...steps.slice(done).map((step) => `  ${step.manual}`),
-            ].join('\n')
+            ])
         )
     }
     git('switch', start)
@@ -232,5 +252,5 @@ try {
         commands[command ?? ''] ?? (() => fail('Usage: npm run recommendations -- list | approve <id> | reject <id>'))
     )()
 } catch (err) {
-    exit(err instanceof Error ? err.message : String(err))
+    exit(errorText(err))
 }
