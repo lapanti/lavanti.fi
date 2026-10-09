@@ -11,17 +11,9 @@
  * - Stats return counts, never rows; any cell below MIN_CELL is merged into "muu".
  */
 
-/** Minimal D1 surface used here, so no Workers type package is needed. */
-export interface D1Statement {
-    all<T = Record<string, unknown>>(): Promise<{ results: T[] }>
-    bind(...values: unknown[]): D1Statement
-    first<T = Record<string, unknown>>(): Promise<null | T>
-    run(): Promise<unknown>
-}
+import { type D1Like, type FetchLike, hasBearer, json, redirect, text, verifyTurnstile } from './formHandling'
 
-export interface D1Like {
-    prepare(sql: string): D1Statement
-}
+export type { D1Like, D1Statement, FetchLike } from './formHandling'
 
 export interface VolunteerEnv {
     DB?: D1Like
@@ -29,8 +21,6 @@ export interface VolunteerEnv {
     LIITY_STATS_TOKEN?: string
     TURNSTILE_SECRET?: string
 }
-
-export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>
 
 export const DONATE_URL =
     'https://www.vihreat.fi/eduskuntavaaliehdokkaat-2027/?kieli=fi&vaali=eduskuntavaalit-2027&alue=vp2&ehdokas=lavanti-lauri-10202&valilehti=donate'
@@ -44,9 +34,6 @@ const CONSENT_VERSION = '2026-10'
 
 /** Smallest count a stats cell may show; smaller cells are merged into "muu". */
 const MIN_CELL = 3
-
-/** Hostnames the Turnstile widget is registered for; siteverify must report one of them. */
-const TURNSTILE_HOSTNAMES = new Set(['lavanti.fi', 'www.lavanti.fi'])
 
 const UTM_SLUG = /^[a-z0-9._-]{1,64}$/
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/
@@ -66,12 +53,6 @@ export const utmSlug = (value: null | string | undefined): null | string => {
     const v = (value ?? '').trim().toLowerCase()
 
     return UTM_SLUG.test(v) ? v : null
-}
-
-const text = (form: FormData, name: string): string => {
-    const v = form.get(name)
-
-    return typeof v === 'string' ? v.trim() : ''
 }
 
 interface VolunteerRow {
@@ -136,37 +117,6 @@ export const parseVolunteer = (form: FormData, now: Date): ParseResult => {
             utm_campaign: utmSlug(text(form, 'utm_campaign')),
             utm_source: utmSlug(text(form, 'utm_source')),
         },
-    }
-}
-
-const redirect = (location: string, status: 302 | 303): Response =>
-    new Response(null, { headers: { 'Cache-Control': 'no-store', Location: location }, status })
-
-const verifyTurnstile = async (
-    form: FormData,
-    request: Request,
-    secret: string,
-    fetchFn: FetchLike
-): Promise<boolean> => {
-    const token = text(form, 'cf-turnstile-response')
-    if (token === '') return false
-    const body = new FormData()
-    body.append('secret', secret)
-    body.append('response', token)
-    const ip = request.headers.get('CF-Connecting-IP')
-    if (ip) body.append('remoteip', ip)
-    body.append('idempotency_key', crypto.randomUUID())
-    try {
-        const res = await fetchFn('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-            body,
-            method: 'POST',
-        })
-        const data = (await res.json()) as { hostname?: string; success?: boolean }
-
-        // A token solved on another site that embeds the same key must not count.
-        return data.success === true && TURNSTILE_HOSTNAMES.has(data.hostname ?? '')
-    } catch {
-        return false
     }
 }
 
@@ -248,16 +198,6 @@ export const handleDonate = async (request: Request, env: VolunteerEnv, now = ne
     return redirect(env.DONATE_URL || DONATE_URL, 302)
 }
 
-const timingSafeEqual = (a: string, b: string): boolean => {
-    const enc = new TextEncoder()
-    const x = enc.encode(a)
-    const y = enc.encode(b)
-    let diff = x.length ^ y.length
-    for (let i = 0; i < Math.max(x.length, y.length); i++) diff |= (x[i] ?? 0) ^ (y[i] ?? 0)
-
-    return diff === 0
-}
-
 /** Merges every cell below MIN_CELL into one "muu" cell; drops "muu" if it is still below. */
 export const suppress = (counts: Record<string, number>): Record<string, number> => {
     const out: Record<string, number> = {}
@@ -278,17 +218,9 @@ const tally = (rows: { key: null | string; n: number }[]): Record<string, number
     return out
 }
 
-const json = (body: unknown, status = 200): Response =>
-    new Response(JSON.stringify(body), {
-        headers: { 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' },
-        status,
-    })
-
 /** GET /api/liity/stats — aggregate counts for the analytics fetch and the morning brief. */
 export const handleStats = async (request: Request, env: VolunteerEnv): Promise<Response> => {
-    const auth = request.headers.get('Authorization') ?? ''
-    const token = env.LIITY_STATS_TOKEN
-    if (!token || !timingSafeEqual(auth, `Bearer ${token}`)) return json({ error: 'unauthorized' }, 401)
+    if (!hasBearer(request, env.LIITY_STATS_TOKEN)) return json({ error: 'unauthorized' }, 401)
     if (!env.DB) return json({ error: 'unavailable' }, 503)
 
     const since = new URL(request.url).searchParams.get('since')
