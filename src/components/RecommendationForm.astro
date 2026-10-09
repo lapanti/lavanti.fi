@@ -88,7 +88,15 @@ const errorScript = `(function () {
         updateReady()
     })
 
-    form.addEventListener('submit', function () {
+    // A Turnstile token verifies once, so a second post fails as 'varmistus' after the first was
+    // stored. Ignore repeat submits until the page is shown again, or after 30 s in case the
+    // visitor stopped the load and is left on this page.
+    var sent = false
+    form.addEventListener('submit', function (event) {
+        if (sent) { event.preventDefault(); return }
+        sent = true
+        button.setAttribute('aria-disabled', 'true')
+        window.setTimeout(function () { sent = false; updateReady() }, 30000)
         var data = {}
         FIELDS.forEach(function (f) { data[f] = form.elements.namedItem(f).value })
         store(function (s) { s.setItem(KEY, JSON.stringify(data)) })
@@ -97,7 +105,7 @@ const errorScript = `(function () {
     var code = new URLSearchParams(window.location.search).get('virhe')
     var saved = store(function (s) { var v = s.getItem(KEY); s.removeItem(KEY); return v })
     updateReady()
-    window.addEventListener('pageshow', updateReady)
+    window.addEventListener('pageshow', function () { sent = false; updateReady() })
     if (!code || !Object.prototype.hasOwnProperty.call(messages, code)) return
     if (saved) {
         try {
