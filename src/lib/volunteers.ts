@@ -13,7 +13,7 @@
 
 import { type D1Like, type FetchLike, hasBearer, json, redirect, text, verifyTurnstile } from './formHandling'
 
-export type { D1Like, D1Statement, FetchLike } from './formHandling'
+export type { FetchLike } from './formHandling'
 
 export interface VolunteerEnv {
     DB?: D1Like

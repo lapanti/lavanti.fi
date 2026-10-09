@@ -1,53 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import {
-    type D1Like,
-    type D1Statement,
-    DONATE_URL,
-    handleDonate,
-    handleSignup,
-    handleStats,
-    parseVolunteer,
-    suppress,
-    utmSlug,
-} from './volunteers'
-
-interface Call {
-    args: unknown[]
-    sql: string
-}
-
-/** Records every statement; `results` maps a SQL fragment to the rows `all()`/`first()` return. */
-const fakeDb = (results: Record<string, unknown[]> = {}, fail = false) => {
-    const calls: Call[] = []
-    const db: D1Like = {
-        prepare(sql: string) {
-            const call: Call = { args: [], sql }
-            // Longest matching fragment wins, so a GROUP BY query isn't caught by its plain COUNT prefix.
-            const rowsFor = () =>
-                Object.entries(results)
-                    .filter(([frag]) => sql.includes(frag))
-                    .sort(([a], [b]) => b.length - a.length)[0]?.[1] ?? []
-            const stmt: D1Statement = {
-                all: async <T>() => ({ results: rowsFor() as T[] }),
-                bind(...values: unknown[]) {
-                    call.args = values
-
-                    return stmt
-                },
-                first: async <T>() => (rowsFor()[0] ?? null) as null | T,
-                run: async () => {
-                    if (fail) throw new Error('db down')
-                    calls.push(call)
-                },
-            }
-
-            return stmt
-        },
-    }
-
-    return { calls, db }
-}
+import { fakeDb, turnstile } from '../../tests/formFakes'
+import { DONATE_URL, handleDonate, handleSignup, handleStats, parseVolunteer, suppress, utmSlug } from './volunteers'
 
 const form = (fields: Record<string, string | string[]>) => {
     const f = new FormData()
@@ -70,11 +24,6 @@ const valid = {
 
 const post = (fields: Record<string, string | string[]>) =>
     new Request('https://lavanti.fi/api/liity', { body: form(fields), method: 'POST' })
-
-const turnstile =
-    (success: boolean, hostname = 'lavanti.fi') =>
-    async () =>
-        new Response(JSON.stringify({ hostname, success }))
 
 const NOW = new Date('2026-10-02T12:34:56Z')
 
