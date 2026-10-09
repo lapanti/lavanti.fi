@@ -3,10 +3,13 @@
  * Finnish only: the form has no sv/en pages (spec: .agents/specs/recommendations/submission-form.md).
  */
 export const recommendationFormContent = {
-    /* Retention (three months for unpublished submissions) is stated in the privacy notice. */
+    /*
+     * Retention and the special-category (political opinion) explanation are in the linked
+     * privacy notice; the form keeps the consent itself short so recommending stays low-key.
+     */
     consent: {
         after: '',
-        before: 'Suostun siihen, että Lauri Lavannin vaalikampanja käsittelee antamiani tietoja ja julkaisee nimeni, tittelini, kuvani ja suositukseni lavanti.fi-sivustolla. Suositus kertoo poliittisesta kannastani. Minulla on oikeus käyttää lähettämääni kuvaa. ',
+        before: 'Suostun siihen, että Lauri Lavannin vaalikampanja käsittelee antamiani tietoja ja julkaisee nimeni, tittelini, kuvani ja suositukseni lavanti.fi-sivustolla. Minulla on oikeus antaa lähettämäni kuva kampanjan julkaistavaksi. ',
         linkText: 'Lue tietosuojaseloste.',
     },
     /** Shown above the form when the function sends the visitor back with ?virhe=<code>. */
