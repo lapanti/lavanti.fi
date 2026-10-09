@@ -7,10 +7,13 @@
  *   npm run recommendations -- reject <id>
  *
  * approve: asks for any missing sv/en title, normalises the photo to
- * src/images/originals/<slug>.jpg, uploads that one file to Cloudflare Images, appends the
- * entry to src/content/recommendations.json, bumps updatedDate on the three recommendations
- * pages, commits (GPG-signed, so the key must be unlocked) on feat/recommendation-<slug> from
- * origin/main, pushes, opens the PR, deletes the submission and returns to the starting branch.
+ * src/images/originals/<slug>.jpg (the local, gitignored archive), appends the entry to
+ * src/content/recommendations.json, bumps updatedDate on the three recommendations pages,
+ * commits (GPG-signed, so the key must be unlocked) on feat/recommendation-<slug> from
+ * origin/main, uploads the photo to Cloudflare Images, pushes, opens the PR, deletes the
+ * submission and returns to the starting branch. If a step fails before the commit, the
+ * branch and photo are removed so approve can run again; after the commit, the branch is
+ * kept and the remaining steps are printed as commands.
  * reject: deletes the submission.
  *
  * Env (.env): RECOMMENDATIONS_TOKEN; for approve also CF_ACCOUNT_ID and CF_API_TOKEN.
@@ -124,11 +127,14 @@ const approve = async (id: string | undefined) => {
     const file = join(ORIGINALS, `${slug}.jpg`)
     const branch = `feat/recommendation-${slug.toLowerCase()}`
 
-    // Check against origin/main, where the branch starts, not whatever branch this runs on.
+    /*
+     * Originals are a local, gitignored archive (Cloudflare Images serves the site), so the
+     * photo is checked on disk; the entry is checked on origin/main, where the branch starts.
+     */
     git('fetch', 'origin', 'main')
     const onMain = JSON.parse(git('show', 'origin/main:src/content/recommendations.json')) as Entry[]
-    if (git('ls-tree', '--name-only', 'origin/main', '--', relFile) !== '' || onMain.some((e) => e.image === slug)) {
-        fail(`${slug} is already in use on main; rename by hand or reject the duplicate.`)
+    if (existsSync(file) || onMain.some((e) => e.image === slug)) {
+        fail(`${slug} is already in use; rename by hand or reject the duplicate.`)
     }
     if (git('branch', '--list', branch) !== '' || git('ls-remote', '--heads', 'origin', branch) !== '') {
         fail(`${branch} already exists, probably from an earlier approve that stopped; finish or delete it first.`)
@@ -174,7 +180,8 @@ const approve = async (id: string | undefined) => {
             const path = join(ROOT, page)
             writeFileSync(path, bumpUpdatedDate(readFileSync(path, 'utf8'), today))
         }
-        git('add', file, DATA, ...PAGES.map((p) => join(ROOT, p)))
+        // The photo stays out of the commit: it lives in the gitignored originals archive.
+        git('add', DATA, ...PAGES.map((p) => join(ROOT, p)))
         // Commit before any external side effect: a locked GPG key fails here, with nothing uploaded.
         execFileSync('git', ['commit', '-S', '-m', title], { cwd: ROOT, stdio: 'inherit' })
         committed = true
