@@ -1,0 +1,104 @@
+# Feature: Recommendation submission form
+
+## Blueprint
+
+### Context
+Recommendations were collected with a Google Form and copied into the data file by hand. Google Forms can't take a photo upload. This feature replaces it with a form at `lavanti.fi/suosittele`. Submissions stay private until Lauri approves them, and approval opens a ready-to-merge PR.
+
+The repo is public, so nothing a visitor submits may reach GitHub before approval. Rejected entries and spam never become public.
+
+### Architecture
+
+```
+/suosittele/ ──301──▶ /fi/suosittele/  (form, noindex, Finnish only)
+POST   /api/suosittele             Turnstile + validate → D1 row + R2 photo → 303 /fi/suosittele/kiitos/
+GET    /api/suosittele/pending     Bearer RECOMMENDATIONS_TOKEN → pending rows (JSON, no photo bytes)
+GET    /api/suosittele/photo/:id   Bearer RECOMMENDATIONS_TOKEN → photo bytes
+DELETE /api/suosittele/:id         Bearer RECOMMENDATIONS_TOKEN → delete row + R2 object
+GET    /api/suosittele/stats       Bearer LIITY_STATS_TOKEN → { "pending": n }  (morning brief)
+local  npm run recommendations -- list | approve <id> | reject <id>
+```
+
+- **Logic:** `src/lib/recommendationSubmissions.ts`. The Pages Functions in `functions/api/suosittele*` are thin wrappers, like `functions/api/liity.ts`. The form helpers shared with `src/lib/volunteers.ts` (`text`, `redirect`, `json`, `timingSafeEqual`, `verifyTurnstile`) live in `src/lib/formHandling.ts`.
+- **Bindings:** the existing D1 `DB` (table `recommendation_submissions`, `migrations/0002_recommendation_submissions.sql`), R2 `RECOMMENDATION_PHOTOS`, and the secrets `TURNSTILE_SECRET`, `RECOMMENDATIONS_TOKEN` and `LIITY_STATS_TOKEN`.
+- **Fields**, the same as the old Google Form plus a photo:
+
+  | Field | Rule |
+  |---|---|
+  | `name` | required, 2–100 chars |
+  | `title_fi` | required, 2–100 chars |
+  | `title_sv`, `title_en` | optional, ≤ 100 chars |
+  | `recommendation` | required, 20–800 chars, Finnish |
+  | `photo` | required, `image/jpeg`, `image/png` or `image/webp`, ≤ 10 MB |
+  | `consent` | must equal `yes` |
+  | `website` | honeypot, must be empty |
+
+- **Stored per row:** the fields above, plus `photo_key`, `photo_type`, `created_at`, `consent_at` and `consent_version`. No IP, user agent or email is stored.
+- **Error flow:** same as the volunteer form. A rejected field produces `303 /fi/suosittele/?virhe=<code>#lomake`. A filled honeypot produces `303` to the thank-you page and nothing is stored. A missing binding or failed storage produces `virhe=palvelu`, and the log line names the cause, not the form data.
+- **Data file:** `src/content/recommendations.json` holds the array. `src/content/recommendations.ts` keeps the types and re-exports it typed. The CLI appends to the JSON without touching TS source.
+- **Approve (`scripts/recommendations.mts`):**
+  1. Fetches the row and the photo.
+  2. Prompts for any missing `title_sv`/`title_en`.
+  3. Normalizes the photo with sharp (EXIF rotate, long edge ≤ 1680, JPEG) to `src/images/originals/<slug>.jpg`.
+  4. POSTs that one file to CF Images with id `<slug>`.
+  5. Appends the entry with alt `Kuva: {name}` / `Foto: {name}` / `Photo of {name}` and bumps `updatedDate` on the three recommendations pages.
+  6. Commits GPG-signed on `feat/recommendation-<slug>` from `origin/main`, pushes and opens the PR with `gh pr create`.
+  7. Calls DELETE. `reject` calls DELETE only.
+
+  The slug is the name lowercased, with ä→a, å→a and ö→o, and non-alphanumerics collapsed to `-`.
+- **Retention:** pending rows older than 60 days are deleted by `volunteer-purge.yml`, and an R2 lifecycle rule deletes objects after 60 days. Approve and reject delete immediately.
+- **Crawlers:** both pages are `noindex: true` and have no `langAlternates`. Both are excluded in the sitemap filter. `public/_headers` sends `X-Robots-Tag: noindex` for `/fi/suosittele/*`.
+- **Photo preview:** the form shows the chosen photo from an object URL, so the CSP `img-src` includes `blob:`.
+
+### Anti-Patterns
+- Do not open PRs or write to GitHub from a Function. Submissions must stay private until approved.
+- Do not store IP addresses, user agents or Turnstile tokens with a submission.
+- Do not run `scripts/upload-to-cf-images.mts` from the approve command. It re-POSTs every original and times out; POST the single new file instead.
+- Do not inflect the name in generated alt text. Finnish case forms can't be derived from an arbitrary name.
+- Do not expose names or quotes through the stats endpoint. It returns the count only.
+- Do not echo form input back in an error redirect. The error is a fixed code.
+
+## Contract
+
+### Definition of Done
+- [ ] `/suosittele/` redirects (301) to `/fi/suosittele/`. Both form pages carry the robots noindex meta, are absent from the sitemap and get `X-Robots-Tag: noindex`.
+- [ ] A valid POST stores one row and one R2 object and returns 303 to `/fi/suosittele/kiitos/`.
+- [ ] Every rejection path stores nothing.
+- [ ] The token-gated endpoints return 401 without a valid bearer token.
+- [ ] DELETE removes both the row and the object.
+- [ ] Stats returns `{ pending }` only.
+- [ ] The recommendations pages render identically after the JSON move.
+- [ ] The privacy notice (fi/sv/en) describes the form, with `updatedDate` bumped.
+- [ ] Unit tests cover the parser and every handler. An E2E test covers the form page.
+
+### Scenarios
+
+**Scenario: Valid submission**
+- Given: a form with all required fields, a 2 MB JPEG, consent and a passing Turnstile check
+- When: it is POSTed to `/api/suosittele`
+- Then: one D1 row and one R2 object exist, and the response is `303 /fi/suosittele/kiitos/`
+
+**Scenario: Rejected submission**
+- Given: a form that is missing consent, has an 11 MB photo or a GIF, or fails Turnstile
+- When: it is POSTed
+- Then: the response is `303 /fi/suosittele/?virhe=<code>#lomake` and nothing is stored
+
+**Scenario: Honeypot**
+- Given: `website` is non-empty
+- When: it is POSTed
+- Then: the response is `303` to the thank-you page and nothing is stored
+
+**Scenario: Unauthorized inbox access**
+- Given: no bearer token, or the wrong one
+- When: any of the pending, photo, delete or stats endpoints is called
+- Then: the response is 401 with no data
+
+**Scenario: Approve**
+- Given: a pending submission
+- When: `npm run recommendations -- approve <id>` runs with the GPG key unlocked
+- Then: a PR adds one JSON entry and `src/images/originals/<slug>.jpg`, CF Images serves `<slug>`, and the submission is deleted
+
+**Scenario: Morning brief count**
+- Given: 2 pending rows
+- When: `GET /api/suosittele/stats` is called with `LIITY_STATS_TOKEN`
+- Then: the body is `{"pending":2}`
