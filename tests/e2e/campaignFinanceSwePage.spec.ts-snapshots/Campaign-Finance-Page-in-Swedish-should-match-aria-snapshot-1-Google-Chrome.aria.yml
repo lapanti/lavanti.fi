@@ -12,7 +12,7 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /3 \d+ € \+ 7 \d+ € ej inbetalt/
+    - definition: /2 \d+ € \+ 8 \d+ € ej inbetalt/
     - term: Använt hittills
     - definition: /0 € \+ 6 \d+ € bundet/
     - term: Kvar att samla in
@@ -48,7 +48,7 @@
     - figure "Budgetens pengar per källa samt andelar av hela budgeten":
       - text: ""
       - list:
-        - listitem: /Egna medel 3 \d+ € \+ 7 \d+ € ej inbetalt \d+,\d+ %/
+        - listitem: /Egna medel 2 \d+ € \+ 8 \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
         - listitem: /Privatpersoner 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Företag 0 € \d+,\d+ %/
@@ -76,7 +76,7 @@
         - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
         - listitem: /Valmöten 0 € \/ 2 \d+ €/
         - listitem: /Kostnader för anskaffning av bidrag mot vederlag 0 € \/ 1 \d+ €/
-        - listitem: /Övriga kostnader 0 € \/ 2 \d+ €/
+        - listitem: /Övriga kostnader 0 € \+ \d+ € bundet \/ 2 \d+ €/
     - paragraph: Jag specificerar utgifterna i samma kategorier som i redovisningen av valfinansieringen. Den fyllda stapeln är redan betald, den randiga delen är beställd eller avtalad, och det lodräta strecket visar kategorins budget.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]

@@ -114,7 +114,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /3 \d+ € \+ 7 \d+ € tilittämättä/
+    - definition: /2 \d+ € \+ 8 \d+ € tilittämättä/
     - term: Käytetty
     - definition: /0 € \+ 6 \d+ € sitouduttu/
     - term: Vielä kerättävä
@@ -150,6 +150,10 @@
         - heading "Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys" [level=3]
         - paragraph: Kirjastotalo Fyyri, Mörne-sali, Kirkkonummi
         - paragraph: Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Keskustelijat julkaistaan myöhemmin. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.
+        - paragraph:
+          - 'link "Tapahtuma Facebookissa: Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys"':
+            - /url: https://fb.me/e/4WfF0fkf3
+            - text: ""
     - text: Q & A
     - heading "Usein kysyttyä eduskuntavaaleista" [level=2]
     - heading /Missä vaalipiirissä Lauri Lavanti on ehdolla eduskuntavaaleissa \d+\?/ [level=3]

@@ -16,7 +16,7 @@
     - term: Spent so far
     - definition: /€0 \+ €\d+,\d+ committed/
     - term: Still to raise
-    - definition: /€\d+,\d+ As of 5 October \d+/
+    - definition: /€\d+,\d+ As of \d+ October \d+/
     - text: Why
     - heading "Why publish the figures at all?" [level=2]
     - paragraph: "Transparency and openness are essential to holding public power and public spending to account. In the same way, openness about how political actors are funded is an essential part of democracy. Yet the law only requires this information after the election. That is too late: voters should know who is funding the campaign of the candidate they choose. That is why I disclose my budget openly throughout the campaign, not only after it."
@@ -50,7 +50,7 @@
       - list:
         - listitem: /My own funds €\d+,\d+ \+ €\d+,\d+ pending \d+\.\d+%/
         - listitem: Loans €0 0.0%
-        - listitem: /Private individuals €0 \+ €\d+ pending 1\.1%/
+        - listitem: /Private individuals €0 \+ €\d+ pending 1\.3%/
         - listitem: Companies €0 0.0%
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
@@ -76,7 +76,7 @@
         - listitem: /Advertising design €0 \+ €\d+,\d+ committed \/ €\d+,\d+/
         - listitem: /Campaign events €0 \/ €\d+,\d+/
         - listitem: /Costs of fundraising that gives something in return €0 \/ €\d+,\d+/
-        - listitem: /Other costs €0 \/ €\d+,\d+/
+        - listitem: /Other costs €0 \+ €\d+ committed \/ €\d+,\d+/
     - paragraph: I break spending down into the same categories as the statutory disclosure. The solid bar is already paid, the striped part is ordered or agreed, and the vertical line marks the category’s budget.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]
