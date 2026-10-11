@@ -1,9 +1,9 @@
 {
-    "asOf": "2026-10-05",
+    "asOf": "2026-10-11",
     "raised": {
         "own": {
-            "banked": 3000,
-            "pending": 7000
+            "banked": 2000,
+            "pending": 8000
         },
         "loans": {
             "banked": 0,
@@ -11,7 +11,7 @@
         },
         "private": {
             "banked": 0,
-            "pending": 494
+            "pending": 589
         },
         "companies": {
             "banked": 0,
@@ -32,12 +32,12 @@
     },
     "spent": {
         "media": {
-            "budgeted": 11340,
+            "budgeted": 11890,
             "banked": 0,
             "committed": 4600
         },
         "outdoor": {
-            "budgeted": 20082,
+            "budgeted": 19845,
             "banked": 0,
             "committed": 0
         },
@@ -64,7 +64,7 @@
         "other": {
             "budgeted": 2825,
             "banked": 0,
-            "committed": 0
+            "committed": 180
         }
     }
 }

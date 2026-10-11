@@ -114,7 +114,7 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /3 \d+ € \+ 7 \d+ € ej inbetalt/
+    - definition: /2 \d+ € \+ 8 \d+ € ej inbetalt/
     - term: Använt hittills
     - definition: /0 € \+ 6 \d+ € bundet/
     - term: Kvar att samla in
@@ -150,6 +150,10 @@
         - heading "Hur mår Kyrkslätt? Utvecklingen av Centralskogen" [level=3]
         - paragraph: Bibliotekshuset Fyyri, Mörnesalen, Kyrkslätt
         - paragraph: Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Panelisterna presenteras senare. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.
+        - paragraph:
+          - 'link "Evenemanget på Facebook: Hur mår Kyrkslätt? Utvecklingen av Centralskogen"':
+            - /url: https://fb.me/e/4WfF0fkf3
+            - text: ""
     - text: Q & A
     - heading "Vanliga frågor om riksdagsvalet" [level=2]
     - heading /I vilken valkrets kandiderar Lauri Lavanti i riksdagsvalet \d+\?/ [level=3]

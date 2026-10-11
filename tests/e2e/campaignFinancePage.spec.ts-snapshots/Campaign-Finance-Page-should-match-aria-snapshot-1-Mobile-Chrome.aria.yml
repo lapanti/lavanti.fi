@@ -4,13 +4,15 @@
     - text: ""
     - emphasis: rahoitus
   - paragraph: Otan vastaan tukea yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Tältä sivulta löydät aina ajantasaisen tiedon siitä, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.
+  - link "Tue kampanjaa":
+    - /url: https://lavanti.fi/lahjoita
   - article:
     - text: Tilanne
     - heading "Mikä on kampanjan rahatilanne nyt?" [level=2]
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /3 \d+ € \+ 7 \d+ € tilittämättä/
+    - definition: /2 \d+ € \+ 8 \d+ € tilittämättä/
     - term: Käytetty
     - definition: /0 € \+ 6 \d+ € sitouduttu/
     - term: Vielä kerättävä
@@ -46,7 +48,7 @@
     - figure "Budjetin rahat lähteittäin sekä osuudet koko budjetista":
       - text: ""
       - list:
-        - listitem: /Omat varat 3 \d+ € \+ 7 \d+ € tilittämättä \d+,\d+ %/
+        - listitem: /Omat varat 2 \d+ € \+ 8 \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Lainat 0 € \d+,\d+ %/
         - listitem: /Yksityishenkilöt 0 € \+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Yritykset 0 € \d+,\d+ %/
@@ -74,7 +76,7 @@
         - listitem: /Mainonnan suunnittelu 0 € \+ 1 \d+ € sitouduttu \/ 1 \d+ €/
         - listitem: /Vaalitilaisuudet 0 € \/ 2 \d+ €/
         - listitem: /Vastikkeellisen tuen hankintakulut 0 € \/ 1 \d+ €/
-        - listitem: /Muut kulut 0 € \/ 2 \d+ €/
+        - listitem: /Muut kulut 0 € \+ \d+ € sitouduttu \/ 2 \d+ €/
     - paragraph: Erittelen kulut samoihin luokkiin kuin vaalirahoitusilmoituksessa. Umpinainen palkki on jo maksettu, raidoitettu osa on tilattu tai sovittu, ja pystyviiva näyttää luokan budjetin.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa vuonna \d+\?/ [level=2]
