@@ -1,0 +1,22 @@
+{
+    "id": 86,
+    "publishDate": "2026-10-12",
+    "updatedDate": "2026-10-12",
+    "tags": ["economy", "marketgreen", "national-politics", "parliamentary-elections-2027"],
+    "heroImage": "markkinavihreat-avaus-palkalla-pitaa-voida-vaurastua",
+    "authors": [
+        "lauri",
+        { "name": "Ulla Santti", "role": "eduskuntavaaliehdokas (Siilinjärvi), Vihreät" },
+        { "name": "Essi Lindberg", "role": "valtuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Johanna Muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Taru Hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" }
+    ],
+    "externalPublications": [
+        {
+            "date": "2026-10-12",
+            "name": "Markkinavihreät",
+            "url": "https://markkinavihreat.fi/ehdotukset/palkalla-pitaa-voida-vaurastua/"
+        }
+    ]
+}
