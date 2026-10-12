@@ -125,6 +125,24 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article "Your paycheck should build wealth!":
+          - 'link "Market Greens proposal: Your paycheck should build wealth! Your paycheck should build wealth!"':
+            - /url: /en/blog/86/your-paycheck-should-build-wealth/
+            - 'img "Market Greens proposal: Your paycheck should build wealth!"'
+            - heading "Your paycheck should build wealth!" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "A Market Greens proposal: a wealth account that lets you invest money saved from your wages before tax. Four reasons it makes the market economy fairer."
+        - list:
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Marketgreen":
+              - /url: /en/category/marketgreen/
+          - listitem:
+            - link "National politics":
+              - /url: /en/category/national-politics/
+      - listitem:
         - 'article "Digital independence: Finland''s ability to choose"':
           - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
             - /url: /en/blog/85/digital-independence-happy-hacking-day/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Western Uusimaa":
               - /url: /en/category/western-uusimaa/
-      - listitem:
-        - article "Open Source Is the Cornerstone of Digital Independence":
-          - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Open Source Is the Cornerstone of Digital Independence":
-            - /url: /en/blog/76/open-source-is-the-cornerstone-of-digital-independence/
-            - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
-            - heading "Open Source Is the Cornerstone of Digital Independence" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: The EU tech sovereignty package names open source as the cornerstone of digital independence. Why a closed system is a risk and open source the fix.
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
-          - listitem:
-            - link "Digitalisation":
-              - /url: /en/category/digitalisation/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

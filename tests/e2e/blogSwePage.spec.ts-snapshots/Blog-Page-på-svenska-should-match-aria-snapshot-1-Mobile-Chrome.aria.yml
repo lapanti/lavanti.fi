@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Med lön ska man kunna bli förmögen!":
+            - 'link "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen! Med lön ska man kunna bli förmögen!"':
+              - /url: /sv/blog/86/med-lon-ska-man-kunna-bli-formogen/
+              - 'img "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen!"'
+              - heading "Med lön ska man kunna bli förmögen!" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "De marknadsgrönas initiativ: ett förmögenhetskonto där pengar som sparas av lönen kan investeras före skatt. Fyra skäl till en rättvisare marknadsekonomi."
+          - list:
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Marknadsgrön":
+                - /url: /sv/kategori/marknadsgron/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+        - listitem:
           - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
             - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
               - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
@@ -131,24 +149,6 @@
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-        - listitem:
-          - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
-            - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
-              - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
-              - img "Närbild av servrar i ett datacenter med gröna statuslampor."
-              - heading "Datacenter kan vara Finlands trumfkort i den internationella politiken" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Ett läckt amerikanskt telegram avslöjade påtryckningar mot datasuveränitet. Datacenter kan bli Finlands trumfkort, om de byggs på våra egna villkor.
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
@@ -288,6 +288,24 @@
       - paragraph: Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.
       - list:
         - listitem:
+          - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
+            - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
+              - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
+              - img "Närbild av servrar i ett datacenter med gröna statuslampor."
+              - heading "Datacenter kan vara Finlands trumfkort i den internationella politiken" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Ett läckt amerikanskt telegram avslöjade påtryckningar mot datasuveränitet. Datacenter kan bli Finlands trumfkort, om de byggs på våra egna villkor.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+        - listitem:
           - article "Öppen källkod är grundstenen för digital självständighet":
             - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Öppen källkod är grundstenen för digital självständighet":
               - /url: /sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Teknologi":
                 - /url: /sv/kategori/teknologi/
-        - listitem:
-          - article "Finland kan göra elektrifieringen till en konkurrensfördel":
-            - link "Kraftledningsstolpar mot en blå himmel Finland kan göra elektrifieringen till en konkurrensfördel":
-              - /url: /sv/blog/65/finland-kan-gora-elektrifieringen-till-en-konkurrensfordel/
-              - img "Kraftledningsstolpar mot en blå himmel"
-              - heading "Finland kan göra elektrifieringen till en konkurrensfördel" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Caruna byter ägare, men elnätets framtid avgörs av reglering — inte av ägaren. Finland kan göra elektrifieringen till en konkurrensfördel.
-          - list:
-            - listitem:
-              - link "Infrastruktur":
-                - /url: /sv/kategori/infrastruktur/
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/
