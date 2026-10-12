@@ -99,6 +99,24 @@
       - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
         - listitem:
+          - article "Palkalla pitää voida vaurastua!":
+            - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
+              - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
+              - 'img "Markkinavihreiden avaus: Palkalla pitää voida vaurastua!"'
+              - heading "Palkalla pitää voida vaurastua!" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Markkinavihreiden avaus: varallisuustili, jolla palkasta säästetyn rahan voi sijoittaa ennen veroja. Neljä syytä, miksi se tekee markkinataloudesta reilumman."
+          - list:
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Markkinavihreä":
+                - /url: /fi/kategoria/markkinavihrea/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+        - listitem:
           - article "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
             - link "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle. Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
               - /url: /fi/blog/84/bensatuki-syventaisi-tuontiriippuvuutta/
@@ -131,24 +149,6 @@
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-        - listitem:
-          - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-            - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-              - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
-              - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
-              - heading "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Vuodettu Yhdysvaltain sähke paljasti painostuksen datasuvereniteettia vastaan. Datakeskukset voivat olla Suomen valttikortti, jos ne rakennetaan ehdoillamme.
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
@@ -288,6 +288,24 @@
       - paragraph: Digitaalinen itsenäisyys tarkoittaa myös datan siirrettävyyttä ja riippuvuuden yksittäisistä toimittajista välttämistä. Julkisella rahalla tuotetun julkisen datan tulee olla siirrettävää ja tallennettuna siten, että sitä eivät ulkopuoliset tahot voi väärinkäyttää.
       - list:
         - listitem:
+          - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
+            - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
+              - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
+              - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
+              - heading "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Vuodettu Yhdysvaltain sähke paljasti painostuksen datasuvereniteettia vastaan. Datakeskukset voivat olla Suomen valttikortti, jos ne rakennetaan ehdoillamme.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+        - listitem:
           - article "Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
             - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
               - /url: /fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Teknologia":
                 - /url: /fi/kategoria/teknologia/
-        - listitem:
-          - article "Suomi voi tehdä sähköistymisestä kilpailuedun":
-            - link "Korkeajännitteisiä voimajohtopylonita sinistä taivasta vasten Suomi voi tehdä sähköistymisestä kilpailuedun":
-              - /url: /fi/blog/65/suomi-voi-tehda-sahkoistymisesta-kilpailuedun/
-              - img "Korkeajännitteisiä voimajohtopylonita sinistä taivasta vasten"
-              - heading "Suomi voi tehdä sähköistymisestä kilpailuedun" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Caruna vaihtaa omistajaa, mutta sähköverkon tulevaisuuden ratkaisee sääntely — ei omistaja. Suomi voi tehdä sähköistymisestä kilpailuedun.
-          - list:
-            - listitem:
-              - link "Infra":
-                - /url: /fi/kategoria/infra/
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/

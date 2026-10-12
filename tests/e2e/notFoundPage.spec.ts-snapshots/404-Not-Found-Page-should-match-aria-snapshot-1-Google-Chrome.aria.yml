@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Palkalla pitää voida vaurastua!":
+          - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
+            - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
+            - 'img "Markkinavihreiden avaus: Palkalla pitää voida vaurastua!"'
+            - heading "Palkalla pitää voida vaurastua!" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Markkinavihreiden avaus: varallisuustili, jolla palkasta säästetyn rahan voi sijoittaa ennen veroja. Neljä syytä, miksi se tekee markkinataloudesta reilumman."
+        - list:
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Markkinavihreä":
+              - /url: /fi/kategoria/markkinavihrea/
+          - listitem:
+            - link "Kansallinen politiikka":
+              - /url: /fi/kategoria/kansallinen-politiikka/
+      - listitem:
         - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
           - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
             - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Infra":
               - /url: /fi/kategoria/infra/
-      - listitem:
-        - article "HSL:n matkalippujen hintojen korottaminen on virhe":
-          - link "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa. HSL:n matkalippujen hintojen korottaminen on virhe":
-            - /url: /fi/blog/70/hsln-matkalippujen-hintojen-korottaminen-on-virhe/
-            - img "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa."
-            - heading "HSL:n matkalippujen hintojen korottaminen on virhe" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /HSL esittää lippuihin noin kolmen prosentin vuosikorotusta \d+–\d+\. Tasakorotus osuu kovimmin Kirkkonummeen, jossa työmatka vaatii ABCD-lipun\./
-        - list:
-          - listitem:
-            - link "Liikenne":
-              - /url: /fi/kategoria/liikenne/
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /fi/kategoria/kirkkonummi/
-          - listitem:
-            - link "Länsi-Uusimaa":
-              - /url: /fi/kategoria/lansi-uusimaa/
