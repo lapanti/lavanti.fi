@@ -33,6 +33,25 @@
       - link "Wikipedia-artikkeli":
         - /url: https://fi.wikipedia.org/wiki/Lauri_Lavanti
       - text: .
+    - text: Kuvat
+    - heading "Juuret" [level=2]
+    - list "Juuret":
+      - listitem:
+        - figure /\d+ – Matkalla saareen mökille/:
+          - img "Poika punaisessa pelastusliivissä istuu veneessä ja katsoo tyyntä merta, taustalla metsäinen ranta."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Basistina bändissä/:
+          - img "Pitkähiuksinen teini soittaa bassoa yksin pimeällä lavalla, vieressä nuottiteline."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Ylioppilas/:
+          - img "Lauri Lavanti valkoisessa ylioppilaslakissa ja harmaassa puvussa hymyilee raidallisen markiisin alla lakkiaispäivänä."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Varusmiespalvelus/:
+          - img "Lauri Lavanti vihreässä baskerissa ja maastopuvussa punatiilisen kasarmin seinän edessä."
+          - text: ""
     - text: Työ
     - heading "Teknologiaosaaja, joka yhdistää kilpailukyvyn ja yksityisyyden suojan" [level=2]
     - paragraph: Toimin johtavana ohjelmistokehittäjänä ja vastaan tiimimme palveluiden teknisistä ratkaisuista. Työni keskiössä ovat vaativien kokonaisuuksien suunnittelu, kehittäminen ja ylläpito. Johdan teknisiä linjauksia, rakennan tiimin tekoälytyökaluja ja käyn aktiivista vuoropuhelua sidosryhmien kanssa, jotta ratkaisut vastaavat todellisia tarpeita ja kestävät aikaa.
@@ -77,10 +96,10 @@
         - link "Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/
     - paragraph:
-      - text: /Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Tärkeimmät luottamustehtäväni ovat Kirkkonummen kunnanvaltuutettuna ja Vihreän valtuustoryhmän puheenjohtajana toimiminen\. Olen myös mukana/
-      - link "Markkinavihreissä":
+      - text: /Olen Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Tärkeimmät luottamustehtäväni ovat Kirkkonummen kunnanvaltuutettuna ja Vihreän valtuustoryhmän puheenjohtajana toimiminen\. Perustin/
+      - link "Markkinavihreät":
         - /url: https://markkinavihreat.fi/ketka/lauri-lavanti/
-      - text: ", Vihreiden sisällä toimivassa verkostossa, jota yhdistää usko siihen, että markkinatalous ja kunnianhimoinen ympäristöpolitiikka kuuluvat yhteen. Tarvitsemme parempaa ymmärrystä teknologian mahdollisuuksista ja riskeistä sekä rohkeutta panostaa koulutukseen ja korkean tuottavuuden teknologiseen kehitykseen."
+      - text: ", Vihreiden sisällä toimivan verkoston, jota yhdistää usko siihen, että markkinatalous ja kunnianhimoinen ympäristöpolitiikka kuuluvat yhteen. Tarvitsemme parempaa ymmärrystä teknologian mahdollisuuksista ja riskeistä sekä rohkeutta panostaa koulutukseen ja korkean tuottavuuden teknologiseen kehitykseen."
     - list:
       - listitem:
         - link "Vihreät – Markkinatalouden aito puolustaja":
@@ -112,6 +131,25 @@
       - listitem:
         - 'link "Valtuustoaloite: Kirkkonummen digitaalisen huoltovarmuuden vahvistaminen"':
           - /url: /fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/
+    - text: Kuvat
+    - heading "Politiikassa" [level=2]
+    - list "Politiikassa":
+      - listitem:
+        - figure /\d+ – Ensimmäistä kertaa ehdolla kuntavaaleissa/:
+          - img "Lauri Lavanti vaaleassa t-paidassa kädet puuskassa hymyilee syksyisessä koivu- ja kuusimetsässä."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Matkalla perusturvajaoston kokoukseen/:
+          - img "Lähikuva Lauri Lavannista lippis päässä Kirkkonummen kunnantalon kyltin edessä."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Ehdolla ensimmäisissä aluevaaleissa/:
+          - img "Lauri Lavanti tummassa takissa seisoo vihreällä pellolla, taustalla syksyisiä puita."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Puoluekokous Turussa/:
+          - 'img "Urheiluhalli puoluekokouskäytössä: rivejä edustajien pöytiä, lava suurine näyttöineen ja vihreitä koristeita."'
+          - text: ""
     - text: Koulutus
     - heading "Monialaisuus ja laaja-alainen näkemys" [level=2]
     - paragraph: Olen koulutukseltani informaatioverkostojen diplomi-insinööri. Koulutusohjelma rakentuu tietotekniikan päälle, mutta laajentuu tekniikasta muun muassa estetiikkaan ja filosofiaan. Koulutus on opettanut katsomaan järjestelmiä sekä teknisinä että inhimillisinä kokonaisuuksina.
@@ -123,6 +161,25 @@
     - 'figure "Kuva: Markus Isomeri"':
       - img "Lauri Lavanti työskentelee kannettavalla tietokoneella Aalto-yliopiston päärakennuksen Amfin portailla."
       - text: ""
+    - text: Kuvat
+    - heading "Vapaalla" [level=2]
+    - list "Vapaalla":
+      - listitem:
+        - figure /\d+ – Athenen \(informaatioverkostojen kilta\) hallituksessa vastuussa ulkomaalaisista opiskelijoista/:
+          - img "Lauri Lavanti tupsulakissa ja haalarimerkkien peittämissä vihreissä opiskelijahaalareissa pihalla wappuna."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Amerikkalainen jalkapallo/:
+          - img "Lauri Lavanti silmämustalla ja lippis takaperin, amerikkalainen jalkapallo rintaa vasten."
+          - text: ""
+      - listitem:
+        - 'figure /\d+ – Opiskelijamaajoukkueessa, Suomi–Japani Kuva: Jari Turunen/':
+          - img /Lauri Lavanti tummansinisessä pelipaidassa numero \d+ ja kypärässä juoksee kentälle, taustalla cheerleadereita\./
+          - text: ""
+      - listitem:
+        - figure /\d+ – Potkupyöräharjoituksia esikoisen kanssa/:
+          - img "Lauri Lavanti vihreässä takissa kumartuu pienen keltahaalarisen ja kypäräpäisen lapsen puoleen potkupyörällä pihalla."
+          - text: ""
     - heading "Luottamustoimet" [level=2]
     - list:
       - listitem:
