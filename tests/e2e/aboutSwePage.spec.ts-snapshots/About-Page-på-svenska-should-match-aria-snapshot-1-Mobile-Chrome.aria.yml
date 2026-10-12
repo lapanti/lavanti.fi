@@ -33,6 +33,25 @@
       - link "Wikipedia-artikel":
         - /url: https://fi.wikipedia.org/wiki/Lauri_Lavanti
       - text: (på finska).
+    - text: Bilder
+    - heading "Rötter" [level=2]
+    - list "Rötter":
+      - listitem:
+        - figure /\d+ – På väg till stugan på ön/:
+          - img "En pojke i röd flytväst sitter i en båt och ser ut över ett stilla hav, med en skogsklädd strand bakom."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Basist i ett band/:
+          - img "En tonåring med långt hår spelar basgitarr ensam på en mörk scen, med ett notställ bredvid."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Student/:
+          - img "Lauri Lavanti i vit studentmössa och grå kostym ler under en randig markis på studentdagen."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Värnplikt/:
+          - img "Lauri Lavanti i grön basker och kamouflageuniform framför en kasernvägg i rött tegel."
+          - text: ""
     - text: Arbete
     - heading "En teknologiexpert som förenar konkurrenskraft och integritetsskydd" [level=2]
     - paragraph: Jag arbetar som ledande programutvecklare och ansvarar för de tekniska lösningarna i vårt teams tjänster. I mitt arbete står planering, utveckling och underhåll av krävande helheter i centrum. Jag leder tekniska riktlinjer, bygger teamets AI-verktyg och för en aktiv dialog med intressenter för att säkerställa att lösningarna motsvarar verkliga behov och håller över tid.
@@ -77,7 +96,7 @@
         - link "Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/
     - paragraph:
-      - text: /Jag är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Mina viktigaste förtroendeuppdrag är att vara kommunfullmäktigeledamot i Kyrkslätt och ordförande för Gröna fullmäktigegruppen\. Jag är också med i/
+      - text: /Jag är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Mina viktigaste förtroendeuppdrag är att vara kommunfullmäktigeledamot i Kyrkslätt och ordförande för Gröna fullmäktigegruppen\. Jag grundade/
       - link "Markkinavihreät":
         - /url: https://markkinavihreat.fi/sv/ketka/lauri-lavanti/
       - text: (de marknadsgröna), ett nätverk inom De Gröna som förenas av tron att marknadsekonomi och ambitiös miljöpolitik går hand i hand. Vi behöver bättre förståelse för teknologins möjligheter och risker samt mod att satsa på utbildning och högproduktiv teknologisk utveckling.
@@ -112,6 +131,25 @@
       - listitem:
         - 'link "Fullmäktigemotion: digital beredskap"':
           - /url: /sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/
+    - text: Bilder
+    - heading "I politiken" [level=2]
+    - list "I politiken":
+      - listitem:
+        - figure /\d+ – Kandiderar för första gången i kommunalvalet/:
+          - img "Lauri Lavanti i ljus t-shirt med armarna i kors ler i en höstlig björk- och granskog."
+          - text: ""
+      - listitem:
+        - figure /\d+ – På väg till grundtrygghetssektionens möte/:
+          - img "Närbild på Lauri Lavanti i keps framför Kyrkslätts kommunhus skylt."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Kandidat i det första välfärdsområdesvalet/:
+          - img "Lauri Lavanti i mörk jacka står på en grön åker med höstträd bakom sig."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Partikongressen i Åbo/:
+          - 'img "En idrottshall uppställd för partikongress: rader av delegatbord, en scen med stor skärm och gröna dekorationer."'
+          - text: ""
     - text: Utbildning
     - heading "Mångdisciplinär och bred syn" [level=2]
     - paragraph: Jag är utbildad diplomingenjör i informationsnätverk. Utbildningsprogrammet bygger på datateknik, men breddas från teknik till bland annat estetik och filosofi. Utbildningen har lärt mig att se system som både tekniska och mänskliga helheter.
@@ -123,6 +161,25 @@
     - 'figure "Foto: Markus Isomeri"':
       - img "Lauri Lavanti jobbar på sin bärbara dator i Amfi-trapporna i Aalto-universitetets huvudbyggnad."
       - text: ""
+    - text: Bilder
+    - heading "På fritiden" [level=2]
+    - list "På fritiden":
+      - listitem:
+        - figure /\d+ – I styrelsen för Athene, informationsnätverkens gille, ansvarig för utländska studerande/:
+          - img "Lauri Lavanti i teknologmössa och grön studentoverall full av märken, på en gård under valborg."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Amerikansk fotboll/:
+          - img "Lauri Lavanti med svart under ögonen och keps bakochfram, kramar en amerikansk fotboll mot bröstet."
+          - text: ""
+      - listitem:
+        - 'figure /\d+ – I studentlandslaget, Finland–Japan Foto: Jari Turunen/':
+          - img /Lauri Lavanti i marinblå tröja med nummer \d+ och hjälm springer in på planen, med cheerleaders suddigt bakom\./
+          - text: ""
+      - listitem:
+        - figure /\d+ – Springcykelövningar med äldsta barnet/:
+          - img "Lauri Lavanti i grön jacka böjer sig över ett litet barn i gul overall och hjälm på en springcykel på en gård."
+          - text: ""
     - heading "Förtroendeuppdrag" [level=2]
     - list:
       - listitem:

@@ -33,6 +33,25 @@
       - link "Wikipedia article":
         - /url: https://fi.wikipedia.org/wiki/Lauri_Lavanti
       - text: (in Finnish).
+    - text: Photos
+    - heading "Roots" [level=2]
+    - list "Roots":
+      - listitem:
+        - figure /\d+ – On the way to the island cottage/:
+          - img "A boy in a red life vest sitting in a boat, looking out over a calm sea with a wooded shore behind."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Playing bass in a band/:
+          - img "A teenager with long hair playing a bass guitar alone on a dark stage, a music stand beside him."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Graduation/:
+          - img "Lauri Lavanti in a white student cap and a grey suit, smiling under a striped awning on graduation day."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Military service/:
+          - img "Lauri Lavanti in a green beret and camouflage uniform in front of a red-brick barracks wall."
+          - text: ""
     - text: Work
     - heading "A technology expert who combines competitiveness and privacy" [level=2]
     - paragraph: I work as a lead developer and am responsible for the technical solutions of our team’s services. My work focuses on the design, development, and maintenance of demanding systems. I manage technical guidelines, build the team’s AI tools, and engage in active dialogue with stakeholders to ensure that solutions meet real needs and stand the test of time.
@@ -77,7 +96,7 @@
         - link "Digital independence":
           - /url: /en/category/digital-independence/
     - paragraph:
-      - text: /I am the Greens’ parliamentary candidate in the Uusimaa electoral district in the \d+ elections\. My most important civic roles are serving as municipal councillor in Kirkkonummi and chair of the Green council group\. I am also part of/
+      - text: /I am the Greens’ parliamentary candidate in the Uusimaa electoral district in the \d+ elections\. My most important civic roles are serving as municipal councillor in Kirkkonummi and chair of the Green council group\. I founded/
       - link "Markkinavihreät":
         - /url: https://markkinavihreat.fi/en/ketka/lauri-lavanti/
       - text: ", a network within the Greens united by a belief that market economics and ambitious environmental policy belong together. We need a better understanding of the opportunities and risks presented by technology, as well as the courage to invest in education and high-productivity technological development."
@@ -112,6 +131,25 @@
       - listitem:
         - 'link "Council initiative: digital resilience"':
           - /url: /en/blog/59/council-initiative-strengthening-kirkkonummis-digital-resilience/
+    - text: Photos
+    - heading "In politics" [level=2]
+    - list "In politics":
+      - listitem:
+        - figure /\d+ – Running for the first time in the municipal elections/:
+          - img "Lauri Lavanti in a light t-shirt with arms crossed, smiling in an autumn birch and spruce forest."
+          - text: ""
+      - listitem:
+        - figure /\d+ – On the way to a social services committee meeting/:
+          - img "Close-up of Lauri Lavanti in a cap in front of the Kirkkonummi town hall sign."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Running in the first county elections/:
+          - img "Lauri Lavanti in a dark jacket standing in a green field with autumn trees behind him."
+          - text: ""
+      - listitem:
+        - figure /\d+ – Party congress in Turku/:
+          - 'img "A sports hall set up as a party congress: rows of delegate tables, a stage with a large screen and green decorations."'
+          - text: ""
     - text: Education
     - heading "Multidisciplinarity and a broad perspective" [level=2]
     - paragraph: By training, I am a Master of Science (Tech.) from the study programme of information networks. The program is based on information technology, but it also covers other subjects such as aesthetics and philosophy. The program has taught me to view systems as both technical and humane entities.
@@ -123,6 +161,25 @@
     - 'figure "Photo: Markus Isomeri"':
       - img "Lauri Lavanti works on his laptop on the Amfi steps of Aalto University's main building."
       - text: ""
+    - text: Photos
+    - heading "Off duty" [level=2]
+    - list "Off duty":
+      - listitem:
+        - figure /\d+ – On the board of Athene, the information networks guild, in charge of international students/:
+          - img "Lauri Lavanti in a tasselled student cap and a green student overall covered in patches, in a garden at Wappu."
+          - text: ""
+      - listitem:
+        - figure /\d+ – American football/:
+          - img "Lauri Lavanti with eye black and a backwards cap, hugging an American football against his chest."
+          - text: ""
+      - listitem:
+        - 'figure /\d+ – Finland student national team, Finland–Japan Photo: Jari Turunen/':
+          - img /Lauri Lavanti in a navy number \d+ jersey and helmet running onto the field, cheerleaders blurred behind him\./
+          - text: ""
+      - listitem:
+        - figure /\d+ – First balance-bike lessons/:
+          - img "Lauri Lavanti in a green jacket bending over a small child in a yellow overall and helmet on a balance bike in a yard."
+          - text: ""
     - heading "Civic roles" [level=2]
     - list:
       - listitem:
