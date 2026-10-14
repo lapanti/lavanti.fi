@@ -84,6 +84,38 @@ export const campaignEvents: CampaignEvent[] = [
         topicConfirmed: true,
     },
     {
+        date: '2026-11-22',
+        endTime: '16:00',
+        id: 'kampanjatiimin-avoin-tilaisuus',
+        locales: {
+            en: {
+                description:
+                    'The campaign team is meeting again. We will go through where the campaign stands now and agree on the next steps towards the election spring. Welcome to join us if you want to help build the campaign.',
+                locality: 'Espoo',
+                title: 'Open campaign team meeting',
+                venue: 'Entresse Library, Blue room',
+            },
+            fi: {
+                description:
+                    'Kampanjatiimi kokoontuu taas. Käymme läpi, missä kampanja on nyt, ja sovimme seuraavat askeleet kohti vaalikevättä. Tervetuloa mukaan, jos haluat olla rakentamassa kampanjaa.',
+                locality: 'Espoo',
+                title: 'Kampanjatiimin avoin tapaaminen',
+                venue: 'Entressen kirjasto, Blue room',
+            },
+            sv: {
+                description:
+                    'Kampanjteamet samlas på nytt. Vi går igenom var kampanjen står just nu och kommer överens om nästa steg inför valvåren. Välkommen med om du vill vara med och bygga kampanjen.',
+                locality: 'Esbo',
+                title: 'Kampanjteamets öppna träff',
+                venue: 'Entresse bibliotek, Blue room',
+            },
+        },
+        postalCode: '02770',
+        startTime: '14:00',
+        streetAddress: 'Siltakatu 11',
+        topicConfirmed: false,
+    },
+    {
         date: '2026-11-30',
         fbUrl: 'https://fb.me/e/4WfF0fkf3',
         id: 'fyyri-morne',
