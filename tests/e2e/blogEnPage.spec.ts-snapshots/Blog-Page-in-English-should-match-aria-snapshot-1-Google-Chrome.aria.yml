@@ -36,6 +36,42 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
+          - article "Is AI taking the programmer's job?":
+            - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
+              - /url: /en/blog/87/will-ai-take-programmers-jobs/
+              - img "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day"
+              - heading "Is AI taking the programmer's job?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "AI and work through a developer's eyes: is AI taking the programmer's job, what happens to juniors, and how skills and social security can keep pace."
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "Education":
+                - /url: /en/category/education/
+        - listitem:
+          - article "Why Does Finland Need a Digital Ministry?":
+            - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Why Does Finland Need a Digital Ministry?"':
+              - /url: /en/blog/81/why-finland-needs-a-digital-ministry/
+              - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
+              - heading "Why Does Finland Need a Digital Ministry?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Fragmented AI policy is a regulatory risk for business. A digital ministry and a threshold set by Parliament would bring predictability and protect small firms.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Entrepreneurship":
+                - /url: /en/category/entrepreneurship/
+        - listitem:
           - 'article "Digital independence: Finland''s ability to choose"':
             - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
               - /url: /en/blog/85/digital-independence-happy-hacking-day/
@@ -53,42 +89,6 @@
             - listitem:
               - link "Technology":
                 - /url: /en/category/technology/
-        - listitem:
-          - article "YEL must not raise the entrepreneurship barrier":
-            - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
-              - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
-              - img "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle."
-              - heading "YEL must not raise the entrepreneurship barrier" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Finland's YEL reform would scrap the new-entrepreneur discount just as AI lowers the barrier to starting a business. Three fixes that keep the barrier low.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Entrepreneurship":
-                - /url: /en/category/entrepreneurship/
-        - listitem:
-          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
-              - /url: /en/blog/67/my-candidacy-for-parliament/
-              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
-              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
-          - list:
-            - listitem:
-              - link /Parliamentary elections \d+/:
-                - /url: /en/category/parliamentary-elections-2027/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
       - paragraph:
         - link "All posts about AI":
           - /url: /en/category/artificial-intelligence/
@@ -261,23 +261,23 @@
               - link "Freedom":
                 - /url: /en/category/freedom/
         - listitem:
-          - 'article "Digital independence: 5 + 1 choices for everyday life"':
-            - 'link "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads ''Digital independence'', ''Digitaalinen itsenäisyys'' and ''Digital självständighet''. Copyright for the image belongs to the Digital Independence citizens'' initiative. Digital independence: 5 + 1 choices for everyday life"':
-              - /url: /en/blog/66/digital-independence-five-plus-one-everyday-choices/
-              - img "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative."
-              - 'heading "Digital independence: 5 + 1 choices for everyday life" [level=3]'
+          - 'article /Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+            - 'link /Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background\. Photo: Markus Isomeri\. Running for parliament in \d+: Finland needs digital independence in the age of AI/':
+              - /url: /en/blog/67/my-candidacy-for-parliament/
+              - 'img "Lauri Lavanti smiling in front of a glass-and-wood facade with a sculpture in the background. Photo: Markus Isomeri."'
+              - 'heading /Running for parliament in \d+: Finland needs digital independence in the age of AI/ [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital independence is built through everyday choices. Here are 5 + 1 concrete ways to strengthen it and digital security of supply yourself.
+            - paragraph: /I am running as a Green candidate in Uusimaa for the \d+ parliamentary election\. My goal is a digitally independent Finland in the age of AI\./
           - list:
+            - listitem:
+              - link /Parliamentary elections \d+/:
+                - /url: /en/category/parliamentary-elections-2027/
+            - listitem:
+              - link "National politics":
+                - /url: /en/category/national-politics/
             - listitem:
               - link "Digital independence":
                 - /url: /en/category/digital-independence/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Security":
-                - /url: /en/category/security/
       - paragraph:
         - link "All posts about Freedom":
           - /url: /en/category/freedom/

@@ -127,6 +127,42 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Tar AI programmerarens jobb?":
+          - link "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag Tar AI programmerarens jobb?":
+            - /url: /sv/blog/87/tar-ai-programmerarens-jobb/
+            - img "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag"
+            - heading "Tar AI programmerarens jobb?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "AI och arbete ur en utvecklares perspektiv: tar AI programmerarens jobb, vad händer med juniorer och hur kompetensen och social trygghet hänger med."
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Utbildning":
+              - /url: /sv/kategori/utbildning/
+      - listitem:
+        - article "Varför behöver Finland ett digitalministerium?":
+          - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Varför behöver Finland ett digitalministerium?"':
+            - /url: /sv/blog/81/varfor-finland-behover-ett-digitalministerium/
+            - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
+            - heading "Varför behöver Finland ett digitalministerium?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Splittrad AI-politik är en regleringsrisk för företag. Ett digitalministerium och en tröskel som riksdagen beslutar ger förutsägbarhet och skyddar små företag.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Digitalisering":
+              - /url: /sv/kategori/digitalisering/
+          - listitem:
+            - link "Företagande":
+              - /url: /sv/kategori/foretagande/
+      - listitem:
         - article "Med lön ska man kunna bli förmögen!":
           - 'link "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen! Med lön ska man kunna bli förmögen!"':
             - /url: /sv/blog/86/med-lon-ska-man-kunna-bli-formogen/
@@ -252,42 +288,6 @@
           - listitem:
             - link "Ekonomi":
               - /url: /sv/kategori/ekonomi/
-      - listitem:
-        - article "En stabil miljö ger investeringar, ryckighet tar dem":
-          - link "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i en marinblå kavaj, en blommig skjorta och ljusa byxor. En stabil miljö ger investeringar, ryckighet tar dem":
-            - /url: /sv/blog/77/elmarknaden-google-pristak/
-            - img "Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i en marinblå kavaj, en blommig skjorta och ljusa byxor."
-            - heading "En stabil miljö ger investeringar, ryckighet tar dem" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Googles investering på \d+ miljarder euro föddes ur en fungerande elmarknad\. Ett pristak skulle ta bort prissignalen just när den behövs som mest\./
-        - list:
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Marknadsgrön":
-              - /url: /sv/kategori/marknadsgron/
-          - listitem:
-            - link "Infrastruktur":
-              - /url: /sv/kategori/infrastruktur/
-      - listitem:
-        - article "Det är ett misstag att höja priserna på HRT:s resebiljetter":
-          - 'link "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta. Det är ett misstag att höja priserna på HRT:s resebiljetter"':
-            - /url: /sv/blog/70/hrts-biljettpriser-hojning-ar-ett-misstag/
-            - 'img "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta."'
-            - heading "Det är ett misstag att höja priserna på HRT:s resebiljetter" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /HRT föreslår en höjning på cirka tre procent per år \d+–\d+\. En lika stor procenthöjning drabbar Kyrkslätt hårdast, där pendling kräver ABCD-biljett\./
-        - list:
-          - listitem:
-            - link "Trafik":
-              - /url: /sv/kategori/trafik/
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link "Västra Nyland":
-              - /url: /sv/kategori/vastra-nyland/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
