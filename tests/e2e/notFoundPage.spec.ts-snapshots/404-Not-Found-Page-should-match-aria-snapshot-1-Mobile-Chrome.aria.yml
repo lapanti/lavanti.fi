@@ -5,6 +5,42 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Viekö tekoäly ohjelmoijan työn?":
+          - link "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa Viekö tekoäly ohjelmoijan työn?":
+            - /url: /fi/blog/87/tekoaly-vie-ohjelmoijan-tyon/
+            - img "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa"
+            - heading "Viekö tekoäly ohjelmoijan työn?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Tekoäly ja työ ohjelmistokehittäjän silmin: viekö tekoäly ohjelmoijan työn, mitä käy junioreille ja miten osaaminen ja sosiaaliturva pysyvät muutoksen mukana."
+        - list:
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Opetus":
+              - /url: /fi/kategoria/opetus/
+      - listitem:
+        - article "Miksi Suomi tarvitsee digiministeriön?":
+          - 'link "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Miksi Suomi tarvitsee digiministeriön?"':
+            - /url: /fi/blog/81/miksi-suomi-tarvitsee-digiministerion/
+            - 'img "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
+            - heading "Miksi Suomi tarvitsee digiministeriön?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Hajautettu tekoälypolitiikka on yrityksille sääntelyriski. Digiministeriö ja eduskunnan päättämä kynnys toisivat ennustettavuutta ja suojaisivat pk-yrityksiä.
+        - list:
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Digitalisaatio":
+              - /url: /fi/kategoria/digitalisaatio/
+          - listitem:
+            - link "Yrittäjyys":
+              - /url: /fi/kategoria/yrittajyys/
+      - listitem:
         - article "Palkalla pitää voida vaurastua!":
           - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
             - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
@@ -112,39 +148,3 @@
           - listitem:
             - link "Kaavoitus":
               - /url: /fi/kategoria/kaavoitus/
-      - listitem:
-        - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-          - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-            - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
-            - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
-            - heading "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Vuodettu Yhdysvaltain sähke paljasti painostuksen datasuvereniteettia vastaan. Datakeskukset voivat olla Suomen valttikortti, jos ne rakennetaan ehdoillamme.
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-      - listitem:
-        - article "Vakaa ympäristö tuo investointeja, poukkoilu vie niitä":
-          - link "Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki, kukkakuvioinen paita ja vaaleat housut. Vakaa ympäristö tuo investointeja, poukkoilu vie niitä":
-            - /url: /fi/blog/77/sahkomarkkina-google-hintakatto/
-            - img "Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki, kukkakuvioinen paita ja vaaleat housut."
-            - heading "Vakaa ympäristö tuo investointeja, poukkoilu vie niitä" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Googlen \d+ miljardin investointi syntyi toimivalle sähkömarkkinalle\. Hintakatto veisi hintasignaalin juuri silloin, kun sitä eniten tarvitaan\./
-        - list:
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Markkinavihreä":
-              - /url: /fi/kategoria/markkinavihrea/
-          - listitem:
-            - link "Infra":
-              - /url: /fi/kategoria/infra/

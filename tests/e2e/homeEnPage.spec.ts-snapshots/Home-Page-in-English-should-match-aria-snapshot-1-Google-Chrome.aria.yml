@@ -127,6 +127,42 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Is AI taking the programmer's job?":
+          - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
+            - /url: /en/blog/87/will-ai-take-programmers-jobs/
+            - img "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day"
+            - heading "Is AI taking the programmer's job?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "AI and work through a developer's eyes: is AI taking the programmer's job, what happens to juniors, and how skills and social security can keep pace."
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Education":
+              - /url: /en/category/education/
+      - listitem:
+        - article "Why Does Finland Need a Digital Ministry?":
+          - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Why Does Finland Need a Digital Ministry?"':
+            - /url: /en/blog/81/why-finland-needs-a-digital-ministry/
+            - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
+            - heading "Why Does Finland Need a Digital Ministry?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Fragmented AI policy is a regulatory risk for business. A digital ministry and a threshold set by Parliament would bring predictability and protect small firms.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Digitalisation":
+              - /url: /en/category/digitalisation/
+          - listitem:
+            - link "Entrepreneurship":
+              - /url: /en/category/entrepreneurship/
+      - listitem:
         - article "Your paycheck should build wealth!":
           - 'link "Market Greens proposal: Your paycheck should build wealth! Your paycheck should build wealth!"':
             - /url: /en/blog/86/your-paycheck-should-build-wealth/
@@ -252,42 +288,6 @@
           - listitem:
             - link "Economy":
               - /url: /en/category/economy/
-      - listitem:
-        - article "Stability Brings Investment, Erratic Policy Drives It Away":
-          - link "Lauri Lavanti standing on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer, a floral shirt and light chinos. Stability Brings Investment, Erratic Policy Drives It Away":
-            - /url: /en/blog/77/electricity-market-google-price-cap/
-            - img "Lauri Lavanti standing on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer, a floral shirt and light chinos."
-            - heading "Stability Brings Investment, Erratic Policy Drives It Away" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Google's €\d+ billion investment came from a functioning electricity market\. A price cap would remove the price signal exactly when it is needed most\./
-        - list:
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Marketgreen":
-              - /url: /en/category/marketgreen/
-          - listitem:
-            - link "Infrastructure":
-              - /url: /en/category/infrastructure/
-      - listitem:
-        - article "Raising HSL ticket prices is a mistake":
-          - 'link "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt. Raising HSL ticket prices is a mistake"':
-            - /url: /en/blog/70/raising-hsl-ticket-prices-is-a-mistake/
-            - 'img "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt."'
-            - heading "Raising HSL ticket prices is a mistake" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /HSL plans fare rises of about three percent a year in \d+–\d+\. A flat percentage hits Kirkkonummi hardest, where commuting requires an ABCD ticket\./
-        - list:
-          - listitem:
-            - link "Transport":
-              - /url: /en/category/transportation/
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link "Western Uusimaa":
-              - /url: /en/category/western-uusimaa/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

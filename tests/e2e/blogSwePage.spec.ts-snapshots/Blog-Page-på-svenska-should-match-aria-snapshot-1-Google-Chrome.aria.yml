@@ -36,6 +36,42 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
+          - article "Tar AI programmerarens jobb?":
+            - link "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag Tar AI programmerarens jobb?":
+              - /url: /sv/blog/87/tar-ai-programmerarens-jobb/
+              - img "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag"
+              - heading "Tar AI programmerarens jobb?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "AI och arbete ur en utvecklares perspektiv: tar AI programmerarens jobb, vad händer med juniorer och hur kompetensen och social trygghet hänger med."
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Utbildning":
+                - /url: /sv/kategori/utbildning/
+        - listitem:
+          - article "Varför behöver Finland ett digitalministerium?":
+            - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Varför behöver Finland ett digitalministerium?"':
+              - /url: /sv/blog/81/varfor-finland-behover-ett-digitalministerium/
+              - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
+              - heading "Varför behöver Finland ett digitalministerium?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Splittrad AI-politik är en regleringsrisk för företag. Ett digitalministerium och en tröskel som riksdagen beslutar ger förutsägbarhet och skyddar små företag.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Företagande":
+                - /url: /sv/kategori/foretagande/
+        - listitem:
           - 'article "Digital självständighet: Finlands valfrihet"':
             - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
               - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
@@ -53,42 +89,6 @@
             - listitem:
               - link "Teknologi":
                 - /url: /sv/kategori/teknologi/
-        - listitem:
-          - article "FöPL får inte höja tröskeln för företagande":
-            - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
-              - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
-              - img "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna."
-              - heading "FöPL får inte höja tröskeln för företagande" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Regeringens FöPL-reform slopar nyföretagarrabatten just när AI sänker tröskeln för att bli företagare. Tre korrigeringar som håller tröskeln låg.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Företagande":
-                - /url: /sv/kategori/foretagande/
-        - listitem:
-          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
-              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
-              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
-              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
-          - list:
-            - listitem:
-              - link /Riksdagsvalet \d+/:
-                - /url: /sv/kategori/riksdagsvalet-2027/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
       - paragraph:
         - link "Alla inlägg om AI":
           - /url: /sv/kategori/artificiell-intelligens/
@@ -261,23 +261,23 @@
               - link "Frihet":
                 - /url: /sv/kategori/frihet/
         - listitem:
-          - 'article "Digital självständighet: 5 + 1 val för vardagen"':
-            - 'link "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet. Digital självständighet: 5 + 1 val för vardagen"':
-              - /url: /sv/blog/66/digital-sjalvstandighet-vardagens-val/
-              - img "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet."
-              - 'heading "Digital självständighet: 5 + 1 val för vardagen" [level=3]'
+          - 'article /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+            - 'link /Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden\. Foto: Markus Isomeri\. Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/':
+              - /url: /sv/blog/67/min-kandidatur-i-riksdagsvalet/
+              - 'img "Lauri Lavanti ler framför en glas- och träfasad, med en skulptur i bakgrunden. Foto: Markus Isomeri."'
+              - 'heading /Jag kandiderar i riksdagsvalet \d+: Finland behöver digital självständighet i AI-tidsåldern/ [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital självständighet byggs i vardagens val. Här är 5 + 1 konkreta sätt att stärka den och den digitala försörjningsberedskapen själv.
+            - paragraph: /Jag kandiderar för De Gröna i Nylands valkrets i riksdagsvalet \d+\. Mitt mål är ett digitalt självständigt Finland i AI-tidsåldern\./
           - list:
+            - listitem:
+              - link /Riksdagsvalet \d+/:
+                - /url: /sv/kategori/riksdagsvalet-2027/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
             - listitem:
               - link "Digital självständighet":
                 - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Säkerhet":
-                - /url: /sv/kategori/sakerhet/
       - paragraph:
         - link "Alla inlägg om Frihet":
           - /url: /sv/kategori/frihet/

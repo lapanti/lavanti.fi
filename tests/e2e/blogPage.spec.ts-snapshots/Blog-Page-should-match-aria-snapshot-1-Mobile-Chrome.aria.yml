@@ -36,6 +36,42 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
+          - article "Viekö tekoäly ohjelmoijan työn?":
+            - link "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa Viekö tekoäly ohjelmoijan työn?":
+              - /url: /fi/blog/87/tekoaly-vie-ohjelmoijan-tyon/
+              - img "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa"
+              - heading "Viekö tekoäly ohjelmoijan työn?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Tekoäly ja työ ohjelmistokehittäjän silmin: viekö tekoäly ohjelmoijan työn, mitä käy junioreille ja miten osaaminen ja sosiaaliturva pysyvät muutoksen mukana."
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Opetus":
+                - /url: /fi/kategoria/opetus/
+        - listitem:
+          - article "Miksi Suomi tarvitsee digiministeriön?":
+            - 'link "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Miksi Suomi tarvitsee digiministeriön?"':
+              - /url: /fi/blog/81/miksi-suomi-tarvitsee-digiministerion/
+              - 'img "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
+              - heading "Miksi Suomi tarvitsee digiministeriön?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Hajautettu tekoälypolitiikka on yrityksille sääntelyriski. Digiministeriö ja eduskunnan päättämä kynnys toisivat ennustettavuutta ja suojaisivat pk-yrityksiä.
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Yrittäjyys":
+                - /url: /fi/kategoria/yrittajyys/
+        - listitem:
           - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
             - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
               - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
@@ -53,42 +89,6 @@
             - listitem:
               - link "Teknologia":
                 - /url: /fi/kategoria/teknologia/
-        - listitem:
-          - article "YEL ei saa nostaa yrittäjyyden kynnystä":
-            - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
-              - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
-              - img "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation."
-              - heading "YEL ei saa nostaa yrittäjyyden kynnystä" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Hallituksen YEL-uudistus poistaisi aloittavan yrittäjän alennuksen juuri kun tekoäly laskee yrittämisen kynnystä. Kolme korjausta, jotka pitävät sen matalana.
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Yrittäjyys":
-                - /url: /fi/kategoria/yrittajyys/
-        - listitem:
-          - 'article /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-            - 'link /Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos\. Kuva: Markus Isomeri\. Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-              - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
-              - 'img "Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos. Kuva: Markus Isomeri."'
-              - 'heading /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/ [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Asetun Vihreiden ehdokkaaksi Uudenmaan vaalipiirissä eduskuntavaaleihin \d+\. Tavoitteenani on digitaalisesti itsenäinen Suomi tekoälyn aikakaudella\./
-          - list:
-            - listitem:
-              - link /Eduskuntavaalit \d+/:
-                - /url: /fi/kategoria/eduskuntavaalit-2027/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
           - /url: /fi/kategoria/tekoaly/
@@ -261,23 +261,23 @@
               - link "Vapaus":
                 - /url: /fi/kategoria/vapaus/
         - listitem:
-          - 'article "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
-            - 'link "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella. Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen"':
-              - /url: /fi/blog/66/digitaalinen-itsenaisyys-arjen-valinnat/
-              - img "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella."
-              - 'heading "Digitaalinen itsenäisyys: 5 + 1 valintaa arkeen" [level=3]'
+          - 'article /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
+            - 'link /Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos\. Kuva: Markus Isomeri\. Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
+              - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
+              - 'img "Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos. Kuva: Markus Isomeri."'
+              - 'heading /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/ [level=3]'
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Digitaalinen itsenäisyys rakentuu arjen valinnoissa. Tässä on 5 + 1 konkreettista keinoa, joilla vahvistat sitä ja digitaalista huoltovarmuutta itse.
+            - paragraph: /Asetun Vihreiden ehdokkaaksi Uudenmaan vaalipiirissä eduskuntavaaleihin \d+\. Tavoitteenani on digitaalisesti itsenäinen Suomi tekoälyn aikakaudella\./
           - list:
+            - listitem:
+              - link /Eduskuntavaalit \d+/:
+                - /url: /fi/kategoria/eduskuntavaalit-2027/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
             - listitem:
               - link "Digitaalinen itsenäisyys":
                 - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Turvallisuus":
-                - /url: /fi/kategoria/turvallisuus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Vapaus":
           - /url: /fi/kategoria/vapaus/
