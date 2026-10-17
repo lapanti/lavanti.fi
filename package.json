@@ -8,7 +8,7 @@
     "astro"
   ],
   "engines": {
-    "node": "24.21.0",
+    "node": "24.22.0",
     "npm": "12"
   },
   "scripts": {
@@ -52,7 +52,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/mdx": "8.0.3",
+    "@astrojs/mdx": "8.1.0",
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
     "astro-icon": "1.2.0",
@@ -63,13 +63,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@axe-core/playwright": "4.13.0",
+    "@axe-core/playwright": "4.14.0",
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
     "@eslint/js": "10.0.1",
     "@iconify-json/fa7-brands": "1.2.4",
     "@iconify-json/fa7-solid": "1.2.5",
-    "@playwright/test": "1.64.0",
+    "@playwright/test": "1.64.1",
     "@resvg/resvg-js": "2.6.2",
     "@siteimprove/alfa-playwright": "0.84.2",
     "@siteimprove/alfa-test-utils": "0.84.2",
@@ -77,28 +77,28 @@
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@types/node": "25.9.9",
-    "@vitest/coverage-v8": "5.0.3",
+    "@vitest/coverage-v8": "5.0.5",
     "@vitest/eslint-plugin": "1.6.27",
-    "astro": "7.3.8",
-    "eslint": "10.12.0",
+    "astro": "7.4.0",
+    "eslint": "10.13.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-import-x": "4.17.1",
-    "eslint-plugin-prettier": "5.5.6",
+    "eslint-plugin-prettier": "5.5.7",
     "eslint-plugin-simple-import-sort": "14.0.0",
     "globals": "17.13.0",
     "happy-dom": "20.14.6",
     "husky": "9.1.7",
     "knip": "6.41.0",
     "lint-staged": "17.6.0",
-    "prettier": "3.9.9",
+    "prettier": "3.9.10",
     "prettier-plugin-astro": "0.14.1",
-    "satori": "0.47.1",
+    "satori": "0.62.0",
     "sharp": "0.35.5",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.1",
-    "vitest": "5.0.3"
+    "typescript-eslint": "8.71.2",
+    "vitest": "5.0.5"
   },
   "overrides": {
     "sharp": "0.35.5"
