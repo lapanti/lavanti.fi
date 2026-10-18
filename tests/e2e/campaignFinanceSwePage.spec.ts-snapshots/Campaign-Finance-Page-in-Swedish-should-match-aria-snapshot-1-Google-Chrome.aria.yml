@@ -12,9 +12,9 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /2 \d+ € \+ 8 \d+ € ej inbetalt/
+    - definition: /2 \d+ € \+ 9 \d+ € ej inbetalt/
     - term: Använt hittills
-    - definition: /0 € \+ 6 \d+ € bundet/
+    - definition: /0 € \+ \d+ \d+ € bundet/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - text: Varför
@@ -51,7 +51,7 @@
         - listitem: /Egna medel 2 \d+ € \+ 8 \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
         - listitem: /Privatpersoner 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
-        - listitem: /Företag 0 € \d+,\d+ %/
+        - listitem: /Företag 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Partiet och partiföreningar 0 € \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/
         - listitem: /Kvar att samla in \d+ \d+ € \d+,\d+ %/
@@ -65,13 +65,13 @@
     - figure "Betalda och bundna utgifter i förhållande till insamlade pengar":
       - text: ""
       - list:
-        - listitem: /Använt hittills 0 € \+ 6 \d+ € bundet/
-        - listitem: /Oanvänt 4 \d+ €/
+        - listitem: /Använt hittills 0 € \+ \d+ \d+ € bundet/
+        - listitem: /Oanvänt \d+ €/
     - 'figure "Utgifter per kategori: betalt, bundet och budgeterat"':
       - text: ""
       - list:
-        - listitem: /Valreklam i medier 0 € \+ 4 \d+ € bundet \/ \d+ \d+ €/
-        - listitem: /Utomhusreklam 0 € \/ \d+ \d+ €/
+        - listitem: /Valreklam i medier 0 € \+ 3 \d+ € bundet \/ \d+ \d+ €/
+        - listitem: /Utomhusreklam 0 € \+ 4 \d+ € bundet \/ \d+ \d+ €/
         - listitem: /Valtidningar, broschyrer och andra tryckalster 0 € \+ \d+ € bundet \/ 3 \d+ €/
         - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
         - listitem: /Valmöten 0 € \/ 2 \d+ €/
