@@ -52,38 +52,6 @@ export interface CampaignEvent {
 export const campaignEvents: CampaignEvent[] = [
     // events:start
     {
-        date: '2026-10-19',
-        endTime: '11:15',
-        id: 'reset-helsinki-paneeli',
-        locales: {
-            en: {
-                description:
-                    'Lauri Lavanti joins the panel "Towards greater digital independence in artistic production" at Reset! Helsinki – Reclaiming the Digital. Nitin Sawhney moderates the panel. The event is free, but advance registration is required.',
-                locality: 'Helsinki',
-                title: 'Towards greater digital independence in artistic production, Reset! Helsinki',
-                venue: 'Oranssi ry',
-            },
-            fi: {
-                description:
-                    'Lauri Lavanti on panelistina Reset! Helsinki – Reclaiming the Digital -tapahtuman paneelissa Towards greater digital independence in artistic production. Paneelia moderoi Nitin Sawhney. Tapahtuma on maksuton, mutta siihen pitää ilmoittautua etukäteen.',
-                locality: 'Helsinki',
-                title: 'Paneeli digitaalisesta riippumattomuudesta, Reset! Helsinki',
-                venue: 'Oranssi ry',
-            },
-            sv: {
-                description:
-                    'Lauri Lavanti deltar i panelen Towards greater digital independence in artistic production under evenemanget Reset! Helsinki – Reclaiming the Digital. Panelen modereras av Nitin Sawhney. Evenemanget är avgiftsfritt, men kräver förhandsanmälan.',
-                locality: 'Helsingfors',
-                title: 'Panel om digitalt oberoende, Reset! Helsinki',
-                venue: 'Oranssi ry',
-            },
-        },
-        postalCode: '00540',
-        startTime: '10:15',
-        streetAddress: 'Kaasutehtaankatu 1/20',
-        topicConfirmed: true,
-    },
-    {
         date: '2026-11-22',
         endTime: '16:00',
         id: 'kampanjatiimin-avoin-tilaisuus',
