@@ -141,10 +141,11 @@
     - heading "Campaign event calendar" [level=2]
     - list:
       - listitem:
-        - time: /Monday, \d+ October \d+ \d+:\d+–\d+:\d+/
-        - heading "Towards greater digital independence in artistic production, Reset! Helsinki" [level=3]
-        - paragraph: Oranssi ry, Helsinki
-        - paragraph: Lauri Lavanti joins the panel "Towards greater digital independence in artistic production" at Reset! Helsinki – Reclaiming the Digital. Nitin Sawhney moderates the panel. The event is free, but advance registration is required.
+        - time: /Sunday, \d+ November \d+ \d+:\d+–\d+:\d+/
+        - heading "Open campaign team meeting" [level=3]
+        - paragraph: Entresse Library, Blue room, Espoo
+        - paragraph: The campaign team is meeting again. We will go through where the campaign stands now and agree on the next steps towards the election spring. Welcome to join us if you want to help build the campaign.
+        - text: The topic will be confirmed later.
       - listitem:
         - time: /Monday, \d+ November \d+/
         - heading "How are you, Kirkkonummi? The development of the central forest" [level=3]

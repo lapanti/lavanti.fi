@@ -141,10 +141,11 @@
     - heading "Kampanjan tapahtumakalenteri" [level=2]
     - list:
       - listitem:
-        - time: /maanantaina \d+\. lokakuuta \d+ klo \d+\.\d+–\d+\.\d+/
-        - heading "Paneeli digitaalisesta riippumattomuudesta, Reset! Helsinki" [level=3]
-        - paragraph: Oranssi ry, Helsinki
-        - paragraph: Lauri Lavanti on panelistina Reset! Helsinki – Reclaiming the Digital -tapahtuman paneelissa Towards greater digital independence in artistic production. Paneelia moderoi Nitin Sawhney. Tapahtuma on maksuton, mutta siihen pitää ilmoittautua etukäteen.
+        - time: /sunnuntaina \d+\. marraskuuta \d+ klo \d+–\d+/
+        - heading "Kampanjatiimin avoin tapaaminen" [level=3]
+        - paragraph: Entressen kirjasto, Blue room, Espoo
+        - paragraph: Kampanjatiimi kokoontuu taas. Käymme läpi, missä kampanja on nyt, ja sovimme seuraavat askeleet kohti vaalikevättä. Tervetuloa mukaan, jos haluat olla rakentamassa kampanjaa.
+        - text: Aihe vahvistetaan myöhemmin.
       - listitem:
         - time: /maanantaina \d+\. marraskuuta \d+/
         - heading "Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys" [level=3]

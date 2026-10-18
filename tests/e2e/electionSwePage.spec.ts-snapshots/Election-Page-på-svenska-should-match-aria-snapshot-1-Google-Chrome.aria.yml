@@ -141,10 +141,11 @@
     - heading "Kampanjens evenemangskalender" [level=2]
     - list:
       - listitem:
-        - time: /måndag \d+ oktober \d+ kl\. \d+\.\d+–\d+\.\d+/
-        - heading "Panel om digitalt oberoende, Reset! Helsinki" [level=3]
-        - paragraph: Oranssi ry, Helsingfors
-        - paragraph: Lauri Lavanti deltar i panelen Towards greater digital independence in artistic production under evenemanget Reset! Helsinki – Reclaiming the Digital. Panelen modereras av Nitin Sawhney. Evenemanget är avgiftsfritt, men kräver förhandsanmälan.
+        - time: /söndag \d+ november \d+ kl\. \d+–\d+/
+        - heading "Kampanjteamets öppna träff" [level=3]
+        - paragraph: Entresse bibliotek, Blue room, Esbo
+        - paragraph: Kampanjteamet samlas på nytt. Vi går igenom var kampanjen står just nu och kommer överens om nästa steg inför valvåren. Välkommen med om du vill vara med och bygga kampanjen.
+        - text: Ämnet bekräftas senare.
       - listitem:
         - time: /måndag \d+ november \d+/
         - heading "Hur mår Kyrkslätt? Utvecklingen av Centralskogen" [level=3]
