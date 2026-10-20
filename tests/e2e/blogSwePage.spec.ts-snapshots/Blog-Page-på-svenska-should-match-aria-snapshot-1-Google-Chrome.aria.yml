@@ -36,6 +36,24 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
+          - article "Fullmäktigemotion om AI-handledning för arbetssökning":
+            - 'link "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0. Fullmäktigemotion om AI-handledning för arbetssökning"':
+              - /url: /sv/blog/89/fullmaktigemotion-ai-handledning-arbetssokning/
+              - 'img "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0."'
+              - heading "Fullmäktigemotion om AI-handledning för arbetssökning" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Kyrkslätt kunde som ansvarskommun erbjuda arbetssökande avgiftsfri AI-handledning. Motionen föreslår ett tidsbegränsat pilotprojekt för hela området.
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Fullmäktigeinitiativ":
+                - /url: /sv/kategori/fullmaktigeinitiativ/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+        - listitem:
           - article "Tar AI programmerarens jobb?":
             - link "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag Tar AI programmerarens jobb?":
               - /url: /sv/blog/87/tar-ai-programmerarens-jobb/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Företagande":
                 - /url: /sv/kategori/foretagande/
-        - listitem:
-          - 'article "Digital självständighet: Finlands valfrihet"':
-            - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
-              - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
-              - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
-              - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Teknologi":
-                - /url: /sv/kategori/teknologi/
       - paragraph:
         - link "Alla inlägg om AI":
           - /url: /sv/kategori/artificiell-intelligens/
@@ -288,6 +288,24 @@
       - paragraph: Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.
       - list:
         - listitem:
+          - 'article "Digital självständighet: Finlands valfrihet"':
+            - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
+              - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
+              - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
+              - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
+        - listitem:
           - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
             - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
               - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-        - listitem:
-          - article "Airbus valde Scaleway också av jurisdiktionsskäl":
-            - link "Fasaden på en Airbus-fabriksbyggnad med Airbus-logotypen på väggen. Airbus valde Scaleway också av jurisdiktionsskäl":
-              - /url: /sv/blog/69/airbus-scaleway-jurisdiktionsskal/
-              - img "Fasaden på en Airbus-fabriksbyggnad med Airbus-logotypen på väggen."
-              - heading "Airbus valde Scaleway också av jurisdiktionsskäl" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Airbus flyttade kritiska system till Scaleway även av jurisdiktionsskäl. Samma riskbedömning passar varje organisations molnval.
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Teknologi":
-                - /url: /sv/kategori/teknologi/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/

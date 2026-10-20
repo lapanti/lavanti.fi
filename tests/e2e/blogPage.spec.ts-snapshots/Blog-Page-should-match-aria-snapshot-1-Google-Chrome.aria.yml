@@ -36,6 +36,24 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
+          - 'article "Valtuustoaloite: tekoälyopastusta työnhakuun"':
+            - 'link "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0. Valtuustoaloite: tekoälyopastusta työnhakuun"':
+              - /url: /fi/blog/89/valtuustoaloite-tekoalyopastus-tyonhakuun/
+              - 'img "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0."'
+              - 'heading "Valtuustoaloite: tekoälyopastusta työnhakuun" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Kirkkonummi voisi vastuukuntana tarjota työnhakijoille maksutonta tekoälyopastusta. Aloite esittää määräaikaista pilottia koko työllisyysalueelle.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Valtuustoaloite":
+                - /url: /fi/kategoria/valtuustoaloite/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+        - listitem:
           - article "Viekö tekoäly ohjelmoijan työn?":
             - link "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa Viekö tekoäly ohjelmoijan työn?":
               - /url: /fi/blog/87/tekoaly-vie-ohjelmoijan-tyon/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Yrittäjyys":
                 - /url: /fi/kategoria/yrittajyys/
-        - listitem:
-          - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
-            - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
-              - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
-              - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
-              - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Teknologia":
-                - /url: /fi/kategoria/teknologia/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
           - /url: /fi/kategoria/tekoaly/
@@ -288,6 +288,24 @@
       - paragraph: Digitaalinen itsenäisyys tarkoittaa myös datan siirrettävyyttä ja riippuvuuden yksittäisistä toimittajista välttämistä. Julkisella rahalla tuotetun julkisen datan tulee olla siirrettävää ja tallennettuna siten, että sitä eivät ulkopuoliset tahot voi väärinkäyttää.
       - list:
         - listitem:
+          - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
+            - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
+              - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
+              - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
+              - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
+        - listitem:
           - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
             - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
               - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-        - listitem:
-          - article "Airbus valitsi Scalewayn myös lainsäädännön piirin takia":
-            - link "Airbus-tehdasrakennuksen ulkojulkisivu, jonka seinässä on Airbus-logo. Airbus valitsi Scalewayn myös lainsäädännön piirin takia":
-              - /url: /fi/blog/69/airbus-scaleway-lainsaadannon-piiri/
-              - img "Airbus-tehdasrakennuksen ulkojulkisivu, jonka seinässä on Airbus-logo."
-              - heading "Airbus valitsi Scalewayn myös lainsäädännön piirin takia" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Airbus siirsi kriittisiä järjestelmiä Scalewaylle myös lainsäädännön piirin vuoksi. Sama riskiarvio sopii jokaiselle pilvivalinnalle.
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Teknologia":
-                - /url: /fi/kategoria/teknologia/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/
