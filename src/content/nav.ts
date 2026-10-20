@@ -40,10 +40,16 @@ export interface NavLink {
     title: string
 }
 
+export const aboutHref: Record<Lang, string> = {
+    en: '/en/about/',
+    fi: '/fi/laurista/',
+    sv: '/sv/om-lauri/',
+}
+
 export const navLinks: Record<Lang, NavLink[]> = {
     en: [
         { href: '/en/elections/', label: 'Elections', title: 'Parliamentary election 2027' },
-        { href: '/en/about/', label: 'About Lauri', title: 'About Lauri' },
+        { href: aboutHref.en, label: 'About Lauri', title: 'About Lauri' },
         { href: '/en/recommendations/', label: 'Endorsements', title: 'Endorsements for Lauri' },
         { href: '/en/blog/', label: 'Writing', title: 'Writing' },
         { href: '/en/contact/', label: 'Contact', title: 'Contact info' },
@@ -54,7 +60,7 @@ export const navLinks: Record<Lang, NavLink[]> = {
     ],
     fi: [
         { href: '/fi/eduskuntavaalit/', label: 'Vaalit', title: 'Eduskuntavaalit 2027' },
-        { href: '/fi/laurista/', label: 'Laurista', title: 'Laurista' },
+        { href: aboutHref.fi, label: 'Laurista', title: 'Laurista' },
         { href: '/fi/suositukset/', label: 'Suositukset', title: 'Suosituksia Laurista' },
         { href: '/fi/blog/', label: 'Kirjoitukset', title: 'Kirjoitukset' },
         { href: '/fi/yhteystiedot/', label: 'Ota yhteyttä', title: 'Ota yhteyttä' },
@@ -65,7 +71,7 @@ export const navLinks: Record<Lang, NavLink[]> = {
     ],
     sv: [
         { href: '/sv/riksdagsvalet/', label: 'Valet', title: 'Riksdagsvalet 2027' },
-        { href: '/sv/om-lauri/', label: 'Om Lauri', title: 'Om Lauri' },
+        { href: aboutHref.sv, label: 'Om Lauri', title: 'Om Lauri' },
         { href: '/sv/rekommendationer/', label: 'Rekommendationer', title: 'Rekommendationer om Lauri' },
         { href: '/sv/blog/', label: 'Inlägg', title: 'Inlägg' },
         { href: '/sv/kontakt/', label: 'Kontakt', title: 'Kontaktuppgifter' },
