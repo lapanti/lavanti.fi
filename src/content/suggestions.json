@@ -426,6 +426,11 @@
       "checkedAt": "2026-09-30",
       "contentHash": "18707088a45e94e823f0e73a31ec85099d2d0b2d80e7757de9b23f8be01f2e20",
       "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:90": {
+      "checkedAt": "2026-10-19",
+      "contentHash": "65e7dadeb302554d6d176879d7f9d9b80b5246a251b29892e3db3996a8229970",
+      "model": "typesafe/jev-1.13-20260917"
     }
   },
   "tags": {
