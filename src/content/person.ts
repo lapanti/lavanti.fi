@@ -50,6 +50,13 @@ export const personDescription: Record<Lang, string> = {
     sv: 'Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, fullmäktigeledamot i Kyrkslätt och ledande programutvecklare (DI, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidsåldern.',
 }
 
+/** Shown on the post author card; personDescription is the longer JSON-LD text. */
+export const personShortBio: Record<Lang, string> = {
+    en: "Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa, a Kirkkonummi municipal councillor and lead developer. He works for a digitally independent Finland.",
+    fi: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudellamaalla, Kirkkonummen kunnanvaltuutettu ja johtava ohjelmistokehittäjä. Hän tekee työtä digitaalisesti itsenäisen Suomen puolesta.',
+    sv: 'Lauri Lavanti är De Grönas riksdagskandidat i Nyland, fullmäktigeledamot i Kyrkslätt och ledande programutvecklare. Han arbetar för ett digitalt självständigt Finland.',
+}
+
 export const personKnowsAbout: Record<Lang, string[]> = {
     en: [
         'Artificial intelligence',
