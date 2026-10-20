@@ -28,6 +28,11 @@ describe('getImage', () => {
         expect(result.height).toBe(1320)
     })
 
+    it('returns a small face-cropped square for the avatar variant', () => {
+        const result = getImage('test-slug', 'avatar')
+        expect(result.src).toBe(`${BASE}/test-slug/w=384,h=384,fit=crop,gravity=face,format=auto`)
+    })
+
     it('encodes slug with special characters', () => {
         const result = getImage('slug with spaces & chars', '1x1')
         expect(result.src).toContain('slug%20with%20spaces%20%26%20chars')
