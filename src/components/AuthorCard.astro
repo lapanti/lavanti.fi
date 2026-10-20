@@ -1,0 +1,90 @@
+---
+import type { Lang } from '../content/nav'
+
+import { aboutHref } from '../content/nav'
+import { personJobTitle, personName, personShortBio } from '../content/person'
+import { getImage } from '../lib/images'
+
+interface Props {
+    /** Cloudflare Images name of the era-appropriate portrait (see src/content/authorPhotos.ts). */
+    image: string
+    lang: Lang
+}
+
+const { image, lang } = Astro.props
+const photo = getImage(image, 'avatar')
+---
+
+<style>
+    .author-card {
+        align-items: center;
+        border-top: 3px solid var(--colorsSand);
+        column-gap: 1rem;
+        display: grid;
+        grid-template-columns: 4.5rem 1fr;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+    }
+
+    /* Narrow screens: the bio takes the full width under the photo and name. */
+    .bio {
+        grid-column: 1 / -1;
+    }
+
+    @media (min-width: 769px) {
+        .author-card {
+            align-items: start;
+            grid-template-columns: 5.5rem 1fr;
+        }
+
+        .author-card img {
+            grid-row: span 2;
+        }
+
+        .bio {
+            grid-column: 2;
+        }
+    }
+
+    .author-card img {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        height: auto;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .author-card p {
+        margin-block: 0;
+    }
+
+    .name {
+        font-family: var(--textFontFamily);
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    .title {
+        color: var(--colorsTextSecondary);
+        font-family: var(--fineFontFamily);
+        font-size: var(--fineFontSize);
+        font-weight: var(--fineFontWeight);
+        line-height: var(--fineLineHeight);
+        margin-top: 0.125rem;
+    }
+
+    .bio {
+        font-family: var(--textFontFamily);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        margin-top: 0.5rem;
+    }
+</style>
+<aside aria-label={personName} class="author-card">
+    <img alt="" decoding="async" height={photo.height} loading="lazy" src={photo.src} width={photo.width} />
+    <div>
+        <p class="name"><a href={aboutHref[lang]}>{personName}</a></p>
+        <p class="title">{personJobTitle[lang]}</p>
+    </div>
+    <p class="bio">{personShortBio[lang]}</p>
+</aside>
