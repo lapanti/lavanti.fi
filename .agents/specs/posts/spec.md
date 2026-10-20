@@ -110,6 +110,22 @@ Feature: Blog post content-collection routing
     Given a post's {lang}.mdx frontmatter has one faq entry or none
     When the page is built
     Then neither the plate nor the FAQPage JSON-LD is rendered — a FAQPage rich result needs two questions, and marked-up questions must be visible on the page
+
+  Scenario: Author card with an era-appropriate portrait
+    Given a post with no authorImage in meta.json
+    When the page is built
+    Then PostLayout renders AuthorCard after the post body and before Byline, with the portrait from the src/content/authorPhotos.ts era covering publishDate (the first era for older posts), the name linking to the locale's about page, personJobTitle and personShortBio
+    And Byline still renders below it — co-author credits and "Julkaistu myös" notes are unchanged
+
+  Scenario: Pinned author portrait
+    Given a post's meta.json sets authorImage
+    When the page is built
+    Then AuthorCard shows that image regardless of publishDate
+
+  Scenario: A new author photo era
+    Given the current portrait changes
+    When a new era is appended to authorPhotos with a from date of today or later
+    Then every already-published post keeps its portrait — authorPhotos.spec.ts fails if an existing era is edited or a new one is inserted before the last
 ```
 
 ---
@@ -127,6 +143,7 @@ interface PostEntry {
   updatedDate: string // ISO 8601
   tags: string[] // at least one; must exist in src/content/tags.ts
   heroImage: string // Cloudinary filename, no extension
+  authorImage?: string // pins the author card portrait; default resolved by publishDate era
   authors?: AuthorEntry[] // src/content/person.ts
   externalPublications?: ExternalPublication[] // src/lib/byline.ts — each entry may carry an
     // optional `lang`, the language the linked article itself is written in (not translated
@@ -185,6 +202,8 @@ Because `meta.json`'s fields have exactly one physical copy per post id, cross-l
 - **Do not** blind-strip every `import` line during migration — post id 64 (all three locales) uses `<ImageWithCaption>` directly in the MDX body outside the `export const components` remap object; strip only imports that appear solely inside that remap
 - **Do not** add a tag id in `meta.json` that is not defined in `src/content/tags.ts` — it silently breaks tag filtering
 - **Do not** give two posts the same `id`, even across locales — the redirect route and `getPostAlternates` use `id` as the lookup key
+- **Do not** use a photo of Lauri as `heroImage` just to show the author — the author card does that; the hero is free for a kuvituskuva that illustrates the topic
+- **Do not** edit or reorder existing `authorPhotos` eras — it re-photos published posts; append only
 - **Do not** use TypeScript syntax in `<script>` blocks in `.astro` layout files — Prettier parses them as plain JS and will fail
 - **Do not** import from `src/lib/posts.ts` in client-side code — `getCollection()` is a build-time-only API
 - **Do not** point `src/lib/sitemapLastmod.ts` at the new layout without its dedicated URL-construction branch — `updatedDate` no longer lives in any `.mdx` file, so the existing per-file `updatedDate` requirement would hard-throw the build for every post
@@ -206,3 +225,4 @@ Because `meta.json`'s fields have exactly one physical copy per post id, cross-l
 |------|--------|
 | 2026-07-30 | Rewrote for Content Collection migration (issue #1341) — supersedes the file-based-routing architecture, frontmatter schema, and URL/redirect contract description from the original version of this spec |
 | 2026-07-30 | Addressed /review-spec findings: added hreflang and RSS Contract scenarios, replaced the non-testable drift scenario with a Data Model note, trimmed Intent to problem/why only |
+| 2026-10-20 | Added the author card: era-resolved portrait (`src/content/authorPhotos.ts`), optional `authorImage` override, `avatar` image variant |
