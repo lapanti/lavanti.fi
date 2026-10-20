@@ -27,6 +27,8 @@ const posts = defineCollection({
     loader: localizedCollectionLoader({ base: './src/content/posts', name: 'posts-loader' }),
     schema: z.object({
         alt: z.string(),
+        /** Pins this post's author card portrait; otherwise resolved by era (src/content/authorPhotos.ts). */
+        authorImage: z.string().optional(),
         authors: z.array(authorEntry).optional(),
         description: z.string(),
         externalPublications: z.array(externalPublication).optional(),
