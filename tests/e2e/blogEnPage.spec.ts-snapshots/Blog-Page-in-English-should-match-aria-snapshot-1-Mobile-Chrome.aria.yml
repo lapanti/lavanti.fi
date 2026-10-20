@@ -36,6 +36,24 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
+          - 'article "Council initiative: AI guidance for job seekers"':
+            - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
+              - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
+              - 'img "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0."'
+              - 'heading "Council initiative: AI guidance for job seekers" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Kirkkonummi could offer job seekers free guidance on using AI tools. The initiative proposes a fixed-term pilot for the whole employment area.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Council motion":
+                - /url: /en/category/council-motion/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+        - listitem:
           - article "Is AI taking the programmer's job?":
             - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
               - /url: /en/blog/87/will-ai-take-programmers-jobs/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Entrepreneurship":
                 - /url: /en/category/entrepreneurship/
-        - listitem:
-          - 'article "Digital independence: Finland''s ability to choose"':
-            - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
-              - /url: /en/blog/85/digital-independence-happy-hacking-day/
-              - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
-              - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Technology":
-                - /url: /en/category/technology/
       - paragraph:
         - link "All posts about AI":
           - /url: /en/category/artificial-intelligence/
@@ -288,6 +288,24 @@
       - paragraph: Digital independence is also about data portability and avoiding lock-in to individual vendors. Public data generated with public money should be portable and stored in a way that outside parties cannot misuse it.
       - list:
         - listitem:
+          - 'article "Digital independence: Finland''s ability to choose"':
+            - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
+              - /url: /en/blog/85/digital-independence-happy-hacking-day/
+              - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
+              - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
+        - listitem:
           - article "Data Centres Can Be Finland's Ace in International Politics":
             - link "Close-up of data centre servers with rows of green status lights. Data Centres Can Be Finland's Ace in International Politics":
               - /url: /en/blog/71/data-centres-finlands-ace-in-international-politics/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Digitalisation":
                 - /url: /en/category/digitalisation/
-        - listitem:
-          - article "Airbus Chose Scaleway Partly Because of Jurisdiction":
-            - link "The exterior facade of an Airbus factory building with the Airbus logo on the wall. Airbus Chose Scaleway Partly Because of Jurisdiction":
-              - /url: /en/blog/69/airbus-chose-scaleway-jurisdiction/
-              - img "The exterior facade of an Airbus factory building with the Airbus logo on the wall."
-              - heading "Airbus Chose Scaleway Partly Because of Jurisdiction" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Airbus moved critical systems to Scaleway partly over jurisdiction. The same risk assessment applies to any cloud choice.
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Technology":
-                - /url: /en/category/technology/
       - paragraph:
         - link "All posts about Digital independence":
           - /url: /en/category/digital-independence/

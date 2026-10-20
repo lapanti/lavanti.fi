@@ -125,6 +125,24 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - 'article "Council initiative: AI guidance for job seekers"':
+          - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
+            - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
+            - 'img "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0."'
+            - 'heading "Council initiative: AI guidance for job seekers" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Kirkkonummi could offer job seekers free guidance on using AI tools. The initiative proposes a fixed-term pilot for the whole employment area.
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link "Council motion":
+              - /url: /en/category/council-motion/
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+      - listitem:
         - article "Is AI taking the programmer's job?":
           - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
             - /url: /en/blog/87/will-ai-take-programmers-jobs/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Urban planning":
               - /url: /en/category/urban-planning/
-      - listitem:
-        - article "Data Centres Can Be Finland's Ace in International Politics":
-          - link "Close-up of data centre servers with rows of green status lights. Data Centres Can Be Finland's Ace in International Politics":
-            - /url: /en/blog/71/data-centres-finlands-ace-in-international-politics/
-            - img "Close-up of data centre servers with rows of green status lights."
-            - heading "Data Centres Can Be Finland's Ace in International Politics" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: A leaked US cable exposed lobbying against data sovereignty. Data centres can be Finland’s ace in international politics, if we build them on our own terms.
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
