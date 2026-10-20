@@ -22,6 +22,7 @@ URL format: `https://lavanti.fi/images/{slug}/w={w},h={h},fit={fit},gravity={gra
 | Variant key | Dimensions | Fit | Gravity | Used by |
 |---|---|---|---|---|
 | `1x1` | 1680×1680 | crop | face | Excerpt thumbnails, recommendation portraits |
+| `avatar` | 384×384 | crop | face | Post author card portrait (`AuthorCard.astro`, shown at 72–88px) |
 | `hero` | 1728×1320 | crop | face | TitleBanner profile images (about/topics/contact/newsletter/blog) |
 | `background` | 1920×660 | crop | auto | Decorative full-bleed background |
 | `body` | 2400×1800 | crop | auto | Inline post images |
