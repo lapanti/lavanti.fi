@@ -28,7 +28,8 @@ describe('authorPhotos', () => {
         for (let i = 1; i < dates.length; i++) expect(dates[i] > dates[i - 1]).toBe(true)
     })
 
-    it('has an original for every portrait', () => {
+    // src/images/originals/ is gitignored, so this runs only where the originals exist.
+    it.skipIf(!existsSync(originalsDir))('has an original for every portrait', () => {
         const missing = authorPhotos.filter(
             ({ image }) => !['jpg', 'png'].some((ext) => existsSync(path.join(originalsDir, `${image}.${ext}`)))
         )
