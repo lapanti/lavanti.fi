@@ -50,7 +50,7 @@ A motion or speech post body has four parts, in this order:
 3. **Document** — the text as filed or delivered:
    - Paragraph breaks as in the original. A line break inside a paragraph in a PDF copy is a wrap, not a break.
    - No inserted headings, blockquotes, pull quotes, emphasis, links or list markup. The document's own headings, if it had any, stay as H3.
-   - The closing signature stays, in its original order, one line each, joined with a trailing `\`.
+   - The closing signature stays, in its original order, each line its own paragraph. Never use trailing-backslash hard breaks; separate lines (signature, a list of lines in a speech) with a blank line.
    - Corrections never go into the text. A factual correction goes in the afterword as an editorial note.
    - Exception, a corrected speech: when a speech is published with factual errors fixed in the text (post 85), the boundary H2 says so (`Puhe korjattuna` / `Talet i korrigerad form` / `The talk, corrected`) and the afterword's editorial note lists every change. Use only when the delivered text would spread errors; the default is the text as delivered.
 4. **Afterword** (optional) — opens with its own H2 so a reader cannot mistake it for part of the document. Further reading, related posts, editorial notes.
