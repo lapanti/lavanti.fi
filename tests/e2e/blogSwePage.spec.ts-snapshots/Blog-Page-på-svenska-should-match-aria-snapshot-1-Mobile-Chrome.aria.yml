@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Programmet för gång och cykling är kommunens långsiktiga plan":
+            - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
+              - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
+              - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
+              - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Trafik":
+                - /url: /sv/kategori/trafik/
+            - listitem:
+              - link "Planläggning":
+                - /url: /sv/kategori/planlaggning/
+        - listitem:
           - article "Med lön ska man kunna bli förmögen!":
             - 'link "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen! Med lön ska man kunna bli förmögen!"':
               - /url: /sv/blog/86/med-lon-ska-man-kunna-bli-formogen/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Säkerhet":
                 - /url: /sv/kategori/sakerhet/
-        - listitem:
-          - article "Vem äger den offentliga förvaltningens data?":
-            - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
-              - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
-              - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
-              - heading "Vem äger den offentliga förvaltningens data?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/
@@ -306,6 +306,24 @@
               - link "Teknologi":
                 - /url: /sv/kategori/teknologi/
         - listitem:
+          - article "Vem äger den offentliga förvaltningens data?":
+            - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
+              - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
+              - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
+              - heading "Vem äger den offentliga förvaltningens data?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+        - listitem:
           - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
             - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
               - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
-        - listitem:
-          - article "Öppen källkod är grundstenen för digital självständighet":
-            - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Öppen källkod är grundstenen för digital självständighet":
-              - /url: /sv/blog/76/oppen-kallkod-grundstenen-for-digital-sjalvstandighet/
-              - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
-              - heading "Öppen källkod är grundstenen för digital självständighet" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: EU:s tekniksuveränitetspaket lyfter öppen källkod som grundsten för digital självständighet. Varför ett slutet system är en risk och öppen kod lösningen.
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/

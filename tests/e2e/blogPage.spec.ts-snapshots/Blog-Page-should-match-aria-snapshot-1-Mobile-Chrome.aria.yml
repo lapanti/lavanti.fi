@@ -99,6 +99,24 @@
       - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
         - listitem:
+          - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
+            - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
+              - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
+              - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
+              - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Liikenne":
+                - /url: /fi/kategoria/liikenne/
+            - listitem:
+              - link "Kaavoitus":
+                - /url: /fi/kategoria/kaavoitus/
+        - listitem:
           - article "Palkalla pitää voida vaurastua!":
             - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
               - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Turvallisuus":
                 - /url: /fi/kategoria/turvallisuus/
-        - listitem:
-          - article "Kuka omistaa julkishallinnon datan?":
-            - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
-              - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
-              - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
-              - heading "Kuka omistaa julkishallinnon datan?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/
@@ -306,6 +306,24 @@
               - link "Teknologia":
                 - /url: /fi/kategoria/teknologia/
         - listitem:
+          - article "Kuka omistaa julkishallinnon datan?":
+            - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
+              - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
+              - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
+              - heading "Kuka omistaa julkishallinnon datan?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+        - listitem:
           - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
             - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
               - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
-        - listitem:
-          - article "Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
-            - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi":
-              - /url: /fi/blog/76/avoin-lahdekoodi-digitaalisen-itsenaisyyden-kulmakivi/
-              - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
-              - heading "Avoin lähdekoodi on digitaalisen itsenäisyyden kulmakivi" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: EU:n teknologiasuvereniteettipaketti nostaa avoimen lähdekoodin digitaalisen itsenäisyyden kulmakiveksi. Miksi suljettu järjestelmä on riski ja avoin ratkaisu.
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/

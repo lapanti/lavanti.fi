@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Programmet för gång och cykling är kommunens långsiktiga plan":
+          - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
+            - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
+            - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
+            - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
+        - list:
+          - listitem:
+            - link "Kyrkslätt":
+              - /url: /sv/kategori/kyrkslatt/
+          - listitem:
+            - link "Trafik":
+              - /url: /sv/kategori/trafik/
+          - listitem:
+            - link "Planläggning":
+              - /url: /sv/kategori/planlaggning/
+      - listitem:
         - article "Fullmäktigemotion om AI-handledning för arbetssökning":
           - 'link "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0. Fullmäktigemotion om AI-handledning för arbetssökning"':
             - /url: /sv/blog/89/fullmaktigemotion-ai-handledning-arbetssokning/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Företagande":
               - /url: /sv/kategori/foretagande/
-      - listitem:
-        - article "Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
-          - link "En tvådelad bild med Pinja Pekkarniemi till vänster i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
-            - /url: /sv/blog/78/skogsavverkningar-utan-invanarnas-delaktighet/
-            - img "En tvådelad bild med Pinja Pekkarniemi till vänster i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund."
-            - heading "Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Kommunutvecklingsnämnden godkände åtgärdsprogrammet för skogsskötsel utan att höra invånarna och utan förhandsbedömning. Kommunstrategin lovar annat.
-        - list:
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link "Natur":
-              - /url: /sv/kategori/natur/
-          - listitem:
-            - link "Planläggning":
-              - /url: /sv/kategori/planlaggning/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
