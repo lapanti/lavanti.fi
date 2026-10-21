@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "The walking and cycling programme is the municipality's long-term plan":
+          - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
+            - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
+            - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
+            - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link "Transport":
+              - /url: /en/category/transportation/
+          - listitem:
+            - link "Urban planning":
+              - /url: /en/category/urban-planning/
+      - listitem:
         - 'article "Council initiative: AI guidance for job seekers"':
           - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
             - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Entrepreneurship":
               - /url: /en/category/entrepreneurship/
-      - listitem:
-        - article "Kirkkonummi bypassed residents in planning forest logging":
-          - link "A two-part portrait with Pinja Pekkarniemi on the left in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. Kirkkonummi bypassed residents in planning forest logging":
-            - /url: /en/blog/78/forest-logging-decided-without-consulting-residents/
-            - img "A two-part portrait with Pinja Pekkarniemi on the left in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background."
-            - heading "Kirkkonummi bypassed residents in planning forest logging" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Kirkkonummi approved its forest management programme without consulting residents and without an advance assessment. The municipal strategy promises otherwise.
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link "Nature":
-              - /url: /en/category/nature/
-          - listitem:
-            - link "Urban planning":
-              - /url: /en/category/urban-planning/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

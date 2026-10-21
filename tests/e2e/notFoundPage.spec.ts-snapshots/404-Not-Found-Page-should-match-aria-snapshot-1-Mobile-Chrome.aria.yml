@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
+          - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
+            - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
+            - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
+            - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /fi/kategoria/kirkkonummi/
+          - listitem:
+            - link "Liikenne":
+              - /url: /fi/kategoria/liikenne/
+          - listitem:
+            - link "Kaavoitus":
+              - /url: /fi/kategoria/kaavoitus/
+      - listitem:
         - 'article "Valtuustoaloite: tekoälyopastusta työnhakuun"':
           - 'link "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0. Valtuustoaloite: tekoälyopastusta työnhakuun"':
             - /url: /fi/blog/89/valtuustoaloite-tekoalyopastus-tyonhakuun/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Talous":
               - /url: /fi/kategoria/talous/
-      - listitem:
-        - article "YEL ei saa nostaa yrittäjyyden kynnystä":
-          - link "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation. YEL ei saa nostaa yrittäjyyden kynnystä":
-            - /url: /fi/blog/73/yel-ei-saa-nostaa-yrittajyyden-kynnysta/
-            - img "Scrabble-pelin puupalikoita puupöydällä, keskellä palikoista muodostettu sana innovation."
-            - heading "YEL ei saa nostaa yrittäjyyden kynnystä" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Hallituksen YEL-uudistus poistaisi aloittavan yrittäjän alennuksen juuri kun tekoäly laskee yrittämisen kynnystä. Kolme korjausta, jotka pitävät sen matalana.
-        - list:
-          - listitem:
-            - link "Tekoäly":
-              - /url: /fi/kategoria/tekoaly/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Yrittäjyys":
-              - /url: /fi/kategoria/yrittajyys/

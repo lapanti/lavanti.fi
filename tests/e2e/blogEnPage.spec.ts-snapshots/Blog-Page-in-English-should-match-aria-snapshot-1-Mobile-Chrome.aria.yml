@@ -99,6 +99,24 @@
       - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
         - listitem:
+          - article "The walking and cycling programme is the municipality's long-term plan":
+            - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
+              - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
+              - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
+              - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Transport":
+                - /url: /en/category/transportation/
+            - listitem:
+              - link "Urban planning":
+                - /url: /en/category/urban-planning/
+        - listitem:
           - article "Your paycheck should build wealth!":
             - 'link "Market Greens proposal: Your paycheck should build wealth! Your paycheck should build wealth!"':
               - /url: /en/blog/86/your-paycheck-should-build-wealth/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Security":
                 - /url: /en/category/security/
-        - listitem:
-          - article "Who owns public sector data?":
-            - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
-              - /url: /en/blog/80/who-owns-public-sector-data/
-              - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
-              - heading "Who owns public sector data?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/
@@ -306,6 +306,24 @@
               - link "Technology":
                 - /url: /en/category/technology/
         - listitem:
+          - article "Who owns public sector data?":
+            - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
+              - /url: /en/blog/80/who-owns-public-sector-data/
+              - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
+              - heading "Who owns public sector data?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+        - listitem:
           - article "Data Centres Can Be Finland's Ace in International Politics":
             - link "Close-up of data centre servers with rows of green status lights. Data Centres Can Be Finland's Ace in International Politics":
               - /url: /en/blog/71/data-centres-finlands-ace-in-international-politics/
@@ -323,24 +341,6 @@
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
-        - listitem:
-          - article "Open Source Is the Cornerstone of Digital Independence":
-            - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Open Source Is the Cornerstone of Digital Independence":
-              - /url: /en/blog/76/open-source-is-the-cornerstone-of-digital-independence/
-              - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
-              - heading "Open Source Is the Cornerstone of Digital Independence" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: The EU tech sovereignty package names open source as the cornerstone of digital independence. Why a closed system is a risk and open source the fix.
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
       - paragraph:
         - link "All posts about Digital independence":
           - /url: /en/category/digital-independence/
