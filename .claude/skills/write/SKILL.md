@@ -54,6 +54,17 @@ Hard don'ts: attack individuals/parties by name; AI utopia/dystopia ("mullistaa"
 5. Nostolause — one sentence anchoring previous, not teasing next
 6. Avoin lopetus — rhetorical question or challenge, not moralising
 
+## Motion and speech posts
+
+A post that publishes a motion (valtuustoaloite, motion to any body) or a speech carries the document verbatim, signature included. Arc and voice rules apply only to the intro and afterword around it.
+
+1. Intro: answer-first opening (what, when, where, what it proposes), question H2s summarising it in your own words, status.
+2. Boundary H2 `Aloite kokonaisuudessaan` / `Puhe kokonaisuudessaan`, then one italic source line.
+3. Document as filed or delivered: no added headings, lead, pull quote, emphasis or links; paragraphs as in the original; signature on its own lines.
+4. Optional afterword under its own H2.
+
+Never reword the document to pass a check: stop and ask. sv/en are faithful translations with matching paragraphs, labelled. Spec: `.agents/specs/posts/verbatim-documents.md`.
+
 ---
 
 ## Format rules
