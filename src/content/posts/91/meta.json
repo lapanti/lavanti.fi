@@ -1,0 +1,40 @@
+{
+    "id": 91,
+    "publishDate": "2026-10-21",
+    "updatedDate": "2026-10-21",
+    "tags": ["kirkkonummi", "nature", "urban-planning", "infrastructure", "green-party", "freedom"],
+    "heroImage": "Sanni-Jappinen-Pinja-Pekkarniemi-ja-Lauri-Lavanti",
+    "authors": [
+        "lauri",
+        {
+            "name": "Sanni Jäppinen",
+            "role": {
+                "en": "councillor and member of the municipal executive board",
+                "fi": "kunnanvaltuutettu ja kunnanhallituksen jäsen",
+                "sv": "ledamot i kommunfullmäktige och ledamot i kommunstyrelsen"
+            }
+        },
+        {
+            "name": "Pinja Pekkarniemi",
+            "role": {
+                "en": "deputy councillor and vice-chair of the urban development committee",
+                "fi": "varavaltuutettu ja kuntakehityksen lautakunnan varapuheenjohtaja",
+                "sv": "suppleant i kommunfullmäktige och vice ordförande i kommunutvecklingsnämnden"
+            }
+        }
+    ],
+    "externalPublications": [
+        {
+            "date": "2026-10-20",
+            "lang": "fi",
+            "name": "Kirkkonummen Sanomat",
+            "url": "https://www.kirkkonummensanomat.fi/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe-6.175.87540.664176e74d"
+        },
+        {
+            "date": "2026-10-20",
+            "lang": "sv",
+            "name": "Kirkkonummen Sanomat",
+            "url": "https://www.kirkkonummensanomat.fi/centralskogen-ar-den-naturkloka-kommunens-forsta-prov-6.175.87539.ab86480fb7"
+        }
+    ]
+}
