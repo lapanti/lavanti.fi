@@ -119,7 +119,7 @@ const isLang = Boolean(switchToLang)
 </style>
 <a
     aria-current={pathname.startsWith(href) ? 'page' : 'false'}
-    aria-label={title !== label ? (title.includes(label) ? title : `${label} – ${title}`) : undefined}
+    aria-label={title !== label ? (` ${title} `.includes(` ${label} `) ? title : `${label} – ${title}`) : undefined}
     class:list={[
         context,
         {
