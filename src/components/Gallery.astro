@@ -146,7 +146,7 @@ const aspects = ['nelio', 'pysty', 'vaaka'] as const
                             <span class="downloads-label">{downloadHeading[lang]}:</span>
                             {availableAspects.map((aspect) => (
                                 <a
-                                    aria-label={`${downloadHeading[lang]}: ${photo.alt[lang]} (${aspectLabels[lang][aspect]})`}
+                                    aria-label={`${aspectLabels[lang][aspect]} – ${downloadHeading[lang]}: ${photo.alt[lang]}`}
                                     download={`${photo.crops[aspect]}.jpg`}
                                     href={getDownloadUrl(photo.crops[aspect]!)}
                                 >
