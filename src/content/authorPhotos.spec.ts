@@ -13,7 +13,7 @@ const originalsDir = path.resolve(__dirname, '../images/originals')
  */
 const FROZEN = [
     { from: '2021-01-01', image: 'Lauri-Lavanti-kadet-puuskassa-ulkona' },
-    { from: '2025-01-01', image: 'Lauri-Lavanti-nojaamassa-kasiin' },
+    { from: '2024-09-25', image: 'Lauri-Lavanti-nojaamassa-kasiin' },
     { from: '2026-01-01', image: 'Lauri-Lavanti-seisoo-suorassa-sinisella-taustalla' },
     { from: '2026-08-26', image: 'Lauri-Lavanti-virallinen-puoluekuva' },
 ]
@@ -39,8 +39,8 @@ describe('authorPhotos', () => {
 
 describe('resolveAuthorImage', () => {
     it('picks the era covering the publish date, inclusive of its start', () => {
-        expect(resolveAuthorImage('2024-12-31')).toBe('Lauri-Lavanti-kadet-puuskassa-ulkona')
-        expect(resolveAuthorImage('2025-01-01')).toBe('Lauri-Lavanti-nojaamassa-kasiin')
+        expect(resolveAuthorImage('2024-09-24')).toBe('Lauri-Lavanti-kadet-puuskassa-ulkona')
+        expect(resolveAuthorImage('2024-09-25')).toBe('Lauri-Lavanti-nojaamassa-kasiin')
         expect(resolveAuthorImage('2026-03-01')).toBe('Lauri-Lavanti-seisoo-suorassa-sinisella-taustalla')
         expect(resolveAuthorImage('2026-08-26')).toBe('Lauri-Lavanti-virallinen-puoluekuva')
     })
