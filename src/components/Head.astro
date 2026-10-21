@@ -305,19 +305,27 @@ const faqJsonLd = hasFaqSection(faq)
  * block on the page is a standalone object, and scripts/checks/dist-head.ts reads
  * @context and @type off each block.
  *
- * organizer is written out rather than referenced by @id: on a WebPage the canonical
- * Person node is not in the emitted graph, so a bare @id would dangle.
+ * organizer and performer are written out rather than referenced by @id: on a WebPage
+ * the canonical Person node is not in the emitted graph, so a bare @id would dangle.
+ *
+ * Google's recommended Event fields are always present: endDate falls back to the
+ * event's date when it has no end time (toHelsinkiIso returns the bare date), the
+ * image is Lauri's portrait, Lauri is the performer (he hosts or moderates every
+ * campaign event), and every event is free, so offers is a zero-price Offer.
  */
 const announceableEvents = (events ?? []).filter((event) => event.topicConfirmed)
+const eventImage = announceableEvents.length > 0 ? await getPersonImageUrl() : undefined
+const eventPerson = { '@type': 'Person', name: personName, url: personUrl }
 
 const eventsJsonLd = announceableEvents.map((event) =>
     JSON.stringify({
         '@context': 'https://schema.org',
         '@type': EVENT,
         description: event.locales[lang].description,
-        ...(event.endTime ? { endDate: toHelsinkiIso(event.date, event.endTime) } : {}),
+        endDate: toHelsinkiIso(event.date, event.endTime),
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         eventStatus: 'https://schema.org/EventScheduled',
+        image: eventImage,
         isAccessibleForFree: true,
         location: {
             '@type': 'Place',
@@ -331,7 +339,15 @@ const eventsJsonLd = announceableEvents.map((event) =>
             name: event.locales[lang].venue,
         },
         name: event.locales[lang].title,
-        organizer: { '@type': 'Person', name: personName, url: personUrl },
+        offers: {
+            '@type': 'Offer',
+            availability: 'https://schema.org/InStock',
+            price: 0,
+            priceCurrency: 'EUR',
+            url: event.fbUrl ?? canonical?.toString(),
+        },
+        organizer: eventPerson,
+        performer: eventPerson,
         ...(event.fbUrl ? { sameAs: event.fbUrl } : {}),
         startDate: toHelsinkiIso(event.date, event.startTime),
         ...(canonical ? { url: canonical.toString() } : {}),
