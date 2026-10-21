@@ -15,6 +15,8 @@ Read `$ARGUMENTS` (required — stop and ask if missing).
 
 Run these checks in order. Single combined report at the end.
 
+Motion or speech post (`council-motion` or `speech` tag): review only the intro and afterword for §1–§4. The document under `Aloite kokonaisuudessaan` / `Puhe kokonaisuudessaan` (and sv/en equivalents) is verbatim, signature included: never flag its wording, length, ending or signature. Instead check the format in `.agents/specs/posts/verbatim-documents.md`: answer-first intro with a question H2, boundary H2 + source line, nothing inserted into the document, paragraph counts equal across locales.
+
 ---
 
 ## 1. SEO judgment calls
