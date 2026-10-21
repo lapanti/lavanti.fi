@@ -15,7 +15,7 @@ interface VariantDef {
 
 const VARIANTS: Record<string, VariantDef> = {
     '1x1': { fit: 'crop', gravity: 'face', h: 1680, w: 1680 },
-    /** Post author card portrait — a small face-cropped square, shown as a circle. */
+    /** Post author card portrait — a small face-cropped square. */
     avatar: { fit: 'crop', gravity: 'face', h: 384, w: 384 },
     background: { fit: 'crop', gravity: 'auto', h: 660, w: 1920 },
     body: { fit: 'crop', gravity: 'auto', h: 1800, w: 2400 },
