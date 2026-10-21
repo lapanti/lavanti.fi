@@ -27,7 +27,7 @@ export const speechTag: LocalTag = {
     names: { en: 'Speech', fi: 'Puhe', sv: 'Tal' },
     pageTitle: {
         en: 'Speeches – my speeches and talks in full',
-        fi: 'Puheet – puheenvuoroni kokonaisuudessaan',
+        fi: 'Puheet – puheenvuoroni kokonaisuu­dessaan',
         sv: 'Tal – mina tal och anföranden i sin helhet',
     },
     slugs: { en: 'speech', fi: 'puhe', sv: 'tal' },
