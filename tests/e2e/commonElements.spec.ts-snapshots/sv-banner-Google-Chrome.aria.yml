@@ -16,12 +16,12 @@
       - text: ""
     - link "Inlägg":
       - /url: /sv/blog/
-    - link "Kontaktuppgifter":
+    - link "Kontakt – Kontaktuppgifter":
       - /url: /sv/kontakt/
       - text: ""
     - link "Nyhetsbrev":
       - /url: /sv/nyhetsbrev/
-  - group:
+  - group "Språk":
     - link "FI – Suomeksi":
       - /url: /fi/laurista/
       - text: ""
