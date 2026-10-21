@@ -342,6 +342,36 @@ describe('<Head />', () => {
         expect(unlinked[0]).not.toHaveProperty('sameAs')
     })
 
+    it("should always carry Google's recommended Event fields", async () => {
+        const undated = { ...openEvent, topicConfirmed: true }
+        const parsed = eventScripts(
+            await renderAstroComponent(Head, {
+                props: { events: [confirmedEvent, undated], lang: 'fi', slug: 'fi/eduskuntavaalit', title: 'Vaalit' },
+            })
+        )
+
+        for (const event of parsed) {
+            expect(event.image).toMatch(/^https:\/\//)
+            expect(event.performer).toEqual(event.organizer)
+            expect(event.offers).toMatchObject({ '@type': 'Offer', price: 0, priceCurrency: 'EUR' })
+            expect(event.offers.url).toMatch(/^https:\/\//)
+        }
+        // An event with no times is a whole-day event: endDate is its date.
+        expect(parsed[1].startDate).toBe('2026-11-30')
+        expect(parsed[1].endDate).toBe('2026-11-30')
+    })
+
+    it('should point the offer at the Facebook event when there is one', async () => {
+        const withLink = { ...confirmedEvent, fbUrl: 'https://fb.me/e/example' }
+        const [parsed] = eventScripts(
+            await renderAstroComponent(Head, {
+                props: { events: [withLink], slug: 'fi/eduskuntavaalit', title: 'Vaalit' },
+            })
+        )
+
+        expect(parsed.offers.url).toBe('https://fb.me/e/example')
+    })
+
     it('should omit an event whose topic is not confirmed', async () => {
         const result = await renderAstroComponent(Head, {
             props: { events: [openEvent], slug: 'fi/eduskuntavaalit', title: 'Vaalit' },
