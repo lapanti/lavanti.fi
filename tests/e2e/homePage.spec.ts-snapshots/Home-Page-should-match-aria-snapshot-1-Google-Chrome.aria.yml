@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "The Central Forest is the nature-wise municipality's first test":
+          - link "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. The Central Forest is the nature-wise municipality's first test":
+            - /url: /en/blog/91/central-forest-is-the-first-test-for-a-nature-wise-municipality/
+            - img "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background."
+            - heading "The Central Forest is the nature-wise municipality's first test" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: The Central Forest plan would bring a three-metre-wide paved and lit route from Masala to the municipal centre. A nature-wise municipality keeps its paths.
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link "Nature":
+              - /url: /en/category/nature/
+          - listitem:
+            - link "Urban planning":
+              - /url: /en/category/urban-planning/
+      - listitem:
         - article "The walking and cycling programme is the municipality's long-term plan":
           - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
             - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Economy":
               - /url: /en/category/economy/
-      - listitem:
-        - article "YEL must not raise the entrepreneurship barrier":
-          - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. YEL must not raise the entrepreneurship barrier":
-            - /url: /en/blog/73/yel-must-not-raise-the-entrepreneurship-barrier/
-            - img "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle."
-            - heading "YEL must not raise the entrepreneurship barrier" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Finland's YEL reform would scrap the new-entrepreneur discount just as AI lowers the barrier to starting a business. Three fixes that keep the barrier low.
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Entrepreneurship":
-              - /url: /en/category/entrepreneurship/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

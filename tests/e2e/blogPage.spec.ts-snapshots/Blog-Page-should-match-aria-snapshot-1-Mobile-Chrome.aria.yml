@@ -225,6 +225,24 @@
       - paragraph: Vapauden varmaksi tekeminen tekoälyn aikana edellyttää punnittuja myönnytyksiä sekä tiukkoja rajoja. Massavalvonta, biometristen tunnisteiden käytön laajentaminen tai viestien automaattinen seulonta eivät ole työkaluja, joita tulee ottaa käyttöön kevyesti, jos laisinkaan. Jokaiselle yksityisyyttä murentavalle askeleella pitää olla aukottomat perustelut ja selkeää näyttöä hyödyistä, muuten punnintaa sen järkevyydestä ei voi, eikä kannata, tehdä.
       - list:
         - listitem:
+          - article "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
+            - link "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
+              - /url: /fi/blog/91/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/
+              - img "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla."
+              - heading "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Keskusmetsän suunnitelma toisi metsään kolme metriä leveän päällystetyn ja valaistun reitin Masalasta kuntakeskukseen. Luontoviisas kunta kehittää polkuja.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Luonto":
+                - /url: /fi/kategoria/luonto/
+            - listitem:
+              - link "Kaavoitus":
+                - /url: /fi/kategoria/kaavoitus/
+        - listitem:
           - article "Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
             - link "Kaksiosainen kuva, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
               - /url: /fi/blog/78/metsien-hakkuut-ilman-asukkaiden-kuulemista/
@@ -260,24 +278,6 @@
             - listitem:
               - link "Vapaus":
                 - /url: /fi/kategoria/vapaus/
-        - listitem:
-          - 'article /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-            - 'link /Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos\. Kuva: Markus Isomeri\. Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/':
-              - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
-              - 'img "Lauri Lavanti hymyilee lasi- ja puujulkisivun edessä, taustalla veistos. Kuva: Markus Isomeri."'
-              - 'heading /Asetun ehdolle eduskuntavaaleihin \d+: Suomi tarvitsee digitaalista itsenäisyyttä tekoälyn aikakaudella/ [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Asetun Vihreiden ehdokkaaksi Uudenmaan vaalipiirissä eduskuntavaaleihin \d+\. Tavoitteenani on digitaalisesti itsenäinen Suomi tekoälyn aikakaudella\./
-          - list:
-            - listitem:
-              - link /Eduskuntavaalit \d+/:
-                - /url: /fi/kategoria/eduskuntavaalit-2027/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Vapaus":
           - /url: /fi/kategoria/vapaus/

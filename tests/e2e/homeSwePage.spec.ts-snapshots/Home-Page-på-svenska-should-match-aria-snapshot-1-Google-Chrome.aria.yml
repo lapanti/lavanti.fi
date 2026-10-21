@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Centralskogen är den naturkloka kommunens första prov":
+          - link "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Centralskogen är den naturkloka kommunens första prov":
+            - /url: /sv/blog/91/centralskogen-ar-den-naturkloka-kommunens-forsta-prov/
+            - img "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund."
+            - heading "Centralskogen är den naturkloka kommunens första prov" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Planen för Centralskogen skulle föra in en tre meter bred belagd och belyst led från Masaby till kommuncentrum. En naturklok kommun utvecklar befintliga stigar.
+        - list:
+          - listitem:
+            - link "Kyrkslätt":
+              - /url: /sv/kategori/kyrkslatt/
+          - listitem:
+            - link "Natur":
+              - /url: /sv/kategori/natur/
+          - listitem:
+            - link "Planläggning":
+              - /url: /sv/kategori/planlaggning/
+      - listitem:
         - article "Programmet för gång och cykling är kommunens långsiktiga plan":
           - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
             - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Ekonomi":
               - /url: /sv/kategori/ekonomi/
-      - listitem:
-        - article "FöPL får inte höja tröskeln för företagande":
-          - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. FöPL får inte höja tröskeln för företagande":
-            - /url: /sv/blog/73/fopl-far-inte-hoja-troskeln-for-foretagande/
-            - img "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna."
-            - heading "FöPL får inte höja tröskeln för företagande" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Regeringens FöPL-reform slopar nyföretagarrabatten just när AI sänker tröskeln för att bli företagare. Tre korrigeringar som håller tröskeln låg.
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /sv/kategori/artificiell-intelligens/
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Företagande":
-              - /url: /sv/kategori/foretagande/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
