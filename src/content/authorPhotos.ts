@@ -18,8 +18,7 @@ export interface AuthorPhotoEra {
 
 export const authorPhotos: readonly AuthorPhotoEra[] = [
     { from: '2021-01-01', image: 'Lauri-Lavanti-kadet-puuskassa-ulkona' },
-    /** The 2025 municipal election year. */
-    { from: '2025-01-01', image: 'Lauri-Lavanti-nojaamassa-kasiin' },
+    { from: '2024-09-25', image: 'Lauri-Lavanti-nojaamassa-kasiin' },
     { from: '2026-01-01', image: 'Lauri-Lavanti-seisoo-suorassa-sinisella-taustalla' },
     /** The parliamentary candidacy announcement. */
     { from: '2026-08-26', image: 'Lauri-Lavanti-virallinen-puoluekuva' },
