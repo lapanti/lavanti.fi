@@ -64,7 +64,7 @@ The signature is the only name at the end of a post. The no-byline rule still ap
 
 ### Translations
 
-The locale of the original language carries the document verbatim. The other two locales carry a full, faithful translation: same paragraph count, same order, signature translated (`Vihreä valtuustoryhmä` → sv `Den gröna fullmäktigegruppen`, en `The Green Council Group`), labelled in the source line. Post 85 was delivered in English, so its `en.mdx` is the verbatim locale.
+The locale of the original language carries the document verbatim. The other two locales carry a full, faithful translation: same paragraph count, same order, signature translated (`Vihreä valtuustoryhmä` → sv `Den gröna fullmäktigegruppen`, en `The Green Council Group`), labelled in the source line. A translated paragraph that runs past the 150-word passage limit is tightened in wording, never split (post 89 en). Post 85 was delivered in English, so its `en.mdx` is the verbatim locale.
 
 ```gherkin
 Feature: Motion and speech posts
