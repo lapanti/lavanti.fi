@@ -52,6 +52,7 @@ A motion or speech post body has four parts, in this order:
    - No inserted headings, blockquotes, pull quotes, emphasis, links or list markup. The document's own headings, if it had any, stay as H3.
    - The closing signature stays, in its original order, one line each, joined with a trailing `\`.
    - Corrections never go into the text. A factual correction goes in the afterword as an editorial note.
+   - Exception, a corrected speech: when a speech is published with factual errors fixed in the text (post 85), the boundary H2 says so (`Puhe korjattuna` / `Talet i korrigerad form` / `The talk, corrected`) and the afterword's editorial note lists every change. Use only when the delivered text would spread errors; the default is the text as delivered.
 4. **Afterword** (optional) — opens with its own H2 so a reader cannot mistake it for part of the document. Further reading, related posts, editorial notes.
 
 The signature is the only name at the end of a post. The no-byline rule still applies to everything Lauri writes around the document.
@@ -113,3 +114,4 @@ Feature: Motion and speech posts
 | Date | Change |
 |------|--------|
 | 2026-10-21 | Created: intro block + boundary H2 + verbatim document format for motions and speeches |
+| 2026-10-21 | Added the corrected-speech exception (post 85) |
