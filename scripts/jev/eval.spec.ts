@@ -35,8 +35,8 @@ describe('tagQuestions', () => {
         const labels = await loadTagLabels()
         const questions = tagQuestions(labels)
 
-        expect(labels.length).toBe(34)
-        expect(Object.keys(questions)).toHaveLength(34)
+        expect(labels.length).toBe(35)
+        expect(Object.keys(questions)).toHaveLength(35)
         expect(questions.economy).toEqual({
             instructions: expect.stringMatching(/^This article belongs in the category 'Economy': Finland/),
             type: 'noul',

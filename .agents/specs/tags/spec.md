@@ -23,7 +23,7 @@ Tags are the content taxonomy used to categorise blog posts and generate categor
       local?: true                                          // Kirkkonummi-only category; ranked last in other pages' related topics
   }
   ```
-  Currently 34 tags.
+  Currently 35 tags.
 
 - **Aggregator:** `src/content/tags.ts` imports every tag file and exports:
   ```ts

@@ -16,11 +16,11 @@ import {
 } from './tags'
 
 describe('labels and registry', () => {
-    it('loads 34 English labels from the real tag files and every editorial and pillar tag exists', async () => {
+    it('loads 35 English labels from the real tag files and every editorial and pillar tag exists', async () => {
         const labels = await loadTagLabels()
         const ids = labels.map((l) => l.id)
 
-        expect(labels).toHaveLength(34)
+        expect(labels).toHaveLength(35)
         expect(tagQuestions(labels).economy).toEqual({
             instructions: expect.stringMatching(/^This article belongs in the category 'Economy': Finland/),
             type: 'noul',

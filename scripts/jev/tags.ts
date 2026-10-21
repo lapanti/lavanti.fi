@@ -40,7 +40,7 @@ export const PILLAR_TAGS = [
  * Measured in the eval (recall 0.08–0.28): municipal-elections-2025,
  * parliamentary-elections-2027, regional-elections-2025. Judged to be the same
  * kind: coop-elections, council-motion, green-party, marketgreen,
- * regional-elections-2022.
+ * regional-elections-2022, speech.
  */
 export const EDITORIAL_TAGS = [
     'coop-elections',
@@ -51,6 +51,7 @@ export const EDITORIAL_TAGS = [
     'parliamentary-elections-2027',
     'regional-elections-2022',
     'regional-elections-2025',
+    'speech',
 ]
 
 export interface TagLabel {
