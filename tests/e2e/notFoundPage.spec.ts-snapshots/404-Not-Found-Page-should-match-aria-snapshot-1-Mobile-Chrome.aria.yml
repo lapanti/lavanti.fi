@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
+          - link "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
+            - /url: /fi/blog/91/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/
+            - img "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla."
+            - heading "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Keskusmetsän suunnitelma toisi metsään kolme metriä leveän päällystetyn ja valaistun reitin Masalasta kuntakeskukseen. Luontoviisas kunta kehittää polkuja.
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /fi/kategoria/kirkkonummi/
+          - listitem:
+            - link "Luonto":
+              - /url: /fi/kategoria/luonto/
+          - listitem:
+            - link "Kaavoitus":
+              - /url: /fi/kategoria/kaavoitus/
+      - listitem:
         - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
           - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
             - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Turvallisuus":
               - /url: /fi/kategoria/turvallisuus/
-      - listitem:
-        - article "Kuka omistaa julkishallinnon datan?":
-          - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
-            - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
-            - img "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia."
-            - heading "Kuka omistaa julkishallinnon datan?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Julkishankintojen siirrettävyys ratkaisee, kuka omistaa julkishallinnon datan. eVaka näyttää, että avoin ja jaettu malli kestää toimittajan vaihdon.
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Digitalisaatio":
-              - /url: /fi/kategoria/digitalisaatio/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
