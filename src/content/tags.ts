@@ -29,6 +29,7 @@ import { regionalElections2022Tag } from './tags/regional-elections-2022'
 import { regionalElections2025Tag } from './tags/regional-elections-2025'
 import { securityTag } from './tags/security'
 import { socialMediaTag } from './tags/social-media'
+import { speechTag } from './tags/speech'
 import { technologyTag } from './tags/technology'
 import { transportationTag } from './tags/transportation'
 import { urbanPlanningTag } from './tags/urban-planning'
@@ -66,6 +67,7 @@ export const tags = [
     equalityAndNonDiscriminationTag,
     technologyTag,
     councilMotionTag,
+    speechTag,
     earlyChildhoodEducationTag,
     privacyTag,
     natureTag,

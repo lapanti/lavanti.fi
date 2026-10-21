@@ -184,8 +184,8 @@ export const CONSIDER_THRESHOLD = 0.7      // provisional; in the eval log preci
 export const DOUBTFUL_THRESHOLD = 0.2      // provisional
 export const PILLAR_TAGS = ['artificial-intelligence', 'digital-independence', 'economy', 'culture-and-education', 'freedom']  // as content.sh:183
 // Measured (eval recall 0.08–0.28): municipal-elections-2025, parliamentary-elections-2027, regional-elections-2025.
-// By judgment (same nature, too few posts to measure): coop-elections, council-motion, green-party, marketgreen, regional-elections-2022.
-export const EDITORIAL_TAGS = ['coop-elections', 'council-motion', 'green-party', 'marketgreen', 'municipal-elections-2025', 'parliamentary-elections-2027', 'regional-elections-2022', 'regional-elections-2025']
+// By judgment (same nature, too few posts to measure): coop-elections, council-motion, green-party, marketgreen, regional-elections-2022, speech.
+export const EDITORIAL_TAGS = ['coop-elections', 'council-motion', 'green-party', 'marketgreen', 'municipal-elections-2025', 'parliamentary-elections-2027', 'regional-elections-2022', 'regional-elections-2025', 'speech']
 export interface TagPartition { consider: Array<{ id: string; p: number }>; doubtful: Array<{ id: string; p: number }>; pillar: Array<{ assigned: boolean; id: string; p: number }> }
 export function partition(probabilities: Record<string, number>, assigned: string[], opts: { consider: number; doubtful: number }): TagPartition
 export function tagIdsFromPaths(paths: string[]): string[]                   // src/content/tags/<id>.ts → ids, types.ts excluded, unique
