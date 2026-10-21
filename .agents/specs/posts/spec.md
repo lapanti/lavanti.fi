@@ -172,6 +172,7 @@ Because `meta.json`'s fields have exactly one physical copy per post id, cross-l
 - [Tags](../tags/spec.md) — posts reference tag `id` strings in `meta.json`'s `tags[]`; never invent new tag ids in post data
 - [SEO](../seo/spec.md) — hreflang generation consumes `langAlternates`, which this migration must keep computing correctly (mechanism itself is out of scope)
 - [RSS](../rss/spec.md) — RSS route is being collapsed to `src/pages/[lang]/rss.xml.ts` as part of this migration; content/dates must not regress
+- [Motion and speech posts](./verbatim-documents.md) — body format for posts that publish a motion or speech verbatim
 - [Images](../images/spec.md) — `heroImage` resolution via `astro-cloudinary` is unaffected by this migration; only the frontmatter field's file location changes
 
 ---
