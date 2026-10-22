@@ -77,7 +77,14 @@ describe('findOffenders', () => {
     }
     const page = (date: string, body: string): string => `---\nlang: fi\nupdatedDate: '${date}'\n---\n${body}\n`
 
+    /*
+     * The pre-commit hook runs this spec with git's hook env set. GIT_INDEX_FILE in
+     * particular would point every git call here, findOffenders' included, at the
+     * real repo's index, and the fixture commits would overwrite it.
+     */
+    const hookEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) => key.startsWith('GIT_')))
     beforeAll(() => {
+        for (const key of Object.keys(hookEnv)) delete process.env[key]
         git('init', '-q')
         git('config', 'user.email', 't@example.com')
         git('config', 'user.name', 'Test')
@@ -88,7 +95,10 @@ describe('findOffenders', () => {
         git('add', '-A')
         git('commit', '-qm', 'seed')
     })
-    afterAll(() => rmSync(repo, { force: true, recursive: true }))
+    afterAll(() => {
+        rmSync(repo, { force: true, recursive: true })
+        Object.assign(process.env, hookEnv)
+    })
 
     const staged = (files: string[]) => findOffenders({ cwd: repo, files, from: 'HEAD', now: '2026-09-11', to: '' })
 
