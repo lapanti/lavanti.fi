@@ -115,8 +115,21 @@ describe('parsePayload', () => {
         ],
         ['a non-ISO asOf', { ...fixture(), asOf: '4.1.2099' }, /ISO date/],
         ['a future asOf', { ...fixture(), asOf: '2099-01-05' }, /in the future/],
+        ['a negative donor count', { ...fixture(), donors: -1 }, /donors must be a non-negative integer/],
+        ['a fractional donor count', { ...fixture(), donors: 2.5 }, /donors must be a non-negative integer/],
+        ['a donor count as text', { ...fixture(), donors: '12' }, /donors must be a non-negative integer/],
     ])('rejects %s', (_name, payload, message) => {
         expect(() => parse(payload)).toThrow(message)
+    })
+
+    it('accepts a donor count and keeps it last', () => {
+        const parsed = parse({ donors: 12, ...fixture() })
+        expect(parsed.donors).toBe(12)
+        expect(Object.keys(parsed)).toEqual(['asOf', 'raised', 'spent', 'donors'])
+    })
+
+    it('leaves the donor count out when the payload has none', () => {
+        expect(Object.keys(parse(fixture()))).toEqual(['asOf', 'raised', 'spent'])
     })
 
     it('rejects text that is not JSON', () => {
@@ -174,11 +187,19 @@ describe('figuresChanged', () => {
 
         for (const next of [pending, committed, budgeted]) expect(figuresChanged(fixture(), next)).toBe(true)
     })
+
+    it('detects a donor count that appears, changes or disappears', () => {
+        expect(figuresChanged(fixture(), { ...fixture(), donors: 12 })).toBe(true)
+        expect(figuresChanged({ ...fixture(), donors: 12 }, { ...fixture(), donors: 13 })).toBe(true)
+        expect(figuresChanged({ ...fixture(), donors: 12 }, fixture())).toBe(true)
+        expect(figuresChanged({ ...fixture(), donors: 12 }, { ...fixture(), donors: 12 })).toBe(false)
+    })
 })
 
 describe('canonical', () => {
     it('drops nothing and adds nothing', () => {
         expect(canonical(fixture())).toEqual(fixture())
+        expect(canonical({ ...fixture(), donors: 0 })).toEqual({ ...fixture(), donors: 0 })
     })
 })
 
@@ -194,6 +215,11 @@ describe('changeTable', () => {
         expect(table).toContain('| raised.own | 3000 + 7000 | 3000 + 7000 |')
         expect(table).toContain('| **raised total** | 3500 + 7494 | 3800 + 7194 |')
         expect(table).toContain('| spent.media | 1000 + 4600 / 11340 | 1000 + 4600 / 11340 |')
+    })
+
+    it('shows the donor count, with a dash when absent', () => {
+        expect(changeTable(fixture(), { ...fixture(), donors: 12 })).toContain('| **donors** | – | 12 |')
+        expect(changeTable(fixture(), fixture())).toContain('| donors | – | – |')
     })
 })
 
