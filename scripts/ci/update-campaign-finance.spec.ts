@@ -68,6 +68,7 @@ describe('the lists mirror the data module', () => {
         const figures = readFigures(readFileSync(FIGURES_PATH, 'utf8'))
         expect(figures).toEqual({
             asOf: campaignFinance.asOf,
+            donors: campaignFinance.donors,
             raised: campaignFinance.raised,
             spent: campaignFinance.spent,
         })
