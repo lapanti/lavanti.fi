@@ -68,7 +68,10 @@ interface FinanceFigures {
     asOf: string
     raised: Record<FundingSource, Income>
     spent: Record<ExpenseCategory, Expense>
-    /** Unique donors in the budget sheet, the candidate excluded. Absent until the sheet sends it. */
+    /**
+     * Unique donors in the budget sheet: the candidate excluded, donors whose money is
+     * still pending included. Absent until the sheet sends it.
+     */
     donors?: number
 }
 
