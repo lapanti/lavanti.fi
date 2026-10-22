@@ -27,7 +27,7 @@ on:
   workflow_dispatch:
     inputs:
       payload:
-        description: 'JSON: { "asOf": "YYYY-MM-DD", "raised": { <7 sources>: { "banked", "pending" } }, "spent": { <7 categories>: { "budgeted", "banked", "committed" } } }'
+        description: 'JSON: { "asOf": "YYYY-MM-DD", "raised": { <7 sources>: { "banked", "pending" } }, "spent": { <7 categories>: { "budgeted", "banked", "committed" } }, "donors"?: <unique donors, candidate excluded> }'
         required: true
         type: string
 

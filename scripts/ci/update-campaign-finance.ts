@@ -15,8 +15,9 @@
  * checks — so the bot's commit can never fail a format or lint check.
  *
  * Env: PAYLOAD — JSON
- *   `{ asOf, raised: { <source>: { banked, pending } }, spent: { <category>: { budgeted, banked, committed } } }`.
- * Prints `unchanged` and edits nothing when raised and spent already match, whatever
+ *   `{ asOf, raised: { <source>: { banked, pending } }, spent: { <category>: { budgeted, banked, committed } }, donors? }`.
+ *   `donors` is optional, so a sender that predates it keeps working; omitting it drops the count.
+ * Prints `unchanged` and edits nothing when raised, spent and donors already match, whatever
  * asOf says; otherwise prints a before/after table, also written to TABLE_FILE when set.
  * Writes `changed=true|false` to $GITHUB_OUTPUT when set.
  * Exit 0 on success or no-op, 1 on an invalid payload.
@@ -58,6 +59,8 @@ export interface FinancePayload {
     asOf: string
     raised: Record<Source, Income>
     spent: Record<Category, Expense>
+    /** Unique donors in the budget sheet, the candidate excluded. */
+    donors?: number
 }
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
@@ -110,6 +113,7 @@ export function canonical(figures: FinancePayload): FinancePayload {
         spent: Object.fromEntries(
             EXPENSE_CATEGORIES.map((category) => [category, order(figures.spent[category], EXPENSE_FIELDS)])
         ) as Record<Category, Expense>,
+        ...(figures.donors === undefined ? {} : { donors: figures.donors }),
     }
 }
 
@@ -125,7 +129,7 @@ export function parsePayload(raw: string, budget: number, today: string): Financ
         throw new Error(`payload is not JSON: ${(error as Error).message}`, { cause: error })
     }
     if (!isObject(parsed)) throw new Error('payload is not an object')
-    const { asOf, raised, spent } = parsed
+    const { asOf, raised, spent, donors } = parsed
 
     const problems: string[] = []
     if (typeof asOf !== 'string' || !ISO_DATE.test(asOf) || Number.isNaN(Date.parse(asOf))) {
@@ -135,6 +139,8 @@ export function parsePayload(raw: string, budget: number, today: string): Financ
     }
     problems.push(...groupProblems('raised', raised, FUNDING_SOURCES, INCOME_FIELDS))
     problems.push(...groupProblems('spent', spent, EXPENSE_CATEGORIES, EXPENSE_FIELDS))
+    if (donors !== undefined && !isEuro(donors))
+        problems.push(`donors must be a non-negative integer, got ${JSON.stringify(donors)}`)
     if (problems.length > 0) throw new Error(problems.join('\n'))
 
     const payload = canonical(parsed as unknown as FinancePayload)
@@ -159,8 +165,8 @@ export function readBudget(source: string): number {
 export const readFigures = (source: string): FinancePayload => JSON.parse(source) as FinancePayload
 
 export const figuresChanged = (current: FinancePayload, payload: FinancePayload): boolean => {
-    const figuresOnly = ({ raised, spent }: FinancePayload): string =>
-        JSON.stringify(canonical({ asOf: '', raised, spent }))
+    const figuresOnly = ({ raised, spent, donors }: FinancePayload): string =>
+        JSON.stringify(canonical({ asOf: '', donors, raised, spent }))
 
     return figuresOnly(current) !== figuresOnly(payload)
 }
@@ -197,6 +203,7 @@ export function changeTable(before: FinancePayload, after: FinancePayload): stri
             String(sumOf(before.spent, field)),
             String(sumOf(after.spent, field)),
         ]),
+        ['donors', String(before.donors ?? '–'), String(after.donors ?? '–')],
     ]
 
     return [
