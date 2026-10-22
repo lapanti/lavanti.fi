@@ -1,7 +1,7 @@
 {
     "id": 91,
     "publishDate": "2026-10-21",
-    "updatedDate": "2026-10-21",
+    "updatedDate": "2026-10-22",
     "tags": ["kirkkonummi", "nature", "urban-planning", "infrastructure", "green-party", "freedom"],
     "heroImage": "Sanni-Jappinen-Pinja-Pekkarniemi-ja-Lauri-Lavanti",
     "authors": [
@@ -35,6 +35,12 @@
             "lang": "sv",
             "name": "Kirkkonummen Sanomat",
             "url": "https://www.kirkkonummensanomat.fi/centralskogen-ar-den-naturkloka-kommunens-forsta-prov-6.175.87539.ab86480fb7"
+        },
+        {
+            "date": "2026-10-22",
+            "lang": "fi",
+            "name": "Kirkkonummen Vihreät",
+            "url": "https://kirkkonummenvihreat.fi/2026/10/22/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/"
         }
     ]
 }
