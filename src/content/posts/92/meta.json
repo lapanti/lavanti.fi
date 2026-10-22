@@ -1,0 +1,26 @@
+{
+    "id": 92,
+    "publishDate": "2026-10-26",
+    "updatedDate": "2026-10-26",
+    "tags": ["artificial-intelligence", "economy", "entrepreneurship", "national-politics", "parliamentary-elections-2027"],
+    "heroImage": "Mari-Holopainen-ja-Lauri-Lavanti",
+    "authors": [
+        "lauri",
+        {
+            "name": "Mari Holopainen",
+            "role": {
+                "fi": "kansanedustaja (vihr.), kauppatieteiden maisteri, Helsinki",
+                "sv": "riksdagsledamot (De Gröna), ekonomie magister, Helsingfors",
+                "en": "Member of Parliament (Greens), MSc (Econ.), Helsinki"
+            }
+        }
+    ],
+    "externalPublications": [
+        {
+            "date": "2026-10-20",
+            "lang": "fi",
+            "name": "Kauppalehti",
+            "url": "https://www.kauppalehti.fi/uutiset/a/00bf2333-5890-49e9-88d3-54cbbacac508"
+        }
+    ]
+}
