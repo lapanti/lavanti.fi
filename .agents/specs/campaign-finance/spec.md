@@ -60,6 +60,7 @@ Feature: Campaign finance transparency page
     When the summary section (fi #lyhyesti, sv #ikorthet, en #inbrief) is read
     Then budget, raised (banked), spent (banked) and gap-to-budget are readable as text with a euro sign
     And the raised tile notes the pending total and the spent tile the committed total, when either is above 0
+    And the raised tile counts its donors on a second line ("24 lahjoittajaa") only when `donors` is at least `donorCountMinimum`
     And the as-of date is printed in the page locale
 
   Scenario: Pending is not banked
@@ -277,12 +278,14 @@ export interface FinanceFigures {
     asOf: string                              // ISO date the figures were last confirmed
     raised: Record<FundingSource, Income>
     spent: Record<ExpenseCategory, Expense>
+    donors?: number                           // unique donors in the sheet, candidate excluded; absent until sent
 }
 
 export interface CampaignFinance extends FinanceFigures {
     budget: number                            // planned total spend, whole euros (manual)
     donationsOpen: boolean                    // manual
     donationUrl: string                       // manual
+    donorCountMinimum: number                 // fewest donors the page prints (manual)
 }
 
 /** Internal: `Benchmark` carries the shape consumers need, so this stays unexported. */
@@ -309,6 +312,7 @@ export interface FinanceLabels {
     budgetRow: string                       // benchmark row label for the campaign budget
     categories: Record<ExpenseCategory, string>
     committed: string                       // suffix after a committed amount: "sitouduttu"
+    donors: (count: string) => string       // receives formatInteger output; "24 lahjoittajaa"
     gap: string
     mean: string
     median: string
@@ -350,14 +354,14 @@ Helper signatures (`src/lib/campaignFinance.ts`):
 | `budgetSegments(f, lang)` | six display sources (value = banked, pending = pending) + `needed`, each `{ id, label, tone, value, pending?, pendingLabel? }`; stack total = `max(budget, banked + pending)` |
 | `spendingSegments(f, lang)` | undefined when Σ banked + committed is 0; else `spent` (value = banked, pending = committed) + `unspent` (`max(0, raised − banked − committed)`, raised = banked + pending); total = `max(raised, banked + committed)` |
 | `categoryRows(f, lang)` | seven `BarRow`s in `EXPENSE_CATEGORY_ORDER`: value = banked, pending = committed, target = budgeted |
-| `summaryTiles(f, lang)` | budget; raised (banked, note = pending); spent (banked, note = committed); gap (note = as-of date) |
+| `summaryTiles(f, lang)` | budget; raised (banked, note = pending, detail = donor count when `donors ≥ donorCountMinimum`); spent (banked, note = committed); gap (note = as-of date) |
 
 Component props:
 
 | Component | Props |
 |---|---|
-| `FinanceStat` | `label`, `value`, `note?` |
-| `FinanceStats` | `items: { label, value, note? }[]` |
+| `FinanceStat` | `label`, `value`, `note?`, `detail?` (second line of small print, after `note`) |
+| `FinanceStats` | `items: { label, value, note?, detail? }[]` |
 | `FinanceBars` | `caption`, `rows: { emphasis?, label, value, pending?, pendingLabel?, target? }[]`, `unit: 'eur' \| 'percent'`, `lang`; `max` = `barsMax` over each row's `max(value + pending, target)`; pending drawn hatched after the fill, target as a marker; the amount text names every part |
 | `FinanceStack` | `caption`, `segments: { id, label, tone, value, pending?, pendingLabel? }[]`, `total`, `lang`; every segment in the legend, only `value + pending > 0` in the bar; pending drawn hatched in the segment's tone, `needed` hatched whole |
 | `FinanceTeaser` | `href`, `id` (localized section anchor: rahoitus / finansiering / finance), `lang` |
@@ -374,18 +378,20 @@ type FinancePayload = FinanceFigures          // whole euros; asOf is the Helsin
 
 | Step | Behaviour |
 |---|---|
-| `scripts/ci/update-campaign-finance.ts` | Runs before `npm ci`, so it imports nothing outside Node built-ins and `src/lib/publishing.ts`; its source and category lists mirror the module's types and a spec holds them in step. Validates the payload against the invariants above (`budget` read from the module). Writes `campaignFinanceFigures.json` whole, in canonical key order, with `JSON.stringify(…, null, 4)` plus a newline, which matches Prettier under `.prettierrc.mjs`. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised` and `spent` equal the file's, whatever `asOf` says |
+| `scripts/ci/update-campaign-finance.ts` | Runs before `npm ci`, so it imports nothing outside Node built-ins and `src/lib/publishing.ts`; its source and category lists mirror the module's types and a spec holds them in step. Validates the payload against the invariants above (`budget` read from the module). Writes `campaignFinanceFigures.json` whole, in canonical key order, with `JSON.stringify(…, null, 4)` plus a newline, which matches Prettier under `.prettierrc.mjs`. Sets `updatedDate` on the three finance pages to today (Helsinki). Prints `unchanged` and edits nothing when `raised`, `spent` and `donors` equal the file's, whatever `asOf` says. `donors` is optional, so a sender without it keeps working, and a payload that omits it removes it from the file |
 | Scratch branch | `chore/campaign-finance-update-<run id>`, cut from `main`, deleted at the end of the run |
 | Baselines | `.github/actions/regen-baselines` against a preview of the edited tree, aliased to the scratch branch |
 | Commit | `scripts/ci/commit-baselines.ts` on the scratch branch, API-signed. `COMMIT_PATHS` lists the figures JSON, the three pages and `tests` |
 | Rolling branch | `chore/campaign-finance-update` moves to that commit in one ref update: an unmerged earlier week is replaced, never stacked. It never points at `main` itself, because GitHub closes or marks merged an open PR whose head is already in its base |
 | PR | Opened if none is open for the branch. Never auto-merged: a person checks the figures against the budget sheet and merges |
 
-`budget`, `donationUrl`, `donationsOpen` and `benchmark2023` are not in the payload and stay manual edits in `campaignFinance.ts`.
+`budget`, `donationUrl`, `donationsOpen`, `donorCountMinimum` and `benchmark2023` are not in the payload and stay manual edits in `campaignFinance.ts`.
 
 Pending income and committed spending do enter the payload, because both are bound by a contract: a donation agreed but not yet remitted, an invoice the campaign has accepted. They are separate fields, never folded into banked money. A promise without a contract, such as the candidate's own undertaking before he pays it in, is in neither column of the sheet and so never reaches the page; once he transfers it, it is banked like any other money.
 
-Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent.*`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
+The donor count is the sheet's number of unique donors, not of donations, and excludes the candidate's own money. It shares `asOf` with the euro figures. Below `donorCountMinimum` it stays off the page entirely, so an early, small count never reads as a lack of support; the page never says a count exists but is hidden.
+
+Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent.*`, `donors`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
 
 The sender needs a fine-grained PAT scoped to this repo with Contents read/write (what `repository_dispatch` requires). The workflow reuses `SCHEDULED_PUBLISH_TOKEN`, so the PR triggers the `pull_request` workflows.
 
@@ -437,3 +443,4 @@ The sender needs a fine-grained PAT scoped to this repo with Contents read/write
 | 2026-09-25 | Critic round 1: plain-text FAQ mention, Tone type + labels, edge-case scenarios (raised > budget, max 0, spent > raised), section ids per locale, footer-only li pattern, hand-rolled date, e2e and title scenarios |
 | 2026-09-30 | Site review: benchmark prose renders from data (`range`, `formatInteger`, `formatDecimal`, `benchmarkSet`); FAQ cost answer is the one test-guarded copy; funding FAQ no longer implies the current mix; breadcrumbs moved in scope; summary and teaser scenarios match `summaryTiles` |
 | 2026-10-05 | Both sides of the budget: `ownCommitment` removed (no pledge figure); income split into banked/pending and spending into budgeted/banked/committed per the seven statutory expense categories, pending and committed hatched; category bars with budget markers; the summary tiles now carry spending, reversing the 2026-09-25 rule, since every figure comes from the budget sheet and a zero there is confirmed; automation-owned figures moved to `campaignFinanceFigures.json`, written whole in Prettier-identical canonical order; payload reshaped accordingly |
+| 2026-10-22 | Donor count: optional `donors` in the payload and figures file, shown as a second line under the raised figure (`detail`) once it reaches the manual `donorCountMinimum` (20) |
