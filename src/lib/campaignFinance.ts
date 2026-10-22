@@ -333,19 +333,25 @@ const pendingNote = (pending: number, suffix: string, lang: Lang): string | unde
 /**
  * The four headline figures, in one place rather than composed in each of the three
  * pages and again in the teaser. Raised and spent show what has moved, with what is
- * bound to move as a note under each.
+ * bound to move as a note under each. Raised also counts its donors once there are
+ * at least `donorCountMinimum` of them.
  */
 export const summaryTiles = (
     finance: CampaignFinance,
     lang: Lang
-): { label: string; note?: string; value: string }[] => {
+): { detail?: string; label: string; note?: string; value: string }[] => {
     const labels = financeLabels[lang]
     const raised = totalRaised(finance)
     const spent = totalSpent(finance)
+    const { donorCountMinimum, donors } = finance
 
     return [
         { label: labels.budget, value: formatEuro(finance.budget, lang) },
         {
+            detail:
+                donors !== undefined && donors >= donorCountMinimum
+                    ? labels.donors(formatInteger(donors, lang))
+                    : undefined,
             label: labels.raised,
             note: pendingNote(raised.pending, labels.pending, lang),
             value: formatEuro(raised.banked, lang),

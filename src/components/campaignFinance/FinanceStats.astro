@@ -7,7 +7,7 @@ import { sizes } from '../../lib/styles'
 import FinanceStat from './FinanceStat.astro'
 
 interface Props {
-    items: { label: string; note?: string; value: string }[]
+    items: { detail?: string; label: string; note?: string; value: string }[]
 }
 
 const { items } = Astro.props
@@ -31,5 +31,5 @@ const { items } = Astro.props
 </style>
 
 <dl class="stats">
-    {items.map((item) => <FinanceStat label={item.label} note={item.note} value={item.value} />)}
+    {items.map((item) => <FinanceStat detail={item.detail} label={item.label} note={item.note} value={item.value} />)}
 </dl>

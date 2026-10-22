@@ -205,6 +205,7 @@ describe('finance labels', () => {
     it('should build the as-of and source lines from a formatted date', () => {
         for (const lang of LANGS) {
             expect(financeLabels[lang].asOf('25.9.2026')).toContain('25.9.2026')
+            expect(financeLabels[lang].donors('24')).toMatch(/^24 \S+$/)
             expect(financeLabels[lang].source('25.9.2026')).toContain('25.9.2026')
             expect(financeLabels[lang].source('25.9.2026')).toMatch(/VTV|revisionsverk|National Audit Office/)
         }

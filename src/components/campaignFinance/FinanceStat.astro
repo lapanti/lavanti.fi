@@ -7,6 +7,8 @@ import { signalBandFontFamilies, sizes, typographics } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 
 interface Props {
+    /** A second line of small print, under `note`. */
+    detail?: string
     label: string
     /** Small print under the figure — a date, a share, a caveat. */
     note?: string
@@ -14,7 +16,7 @@ interface Props {
     value: string
 }
 
-const { label, note, value } = Astro.props
+const { detail, label, note, value } = Astro.props
 ---
 
 <style
@@ -63,5 +65,5 @@ const { label, note, value } = Astro.props
 
 <div class="stat">
     <dt><Eyebrow>{label}</Eyebrow></dt>
-    <dd>{value}{note && <span class="note">{note}</span>}</dd>
+    <dd>{value}{note && <span class="note">{note}</span>}{detail && <span class="note">{detail}</span>}</dd>
 </div>

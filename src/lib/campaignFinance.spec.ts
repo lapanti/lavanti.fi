@@ -65,6 +65,7 @@ const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => (
     budget: 30000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: false,
+    donorCountMinimum: 20,
     raised: raisedWith({ own: income(10000) }),
     spent: spentWith({ media: expense(10000, 5000) }),
     ...overrides,
@@ -538,6 +539,23 @@ describe('summaryTiles', () => {
 
         expect(tiles[1].note).toBeUndefined()
         expect(tiles[2].note).toBeUndefined()
+    })
+
+    it('should count the donors under the raised figure from the minimum up', () => {
+        expect(summaryTiles(finance({ donors: 20 }), 'fi')[1].detail).toBe('20 lahjoittajaa')
+        expect(summaryTiles(finance({ donors: 1250 }), 'en')[1].detail).toBe('1,250 donors')
+        expect(summaryTiles(finance({ donors: 1250 }), 'sv')[1].detail).toBe(`1${NBSP}250 donatorer`)
+    })
+
+    it('should keep the donor count off the page below the minimum or when unknown', () => {
+        expect(summaryTiles(finance({ donors: 19 }), 'fi')[1].detail).toBeUndefined()
+        expect(summaryTiles(finance(), 'fi')[1].detail).toBeUndefined()
+        expect(summaryTiles(finance({ donors: 30 }), 'fi').map((tile) => tile.detail)).toEqual([
+            undefined,
+            '30 lahjoittajaa',
+            undefined,
+            undefined,
+        ])
     })
 
     it('should format every value for the requested locale', () => {

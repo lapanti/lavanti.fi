@@ -68,11 +68,18 @@ interface FinanceFigures {
     asOf: string
     raised: Record<FundingSource, Income>
     spent: Record<ExpenseCategory, Expense>
+    /** Unique donors in the budget sheet, the candidate excluded. Absent until the sheet sends it. */
+    donors?: number
 }
 
 export interface CampaignFinance extends FinanceFigures {
     /** Planned total spend for the whole campaign, whole euros. */
     budget: number
+    /**
+     * Fewest donors the page will print. Below it the count stays off the page, so an
+     * early, small number never reads as a lack of support.
+     */
+    donorCountMinimum: number
     /**
      * Whether the donation page behind `donationUrl` exists yet. While false the pages
      * say the link is coming instead of rendering a button that leads nowhere useful.
@@ -111,7 +118,7 @@ export interface Benchmark {
 }
 
 /**
- * The state on `asOf`. `asOf`, `raised` and `spent` come from campaignFinanceFigures.json,
+ * The state on `asOf`. `asOf`, `raised`, `spent` and `donors` come from campaignFinanceFigures.json,
  * which the weekly automated update (scripts/ci/update-campaign-finance.ts) rewrites
  * whole; the rest are manual edits here. Keep comments free of figures that would go stale.
  *
@@ -123,6 +130,7 @@ export const campaignFinance: CampaignFinance = {
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: true,
+    donorCountMinimum: 20,
 }
 
 /**
@@ -173,6 +181,8 @@ export interface FinanceLabels {
     committed: string
     /** Donation call to action, and what to say while `donationsOpen` is false. */
     donate: { cta: string; pending: string }
+    /** Under the raised figure; receives `formatInteger(donors, lang)` output. */
+    donors: (count: string) => string
     gap: string
     mean: string
     median: string
@@ -216,6 +226,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             cta: 'Support the campaign',
             pending: 'The donation link will be published here as soon as the donation page opens.',
         },
+        donors: (count) => `${count} donors`,
         gap: 'Still to raise',
         mean: 'average',
         median: 'median',
@@ -262,6 +273,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             cta: 'Tue kampanjaa',
             pending: 'Lahjoituslinkki julkaistaan tällä sivulla heti, kun lahjoitussivu avautuu.',
         },
+        donors: (count) => `${count} lahjoittajaa`,
         gap: 'Vielä kerättävä',
         mean: 'keskiarvo',
         median: 'mediaani',
@@ -307,6 +319,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             cta: 'Stöd kampanjen',
             pending: 'Donationslänken publiceras här så snart donationssidan öppnas.',
         },
+        donors: (count) => `${count} donatorer`,
         gap: 'Kvar att samla in',
         mean: 'medeltal',
         median: 'median',

@@ -36,7 +36,7 @@ describe('<FinanceTeaser />', () => {
         const definitions = getAllByRole(result, 'definition').map((node) => node.textContent)
         const tiles = summaryTiles(campaignFinance, 'fi')
 
-        expect(definitions).toEqual(tiles.map((tile) => `${tile.value}${tile.note ?? ''}`))
+        expect(definitions).toEqual(tiles.map((tile) => `${tile.value}${tile.note ?? ''}${tile.detail ?? ''}`))
     })
 
     it('should use the section id it is given', async () => {
