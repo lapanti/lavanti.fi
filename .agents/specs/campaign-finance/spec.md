@@ -389,7 +389,7 @@ type FinancePayload = FinanceFigures          // whole euros; asOf is the Helsin
 
 Pending income and committed spending do enter the payload, because both are bound by a contract: a donation agreed but not yet remitted, an invoice the campaign has accepted. They are separate fields, never folded into banked money. A promise without a contract, such as the candidate's own undertaking before he pays it in, is in neither column of the sheet and so never reaches the page; once he transfers it, it is banked like any other money.
 
-The donor count is the sheet's number of unique donors, not of donations, and excludes the candidate's own money. It shares `asOf` with the euro figures. Below `donorCountMinimum` it stays off the page entirely, so an early, small count never reads as a lack of support; the page never says a count exists but is hidden.
+The donor count is the sheet's number of unique donors, not of donations; it excludes the candidate's own money and includes donors whose money is still pending. It shares `asOf` with the euro figures. Below `donorCountMinimum` it stays off the page entirely, so an early, small count never reads as a lack of support; the page never says a count exists but is hidden.
 
 Unit tests must not `toMatchSnapshot()` rendered output derived from the fields this update rewrites (`asOf`, `raised.*`, `spent.*`, `donors`) — such a snapshot fails every week the figures actually change. Components that read `campaignFinance` live (e.g. `FinanceTeaser`) get behavioural assertions instead; a render-snapshot test is only safe when the finance data comes in as props/fixtures (`FinanceStats`, `FinanceBars`, `FinanceStack`).
 

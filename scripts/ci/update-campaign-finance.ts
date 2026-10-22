@@ -59,7 +59,7 @@ export interface FinancePayload {
     asOf: string
     raised: Record<Source, Income>
     spent: Record<Category, Expense>
-    /** Unique donors in the budget sheet, the candidate excluded. */
+    /** Unique donors in the budget sheet: the candidate excluded, pending donors included. */
     donors?: number
 }
 
