@@ -133,7 +133,7 @@ export const campaignFinance: CampaignFinance = {
     budget: 45000,
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: true,
-    donorCountMinimum: 20,
+    donorCountMinimum: 25,
 }
 
 /**
