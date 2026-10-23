@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Digital independence is not isolation":
+          - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine. Digital independence is not isolation":
+            - /url: /en/blog/88/digital-independence-what-it-means/
+            - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine."
+            - heading "Digital independence is not isolation" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Digital independence means Finland controls its own critical systems. What does the citizens' initiative demand, and when does it reach Parliament?
+        - list:
+          - listitem:
+            - link "Digital independence":
+              - /url: /en/category/digital-independence/
+          - listitem:
+            - link "Security":
+              - /url: /en/category/security/
+          - listitem:
+            - link "National politics":
+              - /url: /en/category/national-politics/
+      - listitem:
         - article "The Central Forest is the nature-wise municipality's first test":
           - link "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. The Central Forest is the nature-wise municipality's first test":
             - /url: /en/blog/91/central-forest-is-the-first-test-for-a-nature-wise-municipality/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Security":
               - /url: /en/category/security/
-      - listitem:
-        - article "Who owns public sector data?":
-          - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
-            - /url: /en/blog/80/who-owns-public-sector-data/
-            - img "Close-up of a computer screen showing colorful, syntax-highlighted source code."
-            - heading "Who owns public sector data?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Portability in public procurement decides who owns public sector data. eVaka shows that an open, shared model survives a change of supplier.
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "Digitalisation":
-              - /url: /en/category/digitalisation/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

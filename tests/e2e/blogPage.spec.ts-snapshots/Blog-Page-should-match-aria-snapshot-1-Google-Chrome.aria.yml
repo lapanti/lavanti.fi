@@ -288,6 +288,24 @@
       - paragraph: Digitaalinen itsenäisyys tarkoittaa myös datan siirrettävyyttä ja riippuvuuden yksittäisistä toimittajista välttämistä. Julkisella rahalla tuotetun julkisen datan tulee olla siirrettävää ja tallennettuna siten, että sitä eivät ulkopuoliset tahot voi väärinkäyttää.
       - list:
         - listitem:
+          - article "Digitaalinen itsenäisyys ei ole eristäytymistä":
+            - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys ei ole eristäytymistä":
+              - /url: /fi/blog/88/digitaalinen-itsenaisyys-mita-se-tarkoittaa/
+              - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
+              - heading "Digitaalinen itsenäisyys ei ole eristäytymistä" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Digitaalinen itsenäisyys tarkoittaa, että Suomi hallitsee itse kriittisiä järjestelmiään. Mitä kansalaisaloite vaatii ja milloin se menee eduskuntaan?
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Turvallisuus":
+                - /url: /fi/kategoria/turvallisuus/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+        - listitem:
           - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
             - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
               - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
@@ -320,24 +338,6 @@
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-        - listitem:
-          - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-            - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
-              - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
-              - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
-              - heading "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Vuodettu Yhdysvaltain sähke paljasti painostuksen datasuvereniteettia vastaan. Datakeskukset voivat olla Suomen valttikortti, jos ne rakennetaan ehdoillamme.
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/

@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Digital självständighet är inte isolering":
+          - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine. Digital självständighet är inte isolering"':
+            - /url: /sv/blog/88/digital-sjalvstandighet-vad-betyder-det/
+            - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine."'
+            - heading "Digital självständighet är inte isolering" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Digital självständighet betyder att Finland själv styr sina kritiska digitala system. Vad kräver medborgarinitiativet och när går det till riksdagen?
+        - list:
+          - listitem:
+            - link "Digital självständighet":
+              - /url: /sv/kategori/digital-sjalvstandighet/
+          - listitem:
+            - link "Säkerhet":
+              - /url: /sv/kategori/sakerhet/
+          - listitem:
+            - link "Nationell politik":
+              - /url: /sv/kategori/nationell-politik/
+      - listitem:
         - article "Centralskogen är den naturkloka kommunens första prov":
           - link "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Centralskogen är den naturkloka kommunens första prov":
             - /url: /sv/blog/91/centralskogen-ar-den-naturkloka-kommunens-forsta-prov/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Säkerhet":
               - /url: /sv/kategori/sakerhet/
-      - listitem:
-        - article "Vem äger den offentliga förvaltningens data?":
-          - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
-            - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
-            - img "Närbild av en datorskärm med färgstark syntaxmarkerad källkod."
-            - heading "Vem äger den offentliga förvaltningens data?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Portabilitet i offentliga upphandlingar avgör vem som äger förvaltningens data. eVaka visar att en öppen och delad modell klarar ett leverantörsbyte.
-        - list:
-          - listitem:
-            - link "Digital självständighet":
-              - /url: /sv/kategori/digital-sjalvstandighet/
-          - listitem:
-            - link "Digitalisering":
-              - /url: /sv/kategori/digitalisering/
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
