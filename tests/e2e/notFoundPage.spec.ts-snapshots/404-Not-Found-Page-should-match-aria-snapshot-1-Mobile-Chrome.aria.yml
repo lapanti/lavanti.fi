@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Digitaalinen itsenäisyys ei ole eristäytymistä":
+          - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys ei ole eristäytymistä":
+            - /url: /fi/blog/88/digitaalinen-itsenaisyys-mita-se-tarkoittaa/
+            - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
+            - heading "Digitaalinen itsenäisyys ei ole eristäytymistä" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Digitaalinen itsenäisyys tarkoittaa, että Suomi hallitsee itse kriittisiä järjestelmiään. Mitä kansalaisaloite vaatii ja milloin se menee eduskuntaan?
+        - list:
+          - listitem:
+            - link "Digitaalinen itsenäisyys":
+              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+          - listitem:
+            - link "Turvallisuus":
+              - /url: /fi/kategoria/turvallisuus/
+          - listitem:
+            - link "Kansallinen politiikka":
+              - /url: /fi/kategoria/kansallinen-politiikka/
+      - listitem:
         - article "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
           - link "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
             - /url: /fi/blog/91/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Teknologia":
               - /url: /fi/kategoria/teknologia/
-      - listitem:
-        - article "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
-          - link "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle. Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta":
-            - /url: /fi/blog/84/bensatuki-syventaisi-tuontiriippuvuutta/
-            - img "Lauri Lavanti seisoo graniittiseinää vasten kädet ristissä ja katsoo sivulle."
-            - heading "Satojen miljoonien bensatuki syventäisi tuontiriippuvuutta" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Polttoaineen alv-alennus ja jakeluvelvoitteen lasku maksaisivat satoja miljoonia ja syventäisivät tuontiriippuvuutta. Raha kannattaa antaa ihmisille suoraan.
-        - list:
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Markkinavihreä":
-              - /url: /fi/kategoria/markkinavihrea/
-          - listitem:
-            - link "Turvallisuus":
-              - /url: /fi/kategoria/turvallisuus/

@@ -288,6 +288,24 @@
       - paragraph: Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.
       - list:
         - listitem:
+          - article "Digital självständighet är inte isolering":
+            - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine. Digital självständighet är inte isolering"':
+              - /url: /sv/blog/88/digital-sjalvstandighet-vad-betyder-det/
+              - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine."'
+              - heading "Digital självständighet är inte isolering" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Digital självständighet betyder att Finland själv styr sina kritiska digitala system. Vad kräver medborgarinitiativet och när går det till riksdagen?
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+        - listitem:
           - 'article "Digital självständighet: Finlands valfrihet"':
             - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
               - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
@@ -320,24 +338,6 @@
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-        - listitem:
-          - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
-            - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
-              - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
-              - img "Närbild av servrar i ett datacenter med gröna statuslampor."
-              - heading "Datacenter kan vara Finlands trumfkort i den internationella politiken" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Ett läckt amerikanskt telegram avslöjade påtryckningar mot datasuveränitet. Datacenter kan bli Finlands trumfkort, om de byggs på våra egna villkor.
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
