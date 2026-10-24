@@ -31,11 +31,15 @@ export interface VolunteerEnv {
     DB?: D1Like
     DONATE_URL?: string
     LIITY_STATS_TOKEN?: string
+    MOBILEPAY_URL?: string
     TURNSTILE_SECRET?: string
 }
 
 export const DONATE_URL =
     'https://www.vihreat.fi/eduskuntavaaliehdokkaat-2027/?kieli=fi&vaali=eduskuntavaalit-2027&alue=vp2&ehdokas=lavanti-lauri-10202&valilehti=donate'
+
+/** What the MobilePay box 46492 QR encodes (lavanti-2027 CTA_DESTINATIONS.donate.mobilepay.payUrl). */
+export const MOBILEPAY_URL = 'https://qr.mobilepay.fi/vp/2EHT5W1np'
 
 export const MUNICIPALITIES = ['kirkkonummi', 'espoo', 'vantaa', 'muu-uusimaa', 'muu'] as const
 export const HELP_OPTIONS = ['jakaminen', 'tapahtumat', 'some', 'muu'] as const
@@ -202,21 +206,49 @@ const isPrefetch = (request: Request): boolean => {
     return /prefetch/i.test(request.headers.get('Sec-Purpose') ?? '') || (mode !== null && mode !== 'navigate')
 }
 
-/** GET /lahjoita — count the click (hour + campaign link only), then 302 to the party form. */
-export const handleDonate = async (request: Request, env: VolunteerEnv, now = new Date()): Promise<Response> => {
+/**
+ * Link-preview crawlers fetch a shared URL without fetch metadata, so isPrefetch counts them.
+ * A link in a Facebook or LinkedIn post body is fetched once per share by these.
+ */
+const CRAWLER =
+    /facebookexternalhit|facebot|linkedinbot|twitterbot|slackbot|discordbot|telegrambot|whatsapp|bot\b|crawler|spider/i
+
+const isCrawler = (request: Request): boolean => CRAWLER.test(request.headers.get('User-Agent') ?? '')
+
+/** Where a donate click went: the party's card/bank form (/lahjoita) or the MobilePay box (/mp). */
+export type DonateTarget = 'form' | 'mobilepay'
+
+/** Logs one click (hour + campaign link + target only); best-effort, never blocks the redirect. */
+const countClick = async (request: Request, env: VolunteerEnv, now: Date, target: DonateTarget): Promise<void> => {
+    if (!env.DB || isPrefetch(request) || isCrawler(request)) return
     const url = new URL(request.url)
     const hour = `${now.toISOString().slice(0, 13)}:00:00Z`
-    if (env.DB && !isPrefetch(request)) {
-        try {
-            await env.DB.prepare('INSERT INTO donate_clicks (ts, utm_source, utm_campaign) VALUES (?, ?, ?)')
-                .bind(hour, utmSlug(url.searchParams.get('utm_source')), utmSlug(url.searchParams.get('utm_campaign')))
-                .run()
-        } catch {
-            // Counting is best-effort; the donor must always reach the form.
-        }
+    try {
+        await env.DB.prepare('INSERT INTO donate_clicks (ts, utm_source, utm_campaign, target) VALUES (?, ?, ?, ?)')
+            .bind(
+                hour,
+                utmSlug(url.searchParams.get('utm_source')),
+                utmSlug(url.searchParams.get('utm_campaign')),
+                target
+            )
+            .run()
+    } catch {
+        // Counting is best-effort; the donor must always reach the payment page.
     }
+}
+
+/** GET /lahjoita — count the click, then 302 to the party form. */
+export const handleDonate = async (request: Request, env: VolunteerEnv, now = new Date()): Promise<Response> => {
+    await countClick(request, env, now, 'form')
 
     return redirect(env.DONATE_URL || DONATE_URL, 302)
+}
+
+/** GET /mp — count the click, then 302 to MobilePay box 46492 (opens the app on a phone). */
+export const handleMobilePay = async (request: Request, env: VolunteerEnv, now = new Date()): Promise<Response> => {
+    await countClick(request, env, now, 'mobilepay')
+
+    return redirect(env.MOBILEPAY_URL || MOBILEPAY_URL, 302)
 }
 
 /** Merges every cell below MIN_CELL into one "muu" cell; drops "muu" if it is still below. */
@@ -302,10 +334,14 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
                   .first<{ n: number }>()
           )?.n ?? 0)
         : null
+    const targetWhere = sinceStart ? ' WHERE ts >= ?' : ''
+    const targetStmt = db.prepare(`SELECT target AS key, COUNT(*) AS n FROM donate_clicks${targetWhere} GROUP BY key`)
+    const clickTargets = await (sinceStart ? targetStmt.bind(sinceStart) : targetStmt).all<{ key: string; n: number }>()
 
     return json({
         donate_clicks: {
             by_campaign_source: suppress(tally(clickLinks.results)),
+            by_target: suppress(tally(clickTargets.results)),
             since: sinceDate,
             since_count: clickSince,
             total: clickTotal,
