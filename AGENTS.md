@@ -27,6 +27,7 @@ Core constraint: all-content-local; hosted on Cloudflare Pages (static output on
 | **Type check** | `npm run check` | Astro TypeScript check |
 | **Edit a PR body/title** | `node scripts/gh-pr.mjs body <n> --file <md>` | `gh pr edit` fails on the Projects-classic GraphQL deprecation and leaves the PR unchanged while exiting quietly. This PATCHes over the REST API and reads the result back; exit 1 means the read-back did not match. |
 | **Wait for CI** | `gh pr checks <n> --watch` | Never `sleep N; gh pr checks`: polling costs a turn per check. |
+| **Find a CC hero image** | `npm run openverse -- search <q>` → `fetch <id> --slug <cf-id>` → `credit <id> [--modified]` | CC0/PDM/CC BY only. `credit` prints the `heroImageCredit` block for `meta.json`; a CC BY hero without it is a licence breach. |
 
 ### Agent tooling
 
