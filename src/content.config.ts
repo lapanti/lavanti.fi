@@ -23,6 +23,20 @@ const externalPublication = z.object({
     url: z.string().optional(),
 })
 
+/*
+ * Attribution for a third-party hero (title, author, source, licence), as printed by
+ * `npm run openverse -- credit <id>`. CC BY requires it; `modified` marks a crop or edit.
+ */
+const heroImageCredit = z.object({
+    creator: z.string().optional(),
+    creatorUrl: z.string().url().optional(),
+    landingUrl: z.string().url().optional(),
+    license: z.string(),
+    licenseUrl: z.string().url().optional(),
+    modified: z.boolean().default(false),
+    title: z.string().optional(),
+})
+
 const posts = defineCollection({
     loader: localizedCollectionLoader({ base: './src/content/posts', name: 'posts-loader' }),
     schema: z.object({
@@ -34,6 +48,7 @@ const posts = defineCollection({
         externalPublications: z.array(externalPublication).optional(),
         faq: z.array(z.object({ a: z.string(), q: z.string() })).optional(),
         heroImage: z.string(),
+        heroImageCredit: heroImageCredit.optional(),
         id: z.number().int().positive(),
         lang: z.enum(LANGS),
         ogEmphasis: z.string().optional(),
