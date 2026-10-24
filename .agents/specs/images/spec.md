@@ -70,6 +70,7 @@ Hero components take their variant, `widths`, and `sizes` from **`HERO_CONFIGS` 
 - `heroImageCredit` (`src/content.config.ts`): `license` required; `title`, `creator`, `creatorUrl`, `landingUrl`, `licenseUrl` optional; `modified` defaults to `false` and is `true` after any crop or edit.
 - `HeroCredit.astro` renders it in `PostLayout` after the `Byline`: `Kansikuva` / `Omslagsbild` / `Cover photo`: “title” (→ `landingUrl`), creator (→ `creatorUrl`), licence (→ `licenseUrl`), plus `muokattu` / `bearbetad` / `modified`. Nothing renders without the field, so existing posts and the e2e goldens are unchanged.
 - A CC BY hero without `heroImageCredit` breaches the licence. Openverse's file URL is often a provider rendition (Flickr: 1024 px), below the `hero` variant's 1728 px, so check `width` before choosing.
+- Upload a fetched hero on its own: POST that one file to the Cloudflare Images API. `upload-to-cf-images.mts` re-sends every original and times out. In a checkout without the full originals set (an agent worktree), move the file out of `src/images/originals/` after uploading. The photo specs skip only when that directory is absent; otherwise they expect every original in it.
 
 **Dependencies:** `src/lib/images.ts` (URL builder only — no image processing libraries).
 
