@@ -29,10 +29,10 @@ const externalPublication = z.object({
  */
 const heroImageCredit = z.object({
     creator: z.string().optional(),
-    creatorUrl: z.string().url().optional(),
-    landingUrl: z.string().url().optional(),
+    creatorUrl: z.url().optional(),
+    landingUrl: z.url().optional(),
     license: z.string(),
-    licenseUrl: z.string().url().optional(),
+    licenseUrl: z.url().optional(),
     modified: z.boolean().default(false),
     title: z.string().optional(),
 })
