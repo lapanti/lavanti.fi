@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import type { Lang } from '../content/nav'
+
+import SmartLink from './SmartLink.astro'
+
+type Credit = NonNullable<CollectionEntry<'posts'>['data']['heroImageCredit']>
+
+interface Props {
+    credit?: Credit
+    lang: Lang
+}
+
+const { credit, lang } = Astro.props
+
+const i18n: Record<Lang, { label: string; modified: string; untitled: string }> = {
+    en: { label: 'Cover photo', modified: 'modified', untitled: 'Untitled' },
+    fi: { label: 'Kansikuva', modified: 'muokattu', untitled: 'Nimetön' },
+    sv: { label: 'Omslagsbild', modified: 'bearbetad', untitled: 'Namnlös' },
+}
+const t = i18n[lang]
+const title = `“${credit?.title ?? t.untitled}”`
+---
+
+<style>
+    .hero-credit {
+        color: var(--colorsTextSecondary);
+        font-family: var(--fineFontFamily);
+        font-size: var(--fineFontSize);
+        font-weight: var(--fineFontWeight);
+        line-height: var(--fineLineHeight);
+        margin-block: 1rem 0;
+    }
+</style>
+{
+    credit && (
+        <p class="hero-credit">
+            {/* prettier-ignore */}
+            <em>{`${t.label}: `}{credit.landingUrl ? <SmartLink href={credit.landingUrl}>{title}</SmartLink> : title}{credit.creator && <>{', '}{credit.creatorUrl ? <SmartLink href={credit.creatorUrl}>{credit.creator}</SmartLink> : credit.creator}</>}{', '}{credit.licenseUrl ? <SmartLink href={credit.licenseUrl}>{credit.license}</SmartLink> : credit.license}{credit.modified ? `, ${t.modified}` : ''}{'.'}</em>
+        </p>
+    )
+}
