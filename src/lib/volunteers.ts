@@ -216,7 +216,7 @@ const CRAWLER =
 const isCrawler = (request: Request): boolean => CRAWLER.test(request.headers.get('User-Agent') ?? '')
 
 /** Where a donate click went: the party's card/bank form (/lahjoita) or the MobilePay box (/mp). */
-export type DonateTarget = 'form' | 'mobilepay'
+type DonateTarget = 'form' | 'mobilepay'
 
 /** Logs one click (hour + campaign link + target only); best-effort, never blocks the redirect. */
 const countClick = async (request: Request, env: VolunteerEnv, now: Date, target: DonateTarget): Promise<void> => {
