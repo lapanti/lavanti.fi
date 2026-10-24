@@ -3,7 +3,17 @@ import type { D1Like } from './formHandling'
 import { describe, expect, it, vi } from 'vitest'
 
 import { fakeDb, turnstile } from '../../tests/formFakes'
-import { DONATE_URL, handleDonate, handleSignup, handleStats, parseVolunteer, suppress, utmSlug } from './volunteers'
+import {
+    DONATE_URL,
+    handleDonate,
+    handleMobilePay,
+    handleSignup,
+    handleStats,
+    MOBILEPAY_URL,
+    parseVolunteer,
+    suppress,
+    utmSlug,
+} from './volunteers'
 
 const form = (fields: Record<string, string | string[]>) => {
     const f = new FormData()
@@ -146,7 +156,22 @@ describe('handleDonate', () => {
         )
         expect(res.status).toBe(302)
         expect(res.headers.get('Location')).toBe(DONATE_URL)
-        expect(calls[0].args).toEqual(['2026-10-02T12:00:00Z', 'bluesky', 'sote'])
+        expect(calls[0].args).toEqual(['2026-10-02T12:00:00Z', 'bluesky', 'sote', 'form'])
+    })
+
+    it.each([
+        ['Facebook', 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)'],
+        ['LinkedIn', 'LinkedInBot/1.0 (compatible; Mozilla/5.0; Apache-HttpClient +http://www.linkedin.com)'],
+        ['a generic crawler', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'],
+    ])('redirects without counting the %s link-preview crawler', async (_, ua) => {
+        const { calls, db } = fakeDb()
+        const res = await handleDonate(
+            new Request('https://lavanti.fi/lahjoita', { headers: { 'User-Agent': ua } }),
+            { DB: db },
+            NOW
+        )
+        expect(res.status).toBe(302)
+        expect(calls).toHaveLength(0)
     })
 
     it.each([
@@ -170,6 +195,50 @@ describe('handleDonate', () => {
         const { db } = fakeDb({}, true)
         expect((await handleDonate(new Request('https://lavanti.fi/lahjoita'), { DB: db }, NOW)).status).toBe(302)
         expect((await handleDonate(new Request('https://lavanti.fi/lahjoita'), {}, NOW)).status).toBe(302)
+    })
+})
+
+describe('handleMobilePay', () => {
+    const phone = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Instagram 350.0'
+
+    it('logs the click as a mobilepay target, then redirects to the MobilePay box', async () => {
+        const { calls, db } = fakeDb()
+        const res = await handleMobilePay(
+            new Request('https://lavanti.fi/mp?utm_source=threads&utm_campaign=lahjoitus-02', {
+                headers: { 'User-Agent': phone },
+            }),
+            { DB: db },
+            NOW
+        )
+        expect(res.status).toBe(302)
+        expect(res.headers.get('Location')).toBe(MOBILEPAY_URL)
+        expect(MOBILEPAY_URL).toBe('https://qr.mobilepay.fi/vp/2EHT5W1np')
+        expect(calls[0].args).toEqual(['2026-10-02T12:00:00Z', 'threads', 'lahjoitus-02', 'mobilepay'])
+    })
+
+    it('honours the MOBILEPAY_URL override', async () => {
+        const res = await handleMobilePay(
+            new Request('https://lavanti.fi/mp'),
+            { MOBILEPAY_URL: 'https://example.test/box' },
+            NOW
+        )
+        expect(res.headers.get('Location')).toBe('https://example.test/box')
+    })
+
+    it('skips prefetches and crawlers, and still redirects without a database', async () => {
+        const { calls, db } = fakeDb()
+        await handleMobilePay(
+            new Request('https://lavanti.fi/mp', { headers: { 'Sec-Purpose': 'prefetch' } }),
+            { DB: db },
+            NOW
+        )
+        await handleMobilePay(
+            new Request('https://lavanti.fi/mp', { headers: { 'User-Agent': 'facebookexternalhit/1.1' } }),
+            { DB: db },
+            NOW
+        )
+        expect(calls).toHaveLength(0)
+        expect((await handleMobilePay(new Request('https://lavanti.fi/mp'), {}, NOW)).status).toBe(302)
     })
 })
 
@@ -207,6 +276,10 @@ describe('handleStats', () => {
                 { help: '["jakaminen"]' },
                 { help: '["tapahtumat"]' },
             ],
+            'SELECT target AS key, COUNT(*) AS n FROM donate_clicks WHERE ts >= ? GROUP BY key': [
+                { key: 'mobilepay', n: 4 },
+                { key: 'form', n: 3 },
+            ],
             "THEN 'ei-kerrottu' ELSE municipality END AS key": [
                 { key: 'kirkkonummi', n: 3 },
                 { key: 'espoo', n: 1 },
@@ -230,7 +303,7 @@ describe('handleStats', () => {
         }
         await handleStats(req('Bearer t', '?since=2026-10-01'), { DB: probe, LIITY_STATS_TOKEN: 't' })
         // Helsinki midnight on 1 October (+03:00), not UTC midnight; every windowed query uses it.
-        expect(binds).toHaveLength(4)
+        expect(binds).toHaveLength(5)
         expect(new Set(binds.flat())).toEqual(new Set(['2026-09-30T21:00:00.000Z']))
 
         const res = await handleStats(req('Bearer t', '?since=2026-10-01'), { DB: db, LIITY_STATS_TOKEN: 't' })
@@ -246,6 +319,7 @@ describe('handleStats', () => {
         })
         expect(body.donate_clicks).toEqual({
             by_campaign_source: { 'sote / linkedin': 7 },
+            by_target: { form: 3, mobilepay: 4 },
             since: '2026-10-01',
             since_count: 7,
             total: 9,
