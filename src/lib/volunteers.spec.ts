@@ -350,4 +350,22 @@ describe('handleStats', () => {
         const body = (await res.json()) as { donate_clicks: Record<string, unknown> }
         expect(body.donate_clicks).toMatchObject({ since: null, since_count: null })
     })
+
+    it('reports by_target as null instead of failing when the target column is missing', async () => {
+        const { db: base } = fakeDb({ 'COUNT(*) AS n FROM donate_clicks': [{ n: 9 }] })
+        const noColumn: D1Like = {
+            prepare(sql) {
+                const stmt = base.prepare(sql)
+                if (sql.includes('SELECT target')) {
+                    stmt.all = () => Promise.reject(new Error('D1_ERROR: no such column: target'))
+                }
+
+                return stmt
+            },
+        }
+        const res = await handleStats(req('Bearer t'), { DB: noColumn, LIITY_STATS_TOKEN: 't' })
+        expect(res.status).toBe(200)
+        const body = (await res.json()) as { donate_clicks: Record<string, unknown> }
+        expect(body.donate_clicks).toMatchObject({ by_target: null, total: 9 })
+    })
 })
