@@ -65,6 +65,13 @@ Hero components take their variant, `widths`, and `sizes` from **`HERO_CONFIGS` 
 2. Run `CF_ACCOUNT_ID=xxx CF_API_TOKEN=xxx npx tsx scripts/upload-to-cf-images.mts`
 3. Reference slug in MDX frontmatter — CF handles all resizing at request time
 
+**Hero image credit (third-party heroes):**
+- `npm run openverse -- search <q>` lists CC0, PDM and CC BY images only (fixed allowlist, no mature results). `fetch <id> --slug <slug>` downloads the original to `src/images/originals/{slug}.{ext}`; `credit <id> [--modified]` prints the `heroImageCredit` block for the post's `meta.json`. `OPENVERSE_CLIENT_ID`/`SECRET` in `.env` are optional and raise the rate limit.
+- `heroImageCredit` (`src/content.config.ts`): `license` required; `title`, `creator`, `creatorUrl`, `landingUrl`, `licenseUrl` optional; `modified` defaults to `false` and is `true` after any crop or edit.
+- `HeroCredit.astro` renders it in `PostLayout` after the `Byline`: `Kansikuva` / `Omslagsbild` / `Cover photo`: “title” (→ `landingUrl`), creator (→ `creatorUrl`), licence (→ `licenseUrl`), plus `muokattu` / `bearbetad` / `modified`. Nothing renders without the field, so existing posts and the e2e goldens are unchanged.
+- A CC BY hero without `heroImageCredit` breaches the licence. Openverse's file URL is often a provider rendition (Flickr: 1024 px), below the `hero` variant's 1728 px, so check `width` before choosing.
+- Upload a fetched hero on its own: POST that one file to the Cloudflare Images API. `upload-to-cf-images.mts` re-sends every original and times out. In a checkout without the full originals set (an agent worktree), move the file out of `src/images/originals/` after uploading. The photo specs skip only when that directory is absent; otherwise they expect every original in it.
+
 **Dependencies:** `src/lib/images.ts` (URL builder only — no image processing libraries).
 
 ### Anti-Patterns
@@ -93,6 +100,7 @@ Hero components take their variant, `widths`, and `sizes` from **`HERO_CONFIGS` 
 - [ ] `ogImage` URL string computed in layouts via `getImage(heroImage, 'og').src`, not in `Head.astro`
 - [ ] Above-the-fold images have `fetchpriority="high"`
 - [ ] Accessibility scan passes (no alt-text violations)
+- [ ] Every CC BY or other third-party post hero has a `heroImageCredit` from `npm run openverse -- credit`
 
 ### Regression Guardrails
 - `BackgroundImage` is only shown at ≥ 1200px — do not remove the media query
