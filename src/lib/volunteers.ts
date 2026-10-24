@@ -334,14 +334,27 @@ export const handleStats = async (request: Request, env: VolunteerEnv): Promise<
                   .first<{ n: number }>()
           )?.n ?? 0)
         : null
-    const targetWhere = sinceStart ? ' WHERE ts >= ?' : ''
-    const targetStmt = db.prepare(`SELECT target AS key, COUNT(*) AS n FROM donate_clicks${targetWhere} GROUP BY key`)
-    const clickTargets = await (sinceStart ? targetStmt.bind(sinceStart) : targetStmt).all<{ key: string; n: number }>()
+    /*
+     * The target split needs migration 0003. Without the column the query throws; report
+     * by_target as null instead of failing the whole endpoint (the conversions fetch and the
+     * morning brief read the other fields).
+     */
+    const byTarget = async (): Promise<null | Record<string, number>> => {
+        const where = sinceStart ? ' WHERE ts >= ?' : ''
+        const stmt = db.prepare(`SELECT target AS key, COUNT(*) AS n FROM donate_clicks${where} GROUP BY key`)
+        try {
+            const rows = await (sinceStart ? stmt.bind(sinceStart) : stmt).all<{ key: string; n: number }>()
+
+            return suppress(tally(rows.results))
+        } catch {
+            return null
+        }
+    }
 
     return json({
         donate_clicks: {
             by_campaign_source: suppress(tally(clickLinks.results)),
-            by_target: suppress(tally(clickTargets.results)),
+            by_target: await byTarget(),
             since: sinceDate,
             since_count: clickSince,
             total: clickTotal,
