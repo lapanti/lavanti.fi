@@ -9,6 +9,7 @@ import ExcerptList from '../components/ExcerptList.astro'
 import Faq from '../components/Faq.astro'
 import NewsletterPlate from '../components/frontPage/NewsletterPlate.astro'
 import WritingsPlate from '../components/frontPage/WritingsPlate.astro'
+import HeroCredit from '../components/HeroCredit.astro'
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
 import NewsletterSubscribe from '../components/NewsletterSubscribe.astro'
 import PostProse from '../components/post/PostProse.astro'
@@ -36,6 +37,7 @@ const {
     externalPublications,
     faq,
     heroImage,
+    heroImageCredit,
     id,
     lang,
     pageTitle,
@@ -135,6 +137,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <slot />
                 <AuthorCard image={resolveAuthorImage(publishDate, authorImage)} lang={lang} />
                 <Byline authors={authors ?? ['lauri']} externalPublications={externalPublications} lang={lang} />
+                <HeroCredit credit={heroImageCredit} lang={lang} />
                 <SocialShare
                     ariaLabel={t.shareAriaLabel(pageTitle)}
                     locale={lang}
