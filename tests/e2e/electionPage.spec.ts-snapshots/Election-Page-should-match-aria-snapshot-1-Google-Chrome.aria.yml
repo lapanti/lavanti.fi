@@ -116,7 +116,7 @@
     - term: Kerätty
     - definition: /2 \d+ € \+ 9 \d+ € tilittämättä/
     - term: Käytetty
-    - definition: /0 € \+ \d+ \d+ € sitouduttu/
+    - definition: /\d+ € \+ \d+ \d+ € sitouduttu/
     - term: Vielä kerättävä
     - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
     - paragraph:
@@ -163,6 +163,10 @@
     - paragraph: /Vaalipäivä on sunnuntai \d+\. huhtikuuta \d+\. Ennakkoäänestys järjestetään kotimaassa 7\.–\d+\. huhtikuuta ja ulkomailla 7\.–\d+\. huhtikuuta \d+\./
     - heading /Mitkä ovat Lauri Lavannin vaaliteemat eduskuntavaaleissa \d+\?/ [level=3]
     - paragraph: Kampanjan kolme pilaria ovat talous, sivistys ja vapaus. Ne yhdistyvät tavoitteeksi digitaalisesti itsenäisestä Suomesta, joka käyttää tekoälyä ja teknologiaa omilla ehdoillaan — niin, ettei kukaan jää kehityksen jalkoihin.
+    - heading "Mitä mieltä Lauri Lavanti on ydinvoimasta?" [level=3]
+    - paragraph: /Lauri Lavanti kannattaa ydinvoimaa, myös pienydinvoimaa\. Hän on vastannut vaalikoneissa jo vuodesta \d+ hyväksyvänsä pienydinvoimalan omaan kuntaansa\. Eduskunnassa hän saattaisi pienydinvoiman lupamenettelyn toimivaksi heti vaalikauden alussa ja keventäisi samalla tuuli- ja aurinkovoiman luvitusta, jotta uutta päästötöntä sähköä saadaan rakennettua nopeammin\./
+    - heading "Mitä mieltä Lauri Lavanti on yritysverotuksesta?" [level=3]
+    - paragraph: "Lauri Lavanti ei aja yrityksille kireämpää verotusta. Yhteisöverokannan siirtelyn sijaan hän tekisi täsmätoimia kasvuyrityksille: työntekijän optiot verotettaisiin vasta myyntihetkellä, kuten Ranskassa ja Saksassa, kasvuvaiheen pääomaa saataisiin enemmän Suomesta, ja yhtiöoikeuteen tulisi pitkäjänteinen omistajamuoto, joka pitää päätösvallan Suomessa."
     - heading "Mikä on Lauri Lavannin ehdokasnumero?" [level=3]
     - paragraph: /Ehdokasnumero vahvistetaan, kun ehdokasasettelu vahvistetaan \d+\. maaliskuuta \d+\. Numero päivitetään tälle sivulle heti sen varmistuttua\./
     - heading "Voiko Lauri Lavantia äänestää ennakkoon?" [level=3]

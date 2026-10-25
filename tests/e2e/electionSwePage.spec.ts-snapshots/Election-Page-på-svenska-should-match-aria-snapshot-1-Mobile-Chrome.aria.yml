@@ -116,7 +116,7 @@
     - term: Insamlat hittills
     - definition: /2 \d+ € \+ 9 \d+ € ej inbetalt/
     - term: Använt hittills
-    - definition: /0 € \+ \d+ \d+ € bundet/
+    - definition: /\d+ € \+ \d+ \d+ € bundet/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - paragraph:
@@ -163,6 +163,10 @@
     - paragraph: /Valdagen är söndagen den \d+ april \d+\. Förhandsröstningen ordnas i Finland 7–\d+ april och utomlands 7–\d+ april \d+\./
     - heading /Vilka är Lauri Lavantis valteman i riksdagsvalet \d+\?/ [level=3]
     - paragraph: Kampanjens tre pelare är ekonomi, bildning och frihet. Tillsammans bildar de målet om ett digitalt självständigt Finland som använder AI och teknik på sina egna villkor — så att ingen lämnas efter i utvecklingen.
+    - heading "Vad anser Lauri Lavanti om kärnkraft?" [level=3]
+    - paragraph: /Lauri Lavanti ställer sig bakom kärnkraft, även småskalig kärnkraft\. Sedan \d+ har han i valkompasserna svarat att han godkänner ett litet kärnkraftverk i sin egen kommun\. I riksdagen skulle han få tillståndsförfarandet för småskalig kärnkraft att fungera redan i början av valperioden och samtidigt göra tillståndsprocessen för vind- och solkraft lättare, så att ny utsläppsfri el kan byggas snabbare\./
+    - heading "Vad anser Lauri Lavanti om företagsbeskattningen?" [level=3]
+    - paragraph: "Lauri Lavanti driver inte en hårdare beskattning av företag. I stället för att justera bolagsskattesatsen skulle han göra riktade insatser för tillväxtföretag: arbetstagarens optioner skulle beskattas först vid försäljningen, som i Frankrike och Tyskland, mer kapital för tillväxtskedet skulle hittas i Finland, och bolagsrätten skulle få en långsiktig ägarform som behåller beslutanderätten i Finland."
     - heading "Vilket kandidatnummer har Lauri Lavanti?" [level=3]
     - paragraph: /Kandidatnumret fastställs när kandidatuppställningen bekräftas den \d+ mars \d+\. Numret uppdateras på den här sidan så fort det är klart\./
     - heading "Kan man förhandsrösta på Lauri Lavanti?" [level=3]

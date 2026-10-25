@@ -14,7 +14,7 @@
     - term: Raised so far
     - definition: /€\d+,\d+ \+ €\d+,\d+ pending/
     - term: Spent so far
-    - definition: /€0 \+ €\d+,\d+ committed/
+    - definition: /€\d+ \+ €\d+,\d+ committed/
     - term: Still to raise
     - definition: /€\d+,\d+ As of \d+ October \d+/
     - text: Why
@@ -65,7 +65,7 @@
     - figure "Spending paid and committed, against the money raised":
       - text: ""
       - list:
-        - listitem: /Spent so far €0 \+ €\d+,\d+ committed/
+        - listitem: /Spent so far €\d+ \+ €\d+,\d+ committed/
         - listitem: /Not yet spent €\d+/
     - 'figure "Spending by category: paid, committed and budgeted"':
       - text: ""
@@ -76,7 +76,7 @@
         - listitem: /Advertising design €0 \+ €\d+,\d+ committed \/ €\d+,\d+/
         - listitem: /Campaign events €0 \/ €\d+,\d+/
         - listitem: /Costs of fundraising that gives something in return €0 \/ €\d+,\d+/
-        - listitem: /Other costs €0 \+ €\d+ committed \/ €\d+,\d+/
+        - listitem: /Other costs €\d+ \+ €\d+ committed \/ €\d+,\d+/
     - paragraph: I break spending down into the same categories as the statutory disclosure. The solid bar is already paid, the striped part is ordered or agreed, and the vertical line marks the category’s budget.
     - text: Background
     - heading /How did MPs fund their campaigns in \d+\?/ [level=2]

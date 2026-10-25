@@ -1,5 +1,5 @@
 {
-    "asOf": "2026-10-18",
+    "asOf": "2026-10-25",
     "raised": {
         "own": {
             "banked": 2000,
@@ -62,9 +62,10 @@
             "committed": 0
         },
         "other": {
-            "budgeted": 2825,
-            "banked": 0,
+            "budgeted": 2897,
+            "banked": 177,
             "committed": 500
         }
-    }
+    },
+    "donors": 9
 }

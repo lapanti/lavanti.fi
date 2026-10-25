@@ -14,7 +14,7 @@
     - term: Kerätty
     - definition: /2 \d+ € \+ 9 \d+ € tilittämättä/
     - term: Käytetty
-    - definition: /0 € \+ \d+ \d+ € sitouduttu/
+    - definition: /\d+ € \+ \d+ \d+ € sitouduttu/
     - term: Vielä kerättävä
     - definition: /\d+ \d+ € Tilanne \d+\.\d+\.\d+/
     - text: Miksi
@@ -65,7 +65,7 @@
     - figure "Maksetut menot ja menot, joihin on sitouduttu, suhteessa kerättyyn rahaan":
       - text: ""
       - list:
-        - listitem: /Käytetty 0 € \+ \d+ \d+ € sitouduttu/
+        - listitem: /Käytetty \d+ € \+ \d+ \d+ € sitouduttu/
         - listitem: /Käyttämättä \d+ €/
     - 'figure "Menot luokittain: maksettu, sitouduttu ja budjetoitu"':
       - text: ""
@@ -76,7 +76,7 @@
         - listitem: /Mainonnan suunnittelu 0 € \+ 1 \d+ € sitouduttu \/ 1 \d+ €/
         - listitem: /Vaalitilaisuudet 0 € \/ 2 \d+ €/
         - listitem: /Vastikkeellisen tuen hankintakulut 0 € \/ 1 \d+ €/
-        - listitem: /Muut kulut 0 € \+ \d+ € sitouduttu \/ 2 \d+ €/
+        - listitem: /Muut kulut \d+ € \+ \d+ € sitouduttu \/ 2 \d+ €/
     - paragraph: Erittelen kulut samoihin luokkiin kuin vaalirahoitusilmoituksessa. Umpinainen palkki on jo maksettu, raidoitettu osa on tilattu tai sovittu, ja pystyviiva näyttää luokan budjetin.
     - text: Taustaa
     - heading /Miten kansanedustajat rahoittivat kampanjansa vuonna \d+\?/ [level=2]
