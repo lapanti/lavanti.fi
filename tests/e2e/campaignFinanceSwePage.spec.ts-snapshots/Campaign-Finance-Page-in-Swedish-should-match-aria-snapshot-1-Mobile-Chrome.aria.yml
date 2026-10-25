@@ -14,7 +14,7 @@
     - term: Insamlat hittills
     - definition: /2 \d+ € \+ 9 \d+ € ej inbetalt/
     - term: Använt hittills
-    - definition: /0 € \+ \d+ \d+ € bundet/
+    - definition: /\d+ € \+ \d+ \d+ € bundet/
     - term: Kvar att samla in
     - definition: /\d+ \d+ € Läget \d+\.\d+\.\d+/
     - text: Varför
@@ -65,7 +65,7 @@
     - figure "Betalda och bundna utgifter i förhållande till insamlade pengar":
       - text: ""
       - list:
-        - listitem: /Använt hittills 0 € \+ \d+ \d+ € bundet/
+        - listitem: /Använt hittills \d+ € \+ \d+ \d+ € bundet/
         - listitem: /Oanvänt \d+ €/
     - 'figure "Utgifter per kategori: betalt, bundet och budgeterat"':
       - text: ""
@@ -76,7 +76,7 @@
         - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
         - listitem: /Valmöten 0 € \/ 2 \d+ €/
         - listitem: /Kostnader för anskaffning av bidrag mot vederlag 0 € \/ 1 \d+ €/
-        - listitem: /Övriga kostnader 0 € \+ \d+ € bundet \/ 2 \d+ €/
+        - listitem: /Övriga kostnader \d+ € \+ \d+ € bundet \/ 2 \d+ €/
     - paragraph: Jag specificerar utgifterna i samma kategorier som i redovisningen av valfinansieringen. Den fyllda stapeln är redan betald, den randiga delen är beställd eller avtalad, och det lodräta strecket visar kategorins budget.
     - text: Bakgrund
     - heading /Hur finansierade ledamöterna sina kampanjer \d+\?/ [level=2]

@@ -116,7 +116,7 @@
     - term: Raised so far
     - definition: /€\d+,\d+ \+ €\d+,\d+ pending/
     - term: Spent so far
-    - definition: /€0 \+ €\d+,\d+ committed/
+    - definition: /€\d+ \+ €\d+,\d+ committed/
     - term: Still to raise
     - definition: /€\d+,\d+ As of \d+ October \d+/
     - paragraph:
@@ -163,6 +163,10 @@
     - paragraph: /Election day is Sunday \d+ April \d+\. Advance voting takes place in Finland on 7–\d+ April and abroad on 7–\d+ April \d+\./
     - heading /What are Lauri Lavanti's themes in the \d+ parliamentary election\?/ [level=3]
     - paragraph: "The campaign rests on three pillars: the economy, education, and freedom. Together they form the goal of a digitally independent Finland that uses AI and technology on its own terms — so that no one is left behind."
+    - heading "What does Lauri Lavanti think about nuclear power?" [level=3]
+    - paragraph: /Lauri Lavanti supports nuclear power, including small modular reactors\. Since \d+ he has stated in voting advice applications that he would accept a small modular reactor in his own municipality\. In parliament, he would make the licensing procedure for small modular reactors workable at the very start of the term and, at the same time, streamline permitting for wind and solar power, so that new emission-free electricity can be built faster\./
+    - heading "What does Lauri Lavanti think about corporate taxation?" [level=3]
+    - paragraph: "Lauri Lavanti does not advocate higher taxes on companies. Rather than adjusting the corporate tax rate, he would introduce targeted measures for growth companies: employee stock options would be taxed only at the time of sale, as in France and Germany; more growth-stage capital would be raised in Finland; and company law would gain a long-term ownership form that keeps decision-making power in Finland."
     - heading "What is Lauri Lavanti's candidate number?" [level=3]
     - paragraph: /Candidate numbers are assigned when the candidate lists are confirmed on \d+ March \d+\. The number will be updated on this page as soon as it is confirmed\./
     - heading "Can I vote for Lauri Lavanti in advance?" [level=3]
