@@ -125,6 +125,24 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article "Sweden threatens to pull ahead in the AI start-up race":
+          - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
+            - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
+            - img "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits."
+            - heading "Sweden threatens to pull ahead in the AI start-up race" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "Finnish AI start-ups stall at funding while Sweden pulls ahead. Two reforms: pension funds in venture capital and a Saminvest-style fund of funds."
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Entrepreneurship":
+              - /url: /en/category/entrepreneurship/
+      - listitem:
         - article "Digital independence is not isolation":
           - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine. Digital independence is not isolation":
             - /url: /en/blog/88/digital-independence-what-it-means/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Technology":
               - /url: /en/category/technology/
-      - listitem:
-        - article "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
-          - link "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side. A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
-            - /url: /en/blog/84/fuel-subsidy-deepens-import-dependency/
-            - img "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side."
-            - heading "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: A VAT cut on fuel and a lower distribution obligation would cost hundreds of millions and deepen import dependency. Give the money directly to people instead.
-        - list:
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Marketgreen":
-              - /url: /en/category/marketgreen/
-          - listitem:
-            - link "Security":
-              - /url: /en/category/security/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

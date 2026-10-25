@@ -36,6 +36,24 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
+          - article "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
+            - link "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa. Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
+              - /url: /fi/blog/92/ruotsi-uhkaa-vetaa-pidemman-korren-tekoalystartupien-keskittymassa/
+              - img "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa."
+              - heading "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Suomalaiset tekoälystartupit myydään liian usein ulkomaille. Holopainen ja Lavanti ehdottavat eläkepääomaa venture-rahastoihin ja Saminvestin mallia.
+          - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Yrittäjyys":
+                - /url: /fi/kategoria/yrittajyys/
+        - listitem:
           - 'article "Valtuustoaloite: tekoälyopastusta työnhakuun"':
             - 'link "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0. Valtuustoaloite: tekoälyopastusta työnhakuun"':
               - /url: /fi/blog/89/valtuustoaloite-tekoalyopastus-tyonhakuun/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Opetus":
                 - /url: /fi/kategoria/opetus/
-        - listitem:
-          - article "Miksi Suomi tarvitsee digiministeriön?":
-            - 'link "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Miksi Suomi tarvitsee digiministeriön?"':
-              - /url: /fi/blog/81/miksi-suomi-tarvitsee-digiministerion/
-              - 'img "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
-              - heading "Miksi Suomi tarvitsee digiministeriön?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Hajautettu tekoälypolitiikka on yrityksille sääntelyriski. Digiministeriö ja eduskunnan päättämä kynnys toisivat ennustettavuutta ja suojaisivat pk-yrityksiä.
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Digitalisaatio":
-                - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Yrittäjyys":
-                - /url: /fi/kategoria/yrittajyys/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Tekoäly":
           - /url: /fi/kategoria/tekoaly/
