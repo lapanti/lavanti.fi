@@ -127,6 +127,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Sverige hotar dra det längre strået som nav för AI-startups":
+          - link "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida. Sverige hotar dra det längre strået som nav för AI-startups":
+            - /url: /sv/blog/92/sverige-hotar-dra-det-langre-straet-som-nav-for-ai-startups/
+            - img "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida."
+            - heading "Sverige hotar dra det längre strået som nav för AI-startups" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Finländska tillväxtbolag fastnar i finansieringen medan Sverige lockar kapital utan utförsäljning. Två strukturella reformer kan ändra det.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Företagande":
+              - /url: /sv/kategori/foretagande/
+      - listitem:
         - article "Digital självständighet är inte isolering":
           - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine. Digital självständighet är inte isolering"':
             - /url: /sv/blog/88/digital-sjalvstandighet-vad-betyder-det/
@@ -270,24 +288,6 @@
           - listitem:
             - link "Teknologi":
               - /url: /sv/kategori/teknologi/
-      - listitem:
-        - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
-          - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
-            - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
-            - img "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan."
-            - heading "Bensinstöd för hundratals miljoner fördjupar importberoendet" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Lägre moms på drivmedel och lägre distributionsskyldighet kostar hundratals miljoner och fördjupar importberoendet. Ge stödet direkt till människorna.
-        - list:
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Marknadsgrön":
-              - /url: /sv/kategori/marknadsgron/
-          - listitem:
-            - link "Säkerhet":
-              - /url: /sv/kategori/sakerhet/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

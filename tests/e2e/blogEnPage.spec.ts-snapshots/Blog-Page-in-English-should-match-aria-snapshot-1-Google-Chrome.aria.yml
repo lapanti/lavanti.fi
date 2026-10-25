@@ -36,6 +36,24 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
+          - article "Sweden threatens to pull ahead in the AI start-up race":
+            - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
+              - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
+              - img "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits."
+              - heading "Sweden threatens to pull ahead in the AI start-up race" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Finnish AI start-ups stall at funding while Sweden pulls ahead. Two reforms: pension funds in venture capital and a Saminvest-style fund of funds."
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "Entrepreneurship":
+                - /url: /en/category/entrepreneurship/
+        - listitem:
           - 'article "Council initiative: AI guidance for job seekers"':
             - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
               - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Education":
                 - /url: /en/category/education/
-        - listitem:
-          - article "Why Does Finland Need a Digital Ministry?":
-            - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Why Does Finland Need a Digital Ministry?"':
-              - /url: /en/blog/81/why-finland-needs-a-digital-ministry/
-              - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
-              - heading "Why Does Finland Need a Digital Ministry?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Fragmented AI policy is a regulatory risk for business. A digital ministry and a threshold set by Parliament would bring predictability and protect small firms.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Digitalisation":
-                - /url: /en/category/digitalisation/
-            - listitem:
-              - link "Entrepreneurship":
-                - /url: /en/category/entrepreneurship/
       - paragraph:
         - link "All posts about AI":
           - /url: /en/category/artificial-intelligence/

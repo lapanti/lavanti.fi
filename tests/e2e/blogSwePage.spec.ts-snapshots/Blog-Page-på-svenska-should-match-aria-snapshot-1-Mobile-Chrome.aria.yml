@@ -36,6 +36,24 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
+          - article "Sverige hotar dra det längre strået som nav för AI-startups":
+            - link "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida. Sverige hotar dra det längre strået som nav för AI-startups":
+              - /url: /sv/blog/92/sverige-hotar-dra-det-langre-straet-som-nav-for-ai-startups/
+              - img "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida."
+              - heading "Sverige hotar dra det längre strået som nav för AI-startups" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Finländska tillväxtbolag fastnar i finansieringen medan Sverige lockar kapital utan utförsäljning. Två strukturella reformer kan ändra det.
+          - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Företagande":
+                - /url: /sv/kategori/foretagande/
+        - listitem:
           - article "Fullmäktigemotion om AI-handledning för arbetssökning":
             - 'link "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0. Fullmäktigemotion om AI-handledning för arbetssökning"':
               - /url: /sv/blog/89/fullmaktigemotion-ai-handledning-arbetssokning/
@@ -71,24 +89,6 @@
             - listitem:
               - link "Utbildning":
                 - /url: /sv/kategori/utbildning/
-        - listitem:
-          - article "Varför behöver Finland ett digitalministerium?":
-            - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Varför behöver Finland ett digitalministerium?"':
-              - /url: /sv/blog/81/varfor-finland-behover-ett-digitalministerium/
-              - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
-              - heading "Varför behöver Finland ett digitalministerium?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Splittrad AI-politik är en regleringsrisk för företag. Ett digitalministerium och en tröskel som riksdagen beslutar ger förutsägbarhet och skyddar små företag.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Digitalisering":
-                - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "Företagande":
-                - /url: /sv/kategori/foretagande/
       - paragraph:
         - link "Alla inlägg om AI":
           - /url: /sv/kategori/artificiell-intelligens/

@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
+          - link "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa. Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
+            - /url: /fi/blog/92/ruotsi-uhkaa-vetaa-pidemman-korren-tekoalystartupien-keskittymassa/
+            - img "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa."
+            - heading "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Suomalaiset tekoälystartupit myydään liian usein ulkomaille. Holopainen ja Lavanti ehdottavat eläkepääomaa venture-rahastoihin ja Saminvestin mallia.
+        - list:
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Yrittäjyys":
+              - /url: /fi/kategoria/yrittajyys/
+      - listitem:
         - article "Digitaalinen itsenäisyys ei ole eristäytymistä":
           - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys ei ole eristäytymistä":
             - /url: /fi/blog/88/digitaalinen-itsenaisyys-mita-se-tarkoittaa/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Kansallinen politiikka":
               - /url: /fi/kategoria/kansallinen-politiikka/
-      - listitem:
-        - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
-          - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
-            - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
-            - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
-            - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Tekoäly":
-              - /url: /fi/kategoria/tekoaly/
-          - listitem:
-            - link "Teknologia":
-              - /url: /fi/kategoria/teknologia/
