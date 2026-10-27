@@ -2,6 +2,7 @@
 import type { Lang } from '../content/nav'
 
 import {
+    footerAnalyticsBadge,
     footerAriaLabel,
     footerCampaignFinanceHref,
     footerCampaignFinanceLabel,
@@ -122,9 +123,14 @@ const licenseText: Record<Lang, string> = {
     }
 
     .colophon {
+        align-items: center;
         border-top: 2px solid color-mix(in srgb, var(--colorsAquaBlue) 28%, transparent);
         color: var(--colorsFooterMuted);
+        display: flex;
+        flex-wrap: wrap;
         font-size: 0.8125rem;
+        gap: 1rem;
+        justify-content: space-between;
         line-height: 1.68;
         margin-top: 2rem;
         padding-top: 1.5rem;
@@ -132,6 +138,11 @@ const licenseText: Record<Lang, string> = {
 
     .colophon a {
         color: inherit;
+    }
+
+    .analytics-badge {
+        display: block;
+        line-height: 0;
     }
 
     @media (max-width: 1199px) {
@@ -260,11 +271,33 @@ const licenseText: Record<Lang, string> = {
                     />
                 </div>
             </div>
-            <p class="colophon">
-                {licenseText[lang]}
-                {' '}
-                <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.
-            </p>
+            <div class="colophon">
+                <p>
+                    {licenseText[lang]}
+                    {' '}
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.
+                </p>
+                <a
+                    class="analytics-badge"
+                    href={footerAnalyticsBadge.href}
+                    referrerpolicy="origin"
+                    rel="noopener"
+                    target="_blank"
+                >
+                    <picture>
+                        <source media="(prefers-color-scheme: dark)" srcset={footerAnalyticsBadge.darkSrc} />
+                        <img
+                            alt="Simple Analytics"
+                            crossorigin="anonymous"
+                            height={footerAnalyticsBadge.height}
+                            loading="lazy"
+                            referrerpolicy="no-referrer"
+                            src={footerAnalyticsBadge.lightSrc}
+                            width={footerAnalyticsBadge.width}
+                        />
+                    </picture>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
