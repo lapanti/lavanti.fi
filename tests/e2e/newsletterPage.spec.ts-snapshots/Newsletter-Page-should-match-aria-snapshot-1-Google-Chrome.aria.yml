@@ -8,8 +8,18 @@
     - paragraph: Uutiskirjeessäni pohdin, miten teknologia, erityisesti tekoäly, muuttaa yhteiskuntaamme, työtämme ja arkeamme. Käsittelen esimerkiksi sitä, miksi digitaalinen itsenäisyys on välttämättömyys yhteiskunnalle, miten tekoälyn aiheuttama työn muutos pakottaa meidät uudistumaan ja millaista tulevaisuutta haluamme rakentaa yhdessä.
     - paragraph
     - paragraph: Uskon, että teknologian tulee mahdollistaa uusia ratkaisuja. Siksi korostan kestäviä innovaatioita ja herätän keskustelua siitä, miten voimme hyödyntää teknologian tarjoamia mahdollisuuksia. Tavoitteenani on tarjota ajatuksia herättävää, faktoihin perustuvaa ja ratkaisulähtöistä sisältöä.
+    - figure "Kirkkonummen kunnantalolla":
+      - img "Lauri Lavanti tummansinisessä pikkutakissa nojaa korkeaan pöytään, taustalla esitehyllyjä ja portaikko."
+      - text: "Kirkkonummen kunnantalolla Kuva: Juha Jantunen"
     - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
     - list:
+      - listitem:
+        - article "Digiministeri ilman ministeriötä jää vaille valtaa":
+          - link "Digiministeri ilman ministeriötä jää vaille valtaa":
+            - /url: /fi/uutiskirje/9/digiministeri-ilman-ministeriota-jaa-vaille-valtaa/
+            - heading "Digiministeri ilman ministeriötä jää vaille valtaa" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Elinkeinoelämä vaati digiministeriä jo vuonna \d+, eikä sitä ole vieläkään\. Esitän digiministeriötä, joka syntyy jakamalla liikenne- ja viestintäministeriö\./
       - listitem:
         - article "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
           - link "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut":
@@ -24,13 +34,6 @@
             - heading "Hyötyykö Suomi datakeskuksista?" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: /Suomessa on \d+ datakeskusta, jotka kuluttavat noin 2 prosenttia sähköstä\. Sähkövero nousi 1\.\d+\.\d+ luokkaan I\. Luvut, Irlannin vertailu ja kuntien luvitus\./
-      - listitem:
-        - article /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
-          - link /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/:
-            - /url: /fi/uutiskirje/6/markkinatalous-tarvitsee-vaihtoehtoja/
-            - heading /\d+ miljardia syytä miettiä IT-hankintoja uudestaan/ [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /EU käyttää vuosittain noin \d+ miljardia euroa suljettuihin ohjelmistoihin\. Toimittajalukko tappaa hintasignaalin, jonka avoin koodi palauttaa\./
     - paragraph:
       - text: Kaikki lähetetyt kirjeet julkaistaan
       - link "arkistoon":
