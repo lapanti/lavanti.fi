@@ -8,8 +8,18 @@
     - paragraph: I mitt nyhetsbrev reflekterar jag över hur teknologi – särskilt artificiell intelligens – förändrar vårt samhälle, vårt arbete och vår vardag. Jag behandlar till exempel varför digital självständighet är en nödvändighet för samhället, hur AI-drivna förändringar i arbetslivet tvingar oss att förnya oss och vilken framtid vi vill bygga tillsammans.
     - paragraph
     - paragraph: Jag tror att teknologin ska möjliggöra nya lösningar. Därför betonar jag hållbara innovationer och väcker diskussion om hur vi kan utnyttja de möjligheter som teknologin erbjuder. Mitt mål är att erbjuda tankeväckande, faktabaserat och lösningsorienterat innehåll.
+    - figure "I Kyrkslätts kommunhus":
+      - img "Lauri Lavanti i marinblå kavaj lutar sig mot ett högt bord, med broschyrhyllor och en trappa i bakgrunden."
+      - text: "I Kyrkslätts kommunhus Foto: Juha Jantunen"
     - heading "Vad har de senaste breven handlat om?" [level=2]
     - list:
+      - listitem:
+        - article "En digiminister utan ministerium blir maktlös":
+          - link "En digiminister utan ministerium blir maktlös":
+            - /url: /sv/nyhetsbrev/9/en-digiminister-utan-ministerium-blir-maktlos/
+            - heading "En digiminister utan ministerium blir maktlös" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Näringslivet krävde en digiminister redan \d+, och ingen finns ännu\. Jag föreslår ett digiministerium byggt av trafik- och kommunikationsministeriets digidel\./
       - listitem:
         - article "När leverantören inte går att byta har upphandlingslagen redan misslyckats":
           - link "När leverantören inte går att byta har upphandlingslagen redan misslyckats":
@@ -24,13 +34,6 @@
             - heading "Gagnar datacenter Finland?" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: /Finland har \d+ datacenter som förbrukar cirka 2 procent av elen\. Elskatten steg till klass I den 1 juli \d+\. Siffrorna, Irland och kommunernas tillstånd\./
-      - listitem:
-        - article /\d+ miljarder skäl att tänka om kring IT/:
-          - link /\d+ miljarder skäl att tänka om kring IT/:
-            - /url: /sv/nyhetsbrev/6/marknadsekonomin-behover-alternativ/
-            - heading /\d+ miljarder skäl att tänka om kring IT/ [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /EU använder cirka \d+ miljarder euro per år på sluten programvara\. Leverantörsinlåsning dödar prissignalen som öppen källkod och portabilitet återställer\./
     - paragraph:
       - text: Alla utskickade brev publiceras i
       - link "arkivet":
