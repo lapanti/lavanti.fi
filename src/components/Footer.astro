@@ -143,6 +143,9 @@ const licenseText: Record<Lang, string> = {
     .analytics-badge {
         display: block;
         line-height: 0;
+        /* the badge SVG pads its artwork 11px on each side — pull it out so the bars line up
+           with the licence text when wrapped, and the wordmark with the rule's end when not */
+        margin-inline: -0.6875rem;
     }
 
     @media (max-width: 1199px) {
