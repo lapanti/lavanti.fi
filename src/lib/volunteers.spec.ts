@@ -212,7 +212,7 @@ describe('handleMobilePay', () => {
         )
         expect(res.status).toBe(302)
         expect(res.headers.get('Location')).toBe(MOBILEPAY_URL)
-        expect(MOBILEPAY_URL).toBe('https://qr.mobilepay.fi/vp/2EHT5W1np')
+        expect(MOBILEPAY_URL).toBe('https://mobilepay.fi/Yrityksille/Maksulinkki/maksulinkki-vastaus?phone=46492')
         expect(calls[0].args).toEqual(['2026-10-02T12:00:00Z', 'threads', 'lahjoitus-02', 'mobilepay'])
     })
 
