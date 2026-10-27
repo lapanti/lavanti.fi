@@ -38,8 +38,12 @@ export interface VolunteerEnv {
 export const DONATE_URL =
     'https://www.vihreat.fi/eduskuntavaaliehdokkaat-2027/?kieli=fi&vaali=eduskuntavaalit-2027&alue=vp2&ehdokas=lavanti-lauri-10202&valilehti=donate'
 
-/** What the MobilePay box 46492 QR encodes (lavanti-2027 CTA_DESTINATIONS.donate.mobilepay.payUrl). */
-export const MOBILEPAY_URL = 'https://qr.mobilepay.fi/vp/2EHT5W1np'
+/**
+ * MobilePay's payment link for box 46492 (lavanti-2027 CTA_DESTINATIONS.donate.mobilepay.payUrl).
+ * Not the QR's own URL (qr.mobilepay.fi/vp/2EHT5W1np): that one does not open the app from Meta's
+ * in-app browsers (Instagram, Threads) and stops on a fallback page; this one does (27.10.2026).
+ */
+export const MOBILEPAY_URL = 'https://mobilepay.fi/Yrityksille/Maksulinkki/maksulinkki-vastaus?phone=46492'
 
 export const MUNICIPALITIES = ['kirkkonummi', 'espoo', 'vantaa', 'muu-uusimaa', 'muu'] as const
 export const HELP_OPTIONS = ['jakaminen', 'tapahtumat', 'some', 'muu'] as const
