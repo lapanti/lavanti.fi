@@ -127,6 +127,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Microsoft's data centre is already being built in Kirkkonummi":
+          - 'link "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky. Microsoft''s data centre is already being built in Kirkkonummi"':
+            - /url: /en/blog/93/microsoft-data-centre-kirkkonummi/
+            - 'img "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky."'
+            - heading "Microsoft's data centre is already being built in Kirkkonummi" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Microsoft data centre in Kirkkonummi, Espoo and Vihti brings a building site and may bring district heating. Next big power users need the same rules.
+        - list:
+          - listitem:
+            - link "Infrastructure":
+              - /url: /en/category/infrastructure/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Nature":
+              - /url: /en/category/nature/
+      - listitem:
         - article "Sweden threatens to pull ahead in the AI start-up race":
           - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
             - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
@@ -270,24 +288,6 @@
           - listitem:
             - link "National politics":
               - /url: /en/category/national-politics/
-      - listitem:
-        - 'article "Digital independence: Finland''s ability to choose"':
-          - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
-            - /url: /en/blog/85/digital-independence-happy-hacking-day/
-            - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
-            - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Technology":
-              - /url: /en/category/technology/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
