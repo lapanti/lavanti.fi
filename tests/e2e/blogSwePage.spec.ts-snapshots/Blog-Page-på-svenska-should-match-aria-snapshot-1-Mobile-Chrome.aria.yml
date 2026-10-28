@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Microsofts datacenter byggs redan i Kyrkslätt":
+            - 'link "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel. Microsofts datacenter byggs redan i Kyrkslätt"':
+              - /url: /sv/blog/93/microsoft-datacenter-kyrkslatt/
+              - 'img "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel."'
+              - heading "Microsofts datacenter byggs redan i Kyrkslätt" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Microsofts datacenter i Kyrkslätt, Esbo och Vichtis ger en byggarbetsplats och kan ge fjärrvärme. De nästa stora elanvändarna behöver samma regler.
+          - list:
+            - listitem:
+              - link "Infrastruktur":
+                - /url: /sv/kategori/infrastruktur/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Natur":
+                - /url: /sv/kategori/natur/
+        - listitem:
           - article "Programmet för gång och cykling är kommunens långsiktiga plan":
             - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
               - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
@@ -134,24 +152,6 @@
             - listitem:
               - link "Nationell politik":
                 - /url: /sv/kategori/nationell-politik/
-        - listitem:
-          - article "Bensinstöd för hundratals miljoner fördjupar importberoendet":
-            - link "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan. Bensinstöd för hundratals miljoner fördjupar importberoendet":
-              - /url: /sv/blog/84/bensinstod-fordjupar-importberoendet/
-              - img "Lauri Lavanti står mot en granitvägg med armarna i kors och blicken åt sidan."
-              - heading "Bensinstöd för hundratals miljoner fördjupar importberoendet" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Lägre moms på drivmedel och lägre distributionsskyldighet kostar hundratals miljoner och fördjupar importberoendet. Ge stödet direkt till människorna.
-          - list:
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Marknadsgrön":
-                - /url: /sv/kategori/marknadsgron/
-            - listitem:
-              - link "Säkerhet":
-                - /url: /sv/kategori/sakerhet/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/

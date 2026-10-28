@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Microsoftin datakeskus rakentuu jo Kirkkonummelle":
+          - 'link "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla. Microsoftin datakeskus rakentuu jo Kirkkonummelle"':
+            - /url: /fi/blog/93/microsoft-datakeskus-kirkkonummi/
+            - 'img "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla."'
+            - heading "Microsoftin datakeskus rakentuu jo Kirkkonummelle" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Microsoft datakeskus Kirkkonummella, Espoossa ja Vihdissä tuo työmaan ja voi tuoda kaukolämpöä. Seuraaville suurille sähkönkäyttäjille tarvitaan samat säännöt.
+        - list:
+          - listitem:
+            - link "Infra":
+              - /url: /fi/kategoria/infra/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Luonto":
+              - /url: /fi/kategoria/luonto/
+      - listitem:
         - article "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
           - link "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa. Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
             - /url: /fi/blog/92/ruotsi-uhkaa-vetaa-pidemman-korren-tekoalystartupien-keskittymassa/
@@ -130,21 +148,3 @@
           - listitem:
             - link "Yrittäjyys":
               - /url: /fi/kategoria/yrittajyys/
-      - listitem:
-        - article "Palkalla pitää voida vaurastua!":
-          - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
-            - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
-            - 'img "Markkinavihreiden avaus: Palkalla pitää voida vaurastua!"'
-            - heading "Palkalla pitää voida vaurastua!" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Markkinavihreiden avaus: varallisuustili, jolla palkasta säästetyn rahan voi sijoittaa ennen veroja. Neljä syytä, miksi se tekee markkinataloudesta reilumman."
-        - list:
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Markkinavihreä":
-              - /url: /fi/kategoria/markkinavihrea/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/

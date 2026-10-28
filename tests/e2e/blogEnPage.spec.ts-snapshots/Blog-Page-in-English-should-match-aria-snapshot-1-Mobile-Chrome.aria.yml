@@ -99,6 +99,24 @@
       - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
         - listitem:
+          - article "Microsoft's data centre is already being built in Kirkkonummi":
+            - 'link "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky. Microsoft''s data centre is already being built in Kirkkonummi"':
+              - /url: /en/blog/93/microsoft-data-centre-kirkkonummi/
+              - 'img "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky."'
+              - heading "Microsoft's data centre is already being built in Kirkkonummi" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Microsoft data centre in Kirkkonummi, Espoo and Vihti brings a building site and may bring district heating. Next big power users need the same rules.
+          - list:
+            - listitem:
+              - link "Infrastructure":
+                - /url: /en/category/infrastructure/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "Nature":
+                - /url: /en/category/nature/
+        - listitem:
           - article "The walking and cycling programme is the municipality's long-term plan":
             - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
               - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
@@ -134,24 +152,6 @@
             - listitem:
               - link "National politics":
                 - /url: /en/category/national-politics/
-        - listitem:
-          - article "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
-            - link "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side. A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency":
-              - /url: /en/blog/84/fuel-subsidy-deepens-import-dependency/
-              - img "Lauri Lavanti stands against a granite wall with arms crossed, looking to the side."
-              - heading "A Fuel Subsidy Worth Hundreds of Millions Would Deepen Import Dependency" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: A VAT cut on fuel and a lower distribution obligation would cost hundreds of millions and deepen import dependency. Give the money directly to people instead.
-          - list:
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Marketgreen":
-                - /url: /en/category/marketgreen/
-            - listitem:
-              - link "Security":
-                - /url: /en/category/security/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/

@@ -125,6 +125,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Microsofts datacenter byggs redan i Kyrkslätt":
+          - 'link "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel. Microsofts datacenter byggs redan i Kyrkslätt"':
+            - /url: /sv/blog/93/microsoft-datacenter-kyrkslatt/
+            - 'img "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel."'
+            - heading "Microsofts datacenter byggs redan i Kyrkslätt" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Microsofts datacenter i Kyrkslätt, Esbo och Vichtis ger en byggarbetsplats och kan ge fjärrvärme. De nästa stora elanvändarna behöver samma regler.
+        - list:
+          - listitem:
+            - link "Infrastruktur":
+              - /url: /sv/kategori/infrastruktur/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Natur":
+              - /url: /sv/kategori/natur/
+      - listitem:
         - article "Sverige hotar dra det längre strået som nav för AI-startups":
           - link "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida. Sverige hotar dra det längre strået som nav för AI-startups":
             - /url: /sv/blog/92/sverige-hotar-dra-det-langre-straet-som-nav-for-ai-startups/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Nationell politik":
               - /url: /sv/kategori/nationell-politik/
-      - listitem:
-        - 'article "Digital självständighet: Finlands valfrihet"':
-          - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
-            - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
-            - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
-            - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
-        - list:
-          - listitem:
-            - link "Digital självständighet":
-              - /url: /sv/kategori/digital-sjalvstandighet/
-          - listitem:
-            - link "AI":
-              - /url: /sv/kategori/artificiell-intelligens/
-          - listitem:
-            - link "Teknologi":
-              - /url: /sv/kategori/teknologi/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
