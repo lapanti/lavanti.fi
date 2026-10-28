@@ -111,6 +111,7 @@ export const campaignEvents: CampaignEvent[] = [
             },
         },
         postalCode: '02400',
+        startTime: '18:00',
         streetAddress: 'Kirkkotori 1',
         topicConfirmed: true,
     },
