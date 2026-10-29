@@ -17,11 +17,12 @@
       - listitem: Advocates for digital independence, privacy, and the sensible use of AI.
       - listitem: Four children.
     - text: Background
+    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the \d+ elections, a Kirkkonummi municipal councillor and lead developer \(MSc, Aalto\)\. He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI\./
     - paragraph:
-      - text: He is
-      - link /the Greens’ parliamentary candidate in the Uusimaa electoral district in the \d+ elections/:
+      - text: He chairs the Greens council group in Kirkkonummi, and the practical details of his candidacy are on the
+      - link "elections page":
         - /url: /en/elections/
-      - text: ", a lead developer, municipal councillor in Kirkkonummi, and chair of the Greens council group. He has lived in Kirkkonummi since the age of three and attended comprehensive school, upper secondary school, and vocational school in his home municipality. He graduated as a Master of Science (Tech.) from Aalto University and focuses on AI, economic policy,"
+      - text: . He has lived in Kirkkonummi since the age of three and attended comprehensive school, upper secondary school, and vocational school in his home municipality. He focuses on AI, economic policy,
       - link "entrepreneurship":
         - /url: /en/category/entrepreneurship/
       - text: ", and digital independence. Digital independence, privacy, and the responsible adoption of AI are all part of the same whole: how we build technological development that is both competitive and sustainable."

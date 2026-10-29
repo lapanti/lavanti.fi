@@ -17,11 +17,12 @@
       - listitem: Driver för digital självständighet, integritetsskydd och ett förnuftigt användande av AI.
       - listitem: Fyra barn.
     - text: Bakgrund
+    - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare \(diplomingenjör, Aalto-universitetet\)\. Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet\./
     - paragraph:
-      - text: Han är
-      - link /De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+/:
+      - text: Han är ordförande för De Grönas fullmäktigegrupp i Kyrkslätt, och praktisk information om kandidaturen finns på
+      - link "riksdagsvalssidan":
         - /url: /sv/riksdagsvalet/
-      - text: ", ledande programutvecklare, kommunfullmäktigeledamot i Kyrkslätt samt ordförande för De Grönas fullmäktigegrupp. Han har bott i Kyrkslätt sedan tre års ålder och gick grundskolan, gymnasiet och yrkesskolan i sin hemkommun. Han är utexaminerad diplomingenjör från Aalto-universitetet och fokuserar på AI, ekonomisk politik,"
+      - text: . Han har bott i Kyrkslätt sedan tre års ålder och gick grundskolan, gymnasiet och yrkesskolan i sin hemkommun. Han fokuserar på AI, ekonomisk politik,
       - link "företagande":
         - /url: /sv/kategori/foretagande/
       - text: "samt digital självständighet. Digital självständighet, integritetsskydd och ansvarsfull implementering av AI är delar av samma helhet: hur vi bygger teknologisk utveckling som är både konkurrenskraftig och hållbar."

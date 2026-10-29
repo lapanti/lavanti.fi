@@ -98,6 +98,7 @@
     - paragraph: "/Finland’s public administration is heavily dependent on, for example, major American cloud providers, the so-called hyperscalers — Amazon, Microsoft, and Google\\. Since \\d+, it has become uncomfortably clear that geopolitical power games are here to stay, including in the digital operating environment\\. Finnish and European alternatives exist: UpCloud is a concrete example of a high-performance domestic cloud service that the public sector can use\\. I advocate for breaking up public IT procurements, favouring open source, and factoring crisis preparedness — digital security of supply — into procurement decisions\\./"
     - text: Who
     - heading "Who is Lauri Lavanti?" [level=2]
+    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the \d+ elections, a Kirkkonummi municipal councillor and lead developer \(MSc, Aalto\)\. He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI\./
     - paragraph: I have built secure software and banking services for over a decade and studied technology at Aalto University. When decisions are made about code, procurement, or data security, I know what is being discussed – and I want to make sure the solutions serve everyone’s everyday life. I also understand where the limits on technology must be set, so that the rule of law endures.
     - 'figure "Photo: Markus Isomeri"':
       - img "Lauri Lavanti works on his laptop on the Amfi steps of Aalto University's main building."
@@ -110,7 +111,7 @@
     - text: Q & A
     - heading "Frequently asked questions" [level=2]
     - heading "Where is Lauri Lavanti running for parliament?" [level=3]
-    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the \d+ parliamentary elections\. He is a municipal councillor in Kirkkonummi and a lead developer, working towards a digitally independent Finland where the economy, education, and freedom work together in the age of AI\./
+    - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the \d+ elections, a Kirkkonummi municipal councillor and lead developer \(MSc, Aalto\)\. He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI\./
     - heading "What values does Lauri Lavanti's politics rest on?" [level=3]
     - paragraph: The values most important to Lauri Lavanti are justice, equality, and democracy, together with openness and honesty. In his thinking, the economy is a means to fund schools, care, and other shared services, and everyone's privacy and fundamental rights must be safeguarded in the age of AI as well. The goal is a digitally independent Finland where no one is left behind.
     - heading "What does AI mean for the Finnish economy?" [level=3]

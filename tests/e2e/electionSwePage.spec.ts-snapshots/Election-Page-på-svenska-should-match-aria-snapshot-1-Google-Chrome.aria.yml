@@ -3,7 +3,7 @@
   - heading "Kandidat i riksdagsvalet" [level=1]:
     - text: ""
     - emphasis: i riksdagsvalet
-  - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Valdagen är söndagen den \d+\.\d+\.\d+ och förhandsröstningen i Finland pågår 7–\d+\.\d+\.\d+\./
+  - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare \(diplomingenjör, Aalto-universitetet\)\. Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet\. Valdagen är söndagen den \d+\.\d+\.\d+ och förhandsröstningen i Finland pågår 7–\d+\.\d+\.\d+\./
   - link "Stöd kampanjen":
     - /url: https://lavanti.fi/lahjoita
   - article:

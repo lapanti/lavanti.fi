@@ -98,6 +98,7 @@
     - paragraph: "/Finlands offentliga förvaltning är kraftigt beroende av till exempel stora amerikanska molntjänstleverantörer, så kallade hyperscalers — Amazon, Microsoft och Google\\. Efter \\d+ har det blivit beklagligt tydligt att geopolitiskt maktspel är här för att stanna, även i den digitala verksamhetsmiljön\\. Finländska och europeiska alternativ finns: UpCloud är ett konkret exempel på en högpresterande inhemsk molntjänst som den offentliga sektorn kan använda\\. Jag driver på för att offentliga IT-upphandlingar delas upp och att öppen källkod gynnas, samt att krisberedskap — digital försörjningsberedskap — beaktas i upphandlingarna\\./"
     - text: Vem
     - heading "Vem är Lauri Lavanti?" [level=2]
+    - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare \(diplomingenjör, Aalto-universitetet\)\. Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet\./
     - paragraph: Jag har byggt säkra programvaror och banktjänster i över ett decennium och studerat teknik vid Aalto-universitetet. När det fattas beslut om kod, upphandlingar eller datasäkerhet vet jag vad det handlar om – och jag vill se till att lösningarna tjänar allas vardag. Jag förstår också var teknikens gränser måste sättas, för att rättsstaten ska bestå.
     - 'figure "Foto: Markus Isomeri"':
       - img "Lauri Lavanti jobbar på sin bärbara dator i Amfi-trapporna i Aalto-universitetets huvudbyggnad."
@@ -110,7 +111,7 @@
     - text: Q & A
     - heading "Vanliga frågor" [level=2]
     - heading "Var kandiderar Lauri Lavanti i riksdagsvalet?" [level=3]
-    - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+\. Han är fullmäktigeledamot i Kyrkslätt och ledande programutvecklare, och hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidsåldern\./
+    - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare \(diplomingenjör, Aalto-universitetet\)\. Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet\./
     - heading "Vilka värderingar bygger Lauri Lavantis politik på?" [level=3]
     - paragraph: De viktigaste värderingarna för Lauri Lavanti är rättvisa, jämlikhet och demokrati samt öppenhet och ärlighet. I hans tänkande är ekonomin ett medel för att finansiera skolor, vård och andra gemensamma tjänster, och allas integritet och grundläggande rättigheter måste tryggas även i AI-tidsåldern. Målet är ett digitalt självständigt Finland där ingen lämnas efter i utvecklingen.
     - heading "Vad innebär AI för den finländska ekonomin?" [level=3]

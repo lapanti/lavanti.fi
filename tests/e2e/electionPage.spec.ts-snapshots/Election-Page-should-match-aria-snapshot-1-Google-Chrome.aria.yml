@@ -3,7 +3,7 @@
   - heading "Ehdolla eduskuntaan" [level=1]:
     - text: ""
     - emphasis: eduskuntaan
-  - paragraph: /Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa\. Vaalipäivä on sunnuntai \d+\.\d+\.\d+ ja ennakkoäänestys kotimaassa 7\.–\d+\.\d+\.\d+\./
+  - paragraph: /Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa \d+, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta\. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella\. Vaalipäivä on sunnuntai \d+\.\d+\.\d+ ja ennakkoäänestys kotimaassa 7\.–\d+\.\d+\.\d+\./
   - link "Tue kampanjaa":
     - /url: https://lavanti.fi/lahjoita
   - article:
