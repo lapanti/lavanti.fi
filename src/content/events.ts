@@ -85,6 +85,7 @@ export const campaignEvents: CampaignEvent[] = [
     },
     {
         date: '2026-11-30',
+        endTime: '19:30',
         fbUrl: 'https://fb.me/e/4WfF0fkf3',
         id: 'fyyri-morne',
         locales: {
@@ -111,6 +112,7 @@ export const campaignEvents: CampaignEvent[] = [
             },
         },
         postalCode: '02400',
+        startTime: '18:00',
         streetAddress: 'Kirkkotori 1',
         topicConfirmed: true,
     },
