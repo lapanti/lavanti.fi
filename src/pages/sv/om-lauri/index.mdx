@@ -33,6 +33,7 @@ import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import { degrees, degreesTitle, fiduciaries, fiduciariesTitle, jobExperiences, jobExperiencesTitle } from '../../../content/sv-cv'
 import { aboutPhotosBySection } from '../../../content/aboutPhotos'
+import { personDescription } from '../../../content/person'
 import { socialChips } from '../../../content/social'
 
 <Plate eyebrow="Vem" ground="offWhite" heading="Lauri i korthet" id="brief">
@@ -53,7 +54,7 @@ import { socialChips } from '../../../content/social'
 <Plate ground="sand">
     <Eyebrow>Bakgrund</Eyebrow>
     <Prose>
-        <p>Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare (diplomingenjör, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet.</p>
+        <p>{personDescription.sv}</p>
         <p>Han är ordförande för De Grönas fullmäktigegrupp i Kyrkslätt, och praktisk information om kandidaturen finns på <a href="/sv/riksdagsvalet/">riksdagsvalssidan</a>. Han har bott i Kyrkslätt sedan tre års ålder och gick grundskolan, gymnasiet och yrkesskolan i sin hemkommun. Han fokuserar på AI, ekonomisk politik, <a href="/sv/kategori/foretagande/">företagande</a> samt digital självständighet. Digital självständighet, integritetsskydd och ansvarsfull implementering av AI är delar av samma helhet: hur vi bygger teknologisk utveckling som är både konkurrenskraftig och hållbar.</p>
         <p>Lauri berättade mer om sin kandidatur i dess <a href="/sv/blog/67/min-kandidatur-i-riksdagsvalet/">offentliggörande</a>. Lauri har också en <a href="https://fi.wikipedia.org/wiki/Lauri_Lavanti">Wikipedia-artikel</a> (på finska).</p>
     </Prose>

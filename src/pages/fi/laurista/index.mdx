@@ -33,6 +33,7 @@ import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import { aboutPhotosBySection } from '../../../content/aboutPhotos'
 import { degrees, degreesTitle, fiduciaries, fiduciariesTitle, jobExperiences, jobExperiencesTitle } from '../../../content/fi-cv'
+import { personDescription } from '../../../content/person'
 import { socialChips } from '../../../content/social'
 
 <Plate eyebrow="Kuka" ground="offWhite" heading="Lauri lyhyesti" id="lyhyesti">
@@ -53,7 +54,7 @@ import { socialChips } from '../../../content/social'
 <Plate ground="sand">
     <Eyebrow>Tausta</Eyebrow>
     <Prose>
-        <p>Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella.</p>
+        <p>{personDescription.fi}</p>
         <p>Hän on Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja, ja ehdokkuuden käytännön tiedot löytyvät <a href="/fi/eduskuntavaalit/">eduskuntavaalisivulta</a>. Hän on asunut Kirkkonummella kolmevuotiaasta asti ja kävi peruskoulun, lukion ja ammattikoulun kotikunnassaan. Hän keskittyy tekoälyyn, talouteen, <a href="/fi/kategoria/yrittajyys/">yrittäjyyteen</a> sekä digitaaliseen itsenäisyyteen. Digitaalinen itsenäisyys, yksityisyyden suoja ja tekoälyn vastuullinen käyttöönotto ovat osa samaa kokonaisuutta: miten rakennamme teknologista kehitystä, joka on sekä kilpailukykyistä että kestävää.</p>
         <p>Lauri kertoi ehdokkuudestaan tarkemmin sen <a href="/fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/">julkistuksessa</a>. Laurista on myös <a href="https://fi.wikipedia.org/wiki/Lauri_Lavanti">Wikipedia-artikkeli</a>.</p>
     </Prose>

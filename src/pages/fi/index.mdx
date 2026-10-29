@@ -37,6 +37,7 @@ import WritingsPlate from '../../components/frontPage/WritingsPlate.astro'
 import NewsletterSubscribe from '../../components/NewsletterSubscribe.astro'
 import Stripe from '../../components/Stripe.astro'
 import VideoEmbed from '../../components/VideoEmbed.astro'
+import { personDescription } from '../../content/person'
 
 <Stripe />
 
@@ -124,7 +125,7 @@ import VideoEmbed from '../../components/VideoEmbed.astro'
     portraitAlt="Lauri Lavanti työskentelee kannettavalla tietokoneella Aalto-yliopiston päärakennuksen Amfin portailla."
     portraitImage="Lauri-Lavanti-tyoskentelee-portailla-vaaka"
 >
-    <p class="bio">Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella.</p>
+    <p class="bio">{personDescription.fi}</p>
     <p class="bio">Olen rakentanut turvallisia ohjelmistoja ja pankkipalveluita yli vuosikymmenen ja opiskellut teknologiaa Aalto-yliopistossa. Kun päätetään koodista, hankinnoista tai tietoturvasta, tiedän mistä puhutaan – ja haluan pitää huolen, että ratkaisut palvelevat jokaisen arkea. Ymmärrän myös, mihin teknologian rajat on asetettava, jotta oikeusvaltio säilyy.</p>
 </WhoBio>
 
