@@ -44,10 +44,14 @@ export const personJobTitle: Record<Lang, string> = {
     sv: 'riksdagskandidat, kommunfullmäktigeledamot och ledande programutvecklare, DI',
 }
 
+/*
+ * The tunnistelause: the approved one-sentence bio from the campaign consistency guide, verbatim.
+ * The front, about and elections pages repeat it word for word (person.spec.ts enforces that).
+ */
 export const personDescription: Record<Lang, string> = {
     en: "Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the 2027 elections, a Kirkkonummi municipal councillor and lead developer (MSc, Aalto). He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI.",
-    fi: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu ja johtava ohjelmistokehittäjä (DI, Aalto). Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella.',
-    sv: 'Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, fullmäktigeledamot i Kyrkslätt och ledande programutvecklare (DI, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidsåldern.',
+    fi: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella.',
+    sv: 'Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare (diplomingenjör, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet.',
 }
 
 /** Shown on the post author card; personDescription is the longer JSON-LD text. */
