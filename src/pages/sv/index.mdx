@@ -37,6 +37,7 @@ import WritingsPlate from '../../components/frontPage/WritingsPlate.astro'
 import NewsletterSubscribe from '../../components/NewsletterSubscribe.astro'
 import Stripe from '../../components/Stripe.astro'
 import VideoEmbed from '../../components/VideoEmbed.astro'
+import { personDescription } from '../../content/person'
 
 <Stripe />
 
@@ -124,7 +125,7 @@ import VideoEmbed from '../../components/VideoEmbed.astro'
     portraitAlt="Lauri Lavanti jobbar på sin bärbara dator i Amfi-trapporna i Aalto-universitetets huvudbyggnad."
     portraitImage="Lauri-Lavanti-tyoskentelee-portailla-vaaka"
 >
-    <p class="bio">Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare (diplomingenjör, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet.</p>
+    <p class="bio">{personDescription.sv}</p>
     <p class="bio">Jag har byggt säkra programvaror och banktjänster i över ett decennium och studerat teknik vid Aalto-universitetet. När det fattas beslut om kod, upphandlingar eller datasäkerhet vet jag vad det handlar om – och jag vill se till att lösningarna tjänar allas vardag. Jag förstår också var teknikens gränser måste sättas, för att rättsstaten ska bestå.</p>
 </WhoBio>
 

@@ -37,6 +37,7 @@ import WritingsPlate from '../../components/frontPage/WritingsPlate.astro'
 import NewsletterSubscribe from '../../components/NewsletterSubscribe.astro'
 import Stripe from '../../components/Stripe.astro'
 import VideoEmbed from '../../components/VideoEmbed.astro'
+import { personDescription } from '../../content/person'
 
 <Stripe />
 
@@ -124,7 +125,7 @@ import VideoEmbed from '../../components/VideoEmbed.astro'
     portraitAlt="Lauri Lavanti works on his laptop on the Amfi steps of Aalto University's main building."
     portraitImage="Lauri-Lavanti-tyoskentelee-portailla-vaaka"
 >
-    <p class="bio">Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the 2027 elections, a Kirkkonummi municipal councillor and lead developer (MSc, Aalto). He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI.</p>
+    <p class="bio">{personDescription.en}</p>
     <p class="bio">I have built secure software and banking services for over a decade and studied technology at Aalto University. When decisions are made about code, procurement, or data security, I know what is being discussed – and I want to make sure the solutions serve everyone's everyday life. I also understand where the limits on technology must be set, so that the rule of law endures.</p>
 </WhoBio>
 
