@@ -17,11 +17,12 @@
       - listitem: Ajaa digitaalista itsenäisyyttä, yksityisyyden suojaa ja tekoälyn järkevää käyttöä.
       - listitem: Neljä lasta.
     - text: Tausta
+    - paragraph: /Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa \d+, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta\. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella\./
     - paragraph:
-      - text: Hän on
-      - link /Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä vuoden \d+ eduskuntavaaleissa/:
+      - text: Hän on Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja, ja ehdokkuuden käytännön tiedot löytyvät
+      - link "eduskuntavaalisivulta":
         - /url: /fi/eduskuntavaalit/
-      - text: ", johtava ohjelmistokehittäjä, Kirkkonummen kunnanvaltuutettu sekä Vihreän valtuustoryhmän puheenjohtaja. Hän on asunut Kirkkonummella kolmevuotiaasta asti ja kävi peruskoulun, lukion ja ammattikoulun kotikunnassaan. Hän on Aalto-yliopistosta valmistunut diplomi-insinööri ja keskittyy tekoälyyn, talouteen,"
+      - text: . Hän on asunut Kirkkonummella kolmevuotiaasta asti ja kävi peruskoulun, lukion ja ammattikoulun kotikunnassaan. Hän keskittyy tekoälyyn, talouteen,
       - link "yrittäjyyteen":
         - /url: /fi/kategoria/yrittajyys/
       - text: "sekä digitaaliseen itsenäisyyteen. Digitaalinen itsenäisyys, yksityisyyden suoja ja tekoälyn vastuullinen käyttöönotto ovat osa samaa kokonaisuutta: miten rakennamme teknologista kehitystä, joka on sekä kilpailukykyistä että kestävää."

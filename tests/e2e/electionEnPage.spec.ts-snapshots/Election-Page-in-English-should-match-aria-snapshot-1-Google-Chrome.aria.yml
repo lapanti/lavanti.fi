@@ -3,7 +3,7 @@
   - heading "Running for parliament" [level=1]:
     - text: ""
     - emphasis: for parliament
-  - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in the Uusimaa electoral district in the \d+ Finnish parliamentary election\. Election day is Sunday \d+ April \d+, with advance voting in Finland on 7–\d+ April\./
+  - paragraph: /Lauri Lavanti is the Greens' parliamentary candidate in Uusimaa for the \d+ elections, a Kirkkonummi municipal councillor and lead developer \(MSc, Aalto\)\. He works to build a digitally independent Finland where the economy, education, and freedom work together in the age of AI\. Election day is Sunday \d+ April \d+, with advance voting in Finland on 7–\d+ April\./
   - link "Support the campaign":
     - /url: https://lavanti.fi/lahjoita
   - article:
