@@ -1,7 +1,7 @@
 {
     "id": 91,
     "publishDate": "2026-10-21",
-    "updatedDate": "2026-10-22",
+    "updatedDate": "2026-10-30",
     "tags": ["kirkkonummi", "nature", "urban-planning", "infrastructure", "green-party", "freedom"],
     "heroImage": "Sanni-Jappinen-Pinja-Pekkarniemi-ja-Lauri-Lavanti",
     "authors": [
@@ -41,6 +41,12 @@
             "lang": "fi",
             "name": "Kirkkonummen Vihreät",
             "url": "https://kirkkonummenvihreat.fi/2026/10/22/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/"
+        },
+        {
+            "date": "2026-10-29",
+            "lang": "fi",
+            "name": "Länsiväylä",
+            "url": "https://www.lansivayla.fi/paakirjoitus-mielipide/9901964"
         }
     ]
 }
