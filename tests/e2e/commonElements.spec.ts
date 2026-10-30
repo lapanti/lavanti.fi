@@ -5,10 +5,6 @@ import { AboutEnPage } from './pages/aboutEnPage'
 import { AboutPage } from './pages/aboutPage'
 import { AboutSwePage } from './pages/aboutSwePage'
 
-/*
- * The footer's Simple Analytics badge is a lazy third-party image: masked so the goldens
- * don't depend on whether it loaded or on how Simple Analytics renders it.
- */
 test.describe('Common page elements FI', () => {
     test('should match aria snapshot', async ({ page }) => {
         const aboutPage = new AboutPage(page)
@@ -31,7 +27,7 @@ test.describe('Common page elements FI', () => {
         await aboutPage.goTo()
 
         await test.expect(page.getByRole('banner')).toHaveScreenshot()
-        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot({ mask: [page.locator('.analytics-badge')] })
+        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot()
     })
 })
 
@@ -57,7 +53,7 @@ test.describe('Common page elements EN', () => {
         await aboutPage.goTo()
 
         await test.expect(page.getByRole('banner')).toHaveScreenshot()
-        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot({ mask: [page.locator('.analytics-badge')] })
+        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot()
     })
 })
 
@@ -83,6 +79,6 @@ test.describe('Common page elements SV', () => {
         await aboutPage.goTo()
 
         await test.expect(page.getByRole('banner')).toHaveScreenshot()
-        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot({ mask: [page.locator('.analytics-badge')] })
+        await test.expect(page.getByRole('contentinfo')).toHaveScreenshot()
     })
 })
