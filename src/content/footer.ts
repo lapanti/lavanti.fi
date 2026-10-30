@@ -60,19 +60,12 @@ export const footerSourceCodeLabel: Record<Lang, string> = {
 export const footerSourceCodeUrl = 'https://github.com/lapanti/lavanti.fi'
 
 /**
- * Simple Analytics' free plan requires its badge from 2026-11-01. URLs are verbatim from their
- * badge builder (their detector looks for them); colours are the footer's deepForest, footerMuted
- * and oat. Both modes share one palette because the footer is dark in either scheme.
+ * Simple Analytics' free plan requires its badge or text link from 2026-12-01. The site uses the
+ * text link from https://www.simpleanalytics.com/badges.md. Keep this URL verbatim, UTM codes
+ * included: their detector looks for it. It points at the public dashboard, as badges.md asks.
  */
-const analyticsBadgeQuery = 'counter=false&radius=0&background=163E35&text=A9CFCB&logo=E4D77E'
-
-export const footerAnalyticsBadge = {
-    darkSrc: `https://simpleanalyticsbadges.com/lavanti.fi?mode=dark&${analyticsBadgeQuery}`,
-    height: 50,
-    href: 'https://www.simpleanalytics.com/lavanti.fi?utm_source=lavanti.fi&utm_content=badge',
-    lightSrc: `https://simpleanalyticsbadges.com/lavanti.fi?mode=light&${analyticsBadgeQuery}`,
-    width: 210,
-} as const
+export const footerAnalyticsCreditHref =
+    'https://www.simpleanalytics.com/lavanti.fi?utm_source=lavanti.fi&utm_content=badge'
 
 export const footerColumnLabels: Record<Lang, { contact: string; languages: string; site: string }> = {
     en: { contact: 'Contact', languages: 'Languages', site: 'Lauri Lavanti' },

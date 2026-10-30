@@ -2,7 +2,7 @@
 import type { Lang } from '../content/nav'
 
 import {
-    footerAnalyticsBadge,
+    footerAnalyticsCreditHref,
     footerAriaLabel,
     footerCampaignFinanceHref,
     footerCampaignFinanceLabel,
@@ -22,6 +22,7 @@ import { navLinks } from '../content/nav'
 import { personEmail } from '../content/person'
 import { archivePath } from '../lib/newsletterRoutes'
 import { colors, gridAreas, typographics } from '../lib/styles'
+import AnalyticsCredit from './AnalyticsCredit.astro'
 import InstagramLink from './footer/InstagramLink.astro'
 import Link from './footer/Link.astro'
 import TikTokLink from './footer/TikTokLink.astro'
@@ -138,14 +139,6 @@ const licenseText: Record<Lang, string> = {
 
     .colophon a {
         color: inherit;
-    }
-
-    .analytics-badge {
-        display: block;
-        line-height: 0;
-        /* the badge SVG pads its artwork 11px on each side — pull it out so the bars line up
-           with the licence text when wrapped, and the wordmark with the rule's end when not */
-        margin-inline: -0.6875rem;
     }
 
     @media (max-width: 1199px) {
@@ -280,26 +273,7 @@ const licenseText: Record<Lang, string> = {
                     {' '}
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.
                 </p>
-                <a
-                    class="analytics-badge"
-                    href={footerAnalyticsBadge.href}
-                    referrerpolicy="origin"
-                    rel="noopener"
-                    target="_blank"
-                >
-                    <picture>
-                        <source media="(prefers-color-scheme: dark)" srcset={footerAnalyticsBadge.darkSrc} />
-                        <img
-                            alt="Simple Analytics"
-                            crossorigin="anonymous"
-                            height={footerAnalyticsBadge.height}
-                            loading="lazy"
-                            referrerpolicy="no-referrer"
-                            src={footerAnalyticsBadge.lightSrc}
-                            width={footerAnalyticsBadge.width}
-                        />
-                    </picture>
-                </a>
+                <AnalyticsCredit href={footerAnalyticsCreditHref} />
             </div>
         </div>
     </div>
