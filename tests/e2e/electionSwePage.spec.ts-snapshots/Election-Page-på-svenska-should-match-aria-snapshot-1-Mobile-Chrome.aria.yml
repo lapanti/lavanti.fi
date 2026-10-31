@@ -144,10 +144,10 @@
         - time: /söndag \d+ november \d+ kl\. \d+–\d+/
         - heading "Kampanjteamets öppna träff" [level=3]
         - paragraph: Entresse bibliotek, Blue room, Esbo
-        - paragraph: Kampanjteamet samlas på nytt. Vi går igenom var kampanjen står just nu och kommer överens om nästa steg inför valvåren. Välkommen med om du vill vara med och bygga kampanjen.
+        - paragraph: Har du undrat vad en kampanj egentligen går ut på? Nu kan du påverka. På kampanjteamets öppna träff kan du säga din åsikt om kampanjens program, alltså vad kampanjen handlar om. Dessutom går vi igenom viktiga datum och vad kampanjarbete innebär i praktiken. Välkommen med!
         - text: Ämnet bekräftas senare.
       - listitem:
-        - time: /måndag \d+ november \d+/
+        - time: /måndag \d+ november \d+ kl\. \d+–\d+\.\d+/
         - heading "Hur mår Kyrkslätt? Utvecklingen av Centralskogen" [level=3]
         - paragraph: Bibliotekshuset Fyyri, Mörnesalen, Kyrkslätt
         - paragraph: Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Panelisterna presenteras senare. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.

@@ -144,10 +144,10 @@
         - time: /Sunday, \d+ November \d+ \d+:\d+–\d+:\d+/
         - heading "Open campaign team meeting" [level=3]
         - paragraph: Entresse Library, Blue room, Espoo
-        - paragraph: The campaign team is meeting again. We will go through where the campaign stands now and agree on the next steps towards the election spring. Welcome to join us if you want to help build the campaign.
+        - paragraph: Have you wondered what campaigns are really about? Now you can have a say. At the campaign team's open meeting you can give your views on the campaign programme, meaning what the campaign talks about. We will also go through the important dates and what campaigning means in practice. Welcome!
         - text: The topic will be confirmed later.
       - listitem:
-        - time: /Monday, \d+ November \d+/
+        - time: /Monday, \d+ November \d+ \d+:\d+–\d+:\d+/
         - heading "How are you, Kirkkonummi? The development of the central forest" [level=3]
         - paragraph: Fyyri library, Mörne hall, Kirkkonummi
         - paragraph: What should happen to Keskusmetsä (the central forest) in Kirkkonummi? The "How are you, Kirkkonummi?" discussion series from Kirkkonummen Vihreät continues with a panel discussion on the development of the central forest. The discussion will be moderated by Lauri Lavanti, chair of the Green group on Kirkkonummi municipal council and parliamentary candidate. The panellists will be announced later. Come to listen, to ask questions and to share your own views. The event is open to all and free of charge.

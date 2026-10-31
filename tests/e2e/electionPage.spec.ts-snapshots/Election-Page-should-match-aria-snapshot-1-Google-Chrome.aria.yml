@@ -144,10 +144,10 @@
         - time: /sunnuntaina \d+\. marraskuuta \d+ klo \d+–\d+/
         - heading "Kampanjatiimin avoin tapaaminen" [level=3]
         - paragraph: Entressen kirjasto, Blue room, Espoo
-        - paragraph: Kampanjatiimi kokoontuu taas. Käymme läpi, missä kampanja on nyt, ja sovimme seuraavat askeleet kohti vaalikevättä. Tervetuloa mukaan, jos haluat olla rakentamassa kampanjaa.
+        - paragraph: Oletko miettinyt, mistä kampanjoissa oikein on kyse? Nyt pääset vaikuttamaan. Kampanjatiimin avoimessa tapaamisessa voit sanoa sanasi kampanjaohjelmasta eli siitä, mistä kampanja puhuu. Lisäksi käymme läpi tärkeät päivämäärät ja sen, mitä kampanjointi käytännössä tarkoittaa. Tervetuloa mukaan!
         - text: Aihe vahvistetaan myöhemmin.
       - listitem:
-        - time: /maanantaina \d+\. marraskuuta \d+/
+        - time: /maanantaina \d+\. marraskuuta \d+ klo \d+–\d+\.\d+/
         - heading "Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys" [level=3]
         - paragraph: Kirjastotalo Fyyri, Mörne-sali, Kirkkonummi
         - paragraph: Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Keskustelijat julkaistaan myöhemmin. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.
