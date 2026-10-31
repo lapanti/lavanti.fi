@@ -58,21 +58,21 @@ export const campaignEvents: CampaignEvent[] = [
         locales: {
             en: {
                 description:
-                    'The campaign team is meeting again. We will go through where the campaign stands now and agree on the next steps towards the election spring. Welcome to join us if you want to help build the campaign.',
+                    "Have you wondered what campaigns are really about? Now you can have a say. At the campaign team's open meeting you can give your views on the campaign programme, meaning what the campaign talks about. We will also go through the important dates and what campaigning means in practice. Welcome!",
                 locality: 'Espoo',
                 title: 'Open campaign team meeting',
                 venue: 'Entresse Library, Blue room',
             },
             fi: {
                 description:
-                    'Kampanjatiimi kokoontuu taas. Käymme läpi, missä kampanja on nyt, ja sovimme seuraavat askeleet kohti vaalikevättä. Tervetuloa mukaan, jos haluat olla rakentamassa kampanjaa.',
+                    'Oletko miettinyt, mistä kampanjoissa oikein on kyse? Nyt pääset vaikuttamaan. Kampanjatiimin avoimessa tapaamisessa voit sanoa sanasi kampanjaohjelmasta eli siitä, mistä kampanja puhuu. Lisäksi käymme läpi tärkeät päivämäärät ja sen, mitä kampanjointi käytännössä tarkoittaa. Tervetuloa mukaan!',
                 locality: 'Espoo',
                 title: 'Kampanjatiimin avoin tapaaminen',
                 venue: 'Entressen kirjasto, Blue room',
             },
             sv: {
                 description:
-                    'Kampanjteamet samlas på nytt. Vi går igenom var kampanjen står just nu och kommer överens om nästa steg inför valvåren. Välkommen med om du vill vara med och bygga kampanjen.',
+                    'Har du undrat vad en kampanj egentligen går ut på? Nu kan du påverka. På kampanjteamets öppna träff kan du säga din åsikt om kampanjens program, alltså vad kampanjen handlar om. Dessutom går vi igenom viktiga datum och vad kampanjarbete innebär i praktiken. Välkommen med!',
                 locality: 'Esbo',
                 title: 'Kampanjteamets öppna träff',
                 venue: 'Entresse bibliotek, Blue room',
