@@ -99,6 +99,21 @@
       - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
         - listitem:
+          - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
+            - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
+              - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
+              - img "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään"
+              - heading "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Julkinen sektori kerää vuonna \d+ arviolta \d+ miljardia euroa ja käyttää \d+ miljardia\. Katso kaavioista, mistä rahat tulevat ja mihin ne menevät\./
+          - list:
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+        - listitem:
           - article "Microsoftin datakeskus rakentuu jo Kirkkonummelle":
             - 'link "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla. Microsoftin datakeskus rakentuu jo Kirkkonummelle"':
               - /url: /fi/blog/93/microsoft-datakeskus-kirkkonummi/
@@ -134,24 +149,6 @@
             - listitem:
               - link "Kaavoitus":
                 - /url: /fi/kategoria/kaavoitus/
-        - listitem:
-          - article "Palkalla pitää voida vaurastua!":
-            - 'link "Markkinavihreiden avaus: Palkalla pitää voida vaurastua! Palkalla pitää voida vaurastua!"':
-              - /url: /fi/blog/86/palkalla-pitaa-voida-vaurastua/
-              - 'img "Markkinavihreiden avaus: Palkalla pitää voida vaurastua!"'
-              - heading "Palkalla pitää voida vaurastua!" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Markkinavihreiden avaus: varallisuustili, jolla palkasta säästetyn rahan voi sijoittaa ennen veroja. Neljä syytä, miksi se tekee markkinataloudesta reilumman."
-          - list:
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Markkinavihreä":
-                - /url: /fi/kategoria/markkinavihrea/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/

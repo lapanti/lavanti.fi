@@ -126,6 +126,21 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article "Where does the public sector's money come from and where does it go?":
+          - link "The columned facade of Parliament House in Helsinki, where the public sector budget is decided Where does the public sector's money come from and where does it go?":
+            - /url: /en/blog/96/public-sector-where-the-money-comes-from-and-where-it-goes/
+            - img "The columned facade of Parliament House in Helsinki, where the public sector budget is decided"
+            - heading "Where does the public sector's money come from and where does it go?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /The public sector collects an estimated €160bn in \d+ and spends €174bn\. See the charts for where the money comes from and where it goes\./
+        - list:
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "National politics":
+              - /url: /en/category/national-politics/
+      - listitem:
         - article "Microsoft's data centre is already being built in Kirkkonummi":
           - 'link "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky. Microsoft''s data centre is already being built in Kirkkonummi"':
             - /url: /en/blog/93/microsoft-data-centre-kirkkonummi/
@@ -269,24 +284,6 @@
           - listitem:
             - link "Entrepreneurship":
               - /url: /en/category/entrepreneurship/
-      - listitem:
-        - article "Your paycheck should build wealth!":
-          - 'link "Market Greens proposal: Your paycheck should build wealth! Your paycheck should build wealth!"':
-            - /url: /en/blog/86/your-paycheck-should-build-wealth/
-            - 'img "Market Greens proposal: Your paycheck should build wealth!"'
-            - heading "Your paycheck should build wealth!" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "A Market Greens proposal: a wealth account that lets you invest money saved from your wages before tax. Four reasons it makes the market economy fairer."
-        - list:
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Marketgreen":
-              - /url: /en/category/marketgreen/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

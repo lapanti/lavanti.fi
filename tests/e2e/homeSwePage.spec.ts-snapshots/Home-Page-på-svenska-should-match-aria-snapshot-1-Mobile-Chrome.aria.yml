@@ -126,6 +126,21 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Varifrån kommer den offentliga sektorns pengar och vart går de?":
+          - link "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget Varifrån kommer den offentliga sektorns pengar och vart går de?":
+            - /url: /sv/blog/96/offentlig-sektor-varifran-kommer-pengarna-och-vart-gar-de/
+            - img "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget"
+            - heading "Varifrån kommer den offentliga sektorns pengar och vart går de?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Den offentliga sektorn tar \d+ in uppskattningsvis \d+ miljarder euro och använder \d+ miljarder\. Se i diagrammen varifrån pengarna kommer och vart de går\./
+        - list:
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Nationell politik":
+              - /url: /sv/kategori/nationell-politik/
+      - listitem:
         - article "Microsofts datacenter byggs redan i Kyrkslätt":
           - 'link "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel. Microsofts datacenter byggs redan i Kyrkslätt"':
             - /url: /sv/blog/93/microsoft-datacenter-kyrkslatt/
@@ -269,24 +284,6 @@
           - listitem:
             - link "Företagande":
               - /url: /sv/kategori/foretagande/
-      - listitem:
-        - article "Med lön ska man kunna bli förmögen!":
-          - 'link "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen! Med lön ska man kunna bli förmögen!"':
-            - /url: /sv/blog/86/med-lon-ska-man-kunna-bli-formogen/
-            - 'img "De marknadsgrönas initiativ: Med lön ska man kunna bli förmögen!"'
-            - heading "Med lön ska man kunna bli förmögen!" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "De marknadsgrönas initiativ: ett förmögenhetskonto där pengar som sparas av lönen kan investeras före skatt. Fyra skäl till en rättvisare marknadsekonomi."
-        - list:
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Marknadsgrön":
-              - /url: /sv/kategori/marknadsgron/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
