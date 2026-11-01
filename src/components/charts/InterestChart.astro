@@ -27,7 +27,9 @@ const { caption, data, lang } = Astro.props
 
 const copy = {
     en: {
+        actual: 'Actual',
         estimate: 'estimate',
+        estimateKey: 'Estimate',
         interest: 'Interest',
         share: 'of spending',
         shareHeader: 'Share of spending',
@@ -37,7 +39,9 @@ const copy = {
         year: 'Year',
     },
     fi: {
+        actual: 'Toteutunut',
         estimate: 'arvio',
+        estimateKey: 'Arvio',
         interest: 'Korot',
         share: 'menoista',
         shareHeader: 'Osuus menoista',
@@ -47,7 +51,9 @@ const copy = {
         year: 'Vuosi',
     },
     sv: {
+        actual: 'Utfall',
         estimate: 'uppskattning',
+        estimateKey: 'Uppskattning',
         interest: 'Räntor',
         share: 'av utgifterna',
         shareHeader: 'Andel av utgifterna',
@@ -65,6 +71,7 @@ const ticks = Array.from({ length: top + 1 }, (_, index) => index)
 /* Years without data (2025–2026) keep their slot, so the gap before the estimate shows. */
 const first = data[0].year
 const last = data[data.length - 1].year
+const lastActual = Math.max(...data.filter((year) => !year.estimate).map((year) => year.year))
 const points = data.map((year) => ({
     ...year,
     height: (100 * year.interest) / (top * 1000),
@@ -288,9 +295,34 @@ const vars = Object.entries({
         transition: background-color 100ms ease;
     }
 
-    .slot--estimate .bar {
+    .slot--estimate .bar,
+    .swatch--estimate {
         background: repeating-linear-gradient(135deg, var(--colorsForestGreen) 0 2px, transparent 2px 5px);
         box-shadow: inset 0 0 0 1.5px var(--colorsForestGreen);
+    }
+
+    .key {
+        color: var(--colorsTextSecondary);
+        display: flex;
+        flex-wrap: wrap;
+        font-family: var(--readoutFontFamily);
+        font-size: var(--readoutFontSize);
+        gap: 0.25rem 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0.5rem 0 0;
+    }
+
+    .key li {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .swatch {
+        background: var(--colorsForestGreen);
+        height: 0.875rem;
+        width: 0.875rem;
     }
 
     /* The script sets .is-on; :global() because the markup never renders it. */
@@ -451,6 +483,10 @@ const vars = Object.entries({
             {xLabels.map((year) => <span style={`grid-column: ${year - first + 1}`}>{year}</span>)}
         </div>
     </div>
+    <ul class="key">
+        <li><span aria-hidden="true" class="swatch"></span>{copy.actual} {first}–{lastActual}</li>
+        <li><span aria-hidden="true" class="swatch swatch--estimate"></span>{copy.estimateKey} {last}</li>
+    </ul>
     <details>
         <summary>{copy.table}</summary>
         <table>
