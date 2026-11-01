@@ -82,6 +82,12 @@
       - link "perusturvajaoston roolista":
         - /url: /fi/blog/8/perusturvajaosto-mika-se-on/
       - text: .
+    - complementary "Lauri Lavanti":
+      - paragraph:
+        - link "Lauri Lavanti":
+          - /url: /fi/laurista/
+      - paragraph: eduskuntavaaliehdokas, kunnanvaltuutettu ja johtava ohjelmistokehittäjä, DI
+      - paragraph: Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudellamaalla, Kirkkonummen kunnanvaltuutettu ja johtava ohjelmistokehittäjä. Hän tekee työtä digitaalisesti itsenäisen Suomen puolesta.
     - paragraph:
       - emphasis: "/Julkaistu myös: Kirkkonummen Sanomat, \\d+\\. joulukuuta \\d+\\./"
     - paragraph:
@@ -125,6 +131,21 @@
             - link "Sote-uudistus":
               - /url: /fi/kategoria/sote-uudistus/
       - listitem:
+        - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
+          - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
+            - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
+            - img "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään"
+            - heading "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Julkinen sektori kerää vuonna \d+ arviolta \d+ miljardia euroa ja käyttää \d+ miljardia\. Katso kaavioista, mistä rahat tulevat ja mihin ne menevät\./
+        - list:
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Kansallinen politiikka":
+              - /url: /fi/kategoria/kansallinen-politiikka/
+      - listitem:
         - article "Mitä jos terveyskeskusta ei olisikaan?":
           - link "Kuva tiekyltistä, jossa lukee Sosiaali- ja terveyskeskus, sekä alla sama ruotsiksi, eli Social- och hälsocentral. Mitä jos terveyskeskusta ei olisikaan?":
             - /url: /fi/blog/9/mita-jos-terveyskeskusta-ei-olisikaan/
@@ -132,24 +153,6 @@
             - heading "Mitä jos terveyskeskusta ei olisikaan?" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: Mitä jos Jorvin ensiapu olisi koko läntisen Uudenmaan ainoa päivystys? Mitä jos Jorvissa pitäisi aina jonottaa monta tuntia?
-        - list:
-          - listitem:
-            - link /Aluevaalit \d+/:
-              - /url: /fi/kategoria/aluevaalit-2022/
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /fi/kategoria/kirkkonummi/
-          - listitem:
-            - link "Sote-uudistus":
-              - /url: /fi/kategoria/sote-uudistus/
-      - listitem:
-        - article /Asetun ehdolle aluevaaleihin \d+/:
-          - link /Kuva Lauri Lavannista pellon edustalla\. Taaempana taustalla on metsää\. Asetun ehdolle aluevaaleihin \d+/:
-            - /url: /fi/blog/7/ehdolle-aluevaaleihin/
-            - img "Kuva Lauri Lavannista pellon edustalla. Taaempana taustalla on metsää."
-            - heading /Asetun ehdolle aluevaaleihin \d+/ [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Asetan itseni ehdolle aluevaaleihin. Tärkeintä on lähipalvelujen säilyminen, terveydenhuollon pitäminen julkisena ja hoitohenkilökunnan hyvinvointi.
         - list:
           - listitem:
             - link /Aluevaalit \d+/:
