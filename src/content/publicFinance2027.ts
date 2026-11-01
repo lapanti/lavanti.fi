@@ -18,6 +18,11 @@
 
 import type { Lang } from './nav'
 
+/**
+ * Long compounds carry soft hyphens (­): on a phone the legend runs in two
+ * narrow columns, and the browser has no Finnish or Swedish hyphenation dictionary
+ * to break "Sosiaalivakuutusmaksut" by itself.
+ */
 export type Localised = Record<Lang, string>
 
 /**
@@ -59,8 +64,8 @@ export const publicRevenue2027: WaffleData = {
                     key: 'ansiotuloverot',
                     label: {
                         en: 'earned and capital income taxes',
-                        fi: 'ansio- ja pääomatuloverot',
-                        sv: 'förvärvs- och kapitalinkomstskatter',
+                        fi: 'ansio- ja pääoma­tulo­verot',
+                        sv: 'förvärvs- och kapital­inkomst­skatter',
                     },
                     value: 38.5,
                 },
@@ -84,7 +89,7 @@ export const publicRevenue2027: WaffleData = {
                     label: {
                         en: 'earnings-related pension contributions',
                         fi: 'työeläkemaksut',
-                        sv: 'arbetspensionsavgifter',
+                        sv: 'arbets­pensions­avgifter',
                     },
                     value: 30.1,
                 },
@@ -94,8 +99,8 @@ export const publicRevenue2027: WaffleData = {
                     key: 'muutsotu',
                     label: {
                         en: 'health and unemployment insurance contributions',
-                        fi: 'sairaus- ja työttömyysvakuutusmaksut',
-                        sv: 'sjuk- och arbetslöshetsförsäkringsavgifter',
+                        fi: 'sairaus- ja työttömyys­vakuutus­maksut',
+                        sv: 'sjuk- och arbetslöshets­försäkrings­avgifter',
                     },
                     value: 6.7,
                 },
@@ -103,8 +108,8 @@ export const publicRevenue2027: WaffleData = {
             key: 'sotumaksut',
             label: {
                 en: 'Social security contributions',
-                fi: 'Sosiaalivakuutusmaksut',
-                sv: 'Socialförsäkringsavgifter',
+                fi: 'Sosiaali­vakuutus­maksut',
+                sv: 'Social­försäkrings­avgifter',
             },
         },
         {
@@ -129,13 +134,17 @@ export const publicRevenue2027: WaffleData = {
                     label: {
                         en: 'Sales and fee income',
                         fi: 'Myynti- ja maksutulot',
-                        sv: 'Försäljnings- och avgiftsintäkter',
+                        sv: 'Försäljnings- och avgifts­intäkter',
                     },
                     value: 19.0,
                 },
             ],
             key: 'myynti',
-            label: { en: 'Sales and fee income', fi: 'Myynti- ja maksutulot', sv: 'Försäljnings- och avgiftsintäkter' },
+            label: {
+                en: 'Sales and fee income',
+                fi: 'Myynti- ja maksutulot',
+                sv: 'Försäljnings- och avgifts­intäkter',
+            },
         },
         {
             items: [
@@ -143,12 +152,12 @@ export const publicRevenue2027: WaffleData = {
                     color: '#466661',
                     fill: 'solid',
                     key: 'omaisuustulot',
-                    label: { en: 'Property income', fi: 'Omaisuustulot', sv: 'Egendomsinkomster' },
+                    label: { en: 'Property income', fi: 'Omaisuustulot', sv: 'Egendoms­inkomster' },
                     value: 12.2,
                 },
             ],
             key: 'omaisuustulot',
-            label: { en: 'Property income', fi: 'Omaisuustulot', sv: 'Egendomsinkomster' },
+            label: { en: 'Property income', fi: 'Omaisuustulot', sv: 'Egendoms­inkomster' },
         },
         {
             items: [
@@ -231,7 +240,7 @@ export const publicSpending2027: WaffleData = {
                     key: 'kansanelakkeet',
                     label: {
                         en: 'national and guarantee pensions (Kela)',
-                        fi: 'kansan- ja takuueläkkeet (Kela)',
+                        fi: 'kansan- ja takuu­eläkkeet (Kela)',
                         sv: 'folk- och garantipensioner (FPA)',
                     },
                     value: 2.6,
@@ -365,8 +374,8 @@ export const publicSpending2027: WaffleData = {
                     key: 'elinkeino',
                     label: {
                         en: 'business and employment services',
-                        fi: 'elinkeino- ja työvoimapalvelut',
-                        sv: 'närings- och arbetskraftstjänster',
+                        fi: 'elinkeino- ja työvoima­palvelut',
+                        sv: 'närings- och arbetskrafts­tjänster',
                     },
                     value: 2.8,
                 },
