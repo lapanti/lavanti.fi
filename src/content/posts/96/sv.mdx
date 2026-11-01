@@ -27,7 +27,9 @@ import UL from '../../../components/UL.astro'
 
 export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
 
-import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import InterestChart from '../../../components/charts/InterestChart.astro'
+import WaffleChart from '../../../components/charts/WaffleChart.astro'
+import { publicInterest, publicRevenue2027, publicSpending2027 } from '../../publicFinance2027'
 
 Offentlig sektor betyder staten, kommunerna, välfärdsområdena och socialskyddsfonderna, dit även arbetspensionsanstalterna hör. På den här sidan går vi igenom siffrorna, först inkomsterna och sedan utgifterna. Med de här pengarna betalas pensionerna, hälsocentralsbesöken och skoldagarna. Pengarna kommer från inkomstskatter, mervärdesskatt på våra inköp och andra avgifter. Enligt finansministeriets (FM) höstprognos tar den offentliga sektorn in cirka 160 miljarder euro och använder cirka 174 miljarder euro år 2027.
 
@@ -41,11 +43,7 @@ Eftersom arbetspensionsanstalterna ingår syns arbetspensionsavgifterna bland de
 
 Den offentliga sektorns inkomster uppgår enligt prognoserna till cirka 160 miljarder euro år 2027. De största posterna är inkomstskatterna, cirka 46 miljarder euro, socialförsäkringsavgifterna, cirka 37 miljarder, och mervärdesskatten, cirka 29 miljarder euro. Dessa tre täcker cirka 70 % av inkomsterna. Enligt prognosen är skattegraden 41,8 % år 2027.
 
-<ImageWithCaption
-    alt="Offentlig sektor, offentliga inkomster 2027, uppskattning 160 md €: inkomstskatter 46, socialförsäkringsavgifter 37 och mervärdesskatt 29 md €. En ruta är 1 md €."
-    caption="Offentliga inkomster 2027 (uppskattning): 160 md €. En ruta = 1 md €."
-    image="julkiset-tulot-2027-kaavio-sv"
-/>
+<WaffleChart caption="Offentliga inkomster 2027 (uppskattning): 160 md €. En ruta = 1 md €." data={publicRevenue2027} lang="sv" />
 
 Offentliga inkomster år 2027, uppskattning (totalt 160,4 md €):
 
@@ -62,11 +60,7 @@ Mervärdesskatten är en bruttosiffra, före kommunernas och välfärdsområdena
 
 De offentliga utgifterna uppgår enligt prognoserna till cirka 174 miljarder euro år 2027. Över hälften går till tre ändamål: pensioner cirka 40 miljarder, social- och hälsovård cirka 38 miljarder och utbildning cirka 23 miljarder euro. Till övrig social trygghet går cirka 14 miljarder och till försvar cirka 7 miljarder euro.
 
-<ImageWithCaption
-    alt="Offentlig sektor, offentliga utgifter 2027, uppskattning 174 md €: pensioner 40, social- och hälsovård 38, utbildning 23, övrig social trygghet 14 och försvar 7 md €. En ruta är 1 md €."
-    caption="Offentliga utgifter 2027 (uppskattning): 174 md €. En ruta = 1 md €."
-    image="julkiset-menot-2027-kaavio-sv"
-/>
+<WaffleChart caption="Offentliga utgifter 2027 (uppskattning): 174 md €. En ruta = 1 md €." data={publicSpending2027} lang="sv" />
 
 Offentliga utgifter år 2027, uppskattning (totalt 174,0 md €):
 
@@ -87,11 +81,7 @@ Summan 8–11 miljarder motsvarar cirka 4,5–6 % av de uppskattade offentliga u
 
 Ränteutgifterna stiger igen. Efter 1990-talets recession betalade den offentliga sektorn som mest 4,5 miljarder euro i räntor per år, över 7 % av alla sina utgifter. Under nollräntorna 2021 gick 1,3 miljarder euro till räntor, under en procent av utgifterna. År 2024 var summan 4,4 miljarder och år 2027 uppskattningsvis 6,1 miljarder euro, mer än något år sedan 1990. Som andel av utgifterna är det cirka 3,5 %, ungefär hälften av toppen på 1990-talet.
 
-<ImageWithCaption
-    alt="Offentlig sektor, räntorna på den offentliga skulden 1990–2027: toppen 4,5 md € år 1997, botten 1,3 md € år 2021, 4,4 md € år 2024 och uppskattningsvis 6,1 md € år 2027."
-    caption="Den offentliga sektorns ränteutgifter 1990–2024 och uppskattning för 2027, md €."
-    image="julkisen-velan-korot-1990-2027-kaavio-sv"
-/>
+<InterestChart caption="Den offentliga sektorns ränteutgifter 1990–2024 och uppskattning för 2027, md €." data={publicInterest} lang="sv" />
 
 Det lönar sig att diskutera anpassningen utifrån de här siffrorna. Frågan gäller varifrån pengarna tas: besparingar, skatter eller bådadera.
 
