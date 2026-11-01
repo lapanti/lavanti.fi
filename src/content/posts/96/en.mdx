@@ -27,7 +27,9 @@ import UL from '../../../components/UL.astro'
 
 export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
 
-import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import InterestChart from '../../../components/charts/InterestChart.astro'
+import WaffleChart from '../../../components/charts/WaffleChart.astro'
+import { publicInterest, publicRevenue2027, publicSpending2027 } from '../../publicFinance2027'
 
 The public sector means central government, municipalities, wellbeing services counties and social security funds, which include the earnings-related pension institutions. This page goes through the figures, revenue first and then spending. This money pays for pensions, health centre visits and school days. It comes from income taxes, value added tax on purchases and other charges. According to the Ministry of Finance (VM) autumn forecast, the public sector collects about €160bn in 2027 and spends about €174bn.
 
@@ -41,11 +43,7 @@ Because the earnings-related pension institutions are included, earnings-related
 
 According to forecasts, public sector revenue in 2027 is about €160bn. The largest items are income taxes, about €46bn, social security contributions, about €37bn, and value added tax, about €29bn. Together these three make up about 70% of revenue. The tax ratio in 2027 is forecast at 41.8%.
 
-<ImageWithCaption
-    alt="Public sector, public revenue 2027, estimate €160bn: income taxes €46bn, social security contributions €37bn and value added tax €29bn. One square is €1bn."
-    caption="Public revenue 2027 (estimate): €160bn. One square = €1bn."
-    image="julkiset-tulot-2027-kaavio-en"
-/>
+<WaffleChart caption="Public revenue 2027 (estimate): €160bn. One square = €1bn." data={publicRevenue2027} lang="en" />
 
 Public revenue in 2027, estimate (total €160.4bn):
 
@@ -62,11 +60,7 @@ Value added tax is shown gross, before the VAT refunds to municipalities and wel
 
 According to forecasts, public spending in 2027 is about €174bn. More than half goes to three areas: pensions, about €40bn, health and social services, about €38bn, and education, about €23bn. Other social security takes about €14bn and defence about €7bn.
 
-<ImageWithCaption
-    alt="Public sector, public spending 2027, estimate €174bn: pensions €40bn, health and social services €38bn, education €23bn, other social security €14bn and defence €7bn. One square is €1bn."
-    caption="Public spending 2027 (estimate): €174bn. One square = €1bn."
-    image="julkiset-menot-2027-kaavio-en"
-/>
+<WaffleChart caption="Public spending 2027 (estimate): €174bn. One square = €1bn." data={publicSpending2027} lang="en" />
 
 Public spending in 2027, estimate (total €174.0bn):
 
@@ -87,11 +81,7 @@ The €8–11bn is about 4.5–6% of estimated public spending in 2027. It is mo
 
 Interest spending is rising again. After the recession of the 1990s, the public sector paid at most €4.5bn a year in interest, over 7% of all its spending. In the zero-interest year of 2021, interest took €1.3bn, under one percent of spending. In 2024 the sum was €4.4bn, and in 2027 it is an estimated €6.1bn, more than in any year since 1990. As a share of spending that is about 3.5%, roughly half the peak of the 1990s.
 
-<ImageWithCaption
-    alt="Public sector, interest on public debt 1990–2027: peak €4.5bn in 1997, low €1.3bn in 2021, €4.4bn in 2024 and an estimated €6.1bn in 2027."
-    caption="Public sector interest spending 1990–2024 and estimate for 2027, €bn."
-    image="julkisen-velan-korot-1990-2027-kaavio-en"
-/>
+<InterestChart caption="Public sector interest spending 1990–2024 and estimate for 2027, €bn." data={publicInterest} lang="en" />
 
 The adjustment is worth discussing on the basis of these figures. The question is where the money comes from: spending cuts, taxes or both.
 
