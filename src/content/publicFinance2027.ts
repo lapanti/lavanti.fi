@@ -23,7 +23,7 @@ import type { Lang } from './nav'
  * narrow columns, and the browser has no Finnish or Swedish hyphenation dictionary
  * to break "Sosiaalivakuutusmaksut" by itself.
  */
-export type Localised = Record<Lang, string>
+type Localised = Record<Lang, string>
 
 /**
  * How a square is painted. `half` marks a sub-item inside a solid group (yhteisövero
@@ -32,7 +32,7 @@ export type Localised = Record<Lang, string>
  */
 export type WaffleFill = 'half' | 'hatch' | 'solid'
 
-export interface WaffleItem {
+interface WaffleItem {
     /** The chart palette goes beyond the site tokens: twelve hatched items need twelve hues. */
     color: string
     fill: WaffleFill
