@@ -45,8 +45,9 @@ const groups = data.groups.map((group) => {
 
 /*
  * Inline like the site's other component scripts: the CSP allows inline scripts and
- * there is no bundler step for component JS. Idempotent, because each chart on the
- * page carries a copy and the first copy to run already wires up every chart.
+ * there is no bundler step for component JS. Each chart carries a copy, which runs
+ * while the page is parsed and so sees only the charts above it; `data-ready` keeps a
+ * later copy from wiring an earlier chart twice.
  */
 const script = `(function(){
 var charts = document.querySelectorAll('[data-waffle]:not([data-ready])');
@@ -130,11 +131,9 @@ const vars = Object.entries({
         grid-template-columns: repeat(13, minmax(0, 1fr));
     }
 
-    /* Rounded corners are an allowed exception to the square system for chart marks (design-system spec). */
     .cell {
         aspect-ratio: 1;
         background: var(--c);
-        border-radius: 2px;
         transition: opacity 150ms ease;
     }
 
@@ -180,7 +179,6 @@ const vars = Object.entries({
         align-items: start;
         background: none;
         border: 0;
-        border-radius: 2px;
         color: inherit;
         cursor: pointer;
         display: grid;
@@ -291,11 +289,9 @@ const vars = Object.entries({
             padding-left: 0.25rem;
         }
 
-        /* "Sosiaalivakuutusmaksut" is wider than half a phone screen. */
+        /* Long compounds break at the soft hyphens in the data module. */
         .name {
             font-size: 1rem;
-            hyphens: auto;
-            overflow-wrap: anywhere;
         }
     }
 
