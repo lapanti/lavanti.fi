@@ -1,0 +1,483 @@
+---
+/**
+ * Public sector interest spending per year as a column chart, with a readout row that
+ * follows the pointer, a tap or the arrow keys: year, amount, share of all spending.
+ *
+ * The readout sits above the plot rather than floating next to the bar: at phone width
+ * a column is under ten pixels wide, so a tooltip would cover its neighbours or run off
+ * the screen. The whole plot is the hit area and the nearest column wins.
+ *
+ * The columns are aria-hidden. The figures are in a table under the chart, open to
+ * anyone and the reading path for screen readers; the readout is a live region for
+ * keyboard users who step through the years.
+ */
+import type { Lang } from '../../content/nav'
+import type { InterestYear } from '../../content/publicFinance2027'
+
+import { formatBn, formatDecimal, formatShare, interestShare } from '../../lib/publicFinanceCharts'
+import { fontWeights, typographics } from '../../lib/styles'
+
+interface Props {
+    caption: string
+    data: InterestYear[]
+    lang: Lang
+}
+
+const { caption, data, lang } = Astro.props
+
+const copy = {
+    en: {
+        estimate: 'estimate',
+        interest: 'Interest',
+        share: 'of spending',
+        shareHeader: 'Share of spending',
+        slider: 'Interest spending, select a year',
+        table: 'Figures as a table',
+        unit: '€bn',
+        year: 'Year',
+    },
+    fi: {
+        estimate: 'arvio',
+        interest: 'Korot',
+        share: 'menoista',
+        shareHeader: 'Osuus menoista',
+        slider: 'Korkomenot, valitse vuosi',
+        table: 'Luvut taulukkona',
+        unit: 'mrd €',
+        year: 'Vuosi',
+    },
+    sv: {
+        estimate: 'uppskattning',
+        interest: 'Räntor',
+        share: 'av utgifterna',
+        shareHeader: 'Andel av utgifterna',
+        slider: 'Ränteutgifter, välj år',
+        table: 'Siffrorna i tabellform',
+        unit: 'md €',
+        year: 'År',
+    },
+}[lang]
+
+/** Whole billions on the axis, rounded up from the tallest column. */
+const top = Math.ceil(Math.max(...data.map((year) => year.interest)) / 1000)
+const ticks = Array.from({ length: top + 1 }, (_, index) => index)
+
+/* Years without data (2025–2026) keep their slot, so the gap before the estimate shows. */
+const first = data[0].year
+const last = data[data.length - 1].year
+const points = data.map((year) => ({
+    ...year,
+    height: (100 * year.interest) / (top * 1000),
+    label: year.estimate ? `${year.year} (${copy.estimate})` : String(year.year),
+    share: `${formatShare(interestShare(year), lang, 1)} ${copy.share}`,
+    value: formatBn(year.interest / 1000, lang, 1),
+}))
+const slots = Array.from(
+    { length: last - first + 1 },
+    (_, index) => points.find((point) => point.year === first + index) ?? { year: first + index }
+)
+
+/* Value tags over the turning points the post's text names: the peak, the low, the latest and the estimate. */
+const peak = data.filter((year) => !year.estimate).reduce((max, year) => (year.interest > max.interest ? year : max))
+const low = data
+    .filter((year) => year.year > peak.year)
+    .reduce((min, year) => (year.interest < min.interest ? year : min))
+const tagged = new Set([peak.year, low.year, data[data.length - 2].year, last])
+
+const xLabels = data.filter((year) => year.year % 5 === 0 || year.year === last).map((year) => year.year)
+const initial = points[points.length - 1]
+
+/*
+ * The plot becomes an ARIA slider over the years only once this runs: without the
+ * script it would be a focus stop that does nothing, so the markup leaves it inert and
+ * the table carries the figures. The slider announces its own value text, which is why
+ * the visible readout is not a live region as well.
+ */
+const script = `(function(){
+var charts = document.querySelectorAll('[data-interest]:not([data-ready])');
+Array.prototype.forEach.call(charts, function(chart){
+    chart.setAttribute('data-ready', '');
+    var plot = chart.querySelector('.plot');
+    plot.setAttribute('role', 'slider');
+    plot.setAttribute('tabindex', '0');
+    plot.setAttribute('aria-label', plot.getAttribute('data-slider-label'));
+    plot.setAttribute('aria-orientation', 'horizontal');
+    var columns = chart.querySelector('.columns');
+    var slots = Array.prototype.filter.call(chart.querySelectorAll('.slot'), function(slot){ return slot.hasAttribute('data-value'); });
+    var all = chart.querySelectorAll('.slot');
+    var year = chart.querySelector('.readout-year');
+    var value = chart.querySelector('.readout-value');
+    var share = chart.querySelector('.readout-share');
+    var pinned = slots.length - 1;
+    function show(index){
+        var slot = slots[index];
+        Array.prototype.forEach.call(slots, function(other){ other.classList.toggle('is-on', other === slot); });
+        year.textContent = slot.getAttribute('data-label');
+        value.textContent = slot.getAttribute('data-value');
+        share.textContent = slot.getAttribute('data-share');
+        plot.setAttribute('aria-valuemin', slots[0].getAttribute('data-year'));
+        plot.setAttribute('aria-valuemax', slots[slots.length - 1].getAttribute('data-year'));
+        plot.setAttribute('aria-valuenow', slot.getAttribute('data-year'));
+        plot.setAttribute('aria-valuetext', slot.getAttribute('data-label') + ': ' + slot.getAttribute('data-value') + ', ' + slot.getAttribute('data-share'));
+    }
+    function nearest(event){
+        var box = columns.getBoundingClientRect();
+        var at = Math.min(all.length - 1, Math.max(0, Math.floor((event.clientX - box.left) / box.width * all.length)));
+        var best = 0;
+        slots.forEach(function(slot, index){
+            var position = Array.prototype.indexOf.call(all, slot);
+            var bestPosition = Array.prototype.indexOf.call(all, slots[best]);
+            if (Math.abs(position - at) < Math.abs(bestPosition - at)) best = index;
+        });
+        return best;
+    }
+    plot.addEventListener('pointermove', function(event){ show(nearest(event)); });
+    plot.addEventListener('pointerleave', function(){ show(pinned); });
+    plot.addEventListener('click', function(event){ pinned = nearest(event); show(pinned); });
+    plot.addEventListener('keydown', function(event){
+        var next = {
+            ArrowLeft: pinned - 1, ArrowDown: pinned - 1, ArrowRight: pinned + 1, ArrowUp: pinned + 1,
+            PageDown: pinned - 5, PageUp: pinned + 5, Home: 0, End: slots.length - 1
+        }[event.key];
+        if (next === undefined) return;
+        event.preventDefault();
+        pinned = Math.min(slots.length - 1, Math.max(0, next));
+        show(pinned);
+    });
+    show(pinned);
+});
+})();`
+
+/* On the figure by hand, not `define:vars`, which Astro would copy onto every column; see WaffleChart. */
+const vars = Object.entries({
+    axisFontFamily: typographics.caption.fontFamily,
+    axisFontSize: typographics.caption.fontSize,
+    captionFontFamily: typographics.caption.fontFamily,
+    captionFontSize: typographics.caption.fontSize,
+    captionLineHeight: typographics.caption.lineHeight,
+    count: slots.length,
+    readoutFontFamily: typographics.textSmall.fontFamily,
+    readoutFontSize: typographics.textSmall.fontSize,
+    steps: top,
+    tableFontFamily: typographics.textSmall.fontFamily,
+    tableFontSize: typographics.textSmall.fontSize,
+    valueFontFamily: typographics.nav.fontFamily,
+    valueFontSize: typographics.nav.fontSize,
+    valueFontWeight: typographics.nav.fontWeight,
+    valueLetterSpacing: typographics.nav.letterSpacing,
+    yearFontWeight: fontWeights.semibold,
+})
+    .map(([name, value]) => `--${name}: ${value}`)
+    .join('; ')
+---
+
+<style>
+    .interest {
+        grid-column-start: 3;
+        margin: var(--sizes1) 0;
+    }
+
+    .readout {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: var(--readoutFontFamily);
+        font-size: var(--readoutFontSize);
+        gap: 0 0.75rem;
+        min-height: 2rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .readout-year {
+        color: var(--colorsTextPrimary);
+        font-weight: var(--yearFontWeight);
+    }
+
+    .readout-value {
+        color: var(--colorsForestGreen);
+        font-family: var(--valueFontFamily);
+        font-size: var(--valueFontSize);
+        font-weight: var(--valueFontWeight);
+        letter-spacing: var(--valueLetterSpacing);
+    }
+
+    .readout-share {
+        color: var(--colorsTextSecondary);
+    }
+
+    .plot {
+        border-radius: 2px;
+        display: grid;
+        gap: 0 0.5rem;
+        grid-template-columns: auto minmax(0, 1fr);
+        touch-action: pan-y;
+    }
+
+    .interest:global([data-ready]) .plot {
+        cursor: crosshair;
+    }
+
+    .unit {
+        color: var(--colorsTextSecondary);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        grid-column: 1 / -1;
+        padding-bottom: 0.5rem;
+    }
+
+    .visually-hidden {
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .plot:focus-visible {
+        outline: 3px solid var(--colorsDarkGreen);
+        outline-offset: 4px;
+    }
+
+    .y-axis {
+        height: 16rem;
+        position: relative;
+        width: 1.25rem;
+    }
+
+    .y-axis span,
+    .x-axis span {
+        color: var(--colorsTextSecondary);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        line-height: 1;
+        position: absolute;
+    }
+
+    .y-axis span {
+        bottom: calc(var(--tick) / var(--steps) * 100%);
+        right: 0;
+        transform: translateY(50%);
+    }
+
+    .columns {
+        align-items: end;
+        background: repeating-linear-gradient(
+            to top,
+            var(--colorsForestGreen10) 0 1px,
+            transparent 1px calc(100% / var(--steps))
+        );
+        border-bottom: 1px solid var(--colorsForestGreen);
+        display: grid;
+        gap: 2px;
+        grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+        height: 16rem;
+    }
+
+    .slot {
+        height: 100%;
+        position: relative;
+    }
+
+    .bar {
+        background: var(--colorsForestGreen);
+        border-radius: 1px 1px 0 0;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: calc(100% - var(--h));
+        transition: background-color 100ms ease;
+    }
+
+    .slot--estimate .bar {
+        background: repeating-linear-gradient(135deg, var(--colorsForestGreen) 0 2px, transparent 2px 5px);
+        box-shadow: inset 0 0 0 1.5px var(--colorsForestGreen);
+    }
+
+    /* The script sets .is-on; :global() because the markup never renders it. */
+    .slot:global(.is-on) .bar {
+        background: var(--colorsBrightGreen);
+    }
+
+    .slot--estimate:global(.is-on) .bar {
+        background: repeating-linear-gradient(135deg, var(--colorsBrightGreen) 0 2px, transparent 2px 5px);
+        box-shadow: inset 0 0 0 1.5px var(--colorsBrightGreen);
+    }
+
+    /* The ground keeps a tag legible where a taller neighbour runs through it (1,3 in 2021). */
+    .tag {
+        background: var(--colorsWhite);
+        border-radius: 2px;
+        bottom: calc(var(--h) + 0.25rem);
+        padding: 1px 2px;
+        z-index: 1;
+        color: var(--colorsForestGreen);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        font-weight: var(--yearFontWeight);
+        left: 50%;
+        line-height: 1;
+        position: absolute;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+
+    .x-axis {
+        display: grid;
+        grid-column: 2;
+        grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+        height: 1.5rem;
+    }
+
+    .x-axis span {
+        grid-row: 1;
+        justify-self: center;
+        padding-top: 0.375rem;
+        position: static;
+    }
+
+    details {
+        font-family: var(--tableFontFamily);
+        font-size: var(--tableFontSize);
+        padding-top: 0.75rem;
+    }
+
+    summary {
+        color: var(--colorsDarkGreen);
+        cursor: pointer;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border-bottom: 1px solid var(--colorsForestGreen10);
+        padding: 0.25rem 0.5rem 0.25rem 0;
+        text-align: end;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: start;
+    }
+
+    figcaption {
+        color: var(--colorsTextSecondary);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        line-height: var(--captionLineHeight);
+        padding-top: 0.75rem;
+    }
+
+    @media (min-width: 769px) {
+        .y-axis,
+        .columns {
+            height: 20rem;
+        }
+
+        .y-axis {
+            width: 1.5rem;
+        }
+    }
+
+    /* Same scroll-tied reveal as the campaign finance bars; see FinanceBars.astro for the reasoning. */
+    @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+            .columns {
+                view-timeline: --interest-columns block;
+            }
+
+            .bar {
+                animation: rise linear both;
+                animation-range: entry 10% cover 40%;
+                transform-origin: bottom center;
+            }
+
+            /* Kept apart: the minifier would fold it into the shorthand, which cannot carry a timeline. */
+            .slot .bar {
+                animation-timeline: --interest-columns;
+            }
+        }
+    }
+
+    @keyframes rise {
+        from {
+            transform: scaleY(0);
+        }
+
+        to {
+            transform: scaleY(1);
+        }
+    }
+</style>
+
+<figure class="interest" data-interest style={vars}>
+    <p aria-hidden="true" class="readout">
+        <span class="readout-year">{initial.label}</span>
+        <span class="readout-value">{initial.value}</span>
+        <span class="readout-share">{initial.share}</span>
+    </p>
+    <div class="plot" data-slider-label={copy.slider}>
+        <span aria-hidden="true" class="unit">{copy.unit}</span>
+        <div aria-hidden="true" class="y-axis">
+            {ticks.map((tick) => <span style={`--tick: ${tick}`}>{tick}</span>)}
+        </div>
+        <div aria-hidden="true" class="columns">
+            {
+                slots.map((slot) =>
+                    'value' in slot ? (
+                        <span
+                            class:list={['slot', { 'slot--estimate': slot.estimate }]}
+                            data-label={slot.label}
+                            data-share={slot.share}
+                            data-value={slot.value}
+                            data-year={slot.year}
+                            style={`--h: ${slot.height.toFixed(2)}%`}
+                        >
+                            <span class="bar" />
+                            {tagged.has(slot.year) && (
+                                <span class="tag">{formatDecimal(slot.interest / 1000, 1, lang)}</span>
+                            )}
+                        </span>
+                    ) : (
+                        <span class="slot" />
+                    )
+                )
+            }
+        </div>
+        <div aria-hidden="true" class="x-axis">
+            {xLabels.map((year) => <span style={`grid-column: ${year - first + 1}`}>{year}</span>)}
+        </div>
+    </div>
+    <details>
+        <summary>{copy.table}</summary>
+        <table>
+            <caption class="visually-hidden">{caption}</caption>
+            <thead>
+                <tr>
+                    <th scope="col">{copy.year}</th>
+                    <th scope="col">{copy.interest}</th>
+                    <th scope="col">{copy.shareHeader}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    points.map((point) => (
+                        <tr>
+                            <th scope="row">{point.label}</th>
+                            <td>{point.value}</td>
+                            <td>{formatShare(interestShare(point), lang, 1)}</td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </details>
+    <figcaption>{caption}</figcaption>
+    <script is:inline set:html={script} />
+</figure>
