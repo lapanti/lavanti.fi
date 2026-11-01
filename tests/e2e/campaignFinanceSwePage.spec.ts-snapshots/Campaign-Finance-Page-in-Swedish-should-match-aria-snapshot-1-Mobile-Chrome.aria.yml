@@ -71,7 +71,7 @@
       - text: ""
       - list:
         - listitem: /Valreklam i medier 0 € \+ 3 \d+ € bundet \/ \d+ \d+ €/
-        - listitem: /Utomhusreklam 0 € \+ 4 \d+ € bundet \/ \d+ \d+ €/
+        - listitem: /Utomhusreklam 0 € \+ 5 \d+ € bundet \/ \d+ \d+ €/
         - listitem: /Valtidningar, broschyrer och andra tryckalster 0 € \+ \d+ € bundet \/ 3 \d+ €/
         - listitem: /Planering av reklam 0 € \+ 1 \d+ € bundet \/ 1 \d+ €/
         - listitem: /Valmöten 0 € \/ 2 \d+ €/

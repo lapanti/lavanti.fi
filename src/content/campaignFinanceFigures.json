@@ -1,5 +1,5 @@
 {
-    "asOf": "2026-10-25",
+    "asOf": "2026-11-01",
     "raised": {
         "own": {
             "banked": 2000,
@@ -11,7 +11,7 @@
         },
         "private": {
             "banked": 0,
-            "pending": 589
+            "pending": 637
         },
         "companies": {
             "banked": 0,
@@ -39,7 +39,7 @@
         "outdoor": {
             "budgeted": 19845,
             "banked": 0,
-            "committed": 4570
+            "committed": 5072
         },
         "print": {
             "budgeted": 3080,
@@ -67,5 +67,5 @@
             "committed": 500
         }
     },
-    "donors": 9
+    "donors": 10
 }
