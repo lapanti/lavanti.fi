@@ -6,6 +6,63 @@
       "model": "typesafe/jev-1.13-20260917"
     }
   },
+  "intro": {
+    "artificial-intelligence": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "2ad7998b639366602c68b170790dc0fe8c319c2d6b2fe771b87c556b7f4294ce",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "culture-and-education": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "9be438c0cf5931af6642f6de3a26ee548d743f2ed9c47a8615f78df0d41cb336",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "digital-independence": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "fa0f2168db2e5fb9f0bf9d10a20300eb41040b92b126c12a07e8fa41b7637896",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "digitalisation": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "8502ac5a2d0c93e2e3b3d0d0dd087b36a658b9ffa3d7bc269abf26459b7be9b3",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "economy": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "0f7b46d7654ca697cda55573f6824e2ad264fe2322e0f43d6282eed162cbb365",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "enlightenment": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "31ba28d66b4cbcbf539c2c0f6aa184dbf1d01334515b0add7009ce6c1b62c49e",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "freedom": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "466b6a6e72d0b7832a5645371463ee6cdfd822249a8c0f8e47fe3ed6b783163f",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "kirkkonummi": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "7cf07b94297fa13cf191964eaf5865a3b5b480f265b5417c8952878bc3d5c249",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "municipal-elections-2025": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "8fcae4e965d010e8399a7e355be75c2844f211c8300d0c22e91aa2eb9e4a0228",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "national-politics": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "7bde94419e9394c5f574ea1fdefc60e7ca8c5e6bcfadaa14b592766aa180adbf",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "parliamentary-elections-2027": {
+      "checkedAt": "2026-11-02",
+      "contentHash": "25e88f3e5ee1b1492bdd48c1850fb23b244bdad24add864b0053df17cac7795c",
+      "model": "typesafe/jev-1.13-20260917"
+    }
+  },
   "links": {
     "newsletter:10": {
       "checkedAt": "2026-10-03",
