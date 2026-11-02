@@ -30,13 +30,13 @@ describe('normalizePath', () => {
 
 describe('extractOgImage', () => {
     it('extracts a site-origin og:image as a root-relative path (content-first order)', () => {
-        const html = '<meta content="https://lavanti.fi/og/fi__about.png" property="og:image" />'
-        expect(extractOgImage(html)).toBe('/og/fi__about.png')
+        const html = '<meta content="https://lavanti.fi/og/fi__about.jpg" property="og:image" />'
+        expect(extractOgImage(html)).toBe('/og/fi__about.jpg')
     })
 
     it('handles the property-first attribute order', () => {
-        const html = '<meta property="og:image" content="https://lavanti.fi/og/fi.png" />'
-        expect(extractOgImage(html)).toBe('/og/fi.png')
+        const html = '<meta property="og:image" content="https://lavanti.fi/og/fi.jpg" />'
+        expect(extractOgImage(html)).toBe('/og/fi.jpg')
     })
 
     it('returns null when there is no og:image', () => {

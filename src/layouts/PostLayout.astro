@@ -82,7 +82,7 @@ const t = i18n[lang]
 // Narrowed here rather than in the template: the type guard does not carry into the JSX expression.
 const faqItems = hasFaqSection(faq) ? faq : undefined
 
-const ogImage = new URL(`/og/${ogId(canonicalSlug)}.png`, Astro.site).href
+const ogImage = new URL(`/og/${ogId(canonicalSlug)}.jpg`, Astro.site).href
 
 const siteOrigin = 'https://lavanti.fi'
 const breadcrumbs: BreadcrumbItem[] = [

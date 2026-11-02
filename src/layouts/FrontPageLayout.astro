@@ -28,7 +28,7 @@ const { frontmatter } = Astro.props
 const { alt, description, faq, heroImage, lang, mobileHeroImage, pageTitle, slug, type, updatedDate } = frontmatter
 
 const ogImage = slug
-    ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
+    ? new URL(`/og/${ogId(slug)}.jpg`, Astro.site).href
     : getImage('og-image-lauri-lavanti', 'ogFlat').src
 const resolvedLang = lang ?? 'fi'
 const slogan = sloganContent[resolvedLang]

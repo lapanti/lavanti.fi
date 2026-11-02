@@ -1,6 +1,6 @@
 /**
  * Maps a canonical page slug (e.g. `"fi/blog/58/talous-korjataan"`) to a filesystem-
- * and URL-safe id used as the `/og/<id>.png` route param.
+ * and URL-safe id used as the `/og/<id>.jpg` route param.
  *
  * The layouts emit the OG image URL from this function and the manifest
  * (`getOgCards`) enumerates the endpoint's static paths from the same function, so the

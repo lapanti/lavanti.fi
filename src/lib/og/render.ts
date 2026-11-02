@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'
 import satori from 'satori'
+import sharp from 'sharp'
 
 import { colors } from '../styles'
 
@@ -76,7 +77,7 @@ const words = (text: string, color: string): Node[] =>
         .map((word) => el('div', { color, display: 'flex' }, word))
 
 /**
- * Render a 1200×630 branded OG card as PNG bytes: deep-forest portrait on the left, a
+ * Render a 1200×630 branded OG card as JPEG bytes: deep-forest portrait on the left, a
  * sand panel on the right carrying the "LAURI LAVANTI" wordmark and the upright page
  * headline (with an optional emphasised word in bright green). Only the wordmark takes
  * the brand oblique — `rotate(-10deg) skew(-10deg)`, exactly as NameLogo.astro renders it.
@@ -163,5 +164,14 @@ export async function renderOgCard(card: OgCard): Promise<Uint8Array> {
         width: WIDTH,
     })
 
-    return new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH }, font: { loadSystemFonts: false } }).render().asPng()
+    const png = new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH }, font: { loadSystemFonts: false } })
+        .render()
+        .asPng()
+
+    /*
+     * Ship JPEG, not the raw PNG: the photo column makes a PNG card 300–450 KB even when
+     * lossless-optimised, and WhatsApp drops link-preview images above ~300 KB. mozjpeg
+     * q85 lands around 50–60 KB with no visible loss on the flat sand panel.
+     */
+    return sharp(png).jpeg({ mozjpeg: true, quality: 85 }).toBuffer()
 }
