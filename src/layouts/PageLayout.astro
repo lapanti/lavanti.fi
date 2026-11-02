@@ -96,7 +96,7 @@ const {
  */
 const ogImage =
     slug && !noindex
-        ? new URL(`/og/${ogId(slug)}.png`, Astro.site).href
+        ? new URL(`/og/${ogId(slug)}.jpg`, Astro.site).href
         : getImage('og-image-lauri-lavanti', 'ogFlat').src
 
 // Narrowed here rather than in the template: the type guard does not carry into the JSX expression.

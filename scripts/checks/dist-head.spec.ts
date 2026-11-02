@@ -326,7 +326,7 @@ describe('checkPage', () => {
                 ...issueOverrides,
                 jsonld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2026-04-25"}</script>',
                 ogImage:
-                    '<meta content="https://lavanti.fi/og/fi__uutiskirje__1__testi-kirje.png" property="og:image">',
+                    '<meta content="https://lavanti.fi/og/fi__uutiskirje__1__testi-kirje.jpg" property="og:image">',
             }),
             NEWSLETTER_PATH,
             BUILT_PATHS

@@ -50,7 +50,7 @@ Feature: Newsletter archive
     Then /fi/uutiskirje/1/{fi slug}/, /sv/nyhetsbrev/1/{sv slug}/ and /en/newsletter/1/{en slug}/ exist
     And each carries hreflang links to the other two plus x-default = fi
     And each has BlogPosting JSON-LD with datePublished = publishDate
-    And each has an og:image at /og/{lang}__{segment}__1__{slug}.png that is a built file
+    And each has an og:image at /og/{lang}__{segment}__1__{slug}.jpg that is a built file
     And each shows the provenance line with the sent date
 
   Scenario: Issue with two or more FAQ entries

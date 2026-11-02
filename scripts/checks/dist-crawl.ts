@@ -182,7 +182,7 @@ if (isMain) {
     for (const problem of checkRedirectsOutput(rules, servable)) report('_redirects', problem)
 
     /*
-     * Every generated per-page OG card (og:image → /og/*.png) must have been built.
+     * Every generated per-page OG card (og:image → /og/*.jpg) must have been built.
      * A page pointing at a card the endpoint never enumerated is a silent broken share
      * image; /images/* fallbacks (Cloudflare Images) live off-dist and are skipped.
      */
@@ -195,7 +195,7 @@ if (isMain) {
          * normalizePath percent-decodes so an encoded URL (e.g. %C3%A4) matches the
          * UTF-8 filename on disk, exactly as the llms.txt/_redirects checks do.
          */
-        if (!servable.has(normalizePath(ogPath))) report(page, `og:image "${ogPath}" has no built PNG`)
+        if (!servable.has(normalizePath(ogPath))) report(page, `og:image "${ogPath}" has no built card`)
     }
 
     if (!hasError) {

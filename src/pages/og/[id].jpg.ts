@@ -11,12 +11,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-    const png = await renderOgCard((props as { card: OgCard }).card)
+    const jpeg = await renderOgCard((props as { card: OgCard }).card)
 
-    return new Response(png as BodyInit, {
+    return new Response(jpeg as BodyInit, {
         headers: {
             'Cache-Control': 'public, max-age=31536000, immutable',
-            'Content-Type': 'image/png',
+            'Content-Type': 'image/jpeg',
         },
     })
 }
