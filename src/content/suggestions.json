@@ -29,7 +29,7 @@
     },
     "economy": {
       "checkedAt": "2026-11-02",
-      "contentHash": "0f7b46d7654ca697cda55573f6824e2ad264fe2322e0f43d6282eed162cbb365",
+      "contentHash": "ee9cd6c965dc5456b53d5b89c4d24b6bfe9620fb5475d248b4511ee97a7a7224",
       "model": "typesafe/jev-1.13-20260917"
     },
     "enlightenment": {
@@ -54,12 +54,12 @@
     },
     "national-politics": {
       "checkedAt": "2026-11-02",
-      "contentHash": "7bde94419e9394c5f574ea1fdefc60e7ca8c5e6bcfadaa14b592766aa180adbf",
+      "contentHash": "06a84c6a337f15dbeb7cfc7d3f04425821f33c09cbd34d3bb71c54b08442f5e2",
       "model": "typesafe/jev-1.13-20260917"
     },
     "parliamentary-elections-2027": {
       "checkedAt": "2026-11-02",
-      "contentHash": "25e88f3e5ee1b1492bdd48c1850fb23b244bdad24add864b0053df17cac7795c",
+      "contentHash": "47bb2763373a0d8edcb343e47d83ed76bd95ba0c50da286f4879c9641f8e1a27",
       "model": "typesafe/jev-1.13-20260917"
     }
   },
