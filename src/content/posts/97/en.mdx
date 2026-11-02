@@ -1,0 +1,109 @@
+---
+lang: 'en'
+slug: 'pension-funding-and-the-index-freeze'
+pageTitle: 'Pension funding and the index freeze'
+title: 'Pension funding: a freeze would share the burden across generations'
+description: "Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index."
+alt: "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
+faq:
+    - q: 'How does the funding of earnings-related pensions work?'
+      a: "Each year's earnings-related pensions are paid mainly from the contributions of that same year's employed people. In 2024, about EUR 28 billion in contributions was collected, and most of it went to paying current pensions. Pensions paid out came to EUR 36 billion, and EUR 7 billion of that was drawn from previously accumulated funds."
+    - q: 'Why do fewer and fewer people pay for more and more pensions?'
+      a: 'Fewer and fewer employed people pay for more and more pensions because there are clearly more pension recipients relative to the employed than before. In 1962 there were about 23 national pension recipients for every hundred employed people. In 1981 there were about 42 pension recipients per hundred employed, and in 2025 about 60. The definitions of the series differ, so they have not been combined.'
+    - q: 'How much do you get back for your pension contributions, by birth year?'
+      a: 'According to a calculation by the Finnish Centre for Pensions (ETK), private-sector employees born in 1940–1960 get their earnings-related pension contributions back as pensions at 2.0 to 4.7 times their value. Those born in 1970–2010 get them back at about 1.7 to 1.8 times. The figures include employer and employee contributions and are adjusted for inflation. The figures for younger cohorts are projections, and the decline levels off at those born around 1975.'
+    - q: 'How does the life expectancy coefficient shift the burden to younger people?'
+      a: "The life expectancy coefficient cuts a new monthly pension more the longer the cohort is expected to live. According to ETK's calculation, the cut is 5.5 per cent for those born in 1965 and 12.4 per cent for those born in 2010. The lowest old-age pension age is 65 and 69 years respectively. A longer career offsets much of the cut when people keep working to a higher retirement age."
+    - q: 'Why would freezing the earnings-related pension index be fair?'
+      a: 'Freezing the earnings-related pension index would be fair because it would spread the collective effort on public finances across all generations. The pension contribution is already about a quarter of total payroll, and younger cohorts work longer careers for a smaller return. If pensions already being paid also took part, the burden would be shared according to ability to pay, and the working-age population would not carry it alone.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+import ColumnChart from '../../../components/charts/ColumnChart.astro'
+import LineChart from '../../../components/charts/LineChart.astro'
+import {
+    lifeExpectancyCut,
+    pensionContribution,
+    pensionersPerEmployed,
+    pensionReturnByCohort,
+} from '../../pensionFunding'
+
+Did you know that each year's pensions are paid mainly from the contributions of people in work that same year, and only partly from previously accumulated funds? The funding of earnings-related pensions (_työeläke_) therefore rests on those in work. The pension contribution is one of the largest deductions an employee pays, so it is natural to ask what you get in return.
+
+The figures are public, but few have seen them side by side. I put together four charts from data of the Finnish Centre for Pensions (ETK). They show how the contribution burden and the return are distributed by birth year. This should also make clear why it is fair for today's pensioners to take part in adjusting public finances.
+
+## How does the funding of earnings-related pensions work?
+
+Earnings-related pensions are funded so that each year's pensions are paid mainly from the contributions of that same year's employed people. In 2024, about EUR 28 billion in earnings-related pension contributions was collected, and most of it went to paying current pensions. Pensions paid out came to EUR 36 billion, and EUR 7 billion of that was drawn from previously accumulated funds.
+
+<LineChart
+    caption="The contribution grew more than fivefold. Earnings-related pension contribution, % of payroll, 1963–2025. Source: ETK statistical database, derived, private sector."
+    data={pensionContribution}
+    lang="en"
+/>
+
+The 2024 figures come from the ETK report [Työeläkkeiden kustannustenjako](https://www.julkari.fi/server/api/core/bitstreams/2dd814e5-4e2c-41bc-9bbe-2e5d4a487729/content) (cost sharing of earnings-related pensions). The model is called a partially funded pay-as-you-go system, because most of each year's pensions are paid from that same year's contributions.
+
+That is why the level of the contribution tells us how much is needed from those in work. Derived from ETK [statistics](https://tilastot.etk.fi/), the private-sector earnings-related pension contribution was about 4 per cent of total payroll in 1963 and about 25 per cent in 2025. The figure includes employer and employee contributions and is not the official contribution rate. The 2025 figure is preliminary, and the dip in 2020 was due to a temporary pandemic-era cut.
+
+Entrepreneurs pay their own YEL contribution (the pension insurance of the self-employed). In the [Entrepreneurs' Day opening](/en/blog/74/three-ways-to-make-entrepreneurship-easier/) of the Market Greens (_Markkinavihreät_), the pro-market network within the Finnish Greens, we wrote about why YEL must not raise the threshold to entrepreneurship.
+
+## Why do fewer and fewer people pay for more and more pensions?
+
+Fewer and fewer employed people pay for more and more pensions, because there are clearly more pension recipients relative to the employed than before. In 1962 there were about 23 national pension (_kansaneläke_) recipients for every hundred employed people. In 1981 there were about 42 pension recipients per hundred employed, and in 2025 about 60. The definitions of the series differ, so they have not been combined.
+
+<LineChart
+    caption="Fewer and fewer pay for more and more. Pension recipients per 100 employed, 1962–2100. Source: Statistical Yearbook, ETK, Statistics Finland and ETK projection PAL 2026."
+    data={pensionersPerEmployed}
+    lang="en"
+/>
+
+This ratio determines how much each employed person's contribution has to carry. In ETK's [long-term projection](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e) there are 63.2 pension recipients per hundred employed in 2025, and the ratio improves to 58.7 by 2040. In 2100 the projected figure is 81.8. The projection defines the ratio differently from the statistics, which is why its 2025 figure is slightly higher.
+
+## How much do you get back for your pension contributions, by birth year?
+
+According to a calculation by the Finnish Centre for Pensions, private-sector employees born in 1940–1960 get their earnings-related pension contributions back as pensions at 2.0 to 4.7 times their value. Those born in 1970–2010 get them back at about 1.7 to 1.8 times. The figures include employer and employee contributions and are adjusted for inflation. The figures for younger cohorts are projections, and the decline levels off at those born around 1975.
+
+<ColumnChart
+    caption="What return do pension contributions give? Lifetime earnings-related pensions relative to contributions, by birth year. Source: ETK, PAL 2026, figure 5.17."
+    data={pensionReturnByCohort}
+    lang="en"
+/>
+
+When we compare only how much money has been paid into the system and how much comes back out, those born in 1960 or earlier therefore get clearly more than the younger generations.
+
+Those born in 1940–1960 are now of retirement age, meaning that their lowest old-age pension age has been reached by 2026. Some of them are still working. When the oldest of them began their careers in the 1960s, the earnings-related pension contribution was about 4–5 per cent of total payroll.
+
+In ETK's calculation the average earnings-related pension also grows in real terms for the younger cohorts. For every euro paid in, however, the return is clearly smaller. For those born after 1960 the ratio settles at 1.7–1.8, so the gap between those now of retirement age and everyone born after them is clear.
+
+## How does the life expectancy coefficient shift the burden to younger people?
+
+The life expectancy coefficient cuts a new monthly pension more the longer the cohort is expected to live. According to the Finnish Centre for Pensions' calculation, the cut is 5.5 per cent for those born in 1965 and 12.4 per cent for those born in 2010. The lowest old-age pension age is 65 and 69 years respectively. A longer career offsets much of the cut when people keep working to a higher retirement age.
+
+<ColumnChart
+    caption="A later retirement age, a bigger cut. The life expectancy coefficient's cut to the monthly pension and the lowest old-age pension age, by birth year. Source: ETK, PAL 2026, tables 4.2, 6.1 and 7.2."
+    data={lifeExpectancyCut}
+    lang="en"
+/>
+
+Rising life expectancy is a good thing, and it is natural that it also shows in working careers. [According to ETK](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e), the ratio of pension to pay holds or even improves when a career continues to a higher retirement age. Younger cohorts already secure the system's sustainability in two ways, through a higher contribution and through a longer career.
+
+## Why would freezing the earnings-related pension index be fair?
+
+Freezing the earnings-related pension index would be fair because it would spread the collective effort on public finances across all generations. The pension contribution is already about a quarter of total payroll, and younger cohorts work longer careers for a smaller return. If pensions already being paid also took part, the burden would be shared according to ability to pay, and the working-age population would not carry it alone.
+
+The gap between cohorts in the return and the present contribution of about 25 per cent have already happened. A freeze would spread the burden also to those who no longer pay pension contributions.
+
+That is why the index increases to earnings-related pensions should be frozen for the years 2028–2031. According to the [Finnish Centre for Pensions' calculation](https://www.etk.fi/suomen-elakejarjestelma/elaketurva/elaketurva-kokonaisuutena/tyoelake-ja-eduskuntavaalit-2027/), a freeze would reduce pension expenditure by EUR 1.6 billion in 2029 and, at 2025 prices, by EUR 3.0 billion a year by 2031. Lower pension expenditure would make room to lower the earnings-related pension contribution. Those in work would then keep more of their pay. We wrote about how employees can build wealth in the Market Greens opening [your paycheck should build wealth](/en/blog/86/your-paycheck-should-build-wealth/). Alternatively, the same room could be taken as income tax and used for the health and social services that an ageing population needs. In neither case would the total burden on work grow. The euro amount of a pension would stay the same, but its purchasing power would weaken by the rate of inflation.
+
+The smallest pensions would be partly protected: the national pension and the guarantee pension (_takuueläke_, the minimum pension top-up) are currently indexed to the national pension index, and because they shrink as the earnings-related pension grows, they would make up part of the loss. For those on the guarantee pension the compensation would be full.
+
+As I have written, [green economic policy cannot be made outside the debt brake](/en/blog/61/green-economic-policy-requires-a-seat-at-the-table/). The lasting choices in public finances must be made now, not left to the next generations. If I make it to parliament, I will push the freeze forward so that younger generations too can grow up and live in a welfare state.

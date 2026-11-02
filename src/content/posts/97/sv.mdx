@@ -1,0 +1,109 @@
+---
+lang: 'sv'
+slug: 'finansiering-av-arbetspensioner-indexfrysning'
+pageTitle: 'Arbetspensioner: finansiering och frysning'
+title: 'Arbets­pensionernas finansiering: en frysning skulle fördela bördan mellan generationerna'
+description: 'Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.'
+alt: 'Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas.'
+faq:
+    - q: 'Hur fungerar arbetspensionernas finansiering?'
+      a: 'Arbetspensionerna finansieras så att varje års pensioner till största delen betalas med samma års avgifter från de sysselsatta. År 2024 inbetalades cirka 28 miljarder euro i arbetspensionsavgifter, och största delen användes för att betala ut de nuvarande pensionerna. Pensioner betalades ut för 36 miljarder euro, och 7 miljarder euro av dem betalades med tidigare fonderade medel.'
+    - q: 'Varför betalar allt färre allt fler pensioner?'
+      a: 'Allt färre sysselsatta betalar allt fler pensioner eftersom det finns klart fler pensionstagare per sysselsatt än förr. År 1962 fanns det cirka 23 folkpensionstagare per hundra sysselsatta. År 1981 fanns det cirka 42 pensionstagare per hundra sysselsatta och år 2025 cirka 60. Serierna definieras olika, så de har inte slagits ihop.'
+    - q: 'Hur mycket får man tillbaka för pensionsavgifterna beroende på födelseår?'
+      a: 'Enligt Pensionsskyddscentralens beräkning får löntagare inom den privata sektorn som är födda 1940–1960 tillbaka sina arbetspensionsavgifter som pension till 2,0–4,7 gånger beloppet. De som är födda 1970–2010 får tillbaka cirka 1,7–1,8 gånger beloppet. Arbetsgivarens och arbetstagarens avgifter ingår, och inflationen är beaktad. Siffrorna för de yngre åldersklasserna är beräkningar, och nedgången avstannar vid de födda omkring 1975.'
+    - q: 'Hur fördelar livslängdskoefficienten bördan på de yngre?'
+      a: 'Livslängdskoefficienten sänker den nya månadspensionen desto mer, ju längre en åldersklass väntas leva. Enligt Pensionsskyddscentralens beräkning är nedskärningen 5,5 procent för dem som är födda 1965 och 12,4 procent för dem som är födda 2010. Den lägsta ålderspensionsåldern är 65 respektive 69 år. En längre arbetskarriär kompenserar nedskärningen till stor del, när man arbetar till en högre pensionsålder.'
+    - q: 'Varför skulle en frysning av arbetspensionsindexet vara rättvis?'
+      a: 'En frysning av arbetspensionsindexet vore rättvis eftersom den skulle fördela den offentliga ekonomins talko på alla generationer. Arbetspensionsavgiften är redan cirka en fjärdedel av lönesumman, och de yngre åldersklasserna har en längre arbetskarriär men får mindre tillbaka. Om också de arbetspensioner som redan betalas ut deltog skulle bördan fördelas enligt bärkraft, och den skulle inte bäras av den arbetsföra befolkningen ensam.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+import ColumnChart from '../../../components/charts/ColumnChart.astro'
+import LineChart from '../../../components/charts/LineChart.astro'
+import {
+    lifeExpectancyCut,
+    pensionContribution,
+    pensionersPerEmployed,
+    pensionReturnByCohort,
+} from '../../pensionFunding'
+
+Visste du att varje års pensioner till största delen betalas med samma års avgifter från dem som arbetar, och bara delvis med tidigare fonderade medel? Arbetspensionernas finansiering vilar alltså på dem som arbetar. Arbetspensionsavgiften är en av löntagarens största avgifter, så det är naturligt att fråga vad man får tillbaka för den.
+
+Siffrorna är offentliga, men få har sett dem sida vid sida. Jag sammanställde fyra diagram utifrån uppgifter från Pensionsskyddscentralen (PSC). De visar hur avgiftsbördan och det man får tillbaka fördelar sig enligt födelseår. Det här borde också göra det tydligt varför det är rättvist att de nuvarande pensionstagarna deltar i anpassningen av den offentliga ekonomin.
+
+## Hur fungerar arbetspensionernas finansiering?
+
+Arbetspensionerna finansieras så att varje års pensioner till största delen betalas med samma års avgifter från de sysselsatta. År 2024 inbetalades cirka 28 miljarder euro i arbetspensionsavgifter, och största delen användes för att betala ut de nuvarande pensionerna. Pensioner betalades ut för 36 miljarder euro, och 7 miljarder euro av dem betalades med tidigare fonderade medel.
+
+<LineChart
+    caption="Avgiften mer än femdubblades. Arbetspensionsavgiften, % av lönesumman, 1963–2025. Källa: PSC:s statistikdatabas, härledd, privata sektorn."
+    data={pensionContribution}
+    lang="sv"
+/>
+
+Uppgifterna för 2024 kommer från PSC:s rapport [Työeläkkeiden kustannustenjako](https://www.julkari.fi/server/api/core/bitstreams/2dd814e5-4e2c-41bc-9bbe-2e5d4a487729/content). Modellen kallas ett delvis fonderande fördelningssystem, eftersom merparten av varje års pensioner betalas med samma års avgifter.
+
+Därför visar avgiftsnivån hur mycket som behövs från de sysselsatta. Härledd ur PSC:s [statistik](https://tilastot.etk.fi/) var arbetspensionsavgiften inom den privata sektorn cirka 4 procent av lönesumman år 1963 och cirka 25 procent år 2025. I siffran ingår både arbetsgivarens och arbetstagarens avgifter, och den är inte den officiella avgiftsprocenten. Siffran för 2025 är en förhandsuppgift, och svackan 2020 berodde på en tillfällig coronanedskärning.
+
+Företagarna betalar sina FöPL-avgifter själva, och i vår öppning från Markkinavihreät inför [Företagardagen](/sv/blog/74/tre-satt-att-underlatta-foretagande/) skrev vi om varför FöPL inte får höja tröskeln för att bli företagare.
+
+## Varför betalar allt färre allt fler pensioner?
+
+Allt färre sysselsatta betalar allt fler pensioner, eftersom det finns klart fler pensionstagare per sysselsatt än förr. År 1962 fanns det cirka 23 folkpensionstagare per hundra sysselsatta. År 1981 fanns det cirka 42 pensionstagare per hundra sysselsatta och år 2025 cirka 60. Serierna definieras olika, så de har inte slagits ihop.
+
+<LineChart
+    caption="Allt färre betalar allt fler. Pensionstagare per 100 sysselsatta 1962–2100. Källa: Tilastollinen vuosikirja, PSC, Statistikcentralen och PSC:s beräkning PAL 2026."
+    data={pensionersPerEmployed}
+    lang="sv"
+/>
+
+Förhållandet avgör hur mycket varje sysselsatts avgift har att bära. I PSC:s [långsiktiga beräkning](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e) är antalet pensionstagare 63,2 per hundra sysselsatta år 2025, och förhållandet förbättras till 58,7 fram till 2040. År 2100 är beräkningens siffra 81,8. Beräkningens definition avviker från statistikens, och därför är dess siffra för 2025 något större.
+
+## Hur mycket får man tillbaka för pensionsavgifterna beroende på födelseår?
+
+Enligt Pensionsskyddscentralens beräkning får löntagare inom den privata sektorn som är födda 1940–1960 tillbaka sina arbetspensionsavgifter som pension till 2,0–4,7 gånger beloppet. De som är födda 1970–2010 får tillbaka cirka 1,7–1,8 gånger beloppet. Arbetsgivarens och arbetstagarens avgifter ingår, och inflationen är beaktad. Siffrorna för de yngre åldersklasserna är beräkningar, och nedgången avstannar vid de födda omkring 1975.
+
+<ColumnChart
+    caption="Vilken avkastning får man på pensionsavgifterna? Arbetspensioner under hela livscykeln i förhållande till avgifterna, enligt födelseår. Källa: PSC, PAL 2026, figur 5.17."
+    data={pensionReturnByCohort}
+    lang="sv"
+/>
+
+När man bara jämför hur mycket pengar som har betalats in i systemet och hur mycket som fås tillbaka, får de som är födda 1960 eller tidigare alltså klart mer än de yngre generationerna.
+
+De som är födda 1940–1960 är nu i pensionsåldern, det vill säga deras lägsta ålderspensionsålder har uppnåtts före 2026. En del av dem arbetar fortfarande. När de äldsta av dem började sin karriär på 1960-talet var arbetspensionsavgiften cirka 4–5 procent av lönesumman.
+
+Den genomsnittliga arbetspensionen växer i PSC:s beräkning reellt också för de yngre åldersklasserna. För varje inbetald euro får de ändå klart mindre tillbaka. För dem som är födda efter 1960 stannar koefficienten på 1,7–1,8, så skillnaden mellan dem som nu är i pensionsåldern och alla som är födda efter dem är tydlig.
+
+## Hur fördelar livslängdskoefficienten bördan på de yngre?
+
+Livslängdskoefficienten sänker den nya månadspensionen desto mer, ju längre en åldersklass väntas leva. Enligt Pensionsskyddscentralens beräkning är nedskärningen 5,5 procent för dem som är födda 1965 och 12,4 procent för dem som är födda 2010. Den lägsta ålderspensionsåldern är 65 respektive 69 år. En längre arbetskarriär kompenserar nedskärningen till stor del, när man arbetar till en högre pensionsålder.
+
+<ColumnChart
+    caption="Högre pensionsålder, större nedskärning. Livslängdskoefficientens nedskärning av månadspensionen och lägsta ålderspensionsålder enligt födelseår. Källa: PSC, PAL 2026, tabellerna 4.2, 6.1 och 7.2."
+    data={lifeExpectancyCut}
+    lang="sv"
+/>
+
+Att den förväntade livslängden ökar är bra, och det är naturligt att det syns också i arbetskarriärerna. [Enligt PSC](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e) bibehålls eller till och med förbättras pensionens förhållande till lönen när karriären fortsätter till en högre pensionsålder. De yngre åldersklasserna tryggar redan på två sätt systemets hållbarhet, både med en högre avgift och med en längre arbetskarriär.
+
+## Varför skulle en frysning av arbetspensionsindexet vara rättvis?
+
+En frysning av arbetspensionsindexet vore rättvis eftersom den skulle fördela den offentliga ekonomins talko på alla generationer. Arbetspensionsavgiften är redan cirka en fjärdedel av lönesumman, och de yngre åldersklasserna har en längre arbetskarriär men får mindre tillbaka. Om också de arbetspensioner som redan betalas ut deltog skulle bördan fördelas enligt bärkraft, och den skulle inte bäras av den arbetsföra befolkningen ensam.
+
+Skillnaden mellan åldersklasserna i vad de får tillbaka och den nuvarande avgiften på cirka 25 procent har redan blivit verklighet. En frysning skulle fördela bördan också på dem som inte längre betalar arbetspensionsavgifter.
+
+Därför bör indexhöjningarna av arbetspensionerna frysas för åren 2028–2031. Enligt [Pensionsskyddscentralens beräkning](https://www.etk.fi/suomen-elakejarjestelma/elaketurva/elaketurva-kokonaisuutena/tyoelake-ja-eduskuntavaalit-2027/) skulle en frysning minska pensionsutgifterna med 1,6 miljarder euro år 2029 och, i 2025 års priser, med 3,0 miljarder euro på årsnivå 2031. Lägre pensionsutgifter skulle ge utrymme att sänka arbetspensionsavgiften. Då skulle de betalare som arbetar få behålla mer av sin lön. Om löntagarens möjlighet att bli förmögen skrev vi i en öppning från Markkinavihreät, [Med lön ska man kunna bli förmögen](/sv/blog/86/med-lon-ska-man-kunna-bli-formogen/). Å andra sidan kunde samma utrymme tas ut som inkomstskatt och användas för de social- och hälsovårdstjänster som en åldrande befolkning behöver. Arbetets totala belastning skulle inte växa i något av fallen. Pensionens eurobelopp skulle förbli oförändrat, men dess köpkraft skulle försvagas med inflationen.
+
+De minsta arbetspensionerna skulle delvis skyddas: folkpensionen och garantipensionen stiger i dag enligt folkpensionsindexet, och eftersom de minskar när arbetspensionen växer, skulle de ersätta en del av förlusten. För dem som omfattas av garantipensionen skulle ersättningen vara full.
+
+Som jag har skrivit [görs ingen grön ekonomisk politik utanför skuldbromsen](/sv/blog/61/gron-ekonomisk-politik-kraver-en-plats-vid-bordet/). De bestående valen i den offentliga ekonomin måste göras nu och inte lämnas åt kommande generationer. Om jag kommer in i riksdagen driver jag frysningen vidare, så att också de yngre generationerna får växa upp och leva i en välfärdsstat.
