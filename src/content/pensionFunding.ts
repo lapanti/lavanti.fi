@@ -25,7 +25,7 @@ import type { Lang } from './nav'
 
 type Localised = Record<Lang, string>
 
-export interface LineSeries {
+interface LineSeries {
     /** Dashed for a projection. */
     dashed?: boolean
     key: string
@@ -48,7 +48,7 @@ export interface LineChartData {
     yTicks: number[]
 }
 
-export interface CohortBar {
+interface CohortBar {
     /** Lowest old-age retirement age in decimal years (65.58 = 65 years 7 months). */
     age?: number
     /** Drawn in the strong colour; the rest are muted. */
