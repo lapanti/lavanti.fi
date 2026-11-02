@@ -7,31 +7,50 @@ import { colors, typographics } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 import PlateHeading from '../PlateHeading.astro'
 
-interface VocabLink {
+interface Read {
     href: string
     label: string
 }
 
-interface Props {
+interface BaseProps {
     eyebrow: string
     heading: string
     id?: string
-    lang: Lang
-    /** The pillar's tag; its first PILLAR_READS `featured` posts are the reads. */
-    tag: string
     tone: 'aqua' | 'oat' | 'peach'
-    vocab: VocabLink[]
+    vocab: Read[]
 }
 
-const { eyebrow, heading, id, lang, tag, tone, vocab } = Astro.props
+/** A topic pillar: the reads are the first PILLAR_READS `featured` posts of its tag. */
+interface TagProps extends BaseProps {
+    lang: Lang
+    reads?: never
+    tag: string
+}
+
+/** A pillar with hand-picked reads (the about page's biography sections). */
+interface ReadsProps extends BaseProps {
+    lang?: never
+    reads: Read[]
+    tag?: never
+}
+
+type Props = ReadsProps | TagProps
+
+const { eyebrow, heading, id, tone, vocab } = Astro.props
 
 const PILLAR_READS = 2
 
-const featured = (tags.find((t) => t.id === tag)?.featured ?? []).slice(0, PILLAR_READS)
-const reads = await getExcerptPosts({ lang, onlyIds: featured, rankedIds: featured })
-if (reads.length < PILLAR_READS) {
-    throw new Error(`Pillar ${tag}: needs ${PILLAR_READS} published featured posts in ${lang}, got ${reads.length}`)
+const featuredReads = async (tag: string, lang: Lang): Promise<Read[]> => {
+    const featured = (tags.find((t) => t.id === tag)?.featured ?? []).slice(0, PILLAR_READS)
+    const posts = await getExcerptPosts({ lang, onlyIds: featured, rankedIds: featured })
+    if (posts.length < PILLAR_READS) {
+        throw new Error(`Pillar ${tag}: needs ${PILLAR_READS} published featured posts in ${lang}, got ${posts.length}`)
+    }
+
+    return posts.map((p) => ({ href: p.url, label: p.title }))
 }
+
+const reads = Astro.props.tag ? await featuredReads(Astro.props.tag, Astro.props.lang) : Astro.props.reads
 
 const toneColors = {
     aqua: { ground: colors.aquaBlue, ink: colors.aquaInk, inkSoft: colors.aquaInkSoft },
@@ -182,7 +201,7 @@ const toneColors = {
                         {
                             reads.map((read) => (
                                 <li>
-                                    <a href={read.url}>{read.title}</a>
+                                    <a href={read.href}>{read.label}</a>
                                 </li>
                             ))
                         }
