@@ -115,21 +115,29 @@ describe('tags data', () => {
         }
     )
 
-    // Front-page pillars render the first PILLAR_READS ids of their tag's featured list
+    // Topic pillars render the first PILLAR_READS ids of their tag's featured list
     const PILLAR_READS = 2
-    const pillarTags = LOCALES.flatMap((locale) =>
+    const PILLAR_PAGES = [
+        'fi/index.mdx',
+        'sv/index.mdx',
+        'en/index.mdx',
+        'fi/eduskuntavaalit/index.mdx',
+        'sv/riksdagsvalet/index.mdx',
+        'en/elections/index.mdx',
+    ]
+    const pillarTags = PILLAR_PAGES.flatMap((page) =>
         [
-            ...readFileSync(join(import.meta.dirname, '..', 'pages', locale, 'index.mdx'), 'utf8').matchAll(
+            ...readFileSync(join(import.meta.dirname, '..', 'pages', page), 'utf8').matchAll(
                 /<Pillar\b[^>]*?\btag="([^"]+)"/g
             ),
-        ].map((m) => ({ locale, tag: m[1] }))
+        ].map((m) => ({ page, tag: m[1] }))
     )
 
-    it('front pages name a tag on every pillar', () => {
-        expect(pillarTags.length).toBe(LOCALES.length * 3)
+    it('front and elections pages name a tag on every pillar', () => {
+        expect(pillarTags.length).toBe(PILLAR_PAGES.length * 3)
     })
 
-    it.each(pillarTags)('$locale pillar $tag — tag has enough featured posts', ({ tag }) => {
+    it.each(pillarTags)('$page pillar $tag — tag has enough featured posts', ({ tag }) => {
         const featured = tags.find((t) => t.id === tag)?.featured ?? []
         expect(featured.length, `${tag} featured`).toBeGreaterThanOrEqual(PILLAR_READS)
     })
