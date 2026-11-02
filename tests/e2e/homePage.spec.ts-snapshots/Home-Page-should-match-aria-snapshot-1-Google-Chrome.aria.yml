@@ -128,6 +128,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "A pension index freeze would share the burden fairly":
+          - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
+            - /url: /en/blog/97/pension-funding-and-the-index-freeze/
+            - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
+            - heading "A pension index freeze would share the burden fairly" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
+        - list:
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "National politics":
+              - /url: /en/category/national-politics/
+          - listitem:
+            - link /Parliamentary elections \d+/:
+              - /url: /en/category/parliamentary-elections-2027/
+      - listitem:
         - article "Where does the public sector's money come from and where does it go?":
           - link "The columned facade of Parliament House in Helsinki, where the public sector budget is decided Where does the public sector's money come from and where does it go?":
             - /url: /en/blog/96/public-sector-where-the-money-comes-from-and-where-it-goes/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Education":
               - /url: /en/category/education/
-      - listitem:
-        - article "Why Does Finland Need a Digital Ministry?":
-          - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Why Does Finland Need a Digital Ministry?"':
-            - /url: /en/blog/81/why-finland-needs-a-digital-ministry/
-            - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
-            - heading "Why Does Finland Need a Digital Ministry?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Fragmented AI policy is a regulatory risk for business. A digital ministry and a threshold set by Parliament would bring predictability and protect small firms.
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Digitalisation":
-              - /url: /en/category/digitalisation/
-          - listitem:
-            - link "Entrepreneurship":
-              - /url: /en/category/entrepreneurship/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
