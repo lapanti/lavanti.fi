@@ -18,6 +18,7 @@ export const enlightenmentTag: LocalTag = {
             'Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.',
         ],
     },
+    featured: [37, 60],
     id: 'enlightenment',
     metaDescription: {
         en: 'In the AI era enlightenment must stay seamless from early childhood to working life — so no one gets left behind.',
@@ -31,5 +32,5 @@ export const enlightenmentTag: LocalTag = {
         sv: 'Sömlös bildning i AI-erans Finland',
     },
     slugs: { en: 'enlightenment', fi: 'sivistys', sv: 'bildning' },
-    updatedDate: '2026-05-15',
+    updatedDate: '2026-11-02',
 }
