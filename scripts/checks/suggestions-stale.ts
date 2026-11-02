@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url'
 import { buildCorpus, type Document } from '../jev/corpus.ts'
 import { docsFromPaths } from '../jev/links.ts'
 import { type ChangedTag, findUnchecked, readReceipts, RECEIPTS_PATH } from '../jev/suggestions.ts'
-import { featuredTagIds, hashIntroSet, hashTagFile, tagIdsFromPaths } from '../jev/tags.ts'
+import { hashIntroSet, hashTagFile, loadLocalTag, tagIdsFromPaths } from '../jev/tags.ts'
 /* eslint-enable import-x/extensions */
 
 interface CheckDeps {
@@ -74,13 +74,14 @@ export async function changedFeaturedTags(paths: string[], corpus: Document[], t
             .filter((t) => t.kind === 'post')
             .flatMap((t) => byId.get(t.id)?.tags ?? [])
     )
-    if (carried.size === 0) return []
-    const featured = await featuredTagIds(tagsDir)
+    const featured: string[] = []
+    for (const id of [...carried].toSorted()) {
+        if (!existsSync(join(tagsDir, `${id}.ts`))) continue
+        const tag = await loadLocalTag(tagsDir, `${id}.ts`)
+        if ((tag.featured?.length ?? 0) > 0) featured.push(id)
+    }
 
-    return [...carried]
-        .filter((id) => featured.has(id))
-        .toSorted()
-        .map((id) => ({ hash: hashIntroSet(id, posts), id }))
+    return featured.map((id) => ({ hash: hashIntroSet(id, posts), id }))
 }
 
 /** Returns the process exit code: 0 everything changed was checked, 1 otherwise, 2 bad arguments. */

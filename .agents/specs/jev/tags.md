@@ -218,7 +218,7 @@ export function runCheck(argv: string[], deps?): Promise<number>
 //   suggest:tags -- --tag <id> [--lang] [--consider] [--concurrency] [--out]
 //   suggest:tags -- --intro <id> [--lang] [--concurrency] [--out]
 // scripts/jev/tags.ts: FEATURED_MAX = 3; introQuestion(label): QuestionSpec (score '1'–'5'); loadLocalTag(dir, file): Promise<LocalTag>
-//   hashIntroSet(id, posts): string; featuredTagIds(dir): Promise<Set<string>>
+//   hashIntroSet(id, posts): string
 //   suggest:tags -- --changed-since <ref> [same flags]
 export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; git?; log?; receipts?; root?; tagsDir?; today? }): Promise<number>
 ```

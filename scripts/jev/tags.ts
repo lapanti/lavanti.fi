@@ -210,11 +210,3 @@ export const hashIntroSet = (id: string, posts: Array<{ id: number; tags: string
                 .join(',')
         )
         .digest('hex')
-
-/** Ids of the tag files that set `featured`, from the tag files themselves. */
-export async function featuredTagIds(dir = TAGS_DIR): Promise<Set<string>> {
-    const files = readdirSync(dir).filter((name) => name.endsWith('.ts') && name !== 'types.ts')
-    const tags = await Promise.all(files.map((file) => loadLocalTag(dir, file)))
-
-    return new Set(tags.filter((t) => (t.featured?.length ?? 0) > 0).map((t) => t.id))
-}
