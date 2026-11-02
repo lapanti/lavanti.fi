@@ -1,0 +1,476 @@
+---
+/**
+ * One value per birth cohort as a column chart, with the same readout and slider as
+ * InterestChart: the readout row follows the pointer, a tap or the arrow keys, and the
+ * figures are in a table under the chart for screen readers and anyone who wants them.
+ *
+ * Only the bars marked `tag` carry a value over them: at phone width fifteen columns are
+ * about twenty pixels wide each, too narrow for "1,8×" over every one.
+ */
+import type { Lang } from '../../content/nav'
+import type { CohortChartData } from '../../content/pensionFunding'
+
+import { formatAge, formatCohortValue } from '../../lib/pensionCharts'
+import { fontWeights, typographics } from '../../lib/styles'
+
+interface Props {
+    caption: string
+    data: CohortChartData
+    lang: Lang
+}
+
+const { caption, data, lang } = Astro.props
+
+const copy = {
+    en: {
+        age: 'retirement age',
+        ageHeader: 'Lowest retirement age',
+        born: 'Born',
+        slider: 'select a birth year',
+        table: 'Figures as a table',
+        year: 'Birth year',
+    },
+    fi: {
+        age: 'eläkeikä',
+        ageHeader: 'Alin vanhuuseläkeikä',
+        born: 'Syntynyt',
+        slider: 'valitse syntymävuosi',
+        table: 'Luvut taulukkona',
+        year: 'Syntymävuosi',
+    },
+    sv: {
+        age: 'pensionsålder',
+        ageHeader: 'Lägsta pensionsålder',
+        born: 'Födda',
+        slider: 'välj födelseår',
+        table: 'Siffrorna i tabellform',
+        year: 'Födelseår',
+    },
+}[lang]
+
+const top = data.yMax
+const step = data.bars.length > 10 ? 2 : 1
+const points = data.bars.map((bar, index) => ({
+    ...bar,
+    age: bar.age === undefined ? undefined : formatAge(bar.age, lang),
+    axis: index % step === 0 || index === data.bars.length - 1,
+    height: (100 * bar.value) / top,
+    label: `${copy.born} ${bar.year}`,
+    value: formatCohortValue(bar.value, data.suffix, lang),
+}))
+const detail = (point: (typeof points)[number]) =>
+    point.age ? `${data.measure[lang]}, ${copy.age} ${point.age}` : data.measure[lang]
+const initial = points[0]
+const hasAge = points.some((point) => point.age)
+
+/* Same progressive enhancement as InterestChart: inert markup until this runs. */
+const script = `(function(){
+var charts = document.querySelectorAll('[data-cohort]:not([data-ready])');
+Array.prototype.forEach.call(charts, function(chart){
+    chart.setAttribute('data-ready', '');
+    var plot = chart.querySelector('.plot');
+    plot.setAttribute('role', 'slider');
+    plot.setAttribute('tabindex', '0');
+    plot.setAttribute('aria-label', plot.getAttribute('data-slider-label'));
+    plot.setAttribute('aria-orientation', 'horizontal');
+    var columns = chart.querySelector('.columns');
+    var slots = chart.querySelectorAll('.slot');
+    var year = chart.querySelector('.readout-year');
+    var value = chart.querySelector('.readout-value');
+    var detail = chart.querySelector('.readout-detail');
+    var pinned = 0;
+    function show(index){
+        var slot = slots[index];
+        Array.prototype.forEach.call(slots, function(other){ other.classList.toggle('is-on', other === slot); });
+        year.textContent = slot.getAttribute('data-label');
+        value.textContent = slot.getAttribute('data-value');
+        detail.textContent = slot.getAttribute('data-detail');
+        plot.setAttribute('aria-valuemin', slots[0].getAttribute('data-year'));
+        plot.setAttribute('aria-valuemax', slots[slots.length - 1].getAttribute('data-year'));
+        plot.setAttribute('aria-valuenow', slot.getAttribute('data-year'));
+        plot.setAttribute('aria-valuetext', slot.getAttribute('data-label') + ': ' + slot.getAttribute('data-value') + ', ' + slot.getAttribute('data-detail'));
+    }
+    function nearest(event){
+        var box = columns.getBoundingClientRect();
+        return Math.min(slots.length - 1, Math.max(0, Math.floor((event.clientX - box.left) / box.width * slots.length)));
+    }
+    plot.addEventListener('pointermove', function(event){ show(nearest(event)); });
+    plot.addEventListener('pointerleave', function(){ show(pinned); });
+    plot.addEventListener('click', function(event){ pinned = nearest(event); show(pinned); });
+    plot.addEventListener('keydown', function(event){
+        var next = {
+            ArrowLeft: pinned - 1, ArrowDown: pinned - 1, ArrowRight: pinned + 1, ArrowUp: pinned + 1,
+            Home: 0, End: slots.length - 1
+        }[event.key];
+        if (next === undefined) return;
+        event.preventDefault();
+        pinned = Math.min(slots.length - 1, Math.max(0, next));
+        show(pinned);
+    });
+    show(pinned);
+});
+})();`
+
+/* On the figure by hand, not `define:vars`, which Astro would copy onto every column; see WaffleChart. */
+const vars = Object.entries({
+    axisFontFamily: typographics.caption.fontFamily,
+    axisFontSize: typographics.caption.fontSize,
+    captionFontFamily: typographics.caption.fontFamily,
+    captionFontSize: typographics.caption.fontSize,
+    captionLineHeight: typographics.caption.lineHeight,
+    count: points.length,
+    readoutFontFamily: typographics.textSmall.fontFamily,
+    readoutFontSize: typographics.textSmall.fontSize,
+    tableFontFamily: typographics.textSmall.fontFamily,
+    tableFontSize: typographics.textSmall.fontSize,
+    valueFontFamily: typographics.nav.fontFamily,
+    valueFontSize: typographics.nav.fontSize,
+    valueFontWeight: typographics.nav.fontWeight,
+    valueLetterSpacing: typographics.nav.letterSpacing,
+    yearFontWeight: fontWeights.semibold,
+})
+    .map(([name, value]) => `--${name}: ${value}`)
+    .join('; ')
+---
+
+<style>
+    .cohort {
+        grid-column-start: 3;
+        margin: var(--sizes1) 0;
+    }
+
+    .readout {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: var(--readoutFontFamily);
+        font-size: var(--readoutFontSize);
+        gap: 0 0.75rem;
+        min-height: 2rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .readout-year {
+        color: var(--colorsTextPrimary);
+        font-weight: var(--yearFontWeight);
+    }
+
+    .readout-value {
+        color: var(--colorsForestGreen);
+        font-family: var(--valueFontFamily);
+        font-size: var(--valueFontSize);
+        font-weight: var(--valueFontWeight);
+        letter-spacing: var(--valueLetterSpacing);
+    }
+
+    .readout-detail {
+        color: var(--colorsTextSecondary);
+    }
+
+    .plot {
+        display: grid;
+        gap: 0 0.5rem;
+        grid-template-columns: auto minmax(0, 1fr);
+        touch-action: pan-y;
+    }
+
+    .cohort:global([data-ready]) .plot {
+        cursor: crosshair;
+    }
+
+    .plot:focus-visible {
+        outline: 3px solid var(--colorsDarkGreen);
+        outline-offset: 4px;
+    }
+
+    .unit {
+        color: var(--colorsTextSecondary);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        grid-column: 1 / -1;
+        padding-bottom: 0.5rem;
+    }
+
+    .visually-hidden {
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .y-axis {
+        height: 16rem;
+        position: relative;
+        width: 1.25rem;
+    }
+
+    .y-axis span,
+    .x-axis span {
+        color: var(--colorsTextSecondary);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        line-height: 1;
+    }
+
+    .y-axis span {
+        bottom: var(--at);
+        position: absolute;
+        right: 0;
+        transform: translateY(50%);
+    }
+
+    .columns {
+        align-items: end;
+        border-bottom: 1px solid var(--colorsForestGreen);
+        display: grid;
+        gap: 4px;
+        grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+        height: 16rem;
+        position: relative;
+    }
+
+    .grid-line {
+        border-top: 1px solid var(--colorsForestGreen10);
+        bottom: var(--at);
+        left: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    .slot {
+        height: 100%;
+        position: relative;
+    }
+
+    .bar {
+        background: var(--colorsEyebrowNeutral);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: calc(100% - var(--h));
+        transition: background-color 100ms ease;
+    }
+
+    .slot--highlight .bar,
+    .swatch {
+        background: var(--colorsForestGreen);
+    }
+
+    .swatch.swatch--muted {
+        background: var(--colorsEyebrowNeutral);
+    }
+
+    /* The script sets .is-on; :global() because the markup never renders it. */
+    .slot:global(.is-on) .bar {
+        background: var(--colorsBrightGreen);
+    }
+
+    .tag {
+        background: var(--colorsWhite);
+        bottom: calc(var(--h) + 0.25rem);
+        color: var(--colorsForestGreen);
+        font-family: var(--axisFontFamily);
+        font-size: var(--axisFontSize);
+        font-weight: var(--yearFontWeight);
+        left: 50%;
+        line-height: 1;
+        padding: 1px 2px;
+        position: absolute;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        z-index: 1;
+    }
+
+    .x-axis {
+        display: grid;
+        gap: 4px;
+        grid-column: 2;
+        grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+        height: 1.5rem;
+    }
+
+    .x-axis span {
+        grid-row: 1;
+        justify-self: center;
+        padding-top: 0.375rem;
+    }
+
+    .key {
+        color: var(--colorsTextSecondary);
+        display: flex;
+        flex-wrap: wrap;
+        font-family: var(--readoutFontFamily);
+        font-size: var(--readoutFontSize);
+        gap: 0.25rem 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0.5rem 0 0;
+    }
+
+    .key li {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .swatch {
+        height: 0.875rem;
+        width: 0.875rem;
+    }
+
+    details {
+        font-family: var(--tableFontFamily);
+        font-size: var(--tableFontSize);
+        padding-top: 0.75rem;
+    }
+
+    summary {
+        color: var(--colorsDarkGreen);
+        cursor: pointer;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border-bottom: 1px solid var(--colorsForestGreen10);
+        padding: 0.25rem 0.5rem 0.25rem 0;
+        text-align: end;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: start;
+    }
+
+    figcaption {
+        color: var(--colorsTextSecondary);
+        font-family: var(--captionFontFamily);
+        font-size: var(--captionFontSize);
+        line-height: var(--captionLineHeight);
+        padding-top: 0.75rem;
+    }
+
+    @media (min-width: 769px) {
+        .y-axis,
+        .columns {
+            height: 20rem;
+        }
+
+        .y-axis {
+            width: 1.5rem;
+        }
+    }
+
+    /* Same scroll-tied reveal as InterestChart. */
+    @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+            .columns {
+                view-timeline: --cohort-columns block;
+            }
+
+            .bar {
+                animation: rise linear both;
+                animation-range: entry 10% cover 40%;
+                transform-origin: bottom center;
+            }
+
+            /* Kept apart: the minifier would fold it into the shorthand, which cannot carry a timeline. */
+            .slot .bar {
+                animation-timeline: --cohort-columns;
+            }
+        }
+    }
+
+    @keyframes rise {
+        from {
+            transform: scaleY(0);
+        }
+
+        to {
+            transform: scaleY(1);
+        }
+    }
+</style>
+
+<figure class="cohort" data-cohort style={vars}>
+    <p aria-hidden="true" class="readout">
+        <span class="readout-year">{initial.label}</span>
+        <span class="readout-value">{initial.value}</span>
+        <span class="readout-detail">{detail(initial)}</span>
+    </p>
+    <div class="plot" data-slider-label={`${data.unit[lang]}, ${copy.slider}`}>
+        <span aria-hidden="true" class="unit">{data.unit[lang]}</span>
+        <div aria-hidden="true" class="y-axis">
+            {data.yTicks.map((tick) => <span style={`--at: ${(100 * tick) / top}%`}>{tick}</span>)}
+        </div>
+        <div aria-hidden="true" class="columns">
+            {data.yTicks.slice(1).map((tick) => <span class="grid-line" style={`--at: ${(100 * tick) / top}%`} />)}
+            {
+                points.map((point) => (
+                    <span
+                        class:list={['slot', { 'slot--highlight': point.highlight }]}
+                        data-detail={detail(point)}
+                        data-label={point.label}
+                        data-value={point.value}
+                        data-year={point.year}
+                        style={`--h: ${point.height.toFixed(2)}%`}
+                    >
+                        <span class="bar" />
+                        {point.tag && <span class="tag">{point.value}</span>}
+                    </span>
+                ))
+            }
+        </div>
+        <div aria-hidden="true" class="x-axis">
+            {points.map((point, index) => point.axis && <span style={`grid-column: ${index + 1}`}>{point.year}</span>)}
+        </div>
+    </div>
+    {
+        data.key && (
+            <ul class="key">
+                <li>
+                    <span aria-hidden="true" class="swatch" />
+                    {data.key.highlight[lang]}
+                </li>
+                <li>
+                    <span aria-hidden="true" class="swatch swatch--muted" />
+                    {data.key.muted[lang]}
+                </li>
+            </ul>
+        )
+    }
+    <details>
+        <summary>{copy.table}</summary>
+        <table>
+            <caption class="visually-hidden">{caption}</caption>
+            <thead>
+                <tr>
+                    <th scope="col">{copy.year}</th>
+                    <th scope="col">{data.unit[lang]}</th>
+                    {hasAge && <th scope="col">{copy.ageHeader}</th>}
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    points.map((point) => (
+                        <tr>
+                            <th scope="row">{point.year}</th>
+                            <td>{point.value}</td>
+                            {hasAge && <td>{point.age}</td>}
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </details>
+    <figcaption>{caption}</figcaption>
+    <script is:inline set:html={script} />
+</figure>
