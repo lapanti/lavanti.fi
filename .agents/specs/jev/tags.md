@@ -99,10 +99,11 @@ Feature: Intro ranking for featured posts
     Given `--intro economy`, a registered tag file
     When the script runs
     Then one request per post carrying the tag is sent (posts only; scheduled posts included and shown with their publishDate), each with stateFor(post) as state and one score question `intro`, criteria '1'–'5', "How good a first read is this article for a voter new to the topic '<names.en>': <descriptions.en[0]> (1 = poor, 5 = the best place to start):"
-    And stdout shows a table sorted by the expected score desc, then newest first, columns post, title, publishDate, intro (one decimal), featured (✓ for ids in the tag's `featured`)
+    And stdout shows a table sorted by the expected score desc, then newest first, columns post, title, publishDate, intro (one decimal), featured (✓ for ids in the tag's `featured`), note ("scheduled, not featurable yet" for a publishDate after today in Helsinki)
     And the intro column reads 0–4, not 1–5: Jev keys score probabilities by criterion index ("0"–"4", Σp = 1, probed 2026-10-02 on posts 62 and 67), and expectedScore multiplies by the key. The order is unaffected. The same offset applies to suggest:faq's usefulness column
     And a line "featured now: <ids or none> (up to 3)"
-    And no receipt is written: the author picks `featured` by hand, and tags.spec.ts checks the pick (≤ 3, unique, published, carries the tag, all three locales)
+    And a receipt intro[<id>] = { checkedAt, contentHash: sha256 over the sorted ids of the posts carrying the tag, model } is written to src/content/suggestions.json
+    And `featured` is never written: the author picks it by hand, and tags.spec.ts checks the pick (≤ 3, unique, published, carries the tag, all three locales)
 
   Scenario: Intro with another mode
     Given `--intro` together with `--tag`, `--changed-since` or positionals
@@ -116,6 +117,14 @@ Feature: Gate and skills
     When check:suggestions runs (pre-commit with the staged files, CI with --base)
     Then tags[<id>].contentHash must equal the current hash of that file's label
     And a missing or stale receipt exits 1 naming `npm run suggest:tags -- --tag <id>`
+
+  Scenario: Changed post under a featured tag needs a current intro ranking
+    Given a staged or changed post file (locale .mdx or meta.json) whose post carries a tag with a non-empty `featured`
+    When check:suggestions runs
+    Then intro[<tag>].contentHash must equal the hash of the tag's current post set
+    And a missing or stale receipt exits 1 naming `npm run suggest:tags -- --intro <tag>`
+    And a text or date edit that leaves the tag's post set unchanged passes with the existing receipt
+    And the scheduled-publish PR, which changes no post files, never reaches this check
 
   Scenario: Edit outside the label
     Given a tag file whose faq, featured, updatedDate, later description paragraphs or non-English fields change, and whose id, names.en and descriptions.en[0] do not
@@ -209,6 +218,7 @@ export function runCheck(argv: string[], deps?): Promise<number>
 //   suggest:tags -- --tag <id> [--lang] [--consider] [--concurrency] [--out]
 //   suggest:tags -- --intro <id> [--lang] [--concurrency] [--out]
 // scripts/jev/tags.ts: FEATURED_MAX = 3; introQuestion(label): QuestionSpec (score '1'–'5'); loadLocalTag(dir, file): Promise<LocalTag>
+//   hashIntroSet(id, posts): string; featuredTagIds(dir): Promise<Set<string>>
 //   suggest:tags -- --changed-since <ref> [same flags]
 export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps?: { client?; git?; log?; receipts?; root?; tagsDir?; today? }): Promise<number>
 ```
