@@ -194,3 +194,27 @@ export const hashTagFile = async (id: string, dir = TAGS_DIR): Promise<string> =
     createHash('sha256')
         .update(JSON.stringify(await loadTagLabel(dir, `${id}.ts`)))
         .digest('hex')
+
+/**
+ * sha256 over the sorted ids of the posts carrying the tag, hex; the receipt of
+ * an intro ranking. A new post under the tag changes it, so the gate asks for a
+ * fresh ranking before `featured` can fall behind; a text edit does not.
+ */
+export const hashIntroSet = (id: string, posts: Array<{ id: number; tags: string[] }>): string =>
+    createHash('sha256')
+        .update(
+            posts
+                .filter((p) => p.tags.includes(id))
+                .map((p) => p.id)
+                .toSorted((a, b) => a - b)
+                .join(',')
+        )
+        .digest('hex')
+
+/** Ids of the tag files that set `featured`, from the tag files themselves. */
+export async function featuredTagIds(dir = TAGS_DIR): Promise<Set<string>> {
+    const files = readdirSync(dir).filter((name) => name.endsWith('.ts') && name !== 'types.ts')
+    const tags = await Promise.all(files.map((file) => loadLocalTag(dir, file)))
+
+    return new Set(tags.filter((t) => (t.featured?.length ?? 0) > 0).map((t) => t.id))
+}
