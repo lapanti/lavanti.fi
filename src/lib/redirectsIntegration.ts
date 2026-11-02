@@ -1,6 +1,6 @@
 import type { AstroIntegration } from 'astro'
 
-import { writeFile } from 'node:fs/promises'
+import { readdir, writeFile } from 'node:fs/promises'
 
 import { CATEGORY_SEGMENTS, tags } from '../content/tags'
 import { redirects, shortLinks } from './redirects'
@@ -35,6 +35,9 @@ const BARE_POST_PATTERN = /^\/(en|fi|sv)\/blog\/\d+\/$/
 
 /* File routes such as /fi/rss.xml — the last segment has an extension, not a page. */
 const FILE_ROUTE_PATTERN = /\/[^/]+\.[^/]+\/$/
+
+/** A built OG card endpoint, `/og/<id>.jpg`, with or without Astro's leading slash. */
+const OG_CARD_PATTERN = /^\/?og\/([^/]+)\.jpg\/?$/
 
 const normalise = (pathname: string): string => {
     const withLeading = pathname.startsWith('/') ? pathname : `/${pathname}`
@@ -76,6 +79,16 @@ export const buildRedirectLines = (
     }
 
     for (const pathname of pagePathnames) {
+        /*
+         * OG cards moved from PNG to JPEG; keep share images cached by Facebook, LinkedIn
+         * and Slack under the old `/og/<id>.png` URL resolving until they re-scrape.
+         */
+        const ogCard = OG_CARD_PATTERN.exec(pathname)
+        if (ogCard) {
+            lines.add(`/og/${ogCard[1]}.png /og/${ogCard[1]}.jpg 301`)
+            continue
+        }
+
         const path = normalise(pathname)
 
         const post = CANONICAL_POST_PATTERN.exec(path)
@@ -110,9 +123,11 @@ export const buildRedirectLines = (
 export const redirectsFile = (): AstroIntegration => ({
     hooks: {
         'astro:build:done': async ({ pages, dir, logger }) => {
+            // `pages` lists HTML routes only, not endpoint files, so the OG cards are read from disk.
+            const ogCards = (await readdir(new URL('og/', dir))).map((file) => `og/${file}`)
             const lines = buildRedirectLines(
                 { ...categoryRenames, ...redirects },
-                pages.map((page) => page.pathname),
+                [...pages.map((page) => page.pathname), ...ogCards],
                 shortLinks
             )
             await writeFile(new URL('_redirects', dir), `${lines.join('\n')}\n`, 'utf-8')
