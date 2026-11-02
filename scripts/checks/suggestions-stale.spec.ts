@@ -4,8 +4,8 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
 import { buildCorpus } from '../jev/corpus'
-import { emptyReceipts, recordReceipt, recordTagReceipt, writeReceipts } from '../jev/suggestions'
-import { hashTagFile } from '../jev/tags'
+import { emptyReceipts, recordIntroReceipt, recordReceipt, recordTagReceipt, writeReceipts } from '../jev/suggestions'
+import { hashIntroSet, hashTagFile } from '../jev/tags'
 import { runCheck } from './suggestions-stale'
 
 const writeDoc = (root: string, kind: 'newsletters' | 'posts', id: number, body: string): void => {
@@ -149,6 +149,38 @@ describe('runCheck', () => {
             expect.stringContaining('commit src/content/suggestions.json'),
         ])
         writeDoc(root, 'posts', 1, 'One.')
+    })
+
+    it('requires an intro ranking over the current post set for a featured tag a changed post carries', async () => {
+        writeTag(tagsDir, 'economy', 'Money.', ', featured: [1]')
+        const lines: string[] = []
+        const deps = { log: (l: string) => lines.push(l), path, root, tagsDir }
+        const withIntro = (hash: string): void => {
+            const file = emptyReceipts()
+            recordIntroReceipt(file, { hash, id: 'economy' }, 'm', '2026-09-23')
+            writeReceipts(path, file)
+        }
+
+        withIntro('stale')
+        expect(await runCheck(['src/content/posts/2/meta.json'], deps)).toBe(1)
+        expect(lines).toEqual([
+            "featured not re-ranked for the tag's current posts: intro economy: ranking its posts changed since the last run — npm run suggest:tags -- --intro economy",
+            expect.stringContaining('commit src/content/suggestions.json'),
+        ])
+
+        withIntro(
+            hashIntroSet(
+                'economy',
+                buildCorpus({ root }).filter((d) => d.kind === 'post')
+            )
+        )
+        expect(await runCheck(['src/content/posts/2/meta.json'], deps)).toBe(0)
+
+        writeDoc(root, 'posts', 4, 'Four.')
+        expect(await runCheck(['src/content/posts/4/meta.json'], deps)).toBe(1)
+
+        rmSync(join(root, 'posts', '4'), { force: true, recursive: true })
+        writeTag(tagsDir, 'economy', 'Money.')
     })
 
     it('reads the changed paths from git with --base and skips deleted documents', async () => {

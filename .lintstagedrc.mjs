@@ -38,6 +38,8 @@ export default {
             `node scripts/check-overflow.mjs ${mdxFiles.map((f) => `"${f}"`).join(' ')}`,
             'node --experimental-strip-types scripts/checks/redirects.mjs',
             checkRelated,
+            // Tags live in meta.json: a post newly under a tag with featured needs a fresh suggest:tags --intro.
+            `node --experimental-strip-types scripts/checks/suggestions-stale.ts ${files.map((f) => `"${f}"`).join(' ')}`,
         ]
     },
     'src/content/related.json': () => checkRelated,
