@@ -33,7 +33,7 @@ export default defineConfig({
     compressHTML: true,
 
     build: {
-        inlineStylesheets: 'always',
+        inlineStylesheets: 'auto',
     },
 
     prefetch: {
