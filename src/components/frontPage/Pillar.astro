@@ -1,9 +1,13 @@
 ---
+import type { Lang } from '../../content/nav'
+
+import { tags } from '../../content/tags'
+import { getExcerptPosts } from '../../lib/posts'
 import { colors, typographics } from '../../lib/styles'
 import Eyebrow from '../Eyebrow.astro'
 import PlateHeading from '../PlateHeading.astro'
 
-interface Read {
+interface VocabLink {
     href: string
     label: string
 }
@@ -12,12 +16,22 @@ interface Props {
     eyebrow: string
     heading: string
     id?: string
-    reads: Read[]
+    lang: Lang
+    /** The pillar's tag; its first PILLAR_READS `featured` posts are the reads. */
+    tag: string
     tone: 'aqua' | 'oat' | 'peach'
-    vocab: Read[]
+    vocab: VocabLink[]
 }
 
-const { eyebrow, heading, id, reads, tone, vocab } = Astro.props
+const { eyebrow, heading, id, lang, tag, tone, vocab } = Astro.props
+
+const PILLAR_READS = 2
+
+const featured = (tags.find((t) => t.id === tag)?.featured ?? []).slice(0, PILLAR_READS)
+const reads = await getExcerptPosts({ lang, onlyIds: featured, rankedIds: featured })
+if (reads.length < PILLAR_READS) {
+    throw new Error(`Pillar ${tag}: needs ${PILLAR_READS} published featured posts in ${lang}, got ${reads.length}`)
+}
 
 const toneColors = {
     aqua: { ground: colors.aquaBlue, ink: colors.aquaInk, inkSoft: colors.aquaInkSoft },
@@ -168,7 +182,7 @@ const toneColors = {
                         {
                             reads.map((read) => (
                                 <li>
-                                    <a href={read.href}>{read.label}</a>
+                                    <a href={read.url}>{read.title}</a>
                                 </li>
                             ))
                         }

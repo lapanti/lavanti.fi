@@ -115,6 +115,25 @@ describe('tags data', () => {
         }
     )
 
+    // Front-page pillars render the first PILLAR_READS ids of their tag's featured list
+    const PILLAR_READS = 2
+    const pillarTags = LOCALES.flatMap((locale) =>
+        [
+            ...readFileSync(join(import.meta.dirname, '..', 'pages', locale, 'index.mdx'), 'utf8').matchAll(
+                /<Pillar\b[^>]*?\btag="([^"]+)"/g
+            ),
+        ].map((m) => ({ locale, tag: m[1] }))
+    )
+
+    it('front pages name a tag on every pillar', () => {
+        expect(pillarTags.length).toBe(LOCALES.length * 3)
+    })
+
+    it.each(pillarTags)('$locale pillar $tag — tag has enough featured posts', ({ tag }) => {
+        const featured = tags.find((t) => t.id === tag)?.featured ?? []
+        expect(featured.length, `${tag} featured`).toBeGreaterThanOrEqual(PILLAR_READS)
+    })
+
     it.each(tags.filter((t) => t.heroImage))(
         '$id — heroImage requires heroImageAlt in all locales',
         ({ id, heroImageAlt }) => {
