@@ -6,7 +6,7 @@ import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 
 import { readReceipts } from './jev/suggestions'
-import { hashTagFile } from './jev/tags'
+import { hashIntroSet, hashTagFile } from './jev/tags'
 import { runTags, USAGE } from './suggest-tags'
 
 const writePost = (root: string, id: number, publishDate: string, tags: string[]): void => {
@@ -321,8 +321,9 @@ describe('runTags', () => {
         expect(Object.keys(readReceipts(receipts)!.tags)).toEqual(['freedom'])
     })
 
-    it('--intro scores every post carrying the tag, best first, marks featured and writes no receipt', async () => {
+    it('--intro scores every post carrying the tag, best first, marks featured and scheduled, writes a receipt', async () => {
         writePost(root, 4, '2026-04-01', ['economy'])
+        writePost(root, 5, '2026-12-01', ['economy'])
         writeFileSync(
             join(tagsDir, 'economy.ts'),
             "export const tag = { id: 'economy', names: { en: 'Economy', fi: 'x' }, descriptions: { en: ['Economy matters.'], fi: ['x'] }, featured: [4] }\n"
@@ -352,7 +353,7 @@ describe('runTags', () => {
                 deps(client, (l) => lines.push(l))
             )
         ).toBe(0)
-        expect(calls).toHaveLength(2)
+        expect(calls).toHaveLength(3)
         expect(calls[0].questions.intro).toEqual({
             criteria: ['1', '2', '3', '4', '5'],
             instructions: expect.stringContaining("new to the topic 'Economy': Economy matters."),
@@ -362,18 +363,30 @@ describe('runTags', () => {
             '## intro economy — Economy',
             '',
             [
-                '| post | title | publishDate | intro | featured |',
-                '| --- | --- | --- | --- | --- |',
-                '| post:1 | fi post 1 | 2026-01-01 | 5.0 |  |',
-                '| post:4 | fi post 4 | 2026-04-01 | 2.0 | ✓ |',
+                '| post | title | publishDate | intro | featured | note |',
+                '| --- | --- | --- | --- | --- | --- |',
+                '| post:1 | fi post 1 | 2026-01-01 | 5.0 |  |  |',
+                '| post:5 | fi post 5 | 2026-12-01 | 2.0 |  | scheduled, not featurable yet |',
+                '| post:4 | fi post 4 | 2026-04-01 | 2.0 | ✓ |  |',
             ].join('\n'),
             '',
             'featured now: 4 (up to 3)',
             '',
         ])
-        expect(readReceipts(receipts)).toBeNull()
+        expect(readReceipts(receipts)?.intro).toEqual({
+            economy: {
+                checkedAt: '2026-09-23',
+                contentHash: hashIntroSet('economy', [
+                    { id: 1, tags: ['economy'] },
+                    { id: 4, tags: ['economy'] },
+                    { id: 5, tags: ['economy'] },
+                ]),
+                model: 'm',
+            },
+        })
         writeTag(tagsDir, 'economy', 'Economy')
         rmSync(join(root, 'posts', '4'), { force: true, recursive: true })
+        rmSync(join(root, 'posts', '5'), { force: true, recursive: true })
     })
 
     it('--intro refuses an unknown tag and conflicts with the other modes', async () => {

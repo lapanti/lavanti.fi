@@ -12,7 +12,7 @@
  * Usage:
  *   npm run suggest:tags -- post <id>… [--lang fi|sv|en] [--consider 0.7] [--doubtful 0.2] [--concurrency 4] [--out <md>]
  *   npm run suggest:tags -- --tag <id> [same flags]
- *   npm run suggest:tags -- --intro <id> [same flags]   (ranks the tag's posts as first reads for `featured`; no receipt)
+ *   npm run suggest:tags -- --intro <id> [same flags]   (ranks the tag's posts as first reads for `featured`; writes an intro receipt)
  *   npm run suggest:tags -- --changed-since <ref> [same flags]
  *
  * Spec: .agents/specs/jev/tags.md
@@ -25,17 +25,25 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
-import { helsinkiDateOf } from '../src/lib/publishing.ts'
+import { helsinkiDateOf, isPublishedBy } from '../src/lib/publishing.ts'
 import { createClient, type JevClient, mapConcurrent, NO_PROVIDER_NOTICE, resolveProvider } from './jev/client.ts'
 import { buildCorpus, type Document, type Lang, LANGS, stateFor } from './jev/corpus.ts'
 import { expectedScore } from './jev/faq.ts'
 import { docsFromPaths, renderTable } from './jev/links.ts'
-import { emptyReceipts, readReceipts, RECEIPTS_PATH, recordTagReceipt, writeReceipts } from './jev/suggestions.ts'
+import {
+    emptyReceipts,
+    readReceipts,
+    RECEIPTS_PATH,
+    recordIntroReceipt,
+    recordTagReceipt,
+    writeReceipts,
+} from './jev/suggestions.ts'
 import {
     CONSIDER_THRESHOLD,
     DOUBTFUL_THRESHOLD,
     EDITORIAL_TAGS,
     FEATURED_MAX,
+    hashIntroSet,
     hashTagFile,
     introQuestion,
     loadLocalTag,
@@ -182,15 +190,16 @@ async function scanTag(client: JevClient, label: TagLabel, posts: Document[], op
 
 /**
  * Intro ranking: one 1–5 score per post carrying the tag, "a good first read on
- * the topic", for picking the tag's `featured` posts. No receipt: nothing gates
- * on the pick.
+ * the topic", for picking the tag's `featured` posts. A scheduled post is scored
+ * but marked: tags.spec rejects it in `featured` until its publishDate. The
+ * receipt covers the post set, not the pick, which stays a human edit.
  */
 async function scoreIntro(
     client: JevClient,
     label: TagLabel,
     featured: number[],
     posts: Document[],
-    opts: Options
+    opts: Options & { today: string }
 ): Promise<Section> {
     const lines = [`## intro ${label.id} — ${label.name}`, '']
     const tagged = posts.filter((post) => post.tags.includes(label.id))
@@ -221,10 +230,11 @@ async function scoreIntro(
             r.post.publishDate,
             r.score.toFixed(1),
             featured.includes(r.post.id) ? '✓' : '',
+            isPublishedBy(r.post.publishDate, opts.today) ? '' : 'scheduled, not featurable yet',
         ])
     lines.push(
         rows.length > 0
-            ? renderTable(['post', 'title', 'publishDate', 'intro', 'featured'], rows)
+            ? renderTable(['post', 'title', 'publishDate', 'intro', 'featured', 'note'], rows)
             : 'no posts carry the tag',
         ''
     )
@@ -373,8 +383,18 @@ export async function runTags(argv: string[], env: NodeJS.ProcessEnv, deps: TagD
         }
         for (const id of introIds) {
             const tag = await loadLocalTag(tagsDir, `${id}.ts`)
-            const section = await scoreIntro(client, byId.get(id)!, tag.featured ?? [], posts, opts)
+            const section = await scoreIntro(client, byId.get(id)!, tag.featured ?? [], posts, {
+                ...opts,
+                today: checkedAt,
+            })
             output.push(...section.lines)
+            recordIntroReceipt(
+                receipts,
+                { hash: hashIntroSet(id, posts), id },
+                section.model || 'no request',
+                checkedAt
+            )
+            recorded++
         }
     } catch (error) {
         return finish(1, `failed at ${error instanceof Error ? error.message : String(error)}`)

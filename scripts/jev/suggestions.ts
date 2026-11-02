@@ -5,9 +5,12 @@
  * a document or the current version of a tag file. suggest-links.ts writes one
  * per document it completes (kind "links") and one per issue it scanned for
  * backlinks (kind "backlinks"); suggest-tags.ts writes one per tag it
- * retro-scanned (kind "tags", keyed by tag id, hashed over the tag file).
+ * retro-scanned (kind "tags", keyed by tag id, hashed over the tag file) and
+ * one per tag it intro-ranked (kind "intro", keyed by tag id, hashed over the
+ * ids of the posts carrying the tag).
  * scripts/checks/suggestions-stale.ts requires them for every post,
- * newsletter or tag file a commit or pull request changes. The document hash
+ * newsletter or tag file a commit or pull request changes, and an intro
+ * receipt for every tag with `featured` that a changed post carries. The document hash
  * covers the three locale files only, so the mandatory updatedDate bump in
  * meta.json does not invalidate a receipt. Network-free; no CLI.
  *
@@ -21,7 +24,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 /* eslint-enable import-x/extensions */
 
 export const RECEIPTS_PATH = 'src/content/suggestions.json'
-const RECEIPT_KINDS = ['links', 'backlinks', 'tags'] as const
+const RECEIPT_KINDS = ['links', 'backlinks', 'tags', 'intro'] as const
 
 type ReceiptKind = (typeof RECEIPT_KINDS)[number]
 
@@ -38,7 +41,7 @@ export interface ChangedTag {
     id: string
 }
 
-export const emptyReceipts = (): ReceiptsFile => ({ backlinks: {}, links: {}, tags: {} })
+export const emptyReceipts = (): ReceiptsFile => ({ backlinks: {}, intro: {}, links: {}, tags: {} })
 
 const isReceipt = (value: unknown): value is Receipt =>
     typeof value === 'object' &&
@@ -83,7 +86,16 @@ const sorted = (map: Record<string, Receipt>): Record<string, Receipt> =>
 
 /** Canonical text: kinds in fixed order, keys sorted, 2-space indent, trailing newline. */
 export const serializeReceipts = (file: ReceiptsFile): string =>
-    `${JSON.stringify({ backlinks: sorted(file.backlinks), links: sorted(file.links), tags: sorted(file.tags) }, null, 2)}\n`
+    `${JSON.stringify(
+        {
+            backlinks: sorted(file.backlinks),
+            intro: sorted(file.intro),
+            links: sorted(file.links),
+            tags: sorted(file.tags),
+        },
+        null,
+        2
+    )}\n`
 
 export const writeReceipts = (path: string, file: ReceiptsFile): void => writeFileSync(path, serializeReceipts(file))
 
@@ -103,6 +115,11 @@ export function recordTagReceipt(file: ReceiptsFile, tag: ChangedTag, model: str
     file.tags[tag.id] = { checkedAt, contentHash: tag.hash, model }
 }
 
+/** Record that the intro ranking ran over the tag's current set of posts. */
+export function recordIntroReceipt(file: ReceiptsFile, tag: ChangedTag, model: string, checkedAt: string): void {
+    file.intro[tag.id] = { checkedAt, contentHash: tag.hash, model }
+}
+
 /** Whether the document has a receipt of that kind matching its current content. */
 export const hasReceipt = (file: ReceiptsFile | null, kind: 'backlinks' | 'links', doc: Document): boolean =>
     file?.[kind][doc.key]?.contentHash === doc.contentHash
@@ -118,13 +135,15 @@ const commandFor = (kind: 'backlinks' | 'links', doc: Document): string =>
         : `npm run suggest:links -- --backlinks newsletter ${doc.id}`
 
 /**
- * One line per missing or stale receipt among the changed documents and tag
- * files; empty means everything changed was checked.
+ * One line per missing or stale receipt among the changed documents, tag
+ * files and featured tags a changed post carries (hashed over the tag's
+ * current post set); empty means everything changed was checked.
  */
 export function findUnchecked(
     file: ReceiptsFile | null,
     changed: Document[],
-    changedTags: ChangedTag[] = []
+    changedTags: ChangedTag[] = [],
+    featuredTags: ChangedTag[] = []
 ): string[] {
     const problems: string[] = []
     for (const doc of changed) {
@@ -139,6 +158,12 @@ export function findUnchecked(
         if (receipt?.contentHash === tag.hash) continue
         const state = receipt ? 'changed since the last run' : 'never run'
         problems.push(`tag ${tag.id}: retro-scan ${state} — npm run suggest:tags -- --tag ${tag.id}`)
+    }
+    for (const tag of featuredTags) {
+        const receipt = file?.intro[tag.id]
+        if (receipt?.contentHash === tag.hash) continue
+        const state = receipt ? 'its posts changed since the last run' : 'never run'
+        problems.push(`intro ${tag.id}: ranking ${state} — npm run suggest:tags -- --intro ${tag.id}`)
     }
 
     return problems
