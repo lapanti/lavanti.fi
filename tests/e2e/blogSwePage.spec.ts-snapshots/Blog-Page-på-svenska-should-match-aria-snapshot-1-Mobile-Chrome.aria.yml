@@ -36,146 +36,23 @@
       - paragraph: Ju kraftfullare AI blir, desto viktigare blir integritetsskyddet. AI-system är datahungriga; utan starka dataskyddsregler blir de övervakningsinfrastruktur. EU:s AI-förordning är ett steg i rätt riktning, men genomförandet måste vara genuint — inte bara en formalitet.
       - list:
         - listitem:
-          - article "Sverige hotar dra det längre strået som nav för AI-startups":
-            - link "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida. Sverige hotar dra det längre strået som nav för AI-startups":
-              - /url: /sv/blog/92/sverige-hotar-dra-det-langre-straet-som-nav-for-ai-startups/
-              - img "Riksdagsledamot Mari Holopainen och Lauri Lavanti ler i porträtt sida vid sida."
-              - heading "Sverige hotar dra det längre strået som nav för AI-startups" [level=3]
+          - article "AI kan inte allt":
+            - link "En illustrationsbild för artificiell intelligens, föreställande en maskin som liknar ett mänskligt huvud med olika elektroniska strömmar som flödar in och ut ur den. AI kan inte allt":
+              - /url: /sv/blog/44/ai-kan-inte-allt/
+              - img "En illustrationsbild för artificiell intelligens, föreställande en maskin som liknar ett mänskligt huvud med olika elektroniska strömmar som flödar in och ut ur den."
+              - heading "AI kan inte allt" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Finländska tillväxtbolag fastnar i finansieringen medan Sverige lockar kapital utan utförsäljning. Två strukturella reformer kan ändra det.
+            - paragraph: AI har presenterats som ett sätt att göra Finlands offentliga tjänster till världens bästa. Det kan ha sin roll i det, men viktigast vore en helhetsbedömning.
           - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Företagande":
-                - /url: /sv/kategori/foretagande/
-        - listitem:
-          - article "Fullmäktigemotion om AI-handledning för arbetssökning":
-            - 'link "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0. Fullmäktigemotion om AI-handledning för arbetssökning"':
-              - /url: /sv/blog/89/fullmaktigemotion-ai-handledning-arbetssokning/
-              - 'img "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0."'
-              - heading "Fullmäktigemotion om AI-handledning för arbetssökning" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kyrkslätt kunde som ansvarskommun erbjuda arbetssökande avgiftsfri AI-handledning. Motionen föreslår ett tidsbegränsat pilotprojekt för hela området.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Fullmäktigeinitiativ":
-                - /url: /sv/kategori/fullmaktigeinitiativ/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-        - listitem:
-          - article "Tar AI programmerarens jobb?":
-            - link "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag Tar AI programmerarens jobb?":
-              - /url: /sv/blog/87/tar-ai-programmerarens-jobb/
-              - img "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag"
-              - heading "Tar AI programmerarens jobb?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "AI och arbete ur en utvecklares perspektiv: tar AI programmerarens jobb, vad händer med juniorer och hur kompetensen och social trygghet hänger med."
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Utbildning":
-                - /url: /sv/kategori/utbildning/
-      - paragraph:
-        - link "Alla inlägg om AI":
-          - /url: /sv/kategori/artificiell-intelligens/
-    - region "Ekonomi":
-      - heading "Ekonomi" [level=2]
-      - paragraph: Finlands ekonomi måste fungera under AI-omställningen. Det betyder nya företag, nya jobb och offentliga tjänster som faktiskt använder tekniken — inte bara köper in den utifrån. Utan teknisk kompetens i riksdagen fattas beslut om AI-upphandling, datainfrastruktur och arbetslivet av människor som inte vet vad de köper.
-      - paragraph: "Jag skriver om ekonomin utifrån vad jag gjort i över ett årtionde: byggt programvara och programvaruteam inom olika branscher. AI förändrar grunden för arbete, konkurrenskraft och offentliga tjänster. Finland kan leda omställningen, men bara om offentliga satsningar riktas mot inhemsk kompetens på ett sätt som faktiskt förstår vad som görs."
-      - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
-      - list:
-        - listitem:
-          - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-            - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-              - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
-              - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
-              - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
-          - list:
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-            - listitem:
-              - link /Riksdagsvalet \d+/:
-                - /url: /sv/kategori/riksdagsvalet-2027/
-        - listitem:
-          - article "Varifrån kommer den offentliga sektorns pengar och vart går de?":
-            - link "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget Varifrån kommer den offentliga sektorns pengar och vart går de?":
-              - /url: /sv/blog/96/offentlig-sektor-varifran-kommer-pengarna-och-vart-gar-de/
-              - img "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget"
-              - heading "Varifrån kommer den offentliga sektorns pengar och vart går de?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Den offentliga sektorn tar \d+ in uppskattningsvis \d+ miljarder euro och använder \d+ miljarder\. Se i diagrammen varifrån pengarna kommer och vart de går\./
-          - list:
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-        - listitem:
-          - article "Microsofts datacenter byggs redan i Kyrkslätt":
-            - 'link "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel. Microsofts datacenter byggs redan i Kyrkslätt"':
-              - /url: /sv/blog/93/microsoft-datacenter-kyrkslatt/
-              - 'img "Microsofts datacenter i Staffanstorp i Sverige: ett inhägnat anläggningsområde bakom en väg och en väjningsskylt under molnig himmel."'
-              - heading "Microsofts datacenter byggs redan i Kyrkslätt" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Microsofts datacenter i Kyrkslätt, Esbo och Vichtis ger en byggarbetsplats och kan ge fjärrvärme. De nästa stora elanvändarna behöver samma regler.
-          - list:
-            - listitem:
-              - link "Infrastruktur":
-                - /url: /sv/kategori/infrastruktur/
-            - listitem:
-              - link "Ekonomi":
-                - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Natur":
-                - /url: /sv/kategori/natur/
-      - paragraph:
-        - link "Alla inlägg om Ekonomi":
-          - /url: /sv/kategori/ekonomi/
-    - region "Lärande":
-      - heading "Lärande" [level=2]
-      - paragraph: Finlands styrka har alltid varit dess människor och deras kunnande. I AI-eran måste bildningen förbli sömlös — från småbarnspedagogiken till arbetslivet och ända fram till pensionen — så att alla kan utveckla sin fulla potential. På så sätt växer AI:s produktivitetsvinster för hela samhället, och ingen lämnas efter.
-      - paragraph: Utbildning är inte en kostnadspost som trimmas när budgeten stramas åt. Det är central infrastruktur för hela tiden efter AI-omställningen. Nedskärningar i undervisning, bibliotek, yrkesutbildning och fortbildning betalas tillbaka tiofalt när arbetsmarknaden ändras snabbare än människor hinner lära sig nya saker.
-      - paragraph: Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.
-      - list:
-        - listitem:
-          - article "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-              - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
-              - img "Lauri Lavanti står i en blommig skjorta mot vit bakgrund."
-              - heading "AI hjälper till att trygga kommunala tjänster, men det är inte gratis" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: I Konnevesi kortade AI handläggningstiden från två månader till dagar. Kyrkslätt är för litet att agera ensamt — men samarbete gör förändring möjlig.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Lärande":
+                - /url: /sv/kategori/bildning/
         - listitem:
           - article "AI förändrar vad utvecklare får betalt för":
             - link "En datorskärm med kod. AI förändrar vad utvecklare får betalt för":
@@ -195,131 +72,32 @@
               - link "Lärande":
                 - /url: /sv/kategori/bildning/
         - listitem:
-          - article /År \d+ är AI-året/:
-            - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
-              - /url: /sv/blog/47/ar-2026-ar-ai-aret/
-              - img "Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie. Klädd i svart jacka, vit skjorta och grön slips. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad."
-              - heading /År \d+ är AI-året/ [level=3]
+          - article "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+            - link "Lauri Lavanti står i en blommig skjorta mot vit bakgrund. AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+              - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
+              - img "Lauri Lavanti står i en blommig skjorta mot vit bakgrund."
+              - heading "AI hjälper till att trygga kommunala tjänster, men det är inte gratis" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: AI förändrar samhället — men kanske inte som du tror. De största förändringarna ser vi i privatlivet och i barnens och ungdomarnas vardag.
+            - paragraph: I Konnevesi kortade AI handläggningstiden från två månader till dagar. Kyrkslätt är för litet att agera ensamt — men samarbete gör förändring möjlig.
           - list:
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
             - listitem:
               - link "Digitalisering":
                 - /url: /sv/kategori/digitalisering/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Lärande":
-                - /url: /sv/kategori/bildning/
       - paragraph:
-        - link "Alla inlägg om Lärande":
-          - /url: /sv/kategori/bildning/
-    - region "Frihet":
-      - heading "Frihet" [level=2]
-      - paragraph: Frihet är en av de viktigaste frågorna under AI-eran. Det är frågan om dina data, din kommunikation och din vardag förblir dina när merparten av infrastrukturen runt dem ägs av någon annan. Integritetsskyddet är grundfallet — men den bredare frågan är om medborgerliga rättigheter överlever en teknik som gör massövervakning nästan gratis.
-      - paragraph: "Jag har under min karriär byggt programvara i miljöer där reglerna kring data tas på allvar — reglerade branscher som finanssektorn — samt miljöer där data är själva affärsverksamheten. Den erfarenheten gör en sak uppenbar: integritet och medborgerliga rättigheter skyddar sig inte själva. De skyddas av lagar, av förordningar och av individer som brinner för frågan."
-      - paragraph: Att trygga friheten i AI-eran kräver noga avvägda eftergifter samt strikta gränser. Massövervakning, utvidgad användning av biometriska identifierare eller automatisk granskning av meddelanden är inte verktyg som bör tas i bruk lättvindigt, om alls. Varje steg som urholkar integriteten kräver vattentäta motiveringar och tydliga bevis för sin nytta — utan det finns ingen sak att försvara.
+        - link "Alla inlägg om AI":
+          - /url: /sv/kategori/artificiell-intelligens/
+    - region "Ekonomi":
+      - heading "Ekonomi" [level=2]
+      - paragraph: Finlands ekonomi måste fungera under AI-omställningen. Det betyder nya företag, nya jobb och offentliga tjänster som faktiskt använder tekniken — inte bara köper in den utifrån. Utan teknisk kompetens i riksdagen fattas beslut om AI-upphandling, datainfrastruktur och arbetslivet av människor som inte vet vad de köper.
+      - paragraph: "Jag skriver om ekonomin utifrån vad jag gjort i över ett årtionde: byggt programvara och programvaruteam inom olika branscher. AI förändrar grunden för arbete, konkurrenskraft och offentliga tjänster. Finland kan leda omställningen, men bara om offentliga satsningar riktas mot inhemsk kompetens på ett sätt som faktiskt förstår vad som görs."
+      - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
-        - listitem:
-          - article "Centralskogen är den naturkloka kommunens första prov":
-            - link "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Centralskogen är den naturkloka kommunens första prov":
-              - /url: /sv/blog/91/centralskogen-ar-den-naturkloka-kommunens-forsta-prov/
-              - img "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund."
-              - heading "Centralskogen är den naturkloka kommunens första prov" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Planen för Centralskogen skulle föra in en tre meter bred belagd och belyst led från Masaby till kommuncentrum. En naturklok kommun utvecklar befintliga stigar.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Natur":
-                - /url: /sv/kategori/natur/
-            - listitem:
-              - link "Planläggning":
-                - /url: /sv/kategori/planlaggning/
-        - listitem:
-          - article "Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
-            - link "En tvådelad bild med Pinja Pekkarniemi till vänster i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar":
-              - /url: /sv/blog/78/skogsavverkningar-utan-invanarnas-delaktighet/
-              - img "En tvådelad bild med Pinja Pekkarniemi till vänster i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund."
-              - heading "Kyrkslätt gick förbi invånarna i planeringen av skogsavverkningar" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kommunutvecklingsnämnden godkände åtgärdsprogrammet för skogsskötsel utan att höra invånarna och utan förhandsbedömning. Kommunstrategin lovar annat.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Natur":
-                - /url: /sv/kategori/natur/
-            - listitem:
-              - link "Planläggning":
-                - /url: /sv/kategori/planlaggning/
-        - listitem:
-          - article "Davids slunga är ett bevis på att Europa har misslyckats":
-            - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Davids slunga är ett bevis på att Europa har misslyckats"':
-              - /url: /sv/blog/68/davids-slunga-europas-misslyckande/
-              - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
-              - heading "Davids slunga är ett bevis på att Europa har misslyckats" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Davids slunga var rätt upphandling för Finland, men den avslöjar den europeiska försvarsindustrins misslyckande. Ett marknadsgrönt perspektiv.
-          - list:
-            - listitem:
-              - link "Säkerhet":
-                - /url: /sv/kategori/sakerhet/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-            - listitem:
-              - link "Frihet":
-                - /url: /sv/kategori/frihet/
-      - paragraph:
-        - link "Alla inlägg om Frihet":
-          - /url: /sv/kategori/frihet/
-    - region "Digital självständighet":
-      - heading "Digital självständighet" [level=2]
-      - paragraph: /Finland och Europa måste kontrollera sin egen digitala infrastruktur\. Det är därför jag grundade medborgarinitiativet om digital självständighet, som samlade in de \d+ \d+ underskrifter som krävs för riksdagsbehandling i juli \d+\. Med det kräver vi att Finland minskar sitt beroende av utländska leverantörer av digitala tjänster och stärker den digitala suveräniteten\./
-      - paragraph: "/Finlands offentliga förvaltning är starkt beroende av stora amerikanska molntjänstleverantörer, så kallade hyperscalers — till exempel Amazon, Microsoft och Google\\. Sedan \\d+ har det blivit smärtsamt tydligt att maktpolitik inom geopolitiken är här för att stanna, även inom det digitala området\\. Finska och europeiska alternativ finns: UpCloud är ett konkret exempel på en högpresterande inhemsk molntjänst som den offentliga sektorn kan använda\\. Jag förespråkar uppdelning av offentlig IT-upphandling, prioritering av öppen källkod och beaktande av krisberedskap i upphandlingar\\./"
-      - paragraph: Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.
-      - list:
-        - listitem:
-          - article "Digital självständighet är inte isolering":
-            - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine. Digital självständighet är inte isolering"':
-              - /url: /sv/blog/88/digital-sjalvstandighet-vad-betyder-det/
-              - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine."'
-              - heading "Digital självständighet är inte isolering" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital självständighet betyder att Finland själv styr sina kritiska digitala system. Vad kräver medborgarinitiativet och när går det till riksdagen?
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Säkerhet":
-                - /url: /sv/kategori/sakerhet/
-            - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
-        - listitem:
-          - 'article "Digital självständighet: Finlands valfrihet"':
-            - 'link "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose. Digital självständighet: Finlands valfrihet"':
-              - /url: /sv/blog/85/digital-sjalvstandighet-happy-hacking-day/
-              - 'img "Lauri Lavanti talar på Happy Hacking Day med sitt ettåriga barn i famnen, i bakgrunden bilden: Independence is the ability to choose."'
-              - 'heading "Digital självständighet: Finlands valfrihet" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digital självständighet är förmågan att välja. Mitt tal på Happy Hacking Day: var Finland och Europa står nu och hur upphandlingar, standarder och kod hjälper."
-          - list:
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "AI":
-                - /url: /sv/kategori/artificiell-intelligens/
-            - listitem:
-              - link "Teknologi":
-                - /url: /sv/kategori/teknologi/
         - listitem:
           - article "Vem äger den offentliga förvaltningens data?":
             - link "Närbild av en datorskärm med färgstark syntaxmarkerad källkod. Vem äger den offentliga förvaltningens data?":
@@ -338,6 +116,231 @@
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
+        - listitem:
+          - article "Datacenter kan vara Finlands trumfkort i den internationella politiken":
+            - link "Närbild av servrar i ett datacenter med gröna statuslampor. Datacenter kan vara Finlands trumfkort i den internationella politiken":
+              - /url: /sv/blog/71/datacenter-finlands-trumfkort-i-internationell-politik/
+              - img "Närbild av servrar i ett datacenter med gröna statuslampor."
+              - heading "Datacenter kan vara Finlands trumfkort i den internationella politiken" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Ett läckt amerikanskt telegram avslöjade påtryckningar mot datasuveränitet. Datacenter kan bli Finlands trumfkort, om de byggs på våra egna villkor.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+        - listitem:
+          - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+            - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+              - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
+              - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
+              - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
+          - list:
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+            - listitem:
+              - link /Riksdagsvalet \d+/:
+                - /url: /sv/kategori/riksdagsvalet-2027/
+      - paragraph:
+        - link "Alla inlägg om Ekonomi":
+          - /url: /sv/kategori/ekonomi/
+    - region "Lärande":
+      - heading "Lärande" [level=2]
+      - paragraph: Finlands styrka har alltid varit dess människor och deras kunnande. I AI-eran måste bildningen förbli sömlös — från småbarnspedagogiken till arbetslivet och ända fram till pensionen — så att alla kan utveckla sin fulla potential. På så sätt växer AI:s produktivitetsvinster för hela samhället, och ingen lämnas efter.
+      - paragraph: Utbildning är inte en kostnadspost som trimmas när budgeten stramas åt. Det är central infrastruktur för hela tiden efter AI-omställningen. Nedskärningar i undervisning, bibliotek, yrkesutbildning och fortbildning betalas tillbaka tiofalt när arbetsmarknaden ändras snabbare än människor hinner lära sig nya saker.
+      - paragraph: Sömlös bildning betyder att lärandet aldrig tar slut — det förblir möjligt oavsett livssituation. AI gör den vägen oerhört mycket viktigare. Det land som håller vägen öppen för alla får tillgång till hela sitt folks potential. Det är en starkare grund än någon annan konkurrensfördel.
+      - list:
+        - listitem:
+          - article "Utbildning är kommunens viktigaste uppgift":
+            - link "Ett fotografi av Laajakallio skola. Utbildning är kommunens viktigaste uppgift":
+              - /url: /sv/blog/37/utbildning-ar-kommunens-viktigaste-uppgift/
+              - img "Ett fotografi av Laajakallio skola."
+              - heading "Utbildning är kommunens viktigaste uppgift" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Utbildning är kommunens viktigaste uppgift. Satsningar på utbildning är investeringar som syns långt in i framtiden, utan snabba vinster.
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link /Kommunalval \d+/:
+                - /url: /sv/kategori/kommunalval-2025/
+            - listitem:
+              - link "Utbildning":
+                - /url: /sv/kategori/utbildning/
+        - listitem:
+          - article /År \d+ är AI-året/:
+            - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
+              - /url: /sv/blog/47/ar-2026-ar-ai-aret/
+              - img "Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie. Klädd i svart jacka, vit skjorta och grön slips. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad."
+              - heading /År \d+ är AI-året/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI förändrar samhället — men kanske inte som du tror. De största förändringarna ser vi i privatlivet och i barnens och ungdomarnas vardag.
+          - list:
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "AI":
+                - /url: /sv/kategori/artificiell-intelligens/
+            - listitem:
+              - link "Lärande":
+                - /url: /sv/kategori/bildning/
+        - listitem:
+          - article "En kall skörd för Kyrkslätt – svaga beslut":
+            - link "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden. En kall skörd för Kyrkslätt – svaga beslut":
+              - /url: /sv/blog/38/en-kall-skord-for-kyrkslätt/
+              - img "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden."
+              - heading "En kall skörd för Kyrkslätt – svaga beslut" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Halvtidsöverläggningen innebar nedskärningar i statsandelar och samfundsskatt. Det inskränker kommunfullmäktiges handlingsutrymme avsevärt.
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Utbildning":
+                - /url: /sv/kategori/utbildning/
+            - listitem:
+              - link "Småbarnspedagogik":
+                - /url: /sv/kategori/smabarnspedagogik/
+      - paragraph:
+        - link "Alla inlägg om Lärande":
+          - /url: /sv/kategori/bildning/
+    - region "Frihet":
+      - heading "Frihet" [level=2]
+      - paragraph: Frihet är en av de viktigaste frågorna under AI-eran. Det är frågan om dina data, din kommunikation och din vardag förblir dina när merparten av infrastrukturen runt dem ägs av någon annan. Integritetsskyddet är grundfallet — men den bredare frågan är om medborgerliga rättigheter överlever en teknik som gör massövervakning nästan gratis.
+      - paragraph: "Jag har under min karriär byggt programvara i miljöer där reglerna kring data tas på allvar — reglerade branscher som finanssektorn — samt miljöer där data är själva affärsverksamheten. Den erfarenheten gör en sak uppenbar: integritet och medborgerliga rättigheter skyddar sig inte själva. De skyddas av lagar, av förordningar och av individer som brinner för frågan."
+      - paragraph: Att trygga friheten i AI-eran kräver noga avvägda eftergifter samt strikta gränser. Massövervakning, utvidgad användning av biometriska identifierare eller automatisk granskning av meddelanden är inte verktyg som bör tas i bruk lättvindigt, om alls. Varje steg som urholkar integriteten kräver vattentäta motiveringar och tydliga bevis för sin nytta — utan det finns ingen sak att försvara.
+      - list:
+        - listitem:
+          - 'article "Chat control: parlamentet handlade rätt"':
+            - 'link "Bild på en japansk skärm bakom vilken ett rum skymtar suddigt. Chat control: parlamentet handlade rätt"':
+              - /url: /sv/blog/54/chat-control-parlamentet-handlade-ratt/
+              - img "Bild på en japansk skärm bakom vilken ett rum skymtar suddigt."
+              - 'heading "Chat control: parlamentet handlade rätt" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Chat control-lagens förlängning röstades ned i Europaparlamentet. KRP:s siffror är verkliga, men parlamentet handlade ändå rätt — och här är skälet.
+          - list:
+            - listitem:
+              - link "Integritetsskydd":
+                - /url: /sv/kategori/integritetsskydd/
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+        - listitem:
+          - article "Användningen av biometriska identifierare i pass får inte utvidgas":
+            - link "Ett foto av Atte Harjanne och Lauri Lavanti. Båda bär svart jacka och skjorta. Användningen av biometriska identifierare i pass får inte utvidgas":
+              - /url: /sv/blog/48/anvandningen-av-biometriska-identifierare-i-pass-far-inte-utvidgas/
+              - img "Ett foto av Atte Harjanne och Lauri Lavanti. Båda bär svart jacka och skjorta."
+              - heading "Användningen av biometriska identifierare i pass får inte utvidgas" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: När fingeravtryck infördes i pass skapades ett nationellt biometriskt register i Finland. Nu vill regeringen öppna det för polisens bruk.
+          - list:
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
+            - listitem:
+              - link "Integritetsskydd":
+                - /url: /sv/kategori/integritetsskydd/
+            - listitem:
+              - link "Frihet":
+                - /url: /sv/kategori/frihet/
+        - listitem:
+          - article "Grundläggande rättigheter får inte rivas utan grund":
+            - link "En bild av lamporna på taket av en polisbil. Grundläggande rättigheter får inte rivas utan grund":
+              - /url: /sv/blog/45/grundlaggande-rattigheter-far-inte-rivas-utan-grund/
+              - img "En bild av lamporna på taket av en polisbil."
+              - heading "Grundläggande rättigheter får inte rivas utan grund" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Regeringen planerar att utvidga underrättelselagstiftningens metoder mot brottslighet utan individuell misstanke — ett allvarligt hot mot grundrättigheter.
+          - list:
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
+            - listitem:
+              - link "Integritetsskydd":
+                - /url: /sv/kategori/integritetsskydd/
+            - listitem:
+              - link "Frihet":
+                - /url: /sv/kategori/frihet/
+      - paragraph:
+        - link "Alla inlägg om Frihet":
+          - /url: /sv/kategori/frihet/
+    - region "Digital självständighet":
+      - heading "Digital självständighet" [level=2]
+      - paragraph: /Finland och Europa måste kontrollera sin egen digitala infrastruktur\. Det är därför jag grundade medborgarinitiativet om digital självständighet, som samlade in de \d+ \d+ underskrifter som krävs för riksdagsbehandling i juli \d+\. Med det kräver vi att Finland minskar sitt beroende av utländska leverantörer av digitala tjänster och stärker den digitala suveräniteten\./
+      - paragraph: "/Finlands offentliga förvaltning är starkt beroende av stora amerikanska molntjänstleverantörer, så kallade hyperscalers — till exempel Amazon, Microsoft och Google\\. Sedan \\d+ har det blivit smärtsamt tydligt att maktpolitik inom geopolitiken är här för att stanna, även inom det digitala området\\. Finska och europeiska alternativ finns: UpCloud är ett konkret exempel på en högpresterande inhemsk molntjänst som den offentliga sektorn kan använda\\. Jag förespråkar uppdelning av offentlig IT-upphandling, prioritering av öppen källkod och beaktande av krisberedskap i upphandlingar\\./"
+      - paragraph: Digital självständighet handlar också om dataportabilitet och att undvika inlåsning till enskilda leverantörer. Offentliga data som skapats med offentliga medel bör vara portabla och lagras på ett sätt som hindrar utomstående parter från att missbruka dem.
+      - list:
+        - listitem:
+          - article "Digital självständighet är en nödvändighet":
+            - link "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet. Digital självständighet är en nödvändighet":
+              - /url: /sv/blog/51/digital-sjalvstandighet-ar-en-nodvandighet/
+              - img "En tecknad bild av en blond kvinna som håller en bärbar dator. Den finska flaggan visas på datorskärmen. En vitskallig örn försöker snappa datorn från kvinnan. Runt bilden står det skrivet \"Digital independence\", \"Digitaalinen itsenäisyys\" och \"Digital självständighet\". Upphovsrätten till bilden tillhör medborgarinitiativet Digital självständighet."
+              - heading "Digital självständighet är en nödvändighet" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Som Rysslands granne har Finland lärt sig att vara beredd. Begreppen försörjningstrygghet och suveränitet har dock inte spridit sig till digitala tjänster.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
+        - listitem:
+          - article "Finland och finländarna riskerar att förlora kontrollen över sina egna data – och det blir dyrt":
+            - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Foto: Erkki Laine. Finland och finländarna riskerar att förlora kontrollen över sina egna data – och det blir dyrt"':
+              - /url: /sv/blog/79/finland-riskerar-att-forlora-kontrollen-over-sina-data/
+              - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Foto: Erkki Laine."'
+              - heading "Finland och finländarna riskerar att förlora kontrollen över sina egna data – och det blir dyrt" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Väljardata i Amazons moln och skattedata hos Microsoft. CLOUD Act når data var de än lagras, så Finland måste själv bestämma över sin digitala grund.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Integritetsskydd":
+                - /url: /sv/kategori/integritetsskydd/
+            - listitem:
+              - link "Säkerhet":
+                - /url: /sv/kategori/sakerhet/
+        - listitem:
+          - article "Digital självständighet byggs steg för steg":
+            - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Foto: Erkki Laine. Digital självständighet byggs steg för steg"':
+              - /url: /sv/blog/53/digital-sjalvstandighet-byggs-steg-for-steg/
+              - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Foto: Erkki Laine."'
+              - heading "Digital självständighet byggs steg för steg" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Digital självständighet och försörjningstrygghet byggs i varje upphandlingsbeslut. Helsingfors valde finska UpCloud som plattform för kärnsystemet.
+          - list:
+            - listitem:
+              - link "Digital självständighet":
+                - /url: /sv/kategori/digital-sjalvstandighet/
+            - listitem:
+              - link "Digitalisering":
+                - /url: /sv/kategori/digitalisering/
+            - listitem:
+              - link "Teknologi":
+                - /url: /sv/kategori/teknologi/
       - paragraph:
         - link "Alla inlägg om Digital självständighet":
           - /url: /sv/kategori/digital-sjalvstandighet/
@@ -348,23 +351,38 @@
       - paragraph: "Kyrkslätt är en tvåspråkig kustkommun som växer snabbt i kanten av Helsingforsregionen. Den har gott om verkliga tillgångar — strandlinje, natur, en blandad gemenskap — och verkliga påfrestningar: en intäktsbas som har svårt att hålla jämna steg med behoven, och en järnväg som är avgörande för regionen. Lokalpolitiken här är inte småpolitik."
       - list:
         - listitem:
-          - article "Programmet för gång och cykling är kommunens långsiktiga plan":
-            - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
-              - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
-              - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
-              - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
+          - article "I kommunalvalet avgörs vardagsfrågor":
+            - link "Vita utomhustrappor som leder till en väg som går till ett hus. I kommunalvalet avgörs vardagsfrågor":
+              - /url: /sv/blog/33/kommunalvalet-avgors-vardagsfragor/
+              - img "Vita utomhustrappor som leder till en väg som går till ett hus."
+              - heading "I kommunalvalet avgörs vardagsfrågor" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
+            - paragraph: "Kommunalvalet kan verka komplicerat, men handlar om vardagsfrågor: skolor, daghem och kommunikationer. Du har makt att påverka."
           - list:
             - listitem:
               - link "Kyrkslätt":
                 - /url: /sv/kategori/kyrkslatt/
             - listitem:
-              - link "Trafik":
-                - /url: /sv/kategori/trafik/
+              - link /Kommunalval \d+/:
+                - /url: /sv/kategori/kommunalval-2025/
+        - listitem:
+          - article "Jag röstade för Västbanan":
+            - link /En visualisering av Länsirata Oy om hur Veikkola järnvägsstation skulle kunna se ut\. Bilden visar spår, plattformar och en gångbro\. Tagen från https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# den 8 december \d+\. Jag röstade för Västbanan/:
+              - /url: /sv/blog/46/jag-rostade-for-vasternabanan/
+              - img /En visualisering av Länsirata Oy om hur Veikkola järnvägsstation skulle kunna se ut\. Bilden visar spår, plattformar och en gångbro\. Tagen från https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# den 8 december \d+\./
+              - heading "Jag röstade för Västbanan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Jag röstade för att Kyrkslätt ansluter sig till Västbanan. Beslutet avgör om norra Kyrkslätt får en närtågsstation eller inte.
+          - list:
             - listitem:
-              - link "Planläggning":
-                - /url: /sv/kategori/planlaggning/
+              - link "Infrastruktur":
+                - /url: /sv/kategori/infrastruktur/
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Västbanan":
+                - /url: /sv/kategori/vastbanan/
         - listitem:
           - article "Det är ett misstag att höja priserna på HRT:s resebiljetter":
             - 'link "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta. Det är ett misstag att höja priserna på HRT:s resebiljetter"':
@@ -383,24 +401,6 @@
             - listitem:
               - link "Västra Nyland":
                 - /url: /sv/kategori/vastra-nyland/
-        - listitem:
-          - article "Flaggan hissades. Vad gör Kyrkslätt nästa?":
-            - link /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\. Flaggan hissades\. Vad gör Kyrkslätt nästa\?/:
-              - /url: /sv/blog/64/flaggan-hissades-vad-gor-kyrkslatt-nasta/
-              - img /Regnbågsflaggan vajar vid Kyrkslätts kommunhus i juni \d+\./
-              - heading "Flaggan hissades. Vad gör Kyrkslätt nästa?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kyrkslätt hissade regnbågsflaggan första gången \d+\.\d+\.\d+\. Flaggningen är viktig, men jämlikhet kräver också konkreta åtgärder i höstens budget\./
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Jämlikhet":
-                - /url: /sv/kategori/jamlikhet/
-            - listitem:
-              - link "Frihet":
-                - /url: /sv/kategori/frihet/
       - paragraph:
         - link "Alla inlägg om Kyrkslätt":
           - /url: /sv/kategori/kyrkslatt/

@@ -39,11 +39,11 @@
     - paragraph: "I write about the economy through what I have done for over a decade: building software and software teams across different industries. AI is changing the foundations of work, competitiveness, and public services. Finland can be a pioneer here, but only if public investment is directed at domestic expertise, with a real understanding of what is being done."
     - list:
       - listitem:
-        - link "Finland Can Turn Electrification Into a Competitive Edge":
-          - /url: /en/blog/65/finland-can-turn-electrification-into-a-competitive-edge/
+        - link "Who owns public sector data?":
+          - /url: /en/blog/80/who-owns-public-sector-data/
       - listitem:
-        - link "Greens – The True Defenders of the Market Economy":
-          - /url: /en/blog/62/greens-the-true-defenders-of-the-market-economy/
+        - link "AI changes what developers get paid for":
+          - /url: /en/blog/57/ai-changes-what-developers-get-paid-for/
     - text: Pillar two
     - heading "Making education seamless" [level=2]
     - paragraph: Finland’s strength has always been its people and their expertise. In the age of AI, education has to stay seamless — from early childhood education to working life and all the way to retirement — so that everyone can develop their potential to the fullest. That way, AI’s productivity gains compound for the whole of society, and no one gets left behind.
@@ -63,11 +63,11 @@
     - paragraph: Education is not a line item to cut first when the budget tightens. It is central infrastructure for the entire post-AI era. Savings on teaching, libraries, vocational training, and studies get paid back tenfold once labour markets change faster than people can learn new things.
     - list:
       - listitem:
-        - link "AI helps secure municipal services, but it is not free":
-          - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
-      - listitem:
         - link "Education is the municipality's most important task":
           - /url: /en/blog/37/education-is-the-municipalitys-most-important-task/
+      - listitem:
+        - link "AI helps secure municipal services, but it is not free":
+          - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
     - text: Pillar three
     - heading "Making freedom secure" [level=2]
     - paragraph: Freedom is one of the most important questions of the age of AI. It’s a question of whether your data, your communications, and your everyday life remain your own, when most of the infrastructure they live on is owned by someone else. Privacy protection is a fundamental right — but the bigger question is whether fundamental rights hold up while we develop technology that makes mass surveillance almost free.

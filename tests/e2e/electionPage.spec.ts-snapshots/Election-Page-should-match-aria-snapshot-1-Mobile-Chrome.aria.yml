@@ -50,11 +50,11 @@
     - paragraph: Eduskunta päättää hankinnoista, datainfrastruktuurista ja työelämän pelisäännöistä. Näihin päätöksiin tarvitaan ihmisiä, jotka tuntevat teknologian käytännössä — muuten ostamme ratkaisuja ymmärtämättä, mitä ostamme.
     - list:
       - listitem:
-        - link "Suomi voi tehdä sähköistymisestä kilpailuedun":
-          - /url: /fi/blog/65/suomi-voi-tehda-sahkoistymisesta-kilpailuedun/
+        - link "Kuka omistaa julkishallinnon datan?":
+          - /url: /fi/blog/80/kuka-omistaa-julkishallinnon-datan/
       - listitem:
-        - link "Vihreät – Markkinatalouden aito puolustaja":
-          - /url: /fi/blog/62/vihreat-markkinatalouden-aito-puolustaja/
+        - link "Tekoäly muuttaa kehittäjän palkan perustan":
+          - /url: /fi/blog/57/tekoaly-ei-korvaa-koodareita-vaan-muuttaa-sen-mista-heille-maksetaan/
     - text: Pilari kaksi
     - heading "Miten sivistys pysyy kaikkien saatavilla?" [level=2]
     - paragraph: Sivistys pysyy kaikkien saatavilla, kun osaamiseen voi tarttua elämän jokaisessa vaiheessa — varhaiskasvatuksesta ammatilliseen koulutukseen ja korkeakouluihin. Tekoälyn aikana koulutus on infrastruktuuria, ei kuluerä.
@@ -71,11 +71,11 @@
     - paragraph: "Korostan erityisesti kirjastojen roolia: ne tarjoavat ilmaista tietoa ja osaamista keräämättä käyttäjädataa. Se tekee niistä tekoälyn aikakaudella tärkeitä tasa-arvon turvaajia."
     - list:
       - listitem:
-        - link "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
-          - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
-      - listitem:
         - link "Koulutus on kunnan tärkein tehtävä":
           - /url: /fi/blog/37/koulutus-on-kunnan-tarkein-tehtava/
+      - listitem:
+        - link "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
+          - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
     - text: Pilari kolme
     - heading "Miten vapaus turvataan tekoälyn aikana?" [level=2]
     - paragraph: Vapaus turvataan pitämällä perusoikeudet kaiken lainsäädännön lähtökohtana. Tekoäly tekee massavalvonnasta teknisesti helppoa ja halpaa — juuri siksi yksityisyydensuojasta on pidettävä kiinni erityisen tarkasti.

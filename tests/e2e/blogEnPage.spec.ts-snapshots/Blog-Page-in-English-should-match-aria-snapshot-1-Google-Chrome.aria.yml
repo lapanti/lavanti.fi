@@ -36,146 +36,23 @@
       - paragraph: The more powerful AI becomes, the more important privacy protections are. AI systems are data-hungry; without strong data protection rules, they become surveillance infrastructure. The EU AI Act is a step in the right direction, but implementation must be genuine — not just a formality.
       - list:
         - listitem:
-          - article "Sweden threatens to pull ahead in the AI start-up race":
-            - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
-              - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
-              - img "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits."
-              - heading "Sweden threatens to pull ahead in the AI start-up race" [level=3]
+          - article "AI cannot do everything":
+            - link "An illustrative image for artificial intelligence, depicting a machine resembling a human head with various electronic currents flowing in and out of it. AI cannot do everything":
+              - /url: /en/blog/44/ai-cannot-do-everything/
+              - img "An illustrative image for artificial intelligence, depicting a machine resembling a human head with various electronic currents flowing in and out of it."
+              - heading "AI cannot do everything" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "Finnish AI start-ups stall at funding while Sweden pulls ahead. Two reforms: pension funds in venture capital and a Saminvest-style fund of funds."
+            - paragraph: AI has been presented as a solution for improving public services. It may have a role, but cannot replace people or clear strategic planning.
           - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Entrepreneurship":
-                - /url: /en/category/entrepreneurship/
-        - listitem:
-          - 'article "Council initiative: AI guidance for job seekers"':
-            - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
-              - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
-              - 'img "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0."'
-              - 'heading "Council initiative: AI guidance for job seekers" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi could offer job seekers free guidance on using AI tools. The initiative proposes a fixed-term pilot for the whole employment area.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Council motion":
-                - /url: /en/category/council-motion/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-        - listitem:
-          - article "Is AI taking the programmer's job?":
-            - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
-              - /url: /en/blog/87/will-ai-take-programmers-jobs/
-              - img "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day"
-              - heading "Is AI taking the programmer's job?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "AI and work through a developer's eyes: is AI taking the programmer's job, what happens to juniors, and how skills and social security can keep pace."
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Education":
-                - /url: /en/category/education/
-      - paragraph:
-        - link "All posts about AI":
-          - /url: /en/category/artificial-intelligence/
-    - region "Economy":
-      - heading "Economy" [level=2]
-      - paragraph: Finland’s economy needs to keep working through the AI transition. That means new companies, new jobs, and public services that actually use the technology rather than just buy it in from outside. Without serious technology competence in parliament, decisions about AI procurement, data infrastructure, and labour policy are made by people who don’t know what they are buying.
-      - paragraph: "I write about the economy through the lens of what I have done for over a decade: built software and software teams across different industries. AI changes the basis of work, competitiveness and public services. Finland can lead this shift, but only if public investment is targeted at domestic capability in a way that actually understands what is being done."
-      - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
-      - list:
-        - listitem:
-          - article "A pension index freeze would share the burden fairly":
-            - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
-              - /url: /en/blog/97/pension-funding-and-the-index-freeze/
-              - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
-              - heading "A pension index freeze would share the burden fairly" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
-          - list:
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-            - listitem:
-              - link /Parliamentary elections \d+/:
-                - /url: /en/category/parliamentary-elections-2027/
-        - listitem:
-          - article "Where does the public sector's money come from and where does it go?":
-            - link "The columned facade of Parliament House in Helsinki, where the public sector budget is decided Where does the public sector's money come from and where does it go?":
-              - /url: /en/blog/96/public-sector-where-the-money-comes-from-and-where-it-goes/
-              - img "The columned facade of Parliament House in Helsinki, where the public sector budget is decided"
-              - heading "Where does the public sector's money come from and where does it go?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /The public sector collects an estimated €160bn in \d+ and spends €174bn\. See the charts for where the money comes from and where it goes\./
-          - list:
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-        - listitem:
-          - article "Microsoft's data centre is already being built in Kirkkonummi":
-            - 'link "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky. Microsoft''s data centre is already being built in Kirkkonummi"':
-              - /url: /en/blog/93/microsoft-data-centre-kirkkonummi/
-              - 'img "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky."'
-              - heading "Microsoft's data centre is already being built in Kirkkonummi" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Microsoft data centre in Kirkkonummi, Espoo and Vihti brings a building site and may bring district heating. Next big power users need the same rules.
-          - list:
-            - listitem:
-              - link "Infrastructure":
-                - /url: /en/category/infrastructure/
-            - listitem:
-              - link "Economy":
-                - /url: /en/category/economy/
-            - listitem:
-              - link "Nature":
-                - /url: /en/category/nature/
-      - paragraph:
-        - link "All posts about Economy":
-          - /url: /en/category/economy/
-    - region "Enlightenment":
-      - heading "Enlightenment" [level=2]
-      - paragraph: Finland's strength has always been its people and their skills. In the AI era, enlightenment has to stay seamless — from early childhood education through working life and all the way to retirement — so that everyone can develop their potential to the full. That way, AI's productivity gains compound for the whole of society, and no one gets left behind.
-      - paragraph: Education is not a cost item to be trimmed when the budget tightens. It is central infrastructure for the whole post-AI era. Cuts to teaching, to libraries, to vocational training and to continuing education are paid back tenfold when the labour market shifts faster than people can learn new things.
-      - paragraph: Seamless enlightenment means learning never stops — it stays possible whatever stage of life you are in. AI makes that path vastly more important. The country that keeps the path open for everyone gets the full potential of its people. That is a stronger foundation than any other competitive advantage.
-      - list:
-        - listitem:
-          - article "AI helps secure municipal services, but it is not free":
-            - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
-              - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
-              - img "Lauri Lavanti stands in a floral shirt against a white background."
-              - heading "AI helps secure municipal services, but it is not free" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: In Konnevesi, AI cut processing time for road grants from two months to days. Kirkkonummi is too small to act alone — but collaboration makes change possible.
-          - list:
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
             - listitem:
               - link "Digitalisation":
                 - /url: /en/category/digitalisation/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Enlightenment":
+                - /url: /en/category/enlightenment/
         - listitem:
           - article "AI changes what developers get paid for":
             - link "A computer screen showing code. AI changes what developers get paid for":
@@ -195,131 +72,32 @@
               - link "Enlightenment":
                 - /url: /en/category/enlightenment/
         - listitem:
-          - article /\d+ is the year of AI/:
-            - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
-              - /url: /en/blog/47/2026-is-the-year-of-ai/
-              - img "Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie. Wearing a black jacket, white shirt and green tie. In the background, the light corridor of the main building of the University of Helsinki."
-              - heading /\d+ is the year of AI/ [level=3]
+          - article "AI helps secure municipal services, but it is not free":
+            - link "Lauri Lavanti stands in a floral shirt against a white background. AI helps secure municipal services, but it is not free":
+              - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
+              - img "Lauri Lavanti stands in a floral shirt against a white background."
+              - heading "AI helps secure municipal services, but it is not free" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: AI is changing society — but perhaps not as you imagine. The biggest changes will be in private life and in the everyday lives of children.
+            - paragraph: In Konnevesi, AI cut processing time for road grants from two months to days. Kirkkonummi is too small to act alone — but collaboration makes change possible.
           - list:
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
             - listitem:
               - link "Digitalisation":
                 - /url: /en/category/digitalisation/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Enlightenment":
-                - /url: /en/category/enlightenment/
       - paragraph:
-        - link "All posts about Enlightenment":
-          - /url: /en/category/enlightenment/
-    - region "Freedom":
-      - heading "Freedom" [level=2]
-      - paragraph: Freedom is one of the most important questions of the AI era. It is whether your data, your communications and your ordinary life remain yours when most of the infrastructure around them is owned by someone else. Privacy is the basic case — but the broader question is whether civil liberties survive technology that makes mass surveillance almost free.
-      - paragraph: "I have spent my career building software in environments where the rules around data were taken seriously — regulated fields like finance — as well as environments where data is the business itself. That experience makes one thing obvious: privacy and civil liberties don't protect themselves. They are protected by laws, by regulations, and by individuals who care about it passionately."
-      - paragraph: Securing freedom in the AI era requires carefully weighed trade-offs and strict limits. Mass surveillance, expanding the use of biometric identifiers, or automatic scanning of messages are not tools to be adopted lightly, if at all. Every step that erodes privacy needs airtight justification and clear evidence of benefit — without that, it has no case.
+        - link "All posts about AI":
+          - /url: /en/category/artificial-intelligence/
+    - region "Economy":
+      - heading "Economy" [level=2]
+      - paragraph: Finland’s economy needs to keep working through the AI transition. That means new companies, new jobs, and public services that actually use the technology rather than just buy it in from outside. Without serious technology competence in parliament, decisions about AI procurement, data infrastructure, and labour policy are made by people who don’t know what they are buying.
+      - paragraph: "I write about the economy through the lens of what I have done for over a decade: built software and software teams across different industries. AI changes the basis of work, competitiveness and public services. Finland can lead this shift, but only if public investment is targeted at domestic capability in a way that actually understands what is being done."
+      - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
-        - listitem:
-          - article "The Central Forest is the nature-wise municipality's first test":
-            - link "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. The Central Forest is the nature-wise municipality's first test":
-              - /url: /en/blog/91/central-forest-is-the-first-test-for-a-nature-wise-municipality/
-              - img "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background."
-              - heading "The Central Forest is the nature-wise municipality's first test" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: The Central Forest plan would bring a three-metre-wide paved and lit route from Masala to the municipal centre. A nature-wise municipality keeps its paths.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Nature":
-                - /url: /en/category/nature/
-            - listitem:
-              - link "Urban planning":
-                - /url: /en/category/urban-planning/
-        - listitem:
-          - article "Kirkkonummi bypassed residents in planning forest logging":
-            - link "A two-part portrait with Pinja Pekkarniemi on the left in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. Kirkkonummi bypassed residents in planning forest logging":
-              - /url: /en/blog/78/forest-logging-decided-without-consulting-residents/
-              - img "A two-part portrait with Pinja Pekkarniemi on the left in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background."
-              - heading "Kirkkonummi bypassed residents in planning forest logging" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi approved its forest management programme without consulting residents and without an advance assessment. The municipal strategy promises otherwise.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Nature":
-                - /url: /en/category/nature/
-            - listitem:
-              - link "Urban planning":
-                - /url: /en/category/urban-planning/
-        - listitem:
-          - article "David's Sling Is Proof That Europe Has Failed":
-            - 'link "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. David''s Sling Is Proof That Europe Has Failed"':
-              - /url: /en/blog/68/davids-sling-europes-failure/
-              - 'img "Lauri Lavanti gazing thoughtfully upwards in front of a board-formed concrete wall, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
-              - heading "David's Sling Is Proof That Europe Has Failed" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: David's Sling was the right procurement for Finland, but it reveals the failure of Europe's defence industry. A market-green view on defence procurement.
-          - list:
-            - listitem:
-              - link "Security":
-                - /url: /en/category/security/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-            - listitem:
-              - link "Freedom":
-                - /url: /en/category/freedom/
-      - paragraph:
-        - link "All posts about Freedom":
-          - /url: /en/category/freedom/
-    - region "Digital independence":
-      - heading "Digital independence" [level=2]
-      - paragraph: /Finland and Europe must control their own digital infrastructure\. That is why I founded the digital independence citizens' initiative, which collected the \d+,\d+ signatures required for parliamentary review in July \d+\. With it, we demand that Finland reduce its dependency on foreign digital service providers and strengthen digital sovereignty\./
-      - paragraph: "/Finnish public administration is heavily dependent on large US cloud providers, so-called hyperscalers — for example Amazon, Microsoft, and Google\\. Since \\d+ it has become painfully clear that power politics in geopolitics is here to stay, including in the digital arena\\. Finnish and European alternatives exist: UpCloud is a concrete example of a high-performance domestic cloud provider that the public sector can use\\. I advocate for breaking up public IT procurement, preferring open source, and factoring in crisis resilience in procurement decisions\\./"
-      - paragraph: Digital independence is also about data portability and avoiding lock-in to individual vendors. Public data generated with public money should be portable and stored in a way that outside parties cannot misuse it.
-      - list:
-        - listitem:
-          - article "Digital independence is not isolation":
-            - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine. Digital independence is not isolation":
-              - /url: /en/blog/88/digital-independence-what-it-means/
-              - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine."
-              - heading "Digital independence is not isolation" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Digital independence means Finland controls its own critical systems. What does the citizens' initiative demand, and when does it reach Parliament?
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "Security":
-                - /url: /en/category/security/
-            - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
-        - listitem:
-          - 'article "Digital independence: Finland''s ability to choose"':
-            - 'link "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose. Digital independence: Finland''s ability to choose"':
-              - /url: /en/blog/85/digital-independence-happy-hacking-day/
-              - 'img "Lauri Lavanti speaking at Happy Hacking Day with his one-year-old in his lap, the slide behind him reading: Independence is the ability to choose."'
-              - 'heading "Digital independence: Finland''s ability to choose" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digital independence is the ability to choose. My talk at Happy Hacking Day: where Finland and Europe stand now, and how procurement, standards and code help."
-          - list:
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "AI":
-                - /url: /en/category/artificial-intelligence/
-            - listitem:
-              - link "Technology":
-                - /url: /en/category/technology/
         - listitem:
           - article "Who owns public sector data?":
             - link "Close-up of a computer screen showing colorful, syntax-highlighted source code. Who owns public sector data?":
@@ -338,6 +116,231 @@
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
+        - listitem:
+          - article "Data Centres Can Be Finland's Ace in International Politics":
+            - link "Close-up of data centre servers with rows of green status lights. Data Centres Can Be Finland's Ace in International Politics":
+              - /url: /en/blog/71/data-centres-finlands-ace-in-international-politics/
+              - img "Close-up of data centre servers with rows of green status lights."
+              - heading "Data Centres Can Be Finland's Ace in International Politics" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: A leaked US cable exposed lobbying against data sovereignty. Data centres can be Finland’s ace in international politics, if we build them on our own terms.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "National politics":
+                - /url: /en/category/national-politics/
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+        - listitem:
+          - article "A pension index freeze would share the burden fairly":
+            - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
+              - /url: /en/blog/97/pension-funding-and-the-index-freeze/
+              - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
+              - heading "A pension index freeze would share the burden fairly" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
+          - list:
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "National politics":
+                - /url: /en/category/national-politics/
+            - listitem:
+              - link /Parliamentary elections \d+/:
+                - /url: /en/category/parliamentary-elections-2027/
+      - paragraph:
+        - link "All posts about Economy":
+          - /url: /en/category/economy/
+    - region "Enlightenment":
+      - heading "Enlightenment" [level=2]
+      - paragraph: Finland's strength has always been its people and their skills. In the AI era, enlightenment has to stay seamless — from early childhood education through working life and all the way to retirement — so that everyone can develop their potential to the full. That way, AI's productivity gains compound for the whole of society, and no one gets left behind.
+      - paragraph: Education is not a cost item to be trimmed when the budget tightens. It is central infrastructure for the whole post-AI era. Cuts to teaching, to libraries, to vocational training and to continuing education are paid back tenfold when the labour market shifts faster than people can learn new things.
+      - paragraph: Seamless enlightenment means learning never stops — it stays possible whatever stage of life you are in. AI makes that path vastly more important. The country that keeps the path open for everyone gets the full potential of its people. That is a stronger foundation than any other competitive advantage.
+      - list:
+        - listitem:
+          - article "Education is the municipality's most important task":
+            - link "A photograph of Laajakallio school. Education is the municipality's most important task":
+              - /url: /en/blog/37/education-is-the-municipalitys-most-important-task/
+              - img "A photograph of Laajakallio school."
+              - heading "Education is the municipality's most important task" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Education is the municipality's most important task. Investment in education pays off far into the future — there are no quick wins.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link /Municipal elections \d+/:
+                - /url: /en/category/municipal-elections-2025/
+            - listitem:
+              - link "Education":
+                - /url: /en/category/education/
+        - listitem:
+          - article /\d+ is the year of AI/:
+            - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
+              - /url: /en/blog/47/2026-is-the-year-of-ai/
+              - img "Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie. Wearing a black jacket, white shirt and green tie. In the background, the light corridor of the main building of the University of Helsinki."
+              - heading /\d+ is the year of AI/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: AI is changing society — but perhaps not as you imagine. The biggest changes will be in private life and in the everyday lives of children.
+          - list:
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "AI":
+                - /url: /en/category/artificial-intelligence/
+            - listitem:
+              - link "Enlightenment":
+                - /url: /en/category/enlightenment/
+        - listitem:
+          - article "A cold harvest for Kirkkonummi — a weak budget":
+            - link "Kirkkonummi's town centre from a high vantage point, with the sun low in the background. A cold harvest for Kirkkonummi — a weak budget":
+              - /url: /en/blog/38/a-cold-harvest-for-kirkkonummi/
+              - img "Kirkkonummi's town centre from a high vantage point, with the sun low in the background."
+              - heading "A cold harvest for Kirkkonummi — a weak budget" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: The government's mid-term session cut state subsidies and corporate tax. This significantly narrows the room for manoeuvre for local councils.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Education":
+                - /url: /en/category/education/
+            - listitem:
+              - link "Early childhood education":
+                - /url: /en/category/early-childhood-education/
+      - paragraph:
+        - link "All posts about Enlightenment":
+          - /url: /en/category/enlightenment/
+    - region "Freedom":
+      - heading "Freedom" [level=2]
+      - paragraph: Freedom is one of the most important questions of the AI era. It is whether your data, your communications and your ordinary life remain yours when most of the infrastructure around them is owned by someone else. Privacy is the basic case — but the broader question is whether civil liberties survive technology that makes mass surveillance almost free.
+      - paragraph: "I have spent my career building software in environments where the rules around data were taken seriously — regulated fields like finance — as well as environments where data is the business itself. That experience makes one thing obvious: privacy and civil liberties don't protect themselves. They are protected by laws, by regulations, and by individuals who care about it passionately."
+      - paragraph: Securing freedom in the AI era requires carefully weighed trade-offs and strict limits. Mass surveillance, expanding the use of biometric identifiers, or automatic scanning of messages are not tools to be adopted lightly, if at all. Every step that erodes privacy needs airtight justification and clear evidence of benefit — without that, it has no case.
+      - list:
+        - listitem:
+          - 'article "Chat control: parliament was right"':
+            - 'link "A Japanese-style screen behind which a room is visible in soft focus. Chat control: parliament was right"':
+              - /url: /en/blog/54/chat-control-parliament-was-right/
+              - img "A Japanese-style screen behind which a room is visible in soft focus."
+              - 'heading "Chat control: parliament was right" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: The European Parliament rejected the extension of the chat control law. The police statistics are real, but parliament was still right — here is why.
+          - list:
+            - listitem:
+              - link "Privacy":
+                - /url: /en/category/privacy/
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+        - listitem:
+          - article "The use of biometric identifiers in passports must not be expanded":
+            - link "A photo of Atte Harjanne and Lauri Lavanti. Both are wearing a black jacket and shirt. The use of biometric identifiers in passports must not be expanded":
+              - /url: /en/blog/48/the-use-of-biometric-identifiers-in-passports-must-not-be-expanded/
+              - img "A photo of Atte Harjanne and Lauri Lavanti. Both are wearing a black jacket and shirt."
+              - heading "The use of biometric identifiers in passports must not be expanded" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: When fingerprints were added to passports, Finland created a national biometric register. Now the government wants to open it to police use.
+          - list:
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
+            - listitem:
+              - link "Privacy":
+                - /url: /en/category/privacy/
+            - listitem:
+              - link "Freedom":
+                - /url: /en/category/freedom/
+        - listitem:
+          - article "Fundamental rights must not be dismantled without justification":
+            - link "An image of the lights on the roof of a police car. Fundamental rights must not be dismantled without justification":
+              - /url: /en/blog/45/fundamental-rights-must-not-be-dismantled-without-justification/
+              - img "An image of the lights on the roof of a police car."
+              - heading "Fundamental rights must not be dismantled without justification" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: The government plans to extend intelligence methods to fight crime without individual suspicion — a serious threat to fundamental rights.
+          - list:
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
+            - listitem:
+              - link "Privacy":
+                - /url: /en/category/privacy/
+            - listitem:
+              - link "Freedom":
+                - /url: /en/category/freedom/
+      - paragraph:
+        - link "All posts about Freedom":
+          - /url: /en/category/freedom/
+    - region "Digital independence":
+      - heading "Digital independence" [level=2]
+      - paragraph: /Finland and Europe must control their own digital infrastructure\. That is why I founded the digital independence citizens' initiative, which collected the \d+,\d+ signatures required for parliamentary review in July \d+\. With it, we demand that Finland reduce its dependency on foreign digital service providers and strengthen digital sovereignty\./
+      - paragraph: "/Finnish public administration is heavily dependent on large US cloud providers, so-called hyperscalers — for example Amazon, Microsoft, and Google\\. Since \\d+ it has become painfully clear that power politics in geopolitics is here to stay, including in the digital arena\\. Finnish and European alternatives exist: UpCloud is a concrete example of a high-performance domestic cloud provider that the public sector can use\\. I advocate for breaking up public IT procurement, preferring open source, and factoring in crisis resilience in procurement decisions\\./"
+      - paragraph: Digital independence is also about data portability and avoiding lock-in to individual vendors. Public data generated with public money should be portable and stored in a way that outside parties cannot misuse it.
+      - list:
+        - listitem:
+          - article "Digital independence is a necessity":
+            - link "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative. Digital independence is a necessity":
+              - /url: /en/blog/51/digital-independence-is-a-necessity/
+              - img "A cartoon image showing a blonde woman holding a laptop computer. The Finnish flag is displayed on the computer screen. A bald eagle is attempting to snatch the computer from the woman. The image is surrounded by text that reads 'Digital independence', 'Digitaalinen itsenäisyys' and 'Digital självständighet'. Copyright for the image belongs to the Digital Independence citizens' initiative."
+              - heading "Digital independence is a necessity" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Finland's digital services depend on US platforms. As the US becomes unreliable, digital sovereignty is no longer optional — it is a necessity.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Security":
+                - /url: /en/category/security/
+        - listitem:
+          - article "Finland and Finns Risk Losing Control of Their Own Data – and It Will Cost Dearly":
+            - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. Photo by Erkki Laine. Finland and Finns Risk Losing Control of Their Own Data – and It Will Cost Dearly":
+              - /url: /en/blog/79/finland-risks-losing-control-of-its-own-data/
+              - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. Photo by Erkki Laine."
+              - heading "Finland and Finns Risk Losing Control of Their Own Data – and It Will Cost Dearly" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Voter data in Amazon's cloud, tax data with Microsoft. The CLOUD Act reaches data wherever it is stored, so Finland must decide on its own digital foundation.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Privacy":
+                - /url: /en/category/privacy/
+            - listitem:
+              - link "Security":
+                - /url: /en/category/security/
+        - listitem:
+          - article "Digital independence is built one step at a time":
+            - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. Photo by Erkki Laine. Digital independence is built one step at a time":
+              - /url: /en/blog/53/digital-independence-is-built-one-step-at-a-time/
+              - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. Photo by Erkki Laine."
+              - heading "Digital independence is built one step at a time" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Digital independence and resilience are built in every procurement decision. Helsinki chose Finnish UpCloud as the platform for its core public services system.
+          - list:
+            - listitem:
+              - link "Digital independence":
+                - /url: /en/category/digital-independence/
+            - listitem:
+              - link "Digitalisation":
+                - /url: /en/category/digitalisation/
+            - listitem:
+              - link "Technology":
+                - /url: /en/category/technology/
       - paragraph:
         - link "All posts about Digital independence":
           - /url: /en/category/digital-independence/
@@ -348,23 +351,38 @@
       - paragraph: "Kirkkonummi is a bilingual, coastal municipality growing fast at the edge of the Helsinki region. It has plenty of real assets — shoreline, nature, a mixed community — and real pressures: a revenue base that struggles to keep up with demand, and a rail line that is critical to the region. Local politics here is not small politics."
       - list:
         - listitem:
-          - article "The walking and cycling programme is the municipality's long-term plan":
-            - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
-              - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
-              - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
-              - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
+          - article "Municipal elections decide everyday matters":
+            - link "White outdoor steps leading to a path that goes to a house. Municipal elections decide everyday matters":
+              - /url: /en/blog/33/municipal-elections-decide-everyday-matters/
+              - img "White outdoor steps leading to a path that goes to a house."
+              - heading "Municipal elections decide everyday matters" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
+            - paragraph: "Municipal elections may seem complex, but they decide everyday matters: schools, daycare and transport connections. You have the power to influence them."
           - list:
             - listitem:
               - link "Kirkkonummi":
                 - /url: /en/category/kirkkonummi/
             - listitem:
-              - link "Transport":
-                - /url: /en/category/transportation/
+              - link /Municipal elections \d+/:
+                - /url: /en/category/municipal-elections-2025/
+        - listitem:
+          - article "I voted for the Western Rail Link":
+            - link /A visualisation by Länsirata Oy of what the Veikkola railway station could look like\. The image shows tracks, platforms and a pedestrian overpass\. Taken from https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# on 8 December \d+\. I voted for the Western Rail Link/:
+              - /url: /en/blog/46/i-voted-for-the-western-rail-link/
+              - img /A visualisation by Länsirata Oy of what the Veikkola railway station could look like\. The image shows tracks, platforms and a pedestrian overpass\. Taken from https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# on 8 December \d+\./
+              - heading "I voted for the Western Rail Link" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: I voted for Kirkkonummi to join the Western Rail Link. The decision determines whether Northern Kirkkonummi gets a commuter rail station.
+          - list:
             - listitem:
-              - link "Urban planning":
-                - /url: /en/category/urban-planning/
+              - link "Infrastructure":
+                - /url: /en/category/infrastructure/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Western railway":
+                - /url: /en/category/west-railway/
         - listitem:
           - article "Raising HSL ticket prices is a mistake":
             - 'link "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt. Raising HSL ticket prices is a mistake"':
@@ -383,24 +401,6 @@
             - listitem:
               - link "Western Uusimaa":
                 - /url: /en/category/western-uusimaa/
-        - listitem:
-          - article "The flag is up. What does Kirkkonummi do next?":
-            - link /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\. The flag is up\. What does Kirkkonummi do next\?/:
-              - /url: /en/blog/64/the-flag-is-up-what-does-kirkkonummi-do-next/
-              - img /Rainbow flag flying at the Kirkkonummi municipal hall in June \d+\./
-              - heading "The flag is up. What does Kirkkonummi do next?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kirkkonummi raised the Pride flag for the first time on \d+ June \d+\. The flag matters, but equality also demands concrete action in the autumn budget\./
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Equality":
-                - /url: /en/category/equality-and-non-discrimination/
-            - listitem:
-              - link "Freedom":
-                - /url: /en/category/freedom/
       - paragraph:
         - link "All posts about Kirkkonummi":
           - /url: /en/category/kirkkonummi/

@@ -50,11 +50,11 @@
     - paragraph: Parliament decides on procurement, data infrastructure, and the rules of working life. Those decisions need people who know the technology in practice — otherwise we buy solutions without understanding what we are buying.
     - list:
       - listitem:
-        - link "Finland Can Turn Electrification Into a Competitive Edge":
-          - /url: /en/blog/65/finland-can-turn-electrification-into-a-competitive-edge/
+        - link "Who owns public sector data?":
+          - /url: /en/blog/80/who-owns-public-sector-data/
       - listitem:
-        - link "Greens – The True Defenders of the Market Economy":
-          - /url: /en/blog/62/greens-the-true-defenders-of-the-market-economy/
+        - link "AI changes what developers get paid for":
+          - /url: /en/blog/57/ai-changes-what-developers-get-paid-for/
     - text: Pillar two
     - heading "How does education stay available to everyone?" [level=2]
     - paragraph: Education stays available to everyone when skills can be built at every stage of life — from early childhood education to vocational training and universities. In the age of AI, education is infrastructure, not a line item.
@@ -71,11 +71,11 @@
     - paragraph: "I especially emphasise the role of libraries: they offer free knowledge and skills without harvesting user data. That makes them essential guardians of equality in the age of AI."
     - list:
       - listitem:
-        - link "AI helps secure municipal services, but it is not free":
-          - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
-      - listitem:
         - link "Education is the municipality's most important task":
           - /url: /en/blog/37/education-is-the-municipalitys-most-important-task/
+      - listitem:
+        - link "AI helps secure municipal services, but it is not free":
+          - /url: /en/blog/60/ai-helps-secure-municipal-services-but-it-isnt-free/
     - text: Pillar three
     - heading "How is freedom secured in the age of AI?" [level=2]
     - paragraph: Freedom is secured by making fundamental rights the starting point of all legislation. AI makes mass surveillance technically easy and cheap — which is exactly why privacy protection must be defended with particular care.
