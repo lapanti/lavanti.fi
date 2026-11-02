@@ -50,11 +50,11 @@
     - paragraph: Riksdagen beslutar om upphandlingar, datainfrastruktur och arbetslivets spelregler. De besluten kräver människor som känner tekniken i praktiken — annars köper vi lösningar utan att förstå vad vi köper.
     - list:
       - listitem:
-        - link "Finland kan göra elektrifieringen till en konkurrensfördel":
-          - /url: /sv/blog/65/finland-kan-gora-elektrifieringen-till-en-konkurrensfordel/
+        - link "Vem äger den offentliga förvaltningens data?":
+          - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
       - listitem:
-        - link "De gröna – Marknadsekonomins sanna försvarare":
-          - /url: /sv/blog/62/de-grona-marknadsekonomiets-sanna-forsvarare/
+        - link "AI förändrar vad utvecklare får betalt för":
+          - /url: /sv/blog/57/ai-forandrar-vad-utvecklare-far-betalt-for/
     - text: Pelare två
     - heading "Hur hålls bildningen tillgänglig för alla?" [level=2]
     - paragraph: Bildningen hålls tillgänglig för alla när man kan ta till sig kunnande i varje skede av livet — från småbarnspedagogik till yrkesutbildning och högskolor. I AI-tidsåldern är utbildning infrastruktur, inte en utgiftspost.
@@ -71,11 +71,11 @@
     - paragraph: "Jag lyfter särskilt fram bibliotekens roll: de erbjuder fri kunskap och kompetens utan att samla in användardata. Det gör dem till viktiga väktare av jämlikhet i AI-tidsåldern."
     - list:
       - listitem:
-        - link "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-          - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
-      - listitem:
         - link "Utbildning är kommunens viktigaste uppgift":
           - /url: /sv/blog/37/utbildning-ar-kommunens-viktigaste-uppgift/
+      - listitem:
+        - link "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+          - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
     - text: Pelare tre
     - heading "Hur tryggas friheten i AI-tidsåldern?" [level=2]
     - paragraph: Friheten tryggas genom att de grundläggande rättigheterna är utgångspunkten för all lagstiftning. AI gör massövervakning tekniskt enkel och billig — just därför måste integritetsskyddet försvaras särskilt noggrant.

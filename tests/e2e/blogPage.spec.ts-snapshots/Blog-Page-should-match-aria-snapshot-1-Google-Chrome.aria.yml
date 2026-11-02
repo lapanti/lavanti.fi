@@ -36,146 +36,23 @@
       - paragraph: Mitä voimakkaammaksi tekoäly kehittyy, sitä tärkeämmäksi yksityisyyden suoja tulee. Tekoälyjärjestelmät ovat tiedonnälkäisiä; ilman vahvoja tietosuojasääntöjä niistä tulee valvontainfrastruktuuria. EU:n tekoälysäädös on askel oikeaan suuntaan, mutta toimeenpanon on oltava tosiasiallista — ei pelkkä muodollisuus.
       - list:
         - listitem:
-          - article "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
-            - link "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa. Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
-              - /url: /fi/blog/92/ruotsi-uhkaa-vetaa-pidemman-korren-tekoalystartupien-keskittymassa/
-              - img "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa."
-              - heading "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä" [level=3]
+          - article "Tekoäly ei pysty mihin tahansa":
+            - link "Kuvituskuva tekoälylle, jossa on piirretty ihmisen päätä muistuttava kone, johon tulee ja josta lähtee erilaisia sähköisiä virtauksia Tekoäly ei pysty mihin tahansa":
+              - /url: /fi/blog/44/tekoaly-ei-pysty-mihin-tahansa/
+              - img "Kuvituskuva tekoälylle, jossa on piirretty ihmisen päätä muistuttava kone, johon tulee ja josta lähtee erilaisia sähköisiä virtauksia"
+              - heading "Tekoäly ei pysty mihin tahansa" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Suomalaiset tekoälystartupit myydään liian usein ulkomaille. Holopainen ja Lavanti ehdottavat eläkepääomaa venture-rahastoihin ja Saminvestin mallia.
+            - paragraph: Tekoälyä on esitetty ratkaisuna julkisten palveluiden kehittämiseen. Sillä voi olla roolinsa, mutta se ei korvaa ihmistä eikä selkeää suunnitelmaa.
           - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Yrittäjyys":
-                - /url: /fi/kategoria/yrittajyys/
-        - listitem:
-          - 'article "Valtuustoaloite: tekoälyopastusta työnhakuun"':
-            - 'link "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0. Valtuustoaloite: tekoälyopastusta työnhakuun"':
-              - /url: /fi/blog/89/valtuustoaloite-tekoalyopastus-tyonhakuun/
-              - 'img "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0."'
-              - 'heading "Valtuustoaloite: tekoälyopastusta työnhakuun" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi voisi vastuukuntana tarjota työnhakijoille maksutonta tekoälyopastusta. Aloite esittää määräaikaista pilottia koko työllisyysalueelle.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Valtuustoaloite":
-                - /url: /fi/kategoria/valtuustoaloite/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-        - listitem:
-          - article "Viekö tekoäly ohjelmoijan työn?":
-            - link "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa Viekö tekoäly ohjelmoijan työn?":
-              - /url: /fi/blog/87/tekoaly-vie-ohjelmoijan-tyon/
-              - img "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa"
-              - heading "Viekö tekoäly ohjelmoijan työn?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Tekoäly ja työ ohjelmistokehittäjän silmin: viekö tekoäly ohjelmoijan työn, mitä käy junioreille ja miten osaaminen ja sosiaaliturva pysyvät muutoksen mukana."
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Opetus":
-                - /url: /fi/kategoria/opetus/
-      - paragraph:
-        - link "Kaikki kirjoitukset aiheesta Tekoäly":
-          - /url: /fi/kategoria/tekoaly/
-    - region "Talous":
-      - heading "Talous" [level=2]
-      - paragraph: Suomen talouden on toimittava tekoälyn aikakaudella. Se tarkoittaa uusia yrityksiä, uusia työpaikkoja ja julkisia palveluita, jotka oikeasti käyttävät teknologiaa eivätkä vain osta sitä ulkopuolelta. Ilman teknologiaosaamista eduskunnassa päätökset tekoälyhankinnoista, datainfrastruktuurista ja työelämästä tekevät ihmiset, jotka eivät tiedä mitä ovat ostamassa.
-      - paragraph: "Kirjoitan taloudesta sen kautta, mitä olen tehnyt yli vuosikymmenen ajan: rakentanut ohjelmistoja ja ohjelmistotiimejä eri teollisuudenaloilla. Tekoäly muuttaa työn, kilpailukyvyn ja julkisten palveluiden perustan. Suomi voi olla tässä edelläkävijä, mutta vain jos julkinen panostus suunnataan kotimaiseen osaamiseen siten, että ymmärretään mitä ollaan tekemässä."
-      - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
-      - list:
-        - listitem:
-          - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-            - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-              - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
-              - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
-              - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
-          - list:
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-            - listitem:
-              - link /Eduskuntavaalit \d+/:
-                - /url: /fi/kategoria/eduskuntavaalit-2027/
-        - listitem:
-          - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
-            - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
-              - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
-              - img "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään"
-              - heading "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Julkinen sektori kerää vuonna \d+ arviolta \d+ miljardia euroa ja käyttää \d+ miljardia\. Katso kaavioista, mistä rahat tulevat ja mihin ne menevät\./
-          - list:
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-        - listitem:
-          - article "Microsoftin datakeskus rakentuu jo Kirkkonummelle":
-            - 'link "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla. Microsoftin datakeskus rakentuu jo Kirkkonummelle"':
-              - /url: /fi/blog/93/microsoft-datakeskus-kirkkonummi/
-              - 'img "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla."'
-              - heading "Microsoftin datakeskus rakentuu jo Kirkkonummelle" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Microsoft datakeskus Kirkkonummella, Espoossa ja Vihdissä tuo työmaan ja voi tuoda kaukolämpöä. Seuraaville suurille sähkönkäyttäjille tarvitaan samat säännöt.
-          - list:
-            - listitem:
-              - link "Infra":
-                - /url: /fi/kategoria/infra/
-            - listitem:
-              - link "Talous":
-                - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Luonto":
-                - /url: /fi/kategoria/luonto/
-      - paragraph:
-        - link "Kaikki kirjoitukset aiheesta Talous":
-          - /url: /fi/kategoria/talous/
-    - region "Sivistys":
-      - heading "Sivistys" [level=2]
-      - paragraph: Suomen vahvuus on aina ollut sen ihmisissä ja heidän osaamisessaan. Tekoälyn aikana sivistyksen on pysyttävä saumattomana — varhaiskasvatuksesta työelämään ja aina eläkepäiville asti — niin että jokainen voi kehittää potentiaaliaan täysimääräisesti. Silloin tekoälyn tuottavuushyödyt kertautuvat koko yhteiskunnalle, eikä ketään jätetä jälkeen.
-      - paragraph: Koulutus ei ole kuluerä, jota leikataan ensimmäisenä kun budjetti tiukkenee. Se on koko tekoälyn jälkeisen ajan keskeistä infrastruktuuria. Säästöt opetuksesta, kirjastoista, ammatillisesta koulutuksesta ja opiskelusta maksetaan takaisin kymmenkertaisina, kun työmarkkinat muuttuvat nopeammin kuin ihmiset ehtivät oppia uusia asioita.
-      - paragraph: Saumaton sivistys tarkoittaa, että oppiminen ja sivistys eivät lopu koskaan, vaan se on mahdollista elämäntilanteesta riippumatta. Tekoäly tekee tästä polusta valtavan paljon tärkeämmän. Maa, joka pitää polun auki kaikille, saa käyttöönsä koko kansansa potentiaalin. Se on vahvempi pohja kuin mikään muu kilpailuetu.
-      - list:
-        - listitem:
-          - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
-            - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
-              - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
-              - img "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla."
-              - heading "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Konnevedellä tekoäly lyhensi käsittelyajan kahdesta kuukaudesta päiviin. Kirkkonummi on liian pieni yksin — mutta yhteistyöllä muutos on mahdollinen.
-          - list:
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/sivistys/
         - listitem:
           - article "Tekoäly muuttaa kehittäjän palkan perustan":
             - link "Kuvassa tietokoneen näyttö, jossa näkyy koodia. Tekoäly muuttaa kehittäjän palkan perustan":
@@ -195,131 +72,32 @@
               - link "Sivistys":
                 - /url: /fi/kategoria/sivistys/
         - listitem:
-          - article /Vuosi \d+ on tekoälyn/:
-            - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
-              - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
-              - img "Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä."
-              - heading /Vuosi \d+ on tekoälyn/ [level=3]
+          - article "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
+            - link "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla. Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista":
+              - /url: /fi/blog/60/tekoaly-auttaa-palvelujen-turvaamisessa-mutta-se-ei-ole-ilmaista/
+              - img "Lauri Lavanti seisoo kukkapaita päällään valkoisella taustalla."
+              - heading "Tekoäly auttaa palvelujen turvaamisessa, mutta se ei ole ilmaista" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Tekoäly muuttaa yhteiskuntaamme – mutta et ehkä odottaisi, miten. Suurimmat muutokset näemme yksityiselämässä ja lasten arjessa.
+            - paragraph: Konnevedellä tekoäly lyhensi käsittelyajan kahdesta kuukaudesta päiviin. Kirkkonummi on liian pieni yksin — mutta yhteistyöllä muutos on mahdollinen.
           - list:
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
             - listitem:
               - link "Digitalisaatio":
                 - /url: /fi/kategoria/digitalisaatio/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Sivistys":
-                - /url: /fi/kategoria/sivistys/
       - paragraph:
-        - link "Kaikki kirjoitukset aiheesta Sivistys":
-          - /url: /fi/kategoria/sivistys/
-    - region "Vapaus":
-      - heading "Vapaus" [level=2]
-      - paragraph: Vapaus on yksi tekoälyn aikakauden tärkeimmistä kysymyksistä. Se on kysymys siitä pysyykö datasi, viestintäsi ja arkesi sinun ominasi, kun suurin osa infrastruktuurista, jossa ne ovat, on jonkun toisen omistuksessa. Yksityisyydensuoja on perusoikeus — mutta laajempi kysymys on, säilyvätkö perusoikeudet teknologiassa, joka tekee massojen valvomisen lähes ilmaiseksi.
-      - paragraph: "Olen rakentanut urallani ohjelmistoja ympäristöissä, joissa datan säännöt otetaan vakavasti — säännellyillä aloilla kuten finanssialalla — sekä ympäristöissä, joissa data on liiketoimintaa. Se kokemus on tehnyt yhden asian selväksi: yksityisyys ja perusoikeudet eivät suojaa itse itseään. Niitä suojaavat lait, asetukset ja yksilöt, jotka suhtautuvat asiaan intohimoisesti."
-      - paragraph: Vapauden varmaksi tekeminen tekoälyn aikana edellyttää punnittuja myönnytyksiä sekä tiukkoja rajoja. Massavalvonta, biometristen tunnisteiden käytön laajentaminen tai viestien automaattinen seulonta eivät ole työkaluja, joita tulee ottaa käyttöön kevyesti, jos laisinkaan. Jokaiselle yksityisyyttä murentavalle askeleella pitää olla aukottomat perustelut ja selkeää näyttöä hyödyistä, muuten punnintaa sen järkevyydestä ei voi, eikä kannata, tehdä.
+        - link "Kaikki kirjoitukset aiheesta Tekoäly":
+          - /url: /fi/kategoria/tekoaly/
+    - region "Talous":
+      - heading "Talous" [level=2]
+      - paragraph: Suomen talouden on toimittava tekoälyn aikakaudella. Se tarkoittaa uusia yrityksiä, uusia työpaikkoja ja julkisia palveluita, jotka oikeasti käyttävät teknologiaa eivätkä vain osta sitä ulkopuolelta. Ilman teknologiaosaamista eduskunnassa päätökset tekoälyhankinnoista, datainfrastruktuurista ja työelämästä tekevät ihmiset, jotka eivät tiedä mitä ovat ostamassa.
+      - paragraph: "Kirjoitan taloudesta sen kautta, mitä olen tehnyt yli vuosikymmenen ajan: rakentanut ohjelmistoja ja ohjelmistotiimejä eri teollisuudenaloilla. Tekoäly muuttaa työn, kilpailukyvyn ja julkisten palveluiden perustan. Suomi voi olla tässä edelläkävijä, mutta vain jos julkinen panostus suunnataan kotimaiseen osaamiseen siten, että ymmärretään mitä ollaan tekemässä."
+      - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
-        - listitem:
-          - article "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
-            - link "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
-              - /url: /fi/blog/91/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/
-              - img "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla."
-              - heading "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Keskusmetsän suunnitelma toisi metsään kolme metriä leveän päällystetyn ja valaistun reitin Masalasta kuntakeskukseen. Luontoviisas kunta kehittää polkuja.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Luonto":
-                - /url: /fi/kategoria/luonto/
-            - listitem:
-              - link "Kaavoitus":
-                - /url: /fi/kategoria/kaavoitus/
-        - listitem:
-          - article "Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
-            - link "Kaksiosainen kuva, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa":
-              - /url: /fi/blog/78/metsien-hakkuut-ilman-asukkaiden-kuulemista/
-              - img "Kaksiosainen kuva, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla."
-              - heading "Kirkkonummi ohitti asukkaat metsien hakkuiden suunnittelussa" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kuntakehityksen lautakunta hyväksyi metsien hoidon toimenpideohjelman ilman asukkaiden kuulemista ja ilman ennakkoarviointia. Kuntastrategia lupaa toisin.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Luonto":
-                - /url: /fi/kategoria/luonto/
-            - listitem:
-              - link "Kaavoitus":
-                - /url: /fi/kategoria/kaavoitus/
-        - listitem:
-          - article "Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut":
-            - 'link "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut"':
-              - /url: /fi/blog/68/daavidin-linko-euroopan-epaonnistuminen/
-              - 'img "Lauri Lavanti katsoo mietteliäänä ylöspäin betoniseinän edessä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
-              - heading "Daavidin linko on osoitus siitä, että Eurooppa on epäonnistunut" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Daavidin linko oli Suomelle oikea hankinta, mutta se paljastaa Euroopan puolustusteollisuuden epäonnistumisen. Markkinavihreä näkökulma puolustushankintoihin.
-          - list:
-            - listitem:
-              - link "Turvallisuus":
-                - /url: /fi/kategoria/turvallisuus/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-            - listitem:
-              - link "Vapaus":
-                - /url: /fi/kategoria/vapaus/
-      - paragraph:
-        - link "Kaikki kirjoitukset aiheesta Vapaus":
-          - /url: /fi/kategoria/vapaus/
-    - region "Digitaalinen itsenäisyys":
-      - heading "Digitaalinen itsenäisyys" [level=2]
-      - paragraph: /Suomen ja Euroopan on hallittava omaa digitaalista infrastruktuuriaan\. Siksi perustin Digitaalinen itsenäisyys -kansalaisaloitteen, joka keräsi eduskuntakäsittelyyn vaadittavat \d+ \d+ allekirjoitusta heinäkuussa \d+\. Aloitteessa vaadimme Suomea vähentämään riippuvuuttaan ulkomaisista digipalveluiden tarjoajista ja vahvistamaan digitaalista suvereniteettia\./
-      - paragraph: "/Suomen julkishallinto on voimakkaasti riippuvainen esimerkiksi yhdysvaltalaisista suurista pilvipalvelujen tarjoajista, niin kutsutuista hyperscalereistä — Amazonista, Microsoftista ja Googlesta\\. Vuoden \\d+ jälkeen on tullut valitettavan selkeäksi, että valtapeli geopolitiikassa on tullut jäädäkseen, myös digitaaliseen toimintaympäristöön\\. Suomalaisia ja eurooppalaisia vaihtoehtoja on olemassa: UpCloud on konkreettinen esimerkki suorituskykyisestä kotimaisesta pilvipalvelusta, jota julkinen sektori voi käyttää\\. Edistän julkisten IT-hankintojen pilkkomista ja avoimen lähdekoodin suosimista sekä kriisivalmiuden — digitaalisen huoltovarmuuden — huomioimista hankinnoissa\\./"
-      - paragraph: Digitaalinen itsenäisyys tarkoittaa myös datan siirrettävyyttä ja riippuvuuden yksittäisistä toimittajista välttämistä. Julkisella rahalla tuotetun julkisen datan tulee olla siirrettävää ja tallennettuna siten, että sitä eivät ulkopuoliset tahot voi väärinkäyttää.
-      - list:
-        - listitem:
-          - article "Digitaalinen itsenäisyys ei ole eristäytymistä":
-            - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys ei ole eristäytymistä":
-              - /url: /fi/blog/88/digitaalinen-itsenaisyys-mita-se-tarkoittaa/
-              - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
-              - heading "Digitaalinen itsenäisyys ei ole eristäytymistä" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Digitaalinen itsenäisyys tarkoittaa, että Suomi hallitsee itse kriittisiä järjestelmiään. Mitä kansalaisaloite vaatii ja milloin se menee eduskuntaan?
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Turvallisuus":
-                - /url: /fi/kategoria/turvallisuus/
-            - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
-        - listitem:
-          - 'article "Digitaalinen itsenäisyys: Suomen kyky valita"':
-            - 'link "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose. Digitaalinen itsenäisyys: Suomen kyky valita"':
-              - /url: /fi/blog/85/digitaalinen-itsenaisyys-happy-hacking-day/
-              - 'img "Lauri Lavanti puhuu Happy Hacking Dayssä yksivuotias lapsi sylissään, taustalla dia: Independence is the ability to choose."'
-              - 'heading "Digitaalinen itsenäisyys: Suomen kyky valita" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Digitaalinen itsenäisyys on kykyä valita. Puheeni Happy Hacking Dayssä: missä Suomi ja Eurooppa ovat nyt ja miten hankinnat, standardit ja koodi auttavat."
-          - list:
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Tekoäly":
-                - /url: /fi/kategoria/tekoaly/
-            - listitem:
-              - link "Teknologia":
-                - /url: /fi/kategoria/teknologia/
         - listitem:
           - article "Kuka omistaa julkishallinnon datan?":
             - link "Lähikuva tietokoneen näytöstä, jolla näkyy väriltään moninaista syntaksikorostettua lähdekoodia. Kuka omistaa julkishallinnon datan?":
@@ -338,6 +116,231 @@
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
+        - listitem:
+          - article "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
+            - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa":
+              - /url: /fi/blog/71/datakeskukset-suomen-valttikortti-kansainvalisessa-politiikassa/
+              - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
+              - heading "Datakeskukset voivat olla Suomen valttikortti kansainvälisessä politiikassa" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Vuodettu Yhdysvaltain sähke paljasti painostuksen datasuvereniteettia vastaan. Datakeskukset voivat olla Suomen valttikortti, jos ne rakennetaan ehdoillamme.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+        - listitem:
+          - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+            - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+              - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
+              - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
+              - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
+          - list:
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+            - listitem:
+              - link /Eduskuntavaalit \d+/:
+                - /url: /fi/kategoria/eduskuntavaalit-2027/
+      - paragraph:
+        - link "Kaikki kirjoitukset aiheesta Talous":
+          - /url: /fi/kategoria/talous/
+    - region "Sivistys":
+      - heading "Sivistys" [level=2]
+      - paragraph: Suomen vahvuus on aina ollut sen ihmisissä ja heidän osaamisessaan. Tekoälyn aikana sivistyksen on pysyttävä saumattomana — varhaiskasvatuksesta työelämään ja aina eläkepäiville asti — niin että jokainen voi kehittää potentiaaliaan täysimääräisesti. Silloin tekoälyn tuottavuushyödyt kertautuvat koko yhteiskunnalle, eikä ketään jätetä jälkeen.
+      - paragraph: Koulutus ei ole kuluerä, jota leikataan ensimmäisenä kun budjetti tiukkenee. Se on koko tekoälyn jälkeisen ajan keskeistä infrastruktuuria. Säästöt opetuksesta, kirjastoista, ammatillisesta koulutuksesta ja opiskelusta maksetaan takaisin kymmenkertaisina, kun työmarkkinat muuttuvat nopeammin kuin ihmiset ehtivät oppia uusia asioita.
+      - paragraph: Saumaton sivistys tarkoittaa, että oppiminen ja sivistys eivät lopu koskaan, vaan se on mahdollista elämäntilanteesta riippumatta. Tekoäly tekee tästä polusta valtavan paljon tärkeämmän. Maa, joka pitää polun auki kaikille, saa käyttöönsä koko kansansa potentiaalin. Se on vahvempi pohja kuin mikään muu kilpailuetu.
+      - list:
+        - listitem:
+          - article "Koulutus on kunnan tärkein tehtävä":
+            - link "Kuva Laajakallion koulusta Koulutus on kunnan tärkein tehtävä":
+              - /url: /fi/blog/37/koulutus-on-kunnan-tarkein-tehtava/
+              - img "Kuva Laajakallion koulusta"
+              - heading "Koulutus on kunnan tärkein tehtävä" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Koulutus on kunnan tärkein tehtävä. Koulutusinvestoinnit näkyvät kauas tulevaisuuteen – eikä sieltä ole pikavoittoja saatavissa.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link /Kuntavaalit \d+/:
+                - /url: /fi/kategoria/kuntavaalit-2025/
+            - listitem:
+              - link "Opetus":
+                - /url: /fi/kategoria/opetus/
+        - listitem:
+          - article /Vuosi \d+ on tekoälyn/:
+            - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
+              - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
+              - img "Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä."
+              - heading /Vuosi \d+ on tekoälyn/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Tekoäly muuttaa yhteiskuntaamme – mutta et ehkä odottaisi, miten. Suurimmat muutokset näemme yksityiselämässä ja lasten arjessa.
+          - list:
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Tekoäly":
+                - /url: /fi/kategoria/tekoaly/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/sivistys/
+        - listitem:
+          - article "Kylmä riihi Kirkkonummelle":
+            - link "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla Kylmä riihi Kirkkonummelle":
+              - /url: /fi/blog/38/kylma-riihi-kirkkonummelle/
+              - img "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla"
+              - heading "Kylmä riihi Kirkkonummelle" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Hallituksen puoliväliriihi toi leikkauksia valtionosuuksiin ja yhteisöveroon. Se kaventaa kunnanvaltuutettujen liikkumatilaa merkittävästi.
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Opetus":
+                - /url: /fi/kategoria/opetus/
+            - listitem:
+              - link "Varhaiskasvatus":
+                - /url: /fi/kategoria/varhaiskasvatus/
+      - paragraph:
+        - link "Kaikki kirjoitukset aiheesta Sivistys":
+          - /url: /fi/kategoria/sivistys/
+    - region "Vapaus":
+      - heading "Vapaus" [level=2]
+      - paragraph: Vapaus on yksi tekoälyn aikakauden tärkeimmistä kysymyksistä. Se on kysymys siitä pysyykö datasi, viestintäsi ja arkesi sinun ominasi, kun suurin osa infrastruktuurista, jossa ne ovat, on jonkun toisen omistuksessa. Yksityisyydensuoja on perusoikeus — mutta laajempi kysymys on, säilyvätkö perusoikeudet teknologiassa, joka tekee massojen valvomisen lähes ilmaiseksi.
+      - paragraph: "Olen rakentanut urallani ohjelmistoja ympäristöissä, joissa datan säännöt otetaan vakavasti — säännellyillä aloilla kuten finanssialalla — sekä ympäristöissä, joissa data on liiketoimintaa. Se kokemus on tehnyt yhden asian selväksi: yksityisyys ja perusoikeudet eivät suojaa itse itseään. Niitä suojaavat lait, asetukset ja yksilöt, jotka suhtautuvat asiaan intohimoisesti."
+      - paragraph: Vapauden varmaksi tekeminen tekoälyn aikana edellyttää punnittuja myönnytyksiä sekä tiukkoja rajoja. Massavalvonta, biometristen tunnisteiden käytön laajentaminen tai viestien automaattinen seulonta eivät ole työkaluja, joita tulee ottaa käyttöön kevyesti, jos laisinkaan. Jokaiselle yksityisyyttä murentavalle askeleella pitää olla aukottomat perustelut ja selkeää näyttöä hyödyistä, muuten punnintaa sen järkevyydestä ei voi, eikä kannata, tehdä.
+      - list:
+        - listitem:
+          - 'article "Chat control: parlamentti toimi oikein"':
+            - 'link "Kuva japanilaistyylisestä sermistä, jonka takana näkyy sumeasti huone. Chat control: parlamentti toimi oikein"':
+              - /url: /fi/blog/54/chat-control-parlamentti-toimi-oikein/
+              - img "Kuva japanilaistyylisestä sermistä, jonka takana näkyy sumeasti huone."
+              - 'heading "Chat control: parlamentti toimi oikein" [level=3]'
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Chat control -lain jatkoaika kaatui Euroopan parlamentissa. KRP:n luvut ovat todellisia, mutta parlamentti toimi silti oikein — ja tässä syy, miksi.
+          - list:
+            - listitem:
+              - link "Yksityisyydensuoja":
+                - /url: /fi/kategoria/yksityisyydensuoja/
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+        - listitem:
+          - article "Passien biometristen tunnisteiden käyttöä ei pidä laajentaa":
+            - link "Kuva Atte Harjanteesta ja Lauri Lavannista. Kummallakin musta takki ja kauluspaita. Passien biometristen tunnisteiden käyttöä ei pidä laajentaa":
+              - /url: /fi/blog/48/passien-biometristen-tunnisteiden-kayttoa-ei-pida-laajentaa/
+              - img "Kuva Atte Harjanteesta ja Lauri Lavannista. Kummallakin musta takki ja kauluspaita."
+              - heading "Passien biometristen tunnisteiden käyttöä ei pidä laajentaa" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Kun sormenjäljet tuotiin passeihin, Suomeen perustettiin kansallinen biometrinen rekisteri. Nyt hallitus haluaa avata sen poliisin käyttöön.
+          - list:
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
+            - listitem:
+              - link "Yksityisyydensuoja":
+                - /url: /fi/kategoria/yksityisyydensuoja/
+            - listitem:
+              - link "Vapaus":
+                - /url: /fi/kategoria/vapaus/
+        - listitem:
+          - article "Perusoikeuksia ei pidä purkaa perusteettomasti":
+            - link "Kuva poliisiauton katolla olevista valoista Perusoikeuksia ei pidä purkaa perusteettomasti":
+              - /url: /fi/blog/45/perusoikeuksia-ei-pida-purkaa-perusteettomasti/
+              - img "Kuva poliisiauton katolla olevista valoista"
+              - heading "Perusoikeuksia ei pidä purkaa perusteettomasti" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Hallitus suunnittelee tiedustelulainsäädännön laajentamista rikollisuuden torjuntaan ilman yksilöityä epäilyä – tämä uhkaa perusoikeuksia vakavasti.
+          - list:
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
+            - listitem:
+              - link "Yksityisyydensuoja":
+                - /url: /fi/kategoria/yksityisyydensuoja/
+            - listitem:
+              - link "Vapaus":
+                - /url: /fi/kategoria/vapaus/
+      - paragraph:
+        - link "Kaikki kirjoitukset aiheesta Vapaus":
+          - /url: /fi/kategoria/vapaus/
+    - region "Digitaalinen itsenäisyys":
+      - heading "Digitaalinen itsenäisyys" [level=2]
+      - paragraph: /Suomen ja Euroopan on hallittava omaa digitaalista infrastruktuuriaan\. Siksi perustin Digitaalinen itsenäisyys -kansalaisaloitteen, joka keräsi eduskuntakäsittelyyn vaadittavat \d+ \d+ allekirjoitusta heinäkuussa \d+\. Aloitteessa vaadimme Suomea vähentämään riippuvuuttaan ulkomaisista digipalveluiden tarjoajista ja vahvistamaan digitaalista suvereniteettia\./
+      - paragraph: "/Suomen julkishallinto on voimakkaasti riippuvainen esimerkiksi yhdysvaltalaisista suurista pilvipalvelujen tarjoajista, niin kutsutuista hyperscalereistä — Amazonista, Microsoftista ja Googlesta\\. Vuoden \\d+ jälkeen on tullut valitettavan selkeäksi, että valtapeli geopolitiikassa on tullut jäädäkseen, myös digitaaliseen toimintaympäristöön\\. Suomalaisia ja eurooppalaisia vaihtoehtoja on olemassa: UpCloud on konkreettinen esimerkki suorituskykyisestä kotimaisesta pilvipalvelusta, jota julkinen sektori voi käyttää\\. Edistän julkisten IT-hankintojen pilkkomista ja avoimen lähdekoodin suosimista sekä kriisivalmiuden — digitaalisen huoltovarmuuden — huomioimista hankinnoissa\\./"
+      - paragraph: Digitaalinen itsenäisyys tarkoittaa myös datan siirrettävyyttä ja riippuvuuden yksittäisistä toimittajista välttämistä. Julkisella rahalla tuotetun julkisen datan tulee olla siirrettävää ja tallennettuna siten, että sitä eivät ulkopuoliset tahot voi väärinkäyttää.
+      - list:
+        - listitem:
+          - article "Digitaalinen itsenäisyys on välttämättömyys":
+            - link "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella. Digitaalinen itsenäisyys on välttämättömyys":
+              - /url: /fi/blog/51/digitaalinen-itsenaisyys-on-valttamattomyys/
+              - img "Piirretty kuva, jossa vaaleahiuksinen nainen pitää käsissään kannettavaa tietokonetta. Tietokoneen ruudussa on Suomen lippu. Tietokonetta yrittää riistää naiselta valkopäämerikotka. Kuvan ympärillä lukee \"Digital independence\", \"Digitaalinen itsenäisyys\" ja \"Digital självständighet\". Tekijänoikeudet kuvaan ovat Digitaalinen itsenäisyys -kansalaisaloitteella."
+              - heading "Digitaalinen itsenäisyys on välttämättömyys" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Venäjän naapurina Suomi on oppinut varautumaan. Kuitenkaan käsitteet huoltovarmuudesta ja suvereniteetista eivät ole levinneet digitaalisiin palveluihin.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Turvallisuus":
+                - /url: /fi/kategoria/turvallisuus/
+        - listitem:
+          - article "Suomi ja suomalaiset ovat vaarassa menettää hallinnan omista tiedoistaan – ja se maksaa kalliisti":
+            - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Suomi ja suomalaiset ovat vaarassa menettää hallinnan omista tiedoistaan – ja se maksaa kalliisti":
+              - /url: /fi/blog/79/suomi-vaarassa-menettaa-hallinnan-omista-tiedoistaan/
+              - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
+              - heading "Suomi ja suomalaiset ovat vaarassa menettää hallinnan omista tiedoistaan – ja se maksaa kalliisti" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Äänestäjätiedot Amazonin pilveen, verotiedot Microsoftille. CLOUD Act ulottuu tietoihin missä vain, joten Suomen on päätettävä itse digitaalisesta perustastaan.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Yksityisyydensuoja":
+                - /url: /fi/kategoria/yksityisyydensuoja/
+            - listitem:
+              - link "Turvallisuus":
+                - /url: /fi/kategoria/turvallisuus/
+        - listitem:
+          - article "Digitaalinen itsenäisyys rakennetaan askel kerrallaan":
+            - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys rakennetaan askel kerrallaan":
+              - /url: /fi/blog/53/digitaalinen-itsenaisyys-rakennetaan-askel-kerrallaan/
+              - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
+              - heading "Digitaalinen itsenäisyys rakennetaan askel kerrallaan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Digitaalinen itsenäisyys ja huoltovarmuus syntyvät hankintapäätöksistä. Helsinki valitsi suomalaisen UpCloudin julkisten palveluiden ydinjärjestelmän alustaksi.
+          - list:
+            - listitem:
+              - link "Digitaalinen itsenäisyys":
+                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+            - listitem:
+              - link "Digitalisaatio":
+                - /url: /fi/kategoria/digitalisaatio/
+            - listitem:
+              - link "Teknologia":
+                - /url: /fi/kategoria/teknologia/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Digitaalinen itsenäisyys":
           - /url: /fi/kategoria/digitaalinen-itsenaisyys/
@@ -348,23 +351,38 @@
       - paragraph: "Kirkkonummi on kaksikielinen, rannikolla sijaitseva kunta, joka kasvaa nopeasti Helsingin seudun reunalla. Sillä on paljon vahvuuksia — rantaviiva, luonto, monimuotoinen yhteisö — ja todellisia paineita: tulopohja, jolla on vaikeuksia pysyä tarpeiden perässä, ja alueelle kriittinen junarata. Paikallispolitiikka täällä ei ole pientä politiikkaa."
       - list:
         - listitem:
-          - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
-            - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
-              - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
-              - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
-              - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
+          - article "Kuntavaaleissa ratkaistaan arjen asioita":
+            - link "Valkoiset ulkoportaat, jotka johtavat tielle, joka vie talolle. Kuntavaaleissa ratkaistaan arjen asioita":
+              - /url: /fi/blog/33/kuntavaaleissa-ratkaistaan-arjen-asioita/
+              - img "Valkoiset ulkoportaat, jotka johtavat tielle, joka vie talolle."
+              - heading "Kuntavaaleissa ratkaistaan arjen asioita" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
+            - paragraph: "Kuntavaalit saattavat tuntua monimutkaisilta, mutta kyse on arjen asioista: kouluista, päiväkodeista ja liikenneyhteyksistä. Sinulla on vaikutusvaltaa."
           - list:
             - listitem:
               - link "Kirkkonummi":
                 - /url: /fi/kategoria/kirkkonummi/
             - listitem:
-              - link "Liikenne":
-                - /url: /fi/kategoria/liikenne/
+              - link /Kuntavaalit \d+/:
+                - /url: /fi/kategoria/kuntavaalit-2025/
+        - listitem:
+          - article "Äänestin Länsiradan puolesta":
+            - link /Länsirata Oyn havainnekuva siitä, millainen Veikkolan juna-asema voisi olla\. Kuvassa näkyy raiteet, laiturit ja ylikulkukävelysilta\. Otettu osoitteesta https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# \d+\.\d+\.\d+\. Äänestin Länsiradan puolesta/:
+              - /url: /fi/blog/46/aanestin-lansiradan-puolesta/
+              - img /Länsirata Oyn havainnekuva siitä, millainen Veikkolan juna-asema voisi olla\. Kuvassa näkyy raiteet, laiturit ja ylikulkukävelysilta\. Otettu osoitteesta https:\/\/lansirata\.sitowise\.com\/\?link=Pysm6# \d+\.\d+\.\d+\./
+              - heading "Äänestin Länsiradan puolesta" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Äänestin Kirkkonummen liittymisen Länsirataan puolesta. Päätös määrittää, saako Pohjois-Kirkkonummi lähijuna-aseman vai ei.
+          - list:
             - listitem:
-              - link "Kaavoitus":
-                - /url: /fi/kategoria/kaavoitus/
+              - link "Infra":
+                - /url: /fi/kategoria/infra/
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Länsirata":
+                - /url: /fi/kategoria/lansirata/
         - listitem:
           - article "HSL:n matkalippujen hintojen korottaminen on virhe":
             - link "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa. HSL:n matkalippujen hintojen korottaminen on virhe":
@@ -383,24 +401,6 @@
             - listitem:
               - link "Länsi-Uusimaa":
                 - /url: /fi/kategoria/lansi-uusimaa/
-        - listitem:
-          - article "Lippu nousi salkoon. Mitä Kirkkonummi tekee seuraavaksi?":
-            - link /Sateenkaarilippu liehuu Kirkkonummen kunnantalon lipputangossa kesäkuussa \d+\. Lippu nousi salkoon\. Mitä Kirkkonummi tekee seuraavaksi\?/:
-              - /url: /fi/blog/64/lippu-nousi-salkoon-mita-kirkkonummi-tekee-seuraavaksi/
-              - img /Sateenkaarilippu liehuu Kirkkonummen kunnantalon lipputangossa kesäkuussa \d+\./
-              - heading "Lippu nousi salkoon. Mitä Kirkkonummi tekee seuraavaksi?" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kirkkonummi nosti sateenkaarilipun salkoon \d+\.\d+\.\d+\. Liputus on tärkeä, mutta yhdenvertaisuus vaatii myös konkreettisia tekoja syksyn talousarviossa\./
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Tasa-arvo":
-                - /url: /fi/kategoria/tasa-arvo/
-            - listitem:
-              - link "Vapaus":
-                - /url: /fi/kategoria/vapaus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Kirkkonummi":
           - /url: /fi/kategoria/kirkkonummi/

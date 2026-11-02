@@ -39,11 +39,11 @@
     - paragraph: "Jag skriver om ekonomin utifrån det jag har gjort i över ett decennium: byggt programvara och programvaruteam inom olika branscher. AI förändrar grunderna för arbete, konkurrenskraft och offentliga tjänster. Finland kan vara en föregångare här, men bara om de offentliga satsningarna riktas mot inhemsk kompetens, på ett sätt som bygger på att man förstår vad man gör."
     - list:
       - listitem:
-        - link "Finland kan göra elektrifieringen till en konkurrensfördel":
-          - /url: /sv/blog/65/finland-kan-gora-elektrifieringen-till-en-konkurrensfordel/
+        - link "Vem äger den offentliga förvaltningens data?":
+          - /url: /sv/blog/80/vem-ager-den-offentliga-forvaltningens-data/
       - listitem:
-        - link "De gröna – Marknadsekonomins sanna försvarare":
-          - /url: /sv/blog/62/de-grona-marknadsekonomiets-sanna-forsvarare/
+        - link "AI förändrar vad utvecklare får betalt för":
+          - /url: /sv/blog/57/ai-forandrar-vad-utvecklare-far-betalt-for/
     - text: Pelare två
     - heading "Bildningen ska vara sömlös" [level=2]
     - paragraph: Finlands styrka har alltid varit dess människor och deras kunnande. I AI-tidsåldern måste bildningen förbli sömlös — från småbarnspedagogik till arbetsliv och ända fram till pensionen — så att var och en kan utveckla sin fulla potential. Då förstärks AI:s produktivitetsvinster för hela samhället, och ingen lämnas efter.
@@ -63,11 +63,11 @@
     - paragraph: Utbildning är ingen utgiftspost som skärs ner först när budgeten stramas åt. Den är central infrastruktur för hela den AI-tid som väntar. Besparingar på undervisning, bibliotek, yrkesutbildning och studier betalas tillbaka tiofalt när arbetsmarknaden förändras snabbare än människor hinner lära sig nya saker.
     - list:
       - listitem:
-        - link "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
-          - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
-      - listitem:
         - link "Utbildning är kommunens viktigaste uppgift":
           - /url: /sv/blog/37/utbildning-ar-kommunens-viktigaste-uppgift/
+      - listitem:
+        - link "AI hjälper till att trygga kommunala tjänster, men det är inte gratis":
+          - /url: /sv/blog/60/ai-hjalper-till-att-sakra-kommunala-tjanster-men-det-kostar/
     - text: Pelare tre
     - heading "Friheten ska vara trygg" [level=2]
     - paragraph: Frihet är en av de viktigaste frågorna i AI-tidsåldern. Det handlar om huruvida din data, din kommunikation och din vardag förblir dina egna, när merparten av infrastrukturen de finns på ägs av någon annan. Integritetsskydd är en grundläggande rättighet — men den större frågan är om de grundläggande rättigheterna består samtidigt som vi utvecklar teknik som gör massövervakning nästan gratis.
