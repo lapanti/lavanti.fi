@@ -1,0 +1,109 @@
+---
+lang: 'fi'
+slug: 'tyoelakkeiden-rahoitus-indeksin-jaadytys'
+pageTitle: 'Työeläkkeiden rahoitus ja indeksijäädytys'
+title: 'Työeläkkeiden rahoitus: jäädytys jakaisi taakan sukupolville'
+description: 'Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.'
+alt: 'Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy.'
+faq:
+    - q: 'Miten työeläkkeiden rahoitus toimii?'
+      a: 'Työeläkkeiden rahoitus toimii niin, että kunkin vuoden eläkkeet maksetaan pääosin saman vuoden työllisten maksuilla. Vuonna 2024 työeläkemaksuja kertyi noin 28 miljardia euroa, ja suurin osa niistä käytettiin nykyisten eläkkeiden maksamiseen. Eläkkeitä maksettiin 36 miljardia euroa, ja aiemmin rahastoiduista varoista niiden maksuun käytettiin 7 miljardia euroa.'
+    - q: 'Miksi yhä harvempi maksaa yhä useamman eläkkeen?'
+      a: 'Yhä harvempi työllinen maksaa yhä useamman eläkkeen, koska eläkkeensaajia on työllisiin nähden selvästi enemmän kuin ennen. Vuonna 1962 kansaneläkkeen saajia oli noin 23 jokaista sataa työllistä kohden. Eläkkeensaajia oli vuonna 1981 noin 42 sataa työllistä kohden ja vuonna 2025 noin 60. Sarjojen määritelmät eroavat, joten niitä ei ole yhdistetty.'
+    - q: 'Paljonko eläkemaksuille saa vastinetta syntymävuoden mukaan?'
+      a: 'Eläketurvakeskuksen laskelman mukaan vuosina 1940–1960 syntyneet yksityisten alojen palkansaajat saavat työeläkemaksunsa takaisin eläkkeinä 2,0–4,7-kertaisina. Vuosina 1970–2010 syntyneet saavat ne takaisin noin 1,7–1,8-kertaisina. Mukana ovat työnantajan ja työntekijän maksut, ja inflaatio on huomioitu. Nuorempien ikäluokkien luvut ovat laskelmaa, ja lasku pysähtyy noin vuonna 1975 syntyneisiin.'
+    - q: 'Miten elinaikakerroin jakaa taakkaa nuoremmille?'
+      a: 'Elinaikakerroin pienentää uutta kuukausieläkettä sitä enemmän, mitä pidempään ikäluokan odotetaan elävän. Eläketurvakeskuksen laskelman mukaan leikkaus on vuonna 1965 syntyneille 5,5 prosenttia ja vuonna 2010 syntyneille 12,4 prosenttia. Alin vanhuuseläkeikä on vastaavasti 65 ja 69 vuotta. Pidempi työura korvaa leikkausta suurelta osin, kun työtä jatketaan korkeampaan eläkeikään.'
+    - q: 'Miksi työeläkeindeksin jäädytys olisi oikeudenmukaista?'
+      a: 'Työeläkeindeksin jäädytys olisi oikeudenmukaista, koska se jakaisi julkisen talouden talkoot kaikille sukupolville. Työeläkemaksu on jo noin neljännes palkkasummasta, ja nuoremmat ikäluokat tekevät pidemmän työuran pienemmällä vastineella. Jos myös maksussa olevat työeläkkeet osallistuisivat, taakka jakautuisi kantokyvyn mukaan, eikä sitä kantaisi yksin työikäinen väestö.'
+---
+
+import BlockQuote from '../../../components/body/BlockQuote.astro'
+import SmartLink from '../../../components/SmartLink.astro'
+import H2 from '../../../components/H2.astro'
+import LI from '../../../components/LI.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import UL from '../../../components/UL.astro'
+
+export const components = { blockquote: BlockQuote, a: SmartLink, h2: H2, li: LI, p: Paragraph, ul: UL }
+
+import ColumnChart from '../../../components/charts/ColumnChart.astro'
+import LineChart from '../../../components/charts/LineChart.astro'
+import {
+    lifeExpectancyCut,
+    pensionContribution,
+    pensionersPerEmployed,
+    pensionReturnByCohort,
+} from '../../pensionFunding'
+
+Tiesitkö, että kunkin vuoden eläkkeet maksetaan pääosin saman vuoden työssäkäyvien maksuilla ja vain osin aiemmin rahastoiduista varoista? Työeläkkeiden rahoitus nojaa siis työssäkäyviin. Työeläkemaksu on yksi palkansaajan suurimmista maksuista, joten on luonnollista kysyä, mitä maksusta saa vastineeksi.
+
+Luvut ovat julkisia, mutta harva on nähnyt ne rinnakkain. Kokosin Eläketurvakeskuksen (ETK) tiedoista neljä kaaviota. Ne näyttävät, miten maksutaakka ja vastine jakautuvat syntymävuoden mukaan. Tämän pitäisi tuoda myös selväksi, minkä takia on oikeudenmukaista, että nykyiset eläkkeensaajat osallistuvat julkisen talouden sopeuttamiseen.
+
+## Miten työeläkkeiden rahoitus toimii?
+
+Työeläkkeiden rahoitus toimii niin, että kunkin vuoden eläkkeet maksetaan pääosin saman vuoden työllisten maksuilla. Vuonna 2024 työeläkemaksuja kertyi noin 28 miljardia euroa, ja suurin osa niistä käytettiin nykyisten eläkkeiden maksamiseen. Eläkkeitä maksettiin 36 miljardia euroa, ja aiemmin rahastoiduista varoista niiden maksuun käytettiin 7 miljardia euroa.
+
+<LineChart
+    caption="Maksu yli viisinkertaistui. Työeläkemaksu, % palkkasummasta, 1963–2025. Lähde: ETK:n tilastotietokanta, johdettu, yksityiset alat."
+    data={pensionContribution}
+    lang="fi"
+/>
+
+Vuoden 2024 luvut ovat ETK:n raportista [Työeläkkeiden kustannustenjako](https://www.julkari.fi/server/api/core/bitstreams/2dd814e5-4e2c-41bc-9bbe-2e5d4a487729/content). Mallia kutsutaan osittain rahastoivaksi jakojärjestelmäksi, koska valtaosa jokaisen vuoden eläkkeistä maksetaan saman vuoden maksuista.
+
+Siksi maksun taso kertoo, paljonko työllisiltä tarvitaan. ETK:n [tilastoista](https://tilastot.etk.fi/) johdettuna yksityisten alojen työeläkemaksu vuonna 1963 oli noin 4 prosenttia palkkasummasta ja vuonna 2025 noin 25 prosenttia. Luvussa ovat mukana työnantajan ja työntekijän maksut, eikä se ole virallinen maksuprosentti. Vuoden 2025 luku on ennakkotieto, ja vuoden 2020 notkahdus johtui tilapäisestä koronaleikkauksesta.
+
+Yrittäjät maksavat YEL-maksunsa itse, ja kirjoitimme Markkinavihreiden [Yrittäjän päivän avauksessa](/fi/blog/74/kolme-keinoa-yrittamisen-helpottamiseen/), miksi YEL ei saa nostaa yrittäjyyden kynnystä.
+
+## Miksi yhä harvempi maksaa yhä useamman eläkkeen?
+
+Yhä harvempi työllinen maksaa yhä useamman eläkkeen, koska eläkkeensaajia on työllisiin nähden selvästi enemmän kuin ennen. Vuonna 1962 kansaneläkkeen saajia oli noin 23 jokaista sataa työllistä kohden. Eläkkeensaajia oli vuonna 1981 noin 42 sataa työllistä kohden ja vuonna 2025 noin 60. Sarjojen määritelmät eroavat, joten niitä ei ole yhdistetty.
+
+<LineChart
+    caption="Yhä harvempi maksaa yhä useamman. Eläkkeensaajia 100 työllistä kohden 1962–2100. Lähde: Tilastollinen vuosikirja, ETK, Tilastokeskus ja ETK:n laskelma PAL 2026."
+    data={pensionersPerEmployed}
+    lang="fi"
+/>
+
+Suhde ratkaisee, paljonko kunkin työllisen maksulla on kannettavaa. ETK:n [pitkän aikavälin laskelmassa](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e) eläkkeensaajia on 63,2 sataa työllistä kohden vuonna 2025, ja suhde paranee 58,7:ään vuoteen 2040 mennessä. Vuonna 2100 laskelman luku on 81,8. Laskelman määritelmä eroaa tilastosta, minkä vuoksi sen vuoden 2025 luku on hieman suurempi.
+
+## Paljonko eläkemaksuille saa vastinetta syntymävuoden mukaan?
+
+Eläketurvakeskuksen laskelman mukaan vuosina 1940–1960 syntyneet yksityisten alojen palkansaajat saavat työeläkemaksunsa takaisin eläkkeinä 2,0–4,7-kertaisina. Vuosina 1970–2010 syntyneet saavat ne takaisin noin 1,7–1,8-kertaisina. Mukana ovat työnantajan ja työntekijän maksut, ja inflaatio on huomioitu. Nuorempien ikäluokkien luvut ovat laskelmaa, ja lasku pysähtyy noin vuonna 1975 syntyneisiin.
+
+<ColumnChart
+    caption="Minkälaisen tuoton eläkemaksuille saa? Työeläkkeet koko elinkaarelta suhteessa maksuihin, syntymävuoden mukaan. Lähde: ETK, PAL 2026, kuvio 5.17."
+    data={pensionReturnByCohort}
+    lang="fi"
+/>
+
+Kun verrataan pelkästään sitä, paljonko rahaa järjestelmään on maksettu ja paljonko sieltä saadaan takaisin, vuonna 1960 tai aiemmin syntyneet saavat siis selvästi enemmän kuin nuoremmat sukupolvet.
+
+Vuosina 1940–1960 syntyneet ovat nyt eläkeiässä, eli heidän alin vanhuuseläkeikänsä on täyttynyt vuoteen 2026 mennessä. Osa heistä käy yhä töissä. Kun vanhimmat heistä aloittivat työuransa 1960-luvulla, työeläkemaksu oli noin 4–5 prosenttia palkkasummasta.
+
+Keskimääräinen työeläke kasvaa ETK:n laskelmassa reaalisesti myös nuoremmilla ikäluokilla. Jokaista maksettua euroa kohden vastine on kuitenkin selvästi pienempi. Vuoden 1960 jälkeen syntyneillä kerroin asettuu 1,7–1,8:aan, joten ero nyt eläkeiässä olevien ja kaikkien heidän jälkeensä syntyneiden välillä on selvä.
+
+## Miten elinaikakerroin jakaa taakkaa nuoremmille?
+
+Elinaikakerroin pienentää uutta kuukausieläkettä sitä enemmän, mitä pidempään ikäluokan odotetaan elävän. Eläketurvakeskuksen laskelman mukaan leikkaus on vuonna 1965 syntyneille 5,5 prosenttia ja vuonna 2010 syntyneille 12,4 prosenttia. Alin vanhuuseläkeikä on vastaavasti 65 ja 69 vuotta. Pidempi työura korvaa leikkausta suurelta osin, kun työtä jatketaan korkeampaan eläkeikään.
+
+<ColumnChart
+    caption="Myöhempi eläkeikä, isompi leikkaus. Elinaikakertoimen leikkaus kuukausieläkkeeseen ja alin vanhuuseläkeikä syntymävuoden mukaan. Lähde: ETK, PAL 2026, taulukot 4.2, 6.1 ja 7.2."
+    data={lifeExpectancyCut}
+    lang="fi"
+/>
+
+Elinajanodotteen kasvu on hyvä asia, ja on luontevaa, että se näkyy myös työurissa. [ETK:n mukaan](https://www.julkari.fi/items/a0693ad8-54ba-482f-8712-ece932f77c9e) eläkkeen suhde palkkaan säilyy tai jopa paranee, kun työura jatkuu korkeampaan eläkeikään asti. Nuoremmat ikäluokat turvaavat järjestelmän kestävyyttä jo kahdella tavalla, sekä korkeammalla maksulla että pidemmällä työuralla.
+
+## Miksi työeläkeindeksin jäädytys olisi oikeudenmukaista?
+
+Työeläkeindeksin jäädytys olisi oikeudenmukaista, koska se jakaisi julkisen talouden talkoot kaikille sukupolville. Työeläkemaksu on jo noin neljännes palkkasummasta, ja nuoremmat ikäluokat tekevät pidemmän työuran pienemmällä vastineella. Jos myös maksussa olevat työeläkkeet osallistuisivat, taakka jakautuisi kantokyvyn mukaan, eikä sitä kantaisi yksin työikäinen väestö.
+
+Ikäluokkien ero vastineessa ja nykyinen noin 25 prosentin maksu ovat jo toteutuneet. Jäädytys jakaisi taakkaa myös niille, jotka eivät enää maksa työeläkemaksuja.
+
+Siksi työeläkkeiden indeksikorotukset tulee jäädyttää vuosiksi 2028–2031. [Eläketurvakeskuksen laskelman](https://www.etk.fi/suomen-elakejarjestelma/elaketurva/elaketurva-kokonaisuutena/tyoelake-ja-eduskuntavaalit-2027/) mukaan jäädytys pienentäisi eläkemenoa 1,6 miljardia euroa vuonna 2029 ja vuoden 2025 hinnoin 3,0 miljardia euroa vuositasolla 2031. Pienempi eläkemeno tekisi tilaa laskea työeläkemaksua. Silloin työtä tekevät maksajat saisivat pitää enemmän palkastaan. Palkansaajan vaurastumisesta kirjoitimme Markkinavihreiden avauksessa [palkalla pitää voida vaurastua](/fi/blog/86/palkalla-pitaa-voida-vaurastua/). Toisaalta saman tilan voisi ottaa tuloverona ja käyttää niihin sote-palveluihin, joita ikääntyvä väestö tarvitsee. Työn kokonaisrasitus ei kummassakaan tapauksessa kasvaisi. Eläkkeen euromäärä pysyisi ennallaan, mutta sen ostovoima heikkenisi inflaation verran.
+
+Pienimmät työeläkkeet suojautuisivat osittain: kansaneläke ja takuueläke nousevat nykyisin kansaneläkeindeksin mukaan, ja koska ne pienenevät työeläkkeen kasvaessa, ne korvaisivat osan menetyksestä. Takuueläkkeen piirissä olevilla korvaus olisi täysi.
+
+Kuten olen kirjoittanut, [velkajarrun ulkopuolelta ei tehdä vihreää talouspolitiikkaa](/fi/blog/61/velkajarrun-ulkopuolelta-ei-tehda-vihreaa-talouspolitiikkaa/). Julkisen talouden pysyvät valinnat pitää tehdä nyt eikä jättää seuraaville sukupolville. Jos pääsen eduskuntaan, vien jäädytystä eteenpäin, jotta myös nuoremmat sukupolvet pääsevät kasvamaan ja elämään hyvinvointivaltiossa.
