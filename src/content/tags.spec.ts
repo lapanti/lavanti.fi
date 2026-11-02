@@ -134,7 +134,7 @@ describe('tags data', () => {
     )
 
     it('front and elections pages name a tag on every pillar', () => {
-        expect(pillarTags.length).toBe(PILLAR_PAGES.length * 3)
+        expect(pillarTags).toHaveLength(PILLAR_PAGES.length * 3)
     })
 
     it.each(pillarTags)('$page pillar $tag — tag has enough featured posts', ({ tag }) => {
