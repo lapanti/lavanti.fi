@@ -38,7 +38,7 @@ export default defineConfig({
 
     prefetch: {
         prefetchAll: true,
-        defaultStrategy: 'hover',
+        defaultStrategy: 'tap',
     },
 
     i18n: {
