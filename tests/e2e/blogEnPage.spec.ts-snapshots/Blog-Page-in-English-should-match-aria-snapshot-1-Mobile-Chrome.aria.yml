@@ -99,6 +99,24 @@
       - paragraph: "A working economy in the AI era is not just a slogan. It is substance: skills that survive the transition, businesses that can build on Finnish and European infrastructure, and a state that procures technology on its own terms."
       - list:
         - listitem:
+          - article "A pension index freeze would share the burden fairly":
+            - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
+              - /url: /en/blog/97/pension-funding-and-the-index-freeze/
+              - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
+              - heading "A pension index freeze would share the burden fairly" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
+          - list:
+            - listitem:
+              - link "Economy":
+                - /url: /en/category/economy/
+            - listitem:
+              - link "National politics":
+                - /url: /en/category/national-politics/
+            - listitem:
+              - link /Parliamentary elections \d+/:
+                - /url: /en/category/parliamentary-elections-2027/
+        - listitem:
           - article "Where does the public sector's money come from and where does it go?":
             - link "The columned facade of Parliament House in Helsinki, where the public sector budget is decided Where does the public sector's money come from and where does it go?":
               - /url: /en/blog/96/public-sector-where-the-money-comes-from-and-where-it-goes/
@@ -131,24 +149,6 @@
             - listitem:
               - link "Nature":
                 - /url: /en/category/nature/
-        - listitem:
-          - article "The walking and cycling programme is the municipality's long-term plan":
-            - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
-              - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
-              - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
-              - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Transport":
-                - /url: /en/category/transportation/
-            - listitem:
-              - link "Urban planning":
-                - /url: /en/category/urban-planning/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/
@@ -348,6 +348,24 @@
       - paragraph: "Kirkkonummi is a bilingual, coastal municipality growing fast at the edge of the Helsinki region. It has plenty of real assets — shoreline, nature, a mixed community — and real pressures: a revenue base that struggles to keep up with demand, and a rail line that is critical to the region. Local politics here is not small politics."
       - list:
         - listitem:
+          - article "The walking and cycling programme is the municipality's long-term plan":
+            - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
+              - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
+              - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
+              - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Transport":
+                - /url: /en/category/transportation/
+            - listitem:
+              - link "Urban planning":
+                - /url: /en/category/urban-planning/
+        - listitem:
           - article "Raising HSL ticket prices is a mistake":
             - 'link "A triptych: on the left Pinja Pekkarniemi in a black-and-white patterned blouse, in the centre Mervi Somervuori in a black outfit, and on the right Lauri Lavanti in a dark suit and floral shirt. Raising HSL ticket prices is a mistake"':
               - /url: /en/blog/70/raising-hsl-ticket-prices-is-a-mistake/
@@ -383,24 +401,6 @@
             - listitem:
               - link "Freedom":
                 - /url: /en/category/freedom/
-        - listitem:
-          - 'article "Council initiative: digital resilience"':
-            - 'link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt that reads Digitaalinen itsenäisyys (Digital independence) with a lion motif above it, and a blazer. Photo by Erkki Laine. Council initiative: digital resilience"':
-              - /url: /en/blog/59/council-initiative-strengthening-kirkkonummis-digital-resilience/
-              - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt that reads Digitaalinen itsenäisyys (Digital independence) with a lion motif above it, and a blazer. Photo by Erkki Laine."
-              - 'heading "Council initiative: digital resilience" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi relies on digital systems for nearly all its operations. This initiative calls for mapping dependencies and switching to open file formats.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Digital independence":
-                - /url: /en/category/digital-independence/
-            - listitem:
-              - link "Council motion":
-                - /url: /en/category/council-motion/
       - paragraph:
         - link "All posts about Kirkkonummi":
           - /url: /en/category/kirkkonummi/

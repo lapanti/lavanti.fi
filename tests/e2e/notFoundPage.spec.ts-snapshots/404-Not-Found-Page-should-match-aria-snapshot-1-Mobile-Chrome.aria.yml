@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+          - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+            - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
+            - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
+            - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
+        - list:
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Kansallinen politiikka":
+              - /url: /fi/kategoria/kansallinen-politiikka/
+          - listitem:
+            - link /Eduskuntavaalit \d+/:
+              - /url: /fi/kategoria/eduskuntavaalit-2027/
+      - listitem:
         - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
           - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
             - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
@@ -127,21 +145,3 @@
           - listitem:
             - link "Tekoäly":
               - /url: /fi/kategoria/tekoaly/
-      - listitem:
-        - article "Viekö tekoäly ohjelmoijan työn?":
-          - link "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa Viekö tekoäly ohjelmoijan työn?":
-            - /url: /fi/blog/87/tekoaly-vie-ohjelmoijan-tyon/
-            - img "Lauri Lavanti istuu ulkoportailla kannettava tietokone sylissään – tekoäly ja työ ohjelmistokehittäjän arjessa"
-            - heading "Viekö tekoäly ohjelmoijan työn?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Tekoäly ja työ ohjelmistokehittäjän silmin: viekö tekoäly ohjelmoijan työn, mitä käy junioreille ja miten osaaminen ja sosiaaliturva pysyvät muutoksen mukana."
-        - list:
-          - listitem:
-            - link "Tekoäly":
-              - /url: /fi/kategoria/tekoaly/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Opetus":
-              - /url: /fi/kategoria/opetus/

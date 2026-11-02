@@ -128,6 +128,24 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+          - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+            - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
+            - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
+            - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
+        - list:
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Nationell politik":
+              - /url: /sv/kategori/nationell-politik/
+          - listitem:
+            - link /Riksdagsvalet \d+/:
+              - /url: /sv/kategori/riksdagsvalet-2027/
+      - listitem:
         - article "Varifrån kommer den offentliga sektorns pengar och vart går de?":
           - link "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget Varifrån kommer den offentliga sektorns pengar och vart går de?":
             - /url: /sv/blog/96/offentlig-sektor-varifran-kommer-pengarna-och-vart-gar-de/
@@ -268,24 +286,6 @@
           - listitem:
             - link "Utbildning":
               - /url: /sv/kategori/utbildning/
-      - listitem:
-        - article "Varför behöver Finland ett digitalministerium?":
-          - 'link "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Varför behöver Finland ett digitalministerium?"':
-            - /url: /sv/blog/81/varfor-finland-behover-ett-digitalministerium/
-            - 'img "Lauri Lavanti blickar eftertänksamt uppåt framför en betongvägg, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri."'
-            - heading "Varför behöver Finland ett digitalministerium?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Splittrad AI-politik är en regleringsrisk för företag. Ett digitalministerium och en tröskel som riksdagen beslutar ger förutsägbarhet och skyddar små företag.
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /sv/kategori/artificiell-intelligens/
-          - listitem:
-            - link "Digitalisering":
-              - /url: /sv/kategori/digitalisering/
-          - listitem:
-            - link "Företagande":
-              - /url: /sv/kategori/foretagande/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

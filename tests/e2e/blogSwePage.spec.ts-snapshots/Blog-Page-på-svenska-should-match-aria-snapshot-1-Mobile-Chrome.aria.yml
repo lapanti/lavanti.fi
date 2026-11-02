@@ -99,6 +99,24 @@
       - paragraph: "En fungerande ekonomi i AI-eran är inte bara en slogan. Det är substans: kompetens som överlever omställningen, företag som kan bygga på finsk och europeisk infrastruktur, och en stat som upphandlar teknik på sina egna villkor."
       - list:
         - listitem:
+          - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+            - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
+              - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
+              - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
+              - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
+          - list:
+            - listitem:
+              - link "Ekonomi":
+                - /url: /sv/kategori/ekonomi/
+            - listitem:
+              - link "Nationell politik":
+                - /url: /sv/kategori/nationell-politik/
+            - listitem:
+              - link /Riksdagsvalet \d+/:
+                - /url: /sv/kategori/riksdagsvalet-2027/
+        - listitem:
           - article "Varifrån kommer den offentliga sektorns pengar och vart går de?":
             - link "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget Varifrån kommer den offentliga sektorns pengar och vart går de?":
               - /url: /sv/blog/96/offentlig-sektor-varifran-kommer-pengarna-och-vart-gar-de/
@@ -131,24 +149,6 @@
             - listitem:
               - link "Natur":
                 - /url: /sv/kategori/natur/
-        - listitem:
-          - article "Programmet för gång och cykling är kommunens långsiktiga plan":
-            - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
-              - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
-              - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
-              - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Trafik":
-                - /url: /sv/kategori/trafik/
-            - listitem:
-              - link "Planläggning":
-                - /url: /sv/kategori/planlaggning/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/
@@ -348,6 +348,24 @@
       - paragraph: "Kyrkslätt är en tvåspråkig kustkommun som växer snabbt i kanten av Helsingforsregionen. Den har gott om verkliga tillgångar — strandlinje, natur, en blandad gemenskap — och verkliga påfrestningar: en intäktsbas som har svårt att hålla jämna steg med behoven, och en järnväg som är avgörande för regionen. Lokalpolitiken här är inte småpolitik."
       - list:
         - listitem:
+          - article "Programmet för gång och cykling är kommunens långsiktiga plan":
+            - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
+              - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
+              - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
+              - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
+          - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Trafik":
+                - /url: /sv/kategori/trafik/
+            - listitem:
+              - link "Planläggning":
+                - /url: /sv/kategori/planlaggning/
+        - listitem:
           - article "Det är ett misstag att höja priserna på HRT:s resebiljetter":
             - 'link "En triptyk: till vänster Pinja Pekkarniemi i en svartvitmönstrad blus, i mitten Mervi Somervuori i svart dräkt och till höger Lauri Lavanti i mörk kostym och blommig skjorta. Det är ett misstag att höja priserna på HRT:s resebiljetter"':
               - /url: /sv/blog/70/hrts-biljettpriser-hojning-ar-ett-misstag/
@@ -383,24 +401,6 @@
             - listitem:
               - link "Frihet":
                 - /url: /sv/kategori/frihet/
-        - listitem:
-          - 'article "Fullmäktigemotion: digital beredskap"':
-            - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-shirt med texten Digitaalinen itsenäisyys (Digital självständighet) och ett lejonmotiv ovanför, samt en kavaj. Foto av Erkki Laine. Fullmäktigemotion: digital beredskap"':
-              - /url: /sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/
-              - img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-shirt med texten Digitaalinen itsenäisyys (Digital självständighet) och ett lejonmotiv ovanför, samt en kavaj. Foto av Erkki Laine."
-              - 'heading "Fullmäktigemotion: digital beredskap" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kyrkslätt förlitar sig på digitala system i nästan all sin verksamhet. Motionen föreslår kartläggning av beroenden och övergång till öppna filformat.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Digital självständighet":
-                - /url: /sv/kategori/digital-sjalvstandighet/
-            - listitem:
-              - link "Fullmäktigeinitiativ":
-                - /url: /sv/kategori/fullmaktigeinitiativ/
       - paragraph:
         - link "Alla inlägg om Kyrkslätt":
           - /url: /sv/kategori/kyrkslatt/

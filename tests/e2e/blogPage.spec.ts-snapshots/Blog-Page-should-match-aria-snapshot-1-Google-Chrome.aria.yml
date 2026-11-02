@@ -99,6 +99,24 @@
       - paragraph: "Toimiva talous tekoälyn aikana ei ole pelkkä slogan. Se on konkretiaa: osaamista, joka kestää murroksen yli, yrityksiä, jotka voivat rakentaa suomalaisen ja eurooppalaisen infrastruktuurin päälle, ja valtio, joka hankkii teknologiaa omilla ehdoillaan."
       - list:
         - listitem:
+          - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+            - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
+              - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
+              - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
+              - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
+          - list:
+            - listitem:
+              - link "Talous":
+                - /url: /fi/kategoria/talous/
+            - listitem:
+              - link "Kansallinen politiikka":
+                - /url: /fi/kategoria/kansallinen-politiikka/
+            - listitem:
+              - link /Eduskuntavaalit \d+/:
+                - /url: /fi/kategoria/eduskuntavaalit-2027/
+        - listitem:
           - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
             - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
               - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
@@ -131,24 +149,6 @@
             - listitem:
               - link "Luonto":
                 - /url: /fi/kategoria/luonto/
-        - listitem:
-          - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
-            - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
-              - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
-              - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
-              - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Liikenne":
-                - /url: /fi/kategoria/liikenne/
-            - listitem:
-              - link "Kaavoitus":
-                - /url: /fi/kategoria/kaavoitus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/
@@ -348,6 +348,24 @@
       - paragraph: "Kirkkonummi on kaksikielinen, rannikolla sijaitseva kunta, joka kasvaa nopeasti Helsingin seudun reunalla. Sillä on paljon vahvuuksia — rantaviiva, luonto, monimuotoinen yhteisö — ja todellisia paineita: tulopohja, jolla on vaikeuksia pysyä tarpeiden perässä, ja alueelle kriittinen junarata. Paikallispolitiikka täällä ei ole pientä politiikkaa."
       - list:
         - listitem:
+          - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
+            - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
+              - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
+              - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
+              - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
+          - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Liikenne":
+                - /url: /fi/kategoria/liikenne/
+            - listitem:
+              - link "Kaavoitus":
+                - /url: /fi/kategoria/kaavoitus/
+        - listitem:
           - article "HSL:n matkalippujen hintojen korottaminen on virhe":
             - link "Triptyykki, jossa vasemmalla Pinja Pekkarniemi mustavalkokuvioisessa paidassa, keskellä Mervi Somervuori mustassa asussa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa. HSL:n matkalippujen hintojen korottaminen on virhe":
               - /url: /fi/blog/70/hsln-matkalippujen-hintojen-korottaminen-on-virhe/
@@ -383,24 +401,6 @@
             - listitem:
               - link "Vapaus":
                 - /url: /fi/kategoria/vapaus/
-        - listitem:
-          - 'article "Valtuustoaloite: Kirkkonummen digitaalisen huoltovarmuuden vahvistaminen"':
-            - 'link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Valtuustoaloite: Kirkkonummen digitaalisen huoltovarmuuden vahvistaminen"':
-              - /url: /fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/
-              - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
-              - 'heading "Valtuustoaloite: Kirkkonummen digitaalisen huoltovarmuuden vahvistaminen" [level=3]'
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Kirkkonummi nojaa lähes kaikessa toiminnassaan digitaalisiin järjestelmiin. Aloite esittää riippuvuuksien kartoitusta ja siirtymistä avoimiin tiedostomuotoihin.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Digitaalinen itsenäisyys":
-                - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-            - listitem:
-              - link "Valtuustoaloite":
-                - /url: /fi/kategoria/valtuustoaloite/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Kirkkonummi":
           - /url: /fi/kategoria/kirkkonummi/
