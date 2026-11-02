@@ -52,6 +52,38 @@ export interface CampaignEvent {
 export const campaignEvents: CampaignEvent[] = [
     // events:start
     {
+        date: '2026-11-17',
+        endTime: '13:50',
+        id: 'digitaalista-itsenaisyytta-ei-rakenneta-ilman-politiikkaa',
+        locales: {
+            en: {
+                description:
+                    "Lauri speaks at the Digital Sovereignty event at The Museum of Technology. In his speech he asks why Finnish IT companies stay out of politics while global tech giants influence regulation openly and with large sums of money, and what that means for Finland's digital independence.",
+                locality: 'Helsinki',
+                title: 'Digital Independence Is Not Built Without Politics',
+                venue: 'The Museum of Technology',
+            },
+            fi: {
+                description:
+                    'Lauri puhuu Digitaalinen suvereniteetti -tapahtumassa Tekniikan museossa. Puheessa hän kysyy, miksi suomalaiset IT-yritykset pysyttelevät erossa politiikasta, kun kansainväliset teknologiajätit vaikuttavat sääntelyyn avoimesti ja isoilla summilla – ja mitä se tarkoittaa Suomen digitaaliselle itsenäisyydelle.',
+                locality: 'Helsinki',
+                title: 'Digitaalista itsenäisyyttä ei rakenneta ilman politiikkaa',
+                venue: 'Tekniikan museo',
+            },
+            sv: {
+                description:
+                    'Lauri talar vid evenemanget Digital suveränitet på Tekniska museet. I talet frågar han varför finländska it-företag håller sig borta från politiken, medan internationella teknikjättar påverkar regleringen öppet och med stora summor – och vad det betyder för Finlands digitala självständighet.',
+                locality: 'Helsingfors',
+                title: 'Digital självständighet byggs inte utan politik',
+                venue: 'Tekniska museet',
+            },
+        },
+        postalCode: '00560',
+        startTime: '13:10',
+        streetAddress: 'Viikintie 1',
+        topicConfirmed: true,
+    },
+    {
         date: '2026-11-22',
         endTime: '16:00',
         id: 'kampanjatiimin-avoin-tilaisuus',
