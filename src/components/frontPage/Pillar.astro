@@ -50,7 +50,8 @@ const featuredReads = async (tag: string, lang: Lang): Promise<Read[]> => {
     return posts.map((p) => ({ href: p.url, label: p.title }))
 }
 
-const reads = Astro.props.tag ? await featuredReads(Astro.props.tag, Astro.props.lang) : Astro.props.reads
+const props = Astro.props
+const reads = props.tag === undefined ? props.reads : await featuredReads(props.tag, props.lang)
 
 const toneColors = {
     aqua: { ground: colors.aquaBlue, ink: colors.aquaInk, inkSoft: colors.aquaInkSoft },
