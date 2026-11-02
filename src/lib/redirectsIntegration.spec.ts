@@ -71,6 +71,15 @@ describe('buildRedirectLines', () => {
         expect(lines).toEqual([])
     })
 
+    it('redirects the pre-JPEG /og/<id>.png URL of every built OG card', () => {
+        const lines = buildRedirectLines({}, ['og/fi__about.jpg', '/og/fi__blog__97__x.jpg/'])
+
+        expect(lines).toEqual([
+            '/og/fi__about.png /og/fi__about.jpg 301',
+            '/og/fi__blog__97__x.png /og/fi__blog__97__x.jpg 301',
+        ])
+    })
+
     it('never shadows a path already defined as a static redirect source', () => {
         const lines = buildRedirectLines({ '/about/': '/fi/about-legacy/' }, ['/fi/about/'])
 
