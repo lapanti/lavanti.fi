@@ -5,8 +5,10 @@
  * src/content/suggestions.json, i.e. `npm run suggest:links` was not run on
  * its final text (and, for a newsletter, `--backlinks` was not run either), or
  * when a changed tag file has no receipt that `npm run suggest:tags -- --tag`
- * was run on its current label (the fields Jev reads). Pure file comparison —
- * never calls Jev.
+ * was run on its current label (the fields Jev reads), or when a changed post
+ * carries a tag with `featured` whose post set changed since the last
+ * `npm run suggest:tags -- --intro` (a new post may be the better first read).
+ * Pure file comparison — never calls Jev.
  *
  * Usage:
  *   node --experimental-strip-types scripts/checks/suggestions-stale.ts <changed file>…   (pre-commit, from lint-staged)
@@ -24,7 +26,7 @@ import { fileURLToPath } from 'node:url'
 import { buildCorpus, type Document } from '../jev/corpus.ts'
 import { docsFromPaths } from '../jev/links.ts'
 import { type ChangedTag, findUnchecked, readReceipts, RECEIPTS_PATH } from '../jev/suggestions.ts'
-import { hashTagFile, tagIdsFromPaths } from '../jev/tags.ts'
+import { featuredTagIds, hashIntroSet, hashTagFile, tagIdsFromPaths } from '../jev/tags.ts'
 /* eslint-enable import-x/extensions */
 
 interface CheckDeps {
@@ -59,6 +61,28 @@ export async function changedTags(paths: string[], tagsDir: string): Promise<Cha
     return Promise.all(ids.map(async (id) => ({ hash: await hashTagFile(id, tagsDir), id })))
 }
 
+/**
+ * The tags with `featured` that a changed post carries, with the hash of each
+ * tag's current post set. Any post file counts, meta.json included, since that
+ * is where tags live; an edit that leaves the set alone leaves the hash alone.
+ */
+export async function changedFeaturedTags(paths: string[], corpus: Document[], tagsDir: string): Promise<ChangedTag[]> {
+    const posts = corpus.filter((d) => d.kind === 'post')
+    const byId = new Map(posts.map((p) => [p.id, p]))
+    const carried = new Set(
+        docsFromPaths(paths)
+            .filter((t) => t.kind === 'post')
+            .flatMap((t) => byId.get(t.id)?.tags ?? [])
+    )
+    if (carried.size === 0) return []
+    const featured = await featuredTagIds(tagsDir)
+
+    return [...carried]
+        .filter((id) => featured.has(id))
+        .toSorted()
+        .map((id) => ({ hash: hashIntroSet(id, posts), id }))
+}
+
 /** Returns the process exit code: 0 everything changed was checked, 1 otherwise, 2 bad arguments. */
 export async function runCheck(argv: string[], deps: CheckDeps = {}): Promise<number> {
     const log = deps.log ?? console.log
@@ -76,15 +100,19 @@ export async function runCheck(argv: string[], deps: CheckDeps = {}): Promise<nu
         : files
     const tagsDir = deps.tagsDir ?? join(deps.root ?? 'src/content', 'tags')
     const tags = await changedTags(paths, tagsDir)
-    const changed = changedDocuments(paths, buildCorpus({ root: deps.root }))
-    if (changed.length === 0 && tags.length === 0) return 0
-    const problems = findUnchecked(readReceipts(deps.path ?? RECEIPTS_PATH), changed, tags)
+    const corpus = buildCorpus({ root: deps.root })
+    const changed = changedDocuments(paths, corpus)
+    const featured = await changedFeaturedTags(paths, corpus, tagsDir)
+    if (changed.length === 0 && tags.length === 0 && featured.length === 0) return 0
+    const problems = findUnchecked(readReceipts(deps.path ?? RECEIPTS_PATH), changed, tags, featured)
     if (problems.length === 0) return 0
     for (const problem of problems) {
         log(
             problem.startsWith('tag ')
                 ? `tag retro-scan not run on the current tag file: ${problem}`
-                : `link suggestions not run on the final text: ${problem}`
+                : problem.startsWith('intro ')
+                  ? `featured not re-ranked for the tag's current posts: ${problem}`
+                  : `link suggestions not run on the final text: ${problem}`
         )
     }
     log(`run the command(s) above, then commit ${RECEIPTS_PATH} with the content`)
