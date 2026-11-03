@@ -15,6 +15,7 @@ export const personGivenName = 'Lauri'
 export const personFamilyName = 'Lavanti'
 export const personBirthDate = '1991-10-01'
 export const personBirthPlace = { '@type': 'Place', name: 'Jyväskylä' }
+export const personHomeLocation = { '@type': 'Place', name: 'Kirkkonummi' }
 export const personNationality = { '@type': 'Country', name: 'FI' }
 export const personUrl = 'https://lavanti.fi/fi/'
 export const personEmail = 'lauri@lavanti.fi'
