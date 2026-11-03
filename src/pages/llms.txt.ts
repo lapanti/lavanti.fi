@@ -13,7 +13,7 @@ const PILLAR_LINKS = [
     { label: 'Eduskuntavaalit 2027', url: '/fi/eduskuntavaalit/' },
     { label: 'Vaalirahoitus', url: '/fi/eduskuntavaalit/vaalirahoitus/' },
     { label: 'Kirkkonummelainen kansanedustajaehdokas', url: '/fi/eduskuntavaalit/kirkkonummi/' },
-    { label: 'Riksdagskandidaten från Kyrkslätt', url: '/sv/riksdagsvalet/kyrkslatt/' },
+    { label: 'Riksdagskandidaten från Kyrkslätt i Nyland', url: '/sv/riksdagsvalet/kyrkslatt/' },
     { label: 'Parliamentary candidate from Kirkkonummi', url: '/en/elections/kirkkonummi/' },
     { label: 'Aiheet', url: '/fi/blog/' },
     { label: 'Laurista', url: '/fi/laurista/' },
