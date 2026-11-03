@@ -22,7 +22,11 @@
       - link "julkistuksessa":
         - /url: /fi/blog/67/ehdokkuuteni-eduskuntavaaleihin/
       - text: .
-    - paragraph: Olen kirkkonummelainen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
+    - paragraph:
+      - text: Olen
+      - link "kirkkonummelainen":
+        - /url: /fi/eduskuntavaalit/kirkkonummi/
+      - text: kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
     - paragraph:
       - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
       - link "Laurista-sivulta":
