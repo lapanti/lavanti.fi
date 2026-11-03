@@ -1,0 +1,159 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: sv
+pageTitle: 'Riksdagskandidaten från Kyrkslätt i Nyland'
+title: 'Kandidat'
+emphasis: 'från Kyrkslätt'
+eyebrow: 'Kyrkslätt · Sjundeå · Ingå'
+intro: 'Lauri Lavanti är riksdagskandidat från Kyrkslätt i riksdagsvalet 2027. Han är De Grönas kandidat i Nylands valkrets, kommunfullmäktigeledamot i Kyrkslätt och ordförande för De Grönas fullmäktigegrupp, och han har lett De Grönas budgetarbete i kommunen sedan 2025. Lavanti har bott i Kyrkslätt sedan han var tre år, med undantag för studieåren, då han bodde i Otnäs.'
+description: 'Lauri Lavanti är De Grönas riksdagskandidat från Kyrkslätt i Nylands valkrets: kommunfullmäktigeledamot, gruppordförande och budgetförhandlare.'
+slug: 'sv/riksdagsvalet/kyrkslatt'
+updatedDate: '2026-11-03'
+type: 'WebPage'
+breadcrumbParent: 'elections'
+breadcrumbName: 'Kyrkslätt'
+heroImage: Lauri-Lavanti-graniittimuurin-edessa-kasi-taskussa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-graniittimuurin-edessa-kasi-taskussa-hero-vaaka
+alt: 'Lauri Lavanti lutar sig mot en granitmur med ena handen i fickan och tittar in i kameran, klädd i en marinblå kavaj och en blommig skjorta.'
+plated: true
+variant: 'split'
+ctaHref: '/sv/nyhetsbrev/'
+ctaLabel: 'Prenumerera på nyhetsbrevet'
+langAlternates:
+    en: '/en/elections/kirkkonummi/'
+    fi: '/fi/eduskuntavaalit/kirkkonummi/'
+    sv: '/sv/riksdagsvalet/kyrkslatt/'
+faq:
+    - q: 'Vem är riksdagskandidat från Kyrkslätt i riksdagsvalet 2027?'
+      a: 'Lauri Lavanti är riksdagskandidat från Kyrkslätt i riksdagsvalet 2027 på De Grönas lista i Nylands valkrets. Han är kommunfullmäktigeledamot i Kyrkslätt och ordförande för De Grönas fullmäktigegrupp. Kandidatnumren bekräftas i mars 2027.'
+    - q: 'Kan en sjundeåbo eller ingåbo rösta på Lauri Lavanti?'
+      a: 'Ja. Sjundeå, Ingå och Kyrkslätt hör alla till Nylands valkrets, där man röstar på samma kandidater. Rösten räknas till Lavantis personröster och till De Grönas gemensamma liströster i Nyland. Helsingfors är en egen valkrets.'
+    - q: 'Var bor Lauri Lavanti?'
+      a: 'Lauri Lavanti bor i Kyrkslätt, där han har bott sedan han var tre år, med undantag för studieåren, då han bodde i Otnäs. Han gick i skola i Kyrkslätt och tog studenten vid Masaby gymnasium 2011. Han är född i Jyväskylä 1991.'
+    - q: 'Vad har Lauri Lavanti gjort i Kyrkslätts kommunfullmäktige?'
+      a: 'Lauri Lavanti röstade för Västbanan i december 2025 och lämnade in en motion om årlig prideflaggning, som fullmäktige godkände 9.3.2026. Han har lett De Grönas budgetarbete sedan 2025 och drivit på motionen om digital försörjningsberedskap. Han har motsatt sig höjda biljettpriser hos HRT och föreslagit att åtgärdsprogrammet för skogsvård återremitteras till beredning så att invånarna får bli hörda.'
+    - q: 'Hur röstade Lauri Lavanti om Västbanan?'
+      a: 'Lauri Lavanti röstade 8.12.2025 i Kyrkslätts fullmäktige för aktieägaravtalet med Länsirata Oy, så att norra Kyrkslätt skulle få en närtågsstation. Fullmäktige förkastade avtalet med rösterna 36–15, och Lavanti lämnade in en avvikande mening. Veikkola station föll bort ur banplanerna i februari 2026.'
+    - q: 'Vad anser Lauri Lavanti om HRT:s biljettpriser?'
+      a: 'Lauri Lavanti motsätter sig höjningar av HRT:s biljettpriser, eftersom samma procentuella höjning av alla biljetter slår hårdast i euro mot dem som bor längst bort, till exempel invånare i Kyrkslätt och Sjundeå som behöver en ABCD-biljett. HRT:s ekonomi bör rättas till genom att ändra finansieringsmodellen, inte genom biljettpriserna.'
+---
+
+import ImageWithCaption from '../../../../components/body/ImageWithCaption.astro'
+import EventCalendar from '../../../../components/EventCalendar.astro'
+import FactsList from '../../../../components/FactsList.astro'
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import H2 from '../../../../components/H2.astro'
+import H3 from '../../../../components/H3.astro'
+import LI from '../../../../components/LI.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Paragraph from '../../../../components/Paragraph.astro'
+import Plate from '../../../../components/Plate.astro'
+import PostProse from '../../../../components/post/PostProse.astro'
+import SmartLink from '../../../../components/SmartLink.astro'
+import UL from '../../../../components/UL.astro'
+import { filterByLocality } from '../../../../lib/events'
+import { visibleCampaignEvents } from '../../../../lib/visibleEvents'
+
+export const components = { a: SmartLink, h2: H2, h3: H3, p: Paragraph, ul: UL, li: LI }
+
+<Plate eyebrow="I korthet" ground="offWhite" id="ikorthet">
+    <FactsList
+        items={[
+            'Parti: De Gröna',
+            'Valkrets: Nylands valkrets',
+            'Hemkommun: Kyrkslätt, sedan tre års ålder',
+            'Förtroendeuppdrag: kommunfullmäktigeledamot i Kyrkslätt, ordförande för De Grönas fullmäktigegrupp och ledamot i kommunutvecklingsnämnden, alla sedan 2025; De Grönas budgetförhandlare sedan 2025',
+            'Yrke: ledande programutvecklare',
+            'Utbildning: diplomingenjör från Aalto-universitetet',
+            'Kandidatnummer: bekräftas i mars 2027',
+        ]}
+    />
+</Plate>
+
+<Plate ground="white">
+<PostProse>
+
+## Vem kandiderar från Kyrkslätt i riksdagsvalet 2027?
+
+Flera kandidater ställer upp från Kyrkslätt, och på De Grönas lista finns Lauri Lavanti. Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet 2027, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare (diplomingenjör, Aalto-universitetet). Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet.
+
+Lavanti flyttade till Kyrkslätt som treåring. Han gick i Kirkonkylän koulu och Kirkkoharjun koulu och tog studenten vid Masaby gymnasium 2011. Som gymnasist var han styrelseordförande för Kirkkonummen nuorisofoorumi (ungdomsforumet i Kyrkslätt) när kommunen fick sin första lagliga graffitivägg. I Kyrkslätt syns det hur statens beslut påverkar vardagen i praktiken: i tågbiljettens pris, på skolvägen och i möjligheten att få service på sitt eget språk. Bakgrund och arbetshistoria finns på sidan [Om Lauri](/sv/om-lauri/).
+
+<ImageWithCaption
+    alt="Lauri Lavanti i marinblå kavaj lutar sig mot ett högt bord i Kyrkslätts kommunhus, med broschyrhyllor och en trappa i bakgrunden."
+    caption="I Kyrkslätts kommunhus"
+    image="Lauri-Lavanti-kunnantalolla-poydan-aaressa-vaaka"
+    lang="sv"
+    photographer="Juha Jantunen"
+/>
+
+## Vad har Lauri Lavanti gjort i Kyrkslätts fullmäktige?
+
+I Kyrkslätts fullmäktige och i kommunutvecklingsnämnden har Lauri Lavanti arbetat för kollektivtrafiken, jämlikheten och för att invånarna ska bli hörda. De viktigaste besluten och motionerna:
+
+- **Västbanan.** Lavanti röstade 8.12.2025 [för Västbanan](/sv/blog/46/jag-rostade-for-vasternabanan/), så att norra Kyrkslätt skulle få en närtågsstation. Fullmäktige [förkastade aktieägaravtalet](https://kirkkonummi.oncloudos.com/cgi/DREQUEST.PHP?page=meetingitem&id=20252205-3) med rösterna 36–15, och Lavanti lämnade in en avvikande mening. Sedan februari 2026 [går banan vidare utan Veikkola station](/sv/blog/50/vastbanan-beslutet-avslojat-problem-i-kyrkslatts-langsiktiga-strategiska-utveckling/), så Veikkola blir utan tågförbindelse.
+
+- **Årlig prideflaggning.** Lavanti lämnade 16.6.2025 in en motion om årlig prideflaggning. Fullmäktige godkände den 9.3.2026 med rösterna 30–14, och [flaggan hissades vid kommunhuset](/sv/blog/64/flaggan-hissades-vad-gor-kyrkslatt-nasta/) för första gången 22.6.2026. Kommunen säger nu synligt att varje invånare hör hemma här.
+
+- **Digital försörjningsberedskap.** De Grönas fullmäktigegrupp lämnade 11.5.2026 in en [motion](/sv/blog/59/fullmaktigemotion-starka-kyrkslatt-digital-forsorjningsberedskap/) där kommunen skulle utreda sina beroenden av informationssystem utanför Europa och övergå till öppna filformat. Målet är att kommunens tjänster och invånarnas uppgifter förblir tillgängliga även om en utländsk leverantör byts ut eller leveransen avbryts.
+
+- **HRT:s biljettpriser.** De Grönas fullmäktigegrupp motsatte sig höjningarna av HRT:s biljettpriser när kommunen gav sitt yttrande om HRT:s plan i augusti 2026. Lavanti skrev om saken i Kirkkonummen Sanomat 3.9.2026: [Det är ett misstag att höja priserna på HRT:s resebiljetter](/sv/blog/70/hrts-biljettpriser-hojning-ar-ett-misstag/).
+
+- **Skogsvård.** De Gröna föreslog i kommunutvecklingsnämnden 10.9.2026 att åtgärdsprogrammet för skogsvård skulle återremitteras till beredning, så att invånarna redan i planeringsskedet skulle kunna påverka avverkningarna i sina närskogar. Förslaget gick inte igenom, och Lavanti [skrev om saken](/sv/blog/78/skogsavverkningar-utan-invanarnas-delaktighet/) i Kirkkonummen Sanomat.
+
+- **Budgetar.** Lavanti har lett De Grönas budgetarbete i Kyrkslätt sedan 2025 och företrätt gruppen i förhandlingarna om både budgeten för 2026 och budgeten för 2027. Båda åren drev De Gröna finansiering för gång och cykling, utbildning och kultur. Till budgeten för 2027 lämnade gruppen 16.10.2026 in åtta ändringsförslag, bland annat ett årligt anslag på 500 000 euro för ett program som främjar gång och cykling, så att till exempel skolvägarna kan göras trygga.
+
+<ImageWithCaption
+    alt="Lauri Lavanti framför Kyrkslätts kommunhus, med regnbågsflaggor som vajar i flaggstängerna ovanför honom."
+    caption="Regnbågsflaggor vid Kyrkslätts kommunhus sommaren 2026"
+    image="Lauri-Lavanti-sateenkaariliput-kunnantalolla-vaaka"
+    lang="sv"
+/>
+
+## Vad driver Lavanti i riksdagen för Kyrkslätt, Sjundeå och Ingå?
+
+I riksdagen skulle Lavanti driva tre frågor som syns direkt i Kyrkslätt, Sjundeå och Ingå: kollektivtrafik till rimliga priser, bedömning av datacentrens lokala konsekvenser före tillstånden och svenskspråkiga tjänster för tvåspråkiga områden.
+
+**Kollektivtrafik.** Från Kyrkslätt och Sjundeå till Helsingfors behövs en ABCD-biljett, så samma procentuella höjning av alla biljetter kostar mest i euro för dem som bor längst bort. Enligt Lavanti bör HRT:s ekonomi rättas till genom att ändra finansieringsmodellen i stället för att höja biljettpriserna. Ett konkret sätt är att avstå från avtalet om infrastrukturersättningar, där övriga HRT-kommuner betalar ersättning för de stora städernas infrastrukturprojekt. Ett upphävande skulle fördela kostnaderna rättvisare innan man ber resenärerna betala mer.
+
+**Datacenter.** Microsoft bygger ett [datacenter även i Kyrkslätt](/sv/blog/93/microsoft-datacenter-kyrkslatt/). Enligt Lavanti bör buller, användning av spillvärme, elnätets kapacitet och andra lokala konsekvenser bedömas i kommunen före tillståndsskedet, och datacenter bör behandlas enligt samma regler som annan industri.
+
+**Tvåspråkiga tjänster.** I Lavantis program skulle svenskspråkig jour, äldreomsorg och terapi i de tvåspråkiga välfärdsområdena höra till den nationella miniminivån för social- och hälsovården. Miniminivån skulle sätta ett golv som servicenivån inte får sjunka under. Om ett välfärdsområde underskred den, skulle det förlora en del av sin statsandel.
+
+Lavanti är också initiativtagare och drivande kraft bakom [medborgarinitiativet Digital självständighet](/sv/kategori/digital-sjalvstandighet/). Initiativet, som har över 50 000 understödjare, lämnas in till riksdagen efter valet våren 2027.
+
+## Varför ska en väljare i Sjundeå eller Ingå rösta på en kandidat från grannkommunen?
+
+En kandidat från grannkommunen känner samma vardag: samma kustbana, samma lokaltidning och samma tvåspråkiga kust. Av kandidaterna i Nylands valkrets är Lauri Lavanti den vars hemkommun ligger bredvid Sjundeå och Ingå och vars fullmäktigearbete har gällt samma frågor som avgörs i de här kommunerna.
+
+<H3 id="sjundea">Vad erbjuder Lavanti en sjundeåbo?</H3>
+
+För en sjundeåbo är Lauri Lavanti en kandidat från grannkommunen längs samma kustbana, och lokaltidningen för båda kommunerna är Kirkkonummen Sanomat. Sjundeå har varit medlemskommun i HRT sedan 2018, så Lavantis ståndpunkt om biljettpriserna gäller en sjundeåbos arbetspendling lika direkt som en kyrkslättsbos. Den lilla kommunens synvinkel på HRT:s finansiering är densamma på båda sidor om kommungränsen.
+
+<H3 id="inga">Vad erbjuder Lavanti en ingåbo?</H3>
+
+För en ingåbo är Lauri Lavanti den närmaste kandidaten vars program uttryckligen kräver svenskspråkiga tjänster. Ingå är en tvåspråkig kustkommun där svenska är majoritetens modersmål, och Lavantis förslag om svenskspråkig jour, äldreomsorg och terapi som en del av den nationella miniminivån för social- och hälsovården gäller ingåborna direkt. Kusten och skärgården är en gemensam livsmiljö för ingåbor och invånare i Kyrkslätt.
+
+## Hur röstar jag på Lauri Lavanti?
+
+Du röstar på Lauri Lavanti genom att skriva hans kandidatnummer på valsedeln på valdagen 18.4.2027 eller under förhandsröstningen 7–13.4.2027. Kandidatnumret bekräftas i mars 2027. Alla röstberättigade i Nylands valkrets kan rösta, också i Sjundeå och Ingå, och närmare anvisningar finns på [sidan om riksdagsvalet](/sv/riksdagsvalet/).
+
+Prenumerera på [nyhetsbrevet](/sv/nyhetsbrev/), så får du kandidatnumret och kampanjnyheterna direkt i din e-post.
+
+</PostProse>
+</Plate>
+
+<EventCalendar
+    events={filterByLocality(visibleCampaignEvents(), ['Kirkkonummi', 'Siuntio', 'Inkoo'])}
+    eyebrow="Evenemang"
+    heading="Evenemang i Kyrkslätt, Sjundeå och Ingå"
+    id="evenemang"
+    lang="sv"
+/>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Vanliga frågor om kandidaten från Kyrkslätt" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="sv" />
+</NewsletterPlate>

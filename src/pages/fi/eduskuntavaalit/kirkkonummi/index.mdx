@@ -1,0 +1,159 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Kirkkonummelainen kansanedustajaehdokas'
+title: 'Ehdolla'
+emphasis: 'Kirkkonummelta'
+eyebrow: 'Kirkkonummi · Siuntio · Inkoo'
+intro: 'Lauri Lavanti on kirkkonummelainen kansanedustajaehdokas vuoden 2027 eduskuntavaaleissa. Hän on Vihreiden ehdokas Uudenmaan vaalipiirissä, Kirkkonummen kunnanvaltuutettu ja Vihreän valtuustoryhmän puheenjohtaja, ja hän on johtanut Vihreiden talousarviotyötä kunnassa vuodesta 2025. Lavanti on asunut Kirkkonummella kolmevuotiaasta asti, opiskeluvuosia lukuun ottamatta, jolloin hän asui Otaniemessä.'
+description: 'Lauri Lavanti on Vihreiden kirkkonummelainen kansanedustajaehdokas Uudenmaan vaalipiirissä: kunnanvaltuutettu, ryhmän puheenjohtaja ja talousarvioneuvottelija.'
+slug: 'fi/eduskuntavaalit/kirkkonummi'
+updatedDate: '2026-11-03'
+type: 'WebPage'
+breadcrumbParent: 'elections'
+breadcrumbName: 'Kirkkonummi'
+heroImage: Lauri-Lavanti-graniittimuurin-edessa-kasi-taskussa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-graniittimuurin-edessa-kasi-taskussa-hero-vaaka
+alt: 'Lauri Lavanti nojaa graniittimuuriin toinen käsi taskussa ja katsoo kameraan, yllään tummansininen pikkutakki ja kukkakuvioinen paita.'
+plated: true
+variant: 'split'
+ctaHref: '/fi/uutiskirje/'
+ctaLabel: 'Tilaa uutiskirje'
+langAlternates:
+    en: '/en/elections/kirkkonummi/'
+    fi: '/fi/eduskuntavaalit/kirkkonummi/'
+    sv: '/sv/riksdagsvalet/kyrkslatt/'
+faq:
+    - q: 'Kuka on kirkkonummelainen kansanedustajaehdokas vuoden 2027 eduskuntavaaleissa?'
+      a: 'Lauri Lavanti on kirkkonummelainen kansanedustajaehdokas vuoden 2027 eduskuntavaaleissa Vihreiden listalla Uudenmaan vaalipiirissä. Hän on Kirkkonummen kunnanvaltuutettu ja Vihreän valtuustoryhmän puheenjohtaja. Ehdokasnumerot vahvistetaan maaliskuussa 2027.'
+    - q: 'Voiko siuntiolainen tai inkoolainen äänestää Lauri Lavantia?'
+      a: 'Voi. Siuntio, Inkoo ja Kirkkonummi kuuluvat kaikki Uudenmaan vaalipiiriin, jossa äänestetään samoja ehdokkaita. Ääni lasketaan Lavannin henkilöääniin ja Vihreiden listan yhteisääniin Uudellamaalla. Helsinki on oma vaalipiirinsä.'
+    - q: 'Missä Lauri Lavanti asuu?'
+      a: 'Lauri Lavanti asuu Kirkkonummella, jossa hän on asunut kolmevuotiaasta asti, opiskeluvuosia lukuun ottamatta, jolloin hän asui Otaniemessä. Hän kävi koulunsa Kirkkonummella ja kirjoitti ylioppilaaksi Masalan lukiosta vuonna 2011. Hän on syntynyt Jyväskylässä vuonna 1991.'
+    - q: 'Mitä Lauri Lavanti on tehnyt Kirkkonummen kunnanvaltuustossa?'
+      a: 'Lauri Lavanti äänesti Länsiradan puolesta joulukuussa 2025 ja jätti aloitteen vuosittaisesta Pride-liputuksesta, jonka valtuusto hyväksyi 9.3.2026. Hän on johtanut Vihreiden talousarviotyötä vuodesta 2025 ja vienyt eteenpäin digitaalisen huoltovarmuuden aloitetta. Hän on vastustanut HSL:n lippujen hinnankorotuksia ja esittänyt, että metsien hoidon ohjelma palautetaan valmisteluun asukkaiden kuulemista varten.'
+    - q: 'Miten Lauri Lavanti äänesti Länsiradasta?'
+      a: 'Lauri Lavanti äänesti 8.12.2025 Kirkkonummen valtuustossa Länsirata Oy:n osakassopimuksen puolesta, jotta Pohjois-Kirkkonummi saisi lähijuna-aseman. Valtuusto hylkäsi sopimuksen äänin 36–15, ja Lavanti jätti päätökseen eriävän mielipiteen. Veikkolan asema jäi pois radan suunnitelmista helmikuussa 2026.'
+    - q: 'Mikä on Lauri Lavannin kanta HSL:n lippujen hintoihin?'
+      a: 'Lauri Lavanti vastustaa HSL:n lippujen hinnankorotuksia, koska sama prosenttikorotus kaikkiin lippuihin osuu euroissa kovimmin kauimpana asuviin, kuten ABCD-lippua tarvitseviin kirkkonummelaisiin ja siuntiolaisiin. HSL:n talous pitäisi korjata rahoitusmallia muuttamalla, ei lippujen hinnoilla.'
+---
+
+import ImageWithCaption from '../../../../components/body/ImageWithCaption.astro'
+import EventCalendar from '../../../../components/EventCalendar.astro'
+import FactsList from '../../../../components/FactsList.astro'
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import H2 from '../../../../components/H2.astro'
+import H3 from '../../../../components/H3.astro'
+import LI from '../../../../components/LI.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Paragraph from '../../../../components/Paragraph.astro'
+import Plate from '../../../../components/Plate.astro'
+import PostProse from '../../../../components/post/PostProse.astro'
+import SmartLink from '../../../../components/SmartLink.astro'
+import UL from '../../../../components/UL.astro'
+import { filterByLocality } from '../../../../lib/events'
+import { visibleCampaignEvents } from '../../../../lib/visibleEvents'
+
+export const components = { a: SmartLink, h2: H2, h3: H3, p: Paragraph, ul: UL, li: LI }
+
+<Plate eyebrow="Lyhyesti" ground="offWhite" id="lyhyesti">
+    <FactsList
+        items={[
+            'Puolue: Vihreät',
+            'Vaalipiiri: Uudenmaan vaalipiiri',
+            'Kotikunta: Kirkkonummi, kolmevuotiaasta asti',
+            'Luottamustoimet: Kirkkonummen kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja kuntakehityksen lautakunnan jäsen, kaikki vuodesta 2025; Vihreiden talousarvioneuvottelija vuodesta 2025',
+            'Ammatti: johtava ohjelmistokehittäjä',
+            'Koulutus: diplomi-insinööri Aallosta',
+            'Ehdokasnumero: vahvistetaan maaliskuussa 2027',
+        ]}
+    />
+</Plate>
+
+<Plate ground="white">
+<PostProse>
+
+## Kuka on ehdolla Kirkkonummelta eduskuntavaaleissa 2027?
+
+Kirkkonummelta on ehdolla useita ehdokkaita, ja Vihreiden listalla heistä on Lauri Lavanti. Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella.
+
+Lavanti muutti Kirkkonummelle kolmevuotiaana. Hän kävi Kirkonkylän ja Kirkkoharjun koulut ja kirjoitti ylioppilaaksi Masalan lukiosta vuonna 2011. Lukiolaisena hän oli Kirkkonummen nuorisofoorumin hallituksen puheenjohtaja, kun kuntaan saatiin ensimmäinen laillinen graffitiseinä. Kirkkonummella näkee, miten valtion päätökset käytännössä vaikuttavat: junalipun hinnassa, koulumatkassa ja siinä, saako palvelun omalla kielellään. Tausta ja työhistoria löytyvät [Laurista-sivulta](/fi/laurista/).
+
+<ImageWithCaption
+    alt="Lauri Lavanti tummansinisessä pikkutakissa nojaa korkeaan pöytään Kirkkonummen kunnantalolla, taustalla esitehyllyjä ja portaikko."
+    caption="Kirkkonummen kunnantalolla"
+    image="Lauri-Lavanti-kunnantalolla-poydan-aaressa-vaaka"
+    lang="fi"
+    photographer="Juha Jantunen"
+/>
+
+## Mitä Lauri Lavanti on tehnyt Kirkkonummen valtuustossa?
+
+Kirkkonummen valtuustossa ja kuntakehityksen lautakunnassa Lauri Lavanti on tehnyt työtä joukkoliikenteen, yhdenvertaisuuden ja asukkaiden kuulemisen puolesta. Tärkeimmät päätökset ja aloitteet:
+
+- **Länsirata.** Lavanti äänesti 8.12.2025 [Länsiradan puolesta](/fi/blog/46/aanestin-lansiradan-puolesta/), jotta Pohjois-Kirkkonummi saisi lähijuna-aseman. Valtuusto [hylkäsi osakassopimuksen](https://kirkkonummi.oncloudos.com/cgi/DREQUEST.PHP?page=meetingitem&id=20252205-3) äänin 36–15, ja Lavanti jätti päätökseen eriävän mielipiteen. Helmikuusta 2026 [rata etenee ilman Veikkolan asemaa](/fi/blog/50/lansirata-paatos-nosti-esiin-ongelmia-kirkkonummen-pitkajanteisessa-strategisessa-kehittamisessa/), joten junayhteys jää Veikkolasta puuttumaan.
+
+- **Pride-liputus.** Lavanti jätti 16.6.2025 aloitteen vuosittaisesta Pride-liputuksesta. Valtuusto hyväksyi sen 9.3.2026 äänin 30–14, ja [lippu nousi kunnantalon salkoon](/fi/blog/64/lippu-nousi-salkoon-mita-kirkkonummi-tekee-seuraavaksi/) ensimmäisen kerran 22.6.2026. Kunta sanoo nyt näkyvästi, että jokainen asukas kuuluu tänne.
+
+- **Digitaalinen huoltovarmuus.** Vihreä valtuustoryhmä jätti 11.5.2026 [valtuustoaloitteen](/fi/blog/59/valtuustoaloite-kirkkonummen-digitaalisen-huoltovarmuuden-vahvistaminen/), jossa kunta selvittäisi riippuvuutensa Euroopan ulkopuolisista tietojärjestelmistä ja siirtyisi avoimiin tiedostomuotoihin. Tavoite on, että kunnan palvelut ja asukkaiden tiedot pysyvät käytettävissä, vaikka ulkomainen toimittaja vaihtuisi tai toimitus katkeaisi.
+
+- **HSL:n lippujen hinnat.** Vihreä valtuustoryhmä vastusti HSL:n lippujen hinnankorotuksia, kun kunta antoi elokuussa 2026 lausuntonsa HSL:n suunnitelmasta. Lavanti kirjoitti aiheesta Kirkkonummen Sanomiin 3.9.2026: [HSL:n matkalippujen hintojen korottaminen on virhe](/fi/blog/70/hsln-matkalippujen-hintojen-korottaminen-on-virhe/).
+
+- **Metsien hoito.** Vihreät esittivät kuntakehityksen lautakunnassa 10.9.2026, että metsien hoidon toimenpideohjelma palautetaan valmisteluun, jotta asukkaat pääsisivät vaikuttamaan lähimetsiensä hakkuisiin jo suunnitteluvaiheessa. Esitys ei mennyt läpi, ja Lavanti [kirjoitti asiasta](/fi/blog/78/metsien-hakkuut-ilman-asukkaiden-kuulemista/) Kirkkonummen Sanomiin.
+
+- **Talousarviot.** Lavanti on johtanut Vihreiden talousarviotyötä Kirkkonummella vuodesta 2025 ja edustanut ryhmää sekä vuoden 2026 että vuoden 2027 talousarvion neuvotteluissa. Molempina vuosina vihreät ajoivat kävelyn ja pyöräilyn, koulutuksen ja kulttuurin rahoitusta. Vuoden 2027 talousarvioon ryhmä jätti 16.10.2026 kahdeksan muutosesitystä, muun muassa 500 000 euron vuotuisen määrärahan kävelyn ja pyöräilyn edistämisohjelmalle, jotta esimerkiksi koulureitit saadaan turvallisiksi.
+
+<ImageWithCaption
+    alt="Lauri Lavanti Kirkkonummen kunnantalon edessä, yläpuolella lipputangoissa liehuvia sateenkaarilippuja."
+    caption="Sateenkaariliput Kirkkonummen kunnantalolla kesällä 2026"
+    image="Lauri-Lavanti-sateenkaariliput-kunnantalolla-vaaka"
+    lang="fi"
+/>
+
+## Mitä Lavanti ajaa eduskunnassa Kirkkonummen, Siuntion ja Inkoon puolesta?
+
+Eduskunnassa Lavanti ajaisi kolmea asiaa, jotka näkyvät Kirkkonummella, Siuntiossa ja Inkoossa suoraan: kohtuuhintaista joukkoliikennettä, datakeskusten paikallisten vaikutusten arviointia ennen lupia ja ruotsinkielisiä palveluja kaksikielisille alueille.
+
+**Joukkoliikenne.** Kirkkonummelta ja Siuntiosta Helsinkiin tarvitaan ABCD-lippu, joten sama prosenttikorotus kaikkiin lippuihin maksaa euroissa eniten kauimpana asuville. Lavannin mukaan HSL:n talous pitäisi korjata rahoitusmallia muuttamalla eikä lippujen hintoja nostamalla. Konkreettinen keino on luopua infrakorvaussopimuksesta, jossa muut HSL-kunnat maksavat korvauksia isojen kaupunkien infrahankkeista. Sen purku jakaisi kustannukset oikeudenmukaisemmin ennen kuin matkustajilta pyydetään lisää.
+
+**Datakeskukset.** Microsoft rakentaa [datakeskusta myös Kirkkonummelle](/fi/blog/93/microsoft-datakeskus-kirkkonummi/). Lavannin mukaan melu, hukkalämmön käyttö, sähköverkon riittävyys ja muut paikalliset vaikutukset pitäisi arvioida kunnassa ennen lupavaihetta, ja datakeskuksia pitäisi kohdella samoilla säännöillä kuin muuta teollisuutta.
+
+**Kaksikieliset palvelut.** Lavannin ohjelmassa ruotsinkielinen päivystys, vanhustenhoito ja terapia kuuluisivat kaksikielisillä hyvinvointialueilla kansalliseen sote-vähimmäisstandardiin. Standardi asettaisi lattian, jonka alle palvelutaso ei saisi pudota. Jos hyvinvointialue alittaisi sen, se menettäisi osan valtionosuudestaan.
+
+Lavanti on myös [Digitaalinen itsenäisyys](/fi/kategoria/digitaalinen-itsenaisyys/) -kansalaisaloitteen alullepanija ja vetäjä. Yli 50 000 kannattajan aloite jätetään eduskuntaan kevään 2027 vaalien jälkeen.
+
+## Miksi Siuntion ja Inkoon äänestäjän kannattaa äänestää naapurikunnan ehdokasta?
+
+Naapurikunnan ehdokas tuntee saman arjen: saman rantaradan, saman paikallislehden ja saman kaksikielisen rannikon. Lauri Lavanti on Uudenmaan vaalipiirin ehdokkaista se, jonka kotikunta on Siuntion ja Inkoon vieressä ja jonka valtuustotyö on koskenut samoja asioita kuin näissä kunnissa päätetään.
+
+<H3 id="siuntio">Mitä Lavanti tarjoaa siuntiolaiselle?</H3>
+
+Siuntiolaiselle Lauri Lavanti on naapurikunnan ehdokas samalla rantaradalla, ja molempien kuntien paikallislehti on Kirkkonummen Sanomat. Siuntio on ollut HSL:n jäsenkunta vuodesta 2018, joten Lavannin kanta lippujen hintoihin koskee siuntiolaisen työmatkaa yhtä suoraan kuin kirkkonummelaisen. Pienen kunnan näkökulma HSL:n rahoitukseen on sama kummallakin puolella kuntarajaa.
+
+<H3 id="inkoo">Mitä Lavanti tarjoaa inkoolaiselle?</H3>
+
+Inkoolaiselle Lauri Lavanti on lähin ehdokas, jonka ohjelmassa ruotsinkieliset palvelut ovat kirjattu vaatimus. Inkoo on kaksikielinen rannikkokunta, jossa ruotsi on enemmistön äidinkieli, ja Lavannin ehdotus ruotsinkielisestä päivystyksestä, vanhustenhoidosta ja terapiasta osana sote-vähimmäisstandardia koskee inkoolaisia suoraan. Rannikko ja saaristo ovat inkoolaisille ja kirkkonummelaisille yhteistä elinympäristöä.
+
+## Miten äänestän Lauri Lavantia?
+
+Lauri Lavantia äänestät kirjoittamalla hänen ehdokasnumeronsa äänestyslippuun vaalipäivänä 18.4.2027 tai ennakkoäänestyksessä 7.–13.4.2027. Ehdokasnumero vahvistetaan maaliskuussa 2027. Äänestää voivat kaikki Uudenmaan vaalipiirin äänioikeutetut, myös Siuntiossa ja Inkoossa, ja tarkemmat ohjeet löydät [eduskuntavaalisivulta](/fi/eduskuntavaalit/).
+
+Tilaa [uutiskirje](/fi/uutiskirje/), niin saat ehdokasnumeron ja kampanjan kuulumiset suoraan sähköpostiisi.
+
+</PostProse>
+</Plate>
+
+<EventCalendar
+    events={filterByLocality(visibleCampaignEvents(), ['Kirkkonummi', 'Siuntio', 'Inkoo'])}
+    eyebrow="Tapahtumat"
+    heading="Tapahtumat Kirkkonummella, Siuntiossa ja Inkoossa"
+    id="tapahtumat"
+    lang="fi"
+/>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Usein kysyttyä kirkko­nummelaisesta ehdokkaasta" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="fi" />
+</NewsletterPlate>
