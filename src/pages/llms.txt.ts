@@ -12,6 +12,7 @@ const PILLAR_LINKS = [
     { label: 'Etusivu', url: '/fi/' },
     { label: 'Eduskuntavaalit 2027', url: '/fi/eduskuntavaalit/' },
     { label: 'Vaalirahoitus', url: '/fi/eduskuntavaalit/vaalirahoitus/' },
+    { label: 'Kirkkonummelainen kansanedustajaehdokas', url: '/fi/eduskuntavaalit/kirkkonummi/' },
     { label: 'Aiheet', url: '/fi/blog/' },
     { label: 'Laurista', url: '/fi/laurista/' },
     { label: 'Suositukset', url: '/fi/suositukset/' },
