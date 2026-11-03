@@ -25,6 +25,9 @@ export const isUpcoming = (eventDate: string, today: string): boolean => eventDa
 export const filterUpcoming = (events: CampaignEvent[], today: string): CampaignEvent[] =>
     events.filter((event) => isUpcoming(event.date, today))
 
-/** Matches the Finnish locality, the one form every event carries regardless of the reader's language. */
+/**
+ * Matches the Finnish locality, the one form every event carries regardless of the reader's language.
+ * Exact match on the municipality: an event entered under a village name (Masala, Veikkola) is not matched.
+ */
 export const filterByLocality = (events: CampaignEvent[], localities: string[]): CampaignEvent[] =>
     events.filter((event) => localities.includes(event.locales.fi.locality))
