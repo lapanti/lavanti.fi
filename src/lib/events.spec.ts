@@ -2,9 +2,12 @@ import type { CampaignEvent } from '../content/events'
 
 import { describe, expect, it } from 'vitest'
 
-import { filterUpcoming, isUpcoming } from './events'
+import { filterByLocality, filterUpcoming, isUpcoming } from './events'
 
 const eventOn = (date: string): CampaignEvent => ({ date, id: date }) as CampaignEvent
+
+const eventIn = (fi: string, sv: string): CampaignEvent =>
+    ({ id: fi, locales: { fi: { locality: fi }, sv: { locality: sv } } }) as unknown as CampaignEvent
 
 describe('isUpcoming', () => {
     it('keeps a future event', () => {
@@ -51,5 +54,20 @@ describe('filterUpcoming', () => {
 
     it('returns an empty list for an empty input', () => {
         expect(filterUpcoming([], '2026-09-15')).toEqual([])
+    })
+})
+
+describe('filterByLocality', () => {
+    const events = [eventIn('Kirkkonummi', 'Kyrkslätt'), eventIn('Espoo', 'Esbo'), eventIn('Inkoo', 'Ingå')]
+
+    it('keeps events in the listed municipalities', () => {
+        expect(filterByLocality(events, ['Kirkkonummi', 'Siuntio', 'Inkoo']).map((e) => e.id)).toEqual([
+            'Kirkkonummi',
+            'Inkoo',
+        ])
+    })
+
+    it('matches on the Finnish name, not the Swedish one', () => {
+        expect(filterByLocality(events, ['Kyrkslätt'])).toEqual([])
     })
 })
