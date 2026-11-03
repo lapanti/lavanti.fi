@@ -2,10 +2,12 @@
 import { typographics } from '../lib/styles'
 
 interface Props {
+    /** Anchor target for deep links, e.g. a municipality section linked as `#siuntio`. */
+    id?: string
     itemProp?: string
 }
 
-const { itemProp } = Astro.props
+const { id, itemProp } = Astro.props
 ---
 
 <style
@@ -39,6 +41,6 @@ const { itemProp } = Astro.props
         margin-top: 2.25rem;
     }
 </style>
-<h3 itemprop={itemProp}>
+<h3 id={id} itemprop={itemProp}>
     <slot />
 </h3>
