@@ -22,7 +22,10 @@
       - text: He chairs the Greens council group in Kirkkonummi, and the practical details of his candidacy are on the
       - link "elections page":
         - /url: /en/elections/
-      - text: . He has lived in Kirkkonummi since the age of three and attended comprehensive school, upper secondary school, and vocational school in his home municipality. He focuses on AI, economic policy,
+      - text: . He has lived in
+      - link "Kirkkonummi":
+        - /url: /en/elections/kirkkonummi/
+      - text: since the age of three and attended comprehensive school, upper secondary school, and vocational school in his home municipality. He focuses on AI, economic policy,
       - link "entrepreneurship":
         - /url: /en/category/entrepreneurship/
       - text: ", and digital independence. Digital independence, privacy, and the responsible adoption of AI are all part of the same whole: how we build technological development that is both competitive and sustainable."
