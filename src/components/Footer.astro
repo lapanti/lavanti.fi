@@ -9,6 +9,8 @@ import {
     footerColumnLabels,
     footerLanguageLinks,
     footerLinks,
+    footerLocalCandidateHref,
+    footerLocalCandidateLabel,
     footerLogoAlt,
     footerMediaLabel,
     footerNewsletterArchiveLabel,
@@ -202,6 +204,7 @@ const licenseText: Record<Lang, string> = {
                         }
                         <li><a href={archivePath(lang)}>{footerNewsletterArchiveLabel[lang]}</a></li>
                         <li><a href={footerCampaignFinanceHref[lang]}>{footerCampaignFinanceLabel[lang]}</a></li>
+                        <li><a href={footerLocalCandidateHref[lang]}>{footerLocalCandidateLabel[lang]}</a></li>
                         <li><a href={footerSourceCodeUrl}>{footerSourceCodeLabel[lang]}</a></li>
                     </ul>
                 </div>

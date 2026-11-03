@@ -47,6 +47,19 @@ export const footerCampaignFinanceHref: Record<Lang, string> = {
     sv: '/sv/riksdagsvalet/valfinansiering/',
 }
 
+/** Footer-only for the same reason: the local candidate page serves search, not the nav. */
+export const footerLocalCandidateLabel: Record<Lang, string> = {
+    en: 'Kirkkonummi, Siuntio and Inkoo',
+    fi: 'Kirkkonummi, Siuntio ja Inkoo',
+    sv: 'Kyrkslätt, Sjundeå och Ingå',
+}
+
+export const footerLocalCandidateHref: Record<Lang, string> = {
+    en: '/en/elections/kirkkonummi/',
+    fi: '/fi/eduskuntavaalit/kirkkonummi/',
+    sv: '/sv/riksdagsvalet/kyrkslatt/',
+}
+
 /**
  * The site's source is public as part of the campaign's openness; it sits next to the
  * finance link for the same reader who wants to check how things are done.
