@@ -126,6 +126,21 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - 'article "AI i skolan: redan vardag, ännu inte i läroplanen"':
+          - 'link "Tomt klassrum i en skola i Vanda med datorer vid fönsterväggen: AI i skolan är redan vardag AI i skolan: redan vardag, ännu inte i läroplanen"':
+            - /url: /sv/blog/94/ai-i-skolan-far-barnet-anvanda-det/
+            - 'img "Tomt klassrum i en skola i Vanda med datorer vid fönsterväggen: AI i skolan är redan vardag"'
+            - 'heading "AI i skolan: redan vardag, ännu inte i läroplanen" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: AI i skolan är tillåtet enligt skolans anvisningar. Vad rekommendationerna och AI-förordningen kräver och vad som händer med barnets personuppgifter.
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Utbildning":
+              - /url: /sv/kategori/utbildning/
+      - listitem:
         - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
           - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
             - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
@@ -266,24 +281,6 @@
           - listitem:
             - link "AI":
               - /url: /sv/kategori/artificiell-intelligens/
-      - listitem:
-        - article "Tar AI programmerarens jobb?":
-          - link "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag Tar AI programmerarens jobb?":
-            - /url: /sv/blog/87/tar-ai-programmerarens-jobb/
-            - img "Lauri Lavanti sitter på en utomhustrappa med en bärbar dator i knäet – AI och arbete i en utvecklares vardag"
-            - heading "Tar AI programmerarens jobb?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "AI och arbete ur en utvecklares perspektiv: tar AI programmerarens jobb, vad händer med juniorer och hur kompetensen och social trygghet hänger med."
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /sv/kategori/artificiell-intelligens/
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Utbildning":
-              - /url: /sv/kategori/utbildning/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

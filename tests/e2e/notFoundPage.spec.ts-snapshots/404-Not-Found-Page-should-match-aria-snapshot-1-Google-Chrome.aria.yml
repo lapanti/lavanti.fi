@@ -5,6 +5,21 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - 'article "Tekoäly koulussa: jo arkea, ei vielä opetussuunnitelmassa"':
+          - 'link "Tyhjä luokkahuone vantaalaisessa koulussa, ikkunaseinällä tietokoneita: tekoäly koulussa on jo arkea Tekoäly koulussa: jo arkea, ei vielä opetussuunnitelmassa"':
+            - /url: /fi/blog/94/tekoaly-koulussa-saako-lapsi-kayttaa/
+            - 'img "Tyhjä luokkahuone vantaalaisessa koulussa, ikkunaseinällä tietokoneita: tekoäly koulussa on jo arkea"'
+            - 'heading "Tekoäly koulussa: jo arkea, ei vielä opetussuunnitelmassa" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Tekoäly koulussa on sallittua koulun ohjeiden mukaan. Mitä OKM:n suositukset ja tekoälyasetus vaativat, mitä lapsen tiedoille tapahtuu ja mitä voit kysyä?
+        - list:
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Opetus":
+              - /url: /fi/kategoria/opetus/
+      - listitem:
         - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
           - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
             - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
@@ -127,21 +142,3 @@
           - listitem:
             - link "Kaavoitus":
               - /url: /fi/kategoria/kaavoitus/
-      - listitem:
-        - 'article "Valtuustoaloite: tekoälyopastusta työnhakuun"':
-          - 'link "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0. Valtuustoaloite: tekoälyopastusta työnhakuun"':
-            - /url: /fi/blog/89/valtuustoaloite-tekoalyopastus-tyonhakuun/
-            - 'img "Kädet tekemässä muistiinpanoja vihkoon kannettavan tietokoneen vieressä valkoisella työpöydällä. Kuva: JESHOOTS.com, StockSnap, CC0."'
-            - 'heading "Valtuustoaloite: tekoälyopastusta työnhakuun" [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Kirkkonummi voisi vastuukuntana tarjota työnhakijoille maksutonta tekoälyopastusta. Aloite esittää määräaikaista pilottia koko työllisyysalueelle.
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /fi/kategoria/kirkkonummi/
-          - listitem:
-            - link "Valtuustoaloite":
-              - /url: /fi/kategoria/valtuustoaloite/
-          - listitem:
-            - link "Tekoäly":
-              - /url: /fi/kategoria/tekoaly/
