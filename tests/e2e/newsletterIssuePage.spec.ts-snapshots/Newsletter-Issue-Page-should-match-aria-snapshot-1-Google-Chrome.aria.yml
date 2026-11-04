@@ -31,19 +31,19 @@
     - paragraph: Kuka teidän organisaatiossanne päättää, mihin tekoäly ulottuu ja mitä sillä korvataan? Jos vastaus on epäselvä, se kannattaa selvittää ennen kuin joku muu päättää puolestanne.
     - complementary "Uutiskirjeen Tekoäly ei vie työtäsi, mutta muuttaa sen sosiaalisen median jakolinkit":
       - text: "Jaa:"
-      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Mastodonissa":
+      - 'link "Mastodon: jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\""':
         - /url: https://mastodon.social/share?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40laurilavanti%40mastodon.social%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
         - text: ""
-      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Blueskyssa":
+      - 'link "Bluesky: jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\""':
         - /url: https://bsky.app/intent/compose?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40lauri.lavanti.fi%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
         - text: ""
-      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Threadsissä":
+      - 'link "Threads: jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\""':
         - /url: https://threads.com/intent/post?text=Lue%20%22Teko%C3%A4ly%20ei%20vie%20ty%C3%B6t%C3%A4si%2C%20mutta%20muuttaa%20sen%22%2C%20jonka%20%40laurilavanti%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fuutiskirje%2F1%2Ftekoaly-ei-vie-tyotasi-mutta-muuttaa-sen%2F
         - text: ""
-      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" LinkedInissä":
+      - 'link "LinkedIn: jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\""':
         - /url: https://www.linkedin.com/sharing/share-offsite/?url=https://lavanti.fi/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
         - text: ""
-      - link "Jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\" Facebookissa":
+      - 'link "Facebook: jaa kirjoitus \"Tekoäly ei vie työtäsi, mutta muuttaa sen\""':
         - /url: https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/fi/uutiskirje/1/tekoaly-ei-vie-tyotasi-mutta-muuttaa-sen/
         - text: ""
     - text: Q & A
