@@ -15,7 +15,7 @@ exports[`<SocialShare /> > should render 1`] = `
   </span>
    
   <a
-    aria-label="Jaa kirjoitus "Vuosi 2026 on tekoälyn" Mastodonissa"
+    aria-label="Mastodon: jaa kirjoitus "Vuosi 2026 on tekoälyn""
     data-astro-cid-w7whim4q=""
     data-instance-prompt="Anna Mastodon-instanssisi (esim. mastodon.social):"
     data-share-text="Lue "Vuosi 2026 on tekoälyn", jonka @laurilavanti@mastodon.social kirjoitti
@@ -32,7 +32,7 @@ Mastodon
   </a>
    
   <a
-    aria-label="Jaa kirjoitus "Vuosi 2026 on tekoälyn" Blueskyssa"
+    aria-label="Bluesky: jaa kirjoitus "Vuosi 2026 on tekoälyn""
     data-astro-cid-w7whim4q=""
     href="https://bsky.app/intent/compose?text=Lue%20%22Vuosi%202026%20on%20teko%C3%A4lyn%22%2C%20jonka%20%40lauri.lavanti.fi%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Fblogi%2Fvuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
@@ -44,7 +44,7 @@ Bluesky
   </a>
    
   <a
-    aria-label="Jaa kirjoitus "Vuosi 2026 on tekoälyn" Threadsissä"
+    aria-label="Threads: jaa kirjoitus "Vuosi 2026 on tekoälyn""
     data-astro-cid-w7whim4q=""
     href="https://threads.com/intent/post?text=Lue%20%22Vuosi%202026%20on%20teko%C3%A4lyn%22%2C%20jonka%20%40laurilavanti%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Fblogi%2Fvuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
@@ -56,7 +56,7 @@ Threads
   </a>
    
   <a
-    aria-label="Jaa kirjoitus "Vuosi 2026 on tekoälyn" LinkedInissä"
+    aria-label="LinkedIn: jaa kirjoitus "Vuosi 2026 on tekoälyn""
     data-astro-cid-w7whim4q=""
     href="https://www.linkedin.com/sharing/share-offsite/?url=https://lavanti.fi/blogi/vuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
@@ -68,7 +68,7 @@ LinkedIn
   </a>
    
   <a
-    aria-label="Jaa kirjoitus "Vuosi 2026 on tekoälyn" Facebookissa"
+    aria-label="Facebook: jaa kirjoitus "Vuosi 2026 on tekoälyn""
     data-astro-cid-w7whim4q=""
     href="https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/blogi/vuosi-2026-on-tekoalyn"
     rel="noopener noreferrer"
