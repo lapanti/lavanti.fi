@@ -128,6 +128,21 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - 'article "AI in school: already routine, not yet in the curriculum"':
+          - 'link "Empty classroom in a school in Vantaa with computers along the window wall: AI in school is already routine AI in school: already routine, not yet in the curriculum"':
+            - /url: /en/blog/94/ai-in-school-can-children-use-it/
+            - 'img "Empty classroom in a school in Vantaa with computers along the window wall: AI in school is already routine"'
+            - 'heading "AI in school: already routine, not yet in the curriculum" [level=3]'
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: AI in school is allowed within school guidelines. What the Finnish recommendations and the AI Act require, what happens to a child's data, and what to ask?
+        - list:
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Education":
+              - /url: /en/category/education/
+      - listitem:
         - article "A pension index freeze would share the burden fairly":
           - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
             - /url: /en/blog/97/pension-funding-and-the-index-freeze/
@@ -268,24 +283,6 @@
           - listitem:
             - link "AI":
               - /url: /en/category/artificial-intelligence/
-      - listitem:
-        - article "Is AI taking the programmer's job?":
-          - link "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day Is AI taking the programmer's job?":
-            - /url: /en/blog/87/will-ai-take-programmers-jobs/
-            - img "Lauri Lavanti sitting on outdoor stone steps with a laptop on his lap – AI and work in a developer's day"
-            - heading "Is AI taking the programmer's job?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "AI and work through a developer's eyes: is AI taking the programmer's job, what happens to juniors, and how skills and social security can keep pace."
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Education":
-              - /url: /en/category/education/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
