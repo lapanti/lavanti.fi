@@ -94,19 +94,19 @@
       - emphasis: "/Julkaistu myös: Länsiväylä, 5\\. tammikuuta \\d+\\./"
     - complementary "Kirjoituksen Sote on hyvinvointiyhteiskunnan kulmakivi sosiaalisen median jakolinkit":
       - text: "Jaa:"
-      - link "Jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\" Mastodonissa":
+      - 'link "Mastodon: jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\""':
         - /url: https://mastodon.social/share?text=Lue%20%22Sote%20on%20hyvinvointiyhteiskunnan%20kulmakivi%22%2C%20jonka%20%40laurilavanti%40mastodon.social%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fblog%2F10%2Fsote-on-hyvinvointiyhteiskunnan-kulmakivi%2F
         - text: ""
-      - link "Jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\" Blueskyssa":
+      - 'link "Bluesky: jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\""':
         - /url: https://bsky.app/intent/compose?text=Lue%20%22Sote%20on%20hyvinvointiyhteiskunnan%20kulmakivi%22%2C%20jonka%20%40lauri.lavanti.fi%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fblog%2F10%2Fsote-on-hyvinvointiyhteiskunnan-kulmakivi%2F
         - text: ""
-      - link "Jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\" Threadsissä":
+      - 'link "Threads: jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\""':
         - /url: https://threads.com/intent/post?text=Lue%20%22Sote%20on%20hyvinvointiyhteiskunnan%20kulmakivi%22%2C%20jonka%20%40laurilavanti%20kirjoitti%0A%0Ahttps%3A%2F%2Flavanti.fi%2Ffi%2Fblog%2F10%2Fsote-on-hyvinvointiyhteiskunnan-kulmakivi%2F
         - text: ""
-      - link "Jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\" LinkedInissä":
+      - 'link "LinkedIn: jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\""':
         - /url: https://www.linkedin.com/sharing/share-offsite/?url=https://lavanti.fi/fi/blog/10/sote-on-hyvinvointiyhteiskunnan-kulmakivi/
         - text: ""
-      - link "Jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\" Facebookissa":
+      - 'link "Facebook: jaa kirjoitus \"Sote on hyvinvointiyhteiskunnan kulmakivi\""':
         - /url: https://www.facebook.com/sharer/sharer.php?u=https://lavanti.fi/fi/blog/10/sote-on-hyvinvointiyhteiskunnan-kulmakivi/
         - text: ""
     - text: Kirjoitukset
