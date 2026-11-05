@@ -5,6 +5,8 @@ import { glob } from 'astro/loaders'
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 
+import { expandCoAuthor } from '../coAuthors'
+
 type Localized<T> = T | Partial<Record<Lang, T>>
 
 const LANGS: readonly Lang[] = ['en', 'fi', 'sv']
@@ -38,21 +40,23 @@ function resolveLocalized<T>(value: Localized<T> | undefined, lang: Lang): T | u
     return value as T
 }
 
-interface RawAuthorEntry {
-    name: string
-    role?: Localized<string>
-    sameAs?: string[]
-    url?: string
-}
+type RawAuthorEntry =
+    | string
+    | { id: string; role?: Localized<string> }
+    | { name: string; role?: Localized<string>; sameAs?: string[]; url?: string }
 
 function resolveMeta(meta: Record<string, unknown>, lang: Lang): Record<string, unknown> {
-    const authors = meta.authors as Array<'lauri' | RawAuthorEntry> | undefined
+    const authors = meta.authors as RawAuthorEntry[] | undefined
 
     return {
         ...meta,
-        authors: authors?.map((author) =>
-            typeof author === 'string' ? author : { ...author, role: resolveLocalized(author.role, lang) }
-        ),
+        authors: authors?.map((author) => {
+            if (author === 'lauri') return author
+
+            const coAuthor = expandCoAuthor(author)
+
+            return { ...coAuthor, role: resolveLocalized(coAuthor.role, lang) }
+        }),
     }
 }
 

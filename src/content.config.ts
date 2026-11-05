@@ -6,7 +6,9 @@ import { embargoLiftDate } from './lib/publishing'
 
 const authorEntry = z.union([
     z.literal('lauri'),
+    // A registry id in meta.json arrives here already expanded (src/content/coAuthors.ts).
     z.object({
+        id: z.string().optional(),
         name: z.string(),
         role: z.string().optional(),
         sameAs: z.array(z.string()).optional(),

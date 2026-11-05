@@ -215,6 +215,8 @@ export const personHasOccupation: Record<Lang, object[]> = {
 export type AuthorEntry =
     | 'lauri'
     | {
+          /** Registry id (src/content/coAuthors.ts); absent on an inline entry. */
+          id?: string
           name: string
           url?: string
           sameAs?: string[]
