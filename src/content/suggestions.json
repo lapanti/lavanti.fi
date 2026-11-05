@@ -28,8 +28,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "economy": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "ee9cd6c965dc5456b53d5b89c4d24b6bfe9620fb5475d248b4511ee97a7a7224",
+      "checkedAt": "2026-11-05",
+      "contentHash": "b5ff49f0dbd9ff087f87e19f79a00de6030e5af9587385f4933aeb3fd4966f34",
       "model": "typesafe/jev-1.13-20260917"
     },
     "enlightenment": {
@@ -53,13 +53,13 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "national-politics": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "06a84c6a337f15dbeb7cfc7d3f04425821f33c09cbd34d3bb71c54b08442f5e2",
+      "checkedAt": "2026-11-05",
+      "contentHash": "6bc5d7e7070eaf40aa53ceb6f3f1c0e3e50a50fa699959d11ba3936f6e5fcdb7",
       "model": "typesafe/jev-1.13-20260917"
     },
     "parliamentary-elections-2027": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "47bb2763373a0d8edcb343e47d83ed76bd95ba0c50da286f4879c9641f8e1a27",
+      "checkedAt": "2026-11-05",
+      "contentHash": "6bef36350eba890b2a7b02011f25febd83edbfe46d5aa5606e273c458be177de",
       "model": "typesafe/jev-1.13-20260917"
     }
   },
@@ -517,6 +517,11 @@
     "post:97": {
       "checkedAt": "2026-11-02",
       "contentHash": "2eccd3df7675af25d94d53a95a589c063591b9980bf424ec27a33e8a691900be",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:98": {
+      "checkedAt": "2026-11-05",
+      "contentHash": "2b0d51d5f9f2e0a18129d4374820a9c9381cbe1e03536f8dba6a9520ff93df5d",
       "model": "typesafe/jev-1.13-20260917"
     }
   },
