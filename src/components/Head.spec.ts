@@ -509,6 +509,14 @@ describe('<Head />', () => {
         }
     )
 
+    it("should link a BlogPosting's mainEntityOfPage WebPage to the WebSite", async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { slug: 'fi/blog/1/test', title: 'Test', type: 'BlogPosting' },
+        })
+
+        expect(jsonLdBlocks(result)[0].mainEntityOfPage.isPartOf).toEqual({ '@id': 'https://lavanti.fi/#website' })
+    })
+
     it('should not put isPartOf on a Person node', async () => {
         const result = await renderAstroComponent(Head, { props: { slug: 'index', title: 'Home', type: 'Person' } })
 
