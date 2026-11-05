@@ -48,9 +48,9 @@ export const coAuthors = {
     'ville-aarnio': { image: photo('ville-aarnio'), name: 'Ville Aarnio', url: mv('ville-aarnio') },
 } as const satisfies Record<string, CoAuthor>
 
-export type CoAuthorId = keyof typeof coAuthors
+type CoAuthorId = keyof typeof coAuthors
 
-export const isCoAuthorId = (id: string): id is CoAuthorId => Object.hasOwn(coAuthors, id)
+const isCoAuthorId = (id: string): id is CoAuthorId => Object.hasOwn(coAuthors, id)
 
 /**
  * Expands a meta.json co-author to its registry entry plus the post's own role. An
