@@ -172,6 +172,29 @@ describe('buildLlmsTxt — tag sections', () => {
         }
     })
 
+    it('appends the description to each post link as its llmstxt.org summary', () => {
+        expect(content).toContain('- [AI post 5](https://lavanti.fi/fi/blog/5/ai-5/): description\n')
+    })
+
+    it('strips soft hyphens and collapses whitespace in the summary', () => {
+        const output = buildLlmsTxt(
+            [
+                makePost({
+                    description: 'Markkina­vihreä  linja\n  tekoälyyn',
+                    id: 9,
+                    lang: 'fi',
+                    slug: 'x',
+                    tags: ['artificial-intelligence'],
+                    title: 'X',
+                    url: '/fi/blog/9/x/',
+                }),
+            ],
+            SITE
+        )
+
+        expect(output).toContain('- [X](https://lavanti.fi/fi/blog/9/x/): Markkinavihreä linja tekoälyyn\n')
+    })
+
     it('posts within each tag section preserve getAllPosts() order (newest-first by publishDate)', () => {
         const sectionChunks = content.split(/\n(?=## )/)
 
