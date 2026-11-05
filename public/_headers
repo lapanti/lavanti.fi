@@ -12,6 +12,13 @@
 /fi/suosittele/*
   X-Robots-Tag: noindex
 
+# The pages.dev production alias and preview deployments mirror the site; only lavanti.fi is indexed
+https://laurilavanti.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:project.laurilavanti.pages.dev/*
+  X-Robots-Tag: noindex
+
 # Astro build output uses content-hashed filenames; fonts are filename-versioned
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
