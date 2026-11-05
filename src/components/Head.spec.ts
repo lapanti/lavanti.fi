@@ -1175,25 +1175,55 @@ describe('<Head />', () => {
         expect(jsonLd.wordCount).toBeUndefined()
     })
 
-    it('should emit article:section and article:tag meta tags for BlogPosting with tags', async () => {
+    it('should emit article:section and article:tag meta tags with Finnish tag names', async () => {
         const result = await renderAstroComponent(Head, {
             props: {
                 createdAt: '2024-01-01',
-                tags: ['kirkkonummi', 'lansirata', 'kuntavaalit2025'],
+                tags: ['kirkkonummi', 'west-railway', 'marketgreen'],
                 title: 'Test Blog Post',
                 type: 'BlogPosting',
             },
         })
 
         const section = result.querySelector('meta[property="article:section"]')
-        expect(section?.getAttribute('content')).toBe('kirkkonummi')
+        expect(section?.getAttribute('content')).toBe('Kirkkonummi')
 
-        const tagMetas = Array.from(result.querySelectorAll('meta[property="article:tag"]'))
-        expect(tagMetas).toHaveLength(3)
-        const contents = tagMetas.map((m) => m.getAttribute('content'))
-        expect(contents).toContain('kirkkonummi')
-        expect(contents).toContain('lansirata')
-        expect(contents).toContain('kuntavaalit2025')
+        const contents = Array.from(result.querySelectorAll('meta[property="article:tag"]')).map((m) =>
+            m.getAttribute('content')
+        )
+        // Soft hyphens in the tag name (Markkina­vihreä) are stripped.
+        expect(contents).toEqual(['Kirkkonummi', 'Länsirata', 'Markkinavihreä'])
+    })
+
+    it('should localise article:section and article:tag on a Swedish post', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                createdAt: '2024-01-01',
+                lang: 'sv',
+                tags: ['kirkkonummi', 'west-railway'],
+                title: 'Test Blog Post',
+                type: 'BlogPosting',
+            },
+        })
+
+        expect(result.querySelector('meta[property="article:section"]')?.getAttribute('content')).toBe('Kyrkslätt')
+        const contents = Array.from(result.querySelectorAll('meta[property="article:tag"]')).map((m) =>
+            m.getAttribute('content')
+        )
+        expect(contents).toEqual(['Kyrkslätt', 'Västbanan'])
+    })
+
+    it('should fall back to the tag id when the tag is not in the registry', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                createdAt: '2024-01-01',
+                tags: ['unknown-tag'],
+                title: 'Test Blog Post',
+                type: 'BlogPosting',
+            },
+        })
+
+        expect(result.querySelector('meta[property="article:tag"]')?.getAttribute('content')).toBe('unknown-tag')
     })
 
     it('should not emit article:section or article:tag for non-article pages', async () => {

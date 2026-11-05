@@ -29,6 +29,7 @@ import {
     personWorksFor,
 } from '../content/person'
 import { rssTitles } from '../content/rss'
+import { getTagName } from '../content/tags'
 import { toHelsinkiIso } from '../lib/eventDate'
 import { hasFaqSection } from '../lib/faq'
 import {
@@ -121,6 +122,9 @@ const ogLocale: Record<Lang, string> = {
 }
 
 const isArticle = type === BLOGPOSTING
+
+/* article:section / article:tag carry the tag names a reader of this locale sees, not the English ids. */
+const articleTagNames = (tags ?? []).map((id) => stripSoftHyphens(getTagName(id, lang) ?? id))
 
 /*
  * Derive hreflang URLs. When langAlternates is provided (blog posts), use the
@@ -411,8 +415,8 @@ const breadcrumbJsonLd =
 {isArticle && articleAuthorNames.map((n: string) => <meta content={n} property="article:author" />)}
 {isArticle && <meta content={createdAt} property="article:published_time" />}
 {isArticle && updatedAt && <meta content={updatedAt} property="article:modified_time" />}
-{isArticle && tags && tags.length > 0 && <meta content={tags[0]} property="article:section" />}
-{isArticle && tags && tags.map((tag: string) => <meta content={tag} property="article:tag" />)}
+{isArticle && articleTagNames.length > 0 && <meta content={articleTagNames[0]} property="article:section" />}
+{isArticle && articleTagNames.map((name: string) => <meta content={name} property="article:tag" />)}
 <meta content="@laurilavanti@mastodon.social" name="fediverse:creator" />
 {
     canonical && (
