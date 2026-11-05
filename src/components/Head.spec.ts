@@ -234,7 +234,7 @@ describe('<Head />', () => {
         })
 
         const scripts = result.querySelectorAll('script[type="application/ld+json"]')
-        expect(scripts).toHaveLength(2)
+        expect(scripts).toHaveLength(3)
 
         const faqScript = Array.from(scripts).find((s) => {
             const parsed = JSON.parse(s.textContent || '{}')
@@ -302,7 +302,7 @@ describe('<Head />', () => {
         expect(parsed[0].location['@type']).toBe('Place')
         expect(parsed[0].location.address.addressLocality).toBe('Espoo')
         expect(parsed[0].location.address.streetAddress).toBe('Piispansilta 11')
-        expect(parsed[0].organizer['@type']).toBe('Person')
+        expect(parsed[0].organizer).toMatchObject({ '@id': PERSON_ID, '@type': 'Person', name: personName })
     })
 
     it('should keep the primary JSON-LD type when events are present', async () => {
@@ -311,7 +311,7 @@ describe('<Head />', () => {
         })
 
         const scripts = result.querySelectorAll('script[type="application/ld+json"]')
-        expect(scripts).toHaveLength(2)
+        expect(scripts).toHaveLength(3)
         expect(JSON.parse(scripts[0].textContent || '{}')['@type']).toBe('WebPage')
     })
 
@@ -396,7 +396,7 @@ describe('<Head />', () => {
         })
 
         const scripts = result.querySelectorAll('script[type="application/ld+json"]')
-        expect(scripts).toHaveLength(1)
+        expect(scripts).toHaveLength(2)
 
         const faqScript = Array.from(scripts).find((s) => {
             const parsed = JSON.parse(s.textContent || '{}')
@@ -463,18 +463,85 @@ describe('<Head />', () => {
         expect(result.querySelector('meta[property="og:url"]')).toBeNull()
     })
 
-    it('should set WebSite JSON-LD when type is WebSite', async () => {
-        const result = await renderAstroComponent(Head, {
-            props: {
-                title: 'Home',
-                type: 'WebSite',
+    /** All JSON-LD blocks on the page, parsed. */
+    const jsonLdBlocks = (root: ParentNode) =>
+        Array.from(root.querySelectorAll('script[type="application/ld+json"]')).map((s) =>
+            JSON.parse(s.textContent || '{}')
+        )
+
+    it('should fall back to WebPage, never WebSite, when no type is given', async () => {
+        const result = await renderAstroComponent(Head, { props: { slug: 'fi/tietosuoja', title: 'Tietosuoja' } })
+
+        const [primary] = jsonLdBlocks(result)
+        expect(primary['@type']).toBe('WebPage')
+        expect(primary).not.toHaveProperty('sameAs')
+    })
+
+    it.each([
+        ['WebPage', 'fi/yhteystiedot'],
+        ['BlogPosting', 'fi/blog/1/test'],
+        ['CollectionPage', 'fi/media'],
+        ['ProfilePage', 'fi/laurista'],
+        ['Person', 'index'],
+    ] as const)('should emit exactly one WebSite node on a %s page', async (type, slug) => {
+        const result = await renderAstroComponent(Head, { props: { lang: 'sv', slug, title: 'Test', type } })
+
+        const websites = jsonLdBlocks(result).filter((b) => b['@type'] === 'WebSite')
+        expect(websites).toEqual([
+            {
+                '@context': 'https://schema.org',
+                '@id': 'https://lavanti.fi/#website',
+                '@type': 'WebSite',
+                inLanguage: 'sv',
+                name: personName,
+                publisher: { '@id': PERSON_ID },
+                url: 'https://lavanti.fi/',
             },
+        ])
+    })
+
+    it.each(['WebPage', 'BlogPosting', 'CollectionPage', 'ProfilePage'] as const)(
+        'should link a %s to the WebSite with isPartOf',
+        async (type) => {
+            const result = await renderAstroComponent(Head, { props: { slug: 'fi/test', title: 'Test', type } })
+
+            expect(jsonLdBlocks(result)[0].isPartOf).toEqual({ '@id': 'https://lavanti.fi/#website' })
+        }
+    )
+
+    it('should not put isPartOf on a Person node', async () => {
+        const result = await renderAstroComponent(Head, { props: { slug: 'index', title: 'Home', type: 'Person' } })
+
+        expect(jsonLdBlocks(result)[0]).not.toHaveProperty('isPartOf')
+    })
+
+    it('should reference the Person by @id as the author of a generic page', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { slug: 'fi/yhteystiedot', title: 'Yhteystiedot', type: 'WebPage' },
         })
 
-        const jsonLdScript = result.querySelector('script[type="application/ld+json"]')
-        const jsonLd = JSON.parse(jsonLdScript?.textContent || '{}')
-        expect(jsonLd['@type']).toBe('WebSite')
-        expect(jsonLd.sameAs).toBeDefined()
+        expect(jsonLdBlocks(result)[0].author).toMatchObject({ '@id': PERSON_ID, '@type': 'Person', name: personName })
+    })
+
+    it.each([
+        'fi/eduskuntavaalit',
+        'fi/eduskuntavaalit/kirkkonummi',
+        'sv/riksdagsvalet',
+        'sv/riksdagsvalet/kyrkslatt',
+        'en/elections',
+        'en/elections/kirkkonummi',
+    ])('should mark candidate page %s as about the Person', async (slug) => {
+        const result = await renderAstroComponent(Head, { props: { slug, title: 'Vaalit', type: 'WebPage' } })
+
+        expect(jsonLdBlocks(result)[0].about).toEqual({ '@id': PERSON_ID })
+    })
+
+    it('should not mark other pages as about the Person', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: { slug: 'fi/eduskuntavaalit/vaalirahoitus', title: 'Vaalirahoitus', type: 'WebPage' },
+        })
+
+        expect(jsonLdBlocks(result)[0]).not.toHaveProperty('about')
     })
 
     it('should fall back dateModified to createdAt when updatedAt is absent', async () => {
@@ -1011,13 +1078,13 @@ describe('<Head />', () => {
             props: {
                 ogImage,
                 title: 'Home',
-                type: 'WebSite',
+                type: 'WebPage',
             },
         })
 
         const jsonLdScript = result.querySelector('script[type="application/ld+json"]')
         const jsonLd = JSON.parse(jsonLdScript?.textContent || '{}')
-        expect(jsonLd['@type']).toBe('WebSite')
+        expect(jsonLd['@type']).toBe('WebPage')
         expect(jsonLd.image).toBe(ogImage)
         expect(typeof jsonLd.image).toBe('string')
         expect(jsonLd.primaryImageOfPage).toBeUndefined()
@@ -1027,13 +1094,13 @@ describe('<Head />', () => {
         const result = await renderAstroComponent(Head, {
             props: {
                 title: 'Home',
-                type: 'WebSite',
+                type: 'WebPage',
             },
         })
 
         const jsonLdScript = result.querySelector('script[type="application/ld+json"]')
         const jsonLd = JSON.parse(jsonLdScript?.textContent || '{}')
-        expect(jsonLd['@type']).toBe('WebSite')
+        expect(jsonLd['@type']).toBe('WebPage')
         expect(jsonLd.image).toBeUndefined()
     })
 
