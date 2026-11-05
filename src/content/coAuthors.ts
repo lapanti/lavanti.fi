@@ -35,7 +35,7 @@ export const coAuthors = {
     'lauri-nevanpera': { image: photo('lauri-nevanpera'), name: 'Lauri Nevanperä', url: mv('lauri-nevanpera') },
     'mari-holopainen': { image: photo('mari-holopainen'), name: 'Mari Holopainen' },
     'mervi-somervuori': { image: photo('mervi-somervuori'), name: 'Mervi Somervuori' },
-    'miisa-jeremejew': { name: 'Miisa Jeremejew' },
+    'miisa-jeremejew': { image: photo('miisa-jeremejew'), name: 'Miisa Jeremejew' },
     'paula-oittinen': { image: photo('paula-oittinen'), name: 'Paula Oittinen' },
     'pinja-pekkarniemi': { image: photo('pinja-pekkarniemi'), name: 'Pinja Pekkarniemi' },
     'pyry-vare': { name: 'Pyry Väre' },
