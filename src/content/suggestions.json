@@ -37,6 +37,11 @@
       "contentHash": "31ba28d66b4cbcbf539c2c0f6aa184dbf1d01334515b0add7009ce6c1b62c49e",
       "model": "typesafe/jev-1.13-20260917"
     },
+    "entrepreneurship": {
+      "checkedAt": "2026-11-05",
+      "contentHash": "55622889fa724bc88045691d15544a532df451cdf259b7cdffb456dcf2274397",
+      "model": "typesafe/jev-1.13-20260917"
+    },
     "freedom": {
       "checkedAt": "2026-11-02",
       "contentHash": "466b6a6e72d0b7832a5645371463ee6cdfd822249a8c0f8e47fe3ed6b783163f",
@@ -587,8 +592,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "entrepreneurship": {
-      "checkedAt": "2026-09-23",
-      "contentHash": "7d788154fcd19f22290b61482b3d922ff630cfa95219cc4a98ccf319a8e1edf4",
+      "checkedAt": "2026-11-05",
+      "contentHash": "7b1b9efa5968d0aff398dd71aa045f4f5f642468da8b0e752d34591ed2f970c2",
       "model": "typesafe/jev-1.13-20260917"
     },
     "equality-and-non-discrimination": {
