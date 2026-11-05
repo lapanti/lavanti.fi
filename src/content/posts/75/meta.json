@@ -6,13 +6,13 @@
     "heroImage": "markkinavihreat-avaus-lisaa-markkinoita",
     "authors": [
         "lauri",
-        { "name": "Ester Dufva", "role": "yrittäjä" },
-        { "name": "Lauri Nevanperä", "role": "valtuutettu (Tampere), Vihreät" },
-        { "name": "Kalle Euro", "role": "toiminnanjohtaja" },
-        { "name": "Atte Harjanne", "role": "kansanedustaja, Vihreät" },
-        { "name": "Susanna Sielo", "role": "valtuutettu (Espoo), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Anna Jaakola", "role": "valtuutettu (Pyhtää), Vihreät" }
+        { "id": "ester-dufva", "role": "yrittäjä" },
+        { "id": "lauri-nevanpera", "role": "valtuutettu (Tampere), Vihreät" },
+        { "id": "kalle-euro", "role": "toiminnanjohtaja" },
+        { "id": "atte-harjanne", "role": "kansanedustaja, Vihreät" },
+        { "id": "susanna-sielo", "role": "valtuutettu (Espoo), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "arttu-laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "anna-jaakola", "role": "valtuutettu (Pyhtää), Vihreät" }
     ],
     "externalPublications": [
         {

@@ -6,11 +6,11 @@
     "heroImage": "markkinavihreat-avaus-kolme-keinoa-yrittamiseen",
     "authors": [
         "lauri",
-        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Johanna Muurinen", "role": "varavaltuutettu (Sipoo), Vihreät" },
-        { "name": "Susanna Sielo", "role": "valtuutettu (Espoo), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Ulla Santti", "role": "eduskuntavaaliehdokas (Siilinjärvi), Vihreät" },
-        { "name": "Pyry Väre", "role": "valtuutettu (Ulvila), Vihreiden puoluevaltuuston varapuheenjohtaja" }
+        { "id": "arttu-laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "johanna-muurinen", "role": "varavaltuutettu (Sipoo), Vihreät" },
+        { "id": "susanna-sielo", "role": "valtuutettu (Espoo), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "ulla-santti", "role": "eduskuntavaaliehdokas (Siilinjärvi), Vihreät" },
+        { "id": "pyry-vare", "role": "valtuutettu (Ulvila), Vihreiden puoluevaltuuston varapuheenjohtaja" }
     ],
     "externalPublications": [
         {

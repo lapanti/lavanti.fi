@@ -2,15 +2,11 @@
     "id": 64,
     "publishDate": "2026-07-01",
     "updatedDate": "2026-09-30",
-    "tags": [
-        "kirkkonummi",
-        "equality-and-non-discrimination",
-        "freedom"
-    ],
+    "tags": ["kirkkonummi", "equality-and-non-discrimination", "freedom"],
     "heroImage": "Sateenkaarilippuja-Kirkkonummen-kunnantalolla-2026",
     "authors": [
         {
-            "name": "Suvi Annala",
+            "id": "suvi-annala",
             "role": {
                 "en": "deputy councillor and deputy member of the municipal board",
                 "fi": "varavaltuutettu ja kunnanhallituksen varajäsen",

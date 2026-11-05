@@ -2,20 +2,12 @@
     "id": 48,
     "publishDate": "2026-01-23",
     "updatedDate": "2026-09-30",
-    "tags": [
-        "technology",
-        "privacy",
-        "freedom"
-    ],
+    "tags": ["technology", "privacy", "freedom"],
     "heroImage": "Atte-Harjanne-ja-Lauri-Lavanti",
     "authors": [
         {
-            "name": "Atte Harjanne",
-            "role": {
-                "en": "member of parliament",
-                "fi": "kansanedustaja",
-                "sv": "riksdagsledamot"
-            }
+            "id": "atte-harjanne",
+            "role": { "en": "member of parliament", "fi": "kansanedustaja", "sv": "riksdagsledamot" }
         },
         "lauri"
     ],

@@ -2,20 +2,12 @@
     "id": 56,
     "publishDate": "2026-04-15",
     "updatedDate": "2026-09-30",
-    "tags": [
-        "kirkkonummi",
-        "nature",
-        "freedom"
-    ],
+    "tags": ["kirkkonummi", "nature", "freedom"],
     "heroImage": "Lauri-Lavanti-ja-Miisa-Jeremejew",
     "authors": [
         {
-            "name": "Miisa Jeremejew",
-            "role": {
-                "en": "municipal councillor",
-                "fi": "kunnanvaltuutettu",
-                "sv": "kommunfullmäktigeledamot"
-            }
+            "id": "miisa-jeremejew",
+            "role": { "en": "municipal councillor", "fi": "kunnanvaltuutettu", "sv": "kommunfullmäktigeledamot" }
         },
         "lauri"
     ],

@@ -6,11 +6,11 @@
     "heroImage": "markkinavihreat-avaus-palkalla-pitaa-voida-vaurastua",
     "authors": [
         "lauri",
-        { "name": "Ulla Santti", "role": "eduskuntavaaliehdokas (Siilinjärvi), Vihreät" },
-        { "name": "Essi Lindberg", "role": "valtuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Johanna Muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Taru Hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" }
+        { "id": "ulla-santti", "role": "eduskuntavaaliehdokas (Siilinjärvi), Vihreät" },
+        { "id": "essi-lindberg", "role": "valtuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "johanna-muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "arttu-laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "taru-hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" }
     ],
     "externalPublications": [
         {

@@ -25,6 +25,11 @@ describe('coAuthors', () => {
         }
     })
 
+    it('references co-authors by registry id in every meta.json', () => {
+        const inline = metaAuthors().filter((a) => typeof a === 'object' && a !== null && !('id' in a))
+        expect(inline).toEqual([])
+    })
+
     it('resolves every meta.json author id', () => {
         const coAuthorEntries = metaAuthors().filter((author) => author !== 'lauri') as string[]
         for (const author of coAuthorEntries) expect(() => expandCoAuthor(author)).not.toThrow()
