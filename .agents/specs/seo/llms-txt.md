@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-05-16
+> **Last updated**: 2026-11-05
 
 ---
 
@@ -94,6 +94,13 @@ Feature: llms.txt AI crawler entry-point map
     And it contains markdown links to all published Swedish posts (lang === 'sv')
     And links use the post's url field as the href and title as the label
 
+  Scenario: Post and newsletter links carry a one-line summary
+    Given a published post or newsletter issue with a description
+    When its link line in /llms.txt is read
+    Then it reads "- [title](url): description"
+    And soft hyphens are stripped and runs of whitespace collapse to one space
+    And pillar-page links have no summary
+
   Scenario: Posts within each tag section are sorted newest-first
     Given a tag with multiple Finnish posts at different publishDates
     When the links for that tag in /llms.txt are read in order
@@ -152,3 +159,4 @@ interface LlmsTxtSection {
 | 2026-05-16 | Fix minor review findings: pinned Content-Type assertion, removed duplicate H1 check, moved empty-tag rule to Contract only, clarified LlmsTxtSection.heading type, pinned Finnish pillar labels, removed double separator |
 | 2026-07-30 | Updated for the posts content-collection migration: `allMdxPosts`/`src/lib/mdxPosts.ts` references replaced with `getAllPosts()`/`src/lib/posts.ts`; the exported function is now `buildLlmsTxt(posts, site)` (pure) with `GET` awaiting `getAllPosts()` |
 | 2026-09-07 | Synced spec to shipped implementation: blockquote is the election-framed bio (eduskuntavaaliehdokas), pillar links are Etusivu `/fi/`, Aiheet `/fi/blog/`, Laurista `/fi/about/`, Suositukset `/fi/recommendations/` |
+| 2026-11-05 | Post and newsletter links append the description as the llmstxt.org `: notes` summary (#1671) |

@@ -21,8 +21,12 @@ const PILLAR_LINKS = [
     { label: 'Uutiskirjeen arkisto', url: '/fi/uutiskirje/arkisto/' },
 ]
 
-const linkLine = (entry: { title: string; url: string }, site: URL): string =>
-    `- [${stripSoftHyphens(entry.title)}](${new URL(entry.url, site).href})`
+/* llmstxt.org link form `- [name](url): notes` — the meta description is the one-line summary. */
+const linkLine = (entry: { description: string; title: string; url: string }, site: URL): string => {
+    const summary = stripSoftHyphens(entry.description).replace(/\s+/g, ' ').trim()
+
+    return `- [${stripSoftHyphens(entry.title)}](${new URL(entry.url, site).href})${summary ? `: ${summary}` : ''}`
+}
 
 /** @param newsletters — published archive issues; embargoed ones never reach here. */
 export const buildLlmsTxt = (posts: Post[], site: URL, newsletters: Newsletter[] = []): string => {
