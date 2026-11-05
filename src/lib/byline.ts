@@ -2,7 +2,6 @@ import type { Lang } from '../content/nav'
 import type { AuthorEntry } from '../content/person'
 
 import { intlLocale } from '../content/nav'
-import { personJobTitle, personName } from '../content/person'
 
 export type { Lang }
 
@@ -13,8 +12,21 @@ export interface ExternalPublication {
     lang?: Lang
 }
 
-const bylinePrefix: Record<Lang, string> = { en: 'Authors', fi: 'Tekijät', sv: 'Författare' }
-const andConjunction: Record<Lang, string> = { en: 'and', fi: 'ja', sv: 'och' }
+export type CoAuthorEntry = Exclude<AuthorEntry, 'lauri'>
+
+/** Heading over the co-author list: singular for one, plural for more. */
+const coAuthorsHeadings: Record<Lang, { one: string; other: string }> = {
+    en: { one: 'Co-author', other: 'Co-authors' },
+    fi: { one: 'Kanssakirjoittaja', other: 'Kanssakirjoittajat' },
+    sv: { one: 'Medförfattare', other: 'Medförfattare' },
+}
+
+export const coAuthorsHeading = (count: number, lang: Lang): string =>
+    count === 1 ? coAuthorsHeadings[lang].one : coAuthorsHeadings[lang].other
+
+/** Everyone but Lauri, in meta.json order; the AuthorCard above the byline already shows him. */
+export const coAuthorsOf = (authors: AuthorEntry[]): CoAuthorEntry[] =>
+    authors.filter((entry): entry is CoAuthorEntry => entry !== 'lauri')
 
 export const publicationPrefix: Record<Lang, string> = {
     en: 'Also published in',
@@ -59,26 +71,3 @@ export const publicationLanguageSuffix = (pub: ExternalPublication, lang: Lang):
 /** The byline line as plain text; Byline.astro renders the same parts with a link on the name. */
 export const buildPublicationBylineText = (pub: ExternalPublication, lang: Lang): string =>
     `${publicationPrefix[lang]}: ${pub.name}, ${formatPublicationDate(pub.date, lang)}${publicationLanguageSuffix(pub, lang)}.`
-
-const joinParts = (parts: string[], lang: Lang): string => {
-    if (parts.length === 1) return parts[0]
-    if (parts.length === 2) return `${parts[0]} ${andConjunction[lang]} ${parts[1]}`
-    return `${parts.slice(0, -1).join(', ')}, ${andConjunction[lang]} ${parts[parts.length - 1]}`
-}
-
-export const buildBylineText = (authors: AuthorEntry[], lang: Lang): string => {
-    if (authors.length < 2) return ''
-
-    const anyCoAuthorHasRole = authors.some((e) => e !== 'lauri' && typeof e === 'object' && !!e.role)
-
-    const parts = authors.map((entry) => {
-        if (entry === 'lauri') {
-            const role = anyCoAuthorHasRole ? personJobTitle[lang] : undefined
-
-            return role ? `${personName} (${role})` : personName
-        }
-        return entry.role ? `${entry.name} (${entry.role})` : entry.name
-    })
-
-    return `${bylinePrefix[lang]}: ${joinParts(parts, lang)}.`
-}

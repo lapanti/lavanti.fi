@@ -86,4 +86,24 @@ describe('<PostLayout />', () => {
         expect(queryByText(sv, 'Vanliga frågor')).not.toBeNull()
         expect(queryByText(en, 'Frequently asked questions')).not.toBeNull()
     })
+
+    it('should show Lauri once, in the author card, with co-authors listed below it', async () => {
+        const result = await render(
+            makePost({ authors: ['lauri', { name: 'Arttu Laitinen', role: 'varavaltuutettu' }] })
+        )
+
+        const card = queryByRole(result, 'complementary', { name: 'Lauri Lavanti' })
+        const coAuthors = queryByRole(result, 'complementary', { name: 'Kanssakirjoittaja' })
+        expect(card).not.toBeNull()
+        expect(coAuthors?.textContent).toContain('Arttu Laitinen')
+        expect(coAuthors?.textContent).not.toContain('Lauri Lavanti')
+        const asides = [...result.querySelectorAll('aside')]
+        expect(asides.indexOf(coAuthors as HTMLElement)).toBeGreaterThan(asides.indexOf(card as HTMLElement))
+    })
+
+    it('should render no co-author list on a solo post', async () => {
+        const result = await render(makePost({ authors: ['lauri'] }))
+
+        expect(queryByRole(result, 'complementary', { name: /Kanssakirjoittaj/ })).toBeNull()
+    })
 })
