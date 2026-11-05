@@ -29,7 +29,7 @@
     },
     "economy": {
       "checkedAt": "2026-11-05",
-      "contentHash": "b5ff49f0dbd9ff087f87e19f79a00de6030e5af9587385f4933aeb3fd4966f34",
+      "contentHash": "4e2a9bad9e9564447ab120aae7800816148c831511e4fc56c62e2c69bc5950d4",
       "model": "typesafe/jev-1.13-20260917"
     },
     "enlightenment": {
@@ -507,6 +507,11 @@
     "post:94": {
       "checkedAt": "2026-10-26",
       "contentHash": "6035eb3143b627ae098cd854462c630a679d8be83efbb67b3b1663f9db474a2c",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:95": {
+      "checkedAt": "2026-11-05",
+      "contentHash": "9329f37b61032f4ff61107540895b6cea1c24c0acec23777e2b9496d9bbfeb3f",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:96": {
