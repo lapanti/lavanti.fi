@@ -22,6 +22,15 @@ const categoryRenames: Record<string, string> = Object.fromEntries(
 )
 
 /*
+ * File-route redirects. These live only in `_redirects`: an Astro redirect would
+ * build a meta-refresh HTML stub at an `.xml` path. `@astrojs/sitemap` writes
+ * `sitemap-index.xml`, but crawlers and SEO tools probe `/sitemap.xml` first.
+ */
+export const fileRedirects: Record<string, string> = {
+    '/sitemap.xml': '/sitemap-index.xml',
+}
+
+/*
  * Canonical blog-post path: /{lang}/blog/{id}/{slug}/ — the slug segment is what
  * distinguishes it from the bare /{lang}/blog/{id}/ redirect source.
  */
@@ -126,7 +135,7 @@ export const redirectsFile = (): AstroIntegration => ({
             // `pages` lists HTML routes only, not endpoint files, so the OG cards are read from disk.
             const ogCards = (await readdir(new URL('og/', dir))).map((file) => `og/${file}`)
             const lines = buildRedirectLines(
-                { ...categoryRenames, ...redirects },
+                { ...categoryRenames, ...fileRedirects, ...redirects },
                 [...pages.map((page) => page.pathname), ...ogCards],
                 shortLinks
             )
