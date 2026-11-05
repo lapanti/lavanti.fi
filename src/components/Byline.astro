@@ -10,6 +10,7 @@ import {
     publicationLanguageSuffix,
     publicationPrefix,
 } from '../lib/byline'
+import { getImage } from '../lib/images'
 import SmartLink from './SmartLink.astro'
 
 interface Props {
@@ -50,6 +51,28 @@ const heading = coAuthorsHeading(coAuthors.length, lang)
         padding: 0;
     }
 
+    /* A smaller AuthorCard: photo beside name and role, centred on the text block. */
+    .co-authors li.has-photo {
+        align-items: center;
+        column-gap: 0.875rem;
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+    }
+
+    @media (min-width: 769px) {
+        .co-authors li.has-photo {
+            grid-template-columns: 3.5rem 1fr;
+        }
+    }
+
+    .co-authors img {
+        aspect-ratio: 4 / 5;
+        border-radius: 4px;
+        height: auto;
+        object-fit: cover;
+        width: 100%;
+    }
+
     .name {
         font-family: var(--textFontFamily);
         font-weight: 700;
@@ -88,12 +111,28 @@ const heading = coAuthorsHeading(coAuthors.length, lang)
                 <aside aria-label={heading} class="co-authors">
                     <p class="co-authors-heading">{heading}</p>
                     <ul>
-                        {coAuthors.map((coAuthor: CoAuthorEntry) => (
-                            <li>
-                                <p class="name">{coAuthor.name}</p>
-                                {coAuthor.role && <p class="role">{coAuthor.role}</p>}
-                            </li>
-                        ))}
+                        {coAuthors.map((coAuthor: CoAuthorEntry) => {
+                            const photo = coAuthor.image ? getImage(coAuthor.image, 'avatar') : undefined
+
+                            return (
+                                <li class:list={{ 'has-photo': photo }}>
+                                    {photo && (
+                                        <img
+                                            alt=""
+                                            decoding="async"
+                                            height={photo.height}
+                                            loading="lazy"
+                                            src={photo.src}
+                                            width={photo.width}
+                                        />
+                                    )}
+                                    <div>
+                                        <p class="name">{coAuthor.name}</p>
+                                        {coAuthor.role && <p class="role">{coAuthor.role}</p>}
+                                    </div>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </aside>
             )}
