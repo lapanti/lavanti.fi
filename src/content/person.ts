@@ -217,6 +217,8 @@ export type AuthorEntry =
     | {
           /** Registry id (src/content/coAuthors.ts); absent on an inline entry. */
           id?: string
+          /** Cloudflare Images name of the co-author portrait, if there is one. */
+          image?: string
           name: string
           url?: string
           sameAs?: string[]

@@ -12,31 +12,40 @@ export interface CoAuthor {
     /** Profile page; becomes the JSON-LD Person `url`. */
     url?: string
     sameAs?: string[]
+    /**
+     * Cloudflare Images name of a 4:5 portrait, `kanssakirjoittaja-<id>`; the original
+     * lives in src/images/originals/. Every portrait shares one framing (head about half
+     * the height, crown near the top) so a list of them reads as a set. No photo, no image.
+     */
+    image?: string
 }
 
+const mv = (id: string) => `https://markkinavihreat.fi/ketka/${id}/`
+const photo = (id: string) => `kanssakirjoittaja-${id}`
+
 export const coAuthors = {
-    'anna-jaakola': { name: 'Anna Jaakola', url: 'https://markkinavihreat.fi/ketka/anna-jaakola/' },
-    'arttu-laitinen': { name: 'Arttu Laitinen', url: 'https://markkinavihreat.fi/ketka/arttu-laitinen/' },
-    'atte-harjanne': { name: 'Atte Harjanne', url: 'https://markkinavihreat.fi/ketka/atte-harjanne/' },
-    'essi-lindberg': { name: 'Essi Lindberg', url: 'https://markkinavihreat.fi/ketka/essi-lindberg/' },
+    'anna-jaakola': { image: photo('anna-jaakola'), name: 'Anna Jaakola', url: mv('anna-jaakola') },
+    'arttu-laitinen': { image: photo('arttu-laitinen'), name: 'Arttu Laitinen', url: mv('arttu-laitinen') },
+    'atte-harjanne': { image: photo('atte-harjanne'), name: 'Atte Harjanne', url: mv('atte-harjanne') },
+    'essi-lindberg': { image: photo('essi-lindberg'), name: 'Essi Lindberg', url: mv('essi-lindberg') },
     'ester-dufva': { name: 'Ester Dufva' },
-    'johanna-fleming': { name: 'Johanna Fleming' },
-    'johanna-muurinen': { name: 'Johanna Muurinen', url: 'https://markkinavihreat.fi/ketka/johanna-muurinen/' },
-    'kalle-euro': { name: 'Kalle Euro', url: 'https://markkinavihreat.fi/ketka/kalle-euro/' },
-    'lauri-nevanpera': { name: 'Lauri Nevanperä', url: 'https://markkinavihreat.fi/ketka/lauri-nevanpera/' },
-    'mari-holopainen': { name: 'Mari Holopainen' },
-    'mervi-somervuori': { name: 'Mervi Somervuori' },
+    'johanna-fleming': { image: photo('johanna-fleming'), name: 'Johanna Fleming' },
+    'johanna-muurinen': { image: photo('johanna-muurinen'), name: 'Johanna Muurinen', url: mv('johanna-muurinen') },
+    'kalle-euro': { image: photo('kalle-euro'), name: 'Kalle Euro', url: mv('kalle-euro') },
+    'lauri-nevanpera': { image: photo('lauri-nevanpera'), name: 'Lauri Nevanperä', url: mv('lauri-nevanpera') },
+    'mari-holopainen': { image: photo('mari-holopainen'), name: 'Mari Holopainen' },
+    'mervi-somervuori': { image: photo('mervi-somervuori'), name: 'Mervi Somervuori' },
     'miisa-jeremejew': { name: 'Miisa Jeremejew' },
-    'paula-oittinen': { name: 'Paula Oittinen' },
-    'pinja-pekkarniemi': { name: 'Pinja Pekkarniemi' },
+    'paula-oittinen': { image: photo('paula-oittinen'), name: 'Paula Oittinen' },
+    'pinja-pekkarniemi': { image: photo('pinja-pekkarniemi'), name: 'Pinja Pekkarniemi' },
     'pyry-vare': { name: 'Pyry Väre' },
     'ronja-karkinen': { name: 'Ronja Karkinen' },
-    'sanni-jappinen': { name: 'Sanni Jäppinen' },
-    'susanna-sielo': { name: 'Susanna Sielo', url: 'https://markkinavihreat.fi/ketka/susanna-sielo/' },
+    'sanni-jappinen': { image: photo('sanni-jappinen'), name: 'Sanni Jäppinen' },
+    'susanna-sielo': { image: photo('susanna-sielo'), name: 'Susanna Sielo', url: mv('susanna-sielo') },
     'suvi-annala': { name: 'Suvi Annala' },
-    'taru-hallikainen': { name: 'Taru Hallikainen', url: 'https://markkinavihreat.fi/ketka/taru-hallikainen/' },
-    'ulla-santti': { name: 'Ulla Santti', url: 'https://markkinavihreat.fi/ketka/ulla-santti/' },
-    'ville-aarnio': { name: 'Ville Aarnio', url: 'https://markkinavihreat.fi/ketka/ville-aarnio/' },
+    'taru-hallikainen': { image: photo('taru-hallikainen'), name: 'Taru Hallikainen', url: mv('taru-hallikainen') },
+    'ulla-santti': { image: photo('ulla-santti'), name: 'Ulla Santti', url: mv('ulla-santti') },
+    'ville-aarnio': { image: photo('ville-aarnio'), name: 'Ville Aarnio', url: mv('ville-aarnio') },
 } as const satisfies Record<string, CoAuthor>
 
 export type CoAuthorId = keyof typeof coAuthors
