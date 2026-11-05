@@ -40,6 +40,24 @@ describe('<Byline />', () => {
             expect(ronja.querySelector('.role')).toBeNull()
         })
 
+        it('shows a portrait only for co-authors who have one', async () => {
+            const result = await renderAstroComponent(Byline, {
+                props: {
+                    authors: [
+                        'lauri',
+                        { image: 'kanssakirjoittaja-arttu-laitinen', name: 'Arttu Laitinen' },
+                        { name: 'Pyry Väre' },
+                    ],
+                    lang: 'fi',
+                },
+            })
+
+            const [arttu, pyry] = queryAllByRole(result, 'listitem')
+            expect(arttu.querySelector('img')?.getAttribute('src')).toContain('kanssakirjoittaja-arttu-laitinen')
+            expect(arttu.querySelector('img')).toHaveAttribute('alt', '')
+            expect(pyry.querySelector('img')).toBeNull()
+        })
+
         it.each([
             ['fi', 'Kanssakirjoittajat'],
             ['sv', 'Medförfattare'],
