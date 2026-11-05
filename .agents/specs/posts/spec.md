@@ -115,7 +115,7 @@ Feature: Blog post content-collection routing
     Given a post with no authorImage in meta.json
     When the page is built
     Then PostLayout renders AuthorCard after the post body and before Byline, with the portrait from the src/content/authorPhotos.ts era covering publishDate (the first era for older posts), the name linking to the locale's about page, personJobTitle and personShortBio
-    And Byline still renders below it — co-author credits and "Julkaistu myös" notes are unchanged
+    And Byline renders below it: the co-author list (without Lauri, see seo/jsonld-person.md) and "Julkaistu myös" notes
 
   Scenario: Pinned author portrait
     Given a post's meta.json sets authorImage
@@ -144,7 +144,7 @@ interface PostEntry {
   tags: string[] // at least one; must exist in src/content/tags.ts
   heroImage: string // Cloudinary filename, no extension
   authorImage?: string // pins the author card portrait; default resolved by publishDate era
-  authors?: AuthorEntry[] // src/content/person.ts
+  authors?: AuthorEntry[] // src/content/person.ts; co-authors by id from src/content/coAuthors.ts
   externalPublications?: ExternalPublication[] // src/lib/byline.ts — each entry may carry an
     // optional `lang`, the language the linked article itself is written in (not translated
     // per reader; defaults to 'fi' when omitted, since most press mentions are Finnish-language).

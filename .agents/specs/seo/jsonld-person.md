@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-09-28
+> **Last updated**: 2026-11-05
 
 ---
 
@@ -115,52 +115,50 @@ Feature: Canonical Person JSON-LD entity
 
   # ── Co-author byline rendering ───────────────────────────────────────────────
 
-  Scenario: No byline rendered for solo-authored post
+  Scenario: No co-author list on a solo-authored post
     Given a BlogPosting with no authors frontmatter field (or authors: ['lauri'])
     When the page is rendered
-    Then no author byline element appears after the post content
+    Then no co-author list appears after the AuthorCard
 
-  Scenario: Per-author byline with role — role in parentheses after name
-    Given a BlogPosting in lang 'en' with authors:
-      | entry           | role                  |
-      | Miisa Jeremejew | municipal councillor  |
-      | lauri           | (sentinel)            |
+  Scenario: Co-author list leaves Lauri out
+    Given a BlogPosting with authors: ['johanna-fleming', 'lauri', 'paula-oittinen']
     When the page is rendered
-    Then the byline after the post content is:
-      _Authors: Miisa Jeremejew (municipal councillor) and Lauri Lavanti (Municipal councillor & Lead Developer)._
-    And the byline is rendered as an italic paragraph
-    And render order follows frontmatter array order (first entry → first name)
-    # Lauri sentinel gets personJobTitle[lang] injected because a co-author has a role
+    Then an <aside> named by its heading follows the AuthorCard
+    And it lists Johanna Fleming and Paula Oittinen, one per <li>, in array order
+    And Lauri is not listed (the AuthorCard above already shows him)
 
-  Scenario: Byline localises prefix in Finnish
-    Given a BlogPosting in lang 'fi' with two co-authors
+  Scenario: Heading is localised and singular for one co-author
+    Given a BlogPosting with one or more co-authors
     When the page is rendered
-    Then the byline begins with "Tekijät:"
+    Then the heading is Kanssakirjoittaja / Medförfattare / Co-author for one co-author
+    And Kanssakirjoittajat / Medförfattare / Co-authors for two or more
 
-  Scenario: Byline localises prefix in Swedish
-    Given a BlogPosting in lang 'sv' with two co-authors
+  Scenario: Each co-author shows name, role and portrait
+    Given a co-author with a role in meta.json and an image in src/content/coAuthors.ts
     When the page is rendered
-    Then the byline begins with "Författare:"
+    Then the item shows the name in bold and the role below it in fine print
+    And a 4:5 portrait (avatar variant, alt="") sits beside the text
+    And a co-author without a role shows the name only
+    And a co-author without an image shows no portrait and no placeholder
 
-  Scenario: Lauri sentinel gets personJobTitle when co-author has role
-    Given a BlogPosting in lang 'en' with authors:
-      | name          | role                  |
-      | Atte Harjanne | member of parliament  |
-      | lauri         | (sentinel)            |
-    When the page is rendered
-    Then the byline is:
-      _Authors: Atte Harjanne (member of parliament) and Lauri Lavanti (Municipal councillor & Lead Developer)._
+  # ── Co-author registry ───────────────────────────────────────────────────────
 
-  Scenario: Author with no role shows name only in byline
-    Given a BlogPosting with a co-author entry that has no role field
-    And no other co-authors have roles
-    When the page is rendered
-    Then that author appears in the byline as name only (no parenthetical)
+  Scenario: meta.json references co-authors by registry id
+    Given src/content/coAuthors.ts maps an id to { name, url?, sameAs?, image? }
+    And a post's meta.json authors contains "arttu-laitinen" or { "id": "arttu-laitinen", "role": … }
+    When the posts loader resolves the entry
+    Then the entry carries the registry's name, url, sameAs and image plus the post's own role
+    And BlogPosting.author and the byline both read the expanded entry
 
-  Scenario: Lauri sentinel resolves to name only when no co-author has a role
-    Given a BlogPosting with authors: ['lauri', { name: 'Co-author' }] (no role on co-author)
-    When the page is rendered
-    Then Lauri appears as 'Lauri Lavanti' with no role parenthetical
+  Scenario: Unknown co-author id fails the build
+    Given a meta.json authors entry whose id is not in src/content/coAuthors.ts
+    When the site is built
+    Then the loader throws, naming the id and the registry file
+
+  Scenario: No inline co-author objects remain
+    Given every src/content/posts/*/meta.json
+    When coAuthors.spec.ts runs
+    Then no authors entry is an inline { name, … } object
 
   # ── knowsAbout localisation ──────────────────────────────────────────────────
 
@@ -222,34 +220,10 @@ Feature: Canonical Person JSON-LD entity
     When the MDX content is read
     Then none contains a line matching _Tekijät:…_ or _Författare:…_ in the body
 
-  Scenario: Migrated post 56 (Lähteelä) renders per-author byline with role
-    Given post 56 in lang 'en' after migration
-    And authors frontmatter: [{ name: 'Miisa Jeremejew', role: 'municipal councillor' }, 'lauri']
+  Scenario: Migrated post 48 lists Atte Harjanne with role and portrait
+    Given post 48 in lang 'en' with authors [{ id: 'atte-harjanne', role: … }, 'lauri']
     When the page is rendered
-    Then the byline reads: _Authors: Miisa Jeremejew (municipal councillor) and Lauri Lavanti (Municipal councillor & Lead Developer)._
-    And is rendered as an italic paragraph after the post body
-    # Lauri sentinel gets personJobTitle['en'] because Miisa has a role
-
-  Scenario: Migrated post 48 (biometrics) renders per-author byline — Harjanne with role, Lauri with personJobTitle
-    Given post 48 in lang 'en' after migration
-    And authors frontmatter: [{ name: 'Atte Harjanne', role: 'member of parliament' }, 'lauri']
-    When the page is rendered
-    Then the byline reads: _Authors: Atte Harjanne (member of parliament) and Lauri Lavanti (Municipal councillor & Lead Developer)._
-    And is rendered as an italic paragraph after the post body
-
-  Scenario: Migrated post 41 renders name-only byline (Ronja has no role, Lauri is sentinel)
-    Given post 41 in lang 'en' after migration
-    And authors frontmatter: [{ name: 'Ronja Karkinen' }, 'lauri']
-    When the page is rendered
-    Then the byline reads: _Authors: Ronja Karkinen and Lauri Lavanti._
-    And is rendered as an italic paragraph after the post body
-
-  Scenario: Migrated post 22 renders three-author name-only byline
-    Given post 22 in lang 'en' after migration
-    And authors frontmatter: [{ name: 'Johanna Fleming' }, 'lauri', { name: 'Paula Oittinen' }]
-    When the page is rendered
-    Then the byline reads: _Authors: Johanna Fleming, Lauri Lavanti, and Paula Oittinen._
-    And is rendered as an italic paragraph after the post body
+    Then the co-author list, headed "Co-author", holds one item: Atte Harjanne, his role, his portrait
 ```
 
 ---
@@ -261,16 +235,22 @@ Feature: Canonical Person JSON-LD entity
 
 export const PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'
 
-// Co-author entry in post frontmatter
+// meta.json authors entry: 'lauri', a registry id, or { id, role } (role may be localised)
+type RawAuthorEntry = 'lauri' | CoAuthorId | { id: CoAuthorId; role?: Localized<string> }
+
+// src/content/coAuthors.ts: identity only; roles stay per post (a role dates)
+interface CoAuthor {
+  name: string
+  url?: string      // JSON-LD Person url (Markkinavihreät profile where one exists)
+  sameAs?: string[]
+  image?: string    // CF Images name `kanssakirjoittaja-<id>`, 4:5, shared framing
+}
+
+// Expanded entry the posts loader hands to components.
 // String shorthand 'lauri' resolves to the canonical PERSON_ID reference
 export type AuthorEntry =
   | 'lauri'
-  | {
-      name: string
-      url?: string
-      sameAs?: string[]
-      role?: string   // localized role/title string (e.g. 'kunnanvaltuutettu'); omit for name-only byline
-    }
+  | (CoAuthor & { id?: string; role?: string })   // role resolved to the page's lang
 
 // Added to the posts collection schema in src/content.config.ts (shared per post id
 // via meta.json — role is the one sub-field resolved per locale, see posts spec).
@@ -285,16 +265,11 @@ type ResolvedAuthor =
   | { '@type': 'Person'; '@id': string }                   // Lauri → id ref
   | { '@type': 'Person'; name: string; url?: string; sameAs?: string[] }  // co-author
 
-// Byline rendering rules:
-// - Render order = frontmatter array order (first entry → first name).
+// Co-author list rules (src/components/Byline.astro, src/lib/byline.ts):
 // - String sentinel 'lauri' must always be used when Lauri is an author (never explicit name object).
-// - 'lauri' sentinel resolves to name 'Lauri Lavanti'.
-//   - If any co-author has a role → Lauri also gets personJobTitle[lang] as his role.
-//   - If no co-author has a role → Lauri appears name-only (no parenthetical).
-// - Per-author format: each author rendered as "Name (role)" if role present, "Name" if absent.
-//   Joining: two authors → "A and B"; three+ → Oxford comma "A, B, and C".
-// - Byline prefix per lang: 'en' → 'Authors:', 'fi' → 'Tekijät:', 'sv' → 'Författare:'
-// - Byline is an italic paragraph (<p><em>…</em></p>), ends with period.
+// - The list leaves 'lauri' out; order = meta.json array order otherwise.
+// - <aside aria-label={heading}>; heading via coAuthorsHeading(count, lang), singular for one.
+// - One <li> per co-author: bold name, fine-print role, optional 4:5 portrait (3rem, 3.5rem ≥769px).
 
 // <meta property="article:author"> content:
 // - For 'lauri' sentinel → content = 'Lauri Lavanti'
@@ -359,4 +334,5 @@ type ResolvedAuthor =
 | 2026-05-23 | Drop shared-suffix byline format; drop place field; Lauri sentinel = name-only; per-author role in parentheses only |
 | 2026-05-23 | Fix stale Given example (remove place); clarify fi/sv posts also had inline bylines requiring removal |
 | 2026-05-23 | Lauri sentinel always required; sentinel gets personJobTitle[lang] role injected when any co-author has a role |
+| 2026-11-05 | Co-author registry `src/content/coAuthors.ts`; meta.json references ids. Italic "Authors: …" sentence replaced by a headed co-author list without Lauri, with role and portrait per item |
 | 2026-09-28 | memberOf becomes an array with Markkinavihreät (`https://markkinavihreat.fi/#organization`); sameAs adds the Markkinavihreät person page (JSON-LD only, not rel="me"); PERSON_ID and About path corrected from `/fi/about/` to `/fi/laurista/` |
