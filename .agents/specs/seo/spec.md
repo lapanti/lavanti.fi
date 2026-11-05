@@ -55,6 +55,8 @@ Every page emits structured metadata for search engines and social platforms: JS
 
 - **og:type:** `'article'` for `BlogPosting`, `'website'` for everything else
 
+- **article:section / article:tag:** `BlogPosting` only. One `article:tag` per tag, `article:section` is the first. Content is the tag name in the page locale, `getTagName(id, lang)` with soft hyphens stripped (falls back to the id for an unregistered tag), never the English tag id
+
 - **Twitter card:** `summary_large_image` when `ogImage` is set, `summary` otherwise
 
 - **Prop flow:** `MDX frontmatter` → layout (FrontPageLayout / PostLayout / PageLayout) → `BaseLayout` → `Head`
