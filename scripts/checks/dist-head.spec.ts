@@ -1,8 +1,24 @@
 import { describe, expect, it } from 'vitest'
 
-import { checkPage, findTags, isSkippablePage, parseAttrs } from './dist-head'
+import { checkJsonLdGraph, checkPage, findTags, isSkippablePage, parseAttrs } from './dist-head'
 
 // ── shared test fixtures ──────────────────────────────────────────────────────
+
+const PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'
+const WEBSITE_ID = 'https://lavanti.fi/#website'
+const IS_PART_OF = { '@id': WEBSITE_ID }
+const WEBSITE = {
+    '@context': 'https://schema.org',
+    '@id': WEBSITE_ID,
+    '@type': 'WebSite',
+    publisher: { '@id': PERSON_ID },
+}
+
+/** One JSON-LD script tag; page entities get isPartOf unless the caller overrides it. */
+const ldScript = (node: Record<string, unknown>): string =>
+    `<script type="application/ld+json">${JSON.stringify(node)}</script>`
+const pageLd = (type: string, extra: Record<string, unknown> = {}): string =>
+    ldScript({ '@context': 'https://schema.org', '@type': type, isPartOf: IS_PART_OF, ...extra })
 
 const PAGE_PATH = '/fi/about/'
 const POST_PATH = '/fi/blog/1/testi-artikkeli/'
@@ -30,6 +46,7 @@ interface HeadOverrides {
     ogImage?: string
     rss?: string
     title?: string
+    website?: string
 }
 
 function pageHtml(overrides: HeadOverrides = {}): string {
@@ -44,10 +61,11 @@ function pageHtml(overrides: HeadOverrides = {}): string {
             '<link href="https://lavanti.fi/en/about/" hreflang="en" rel="alternate">',
             '<link href="https://lavanti.fi/fi/about/" hreflang="x-default" rel="alternate">',
         ].join(''),
-        jsonld = '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage"}</script>',
+        jsonld = pageLd('ProfilePage'),
         ogImage = '',
         rss = '<link href="/fi/rss.xml" rel="alternate" title="Blogi" type="application/rss+xml">',
         title = '<title>Testisivu | Lauri Lavanti</title>',
+        website = ldScript(WEBSITE),
     } = overrides
     const ogUrl = /href="([^"]*)" rel="canonical"/.exec(canonical)?.[1] ?? 'https://lavanti.fi/fi/about/'
 
@@ -55,7 +73,7 @@ function pageHtml(overrides: HeadOverrides = {}): string {
         <meta content="Testisivu" property="og:title">
         <meta content="Kuvaus sivusta" property="og:description">
         <meta content="${ogUrl}" property="og:url">
-        ${ogImage}${jsonld}</head><body>${body}</body></html>`
+        ${ogImage}${jsonld}${website}</head><body>${body}</body></html>`
 }
 
 // ── hero preload fixtures ─────────────────────────────────────────────────────
@@ -271,7 +289,7 @@ describe('checkPage', () => {
                 '<link href="https://lavanti.fi/en/blog/1/test-article/" hreflang="en" rel="alternate">',
                 `<link href="https://lavanti.fi${POST_PATH}" hreflang="x-default" rel="alternate">`,
             ].join(''),
-            jsonld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2026-01-01"}</script>',
+            jsonld: pageLd('BlogPosting', { datePublished: '2026-01-01' }),
             ogImage: '<meta content="https://lavanti.fi/images/x/og" property="og:image">',
         }
         expect(checkPage(pageHtml(postOverrides), POST_PATH, BUILT_PATHS)).toContain(
@@ -297,7 +315,7 @@ describe('checkPage', () => {
         const valid = checkPage(
             pageHtml({
                 ...postOverrides,
-                jsonld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2026-01-01"}</script>',
+                jsonld: pageLd('BlogPosting', { datePublished: '2026-01-01' }),
                 ogImage: '<meta content="https://lavanti.fi/images/x/og" property="og:image">',
             }),
             POST_PATH,
@@ -324,7 +342,7 @@ describe('checkPage', () => {
         const valid = checkPage(
             pageHtml({
                 ...issueOverrides,
-                jsonld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2026-04-25"}</script>',
+                jsonld: pageLd('BlogPosting', { datePublished: '2026-04-25' }),
                 ogImage:
                     '<meta content="https://lavanti.fi/og/fi__uutiskirje__1__testi-kirje.jpg" property="og:image">',
             }),
@@ -336,7 +354,7 @@ describe('checkPage', () => {
 
     it('flags FAQPage JSON-LD that no visible FAQ section backs', () => {
         const faqJsonld = [
-            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage"}</script>',
+            pageLd('ProfilePage'),
             '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[]}</script>',
         ].join('')
 
@@ -347,7 +365,7 @@ describe('checkPage', () => {
 
     it('accepts FAQPage JSON-LD when the plate is rendered', () => {
         const faqJsonld = [
-            '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage"}</script>',
+            pageLd('ProfilePage'),
             '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[]}</script>',
         ].join('')
 
@@ -358,5 +376,55 @@ describe('checkPage', () => {
                 BUILT_PATHS
             )
         ).toEqual([])
+    })
+})
+
+describe('checkJsonLdGraph', () => {
+    const ctx = { '@context': 'https://schema.org' }
+    const page = { ...ctx, '@type': 'WebPage', isPartOf: IS_PART_OF }
+    const lauriRef = { '@id': PERSON_ID, '@type': 'Person', name: 'Lauri Lavanti', url: 'https://lavanti.fi/fi/' }
+
+    it('passes a page linked to one WebSite with @id Person references', () => {
+        const event = { ...ctx, '@type': 'Event', organizer: lauriRef, performer: lauriRef }
+        expect(checkJsonLdGraph([{ ...page, author: lauriRef }, WEBSITE, event])).toEqual([])
+    })
+
+    it('flags a missing or duplicated WebSite node', () => {
+        expect(checkJsonLdGraph([page])).toContain('expected exactly one WebSite JSON-LD node, found 0')
+        expect(checkJsonLdGraph([page, WEBSITE, { ...ctx, '@type': 'WebSite' }])).toContain(
+            'expected exactly one WebSite JSON-LD node, found 2'
+        )
+    })
+
+    it('flags a WebSite node with the wrong @id', () => {
+        expect(checkJsonLdGraph([page, { ...WEBSITE, '@id': 'https://lavanti.fi/' }])).toContain(
+            `WebSite JSON-LD @id is "https://lavanti.fi/", expected "${WEBSITE_ID}"`
+        )
+    })
+
+    it('flags a page entity without isPartOf', () => {
+        expect(checkJsonLdGraph([{ ...ctx, '@type': 'CollectionPage' }, WEBSITE])).toContain(
+            `CollectionPage JSON-LD missing isPartOf → ${WEBSITE_ID}`
+        )
+    })
+
+    it('flags a reference to Lauri written out without the Person @id', () => {
+        const inline = { '@type': 'Person', name: 'Lauri Lavanti', url: 'https://lavanti.fi/fi/' }
+        const event = { ...ctx, '@type': 'Event', organizer: inline, performer: inline }
+        expect(checkJsonLdGraph([page, WEBSITE, event])).toContain(
+            `2 Person reference(s) to Lauri Lavanti without @id ${PERSON_ID}`
+        )
+    })
+
+    it('allows guest co-authors without an @id', () => {
+        const guest = { '@type': 'Person', name: 'Guest Author', url: 'https://example.com/' }
+        expect(checkJsonLdGraph([{ ...page, author: [lauriRef, guest] }, WEBSITE])).toEqual([])
+    })
+
+    it('flags more than one canonical Person node', () => {
+        const canonical = { ...lauriRef, birthDate: '1991-10-01' }
+        expect(checkJsonLdGraph([{ ...ctx, ...canonical }, { ...page, about: canonical }, WEBSITE])).toContain(
+            'expected at most one canonical Person node, found 2'
+        )
     })
 })

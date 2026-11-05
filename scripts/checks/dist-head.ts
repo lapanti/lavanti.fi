@@ -19,6 +19,10 @@
  *   - RSS autodiscovery link matching the page locale
  *   - every JSON-LD block parses, declares schema.org and a known @type;
  *     blog post pages carry a BlogPosting with datePublished
+ *   - JSON-LD graph: exactly one WebSite node, with the site @id; every page
+ *     entity (WebPage, BlogPosting, CollectionPage, ProfilePage) has isPartOf
+ *     pointing at it; at most one canonical Person node, and every other
+ *     reference to Lauri carries the Person @id
  *   - LCP hero preload drift guard (.agents/specs/lcp-delivery.md): every
  *     fetchpriority=high hero has an image preload whose imagesrcset/imagesizes
  *     are byte-equal to the hero <img>/<source> markup, with no crossorigin and
@@ -46,6 +50,15 @@ const KNOWN_JSONLD_TYPES = new Set([
     'WebPage',
     'WebSite',
 ])
+/*
+ * Mirrors of src/content/person.ts and src/lib/jsonld.ts. person.ts cannot be imported
+ * here: its extensionless imports do not resolve under --experimental-strip-types.
+ */
+const PERSON_ID = 'https://lavanti.fi/fi/laurista/#person'
+const PERSON_NAME = 'Lauri Lavanti'
+const PERSON_URL = 'https://lavanti.fi/fi/'
+const WEBSITE_ID = 'https://lavanti.fi/#website'
+const PAGE_ENTITY_TYPES = new Set(['BlogPosting', 'CollectionPage', 'ProfilePage', 'WebPage'])
 const POST_PATH_RE = /^\/(fi|sv|en)\/blog\/\d+\/.+\/$/
 /* Newsletter archive issues: /{lang}/{uutiskirje|newsletter|nyhetsbrev}/{id}/{slug}/ — article rules apply. */
 const NEWSLETTER_PATH_RE = new RegExp(`^/(fi|sv|en)/(${Object.values(NEWSLETTER_SEGMENTS).join('|')})/\\d+/.+/$`)
@@ -90,6 +103,46 @@ export function collectPages(distDir: string): Map<string, string> {
     }
     walk(distDir)
     return pages
+}
+
+/** Every object node in a JSON-LD value, depth first, the value itself included. */
+function jsonLdNodes(value: unknown): Array<Record<string, unknown>> {
+    if (Array.isArray(value)) return value.flatMap(jsonLdNodes)
+    if (value === null || typeof value !== 'object') return []
+    const node = value as Record<string, unknown>
+
+    return [node, ...Object.values(node).flatMap(jsonLdNodes)]
+}
+
+/**
+ * Graph-linking rules over the page's parsed JSON-LD blocks. Guest co-authors are
+ * Person nodes without an @id by design, so the reference rule only covers Lauri,
+ * recognised by name or url. A reference may carry name and url beside the @id; the
+ * canonical node is the one with the full field set, told apart by birthDate.
+ */
+export function checkJsonLdGraph(blocks: Array<Record<string, unknown>>): string[] {
+    const problems: string[] = []
+
+    const websites = blocks.filter((b) => b['@type'] === 'WebSite')
+    if (websites.length !== 1) problems.push(`expected exactly one WebSite JSON-LD node, found ${websites.length}`)
+    else if (websites[0]['@id'] !== WEBSITE_ID)
+        problems.push(`WebSite JSON-LD @id is "${websites[0]['@id']}", expected "${WEBSITE_ID}"`)
+
+    for (const block of blocks) {
+        const type = block['@type'] as string
+        if (PAGE_ENTITY_TYPES.has(type) && (block.isPartOf as { '@id'?: unknown } | undefined)?.['@id'] !== WEBSITE_ID)
+            problems.push(`${type} JSON-LD missing isPartOf → ${WEBSITE_ID}`)
+    }
+
+    const persons = jsonLdNodes(blocks).filter(
+        (n) => n['@type'] === 'Person' && (n.name === PERSON_NAME || n.url === PERSON_URL)
+    )
+    const canonical = persons.filter((n) => n.birthDate !== undefined)
+    if (canonical.length > 1) problems.push(`expected at most one canonical Person node, found ${canonical.length}`)
+    const unlinked = persons.filter((n) => n['@id'] !== PERSON_ID).length
+    if (unlinked > 0) problems.push(`${unlinked} Person reference(s) to ${PERSON_NAME} without @id ${PERSON_ID}`)
+
+    return problems
 }
 
 /** Check one page; returns a list of problem descriptions (empty = ok). */
@@ -195,6 +248,7 @@ export function checkPage(html: string, pagePath: string, builtPaths: Set<string
         if (!posting) problems.push('post page missing BlogPosting JSON-LD')
         else if (!posting.datePublished) problems.push('BlogPosting JSON-LD missing datePublished')
     }
+    if (parsedTypes.length > 0) problems.push(...checkJsonLdGraph(parsedTypes))
 
     /*
      * Google's structured-data policy: marked-up FAQ content must be visible on
