@@ -1,0 +1,22 @@
+{
+    "id": 98,
+    "publishDate": "2026-11-05",
+    "updatedDate": "2026-11-05",
+    "tags": ["economy", "marketgreen", "basic-welfare", "national-politics", "parliamentary-elections-2027"],
+    "heroImage": "markkinavihreat-avaus-ruuan-alv-perustuloksi",
+    "authors": [
+        "lauri",
+        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Atte Harjanne", "role": "kansanedustaja, Vihreät" },
+        { "name": "Johanna Muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Taru Hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" },
+        { "name": "Ville Aarnio", "role": "puheenjohtaja, Talousvihreät" }
+    ],
+    "externalPublications": [
+        {
+            "date": "2026-11-04",
+            "name": "Markkinavihreät",
+            "url": "https://markkinavihreat.fi/ehdotukset/ruuan-alv-perustuloksi/"
+        }
+    ]
+}
