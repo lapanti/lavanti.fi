@@ -1,4 +1,8 @@
 ---
+/*
+ * Fallback only. In production functions/index.ts answers `/` with a 302 to /fi/ or /sv/
+ * before this file is served; it remains for `astro preview`, where Pages Functions don't run.
+ */
 import Head from '../components/Head.astro'
 import { getImage } from '../lib/images'
 
