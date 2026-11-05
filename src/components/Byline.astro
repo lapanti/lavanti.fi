@@ -1,9 +1,15 @@
 ---
 import type { Lang } from '../content/nav'
 import type { AuthorEntry } from '../content/person'
-import type { ExternalPublication } from '../lib/byline'
+import type { CoAuthorEntry, ExternalPublication } from '../lib/byline'
 
-import { buildBylineText, formatPublicationDate, publicationLanguageSuffix, publicationPrefix } from '../lib/byline'
+import {
+    coAuthorsHeading,
+    coAuthorsOf,
+    formatPublicationDate,
+    publicationLanguageSuffix,
+    publicationPrefix,
+} from '../lib/byline'
 import SmartLink from './SmartLink.astro'
 
 interface Props {
@@ -13,23 +19,50 @@ interface Props {
 }
 
 const { authors, externalPublications, lang } = Astro.props
-const text = buildBylineText(authors, lang)
+const coAuthors = coAuthorsOf(authors)
+const heading = coAuthorsHeading(coAuthors.length, lang)
 ---
 
 <style>
     .byline {
         display: grid;
-        gap: 0.375rem;
-        margin-top: 2.5rem;
+        gap: 1.5rem;
+        margin-top: 2rem;
     }
 
-    .byline > p {
+    .co-authors p {
+        margin-block: 0;
+    }
+
+    .co-authors-heading {
+        color: var(--colorsTextSecondary);
+        font-family: var(--fineFontFamily);
+        font-size: var(--fineFontSize);
+        font-weight: 700;
+        line-height: var(--fineLineHeight);
+    }
+
+    .co-authors ul {
+        display: grid;
+        gap: 0.875rem;
+        list-style: none;
+        margin: 0.75rem 0 0;
+        padding: 0;
+    }
+
+    .name {
+        font-family: var(--textFontFamily);
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    .role {
         color: var(--colorsTextSecondary);
         font-family: var(--fineFontFamily);
         font-size: var(--fineFontSize);
         font-weight: var(--fineFontWeight);
         line-height: var(--fineLineHeight);
-        margin-block: 0;
+        margin-top: 0.125rem;
     }
 
     .elsewhere-note {
@@ -49,12 +82,20 @@ const text = buildBylineText(authors, lang)
     }
 </style>
 {
-    (text || externalPublications) && (
+    (coAuthors.length > 0 || externalPublications) && (
         <div class="byline">
-            {text && (
-                <p>
-                    <em>{text}</em>
-                </p>
+            {coAuthors.length > 0 && (
+                <aside aria-label={heading} class="co-authors">
+                    <p class="co-authors-heading">{heading}</p>
+                    <ul>
+                        {coAuthors.map((coAuthor: CoAuthorEntry) => (
+                            <li>
+                                <p class="name">{coAuthor.name}</p>
+                                {coAuthor.role && <p class="role">{coAuthor.role}</p>}
+                            </li>
+                        ))}
+                    </ul>
+                </aside>
             )}
             {externalPublications && (
                 <div class="elsewhere-note">

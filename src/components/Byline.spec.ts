@@ -5,7 +5,7 @@ import { renderAstroComponent } from '../../tests/helpers'
 import Byline from './Byline.astro'
 
 describe('<Byline />', () => {
-    describe('author byline', () => {
+    describe('co-author list', () => {
         it('renders nothing for a single author', async () => {
             const result = await renderAstroComponent(Byline, {
                 props: { authors: ['lauri'], lang: 'fi' },
@@ -14,12 +14,50 @@ describe('<Byline />', () => {
             expect(result.querySelector('p')).toBeNull()
         })
 
-        it('renders author byline for multiple authors', async () => {
+        it('lists every co-author but Lauri, one per item, in meta.json order', async () => {
             const result = await renderAstroComponent(Byline, {
-                props: { authors: [{ name: 'Ronja Karkinen' }, 'lauri'], lang: 'fi' },
+                props: {
+                    authors: [{ name: 'Johanna Fleming' }, 'lauri', { name: 'Paula Oittinen' }],
+                    lang: 'fi',
+                },
             })
 
-            expect(result.querySelector('em')?.textContent).toContain('Ronja Karkinen')
+            const names = queryAllByRole(result, 'listitem').map((li) => li.querySelector('.name')?.textContent)
+            expect(names).toEqual(['Johanna Fleming', 'Paula Oittinen'])
+            expect(result.textContent).not.toContain('Lauri Lavanti')
+        })
+
+        it('prints the role below the name, and nothing for a role-less co-author', async () => {
+            const result = await renderAstroComponent(Byline, {
+                props: {
+                    authors: ['lauri', { name: 'Atte Harjanne', role: 'kansanedustaja' }, { name: 'Ronja Karkinen' }],
+                    lang: 'fi',
+                },
+            })
+
+            const [atte, ronja] = queryAllByRole(result, 'listitem')
+            expect(atte.querySelector('.role')?.textContent).toBe('kansanedustaja')
+            expect(ronja.querySelector('.role')).toBeNull()
+        })
+
+        it.each([
+            ['fi', 'Kanssakirjoittajat'],
+            ['sv', 'Medförfattare'],
+            ['en', 'Co-authors'],
+        ] as const)('names the list in %s', async (lang, heading) => {
+            const result = await renderAstroComponent(Byline, {
+                props: { authors: ['lauri', { name: 'A' }, { name: 'B' }], lang },
+            })
+
+            expect(getByRole(result, 'complementary', { name: heading })).toBeTruthy()
+        })
+
+        it('uses the singular heading for one co-author', async () => {
+            const result = await renderAstroComponent(Byline, {
+                props: { authors: ['lauri', { name: 'Pinja Pekkarniemi' }], lang: 'fi' },
+            })
+
+            expect(getByRole(result, 'complementary', { name: 'Kanssakirjoittaja' })).toBeTruthy()
         })
     })
 
