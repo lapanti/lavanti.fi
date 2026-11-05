@@ -64,19 +64,19 @@ Feature: BlogPosting ImageObject in JSON-LD
     And jsonLd.primaryImageOfPage is undefined
 
   Scenario: Non-BlogPosting type with image emits bare string image, no primaryImageOfPage
-    Given Head is rendered with type "WebSite"
+    Given Head is rendered with type "WebPage"
     And ogImage is "https://res.cloudinary.com/example/image/upload/v1/test.jpg"
     When the primary JSON-LD script tag is parsed
-    Then jsonLd["@type"] equals "WebSite"
+    Then jsonLd["@type"] equals "WebPage"
     And jsonLd.image equals "https://res.cloudinary.com/example/image/upload/v1/test.jpg"
     And typeof jsonLd.image equals "string"
     And jsonLd.primaryImageOfPage is undefined
 
   Scenario: Non-BlogPosting type without image emits no image field
-    Given Head is rendered with type "WebSite"
+    Given Head is rendered with type "WebPage"
     And ogImage is undefined
     When the primary JSON-LD script tag is parsed
-    Then jsonLd["@type"] equals "WebSite"
+    Then jsonLd["@type"] equals "WebPage"
     And jsonLd.image is undefined
 
   Scenario: BlogPosting ImageObject does not affect other BlogPosting fields

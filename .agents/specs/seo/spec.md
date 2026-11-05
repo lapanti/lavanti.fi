@@ -15,16 +15,19 @@ Every page emits structured metadata for search engines and social platforms: JS
   WEBPAGE        = 'WebPage'
   WEBSITE        = 'WebSite'
   ```
-  If `type` is missing or not in `JSON_LD_TYPES`, the schema falls back to `WebSite`.
+  If `type` is missing or not in `JSON_LD_TYPES`, the schema falls back to `WebPage`. `WEBSITE` is not in `JSON_LD_TYPES`: no page selects it as its own type (see the WebSite node below).
 - **Schema fields by type:**
 
   | Type | Extra fields |
   |---|---|
-  | `BlogPosting` | `datePublished`, `dateModified`, `mainEntityOfPage`, `image` (ImageObject), `primaryImageOfPage` (ImageObject) |
-  | `CollectionPage` | no extras (base fields only) |
-  | `WebSite` | `name`, `sameAs` (all social profiles) |
+  | `BlogPosting` | `datePublished`, `dateModified`, `mainEntityOfPage`, `image` (ImageObject), `primaryImageOfPage` (ImageObject), `publisher` (Person reference) |
+  | `CollectionPage` | `inLanguage`; with `collection`, `about` (DefinedTerm) and `mainEntity` (ItemList) |
   | `Person` | `jobTitle` (locale-specific), `description` (locale-specific), `knowsAbout[]`, `memberOf[]` (PoliticalParty Vihreä liitto, Organization Markkinavihreät), `sameAs` |
-  | `WebPage` | no extras (base fields only) |
+  | `ProfilePage` | `mainEntity` (the canonical Person node) |
+  | `WebPage` | on the candidate pages (`CANDIDATE_PAGE_SLUGS` in `src/lib/jsonld.ts`), `about: { '@id': PERSON_ID }` |
+
+- **WebSite node:** every page emits one sibling `<script>` block after the primary one: `@id` `https://lavanti.fi/#website` (`WEBSITE_ID`), `@type: WebSite`, `name`, `url` (site root), `inLanguage` (page locale), `publisher: { '@id': PERSON_ID }`.
+- **Graph links:** every `WebPage`, `BlogPosting`, `CollectionPage` and `ProfilePage` carries `isPartOf: { '@id': WEBSITE_ID }`. The `Person` node (home pages) does not: it is not a CreativeWork. Every reference to Lauri outside the canonical Person node — generic-page `author`, BlogPosting `author` and `publisher`, Event `organizer` and `performer` — carries `@id: PERSON_ID`, with `name` and `url` alongside for engines that read one page in isolation. Guest co-authors have no `@id`.
 
 - **Supplemental FAQPage schema:** When a `BlogPosting` page includes a `faq` prop with 2 or more `{q, a}` entries, a second `<script type="application/ld+json">` block is emitted with `@type: FAQPage`. This block coexists alongside the primary `BlogPosting` schema — it does not replace it. The `FAQPAGE` constant is exported from `src/lib/jsonld.ts` but is **not** added to `JSON_LD_TYPES` (which lists only primary page types). The `faq` prop flows from MDX frontmatter → `PostLayout` → `BaseLayout` → `Head`.
 
@@ -64,7 +67,8 @@ Every page emits structured metadata for search engines and social platforms: JS
 - Do not hardcode social profile URLs in `Head.astro` outside the defined constants — keep them in the named variables so they're easy to update
 - Do not set `slug` to a value that includes a trailing slash — the canonical URL builder appends one
 - Do not emit `x-default` hreflang separately — the current locale is included in the three hreflang links already
-- Do not use `type === undefined` to mean "no schema" — an undefined type renders a `WebSite` schema, which is correct for pages without an explicit type
+- Do not use `type === undefined` to mean "no schema" — an undefined type renders a `WebPage` schema, which is correct for pages without an explicit type
+- Do not emit a second `WebSite` node or write a Person reference to Lauri without `@id: PERSON_ID` — `scripts/checks/dist-head.ts` fails the build on both
 
 ---
 
@@ -74,7 +78,8 @@ Every page emits structured metadata for search engines and social platforms: JS
 - [ ] Every page has `<title>`, `<meta name="description">`, `<link rel="canonical">`, and three `<link rel="alternate" hreflang>` tags
 - [ ] `BlogPosting` pages have `datePublished` and `dateModified` in JSON-LD
 - [ ] `Person` pages have locale-specific `jobTitle` and `description` in JSON-LD
-- [ ] `WebSite` pages include `sameAs` with all social profile URLs
+- [ ] Every page emits exactly one `WebSite` node (`@id` `https://lavanti.fi/#website`), and every page entity links to it with `isPartOf`
+- [ ] Every Person reference to Lauri except the canonical node carries `@id: PERSON_ID`
 - [ ] Pages with `heroImage` emit `og:image` at 1200×630
 - [ ] `og:type` is `article` for posts, `website` for all other pages
 - [ ] Twitter card is `summary_large_image` when image present, `summary` otherwise
@@ -106,7 +111,12 @@ Every page emits structured metadata for search engines and social platforms: JS
 **Scenario: Missing or unknown type**
 - Given: A page passes `type: undefined` or an unknown string
 - When: `Head.astro` processes it
-- Then: JSON-LD `@type` falls back to `WebSite`; no type-specific extra fields are added
+- Then: JSON-LD `@type` falls back to `WebPage`; no type-specific extra fields are added; the separate `WebSite` node is still the only `WebSite` on the page
+
+**Scenario: Candidate page graph**
+- Given: `src/pages/fi/eduskuntavaalit/index.mdx` with `type: 'WebPage'`, `slug: 'fi/eduskuntavaalit'`
+- When: The page is built
+- Then: The `WebPage` node has `about: { '@id': PERSON_ID }`, `author` with `@id: PERSON_ID`, and `isPartOf: { '@id': 'https://lavanti.fi/#website' }`; each Event node's `organizer` and `performer` carry `@id: PERSON_ID`; exactly one `WebSite` node is emitted
 
 **Scenario: Title formatting**
 - Given: A page with `title: 'Laurista'`

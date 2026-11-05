@@ -188,14 +188,15 @@ Feature: Canonical Person JSON-LD entity
     When the page is rendered
     Then the page body contains a visible hyperlink to 'https://fi.wikipedia.org/wiki/Lauri_Lavanti'
 
-  # ── WebSite / default type regression ────────────────────────────────────────
+  # ── WebSite node / default type regression ───────────────────────────────────
 
-  Scenario: WebSite type pages unaffected by refactor
-    Given a page rendered with no explicit type (defaults to WebSite)
+  Scenario: Pages without a type fall back to WebPage and reference the Person
+    Given a page rendered with no explicit type (defaults to WebPage)
     When the page is rendered
-    Then the JSON-LD contains @type: 'WebSite'
-    And the JSON-LD contains name: 'Lauri Lavanti'
-    And the JSON-LD contains sameAs with every socialProfiles URL plus Wikipedia, Wikidata and the Markkinavihreät person page
+    Then the primary JSON-LD contains @type: 'WebPage'
+    And its author carries @id: PERSON_ID
+    And a separate WebSite node with @id 'https://lavanti.fi/#website' and publisher { '@id': PERSON_ID } is emitted
+    And sameAs appears only on the canonical Person node, never on the WebSite node
 
   # ── Co-authored posts migration ──────────────────────────────────────────────
 
