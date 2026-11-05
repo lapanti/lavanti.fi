@@ -1,9 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
 import { redirects, shortLinks } from './redirects'
-import { buildRedirectLines } from './redirectsIntegration'
+import { buildRedirectLines, fileRedirects } from './redirectsIntegration'
 
 describe('buildRedirectLines', () => {
+    it('redirects /sitemap.xml to the sitemap index', () => {
+        const lines = buildRedirectLines(fileRedirects, [])
+
+        expect(lines).toContain('/sitemap.xml /sitemap-index.xml 301')
+    })
+
     it('emits a "<from> <to> 301" line for every static redirect map entry', () => {
         const lines = buildRedirectLines({ '/blogi/': '/fi/blog/', '/minusta/': '/fi/about/' }, [])
 
