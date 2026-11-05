@@ -45,7 +45,7 @@ Every page emits structured metadata for search engines and social platforms: JS
   // Fallback for non-post pages:
   slug.replace(/^(fi|sv|en)/, l) + '/'
   ```
-  All three locales always get an `alternate` link, including the current page's own locale (x-default is not emitted separately).
+  All three locales always get an `alternate` link, including the current page's own locale, plus an `x-default` link to the Finnish URL.
 - **`langAlternates` prop:** Optional `Record<Lang, string>` passed from `PostLayout` via `BaseLayout`. Contains the canonical path for each locale (e.g. `/sv/blog/10/sote-ar-valfardssallets-hordsten/`). When absent, the regex-swap fallback is used.
 
 - **og:image:** Passed in as a pre-computed URL string from the layout. Layouts use `getCldImageUrl` from `astro-cloudinary/helpers` to generate a 1200×630 fill crop. `Head.astro` does not call Cloudinary — it only emits the URL it receives.
@@ -68,7 +68,7 @@ Every page emits structured metadata for search engines and social platforms: JS
 - Do not add a new **primary** JSON-LD type (set via the `type` prop on `Head`) without: (1) adding the constant to `src/lib/jsonld.ts`, (2) adding it to `JSON_LD_TYPES`, (3) defining which extra fields it emits in `Head.astro`. Supplemental/secondary schema types (e.g. `FAQPage`) that coexist alongside the primary type are exported as constants from `jsonld.ts` but must **not** be added to `JSON_LD_TYPES` — they are emitted as separate `<script>` blocks via dedicated props, not via the `type` prop
 - Do not hardcode social profile URLs in `Head.astro` outside the defined constants — keep them in the named variables so they're easy to update
 - Do not set `slug` to a value that includes a trailing slash — the canonical URL builder appends one
-- Do not emit `x-default` hreflang separately — the current locale is included in the three hreflang links already
+- Do not point `x-default` anywhere but the Finnish alternate — Finnish is the default locale
 - Do not use `type === undefined` to mean "no schema" — an undefined type renders a `WebPage` schema, which is correct for pages without an explicit type
 - Do not emit a second `WebSite` node or write a Person reference to Lauri without `@id: PERSON_ID` — `scripts/checks/dist-head.ts` fails the build on both
 
