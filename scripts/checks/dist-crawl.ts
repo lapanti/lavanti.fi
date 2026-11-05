@@ -12,7 +12,8 @@
  *   - _redirects: every rule target resolves to a built page or asset, with no
  *     chain (a target that is itself a redirect source) and no dead-end. This
  *     covers the derived locale-less aliases and bare-id post redirects, which
- *     are generated at build time and never see a source-map audit.
+ *     are generated at build time and never see a source-map audit. The root
+ *     `/` → `/fi/` | `/sv/` Pages Function redirect is checked the same way.
  *
  * Unit tests cover the pure checks; the CLI runs them against dist/.
  *
@@ -22,6 +23,9 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { join, sep } from 'node:path'
 import process from 'node:process'
+
+// eslint-disable-next-line import-x/extensions -- node --experimental-strip-types needs explicit extensions
+import { ROOT_TARGETS } from '../../src/lib/rootRedirect.ts'
 
 const SITE = 'https://lavanti.fi'
 
@@ -141,6 +145,15 @@ export function parseRedirects(text: string): RedirectRule[] {
         })
 }
 
+/**
+ * The `/` redirect lives in a Pages Function (functions/index.ts), not `_redirects`. Its targets
+ * join the rule set so each must be a built page one hop away, and a link to `/` counts as a
+ * link to a redirect source.
+ */
+export function rootRedirectRules(): RedirectRule[] {
+    return ROOT_TARGETS.map((target) => ({ source: '/', target }))
+}
+
 /** Problem descriptions for the generated `_redirects` (empty = ok). */
 export function checkRedirectsOutput(rules: RedirectRule[], servable: Set<string>): string[] {
     const problems: string[] = []
@@ -174,7 +187,7 @@ if (isMain) {
     }
 
     const redirectsText = readFileSync(join(distDir, '_redirects'), 'utf8')
-    const rules = parseRedirects(redirectsText)
+    const rules = [...parseRedirects(redirectsText), ...rootRedirectRules()]
     const redirectSources = new Set(rules.map((rule) => normalizePath(rule.source)))
 
     const llmsText = readFileSync(join(distDir, 'llms.txt'), 'utf8')

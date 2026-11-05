@@ -7,6 +7,7 @@ import {
     extractOgImage,
     normalizePath,
     parseRedirects,
+    rootRedirectRules,
 } from './dist-crawl'
 
 describe('normalizePath', () => {
@@ -111,6 +112,28 @@ describe('checkRedirectsOutput', () => {
         const problems = checkRedirectsOutput(rules, servable)
 
         expect(problems.some((p) => p.includes('chain'))).toBe(true)
+    })
+
+    it('checks the root Function redirect to /fi/ and /sv/ in one hop', () => {
+        const rules = rootRedirectRules()
+
+        expect(rules).toEqual([
+            { source: '/', target: '/fi/' },
+            { source: '/', target: '/sv/' },
+        ])
+        expect(checkRedirectsOutput(rules, new Set(['/fi/', '/sv/']))).toEqual([])
+        expect(checkRedirectsOutput(rules, new Set(['/fi/']))).toEqual([
+            'dead-end: "/" -> "/sv/" resolves to no built page',
+        ])
+    })
+
+    it('flags a rule that redirects to the root, since / is itself a redirect', () => {
+        const problems = checkRedirectsOutput(
+            [{ source: '/home/', target: '/' }, ...rootRedirectRules()],
+            new Set(['/', '/fi/', '/sv/'])
+        )
+
+        expect(problems).toEqual(['chain: "/home/" -> "/", whose target is itself a redirect source'])
     })
 
     it('flags a dead-end (target resolves to no built page)', () => {
