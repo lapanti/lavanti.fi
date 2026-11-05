@@ -28,7 +28,7 @@
         - /url: /fi/eduskuntavaalit/kirkkonummi/
       - text: kunnanvaltuutettu, Vihreän valtuustoryhmän puheenjohtaja ja neljän lapsen isä. Politiikka on minulle yhteisten asioiden hoitamista kestävästi ja yli puoluerajojen — avoimuus, rehellisyys ja eri mielipiteiden kuuleminen ovat avainasemassa myös haastavissa kysymyksissä.
     - paragraph:
-      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
+      - text: /Olen myös Digitaalinen itsenäisyys -kansalaisaloitteen alullepanija ja vetäjä\. Aloite keräsi heinäkuussa \d+ eduskuntakäsittelyyn vaaditut \d+ \d+ allekirjoitusta\. Se viedään eduskuntaan kevään \d+ vaalien jälkeen, jotta uusi eduskunta ehtii käsitellä sen kokonaan\. Lisää taustastani löydät/
       - link "Laurista-sivulta":
         - /url: /fi/laurista/
       - text: ja
@@ -144,6 +144,11 @@
     - text: Tapahtumat
     - heading "Kampanjan tapahtumakalenteri" [level=2]
     - list:
+      - listitem:
+        - time: /tiistaina \d+\. marraskuuta \d+ klo \d+\.\d+–\d+\.\d+/
+        - heading "Digitaalista itsenäisyyttä ei rakenneta ilman politiikkaa" [level=3]
+        - paragraph: Tekniikan museo, Helsinki
+        - paragraph: Lauri puhuu Digitaalinen suvereniteetti -tapahtumassa Tekniikan museossa. Puheessa hän kysyy, miksi suomalaiset IT-yritykset pysyttelevät erossa politiikasta, kun kansainväliset teknologiajätit vaikuttavat sääntelyyn avoimesti ja isoilla summilla – ja mitä se tarkoittaa Suomen digitaaliselle itsenäisyydelle.
       - listitem:
         - time: /sunnuntaina \d+\. marraskuuta \d+ klo \d+–\d+/
         - heading "Kampanjatiimin avoin tapaaminen" [level=3]
