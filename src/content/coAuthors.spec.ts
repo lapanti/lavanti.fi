@@ -1,10 +1,11 @@
-import { readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { coAuthors, expandCoAuthor } from './coAuthors'
 
 const postsDir = path.resolve(__dirname, 'posts')
+const originalsDir = path.resolve(__dirname, '../images/originals')
 
 const metaAuthors = (): unknown[] =>
     readdirSync(postsDir).flatMap((id) => {
@@ -25,6 +26,21 @@ describe('coAuthors', () => {
         }
     })
 
+    it('names every portrait after its id', () => {
+        const misnamed = Object.entries(coAuthors).filter(
+            ([id, entry]) => 'image' in entry && entry.image !== `kanssakirjoittaja-${id}`
+        )
+        expect(misnamed).toEqual([])
+    })
+
+    // src/images/originals/ is gitignored, so this runs only where the originals exist.
+    it.skipIf(!existsSync(originalsDir))('has an original for every portrait', () => {
+        const missing = Object.values(coAuthors).filter(
+            (entry) => 'image' in entry && !existsSync(path.join(originalsDir, `${entry.image}.jpg`))
+        )
+        expect(missing).toEqual([])
+    })
+
     it('references co-authors by registry id in every meta.json', () => {
         const inline = metaAuthors().filter((a) => typeof a === 'object' && a !== null && !('id' in a))
         expect(inline).toEqual([])
@@ -40,6 +56,7 @@ describe('expandCoAuthor', () => {
     it('expands a bare id to the registry entry', () => {
         expect(expandCoAuthor('arttu-laitinen')).toEqual({
             id: 'arttu-laitinen',
+            image: 'kanssakirjoittaja-arttu-laitinen',
             name: 'Arttu Laitinen',
             url: 'https://markkinavihreat.fi/ketka/arttu-laitinen/',
         })
