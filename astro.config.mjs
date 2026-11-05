@@ -11,6 +11,7 @@ import sitemap from '@astrojs/sitemap'
 
 import { tags } from './src/content/tags'
 import { notFoundPages } from './src/lib/notFoundPagesIntegration'
+import { createSitemapAlternates } from './src/lib/sitemapAlternates'
 import { buildPageDateMap } from './src/lib/sitemapLastmod'
 import { redirects, shortLinks } from './src/lib/redirects'
 import { redirectsFile } from './src/lib/redirectsIntegration'
@@ -23,6 +24,24 @@ const pageDateMap = buildPageDateMap({
     postsDir: join(__dirname, 'src', 'content', 'posts'),
     tags,
 })
+
+const sitemapAlternates = createSitemapAlternates()
+
+/** @param {string} page */
+const inSitemap = (page) =>
+    // Exclude root — client-side language-detection dispatcher, no real content (noindex)
+    new URL(page).pathname !== '/' &&
+    // Exclude bare /{lang}/blog/{id}/ redirect pages
+    !/\/(en|fi|sv)\/blog\/\d+\/$/.test(page) &&
+    // Exclude the localised not-found pages (served as sv/404.html, en/404.html)
+    !/^\/(en|sv)\/404\/$/.test(new URL(page).pathname) &&
+    // Exclude old root-level /kategoria/ redirect pages (the localised
+    // FI category pages live under /fi/kategoria/ and must stay included)
+    !new URL(page).pathname.startsWith('/kategoria/') &&
+    // Exclude the noindex volunteer thank-you pages
+    !/^\/(fi\/liity\/kiitos|sv\/bli-med\/tack|en\/join\/thanks)\/$/.test(new URL(page).pathname) &&
+    // Exclude the noindex recommendation form and its thank-you page
+    !/^\/fi\/suosittele\/(kiitos\/)?$/.test(new URL(page).pathname)
 
 // https://astro.build/config
 export default defineConfig({
@@ -56,25 +75,15 @@ export default defineConfig({
     integrations: [
         mdx(),
         icon({ include: { 'fa7-brands': ['*'], 'fa7-solid': ['rss'] } }),
+        // Must precede sitemap(): it reads the built hreflang links that serialize() looks up.
+        sitemapAlternates.integration,
         sitemap({
-            filter: (page) =>
-                // Exclude root — client-side language-detection dispatcher, no real content (noindex)
-                new URL(page).pathname !== '/' &&
-                // Exclude bare /{lang}/blog/{id}/ redirect pages
-                !/\/(en|fi|sv)\/blog\/\d+\/$/.test(page) &&
-                // Exclude the localised not-found pages (served as sv/404.html, en/404.html)
-                !/^\/(en|sv)\/404\/$/.test(new URL(page).pathname) &&
-                // Exclude old root-level /kategoria/ redirect pages (the localised
-                // FI category pages live under /fi/kategoria/ and must stay included)
-                !new URL(page).pathname.startsWith('/kategoria/') &&
-                // Exclude the noindex volunteer thank-you pages
-                !/^\/(fi\/liity\/kiitos|sv\/bli-med\/tack|en\/join\/thanks)\/$/.test(new URL(page).pathname) &&
-                // Exclude the noindex recommendation form and its thank-you page
-                !/^\/fi\/suosittele\/(kiitos\/)?$/.test(new URL(page).pathname),
+            filter: inSitemap,
             serialize: (item) => {
                 const path = decodeURIComponent(new URL(item.url).pathname)
                 const date = pageDateMap.get(path)
-                return date ? { ...item, lastmod: date } : item
+                const links = sitemapAlternates.linksFor(item.url, inSitemap)
+                return { ...item, ...(date && { lastmod: date }), ...(links && { links }) }
             },
         }),
         // Emit dist/_redirects so Cloudflare Pages serves the redirect map and

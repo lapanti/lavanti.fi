@@ -164,6 +164,8 @@ Every page emits structured metadata for search engines and social platforms: JS
 - **Strictness:** the helper throws at config-load if any MDX page is missing `updatedDate` — silent omission is not allowed
 - **Output format:** the sitemap plugin's Zod schema is `z.date().optional()`; string ISO dates are coerced into `Date` and re-serialised as W3C ISO datetime (`YYYY-MM-DDTHH:mm:ss.sssZ`), which is valid per sitemaps.org and accepted by search engines
 - **Filter (unchanged):** excludes bare `/[lang]/blog/[id]/` redirect pages, `/kategoria/` legacy redirects, and `/(en|fi|sv)/recommendations/` pages
+- **hreflang alternates:** `src/lib/sitemapAlternates.ts` registers an integration listed before `sitemap()`. Its `astro:build:done` reads each built page's `<link rel="alternate" hreflang>` set (including `x-default`), and `serialize` attaches it as `links`, rendered as `<xhtml:link>`. The sitemap therefore carries exactly the alternates `Head.astro` emits. Alternates whose target is not a built page or fails the sitemap filter are dropped; a URL left with fewer than two locales gets no `links`
+- **`/sitemap.xml`:** the plugin writes `sitemap-index.xml`; `_redirects` sends `/sitemap.xml` there with a 301 (`fileRedirects` in `src/lib/redirectsIntegration.ts`)
 
 ### Anti-Patterns
 
@@ -171,11 +173,14 @@ Every page emits structured metadata for search engines and social platforms: JS
 - Do not fall back to `publishDate` when `updatedDate` is missing; missing `updatedDate` is an error, not a soft case
 - Do not add inline date-extraction helpers in `astro.config.mjs` — extend `src/lib/sitemapLastmod.ts` instead
 - Do not emit `<changefreq>` or `<priority>`; both are deliberately omitted
+- Do not use the `i18n` option of `@astrojs/sitemap` — it swaps the locale prefix, which is wrong for posts, categories and pages whose slugs differ per locale
+- Do not move `sitemapAlternates.integration` after `sitemap()` — the map would be empty when `serialize` runs
 
 ### Contract
 
 #### Definition of Done
 - [ ] Every URL in `dist/sitemap-0.xml` carries a `<lastmod>` element (count of `<lastmod>` equals count of `<url>`)
+- [ ] A URL's `<xhtml:link>` set in `dist/sitemap-0.xml` equals the `<link rel="alternate" hreflang>` set in its built HTML, minus targets outside the sitemap
 - [ ] Every MDX page under `src/pages/` declares `updatedDate` in frontmatter, and every post under `src/content/posts/` has `updatedDate` in its `meta.json` (build fails otherwise)
 - [ ] Every tag in `src/content/tags/` declares `updatedDate` (TS error otherwise)
 - [ ] `PostLayout` emits `dateModified` directly from `updatedDate` — no fallback
