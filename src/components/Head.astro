@@ -34,6 +34,7 @@ import { hasFaqSection } from '../lib/faq'
 import {
     BLOGPOSTING,
     type BreadcrumbItem,
+    CANDIDATE_PAGE_SLUGS,
     type CollectionInfo,
     COLLECTIONPAGE,
     EVENT,
@@ -45,6 +46,7 @@ import {
     PROFILEPAGE,
     WEBPAGE,
     WEBSITE,
+    WEBSITE_ID,
 } from '../lib/jsonld'
 import { stripSoftHyphens } from '../lib/text'
 
@@ -169,6 +171,15 @@ const resolvedAuthors = (authors ?? (['lauri'] as AuthorEntry[])).map((entry: Au
     }
 })
 
+/*
+ * Every reference to Lauri outside the canonical node carries the Person @id, so all
+ * page entities resolve to one identity. name and url ride along for engines that read
+ * one page in isolation and never fetch the profile page that holds the full node.
+ */
+const personRef = { '@id': PERSON_ID, '@type': 'Person' as const, name: personName, url: personUrl }
+
+const isPartOf = { '@id': WEBSITE_ID }
+
 const articleAuthorNames = (authors ?? (['lauri'] as AuthorEntry[])).map((entry: AuthorEntry) =>
     entry === 'lauri' ? personName : entry.name
 )
@@ -206,6 +217,7 @@ const jsonLd = JSON.stringify(
               '@type': PROFILEPAGE,
               ...(updatedAt ? { dateModified: updatedAt } : {}),
               description,
+              isPartOf,
               mainEntity: canonicalPersonObject,
               name: title,
               url: canonical,
@@ -215,11 +227,13 @@ const jsonLd = JSON.stringify(
             { '@context': 'https://schema.org', ...canonicalPersonObject }
           : {
                 '@context': 'https://schema.org',
-                '@type': type && JSON_LD_TYPES.includes(type) ? type : WEBSITE,
-                author: isArticle ? resolvedAuthors : { '@type': 'Person', name: personName },
+                '@type': type && JSON_LD_TYPES.includes(type) ? type : WEBPAGE,
+                ...(slug && CANDIDATE_PAGE_SLUGS.has(slug) ? { about: { '@id': PERSON_ID } } : {}),
+                author: isArticle ? resolvedAuthors : personRef,
                 ...(updatedAt && type !== BLOGPOSTING ? { dateModified: updatedAt } : {}),
                 description,
                 headline: title,
+                isPartOf,
                 license: 'https://creativecommons.org/licenses/by-sa/4.0/',
                 url: canonical,
                 ...(ogImageUrl ? { image: ogImageUrl } : {}),
@@ -245,7 +259,7 @@ const jsonLd = JSON.stringify(
                               inLanguage: lang,
                           },
                           /* A personal blog: the author publishes it. Google accepts a Person here. */
-                          publisher: { '@id': PERSON_ID, '@type': 'Person', name: personName, url: personUrl },
+                          publisher: personRef,
                           ...(wordCount ? { wordCount } : {}),
                       }
                     : {}),
@@ -273,14 +287,23 @@ const jsonLd = JSON.stringify(
                               : {}),
                       }
                     : {}),
-                ...(type === WEBSITE
-                    ? {
-                          name: personName,
-                          sameAs: personSameAs,
-                      }
-                    : {}),
             }
 )
+
+/*
+ * One WebSite node on every page, as a sibling script after the primary block. Its
+ * publisher is a bare @id: the node describes the site, and the primary block's
+ * Person reference already carries the name.
+ */
+const websiteJsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@id': WEBSITE_ID,
+    '@type': WEBSITE,
+    inLanguage: lang,
+    name: personName,
+    publisher: { '@id': PERSON_ID },
+    url: new URL('/', WEBSITE_ID).toString(),
+})
 
 const faqJsonLd = hasFaqSection(faq)
     ? JSON.stringify({
@@ -307,8 +330,9 @@ const faqJsonLd = hasFaqSection(faq)
  * block on the page is a standalone object, and scripts/checks/dist-head.ts reads
  * @context and @type off each block.
  *
- * organizer and performer are written out rather than referenced by @id: on a WebPage
- * the canonical Person node is not in the emitted graph, so a bare @id would dangle.
+ * organizer and performer are personRef: the Person @id ties them to the canonical
+ * node on the profile page, and the inline name and url keep the Event complete for
+ * Google, which reads each page on its own.
  *
  * Google's recommended Event fields are always present: endDate falls back to the
  * event's date when it has no end time (toHelsinkiIso returns the bare date), the
@@ -317,7 +341,6 @@ const faqJsonLd = hasFaqSection(faq)
  */
 const announceableEvents = (events ?? []).filter((event) => event.topicConfirmed)
 const eventImage = announceableEvents.length > 0 ? await getPersonImageUrl() : undefined
-const eventPerson = { '@type': 'Person', name: personName, url: personUrl }
 
 const eventsJsonLd = announceableEvents.map((event) =>
     JSON.stringify({
@@ -348,8 +371,8 @@ const eventsJsonLd = announceableEvents.map((event) =>
             priceCurrency: 'EUR',
             url: event.fbUrl ?? canonical?.toString(),
         },
-        organizer: eventPerson,
-        performer: eventPerson,
+        organizer: personRef,
+        performer: personRef,
         ...(event.fbUrl ? { sameAs: event.fbUrl } : {}),
         startDate: toHelsinkiIso(event.date, event.startTime),
         ...(canonical ? { url: canonical.toString() } : {}),
@@ -435,6 +458,7 @@ const breadcrumbJsonLd =
 <link as="font" crossorigin="" href="/fonts/big-shoulders-display-v24-latin.woff2" rel="preload" type="font/woff2" />
 <title>{title.startsWith('Lauri Lavanti') ? title : `${title} | Lauri Lavanti`}</title>
 <script is:inline set:html={scriptSafe(jsonLd)} type="application/ld+json" />
+<script is:inline set:html={scriptSafe(websiteJsonLd)} type="application/ld+json" />
 {faqJsonLd && <script is:inline set:html={scriptSafe(faqJsonLd)} type="application/ld+json" />}
 {eventsJsonLd.map((event) => <script is:inline set:html={scriptSafe(event)} type="application/ld+json" />)}
 {breadcrumbJsonLd && <script is:inline set:html={scriptSafe(breadcrumbJsonLd)} type="application/ld+json" />}

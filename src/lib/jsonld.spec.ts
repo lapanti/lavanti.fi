@@ -23,7 +23,11 @@ describe('jsonld', () => {
     })
 
     it('should include all JSON-LD types in JSON_LD_TYPES', () => {
-        expect(JSON_LD_TYPES).toEqual([BLOGPOSTING, COLLECTIONPAGE, PERSON, PROFILEPAGE, WEBPAGE, WEBSITE])
+        expect(JSON_LD_TYPES).toEqual([BLOGPOSTING, COLLECTIONPAGE, PERSON, PROFILEPAGE, WEBPAGE])
+    })
+
+    it('should not include WEBSITE in JSON_LD_TYPES', () => {
+        expect(JSON_LD_TYPES).not.toContain(WEBSITE)
     })
 
     it('should export EVENT constant', () => {

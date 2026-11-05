@@ -10,9 +10,29 @@ export const FAQPAGE = 'FAQPage' as const
 export const PERSON = 'Person' as const
 export const PROFILEPAGE = 'ProfilePage' as const
 export const WEBPAGE = 'WebPage' as const
+/*
+ * WEBSITE is a sibling-script type too: Head emits exactly one WebSite node on every
+ * page, so a page selecting it as its own @type would make a second, conflicting one.
+ */
 export const WEBSITE = 'WebSite' as const
 
-export const JSON_LD_TYPES = [BLOGPOSTING, COLLECTIONPAGE, PERSON, PROFILEPAGE, WEBPAGE, WEBSITE] as const
+export const JSON_LD_TYPES = [BLOGPOSTING, COLLECTIONPAGE, PERSON, PROFILEPAGE, WEBPAGE] as const
+
+/** The site-wide WebSite node's @id; every page entity points at it with isPartOf. */
+export const WEBSITE_ID = 'https://lavanti.fi/#website'
+
+/**
+ * The candidate pages, as Head slugs: their subject is Lauri, so their WebPage node
+ * carries `about` pointing at the Person @id.
+ */
+export const CANDIDATE_PAGE_SLUGS: ReadonlySet<string> = new Set([
+    'en/elections',
+    'en/elections/kirkkonummi',
+    'fi/eduskuntavaalit',
+    'fi/eduskuntavaalit/kirkkonummi',
+    'sv/riksdagsvalet',
+    'sv/riksdagsvalet/kyrkslatt',
+])
 
 export type JsonLdType = (typeof JSON_LD_TYPES)[number]
 
