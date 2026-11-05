@@ -6,11 +6,11 @@
     "heroImage": "markkinavihreat-ehdotus-ruuan-alv-perustuloksi",
     "authors": [
         "lauri",
-        { "name": "Arttu Laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Atte Harjanne", "role": "kansanedustaja, Vihreät" },
-        { "name": "Johanna Muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Taru Hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" },
-        { "name": "Ville Aarnio", "role": "puheenjohtaja, Talousvihreät" }
+        { "id": "arttu-laitinen", "role": "varavaltuutettu (Turku), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "atte-harjanne", "role": "kansanedustaja, Vihreät" },
+        { "id": "johanna-muurinen", "role": "varavaltuutettu (Sipoo), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "taru-hallikainen", "role": "varavaltuutettu (Oulu), eduskuntavaaliehdokas, Vihreät" },
+        { "id": "ville-aarnio", "role": "puheenjohtaja, Talousvihreät" }
     ],
     "externalPublications": [
         {
