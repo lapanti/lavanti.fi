@@ -135,23 +135,23 @@
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
         - listitem:
-          - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-            - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-              - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
-              - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
-              - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
+          - article "Matinköpsstödet ska tillhöra folket, inte kvittona":
+            - 'link "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona Matinköpsstödet ska tillhöra folket, inte kvittona"':
+              - /url: /sv/blog/98/matinkopsstodet-ska-tillhora-folket/
+              - 'img "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona"'
+              - heading "Matinköpsstödet ska tillhöra folket, inte kvittona" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
+            - paragraph: "/De marknadsgrönas initiativ: mat till allmänna momssatsen \\d+,\\d+ procent och hela intäkten tillbaka som en månatlig basinkomst, cirka \\d+ euro per person\\./"
           - list:
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
             - listitem:
-              - link "Nationell politik":
-                - /url: /sv/kategori/nationell-politik/
+              - link "Marknadsgrön":
+                - /url: /sv/kategori/marknadsgron/
             - listitem:
-              - link /Riksdagsvalet \d+/:
-                - /url: /sv/kategori/riksdagsvalet-2027/
+              - link "Grundläggande":
+                - /url: /sv/kategori/grundtrygghet/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/

@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Muutetaan ruoan alv perustuloksi":
+          - 'link "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi Muutetaan ruoan alv perustuloksi"':
+            - /url: /fi/blog/98/ruuan-alv-perustuloksi/
+            - 'img "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi"'
+            - heading "Muutetaan ruoan alv perustuloksi" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "/Markkinavihreiden avaus: ruoka yleiseen \\d+,\\d+ prosentin alv-kantaan ja koko tuotto takaisin ihmisille kuukausittaisena perustulona, noin \\d+ euroa henkeä kohden\\./"
+        - list:
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+          - listitem:
+            - link "Markkinavihreä":
+              - /url: /fi/kategoria/markkinavihrea/
+          - listitem:
+            - link "Perusturva":
+              - /url: /fi/kategoria/perusturva/
+      - listitem:
         - 'article "Tekoäly koulussa: jo arkea, ei vielä opetussuunnitelmassa"':
           - 'link "Tyhjä luokkahuone vantaalaisessa koulussa, ikkunaseinällä tietokoneita: tekoäly koulussa on jo arkea Tekoäly koulussa: jo arkea, ei vielä opetussuunnitelmassa"':
             - /url: /fi/blog/94/tekoaly-koulussa-saako-lapsi-kayttaa/
@@ -121,24 +139,6 @@
           - listitem:
             - link "Luonto":
               - /url: /fi/kategoria/luonto/
-          - listitem:
-            - link "Kaavoitus":
-              - /url: /fi/kategoria/kaavoitus/
-      - listitem:
-        - article "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma":
-          - 'link "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0. Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma"':
-            - /url: /fi/blog/90/kavelyn-ja-pyorailyn-edistamisohjelma-valtuustopuheenvuoro/
-            - 'img "Sillan yli kulkeva kevyen liikenteen väylä, jossa punaiseksi päällystetty pyöräkaista polkupyörämerkintöineen ja sen vieressä erillinen jalankulkijoiden puoli. Kuva: Estormiz, Wikimedia Commons, CC0."'
-            - heading "Kävelyn ja pyöräilyn edistämisohjelma on kunnan pitkän tähtäimen suunnitelma" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Puheenvuoroni Kirkkonummen valtuustossa: kävelyn ja pyöräilyn edistämisohjelma on pitkän tähtäimen suunnitelma, joka on vastuullista taloudenpitoa."
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /fi/kategoria/kirkkonummi/
-          - listitem:
-            - link "Liikenne":
-              - /url: /fi/kategoria/liikenne/
           - listitem:
             - link "Kaavoitus":
               - /url: /fi/kategoria/kaavoitus/

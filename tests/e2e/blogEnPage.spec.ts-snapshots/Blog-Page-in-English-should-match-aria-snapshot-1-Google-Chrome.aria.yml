@@ -135,23 +135,23 @@
               - link "Economy":
                 - /url: /en/category/economy/
         - listitem:
-          - article "A pension index freeze would share the burden fairly":
-            - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
-              - /url: /en/blog/97/pension-funding-and-the-index-freeze/
-              - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
-              - heading "A pension index freeze would share the burden fairly" [level=3]
+          - article "The food-purchase subsidy belongs to people, not receipts":
+            - 'link "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts The food-purchase subsidy belongs to people, not receipts"':
+              - /url: /en/blog/98/food-subsidy-belongs-to-people/
+              - 'img "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts"'
+              - heading "The food-purchase subsidy belongs to people, not receipts" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
+            - paragraph: "/A Market Greens proposal: food to the standard \\d+\\.\\d+% VAT rate and all of the revenue back to people as a monthly basic income of about \\d+ euros each\\./"
           - list:
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
             - listitem:
-              - link "National politics":
-                - /url: /en/category/national-politics/
+              - link "Marketgreen":
+                - /url: /en/category/marketgreen/
             - listitem:
-              - link /Parliamentary elections \d+/:
-                - /url: /en/category/parliamentary-elections-2027/
+              - link "Basic welfare":
+                - /url: /en/category/basic-welfare/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/
