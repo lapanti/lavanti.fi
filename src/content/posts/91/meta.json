@@ -7,7 +7,7 @@
     "authors": [
         "lauri",
         {
-            "name": "Sanni Jäppinen",
+            "id": "sanni-jappinen",
             "role": {
                 "en": "councillor and member of the municipal executive board",
                 "fi": "kunnanvaltuutettu ja kunnanhallituksen jäsen",
@@ -15,7 +15,7 @@
             }
         },
         {
-            "name": "Pinja Pekkarniemi",
+            "id": "pinja-pekkarniemi",
             "role": {
                 "en": "deputy councillor and vice-chair of the urban development committee",
                 "fi": "varavaltuutettu ja kuntakehityksen lautakunnan varapuheenjohtaja",

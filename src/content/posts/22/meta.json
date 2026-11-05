@@ -2,23 +2,9 @@
     "id": 22,
     "publishDate": "2024-11-27",
     "updatedDate": "2026-09-30",
-    "tags": [
-        "kirkkonummi",
-        "municipal-elections-2025",
-        "education",
-        "enlightenment",
-        "national-politics"
-    ],
+    "tags": ["kirkkonummi", "municipal-elections-2025", "education", "enlightenment", "national-politics"],
     "heroImage": "Lauri-Lavanti-ja-lapsi-kävelyllä",
-    "authors": [
-        {
-            "name": "Johanna Fleming"
-        },
-        "lauri",
-        {
-            "name": "Paula Oittinen"
-        }
-    ],
+    "authors": ["johanna-fleming", "lauri", "paula-oittinen"],
     "externalPublications": [
         {
             "date": "2024-11-27",
