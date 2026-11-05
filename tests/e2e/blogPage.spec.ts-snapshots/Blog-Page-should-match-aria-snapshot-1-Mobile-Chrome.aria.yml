@@ -135,23 +135,23 @@
               - link "Talous":
                 - /url: /fi/kategoria/talous/
         - listitem:
-          - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-            - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-              - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
-              - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
-              - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
+          - article "Muutetaan ruoan alv perustuloksi":
+            - 'link "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi Muutetaan ruoan alv perustuloksi"':
+              - /url: /fi/blog/98/ruuan-alv-perustuloksi/
+              - 'img "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi"'
+              - heading "Muutetaan ruoan alv perustuloksi" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
+            - paragraph: "/Markkinavihreiden avaus: ruoka yleiseen \\d+,\\d+ prosentin alv-kantaan ja koko tuotto takaisin ihmisille kuukausittaisena perustulona, noin \\d+ euroa henkeä kohden\\./"
           - list:
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
             - listitem:
-              - link "Kansallinen politiikka":
-                - /url: /fi/kategoria/kansallinen-politiikka/
+              - link "Markkinavihreä":
+                - /url: /fi/kategoria/markkinavihrea/
             - listitem:
-              - link /Eduskuntavaalit \d+/:
-                - /url: /fi/kategoria/eduskuntavaalit-2027/
+              - link "Perusturva":
+                - /url: /fi/kategoria/perusturva/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/

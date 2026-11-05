@@ -128,6 +128,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "The food-purchase subsidy belongs to people, not receipts":
+          - 'link "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts The food-purchase subsidy belongs to people, not receipts"':
+            - /url: /en/blog/98/food-subsidy-belongs-to-people/
+            - 'img "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts"'
+            - heading "The food-purchase subsidy belongs to people, not receipts" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "/A Market Greens proposal: food to the standard \\d+\\.\\d+% VAT rate and all of the revenue back to people as a monthly basic income of about \\d+ euros each\\./"
+        - list:
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+          - listitem:
+            - link "Marketgreen":
+              - /url: /en/category/marketgreen/
+          - listitem:
+            - link "Basic welfare":
+              - /url: /en/category/basic-welfare/
+      - listitem:
         - 'article "AI in school: already routine, not yet in the curriculum"':
           - 'link "Empty classroom in a school in Vantaa with computers along the window wall: AI in school is already routine AI in school: already routine, not yet in the curriculum"':
             - /url: /en/blog/94/ai-in-school-can-children-use-it/
@@ -265,24 +283,6 @@
           - listitem:
             - link "Urban planning":
               - /url: /en/category/urban-planning/
-      - listitem:
-        - 'article "Council initiative: AI guidance for job seekers"':
-          - 'link "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0. Council initiative: AI guidance for job seekers"':
-            - /url: /en/blog/89/council-initiative-ai-guidance-job-seekers/
-            - 'img "Hands taking notes in a notebook next to a laptop on a white desk. Photo: JESHOOTS.com, StockSnap, CC0."'
-            - 'heading "Council initiative: AI guidance for job seekers" [level=3]'
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Kirkkonummi could offer job seekers free guidance on using AI tools. The initiative proposes a fixed-term pilot for the whole employment area.
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link "Council motion":
-              - /url: /en/category/council-motion/
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

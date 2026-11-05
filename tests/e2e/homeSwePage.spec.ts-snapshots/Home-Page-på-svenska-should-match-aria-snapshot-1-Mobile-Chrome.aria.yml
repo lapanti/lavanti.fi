@@ -126,6 +126,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Matinköpsstödet ska tillhöra folket, inte kvittona":
+          - 'link "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona Matinköpsstödet ska tillhöra folket, inte kvittona"':
+            - /url: /sv/blog/98/matinkopsstodet-ska-tillhora-folket/
+            - 'img "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona"'
+            - heading "Matinköpsstödet ska tillhöra folket, inte kvittona" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: "/De marknadsgrönas initiativ: mat till allmänna momssatsen \\d+,\\d+ procent och hela intäkten tillbaka som en månatlig basinkomst, cirka \\d+ euro per person\\./"
+        - list:
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+          - listitem:
+            - link "Marknadsgrön":
+              - /url: /sv/kategori/marknadsgron/
+          - listitem:
+            - link "Grundläggande":
+              - /url: /sv/kategori/grundtrygghet/
+      - listitem:
         - 'article "AI i skolan: redan vardag, ännu inte i läroplanen"':
           - 'link "Tomt klassrum i en skola i Vanda med datorer vid fönsterväggen: AI i skolan är redan vardag AI i skolan: redan vardag, ännu inte i läroplanen"':
             - /url: /sv/blog/94/ai-i-skolan-far-barnet-anvanda-det/
@@ -263,24 +281,6 @@
           - listitem:
             - link "Planläggning":
               - /url: /sv/kategori/planlaggning/
-      - listitem:
-        - article "Fullmäktigemotion om AI-handledning för arbetssökning":
-          - 'link "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0. Fullmäktigemotion om AI-handledning för arbetssökning"':
-            - /url: /sv/blog/89/fullmaktigemotion-ai-handledning-arbetssokning/
-            - 'img "Händer som antecknar i ett anteckningshäfte bredvid en bärbar dator på ett vitt skrivbord. Foto: JESHOOTS.com, StockSnap, CC0."'
-            - heading "Fullmäktigemotion om AI-handledning för arbetssökning" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Kyrkslätt kunde som ansvarskommun erbjuda arbetssökande avgiftsfri AI-handledning. Motionen föreslår ett tidsbegränsat pilotprojekt för hela området.
-        - list:
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link "Fullmäktigeinitiativ":
-              - /url: /sv/kategori/fullmaktigeinitiativ/
-          - listitem:
-            - link "AI":
-              - /url: /sv/kategori/artificiell-intelligens/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
