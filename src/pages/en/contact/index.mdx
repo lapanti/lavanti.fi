@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/contact/'
     fi: '/fi/yhteystiedot/'
     sv: '/sv/kontakt/'
-updatedDate: '2026-09-11'
+updatedDate: '2026-11-06'
 type: 'WebPage'
 heroImage: 'Lauri-Lavanti-dipolissa-kivimuurin-edessa-katse-kameraan-hero-pysty-v2'
 mobileHeroImage: 'Lauri-Lavanti-dipolissa-kivimuurin-edessa-katse-kameraan-hero-vaaka'
@@ -38,7 +38,18 @@ import { socialChips } from '../../../content/social'
     </ChannelGrid>
 </Plate>
 
-<Plate eyebrow="Elsewhere" ground="sand" heading="Social media">
+<Plate eyebrow="2027 parliamentary elections" ground="sand" heading="Campaign">
+    <ChannelGrid>
+        <ChannelCard
+            href="mailto:sjoerd@digiitsenaisyys.fi"
+            kicker="Campaign manager"
+            note="Sjoerd Handgraaf"
+            value="sjoerd@digiitsenaisyys.fi"
+        />
+    </ChannelGrid>
+</Plate>
+
+<Plate eyebrow="Elsewhere" ground="offWhite" heading="Social media">
     <Chips
         ariaLabel="Lauri's social media accounts"
         items={[...socialChips, { href: '/en/rss.xml', label: 'RSS feed' }]}
