@@ -126,6 +126,42 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Är Metas Muse en demokratisering av AI eller en ulv i fårakläder?":
+          - link "Närbild på en övervakningskameras lins, illustration till AI-agenten Meta Muse och dess datainsamling Är Metas Muse en demokratisering av AI eller en ulv i fårakläder?":
+            - /url: /sv/blog/99/meta-muse-ai-agent-integritet/
+            - img "Närbild på en övervakningskameras lins, illustration till AI-agenten Meta Muse och dess datainsamling"
+            - heading "Är Metas Muse en demokratisering av AI eller en ulv i fårakläder?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Meta Muse är en AI-agent som kan läsa din e-post och föra register över dina bekanta. Vad samlar den in, kommer den till Finland och vad kräver EU-reglerna?
+        - list:
+          - listitem:
+            - link "Integritetsskydd":
+              - /url: /sv/kategori/integritetsskydd/
+          - listitem:
+            - link "AI":
+              - /url: /sv/kategori/artificiell-intelligens/
+          - listitem:
+            - link "Digital självständighet":
+              - /url: /sv/kategori/digital-sjalvstandighet/
+      - listitem:
+        - article "Finlands försörjningsberedskap når inte molnet":
+          - link "Närbild av servrar i ett datacenter med gröna statuslampor. Finlands försörjningsberedskap når inte molnet":
+            - /url: /sv/blog/82/forsorjningsberedskapen-nar-inte-molnet/
+            - img "Närbild av servrar i ett datacenter med gröna statuslampor."
+            - heading "Finlands försörjningsberedskap når inte molnet" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Finland lagrar spannmål och läkemedel inför kriser, men inte kritiska molntjänster. Digital försörjningsberedskap är beredskap som inte kräver isolering.
+        - list:
+          - listitem:
+            - link "Digital självständighet":
+              - /url: /sv/kategori/digital-sjalvstandighet/
+          - listitem:
+            - link "Säkerhet":
+              - /url: /sv/kategori/sakerhet/
+          - listitem:
+            - link "Digitalisering":
+              - /url: /sv/kategori/digitalisering/
+      - listitem:
         - article "Matinköpsstödet ska tillhöra folket, inte kvittona":
           - 'link "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona Matinköpsstödet ska tillhöra folket, inte kvittona"':
             - /url: /sv/blog/98/matinkopsstodet-ska-tillhora-folket/
@@ -245,42 +281,6 @@
           - listitem:
             - link "Nationell politik":
               - /url: /sv/kategori/nationell-politik/
-      - listitem:
-        - article "Centralskogen är den naturkloka kommunens första prov":
-          - link "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund. Centralskogen är den naturkloka kommunens första prov":
-            - /url: /sv/blog/91/centralskogen-ar-den-naturkloka-kommunens-forsta-prov/
-            - img "En tredelad bild med Sanni Jäppinen till vänster i en rödvitrandig tröja, Pinja Pekkarniemi i mitten i en svartvitmönstrad blus och Lauri Lavanti till höger i mörk kostym och blommig skjorta mot vit bakgrund."
-            - heading "Centralskogen är den naturkloka kommunens första prov" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Planen för Centralskogen skulle föra in en tre meter bred belagd och belyst led från Masaby till kommuncentrum. En naturklok kommun utvecklar befintliga stigar.
-        - list:
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link "Natur":
-              - /url: /sv/kategori/natur/
-          - listitem:
-            - link "Planläggning":
-              - /url: /sv/kategori/planlaggning/
-      - listitem:
-        - article "Programmet för gång och cykling är kommunens långsiktiga plan":
-          - 'link "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0. Programmet för gång och cykling är kommunens långsiktiga plan"':
-            - /url: /sv/blog/90/framjande-av-gang-och-cykling-fullmaktigeanforande/
-            - 'img "En gång- och cykelväg över en bro, med ett rödbelagt cykelfält med cykelsymboler och en separat gångbana bredvid. Foto: Estormiz, Wikimedia Commons, CC0."'
-            - heading "Programmet för gång och cykling är kommunens långsiktiga plan" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Mitt anförande i Kyrkslätts fullmäktige: programmet för främjande av gång och cykling är en långsiktig plan och ett uttryck för ansvarsfull ekonomi."
-        - list:
-          - listitem:
-            - link "Kyrkslätt":
-              - /url: /sv/kategori/kyrkslatt/
-          - listitem:
-            - link "Trafik":
-              - /url: /sv/kategori/trafik/
-          - listitem:
-            - link "Planläggning":
-              - /url: /sv/kategori/planlaggning/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
