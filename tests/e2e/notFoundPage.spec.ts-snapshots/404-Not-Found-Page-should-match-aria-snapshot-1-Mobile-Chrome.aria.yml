@@ -5,6 +5,42 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Onko Metan Muse tekoälyn demokratisointia vai susi lampaan vaatteissa?":
+          - link "Valvontakameran linssi lähikuvassa, kuvituskuva Meta Muse -tekoälyagentin tietojen keruusta Onko Metan Muse tekoälyn demokratisointia vai susi lampaan vaatteissa?":
+            - /url: /fi/blog/99/meta-muse-tekoalyagentti-yksityisyys/
+            - img "Valvontakameran linssi lähikuvassa, kuvituskuva Meta Muse -tekoälyagentin tietojen keruusta"
+            - heading "Onko Metan Muse tekoälyn demokratisointia vai susi lampaan vaatteissa?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Meta Muse on tekoälyagentti, joka voi lukea sähköpostisi ja pitää kirjaa tuttavistasi. Mitä se kerää, tuleeko se Suomeen ja mitä EU-sääntely siltä edellyttää?
+        - list:
+          - listitem:
+            - link "Yksityisyydensuoja":
+              - /url: /fi/kategoria/yksityisyydensuoja/
+          - listitem:
+            - link "Tekoäly":
+              - /url: /fi/kategoria/tekoaly/
+          - listitem:
+            - link "Digitaalinen itsenäisyys":
+              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+      - listitem:
+        - article "Suomen huoltovarmuus ei ulotu pilveen":
+          - link "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja. Suomen huoltovarmuus ei ulotu pilveen":
+            - /url: /fi/blog/82/huoltovarmuus-ei-ulotu-pilveen/
+            - img "Lähikuva datakeskuksen palvelimista, joissa palaa vihreitä merkkivaloja."
+            - heading "Suomen huoltovarmuus ei ulotu pilveen" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Suomi varautuu kriiseihin viljalla ja lääkkeillä, mutta ei kriittisellä pilvellä. Digitaalinen huoltovarmuus on varautumista, joka ei vaadi eristäytymistä.
+        - list:
+          - listitem:
+            - link "Digitaalinen itsenäisyys":
+              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
+          - listitem:
+            - link "Turvallisuus":
+              - /url: /fi/kategoria/turvallisuus/
+          - listitem:
+            - link "Digitalisaatio":
+              - /url: /fi/kategoria/digitalisaatio/
+      - listitem:
         - article "Muutetaan ruoan alv perustuloksi":
           - 'link "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi Muutetaan ruoan alv perustuloksi"':
             - /url: /fi/blog/98/ruuan-alv-perustuloksi/
@@ -106,39 +142,3 @@
           - listitem:
             - link "Yrittäjyys":
               - /url: /fi/kategoria/yrittajyys/
-      - listitem:
-        - article "Digitaalinen itsenäisyys ei ole eristäytymistä":
-          - link "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine. Digitaalinen itsenäisyys ei ole eristäytymistä":
-            - /url: /fi/blog/88/digitaalinen-itsenaisyys-mita-se-tarkoittaa/
-            - img "Lauri Lavanti hymyilemässä ja katsomassa kameraan. Päällään hänellä on valkoinen t-paita, jossa lukee Digitaalinen itsenäisyys, jonka yllä on leijonakuvio. Lisäksi pikkutakki. Kuvan ottanut Erkki Laine."
-            - heading "Digitaalinen itsenäisyys ei ole eristäytymistä" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Digitaalinen itsenäisyys tarkoittaa, että Suomi hallitsee itse kriittisiä järjestelmiään. Mitä kansalaisaloite vaatii ja milloin se menee eduskuntaan?
-        - list:
-          - listitem:
-            - link "Digitaalinen itsenäisyys":
-              - /url: /fi/kategoria/digitaalinen-itsenaisyys/
-          - listitem:
-            - link "Turvallisuus":
-              - /url: /fi/kategoria/turvallisuus/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
-      - listitem:
-        - article "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
-          - link "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla. Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe":
-            - /url: /fi/blog/91/keskusmetsa-on-luontoviisaan-kunnan-ensimmainen-koe/
-            - img "Kolmiosainen kuva, jossa vasemmalla Sanni Jäppinen punavalkoraidallisessa paidassa, keskellä Pinja Pekkarniemi mustavalkokuvioisessa paidassa ja oikealla Lauri Lavanti tummassa puvussa ja kukkakuvioisessa paidassa valkoisella taustalla."
-            - heading "Keskusmetsä on Luontoviisaan kunnan ensimmäinen koe" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Keskusmetsän suunnitelma toisi metsään kolme metriä leveän päällystetyn ja valaistun reitin Masalasta kuntakeskukseen. Luontoviisas kunta kehittää polkuja.
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /fi/kategoria/kirkkonummi/
-          - listitem:
-            - link "Luonto":
-              - /url: /fi/kategoria/luonto/
-          - listitem:
-            - link "Kaavoitus":
-              - /url: /fi/kategoria/kaavoitus/

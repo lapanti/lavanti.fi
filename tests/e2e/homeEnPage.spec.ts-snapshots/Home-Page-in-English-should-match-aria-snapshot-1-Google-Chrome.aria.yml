@@ -128,6 +128,42 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Is Meta's Muse the Democratisation of AI or a Wolf in Sheep's Clothing?":
+          - link "Close-up of a surveillance camera lens, illustrating data collection by the Meta Muse AI agent Is Meta's Muse the Democratisation of AI or a Wolf in Sheep's Clothing?":
+            - /url: /en/blog/99/meta-muse-ai-agent-privacy/
+            - img "Close-up of a surveillance camera lens, illustrating data collection by the Meta Muse AI agent"
+            - heading "Is Meta's Muse the Democratisation of AI or a Wolf in Sheep's Clothing?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Meta Muse is an AI agent that reads your email and keeps files on your contacts. What does it collect, is it coming to Finland, and what do EU rules require?
+        - list:
+          - listitem:
+            - link "Privacy":
+              - /url: /en/category/privacy/
+          - listitem:
+            - link "AI":
+              - /url: /en/category/artificial-intelligence/
+          - listitem:
+            - link "Digital independence":
+              - /url: /en/category/digital-independence/
+      - listitem:
+        - article "Finland's Security of Supply Stops Short of the Cloud":
+          - link "Close-up of data centre servers with rows of green status lights. Finland's Security of Supply Stops Short of the Cloud":
+            - /url: /en/blog/82/security-of-supply-ends-at-the-cloud/
+            - img "Close-up of data centre servers with rows of green status lights."
+            - heading "Finland's Security of Supply Stops Short of the Cloud" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Finland stockpiles grain and medicines for a crisis, but not critical cloud services. Digital security of supply is preparedness that needs no isolation.
+        - list:
+          - listitem:
+            - link "Digital independence":
+              - /url: /en/category/digital-independence/
+          - listitem:
+            - link "Security":
+              - /url: /en/category/security/
+          - listitem:
+            - link "Digitalisation":
+              - /url: /en/category/digitalisation/
+      - listitem:
         - article "The food-purchase subsidy belongs to people, not receipts":
           - 'link "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts The food-purchase subsidy belongs to people, not receipts"':
             - /url: /en/blog/98/food-subsidy-belongs-to-people/
@@ -247,42 +283,6 @@
           - listitem:
             - link "National politics":
               - /url: /en/category/national-politics/
-      - listitem:
-        - article "The Central Forest is the nature-wise municipality's first test":
-          - link "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background. The Central Forest is the nature-wise municipality's first test":
-            - /url: /en/blog/91/central-forest-is-the-first-test-for-a-nature-wise-municipality/
-            - img "A three-part portrait with Sanni Jäppinen on the left in a red-and-white striped top, Pinja Pekkarniemi in the middle in a black-and-white patterned blouse and Lauri Lavanti on the right in a dark suit and floral shirt, against a white background."
-            - heading "The Central Forest is the nature-wise municipality's first test" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: The Central Forest plan would bring a three-metre-wide paved and lit route from Masala to the municipal centre. A nature-wise municipality keeps its paths.
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link "Nature":
-              - /url: /en/category/nature/
-          - listitem:
-            - link "Urban planning":
-              - /url: /en/category/urban-planning/
-      - listitem:
-        - article "The walking and cycling programme is the municipality's long-term plan":
-          - 'link "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0. The walking and cycling programme is the municipality''s long-term plan"':
-            - /url: /en/blog/90/walking-and-cycling-programme-council-speech/
-            - 'img "A walking and cycling route across a bridge, with a red-surfaced cycle lane marked with bicycle symbols and a separate pedestrian side next to it. Photo: Estormiz, Wikimedia Commons, CC0."'
-            - heading "The walking and cycling programme is the municipality's long-term plan" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "My speech in the Kirkkonummi council: the walking and cycling programme is a long-term plan, and funding it is responsible management of public money."
-        - list:
-          - listitem:
-            - link "Kirkkonummi":
-              - /url: /en/category/kirkkonummi/
-          - listitem:
-            - link "Transport":
-              - /url: /en/category/transportation/
-          - listitem:
-            - link "Urban planning":
-              - /url: /en/category/urban-planning/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
