@@ -15,9 +15,11 @@ POST   /api/suosittele             Turnstile + validate → D1 row + R2 photo �
 GET    /api/suosittele/pending     Bearer RECOMMENDATIONS_TOKEN → pending rows (JSON, no photo bytes)
 GET    /api/suosittele/photo/:id   Bearer RECOMMENDATIONS_TOKEN → photo bytes
 DELETE /api/suosittele/:id         Bearer RECOMMENDATIONS_TOKEN → delete row + R2 object
-GET    /api/suosittele/stats       Bearer LIITY_STATS_TOKEN → { "pending": n }  (morning brief)
+GET    /api/suosittele/stats       Bearer LIITY_STATS_TOKEN [?since=YYYY-MM-DD] → { pending, since, since_count, published, total }  (morning brief)
 local  npm run recommendations -- list | approve <id> | reject <id>
 ```
+
+- **Stats:** the same shape as the volunteer and donate-click counts in `/api/liity/stats`, so the morning brief (`scripts/ingest/campaign.py` in obsidian-notes) can show "new since yesterday" and "total" for recommendations too. `pending` is the row count of `recommendation_submissions`; `since` is the query value when it is a real calendar day, else `null`; `since_count` is the pending rows with `created_at >= helsinkiDayStartUtc(since)`, or `null` when `since` is absent or invalid (same `isCalendarDay` and `helsinkiDayStartUtc` helpers as `/api/liity/stats`); `published` is the number of entries in `src/content/recommendations.json`, bundled into the Function at build time; `total` is `published + pending`. Accepted gap: a submission approved on the day it arrived has already left the table, so `since_count` does not count it.
 
 - **Logic:** `src/lib/recommendationSubmissions.ts`. The Pages Functions in `functions/api/suosittele*` are thin wrappers, like `functions/api/liity.ts`. The form helpers shared with `src/lib/volunteers.ts` (`text`, `redirect`, `json`, `timingSafeEqual`, `verifyTurnstile`) live in `src/lib/formHandling.ts`.
 - **Bindings:** the existing D1 `DB` (table `recommendation_submissions`, `migrations/0002_recommendation_submissions.sql`), R2 `RECOMMENDATION_PHOTOS`, and the secrets `TURNSTILE_SECRET`, `RECOMMENDATIONS_TOKEN` and `LIITY_STATS_TOKEN`.
@@ -57,7 +59,7 @@ local  npm run recommendations -- list | approve <id> | reject <id>
 - Do not store IP addresses, user agents or Turnstile tokens with a submission.
 - Do not run `scripts/upload-to-cf-images.mts` from the approve command. It re-POSTs every original and times out; POST the single new file instead.
 - Do not inflect the name in generated alt text. Finnish case forms can't be derived from an arbitrary name.
-- Do not expose names or quotes through the stats endpoint. It returns the count only.
+- Do not expose names, titles or quotes through the stats endpoint. It returns counts only.
 - Do not echo form input back in an error redirect. The error is a fixed code.
 
 ## Contract
@@ -68,7 +70,7 @@ local  npm run recommendations -- list | approve <id> | reject <id>
 - [ ] Every rejection path stores nothing.
 - [ ] The token-gated endpoints return 401 without a valid bearer token.
 - [ ] DELETE removes both the row and the object.
-- [ ] Stats returns `{ pending }` only.
+- [ ] Stats returns `{ pending, since, since_count, published, total }` and no other key; `since` and `since_count` are `null` without a valid `?since=`.
 - [ ] The recommendations pages render identically after the JSON move.
 - [ ] The privacy notice (fi/sv/en) describes the form, with `updatedDate` bumped.
 - [ ] Unit tests cover the parser and every handler. An E2E test covers the form page.
@@ -106,6 +108,6 @@ local  npm run recommendations -- list | approve <id> | reject <id>
 - Then: before the commit, the branch and photo are removed and the start branch is checked out; after it, the branch keeps the commit, the start branch is checked out and the remaining steps are printed as commands
 
 **Scenario: Morning brief count**
-- Given: 2 pending rows
-- When: `GET /api/suosittele/stats` is called with `LIITY_STATS_TOKEN`
-- Then: the body is `{"pending":2}`
+- Given: 2 pending rows, one of them created after Helsinki midnight on 2026-11-06, and 13 entries in `recommendations.json`
+- When: `GET /api/suosittele/stats?since=2026-11-06` is called with `LIITY_STATS_TOKEN`
+- Then: the body is `{"pending":2,"published":13,"since":"2026-11-06","since_count":1,"total":15}`; without `?since=`, or with `?since=2026-02-30`, `since` and `since_count` are `null` and the other counts are unchanged
