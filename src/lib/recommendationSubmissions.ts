@@ -7,9 +7,10 @@
  * - A submission is a D1 row plus one R2 object keyed by the row id. Nothing is public until
  *   the approve command copies it into a PR; approve and reject delete both.
  * - Rows hold only what the form asks for plus the consent time. No IP, user agent or email.
- * - The stats endpoint returns the pending count only.
+ * - The stats endpoint returns counts only: never a name, title or recommendation text.
  */
 
+import { recommendations } from '../content/recommendations'
 import {
     backToForm,
     type D1Like,
@@ -21,6 +22,7 @@ import {
     text,
     verifyTurnstile,
 } from './formHandling'
+import { helsinkiDayStartUtc, isCalendarDay } from './publishing'
 
 /** Minimal R2 surface used here, so no Workers type package is needed. */
 export interface R2Like {
@@ -242,11 +244,31 @@ export const handleDelete = async (request: Request, env: RecommendationEnv, id:
     return json({ deleted: id })
 }
 
-/** GET /api/suosittele/stats — the pending count for the morning brief. */
+/**
+ * GET /api/suosittele/stats — counts for the morning brief, shaped like `/api/liity/stats`:
+ * pending rows, pending rows created since a Helsinki calendar day (`?since=YYYY-MM-DD`),
+ * published entries in `src/content/recommendations.json` (bundled at build time) and their sum.
+ * A submission approved on the day it arrived has left the table, so `since_count` misses it.
+ */
 export const handleStats = async (request: Request, env: RecommendationEnv): Promise<Response> => {
     if (!hasBearer(request, env.LIITY_STATS_TOKEN)) return json({ error: 'unauthorized' }, 401)
     if (!env.DB) return json({ error: 'unavailable' }, 503)
-    const row = await env.DB.prepare('SELECT COUNT(*) AS n FROM recommendation_submissions').first<{ n: number }>()
 
-    return json({ pending: row?.n ?? 0 })
+    const db = env.DB
+    const sinceParam = new URL(request.url).searchParams.get('since')
+    const since = sinceParam && isCalendarDay(sinceParam) ? sinceParam : null
+    const count = async (where = '', ...args: string[]) =>
+        (
+            await db
+                .prepare(`SELECT COUNT(*) AS n FROM recommendation_submissions${where}`)
+                .bind(...args)
+                .first<{ n: number }>()
+        )?.n ?? 0
+
+    const pending = await count()
+    // `since` is a Helsinki calendar day; rows store UTC instants, so compare from its local midnight.
+    const sinceCount = since ? await count(' WHERE created_at >= ?', helsinkiDayStartUtc(since)) : null
+    const published = recommendations.length
+
+    return json({ pending, published, since, since_count: sinceCount, total: published + pending })
 }

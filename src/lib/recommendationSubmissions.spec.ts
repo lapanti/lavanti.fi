@@ -1,6 +1,9 @@
+import type { D1Like } from './formHandling'
+
 import { describe, expect, it, vi } from 'vitest'
 
 import { fakeDb, turnstile } from '../../tests/formFakes'
+import { recommendations } from '../content/recommendations'
 import {
     handleDelete,
     handlePending,
@@ -248,10 +251,80 @@ describe('inbox endpoints', () => {
         expect(objects.size).toBe(0)
         expect(calls[0]).toEqual({ args: [ID], sql: 'DELETE FROM recommendation_submissions WHERE id = ?' })
     })
+})
 
-    it('stats returns the pending count only', async () => {
-        const { env } = setup([{ n: 2 }])
-        const res = await handleStats(authed('https://lavanti.fi/api/suosittele/stats', 'GET', 'stats'), env)
-        expect(await res.json()).toEqual({ pending: 2 })
+describe('handleStats', () => {
+    const published = recommendations.length
+    const stats = (query = '') =>
+        new Request(`https://lavanti.fi/api/suosittele/stats${query}`, { headers: { Authorization: 'Bearer stats' } })
+    /** Two pending rows, one of them inside any `since` window; `binds` records every bound value. */
+    const setup = () => {
+        const { db: base } = fakeDb({
+            'FROM recommendation_submissions WHERE created_at >= ?': [{ n: 1 }],
+            'SELECT COUNT(*) AS n FROM recommendation_submissions': [{ n: 2 }],
+        })
+        // fakeDb records run() calls only; the counts use first(), so wrap bind.
+        const binds: unknown[][] = []
+        const db: D1Like = {
+            prepare(sql) {
+                const stmt = base.prepare(sql)
+                const bind = stmt.bind.bind(stmt)
+                stmt.bind = (...values: unknown[]) => {
+                    binds.push(values)
+
+                    return bind(...values)
+                }
+
+                return stmt
+            },
+        }
+
+        return { binds, env: { DB: db, LIITY_STATS_TOKEN: 'stats' } }
+    }
+
+    it('counts pending, published and total, with since fields null when ?since is absent', async () => {
+        const { env } = setup()
+        const res = await handleStats(stats(), env)
+        expect(res.status).toBe(200)
+        expect(res.headers.get('Cache-Control')).toBe('no-store')
+        expect(await res.json()).toEqual({
+            pending: 2,
+            published,
+            since: null,
+            since_count: null,
+            total: published + 2,
+        })
+    })
+
+    it('counts pending rows from Helsinki midnight of ?since', async () => {
+        const { binds, env } = setup()
+        const res = await handleStats(stats('?since=2026-11-06'), env)
+        expect(await res.json()).toEqual({
+            pending: 2,
+            published,
+            since: '2026-11-06',
+            since_count: 1,
+            total: published + 2,
+        })
+        // 6 November is on +02:00, so the window opens at 22:00 UTC the evening before.
+        expect(binds).toEqual([[], ['2026-11-05T22:00:00.000Z']])
+    })
+
+    it.each(['2026-13-01', '2026-02-30', 'eilen', ''])('ignores ?since=%s, which is no calendar day', async (since) => {
+        const { binds, env } = setup()
+        const res = await handleStats(stats(`?since=${since}`), env)
+        expect(res.status).toBe(200)
+        expect(await res.json()).toMatchObject({ pending: 2, since: null, since_count: null })
+        expect(binds).toEqual([[]])
+    })
+
+    it('carries counts only, never a published name or text', async () => {
+        const { env } = setup()
+        const body = JSON.stringify(await (await handleStats(stats(), env)).json())
+        expect(published).toBeGreaterThan(0)
+        for (const entry of recommendations) {
+            expect(body).not.toContain(entry.name)
+            expect(body).not.toContain(entry.recommendation.slice(0, 20))
+        }
     })
 })
