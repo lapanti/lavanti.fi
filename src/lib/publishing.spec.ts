@@ -1,6 +1,23 @@
 import { describe, expect, it } from 'vitest'
 
-import { EMBARGO_DAYS, embargoLiftDate, helsinkiDateOf, helsinkiDayStartUtc, isPublishedBy } from './publishing'
+import {
+    EMBARGO_DAYS,
+    embargoLiftDate,
+    helsinkiDateOf,
+    helsinkiDayStartUtc,
+    isCalendarDay,
+    isPublishedBy,
+} from './publishing'
+
+describe('isCalendarDay', () => {
+    it.each(['2026-11-06', '2024-02-29', '2026-12-31'])('accepts %s', (day) => {
+        expect(isCalendarDay(day)).toBe(true)
+    })
+
+    it.each(['2026-13-01', '2026-02-30', '2025-02-29', '2026-1-6', '20261106', 'eilen', ''])('rejects %s', (value) => {
+        expect(isCalendarDay(value)).toBe(false)
+    })
+})
 
 describe('helsinkiDayStartUtc', () => {
     it.each([
