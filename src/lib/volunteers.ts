@@ -23,7 +23,7 @@ import {
     text,
     verifyTurnstile,
 } from './formHandling'
-import { helsinkiDayStartUtc } from './publishing'
+import { helsinkiDayStartUtc, isCalendarDay } from './publishing'
 
 export type { FetchLike } from './formHandling'
 
@@ -273,17 +273,6 @@ const tally = (rows: { key: null | string; n: number }[]): Record<string, number
     for (const { key, n } of rows) out[key ?? '(ei linkkiä)'] = (out[key ?? '(ei linkkiä)'] ?? 0) + n
 
     return out
-}
-
-/**
- * A real YYYY-MM-DD day: 2026-13-01 fails to parse and Date rolls 2026-02-30 over to March,
- * so the day must survive a round trip unchanged.
- */
-const isCalendarDay = (value: string): boolean => {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
-    const time = Date.parse(`${value}T00:00:00Z`)
-
-    return !Number.isNaN(time) && new Date(time).toISOString().slice(0, 10) === value
 }
 
 /** GET /api/liity/stats — aggregate counts for the analytics fetch and the morning brief. */

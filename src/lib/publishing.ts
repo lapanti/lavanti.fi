@@ -14,6 +14,18 @@ export const helsinkiDateOf = (date: Date): string =>
     new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Helsinki' }).format(date)
 
 /**
+ * A real YYYY-MM-DD day: 2026-13-01 fails to parse and Date rolls 2026-02-30 over to March,
+ * so the day must survive a round trip unchanged. Validates the `?since=` query of the stats
+ * endpoints before it reaches helsinkiDayStartUtc.
+ */
+export const isCalendarDay = (value: string): boolean => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
+    const time = Date.parse(`${value}T00:00:00Z`)
+
+    return !Number.isNaN(time) && new Date(time).toISOString().slice(0, 10) === value
+}
+
+/**
  * The UTC instant at which a Helsinki calendar day (YYYY-MM-DD) begins, as an ISO string —
  * comparable with stored `toISOString()` timestamps. The offset is read at 00:00 UTC on that
  * date: Helsinki changes offset at 01:00 UTC, so that is the offset in force at local midnight.
