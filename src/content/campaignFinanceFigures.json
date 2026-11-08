@@ -1,5 +1,5 @@
 {
-    "asOf": "2026-11-01",
+    "asOf": "2026-11-08",
     "raised": {
         "own": {
             "banked": 2000,
@@ -11,7 +11,7 @@
         },
         "private": {
             "banked": 0,
-            "pending": 637
+            "pending": 708
         },
         "companies": {
             "banked": 0,
@@ -67,5 +67,5 @@
             "committed": 500
         }
     },
-    "donors": 10
+    "donors": 12
 }
