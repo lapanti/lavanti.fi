@@ -1,0 +1,18 @@
+{
+    "id": 100,
+    "publishDate": "2026-11-14",
+    "updatedDate": "2026-11-14",
+    "tags": ["education", "enlightenment", "culture-and-education", "kirkkonummi"],
+    "heroImage": "Johanna-Fleming-ja-Lauri-Lavanti-Lyyran-edessa",
+    "authors": [
+        "lauri",
+        {
+            "id": "johanna-fleming",
+            "role": {
+                "fi": "kunnanvaltuutettu, suomenkielisen kasvatus- ja koulutuslautakunnan puheenjohtaja (vihr.)",
+                "sv": "kommunfullmäktigeledamot, ordförande för Finska nämnden för fostran och utbildning (De Gröna)",
+                "en": "Municipal Councillor, Chair of the Finnish-language Education and Training Committee (Greens)"
+            }
+        }
+    ]
+}

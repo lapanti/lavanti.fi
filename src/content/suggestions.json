@@ -13,8 +13,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "culture-and-education": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "9be438c0cf5931af6642f6de3a26ee548d743f2ed9c47a8615f78df0d41cb336",
+      "checkedAt": "2026-11-09",
+      "contentHash": "0bfd907735bf224d61909cbbf13f73bb8025d3ac1135af5986b3fe7ecdf0a523",
       "model": "typesafe/jev-1.13-20260917"
     },
     "digital-independence": {
@@ -33,8 +33,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "enlightenment": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "31ba28d66b4cbcbf539c2c0f6aa184dbf1d01334515b0add7009ce6c1b62c49e",
+      "checkedAt": "2026-11-09",
+      "contentHash": "26b6e3ee6cd132ed719424c61a60e2fca8d314e04db4f2e40b3e5ad282f02cb8",
       "model": "typesafe/jev-1.13-20260917"
     },
     "entrepreneurship": {
@@ -48,8 +48,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "kirkkonummi": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "7cf07b94297fa13cf191964eaf5865a3b5b480f265b5417c8952878bc3d5c249",
+      "checkedAt": "2026-11-09",
+      "contentHash": "85464dcbb133f845fc618761a83c4087335b51d107147898a8316fbeded013c9",
       "model": "typesafe/jev-1.13-20260917"
     },
     "municipal-elections-2025": {
@@ -82,6 +82,11 @@
     "post:10": {
       "checkedAt": "2026-09-30",
       "contentHash": "a339b068f32fd42460751be3a0c2a06b4066fba2c73707e6e6641194a874c1dd",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:100": {
+      "checkedAt": "2026-11-09",
+      "contentHash": "6fbe892ea1bb5ed44d89b89a29c70b0fa6e959cfbb54c5554ca27cf4292c16fc",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:11": {
