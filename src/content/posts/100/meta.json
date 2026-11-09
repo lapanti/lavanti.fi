@@ -1,7 +1,7 @@
 {
     "id": 100,
-    "publishDate": "2026-11-14",
-    "updatedDate": "2026-11-14",
+    "publishDate": "2026-11-11",
+    "updatedDate": "2026-11-11",
     "tags": ["education", "enlightenment", "culture-and-education", "kirkkonummi"],
     "heroImage": "Johanna-Fleming-ja-Lauri-Lavanti-Lyyran-edessa-vaaka",
     "authors": [
@@ -20,6 +20,11 @@
             "date": "2026-11-11",
             "name": "Kirkkonummen Sanomat",
             "url": "https://www.kirkkonummensanomat.fi/onnea-60vuotias--porkkalan-lukio--olemmeko-valmiita-panostamaan-sivistykseen-jatkossakin-6.175.87834.56d745554f"
+        },
+        {
+            "date": "2026-11-11",
+            "name": "Kirkkonummen Vihreät",
+            "url": "https://kirkkonummenvihreat.fi/2026/11/11/porkkalan-lukio-60-vuotta-sivistys/"
         }
     ]
 }
