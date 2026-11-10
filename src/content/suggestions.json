@@ -43,8 +43,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "freedom": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "466b6a6e72d0b7832a5645371463ee6cdfd822249a8c0f8e47fe3ed6b783163f",
+      "checkedAt": "2026-11-10",
+      "contentHash": "db8ac79ad440a3d47387c5082191b0218d7d5906c5402689700ce4a767c52fcb",
       "model": "typesafe/jev-1.13-20260917"
     },
     "kirkkonummi": {
@@ -87,6 +87,11 @@
     "post:100": {
       "checkedAt": "2026-11-09",
       "contentHash": "7ca5efd8b23166049745fe947e3d39e970be56cb90386b0ac4dc2f5ef50bae3d",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:101": {
+      "checkedAt": "2026-11-10",
+      "contentHash": "5dff36fb1609bb889c4ed34096c2decc03ababe589b1c510c6d44f1d2187b284",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:11": {
