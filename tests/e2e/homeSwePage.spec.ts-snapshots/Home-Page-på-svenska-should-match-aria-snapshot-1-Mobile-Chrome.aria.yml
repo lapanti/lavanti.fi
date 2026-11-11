@@ -126,6 +126,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article /Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/:
+          - link /Johanna Fleming och Lauri Lavanti framför Bildningshuset Lyyra i Kyrkslätt i vintersol Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/:
+            - /url: /sv/blog/100/grattis-60-ariga-porkkalan-lukio-ar-vi-beredda-att-satsa-pa-bildning-ocksa-i-fortsattningen/
+            - img "Johanna Fleming och Lauri Lavanti framför Bildningshuset Lyyra i Kyrkslätt i vintersol"
+            - heading /Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Porkkalan lukio fyller \d+ år\. Också i ett stramt ekonomiskt läge måste Kyrkslätt trygga finansieringen av bildningen, skriver Fleming och Lavanti\./
+        - list:
+          - listitem:
+            - link "Utbildning":
+              - /url: /sv/kategori/utbildning/
+          - listitem:
+            - link "Lärande":
+              - /url: /sv/kategori/bildning/
+          - listitem:
+            - link "Bildning":
+              - /url: /sv/kategori/kultur/
+      - listitem:
         - article "Är Metas Muse en demokratisering av AI eller en ulv i fårakläder?":
           - link "Närbild på en övervakningskameras lins, illustration till AI-agenten Meta Muse och dess datainsamling Är Metas Muse en demokratisering av AI eller en ulv i fårakläder?":
             - /url: /sv/blog/99/meta-muse-ai-agent-integritet/
@@ -263,24 +281,6 @@
           - listitem:
             - link "Företagande":
               - /url: /sv/kategori/foretagande/
-      - listitem:
-        - article "Digital självständighet är inte isolering":
-          - 'link "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine. Digital självständighet är inte isolering"':
-            - /url: /sv/blog/88/digital-sjalvstandighet-vad-betyder-det/
-            - 'img "Lauri Lavanti ler och tittar in i kameran. Han bär en vit t-tröja med texten Digitaalinen itsenäisyys och ett lejontryck ovanför, samt en kavaj. Texten betyder digital självständighet. Foto: Erkki Laine."'
-            - heading "Digital självständighet är inte isolering" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Digital självständighet betyder att Finland själv styr sina kritiska digitala system. Vad kräver medborgarinitiativet och när går det till riksdagen?
-        - list:
-          - listitem:
-            - link "Digital självständighet":
-              - /url: /sv/kategori/digital-sjalvstandighet/
-          - listitem:
-            - link "Säkerhet":
-              - /url: /sv/kategori/sakerhet/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

@@ -180,6 +180,24 @@
               - link "Education":
                 - /url: /en/category/education/
         - listitem:
+          - article "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
+            - link "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
+              - /url: /en/blog/100/happy-60th-porkkala-upper-secondary-school-are-we-ready-to-keep-investing-in-education-and-culture/
+              - img "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine"
+              - heading "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?" [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Porkkala Upper Secondary School turns \d+\. Even in a tighter economy, Kirkkonummi must keep funding education and culture, write Fleming and Lavanti\./
+          - list:
+            - listitem:
+              - link "Education":
+                - /url: /en/category/education/
+            - listitem:
+              - link "Enlightenment":
+                - /url: /en/category/enlightenment/
+            - listitem:
+              - link "Culture & education":
+                - /url: /en/category/culture-and-education/
+        - listitem:
           - article /\d+ is the year of AI/:
             - link /Lauri Lavanti standing in front of a mirror with a phone in his hand, taking a selfie\. Wearing a black jacket, white shirt and green tie\. In the background, the light corridor of the main building of the University of Helsinki\. \d+ is the year of AI/:
               - /url: /en/blog/47/2026-is-the-year-of-ai/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Enlightenment":
                 - /url: /en/category/enlightenment/
-        - listitem:
-          - article "A cold harvest for Kirkkonummi — a weak budget":
-            - link "Kirkkonummi's town centre from a high vantage point, with the sun low in the background. A cold harvest for Kirkkonummi — a weak budget":
-              - /url: /en/blog/38/a-cold-harvest-for-kirkkonummi/
-              - img "Kirkkonummi's town centre from a high vantage point, with the sun low in the background."
-              - heading "A cold harvest for Kirkkonummi — a weak budget" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: The government's mid-term session cut state subsidies and corporate tax. This significantly narrows the room for manoeuvre for local councils.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Education":
-                - /url: /en/category/education/
-            - listitem:
-              - link "Early childhood education":
-                - /url: /en/category/early-childhood-education/
       - paragraph:
         - link "All posts about Enlightenment":
           - /url: /en/category/enlightenment/

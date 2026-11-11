@@ -180,6 +180,24 @@
               - link "Utbildning":
                 - /url: /sv/kategori/utbildning/
         - listitem:
+          - article /Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/:
+            - link /Johanna Fleming och Lauri Lavanti framför Bildningshuset Lyyra i Kyrkslätt i vintersol Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/:
+              - /url: /sv/blog/100/grattis-60-ariga-porkkalan-lukio-ar-vi-beredda-att-satsa-pa-bildning-ocksa-i-fortsattningen/
+              - img "Johanna Fleming och Lauri Lavanti framför Bildningshuset Lyyra i Kyrkslätt i vintersol"
+              - heading /Grattis \d+-åriga Porkkalan lukio! Är vi beredda att satsa på bildning också i fortsättningen\?/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Porkkalan lukio fyller \d+ år\. Också i ett stramt ekonomiskt läge måste Kyrkslätt trygga finansieringen av bildningen, skriver Fleming och Lavanti\./
+          - list:
+            - listitem:
+              - link "Utbildning":
+                - /url: /sv/kategori/utbildning/
+            - listitem:
+              - link "Lärande":
+                - /url: /sv/kategori/bildning/
+            - listitem:
+              - link "Bildning":
+                - /url: /sv/kategori/kultur/
+        - listitem:
           - article /År \d+ är AI-året/:
             - link /Lauri Lavanti stående framför en spegel med en telefon i handen och tar en selfie\. Klädd i svart jacka, vit skjorta och grön slips\. I bakgrunden den ljusa korridoren i Helsingfors universitets huvudbyggnad\. År \d+ är AI-året/:
               - /url: /sv/blog/47/ar-2026-ar-ai-aret/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Lärande":
                 - /url: /sv/kategori/bildning/
-        - listitem:
-          - article "En kall skörd för Kyrkslätt – svaga beslut":
-            - link "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden. En kall skörd för Kyrkslätt – svaga beslut":
-              - /url: /sv/blog/38/en-kall-skord-for-kyrkslätt/
-              - img "Kyrkslätts centrum sett från en hög utsiktspunkt, med solen lågt i bakgrunden."
-              - heading "En kall skörd för Kyrkslätt – svaga beslut" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Halvtidsöverläggningen innebar nedskärningar i statsandelar och samfundsskatt. Det inskränker kommunfullmäktiges handlingsutrymme avsevärt.
-          - list:
-            - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Utbildning":
-                - /url: /sv/kategori/utbildning/
-            - listitem:
-              - link "Småbarnspedagogik":
-                - /url: /sv/kategori/smabarnspedagogik/
       - paragraph:
         - link "Alla inlägg om Lärande":
           - /url: /sv/kategori/bildning/

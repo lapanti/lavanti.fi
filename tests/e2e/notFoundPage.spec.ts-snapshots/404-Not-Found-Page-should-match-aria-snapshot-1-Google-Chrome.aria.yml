@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article /Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
+          - link /Johanna Fleming ja Lauri Lavanti Sivistyksen talo Lyyran edessä Kirkkonummella talvisessa auringonpaisteessa Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
+            - /url: /fi/blog/100/onnea-60-vuotias-porkkalan-lukio-olemmeko-valmiita-panostamaan-sivistykseen-jatkossakin/
+            - img "Johanna Fleming ja Lauri Lavanti Sivistyksen talo Lyyran edessä Kirkkonummella talvisessa auringonpaisteessa"
+            - heading /Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Porkkalan lukio täyttää \d+ vuotta\. Tiukassakin taloudessa Kirkkonummen on huolehdittava sivistyksen rahoituksesta, kirjoittavat Fleming ja Lavanti\./
+        - list:
+          - listitem:
+            - link "Opetus":
+              - /url: /fi/kategoria/opetus/
+          - listitem:
+            - link "Sivistys":
+              - /url: /fi/kategoria/sivistys/
+          - listitem:
+            - link "Sivistys":
+              - /url: /fi/kategoria/kulttuuri/
+      - listitem:
         - article "Onko Metan Muse tekoälyn demokratisointia vai susi lampaan vaatteissa?":
           - link "Valvontakameran linssi lähikuvassa, kuvituskuva Meta Muse -tekoälyagentin tietojen keruusta Onko Metan Muse tekoälyn demokratisointia vai susi lampaan vaatteissa?":
             - /url: /fi/blog/99/meta-muse-tekoalyagentti-yksityisyys/
@@ -124,21 +142,3 @@
           - listitem:
             - link "Luonto":
               - /url: /fi/kategoria/luonto/
-      - listitem:
-        - article "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
-          - link "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa. Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä":
-            - /url: /fi/blog/92/ruotsi-uhkaa-vetaa-pidemman-korren-tekoalystartupien-keskittymassa/
-            - img "Kansanedustaja Mari Holopainen ja Lauri Lavanti hymyilevät vierekkäisissä muotokuvissa."
-            - heading "Ruotsi uhkaa vetää pidemmän korren tekoälystartupien keskittymässä" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Suomalaiset tekoälystartupit myydään liian usein ulkomaille. Holopainen ja Lavanti ehdottavat eläkepääomaa venture-rahastoihin ja Saminvestin mallia.
-        - list:
-          - listitem:
-            - link "Tekoäly":
-              - /url: /fi/kategoria/tekoaly/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Yrittäjyys":
-              - /url: /fi/kategoria/yrittajyys/
