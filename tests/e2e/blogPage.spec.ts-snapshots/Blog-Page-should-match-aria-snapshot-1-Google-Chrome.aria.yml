@@ -180,6 +180,24 @@
               - link "Opetus":
                 - /url: /fi/kategoria/opetus/
         - listitem:
+          - article /Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
+            - link /Johanna Fleming ja Lauri Lavanti Sivistyksen talo Lyyran edessä Kirkkonummella talvisessa auringonpaisteessa Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
+              - /url: /fi/blog/100/onnea-60-vuotias-porkkalan-lukio-olemmeko-valmiita-panostamaan-sivistykseen-jatkossakin/
+              - img "Johanna Fleming ja Lauri Lavanti Sivistyksen talo Lyyran edessä Kirkkonummella talvisessa auringonpaisteessa"
+              - heading /Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/ [level=3]
+            - time: /\d+\.\d+\.\d+/
+            - paragraph: /Porkkalan lukio täyttää \d+ vuotta\. Tiukassakin taloudessa Kirkkonummen on huolehdittava sivistyksen rahoituksesta, kirjoittavat Fleming ja Lavanti\./
+          - list:
+            - listitem:
+              - link "Opetus":
+                - /url: /fi/kategoria/opetus/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/sivistys/
+            - listitem:
+              - link "Sivistys":
+                - /url: /fi/kategoria/kulttuuri/
+        - listitem:
           - article /Vuosi \d+ on tekoälyn/:
             - link /Lauri Lavanti seisomassa peilin edessä puhelin kädessä, ottamassa itsestään kuvaa\. Päällä musta takki, valkoinen kauluspaita ja kaulassa vihreä kravatti\. Taustalla Helsingin Yliopiston päärakennuksen vaalea käytävä\. Vuosi \d+ on tekoälyn/:
               - /url: /fi/blog/47/vuosi-2026-on-tekoalyn/
@@ -197,24 +215,6 @@
             - listitem:
               - link "Sivistys":
                 - /url: /fi/kategoria/sivistys/
-        - listitem:
-          - article "Kylmä riihi Kirkkonummelle":
-            - link "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla Kylmä riihi Kirkkonummelle":
-              - /url: /fi/blog/38/kylma-riihi-kirkkonummelle/
-              - img "Kuva Kirkkonummen keskustasta korkealta, taustalla aurinko matalalla"
-              - heading "Kylmä riihi Kirkkonummelle" [level=3]
-            - time: /\d+\.\d+\.\d+/
-            - paragraph: Hallituksen puoliväliriihi toi leikkauksia valtionosuuksiin ja yhteisöveroon. Se kaventaa kunnanvaltuutettujen liikkumatilaa merkittävästi.
-          - list:
-            - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Opetus":
-                - /url: /fi/kategoria/opetus/
-            - listitem:
-              - link "Varhaiskasvatus":
-                - /url: /fi/kategoria/varhaiskasvatus/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Sivistys":
           - /url: /fi/kategoria/sivistys/

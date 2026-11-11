@@ -128,6 +128,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
+          - link "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
+            - /url: /en/blog/100/happy-60th-porkkala-upper-secondary-school-are-we-ready-to-keep-investing-in-education-and-culture/
+            - img "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine"
+            - heading "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Porkkala Upper Secondary School turns \d+\. Even in a tighter economy, Kirkkonummi must keep funding education and culture, write Fleming and Lavanti\./
+        - list:
+          - listitem:
+            - link "Education":
+              - /url: /en/category/education/
+          - listitem:
+            - link "Enlightenment":
+              - /url: /en/category/enlightenment/
+          - listitem:
+            - link "Culture & education":
+              - /url: /en/category/culture-and-education/
+      - listitem:
         - article "Is Meta's Muse the Democratisation of AI or a Wolf in Sheep's Clothing?":
           - link "Close-up of a surveillance camera lens, illustrating data collection by the Meta Muse AI agent Is Meta's Muse the Democratisation of AI or a Wolf in Sheep's Clothing?":
             - /url: /en/blog/99/meta-muse-ai-agent-privacy/
@@ -265,24 +283,6 @@
           - listitem:
             - link "Entrepreneurship":
               - /url: /en/category/entrepreneurship/
-      - listitem:
-        - article "Digital independence is not isolation":
-          - link "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine. Digital independence is not isolation":
-            - /url: /en/blog/88/digital-independence-what-it-means/
-            - img "Lauri Lavanti smiling and looking at the camera. He is wearing a white t-shirt reading Digitaalinen itsenäisyys with a lion emblem above it, and a blazer. The text means digital independence. Photo by Erkki Laine."
-            - heading "Digital independence is not isolation" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Digital independence means Finland controls its own critical systems. What does the citizens' initiative demand, and when does it reach Parliament?
-        - list:
-          - listitem:
-            - link "Digital independence":
-              - /url: /en/category/digital-independence/
-          - listitem:
-            - link "Security":
-              - /url: /en/category/security/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
