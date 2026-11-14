@@ -1,14 +1,79 @@
-import { describe, expect, it } from 'vitest'
+import { Window } from 'happy-dom'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
     isInAppBrowser,
     joinNames,
+    loadWall,
     parseThanksParams,
     readStoredAdoption,
+    resetWall,
+    setSignName,
     shareUrl,
     STORAGE_KEY,
+    thanksHref,
     writeStoredAdoption,
 } from './adoptionClient'
+
+describe('setSignName', () => {
+    const page = () => {
+        const { document } = new Window()
+        document.body.innerHTML = `<figure data-sign data-ghost="Sinun nimesi"><svg><text data-sign-name data-fill-ghost="grey" data-fill-name="green">Sinun nimesi</text></svg></figure>`
+
+        return document as unknown as Document
+    }
+
+    it('writes the name as text and switches to the name colour', () => {
+        const doc = page()
+        setSignName(doc, '<b>Sjoerd</b>')
+        const text = doc.querySelector('[data-sign-name]')!
+        expect(text.textContent).toBe('<b>Sjoerd</b>')
+        expect(text.querySelector('b')).toBeNull()
+        expect(text.getAttribute('fill')).toBe('green')
+        setSignName(doc, '  ')
+        expect(text.textContent).toBe('Sinun nimesi')
+        expect(text.getAttribute('fill')).toBe('grey')
+    })
+
+    it('shrinks a name wider than the band', () => {
+        const doc = page()
+        const text = doc.querySelector('[data-sign-name]') as unknown as { getComputedTextLength: () => number }
+        text.getComputedTextLength = () => 1040
+        setSignName(doc, 'Anna-Liisa Kuusiniemi-Ab')
+        expect(doc.querySelector('[data-sign-name]')!.getAttribute('font-size')).toBe('23')
+    })
+})
+
+describe('loadWall', () => {
+    afterEach(() => resetWall())
+
+    it('fetches the wall once and shares the result', async () => {
+        const body = { messages: [], municipalities: {}, names: ['A', 'B', 'C'], signs: 5 }
+        const fetchFn = vi.fn(async () => new Response(JSON.stringify(body)))
+        expect(await loadWall(fetchFn)).toEqual(body)
+        expect(await loadWall(fetchFn)).toEqual(body)
+        expect(fetchFn).toHaveBeenCalledTimes(1)
+    })
+
+    it('reads a failed fetch as an empty wall', async () => {
+        const empty = { messages: [], municipalities: {}, names: [], signs: null }
+        expect(await loadWall(async () => new Response('', { status: 503 }))).toEqual(empty)
+        resetWall()
+        expect(
+            await loadWall(async () => {
+                throw new Error('offline')
+            })
+        ).toEqual(empty)
+    })
+})
+
+describe('thanksHref', () => {
+    it('carries the ref, count and company flag only', () => {
+        expect(thanksHref('/fi/adoptoi/kiitos/', { company: true, quantity: 3, ref: 'K-12345' })).toBe(
+            '/fi/adoptoi/kiitos/?ref=K-12345&n=3&y=1'
+        )
+    })
+})
 
 const memory = () => {
     const data = new Map<string, string>()
