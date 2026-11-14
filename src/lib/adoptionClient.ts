@@ -86,7 +86,12 @@ const SAME_SITE_PATH = /^\/(?![/\\])[\w\-./]*$/
 /** The thanks page URL; carries only the ref, count and company flag. */
 export const thanksHref = (path: string, params: ThanksParams): string => {
     if (!SAME_SITE_PATH.test(path)) throw new Error('lomake')
-    const query = new URLSearchParams({ n: String(params.quantity), ref: params.ref, y: params.company ? '1' : '0' })
+    // Entries, not an object, so the URL keeps its documented ref, n, y order.
+    const query = new URLSearchParams([
+        ['ref', params.ref],
+        ['n', String(params.quantity)],
+        ['y', params.company ? '1' : '0'],
+    ])
 
     return `${path}?${query.toString()}`
 }
