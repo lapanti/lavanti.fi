@@ -171,6 +171,17 @@ test.describe('Sign adoption thanks page', () => {
     test('should ask for the name again when sessionStorage is empty', async ({ page }) => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0')
 
+        await test.expect(page.getByRole('heading', { level: 1 })).toHaveText('Kylttisi odottaa lahjoitustasi')
+        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 60 € MobilePayllä')
+        // The payment block comes before the sign preview.
+        test.expect(
+            await page
+                .locator('[data-private]')
+                .evaluate((pay) => !!(pay.compareDocumentPosition(document.querySelector('[data-sign]')!) & 4))
+        ).toBe(true)
+        await test
+            .expect(page.getByRole('link', { name: 'lavanti.fi/lahjoita' }))
+            .toHaveAttribute('href', /^\/lahjoita\?/)
         await test.expect(page.locator('[data-missing-name]')).toBeVisible()
         await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sinun nimesi')
         await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 60 euroa MobilePayllä numerolla 46492.')
