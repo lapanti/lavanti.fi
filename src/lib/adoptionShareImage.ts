@@ -57,6 +57,7 @@ export const SHARE_PAD = 76
 const STRIPE_BAND = 14
 const TOP_ROW = 120
 const GAP = 48
+const SIGN_FRAME = 8
 
 const SIZES: Record<ShareFormat, { cta: number; headline: number; logo: number }> = {
     feed: { cta: 40, headline: 84, logo: 60 },
@@ -241,6 +242,15 @@ export const drawShareImage = (ctx: CanvasLike, format: ShareFormat, drawing: Sh
     ctx.font = display(800)(layout.headline.size)
     lines.forEach((line, i) => ctx.fillText(line, SHARE_PAD, layout.headline.y + i * layout.headline.lineHeight))
 
+    // The sign shares the deep forest ground, so a white frame sets it off like a real board.
+    const frame = SIGN_FRAME
+    ctx.fillStyle = colors.white
+    ctx.fillRect(
+        layout.sign.x - frame,
+        layout.sign.y - frame,
+        SIGN.width * layout.sign.scale + 2 * frame,
+        SIGN.height * layout.sign.scale + 2 * frame
+    )
     drawSign(ctx, layout.sign.x, layout.sign.y, layout.sign.scale, drawing)
 
     ctx.fillStyle = colors.oat
