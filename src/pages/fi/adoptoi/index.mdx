@@ -1,0 +1,97 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Adoptoi vaalikyltti, nimesi tienvarteen'
+title: 'Adoptoi kyltti. Nimesi nousee tienvarteen.'
+ogTitle: 'Adoptoi kyltti.'
+ogEmphasis: 'Nimesi nousee tienvarteen.'
+description: 'Adoptoi vaalikyltti Uudellamaalla lahjoittamalla 30 euroa Lauri Lavannin kampanjalle. Kiitokseksi nimesi kirjoitetaan kylttiin, joka nousee tienvarteen.'
+slug: 'fi/adoptoi'
+langAlternates:
+    en: '/en/adopt/'
+    fi: '/fi/adoptoi/'
+    sv: '/sv/adoptera/'
+updatedDate: '2026-11-14'
+type: 'WebPage'
+plated: true
+variant: 'page'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import Plate from '../../../components/Plate.astro'
+import PostProse from '../../../components/post/PostProse.astro'
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import SignAdoptionForm from '../../../components/SignAdoptionForm.astro'
+import AdoptionWall from '../../../components/adoption/AdoptionWall.astro'
+import MobilePayBox from '../../../components/adoption/MobilePayBox.astro'
+
+export const components = { a: SmartLink, p: Paragraph }
+
+<Plate eyebrow="Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla" ground="offWhite" id="adoptoi">
+    <SignAdoptionForm lang="fi" />
+</Plate>
+
+<Plate ground="white" heading="Miksi adoptoisit kyltin?">
+<PostProse>
+
+Toivoisin, että adoptoisit kyltin. Lahjoitat 30 euroa vaalikampanjalleni, ja kiitokseksi nimesi kirjoitetaan kyltin alareunaan. Kyltti nousee keväällä tienvarteen Uudellamaalla.
+
+Suomi on aina varautunut. Meillä on viljaa, lääkkeitä ja polttoainetta varastossa pahan päivän varalle, ja jäänmurtajat pitävät meret auki kovimpanakin talvena. Ennen kriisi katkaisi laivareitit. Nyt siihen voi riittää yksi päätös toisella mantereella.
+
+Kun Yhdysvallat asetti pakotteita Kansainvälisen rikostuomioistuimen pääsyyttäjälle, hän menetti pääsyn sähköpostiinsa. Oikeusministeriö ehti jo päättää vaalitietojärjestelmän siirtämisestä Amazonin pilvipalveluun ja perui päätöksen vasta maaliskuussa.
+
+<ImageWithCaption
+    alt="Lauri Lavanti valkoisessa kampanjaliivissä ehdokasnappi rinnassa jakamassa esitteitä torilla, taustalla ihmisiä ja lastenvaunut."
+    caption="Esitteitä ja keskusteluja torilla."
+    image="Lauri-Lavanti-jakaa-esitteita-torilla-vaaka"
+    lang="fi"
+/>
+
+Olen yksi Digitaalinen itsenäisyys -kansalaisaloitteen vastuuhenkilöistä, ja yli 50 000 suomalaista allekirjoitti sen. Aloite vaatii, että yhteiskunnalle kriittiset julkiset digipalvelut toimisivat EU:ssa sijaitsevilla suomalaisten ja eurooppalaisten toimijoiden palvelimilla ja ettei Suomi jäisi yhden toimittajan varaan. Viemme aloitteen eduskuntaan kevään vaalien jälkeen, ja haluan olla siellä viemässä sitä maaliin. Olen rakentanut yli vuosikymmenen ohjelmistoja ja pankkipalveluja, joihin miljoonien ihmisten on voitava luottaa joka päivä, myös kriisissä.
+
+Digitaalinen itsenäisyys on samaa varautumista, jolla Suomi on aina pärjännyt. Kyltti tienvarressa kertoo naapureillesi, että sinäkin haluat Suomen, joka käyttää teknologiaa omilla ehdoillaan.
+
+Kuka olen: [Lauri Lavanti](/fi/laurista/)
+
+Olen Vihreiden eduskuntavaaliehdokas Uudellamaalla. Auta minua viemään nämä asiat eduskuntaan.
+
+Liity mukaan: [lavanti.fi/liity](/fi/liity/)
+
+</PostProse>
+</Plate>
+
+<AdoptionWall lang="fi" />
+
+<Plate ground="offWhite" heading="Näin lahjoitus toimii">
+<PostProse>
+
+Nimesi kirjoitetaan kyltin alareunaan, erilleen kampanjatekstistä. Sen huomaa jalankulkija ja pyöräilijä, ei autoilija. Jos haluat, nimesi näkyy myös adoptoijien listalla tällä sivulla.
+
+<details>
+<summary>Lahjoitus, rajat ja yritykset</summary>
+
+Lahjoitus menee tukiyhdistykseni Digitaalisen itsenäisyyden puolesta ry:n vaalikeräykseen. Yhdistys maksaa kyltit, ja nimesi kyltissä on kiitos lahjoituksesta. Samalta lahjoittajalta voin ottaa vastaan enintään 6 000 euroa, kun kaikki lahjoitustavat lasketaan yhteen. Jos lahjoituksesi ovat yhteensä vähintään 2 000 euroa, nimesi ilmoitetaan vaalirahoitusilmoituksessa.
+
+En voi ottaa vastaan tukea julkisyhteisöiltä, julkisen tahon määräysvallassa olevilta yhtiöiltä tai ulkomaisilta yrityksiltä. Yritys voi adoptoida kyltin omalla nimellään, kun lahjoitus maksetaan yrityksen tililtä laskulla. Laskussa ei ole arvonlisäveroa, eikä lahjoitus ole verotuksessa vähennyskelpoinen. Jos perut luvan nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta.
+
+</details>
+
+Kerron budjettini avoimesti koko kampanjan ajan. [Vaalirahoitussivulla](/fi/eduskuntavaalit/vaalirahoitus/) näet budjettini ja sen, mitä kampanjat maksoivat Uudellamaalla vuonna 2023.
+
+</PostProse>
+</Plate>
+
+<Plate ground="white" heading="Jokainen lahjoitus auttaa">
+<PostProse>
+
+Voit lahjoittaa myös haluamasi summan MobilePayllä numerolla 46492 tai osoitteessa [lavanti.fi/lahjoita](/lahjoita).
+
+</PostProse>
+<MobilePayBox lang="fi" />
+<PostProse>
+
+Liity mukaan: [lavanti.fi/liity](/fi/liity/)
+
+</PostProse>
+</Plate>
