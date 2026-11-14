@@ -73,13 +73,13 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   (unit-tested); DOM glue in `src/components/adoption/*.client.ts`, loaded with
   `<script src="./x.client.ts">` (Prettier would mangle an inline module script) and listed as knip
   entries. Strings the scripts need reach them as JSON in `<script type="application/json">`.
-- **Layout:** `PageLayout` `variant: 'page'` renders neither eyebrow nor emphasis, so the H1 holds
-  both sentences ("Adoptoi kyltti. Nimesi nousee tienvarteen."), `ogTitle`/`ogEmphasis` split them
-  on the card, and the eyebrow sits on the form plate under the H1. The landing pages set
-  `compactBanner: true` (no empty band above the H1 and a 24 px stripe at ≤ 768 px) and pass
-  `tight` to the form plate, so the price, the sign with the typed name and the name field fit a
-  375×812 first screen; desktop is unchanged. The thanks pages have the H1 "Kylttisi odottaa
-  lahjoitustasi" and a question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages
+- **Layout:** every adoption page uses `PageLayout` `variant: 'split'`, the same hero as the rest of
+  the site. Landing: eyebrow "Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla", H1
+  "Adoptoi kyltti." + emphasis "Nimesi nousee tienvarteen.", the direct-ask paragraph as `intro`,
+  and a CTA "Kirjoita nimesi kylttiin" (`#adoptoi`) that scrolls to the form plate. The headline is
+  there to make the visitor scroll; the form is one tap or one swipe away. Thanks pages: H1
+  "Kylttisi odottaa" + emphasis "lahjoitustasi", CTA "Viimeistele adoptio" (`#lahjoitus`) to the
+  payment plate, and a question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages
   pass `ogCard` to `PageLayout` to keep the generated card on a noindex page.
 - **Checks:** `npm run check:adoption-pages` runs the personal page rule by hand.
 - **Copy:** `src/content/signAdoption.ts`, `Record<Lang, …>`, including the confirmation email
@@ -184,8 +184,11 @@ Vocabulary in every locale: lahjoitus, kiitos, adoptoi, kummi. Never osta, maksa
 sponsori, mainospaikka, näkyvyys; en never buy or sponsor; sv never köp or sponsra. No dashes as
 punctuation and no "ei ole X, vaan Y" constructions.
 
-**Landing, first screen (mobile), in order:** eyebrow "Lauri Lavanti, Vihreiden
-eduskuntavaaliehdokas Uudellamaalla" · H1 "Adoptoi kyltti. Nimesi nousee tienvarteen." · sign graphic
+**Landing hero (split):** eyebrow "Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla" ·
+H1 "Adoptoi kyltti." + emphasis "Nimesi nousee tienvarteen." · intro (the direct ask) · CTA
+"Kirjoita nimesi kylttiin" → `#adoptoi`.
+
+**Form plate, in order:** sign graphic
 with Lauri's photo, ghost text "Sinun nimesi" and the "Mainoksen maksaja" line; fine print
 "Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "30 € = yksi kyltti tienvarteen" ·
 "Nimi kylttiin" (maxlength 24, counter; the sign renders the typed value directly, no animation) ·
