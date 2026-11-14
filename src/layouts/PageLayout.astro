@@ -44,6 +44,11 @@ interface Props {
     langAlternates?: Record<Lang, string>
     mobileHeroImage?: string
     noindex?: boolean
+    /**
+     * Use the generated per-page card even though the page is noindex. For pages that are
+     * shared by link but kept out of search (personal adoption pages, which cards.ts builds).
+     */
+    ogCard?: boolean
     pageTitle: string
     plated?: boolean
     slug?: string
@@ -78,6 +83,7 @@ const {
     langAlternates,
     mobileHeroImage,
     noindex,
+    ogCard = false,
     pageTitle,
     plated = false,
     slug,
@@ -95,7 +101,7 @@ const {
  * default social card.
  */
 const ogImage =
-    slug && !noindex
+    slug && (!noindex || ogCard)
         ? new URL(`/og/${ogId(slug)}.jpg`, Astro.site).href
         : getImage('og-image-lauri-lavanti', 'ogFlat').src
 
