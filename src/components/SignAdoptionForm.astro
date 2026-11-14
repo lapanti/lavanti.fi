@@ -1,0 +1,393 @@
+---
+import type { Lang } from '../content/nav'
+import type { AdoptionFormData } from './adoption/form.client'
+
+import { adoptionContent } from '../content/signAdoption'
+import { TURNSTILE_SITE_KEY } from '../content/volunteer'
+import { EUROS_PER_SIGN, MAX_SIGNS } from '../lib/adoptionClient'
+import { ADOPTION_MUNICIPALITIES, MAX_NAME_LENGTH, NO_PREFERENCE, THANKS_PATH } from '../lib/signAdoptions'
+import { utmFormScript } from '../lib/utmFormScript'
+import SignGraphic from './adoption/SignGraphic.astro'
+import Link from './Link.astro'
+
+interface Props {
+    lang: Lang
+}
+
+const { lang } = Astro.props
+const content = adoptionContent[lang]
+const t = content.form
+const counts = Array.from({ length: MAX_SIGNS }, (_, i) => i + 1)
+const CHIPS = [1, 2, 5]
+const collator = new Intl.Collator(lang === 'en' ? 'fi' : lang)
+const municipalities = ADOPTION_MUNICIPALITIES.filter((m) => m !== NO_PREFERENCE).sort((a, b) =>
+    collator.compare(t.municipalityOptions[a], t.municipalityOptions[b])
+)
+
+/*
+ * Everything the script needs that depends on the sign count, precomputed for 1..20 so no copy
+ * is assembled in the browser. `%s` stands for the name and `%n` for a number; the script fills
+ * them in with textContent only.
+ */
+const scriptData: AdoptionFormData = {
+    consentPerson: t.consentPerson,
+    consentPersonCompany: t.consentPersonCompany,
+    consentPrint: counts.map((n) => t.consentPrint(n)),
+    counter: t.nameCounter(0, MAX_NAME_LENGTH).replace('0', '%n'),
+    cta: counts.map((n) => t.cta(n)),
+    errors: t.errors,
+    lang,
+    liveCount: t.liveCount(0).replace('0', '%n'),
+    liveNames: t.liveNames('%s'),
+    nextStep: counts.map((n) => t.nextStep(n * EUROS_PER_SIGN)),
+    nextStepCompany: counts.map((n) => t.nextStepCompany(n * EUROS_PER_SIGN)),
+    pinned: counts.map((n) => t.pinned('%s', n)),
+    sending: t.sending,
+    thanksPath: THANKS_PATH[lang],
+    total: counts.map((n) => t.total(n * EUROS_PER_SIGN)),
+}
+const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'namn' : 'name'}>/`
+---
+
+<style>
+    .adoption {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    @media (min-width: 1000px) {
+        .adoption {
+            align-items: start;
+            grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+        }
+        .adoption > :global(.sign-graphic) {
+            position: sticky;
+            top: 6.5rem;
+        }
+    }
+    /*
+     * Phones: a smaller sign and tighter gaps, so the price, the sign with the typed name and the
+     * name field fit one screen once the hero CTA has scrolled to the form.
+     */
+    @media (max-width: 768px) {
+        .adoption {
+            gap: 1rem;
+        }
+        .adoption > :global(.sign-graphic) {
+            max-width: 11.5rem;
+        }
+        .step[data-step='1']:not([hidden]) {
+            gap: 1rem;
+        }
+    }
+    .adoption .site-form {
+        margin-top: 0;
+    }
+    .adoption .price,
+    .adoption .total {
+        color: var(--colorsForestGreen);
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0;
+    }
+    .adoption .total {
+        font-size: 1.375rem;
+    }
+    .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .chips label {
+        margin: 0;
+    }
+    .chips input {
+        height: 1px;
+        opacity: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .chips span {
+        border: 2px solid var(--colorsForestGreen);
+        color: var(--colorsForestGreen);
+        cursor: pointer;
+        display: inline-block;
+        font-weight: var(--fontWeightsSemibold);
+        padding: 0.5rem 0.875rem;
+    }
+    .chips input:checked + span {
+        background: var(--colorsForestGreen);
+        color: var(--colorsWhite);
+    }
+    .chips input:focus-visible + span {
+        outline: 3px solid var(--colorsSignalBlue);
+        outline-offset: 2px;
+    }
+    .adoption input[type='number'] {
+        background: var(--colorsWhite);
+        border: 1px solid var(--colorsForestGreen);
+        font: inherit;
+        min-height: 3rem;
+        padding: 0.625rem 0.75rem;
+        width: 7rem;
+    }
+    .counter,
+    .hint,
+    .live {
+        color: var(--colorsForestGreen);
+        font-size: var(--textSmallFontSize);
+        margin: 0.375rem 0 0;
+    }
+    .live {
+        font-size: inherit;
+        font-weight: var(--fontWeightsSemibold);
+    }
+    .pinned {
+        background: var(--colorsForestGreen10);
+        color: var(--colorsForestGreen);
+        font-weight: var(--fontWeightsSemibold);
+        margin: 0;
+        padding: 0.75rem 1rem;
+    }
+    /* :not([hidden]) so the script's hidden attribute still wins over display: grid. */
+    .step:not([hidden]) {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .step h2 {
+        color: var(--colorsForestGreen);
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0;
+    }
+    .text-button {
+        background: none;
+        border: 0;
+        color: var(--colorsForestGreen);
+        cursor: pointer;
+        font: inherit;
+        justify-self: start;
+        padding: 0;
+        text-decoration: underline;
+    }
+    .company,
+    .company-fields {
+        display: grid;
+        gap: 1rem;
+    }
+    .company summary {
+        cursor: pointer;
+    }
+    .revoke {
+        color: var(--colorsForestGreen);
+        font-size: var(--textSmallFontSize);
+        margin: 0;
+    }
+    .next-step {
+        color: var(--colorsForestGreen);
+        font-weight: var(--fontWeightsSemibold);
+        margin: 0;
+    }
+    .btn--solid:active {
+        transform: translateY(var(--press));
+    }
+</style>
+
+<div class="adoption">
+    <SignGraphic lang={lang} />
+
+    <form action="/api/adoptoi" class="site-form" id="lomake" method="post">
+        <p class="form-error" hidden id="adoption-error" role="alert" tabindex="-1"></p>
+
+        <input name="lang" type="hidden" value={lang} />
+        <input name="utm_source" type="hidden" value="" />
+        <input name="utm_campaign" type="hidden" value="" />
+
+        <div class="step" data-step="1">
+            <p class="price">{t.price}</p>
+
+            <div>
+                <label for="adoption-name">{t.nameLabel}<span aria-hidden="true" class="req"> *</span></label>
+                <input
+                    aria-describedby="adoption-name-counter"
+                    autocomplete="name"
+                    id="adoption-name"
+                    maxlength={MAX_NAME_LENGTH}
+                    minlength="2"
+                    name="sign_name"
+                    required
+                    type="text"
+                />
+                <p aria-live="polite" class="counter" id="adoption-name-counter">
+                    {t.nameCounter(0, MAX_NAME_LENGTH)}
+                </p>
+            </div>
+
+            <fieldset>
+                <legend>{t.chipsLegend}</legend>
+                <div class="chips">
+                    {
+                        CHIPS.map((n) => (
+                            <label>
+                                <input checked={n === 1} name="quantity" type="radio" value={String(n)} />
+                                <span>{t.chip(n)}</span>
+                            </label>
+                        ))
+                    }
+                    <label>
+                        <input name="quantity" type="radio" value="muu" />
+                        <span>{t.chipOther}</span>
+                    </label>
+                </div>
+            </fieldset>
+            <div data-other hidden>
+                <label for="adoption-quantity-other">{t.quantityLabel}</label>
+                <input
+                    id="adoption-quantity-other"
+                    inputmode="numeric"
+                    max={MAX_SIGNS}
+                    min="1"
+                    name="quantity_other"
+                    type="number"
+                    value="3"
+                />
+            </div>
+
+            <p aria-live="polite" class="total" data-total>{t.total(EUROS_PER_SIGN)}</p>
+            <p class="hint association">
+                {t.association.text}
+                <Link href={t.association.href}>{t.association.link}</Link>
+            </p>
+
+            <button class="btn btn--solid" data-cta data-next type="button">{t.cta(1)}</button>
+            <p class="live" data-live hidden></p>
+        </div>
+
+        <div class="step" data-step="2">
+            <h2 tabindex="-1">{t.step2Heading}</h2>
+            <p class="pinned" data-pinned></p>
+            <button class="text-button" data-back type="button">{t.back}</button>
+
+            <p class="required-note">{t.requiredNote}</p>
+
+            <div>
+                <label for="adoption-municipality">{t.municipality}<span aria-hidden="true" class="req"> *</span></label
+                >
+                <select
+                    aria-describedby="adoption-municipality-hint"
+                    id="adoption-municipality"
+                    name="municipality"
+                    required
+                >
+                    <option value=""></option>
+                    {municipalities.map((m) => <option value={m}>{t.municipalityOptions[m]}</option>)}
+                    <option value={NO_PREFERENCE}>{t.municipalityOptions[NO_PREFERENCE]}</option>
+                </select>
+                <p class="hint" id="adoption-municipality-hint">{t.municipalityHint}</p>
+            </div>
+
+            <div>
+                <label for="adoption-email">{t.email}<span aria-hidden="true" class="req"> *</span></label>
+                <input
+                    aria-describedby="adoption-email-hint"
+                    autocomplete="email"
+                    id="adoption-email"
+                    name="email"
+                    required
+                    type="email"
+                />
+                <p class="hint" id="adoption-email-hint">{t.emailHint}</p>
+            </div>
+
+            <details class="company" data-company>
+                <summary>{t.companySummary}</summary>
+                <div class="company-fields">
+                    <div>
+                        <label for="adoption-company-name">{t.companyName}</label>
+                        <input
+                            autocomplete="organization"
+                            id="adoption-company-name"
+                            maxlength="100"
+                            name="company_name"
+                            type="text"
+                        />
+                    </div>
+                    <div>
+                        <label for="adoption-business-id">{t.businessId}</label>
+                        <input
+                            id="adoption-business-id"
+                            name="business_id"
+                            pattern="[0-9]{7}-[0-9]"
+                            placeholder="1234567-8"
+                            type="text"
+                        />
+                    </div>
+                    <div>
+                        <label for="adoption-billing">{t.billingAddress}</label>
+                        <input id="adoption-billing" maxlength="200" name="billing_address" type="text" />
+                    </div>
+                    <label class="choice consent">
+                        <input name="consent_company" type="checkbox" value="yes" />
+                        <span>{t.companyDeclaration}</span>
+                    </label>
+                </div>
+            </details>
+
+            <label class="choice consent">
+                <input name="consent_print" required type="checkbox" value="yes" />
+                <span
+                    ><span data-consent-print>{t.consentPrint(1)}</span><span aria-hidden="true" class="req">
+                        *</span
+                    ></span
+                >
+            </label>
+            <label class="choice consent">
+                <input name="consent_person" required type="checkbox" value="yes" />
+                <span
+                    ><span data-consent-person>{t.consentPerson}</span><span aria-hidden="true" class="req">
+                        *</span
+                    ></span
+                >
+            </label>
+            <label class="choice">
+                <input name="public" type="checkbox" value="yes" />
+                <span>{t.consentPublic}</span>
+            </label>
+            <label class="choice">
+                <input name="page" type="checkbox" value="yes" />
+                <span>{t.consentPage(pagePath)}</span>
+            </label>
+
+            <p class="revoke">
+                {t.revokeNote}
+                <Link href={t.privacyHref}>{t.privacyLink}</Link>
+            </p>
+
+            <div aria-hidden="true" class="honeypot">
+                <label for="adoption-website">Website</label>
+                <input autocomplete="off" id="adoption-website" name="website" tabindex="-1" type="text" />
+            </div>
+
+            <div class="cf-turnstile" data-language={lang} data-sitekey={TURNSTILE_SITE_KEY}></div>
+
+            <p class="next-step" data-next-step>{t.nextStep(EUROS_PER_SIGN)}</p>
+
+            <div class="submit-row">
+                <button aria-describedby="adoption-submit-hint" class="btn btn--solid" data-cta type="submit"
+                    >{t.cta(1)}</button
+                >
+                <p aria-live="polite" class="submit-hint" id="adoption-submit-hint">{t.submitHint}</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script id="adoption-form-data" is:inline set:html={JSON.stringify(scriptData)} type="application/json" />
+<script async defer is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+<script is:inline set:html={utmFormScript} />
+
+<script src="./adoption/form.client.ts"></script>

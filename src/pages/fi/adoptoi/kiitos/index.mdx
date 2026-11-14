@@ -1,0 +1,30 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Kiitos kyltin adoptoinnista, lahjoita ja jaa'
+title: 'Kylttisi odottaa'
+emphasis: 'lahjoitustasi'
+ctaHref: '#lahjoitus'
+ctaLabel: 'Viimeistele adoptio'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita.'
+description: 'Kiitos, että adoptoit Lauri Lavannin vaalikyltin. Lahjoita MobilePayllä ja kerro kyltistäsi kavereillesi, niin nimesi nousee keväällä tienvarteen.'
+slug: 'fi/adoptoi/kiitos'
+langAlternates:
+    en: '/en/adopt/thanks/'
+    fi: '/fi/adoptoi/kiitos/'
+    sv: '/sv/adoptera/tack/'
+updatedDate: '2026-11-14'
+type: 'WebPage'
+noindex: true
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../../components/Plate.astro'
+import AdoptionThanks from '../../../../components/adoption/AdoptionThanks.astro'
+
+<Plate ground="offWhite" heading="Mitä seuraavaksi?" id="lahjoitus">
+    <AdoptionThanks lang="fi" />
+</Plate>

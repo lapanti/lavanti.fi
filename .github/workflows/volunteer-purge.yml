@@ -1,9 +1,11 @@
 name: Volunteer data purge
 
-# Retention for the D1 tables behind /api/liity, /lahjoita and /api/suosittele
-# (privacy notice § Vapaaehtoiseksi ilmoittautuminen, § Suosituksen lähettäminen):
-# every volunteer row is deleted after 2027-07-31, donation-click rows after
-# 13 months, recommendation submissions left unhandled after 50 days. Their
+# Retention for the D1 tables behind /api/liity, /lahjoita, /api/suosittele and
+# /api/adoptoi (privacy notice § Vapaaehtoiseksi ilmoittautuminen, § Suosituksen
+# lähettäminen, § Kyltin adoptointi): every volunteer row is deleted after
+# 2027-07-31, donation-click rows after 13 months, recommendation submissions
+# left unhandled after 50 days, pending and rejected sign adoptions after 50
+# days and every sign adoption after 2027-08-30. Recommendation
 # photos expire by a 55-day R2 lifecycle rule (set in the dashboard), so with
 # this daily run a row is always gone before its photo and `approve` never
 # meets a pending submission without one; every row stays well under the
@@ -33,4 +35,6 @@ jobs:
             d1 execute lavanti-fi --remote --command
             "DELETE FROM volunteers WHERE date('now') > '2027-07-31';
             DELETE FROM donate_clicks WHERE ts < strftime('%Y-%m-%dT%H:00:00Z', 'now', '-13 months');
-            DELETE FROM recommendation_submissions WHERE created_at < strftime('%Y-%m-%dT%H:%M:%SZ', 'now', '-50 days');"
+            DELETE FROM recommendation_submissions WHERE created_at < strftime('%Y-%m-%dT%H:%M:%SZ', 'now', '-50 days');
+            DELETE FROM sign_adoptions WHERE status IN ('pending', 'rejected') AND created_at < strftime('%Y-%m-%dT%H:%M:%SZ', 'now', '-50 days');
+            DELETE FROM sign_adoptions WHERE date('now') > '2027-08-30';"

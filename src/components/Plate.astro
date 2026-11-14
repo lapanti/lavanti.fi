@@ -9,9 +9,11 @@ interface Props {
     heading?: string
     id?: string
     labelledBy?: string
+    /** Less space above the content on phones, for a plate that must fit the first screen. */
+    tight?: boolean
 }
 
-const { eyebrow, ground = 'sand', heading, id, labelledBy } = Astro.props
+const { eyebrow, ground = 'sand', heading, id, labelledBy, tight = false } = Astro.props
 const groundColor = {
     gray: colors.gray,
     oat: colors.oat,
@@ -25,9 +27,14 @@ const groundColor = {
     .plate {
         background: var(--groundColor);
     }
+    @media (max-width: 768px) {
+        .plate--tight {
+            padding-top: 1.5rem;
+        }
+    }
 </style>
 
-<section aria-labelledby={labelledBy} class="plate section" id={id}>
+<section aria-labelledby={labelledBy} class:list={['plate', 'section', { 'plate--tight': tight }]} id={id}>
     <div class="sheet">
         <div class="inner">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}

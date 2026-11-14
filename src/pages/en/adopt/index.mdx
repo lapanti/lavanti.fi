@@ -1,0 +1,103 @@
+---
+layout: '../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Adopt a campaign sign, your name by the road'
+eyebrow: "Lauri Lavanti, the Greens' parliamentary candidate in Uusimaa"
+title: 'Adopt a sign.'
+emphasis: 'Your name goes up by the roadside.'
+intro: 'Adopt a sign and back my campaign with €30. It means a lot to me. As thanks, your name is written on the bottom edge of the sign, and the sign goes up by a roadside in Uusimaa in spring.'
+ctaHref: '#adopt'
+ctaLabel: 'Put your name on a sign'
+heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
+alt: 'Lauri Lavanti stands on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer and a floral shirt.'
+ogTitle: 'Adopt a sign.'
+ogEmphasis: 'Your name goes up by the roadside.'
+description: "Adopt an election sign in Uusimaa by donating €30 to Lauri Lavanti's campaign. As thanks, your name is written on a sign that goes up by the roadside."
+slug: 'en/adopt'
+langAlternates:
+    en: '/en/adopt/'
+    fi: '/fi/adoptoi/'
+    sv: '/sv/adoptera/'
+updatedDate: '2026-11-14'
+type: 'WebPage'
+plated: true
+variant: 'split'
+---
+
+import SmartLink from '../../../components/SmartLink.astro'
+import Paragraph from '../../../components/Paragraph.astro'
+import Plate from '../../../components/Plate.astro'
+import PostProse from '../../../components/post/PostProse.astro'
+import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
+import SignAdoptionForm from '../../../components/SignAdoptionForm.astro'
+import AdoptionWall from '../../../components/adoption/AdoptionWall.astro'
+import MobilePayBox from '../../../components/adoption/MobilePayBox.astro'
+
+export const components = { a: SmartLink, p: Paragraph }
+
+<Plate ground="offWhite" id="adopt" tight>
+    <SignAdoptionForm lang="en" />
+</Plate>
+
+<Plate ground="white" heading="Why adopt a sign?">
+<PostProse>
+
+Finland has always been prepared. We keep grain, medicine and fuel in store for hard times, and icebreakers keep the sea lanes open in the harshest winter. A crisis used to cut the shipping routes. Now a single decision on another continent can be enough.
+
+When the United States sanctioned the chief prosecutor of the International Criminal Court, he lost access to his email. The Ministry of Justice had already decided to move the election information system to Amazon's cloud and only reversed the decision in March 2026.
+
+<ImageWithCaption
+    alt="Lauri Lavanti in a white campaign vest with a candidate badge, handing out leaflets at a market square with people and a stroller behind him."
+    caption="Leaflets and conversations at the market square."
+    image="Lauri-Lavanti-jakaa-esitteita-torilla-vaaka"
+    lang="en"
+/>
+
+I am one of the people responsible for the Digital Independence citizens' initiative, and more than 50,000 Finns signed it. The initiative demands that critical public digital services run on servers in the EU owned by Finnish and European operators, and that Finland not depend on a single supplier. We will take the initiative to Parliament after the spring election, and I want to be there to see it through. For more than a decade I have built software and banking services that millions of people must be able to trust every day, in a crisis too.
+
+Digital independence is the same preparedness Finland has always relied on. A sign by the roadside tells your neighbours that you, too, want a Finland that uses technology on its own terms.
+
+Who I am: [Lauri Lavanti](/en/about/)
+
+I am the Greens' parliamentary candidate in Uusimaa. Help me take these issues to Parliament.
+
+Join in: [lavanti.fi/en/join](/en/join/)
+
+</PostProse>
+</Plate>
+
+<AdoptionWall lang="en" />
+
+<Plate ground="offWhite" heading="How the donation works">
+<PostProse>
+
+Your name is written on the bottom edge of the sign, apart from the campaign text. Your name is visible to people who pass by on foot or by bike. If you like, your name also appears in the list of adopters on this page.
+
+<details>
+<summary>The donation, the limits and companies</summary>
+
+The donation goes to the election fundraiser of my support association, Digitaalisen itsenäisyyden puolesta ry. The association pays for the signs, and your name on the sign is a thank-you for the donation. I can accept at most €6,000 from the same donor, counting every way of donating together. If your donations add up to at least €2,000, your name is reported in my campaign finance disclosure.
+
+I cannot accept support from public bodies, companies controlled by a public body or foreign companies. A company can adopt a sign in its own name when the donation is paid from the company's account by invoice. The invoice has no VAT, and the donation is not tax-deductible. If you withdraw permission to use your name, we cover the name on the sign and remove it from the website.
+
+</details>
+
+I report my budget openly throughout the campaign. On the [campaign finance page](/en/elections/campaign-finance/) you can see my budget and what campaigns in Uusimaa cost in 2023.
+
+</PostProse>
+</Plate>
+
+<Plate ground="white" heading="Every donation helps">
+<PostProse>
+
+You can also donate any amount with MobilePay to number 46492 or at [lavanti.fi/lahjoita](/lahjoita).
+
+</PostProse>
+<MobilePayBox lang="en" />
+<PostProse>
+
+Join in: [lavanti.fi/en/join](/en/join/)
+
+</PostProse>
+</Plate>

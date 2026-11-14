@@ -1,0 +1,71 @@
+---
+import type { AdoptionPage } from '../../content/adoptionPages'
+
+import { adoptionContent } from '../../content/signAdoption'
+import { FORM_PATH } from '../../lib/signAdoptions'
+import Link from '../Link.astro'
+import Plate from '../Plate.astro'
+import SocialShare from '../SocialShare.astro'
+import SignGraphic from './SignGraphic.astro'
+
+interface Props {
+    page: AdoptionPage
+}
+
+/** A personal adoption page: the adopter's sign, their approved message and the way to join in. */
+const { page } = Astro.props
+const content = adoptionContent[page.lang]
+const url = new URL(`${content.base}${page.slug}/`, Astro.site).href
+---
+
+<style>
+    .personal {
+        align-items: start;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    @media (min-width: 1000px) {
+        .personal {
+            grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+        }
+    }
+    .personal .text {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .personal blockquote {
+        border-left: 4px solid var(--colorsBrightGreen);
+        color: var(--colorsForestGreen);
+        font-size: 1.375rem;
+        margin: 0;
+        padding-left: 1rem;
+    }
+    .personal p {
+        color: var(--colorsForestGreen);
+        margin: 0;
+    }
+    .personal .btn {
+        justify-self: start;
+    }
+</style>
+
+<Plate ground="offWhite">
+    <div class="personal">
+        <SignGraphic lang={page.lang} name={page.name} />
+        <div class="text">
+            {page.message && <blockquote>{page.message}</blockquote>}
+            <a class="btn btn--solid" href={FORM_PATH[page.lang]}>{content.personal.cta}</a>
+            <p>
+                {content.join.lead}
+                <Link href={content.join.href}>{content.join.label}</Link>
+            </p>
+            <SocialShare
+                ariaLabel={content.personal.title(page.name)}
+                locale={page.lang}
+                shareUrl={url}
+                title={content.personal.title(page.name)}
+            />
+        </div>
+    </div>
+</Plate>
