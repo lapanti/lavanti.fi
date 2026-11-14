@@ -447,10 +447,10 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             nameCounter: (used, max) => `${used}/${max}`,
             nameLabel: 'Nimi kylttiin',
             nextStep: (euros) =>
-                `Seuraavaksi lahjoitat ${euros} € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.`,
+                `Seuraavaksi lahjoitat ${euros} € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.`,
             nextStepCompany: (euros) => `Seuraavaksi lähetämme ${euros} euron laskun antamaasi laskutusosoitteeseen.`,
             pinned: (name, n) =>
-                n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${n * 30} €` : `Kylttisi: ${name} · 30 €`,
+                n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${n * 30} €` : `Kylttisi: ${name} · 30 €`,
             price: '30 € = yksi kyltti tienvarteen',
             privacyHref: '/fi/tietosuoja/',
             privacyLink: 'Lue tietosuojaseloste.',
@@ -619,11 +619,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             nameCounter: (used, max) => `${used}/${max}`,
             nameLabel: 'Namn på skylten',
             nextStep: (euros) =>
-                `Härnäst ger du ${euros} € med MobilePay och får en referenskod som du skriver som meddelande.`,
+                `Härnäst ger du ${euros} € med MobilePay och får en referenskod som du skriver som meddelande.`,
             nextStepCompany: (euros) =>
-                `Härnäst skickar vi en faktura på ${euros} € till den faktureringsadress du angav.`,
+                `Härnäst skickar vi en faktura på ${euros} € till den faktureringsadress du angav.`,
             pinned: (name, n) =>
-                n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${n * 30} €` : `Din skylt: ${name} · 30 €`,
+                n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${n * 30} €` : `Din skylt: ${name} · 30 €`,
             price: '30 € = en skylt vid vägkanten',
             privacyHref: '/sv/dataskydd/',
             privacyLink: 'Läs integritetspolicyn.',
