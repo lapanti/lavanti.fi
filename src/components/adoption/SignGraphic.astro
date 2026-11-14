@@ -1,0 +1,110 @@
+---
+import type { Lang } from '../../content/nav'
+
+import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
+import { SIGN, SIGN_COLORS } from '../../lib/adoptionShareImage'
+import { getImage } from '../../lib/images'
+
+interface Props {
+    lang: Lang
+    /** A fixed name (personal pages); without it the ghost text shows until a script sets one. */
+    name?: string
+}
+
+const { lang, name } = Astro.props
+const t = adoptionContent[lang].sign
+/** The photo on the sign; the share image script loads the same URL (data-photo). */
+const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
+const shown = name?.trim() ?? ''
+---
+
+<style>
+    /* Narrow on phones so the name field under the sign stays on the first screen. */
+    .sign-graphic {
+        margin: 0 auto;
+        max-width: 15rem;
+        width: 100%;
+    }
+    @media (min-width: 900px) {
+        .sign-graphic {
+            margin: 0;
+            max-width: 22rem;
+        }
+    }
+    .sign-graphic svg {
+        box-shadow: 0 10px 30px rgba(22, 62, 53, 0.25);
+        height: auto;
+        width: 100%;
+    }
+    .sign-graphic .display {
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-weight: 800;
+    }
+    .sign-graphic .name {
+        font-weight: 700;
+    }
+    .sign-graphic .body {
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .sign-graphic figcaption {
+        color: var(--colorsForestGreen);
+        font-size: var(--textSmallFontSize);
+        margin-top: 0.5rem;
+    }
+</style>
+
+<figure class="sign-graphic" data-ghost={t.ghostName} data-photo={SIGN_PHOTO.src} data-sign>
+    <svg aria-label={t.figureLabel} role="img" viewBox={`0 0 ${SIGN.width} ${SIGN.height}`}>
+        <rect fill={SIGN_COLORS.background} height={SIGN.height} width={SIGN.width}></rect>
+        <image
+            height={SIGN.photo.h}
+            href={SIGN_PHOTO.src}
+            preserveAspectRatio="xMidYMid slice"
+            width={SIGN.width}
+            y={SIGN.photo.y}
+        />
+        <text
+            class="display"
+            fill={SIGN_COLORS.firstName}
+            font-size={SIGN.firstName.size}
+            x={SIGN.padX}
+            y={SIGN.firstName.y}>{SIGN_TEXT.firstName.toUpperCase()}</text
+        >
+        <text
+            class="display"
+            fill={SIGN_COLORS.lastName}
+            font-size={SIGN.lastName.size}
+            x={SIGN.padX - 4}
+            y={SIGN.lastName.y}>{SIGN_TEXT.lastName.toUpperCase()}</text
+        >
+        <text
+            class="body"
+            fill={SIGN_COLORS.tagline}
+            font-size={SIGN.tagline.size}
+            font-weight="600"
+            x={SIGN.padX}
+            y={SIGN.tagline.y}>{SIGN_TEXT.tagline}</text
+        >
+        <rect fill={SIGN_COLORS.band} height={SIGN.band.h} width={SIGN.width} y={SIGN.band.y}></rect>
+        <text
+            class="display name"
+            data-fill-ghost={SIGN_COLORS.ghost}
+            data-fill-name={SIGN_COLORS.name}
+            data-sign-name
+            fill={shown ? SIGN_COLORS.name : SIGN_COLORS.ghost}
+            font-size={SIGN.nameText.size}
+            text-anchor="middle"
+            x={SIGN.width / 2}
+            y={SIGN.nameText.y}>{shown || t.ghostName}</text
+        >
+        <text
+            class="body"
+            fill={SIGN_COLORS.payer}
+            font-size={SIGN.payer.size}
+            text-anchor="middle"
+            x={SIGN.width / 2}
+            y={SIGN.payer.y}>{SIGN_TEXT.payer}</text
+        >
+    </svg>
+    <figcaption>{t.finePrint}</figcaption>
+</figure>
