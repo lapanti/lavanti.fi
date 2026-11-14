@@ -208,7 +208,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             companyName: 'Company name',
             companySummary: 'I am donating as a company',
             consentPage: (path) =>
-                `I want my own page at lavanti.fi${path}. Your name and message are stored in the site's public source code. You can ask for the page to be removed at any time.`,
+                `I want my own page at lavanti.fi${path}. The page is public, and your name and message stay in the site's public change history even if the page is removed. You can ask for the page to be removed at any time.`,
             consentPerson: 'The name is my own name. I am 18 or older.',
             consentPersonCompany: 'The name is my own name or the name of a company I may represent. I am 18 or older.',
             consentPrint: (n) =>
@@ -363,7 +363,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             companyName: 'Yrityksen nimi',
             companySummary: 'Lahjoitan yrityksenä',
             consentPage: (path) =>
-                `Haluan oman sivun osoitteeseen lavanti.fi${path}. Nimesi ja viestisi tallentuvat sivuston julkiseen lähdekoodiin. Voit pyytää sivun poistamista milloin tahansa.`,
+                `Haluan oman sivun osoitteeseen lavanti.fi${path}. Sivu on julkinen, ja nimesi ja viestisi jäävät sivuston julkiseen muutoshistoriaan myös, jos sivu poistetaan. Voit pyytää sivun poistamista milloin tahansa.`,
             consentPerson: 'Nimi on oma nimeni. Olen täysi-ikäinen.',
             consentPersonCompany: 'Nimi on oma nimeni tai sen yrityksen nimi, jota saan edustaa. Olen täysi-ikäinen.',
             consentPrint: (n) =>
@@ -520,7 +520,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             companyName: 'Företagets namn',
             companySummary: 'Jag ger gåvan som företag',
             consentPage: (path) =>
-                `Jag vill ha en egen sida på adressen lavanti.fi${path}. Ditt namn och ditt meddelande sparas i webbplatsens öppna källkod. Du kan när som helst be att sidan tas bort.`,
+                `Jag vill ha en egen sida på adressen lavanti.fi${path}. Sidan är offentlig, och ditt namn och ditt meddelande finns kvar i webbplatsens offentliga ändringshistorik även om sidan tas bort. Du kan när som helst be att sidan tas bort.`,
             consentPerson: 'Namnet är mitt eget namn. Jag är myndig.',
             consentPersonCompany:
                 'Namnet är mitt eget namn eller namnet på ett företag som jag får företräda. Jag är myndig.',
