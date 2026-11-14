@@ -16,7 +16,7 @@ export interface AdoptionPage {
 }
 
 /** Thanks-page segments under the same bases; a personal page must never shadow them. */
-export const RESERVED_SLUGS = ['kiitos', 'tack', 'thanks']
+const RESERVED_SLUGS = ['kiitos', 'tack', 'thanks']
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 

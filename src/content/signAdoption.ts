@@ -20,7 +20,6 @@ export const SIGN_TEXT = {
 } as const
 
 export const MOBILEPAY_NUMBER = '46492'
-export const CONTACT_EMAIL = 'lauri@lavanti.fi'
 /** Title of the invoice sent to a company; the owner copies it from `npm run adoptions`. */
 export const INVOICE_TITLE = 'Lahjoitus vaalikeräykseen (Adoptoi kyltti)'
 
