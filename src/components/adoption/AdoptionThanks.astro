@@ -1,0 +1,256 @@
+---
+import type { Lang } from '../../content/nav'
+import type { AdoptionThanksData } from './thanks.client'
+
+import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
+import { EUROS_PER_SIGN, MAX_SIGNS } from '../../lib/adoptionClient'
+import { FORM_PATH } from '../../lib/signAdoptions'
+import Link from '../Link.astro'
+import MobilePayBox from './MobilePayBox.astro'
+import SignGraphic from './SignGraphic.astro'
+
+interface Props {
+    lang: Lang
+}
+
+/*
+ * The thanks page body: pay first, then share. Everything that depends on the visit (ref, count,
+ * the adopter's own name) is filled in by thanks.client.ts from the validated query and
+ * sessionStorage; with invalid parameters only the "link is missing details" note shows.
+ */
+const { lang } = Astro.props
+const content = adoptionContent[lang]
+const t = content.thanks
+const LOGOS: Record<Lang, string> = {
+    en: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE_ENG.png',
+    fi: '/logos/Vihreat_Logo_HOR_NEG_FIN.png',
+    sv: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE.png',
+}
+const scriptData: AdoptionThanksData = {
+    cta: t.share.cta,
+    donate: Array.from({ length: MAX_SIGNS }, (_, i) => content.mobilePay.donate((i + 1) * EUROS_PER_SIGN)),
+    formPath: FORM_PATH[lang],
+    ghost: content.sign.ghostName,
+    headline: t.share.headline,
+    imageAlt: t.share.imageAlt('%s'),
+    logo: LOGOS[lang],
+    message: { saved: t.message.saved, tooSoon: t.message.tooSoon, unavailable: t.message.unavailable },
+    payerSaved: t.payer.saved,
+    refNote: content.mobilePay.refNote('%s'),
+    shareText: t.share.text,
+    sign: SIGN_TEXT,
+}
+---
+
+<style>
+    .thanks [hidden] {
+        display: none;
+    }
+    .thanks-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    @media (min-width: 900px) {
+        .thanks-grid {
+            align-items: start;
+            grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+        }
+    }
+    .thanks .steps:not([hidden]) {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .thanks p {
+        color: var(--colorsForestGreen);
+        margin: 0;
+    }
+    .thanks .almost {
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+    .thanks .donate {
+        font-size: 1.25rem;
+        font-weight: var(--fontWeightsSemibold);
+    }
+    /* :not([hidden]) so the script's hidden attribute still wins over display: grid. */
+    .thanks .inline-form:not([hidden]) {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+        max-width: 36rem;
+    }
+    .thanks .inline-form .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .thanks .inline-form input,
+    .thanks .inline-form textarea {
+        flex: 1 1 14rem;
+        min-height: 3rem;
+    }
+    .thanks .status {
+        font-size: var(--textSmallFontSize);
+    }
+    .thanks .after:not([hidden]) {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    .thanks .thank-you {
+        border-left: 4px solid var(--colorsBrightGreen);
+        display: grid;
+        gap: 0.75rem;
+        padding-left: 1rem;
+    }
+    .thanks h2 {
+        color: var(--colorsForestGreen);
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0;
+    }
+    .share-images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .share-images figure {
+        margin: 0;
+        width: min(100%, 14rem);
+    }
+    .share-images img {
+        height: auto;
+        width: 100%;
+    }
+    .share-images figcaption {
+        color: var(--colorsForestGreen);
+        font-size: var(--textSmallFontSize);
+        margin-top: 0.25rem;
+    }
+    .thanks .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .thanks .btn {
+        cursor: pointer;
+    }
+</style>
+
+<div class="thanks" data-thanks>
+    <p data-invalid hidden>
+        {t.invalid}
+        <Link href={FORM_PATH[lang]}>{t.invalidLink}</Link>
+    </p>
+
+    <div data-valid hidden>
+        <div class="thanks-grid">
+            <SignGraphic lang={lang} />
+            <div class="steps">
+                <div class="inline-form site-form" data-missing-name hidden>
+                    <label for="adoption-thanks-name">{content.form.nameLabel}</label>
+                    <p class="status" id="adoption-thanks-name-hint">{t.missingName}</p>
+                    <input
+                        aria-describedby="adoption-thanks-name-hint"
+                        id="adoption-thanks-name"
+                        maxlength="24"
+                        type="text"
+                    />
+                </div>
+
+                <p class="almost">{t.almost}</p>
+
+                <div class="steps" data-private>
+                    <MobilePayBox lang={lang}>
+                        <p class="donate" data-donate></p>
+                    </MobilePayBox>
+                    <div class="actions">
+                        <p data-ref-note></p>
+                        <button class="btn" data-copied={content.mobilePay.copied} data-ref-copy type="button"
+                            >{content.mobilePay.copyRef}</button
+                        >
+                    </div>
+                    <form class="inline-form site-form" data-payer-form hidden>
+                        <label for="adoption-payer">{t.payer.label}</label>
+                        <div class="row">
+                            <input
+                                autocomplete="name"
+                                id="adoption-payer"
+                                maxlength="100"
+                                name="payer_name"
+                                type="text"
+                            />
+                            <button class="btn" type="submit">{t.payer.save}</button>
+                        </div>
+                        <p aria-live="polite" class="status" data-status></p>
+                    </form>
+                    <div>
+                        <button class="btn btn--solid" data-donated type="button">{t.donated}</button>
+                    </div>
+                </div>
+
+                <p data-company hidden>{t.companyInvoice}</p>
+
+                <p>
+                    {content.join.lead}
+                    <Link href={content.join.href}>{content.join.label}</Link>
+                </p>
+            </div>
+        </div>
+
+        <section aria-labelledby="adoption-share-heading" class="after" data-after hidden>
+            <div class="thank-you" tabindex="-1">
+                {t.thankYou.map((line) => <p>{line}</p>)}
+                <p>{t.next}</p>
+            </div>
+
+            <h2 id="adoption-share-heading">{t.share.heading}</h2>
+            <div class="share-images">
+                <figure>
+                    <img alt="" data-share-image="story" height="1920" width="1080" />
+                    <figcaption>{t.share.story}</figcaption>
+                </figure>
+                <figure>
+                    <img alt="" data-share-image="feed" height="1350" width="1080" />
+                    <figcaption>{t.share.feed}</figcaption>
+                </figure>
+            </div>
+            <p>{t.share.longPress}</p>
+            <p data-in-app hidden>{t.share.inApp}</p>
+            <div class="actions">
+                <button class="btn btn--solid" data-share hidden type="button">{t.share.share}</button>
+                <a class="btn" data-download download="adoptoi-kyltti.png" hidden href="#">{t.share.download}</a>
+            </div>
+            <p aria-live="polite" data-clipboard hidden>{t.share.clipboard}</p>
+
+            <form class="inline-form site-form" data-message-form hidden>
+                <label for="adoption-message">{t.message.label}</label>
+                <p class="status" id="adoption-message-hint">{t.message.hint}</p>
+                <textarea
+                    aria-describedby="adoption-message-hint"
+                    id="adoption-message"
+                    maxlength="140"
+                    name="message"
+                    rows="3"></textarea>
+                <div class="row">
+                    <button class="btn" type="submit">{t.message.save}</button>
+                </div>
+                <p aria-live="polite" class="status" data-status></p>
+            </form>
+
+            <p>
+                {content.join.lead}
+                <Link href={content.join.href}>{content.join.label}</Link>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script id="adoption-thanks-data" is:inline set:html={JSON.stringify(scriptData)} type="application/json" />
+
+<script src="./thanks.client.ts"></script>
