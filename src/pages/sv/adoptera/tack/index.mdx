@@ -2,7 +2,13 @@
 layout: '../../../../layouts/PageLayout.astro'
 lang: sv
 pageTitle: 'Tack för att du adopterade en skylt'
-title: 'Din skylt väntar på din gåva'
+title: 'Din skylt väntar'
+emphasis: 'på din gåva'
+ctaHref: '#gava'
+ctaLabel: 'Slutför adoptionen'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden.'
 description: 'Tack för att du adopterade Lauri Lavantis valskylt. Ge din gåva med MobilePay och berätta om din skylt för dina vänner, så kommer ditt namn upp vid vägen i vår.'
 slug: 'sv/adoptera/tack'
 langAlternates:
@@ -13,12 +19,12 @@ updatedDate: '2026-11-14'
 type: 'WebPage'
 noindex: true
 plated: true
-variant: 'page'
+variant: 'split'
 ---
 
 import Plate from '../../../../components/Plate.astro'
 import AdoptionThanks from '../../../../components/adoption/AdoptionThanks.astro'
 
-<Plate ground="offWhite" heading="Vad händer nu?">
+<Plate ground="offWhite" heading="Vad händer nu?" id="gava">
     <AdoptionThanks lang="sv" />
 </Plate>
