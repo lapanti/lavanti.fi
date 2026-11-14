@@ -2,7 +2,13 @@
 layout: '../../../../layouts/PageLayout.astro'
 lang: en
 pageTitle: 'Thank you for adopting an election sign'
-title: 'Your sign is waiting for your donation'
+title: 'Your sign is waiting'
+emphasis: 'for your donation'
+ctaHref: '#donation'
+ctaLabel: 'Finish your adoption'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
 description: "Thank you for adopting Lauri Lavanti's election sign. Donate with MobilePay and tell your friends, and your name goes up by the roadside in spring."
 slug: 'en/adopt/thanks'
 langAlternates:
@@ -13,12 +19,12 @@ updatedDate: '2026-11-14'
 type: 'WebPage'
 noindex: true
 plated: true
-variant: 'page'
+variant: 'split'
 ---
 
 import Plate from '../../../../components/Plate.astro'
 import AdoptionThanks from '../../../../components/adoption/AdoptionThanks.astro'
 
-<Plate ground="offWhite" heading="What happens next?">
+<Plate ground="offWhite" heading="What happens next?" id="donation">
     <AdoptionThanks lang="en" />
 </Plate>
