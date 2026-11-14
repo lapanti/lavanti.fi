@@ -10,8 +10,6 @@ import Title from './titleBanner/Title.astro'
 
 interface Props {
     alt?: string
-    /** `page` variant: no empty band above the title on phones (see PageLayout `compactBanner`). */
-    compact?: boolean
     createdAt?: string
     ctaHref?: string
     ctaLabel?: string
@@ -30,7 +28,6 @@ interface Props {
 
 const {
     alt,
-    compact = false,
     createdAt,
     ctaHref,
     ctaLabel,
@@ -57,12 +54,6 @@ const {
 
     .content {
         background-color: var(--colorsWhite);
-    }
-
-    @media (max-width: 768px) {
-        .container--compact {
-            padding-top: 0;
-        }
     }
 
     @media (min-width: 1200px) {
@@ -105,7 +96,7 @@ const {
             title={title}
         />
     ) : (
-        <div class:list={['container', { 'container--compact': compact }]}>
+        <div class="container">
             <div class="content">
                 <Title
                     createdAt={createdAt}
