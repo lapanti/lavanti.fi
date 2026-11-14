@@ -53,6 +53,8 @@ interface MailInput {
 
 interface AdoptionLocale {
     form: {
+        /** Always visible under the total: who receives the donation, with a finance page link. */
+        association: { href: string; link: string; text: string }
         back: string
         billingAddress: string
         businessId: string
@@ -218,6 +220,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
         base: '/en/adopt/',
         euros: (n) => `€${n}`,
         form: {
+            association: {
+                href: '/en/elections/campaign-finance/',
+                link: 'Read how my campaign is funded.',
+                text: 'Digitaalisen itsenäisyyden puolesta ry is my support association, which runs the fundraiser and pays for the signs.',
+            },
             back: 'Change the name or number',
             billingAddress: 'Billing address (email or e-invoice address)',
             businessId: 'Business ID (Y-tunnus)',
@@ -373,6 +380,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
         base: '/fi/adoptoi/',
         euros: fiEuros,
         form: {
+            association: {
+                href: '/fi/eduskuntavaalit/vaalirahoitus/',
+                link: 'Lue, miten kampanjani rahoitetaan.',
+                text: 'Digitaalisen itsenäisyyden puolesta ry on tukiyhdistykseni, joka järjestää vaalikeräyksen ja maksaa kyltit.',
+            },
             back: 'Muuta nimeä tai määrää',
             billingAddress: 'Laskutusosoite (sähköposti tai verkkolaskuosoite)',
             businessId: 'Y-tunnus',
@@ -530,6 +542,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
         base: '/sv/adoptera/',
         euros: fiEuros,
         form: {
+            association: {
+                href: '/sv/riksdagsvalet/valfinansiering/',
+                link: 'Läs hur min kampanj finansieras.',
+                text: 'Digitaalisen itsenäisyyden puolesta ry är min stödförening, som ordnar valinsamlingen och betalar skyltarna.',
+            },
             back: 'Ändra namnet eller antalet',
             billingAddress: 'Faktureringsadress (e-post eller e-fakturaadress)',
             businessId: 'FO-nummer',
