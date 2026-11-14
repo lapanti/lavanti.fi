@@ -236,6 +236,10 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
             </div>
 
             <p aria-live="polite" class="total" data-total>{t.total(EUROS_PER_SIGN)}</p>
+            <p class="hint association">
+                {t.association.text}
+                <Link href={t.association.href}>{t.association.link}</Link>
+            </p>
 
             <button class="btn btn--solid" data-cta data-next type="button">{t.cta(1)}</button>
             <p class="live" data-live hidden></p>
