@@ -123,21 +123,21 @@ export const campaignEvents: CampaignEvent[] = [
         locales: {
             en: {
                 description:
-                    'What should happen to Keskusmetsä (the central forest) in Kirkkonummi? The "How are you, Kirkkonummi?" discussion series from Kirkkonummen Vihreät continues with a panel discussion on the development of the central forest. The discussion will be moderated by Lauri Lavanti, chair of the Green group on Kirkkonummi municipal council and parliamentary candidate. The panellists will be announced later. Come to listen, to ask questions and to share your own views. The event is open to all and free of charge.',
+                    'What should happen to Keskusmetsä (the central forest) in Kirkkonummi? The "How are you, Kirkkonummi?" discussion series from Kirkkonummen Vihreät continues with a panel discussion on the development of the central forest. The panellists are local landowner Anders Engberg; local resident Petteri Tolvanen, who works as programme director for Finnish nature at WWF Finland; and Tuulia Väkeväinen, vice principal of Laajakallio school. The discussion will be moderated by Lauri Lavanti, chair of the Green group on Kirkkonummi municipal council and parliamentary candidate. Come to listen, to ask questions and to share your own views. The event is open to all and free of charge.',
                 locality: 'Kirkkonummi',
                 title: 'How are you, Kirkkonummi? The development of the central forest',
                 venue: 'Fyyri library, Mörne hall',
             },
             fi: {
                 description:
-                    'Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Keskustelijat julkaistaan myöhemmin. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.',
+                    'Mitä Kirkkonummen Keskusmetsälle pitäisi tapahtua? Kirkkonummen Vihreiden Mitä kuuluu Kirkkonummi? -keskustelusarja jatkuu paneelikeskustelulla Keskusmetsän kehityksestä. Panelisteina ovat paikallinen maanomistaja Anders Engberg, paikallinen asukas Petteri Tolvanen, joka toimii WWF:n suomalaisen luonnon ohjelmajohtajana, sekä Laajakallion koulun apulaisrehtori Tuulia Väkeväinen. Keskustelun moderoi Lauri Lavanti, Kirkkonummen Vihreän valtuustoryhmän puheenjohtaja ja eduskuntavaaliehdokas. Tule kuuntelemaan, kysymään ja kertomaan oma näkemyksesi. Tilaisuus on avoin kaikille ja maksuton.',
                 locality: 'Kirkkonummi',
                 title: 'Mitä kuuluu Kirkkonummi? Keskusmetsän kehitys',
                 venue: 'Kirjastotalo Fyyri, Mörne-sali',
             },
             sv: {
                 description:
-                    'Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Panelisterna presenteras senare. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.',
+                    'Vad borde hända med Centralskogen i Kyrkslätt? Diskussionsserien Hur mår Kyrkslätt? som De Gröna i Kyrkslätt ordnar fortsätter med ett panelsamtal om utvecklingen av Centralskogen. Som panelister medverkar den lokala markägaren Anders Engberg, den lokala invånaren Petteri Tolvanen, som arbetar som programchef för finsk natur vid WWF, samt Tuulia Väkeväinen, biträdande rektor vid Laajakallion koulu. Samtalet modereras av Lauri Lavanti, ordförande för De Grönas fullmäktigegrupp i Kyrkslätt och riksdagskandidat. Kom och lyssna, ställ frågor och berätta din egen syn. Evenemanget är öppet för alla och avgiftsfritt.',
                 locality: 'Kyrkslätt',
                 title: 'Hur mår Kyrkslätt? Utvecklingen av Centralskogen',
                 venue: 'Bibliotekshuset Fyyri, Mörnesalen',
