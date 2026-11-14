@@ -14,7 +14,8 @@ interface Props {
 }
 
 /*
- * The thanks page body: pay first, then share. Everything that depends on the visit (ref, count,
+ * The thanks page body: the MobilePay block first (heading, amount, ref, fallback, "I donated"),
+ * then the sign, then the thank-you and share. Everything that depends on the visit (ref, count,
  * the adopter's own name) is filled in by thanks.client.ts from the validated query and
  * sessionStorage; with invalid parameters only the "link is missing details" note shows.
  */
@@ -26,9 +27,11 @@ const LOGOS: Record<Lang, string> = {
     fi: '/logos/Vihreat_Logo_HOR_NEG_FIN.png',
     sv: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE.png',
 }
+const amounts = Array.from({ length: MAX_SIGNS }, (_, i) => (i + 1) * EUROS_PER_SIGN)
 const scriptData: AdoptionThanksData = {
+    almost: amounts.map((euros) => t.almost(euros)),
     cta: t.share.cta,
-    donate: Array.from({ length: MAX_SIGNS }, (_, i) => content.mobilePay.donate((i + 1) * EUROS_PER_SIGN)),
+    donate: amounts.map((euros) => content.mobilePay.donate(euros)),
     formPath: FORM_PATH[lang],
     ghost: content.sign.ghostName,
     headline: t.share.headline,
@@ -66,6 +69,8 @@ const scriptData: AdoptionThanksData = {
         margin: 0;
     }
     .thanks .almost {
+        color: var(--colorsForestGreen);
+        margin: 0;
         font-family: 'Big Shoulders Display', sans-serif;
         font-size: 2rem;
         font-weight: 800;
@@ -148,7 +153,38 @@ const scriptData: AdoptionThanksData = {
         <Link href={FORM_PATH[lang]}>{t.invalidLink}</Link>
     </p>
 
-    <div data-valid hidden>
+    <div class="steps" data-valid hidden>
+        <div class="steps" data-private>
+            <h3 class="almost" data-almost></h3>
+            <MobilePayBox lang={lang}>
+                <p class="donate" data-donate></p>
+            </MobilePayBox>
+            <div class="actions">
+                <p data-ref-note></p>
+                <button class="btn" data-copied={content.mobilePay.copied} data-ref-copy type="button"
+                    >{content.mobilePay.copyRef}</button
+                >
+            </div>
+            <p>
+                {t.fallback.before}
+                <a href="/lahjoita?utm_source=adoptoi&utm_campaign=adoptoi-kyltti">{t.fallback.link}</a>
+                {t.fallback.after}
+            </p>
+            <form class="inline-form site-form" data-payer-form hidden>
+                <label for="adoption-payer">{t.payer.label}</label>
+                <div class="row">
+                    <input autocomplete="name" id="adoption-payer" maxlength="100" name="payer_name" type="text" />
+                    <button class="btn" type="submit">{t.payer.save}</button>
+                </div>
+                <p aria-live="polite" class="status" data-status></p>
+            </form>
+            <div>
+                <button class="btn btn--solid" data-donated type="button">{t.donated}</button>
+            </div>
+        </div>
+
+        <p data-company hidden>{t.companyInvoice}</p>
+
         <div class="thanks-grid">
             <SignGraphic lang={lang} />
             <div class="steps">
@@ -162,39 +198,6 @@ const scriptData: AdoptionThanksData = {
                         type="text"
                     />
                 </div>
-
-                <p class="almost">{t.almost}</p>
-
-                <div class="steps" data-private>
-                    <MobilePayBox lang={lang}>
-                        <p class="donate" data-donate></p>
-                    </MobilePayBox>
-                    <div class="actions">
-                        <p data-ref-note></p>
-                        <button class="btn" data-copied={content.mobilePay.copied} data-ref-copy type="button"
-                            >{content.mobilePay.copyRef}</button
-                        >
-                    </div>
-                    <form class="inline-form site-form" data-payer-form hidden>
-                        <label for="adoption-payer">{t.payer.label}</label>
-                        <div class="row">
-                            <input
-                                autocomplete="name"
-                                id="adoption-payer"
-                                maxlength="100"
-                                name="payer_name"
-                                type="text"
-                            />
-                            <button class="btn" type="submit">{t.payer.save}</button>
-                        </div>
-                        <p aria-live="polite" class="status" data-status></p>
-                    </form>
-                    <div>
-                        <button class="btn btn--solid" data-donated type="button">{t.donated}</button>
-                    </div>
-                </div>
-
-                <p data-company hidden>{t.companyInvoice}</p>
 
                 <p>
                     {content.join.lead}

@@ -123,9 +123,12 @@ interface AdoptionLocale {
         ghostName: string
     }
     thanks: {
-        almost: string
+        /** First heading on the thanks page; the amount follows the sign count. */
+        almost: (euros: number) => string
         companyInvoice: string
         donated: string
+        /** For a donor without MobilePay: the card/bank form at /lahjoita, then the ref by email. */
+        fallback: { after: string; before: string; link: string }
         invalid: string
         invalidLink: string
         message: { hint: string; label: string; save: string; saved: string; tooSoon: string; unavailable: string }
@@ -331,10 +334,15 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             ghostName: 'Your name',
         },
         thanks: {
-            almost: 'Almost done! Your sign is only waiting for your donation.',
+            almost: (euros) => `Almost done: donate €${euros} with MobilePay`,
             companyInvoice:
                 'We will send an invoice to the billing address you gave. The invoice has no VAT because this is a donation.',
             donated: 'I donated',
+            fallback: {
+                after: 'and send your reference code to lauri@lavanti.fi, so we can match the donation to your sign.',
+                before: 'No MobilePay? Donate by card or online bank at',
+                link: 'lavanti.fi/lahjoita',
+            },
             invalid: 'This link is missing some details.',
             invalidLink: 'Go back and adopt a sign',
             message: {
@@ -497,10 +505,15 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             ghostName: 'Sinun nimesi',
         },
         thanks: {
-            almost: 'Melkein valmis! Kylttisi odottaa enää vain lahjoitustasi.',
+            almost: (euros) => `Melkein valmis: lahjoita ${euros} € MobilePayllä`,
             companyInvoice:
                 'Lähetämme laskun antamaasi laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta.',
             donated: 'Lahjoitin',
+            fallback: {
+                after: 'ja lähetä viitekoodisi osoitteeseen lauri@lavanti.fi, niin yhdistämme lahjoituksen kylttiisi.',
+                before: 'Eikö sinulla ole MobilePayta? Lahjoita kortilla tai verkkopankissa osoitteessa',
+                link: 'lavanti.fi/lahjoita',
+            },
             invalid: 'Linkistä puuttuu tietoja.',
             invalidLink: 'Palaa adoptoimaan kyltti',
             message: {
@@ -664,10 +677,15 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             ghostName: 'Ditt namn',
         },
         thanks: {
-            almost: 'Nästan klart! Din skylt väntar bara på din gåva.',
+            almost: (euros) => `Nästan klart: ge ${euros} € med MobilePay`,
             companyInvoice:
                 'Vi skickar en faktura till den faktureringsadress du angav. Fakturan har ingen moms eftersom det är en gåva.',
             donated: 'Jag gav en gåva',
+            fallback: {
+                after: 'och skicka din referenskod till lauri@lavanti.fi, så kopplar vi gåvan till din skylt.',
+                before: 'Har du inte MobilePay? Ge med kort eller nätbank på',
+                link: 'lavanti.fi/lahjoita',
+            },
             invalid: 'Länken saknar uppgifter.',
             invalidLink: 'Gå tillbaka och adoptera en skylt',
             message: {

@@ -15,6 +15,7 @@ import {
 import { BODY_FONT, DISPLAY_FONT, drawShareImage, SHARE_SIZES, type ShareFormat } from '../../lib/adoptionShareImage'
 
 export interface AdoptionThanksData {
+    almost: string[]
     cta: string
     donate: string[]
     formPath: string
@@ -71,6 +72,7 @@ const initAdoptionThanks = (): void => {
     let name = own?.name ?? ''
     setSignName(document, name)
 
+    q('[data-almost]').textContent = data.almost[params.quantity - 1]
     q('[data-donate]').textContent = data.donate[params.quantity - 1]
     q('[data-ref-note]').textContent = data.refNote.replace('%s', () => params.ref)
     q<HTMLButtonElement>('[data-ref-copy]').dataset.copy = params.ref
