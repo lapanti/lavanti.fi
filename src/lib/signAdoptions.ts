@@ -218,8 +218,17 @@ const base64url = (bytes: Uint8Array): string =>
 /** 128 random bits, base64url (22 characters). */
 export const newEditToken = (): string => base64url(crypto.getRandomValues(new Uint8Array(16)))
 
-/** `K-` and five random digits (10000–99999). */
-export const newRefCode = (): string => `K-${10000 + (crypto.getRandomValues(new Uint32Array(1))[0] % 90000)}`
+/** Largest multiple of 90 000 below 2^32; draws at or above it are redrawn so every code is equally likely. */
+const REF_LIMIT = Math.floor(2 ** 32 / 90000) * 90000
+
+/** `K-` and five random digits (10000–99999), by rejection sampling. */
+export const newRefCode = (): string => {
+    const buf = new Uint32Array(1)
+    do crypto.getRandomValues(buf)
+    while (buf[0] >= REF_LIMIT)
+
+    return `K-${10000 + (buf[0] % 90000)}`
+}
 
 export const hashToken = async (token: string): Promise<string> => {
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(token))
