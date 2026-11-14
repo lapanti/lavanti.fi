@@ -88,7 +88,10 @@ test.describe('Sign adoption page', () => {
         await page.locator('[data-next]').click()
 
         await test.expect(page.locator('[data-step="1"]')).toBeHidden()
-        await test.expect(page.locator('[data-pinned]')).toHaveText('Kylttisi: Sjoerd · 2 kylttiä')
+        await test.expect(page.locator('[data-pinned]')).toHaveText('Kylttisi: Sjoerd · 2 kylttiä · 60 €')
+        await test
+            .expect(page.locator('[data-next-step]'))
+            .toHaveText('Seuraavaksi lahjoitat 60 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.')
         await test.expect(page.locator('[data-consent-print]')).toContainText('vaalikyltteihin')
         // The engaging question comes before the email field.
         const order = await page.locator('[data-step="2"] label').allTextContents()
