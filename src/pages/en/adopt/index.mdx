@@ -2,7 +2,15 @@
 layout: '../../../layouts/PageLayout.astro'
 lang: en
 pageTitle: 'Adopt a campaign sign, your name by the road'
-title: 'Adopt a sign. Your name goes up by the roadside.'
+eyebrow: "Lauri Lavanti, the Greens' parliamentary candidate in Uusimaa"
+title: 'Adopt a sign.'
+emphasis: 'Your name goes up by the roadside.'
+intro: 'Adopt a sign and back my campaign with €30. It means a lot to me. As thanks, your name is written on the bottom edge of the sign, and the sign goes up by a roadside in Uusimaa in spring.'
+ctaHref: '#adopt'
+ctaLabel: 'Put your name on a sign'
+heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
+alt: 'Lauri Lavanti stands on a lawn in front of apartment buildings with his hands in his pockets, wearing a navy blazer and a floral shirt.'
 ogTitle: 'Adopt a sign.'
 ogEmphasis: 'Your name goes up by the roadside.'
 description: "Adopt an election sign in Uusimaa by donating €30 to Lauri Lavanti's campaign. As thanks, your name is written on a sign that goes up by the roadside."
@@ -14,8 +22,7 @@ langAlternates:
 updatedDate: '2026-11-14'
 type: 'WebPage'
 plated: true
-compactBanner: true
-variant: 'page'
+variant: 'split'
 ---
 
 import SmartLink from '../../../components/SmartLink.astro'
@@ -29,14 +36,12 @@ import MobilePayBox from '../../../components/adoption/MobilePayBox.astro'
 
 export const components = { a: SmartLink, p: Paragraph }
 
-<Plate eyebrow="Lauri Lavanti, the Greens' parliamentary candidate in Uusimaa" ground="offWhite" id="adopt" tight>
+<Plate ground="offWhite" id="adopt" tight>
     <SignAdoptionForm lang="en" />
 </Plate>
 
 <Plate ground="white" heading="Why adopt a sign?">
 <PostProse>
-
-Adopt a sign and back my campaign with €30. It means a lot to me. As thanks, your name is written on the bottom edge of the sign, and the sign goes up by a roadside in Uusimaa in spring.
 
 Finland has always been prepared. We keep grain, medicine and fuel in store for hard times, and icebreakers keep the sea lanes open in the harshest winter. A crisis used to cut the shipping routes. Now a single decision on another continent can be enough.
 

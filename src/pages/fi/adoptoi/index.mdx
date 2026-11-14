@@ -2,7 +2,15 @@
 layout: '../../../layouts/PageLayout.astro'
 lang: fi
 pageTitle: 'Adoptoi vaalikyltti, nimesi tienvarteen'
-title: 'Adoptoi kyltti. Nimesi nousee tienvarteen.'
+eyebrow: 'Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla'
+title: 'Adoptoi kyltti.'
+emphasis: 'Nimesi nousee tienvarteen.'
+intro: 'Adoptoi kyltti ja tue kampanjaani 30 eurolla. Se merkitsee minulle paljon. Kiitokseksi nimesi kirjoitetaan kyltin alareunaan, ja kyltti nousee keväällä tienvarteen Uudellamaalla.'
+ctaHref: '#adoptoi'
+ctaLabel: 'Kirjoita nimesi kylttiin'
+heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
+alt: 'Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki ja kukkakuvioinen paita.'
 ogTitle: 'Adoptoi kyltti.'
 ogEmphasis: 'Nimesi nousee tienvarteen.'
 description: 'Adoptoi vaalikyltti Uudellamaalla lahjoittamalla 30 euroa Lauri Lavannin kampanjalle. Kiitokseksi nimesi kirjoitetaan kylttiin, joka nousee tienvarteen.'
@@ -14,8 +22,7 @@ langAlternates:
 updatedDate: '2026-11-14'
 type: 'WebPage'
 plated: true
-compactBanner: true
-variant: 'page'
+variant: 'split'
 ---
 
 import SmartLink from '../../../components/SmartLink.astro'
@@ -29,14 +36,12 @@ import MobilePayBox from '../../../components/adoption/MobilePayBox.astro'
 
 export const components = { a: SmartLink, p: Paragraph }
 
-<Plate eyebrow="Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla" ground="offWhite" id="adoptoi" tight>
+<Plate ground="offWhite" id="adoptoi" tight>
     <SignAdoptionForm lang="fi" />
 </Plate>
 
 <Plate ground="white" heading="Miksi adoptoisit kyltin?">
 <PostProse>
-
-Adoptoi kyltti ja tue kampanjaani 30 eurolla. Se merkitsee minulle paljon. Kiitokseksi nimesi kirjoitetaan kyltin alareunaan, ja kyltti nousee keväällä tienvarteen Uudellamaalla.
 
 Suomi on aina varautunut. Meillä on viljaa, lääkkeitä ja polttoainetta varastossa pahan päivän varalle, ja jäänmurtajat pitävät meret auki kovimpanakin talvena. Ennen kriisi katkaisi laivareitit. Nyt siihen voi riittää yksi päätös toisella mantereella.
 

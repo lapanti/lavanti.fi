@@ -2,7 +2,15 @@
 layout: '../../../layouts/PageLayout.astro'
 lang: sv
 pageTitle: 'Adoptera en valskylt, ditt namn vid vägen'
-title: 'Adoptera en skylt. Ditt namn kommer upp vid vägkanten.'
+eyebrow: 'Lauri Lavanti, De Grönas riksdagskandidat i Nyland'
+title: 'Adoptera en skylt.'
+emphasis: 'Ditt namn kommer upp vid vägkanten.'
+intro: 'Adoptera en skylt och stöd min kampanj med 30 euro. Det betyder mycket för mig. Som tack skrivs ditt namn längst ner på skylten, och skylten kommer upp vid vägkanten i Nyland i vår.'
+ctaHref: '#adoptera'
+ctaLabel: 'Skriv ditt namn på skylten'
+heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
+alt: 'Lauri Lavanti står på en gräsmatta framför flervåningshus med händerna i fickorna, klädd i en marinblå kavaj och en blommig skjorta.'
 ogTitle: 'Adoptera en skylt.'
 ogEmphasis: 'Ditt namn kommer upp vid vägkanten.'
 description: 'Adoptera en valskylt i Nyland genom att ge 30 euro till Lauri Lavantis kampanj. Som tack skrivs ditt namn på skylten, som kommer upp vid vägkanten.'
@@ -14,8 +22,7 @@ langAlternates:
 updatedDate: '2026-11-14'
 type: 'WebPage'
 plated: true
-compactBanner: true
-variant: 'page'
+variant: 'split'
 ---
 
 import SmartLink from '../../../components/SmartLink.astro'
@@ -29,14 +36,12 @@ import MobilePayBox from '../../../components/adoption/MobilePayBox.astro'
 
 export const components = { a: SmartLink, p: Paragraph }
 
-<Plate eyebrow="Lauri Lavanti, De Grönas riksdagskandidat i Nyland" ground="offWhite" id="adoptera" tight>
+<Plate ground="offWhite" id="adoptera" tight>
     <SignAdoptionForm lang="sv" />
 </Plate>
 
 <Plate ground="white" heading="Varför adoptera en skylt?">
 <PostProse>
-
-Adoptera en skylt och stöd min kampanj med 30 euro. Det betyder mycket för mig. Som tack skrivs ditt namn längst ner på skylten, och skylten kommer upp vid vägkanten i Nyland i vår.
 
 Finland har alltid förberett sig. Vi har spannmål, läkemedel och bränsle i lager för sämre tider, och isbrytarna håller haven öppna även under de hårdaste vintrarna. Förr klippte en kris av sjölederna. Nu kan det räcka med ett enda beslut på en annan kontinent.
 
