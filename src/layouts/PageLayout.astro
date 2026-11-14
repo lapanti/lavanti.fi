@@ -23,6 +23,11 @@ interface Props {
     breadcrumbParent?: BreadcrumbParent
     /** With type CollectionPage: the topic and items for the JSON-LD `about` and ItemList. */
     collection?: CollectionInfo
+    /**
+     * On phones, drop the empty band above the title and thin the stripe under it, so the
+     * first plate starts higher. For pages whose first plate must fit the first screen.
+     */
+    compactBanner?: boolean
     createdAt?: string
     ctaHref?: string
     ctaLabel?: string
@@ -71,6 +76,7 @@ const {
     breadcrumbName,
     breadcrumbParent,
     collection,
+    compactBanner = false,
     createdAt,
     ctaHref,
     ctaLabel,
@@ -147,6 +153,7 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
     </Fragment>
     <TitleBanner
         alt={alt}
+        compact={compactBanner}
         createdAt={createdAt}
         ctaHref={ctaHref}
         ctaLabel={ctaLabel}
@@ -161,7 +168,7 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
         title={title}
         variant={variant}
     />
-    <Stripe size="slim" />
+    <Stripe size={compactBanner ? 'thin' : 'slim'} />
     <slot />
     {faqItems && faqLabels && <Faq eyebrow={faqLabels.eyebrow} faq={faqItems} heading={faqLabels.heading} />}
 </BaseLayout>
