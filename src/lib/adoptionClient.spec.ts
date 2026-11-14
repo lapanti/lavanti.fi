@@ -70,7 +70,7 @@ describe('loadWall', () => {
 describe('thanksHref', () => {
     it('carries the ref, count and company flag only', () => {
         expect(thanksHref('/fi/adoptoi/kiitos/', { company: true, quantity: 3, ref: 'K-12345' })).toBe(
-            '/fi/adoptoi/kiitos/?n=3&ref=K-12345&y=1'
+            '/fi/adoptoi/kiitos/?ref=K-12345&n=3&y=1'
         )
     })
 
