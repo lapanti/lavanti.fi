@@ -155,6 +155,10 @@ jobs:
       - name: Require updatedDate bumps for changed content
         if: github.event_name == 'pull_request'
         run: node --experimental-strip-types scripts/checks/updated-date.ts --base "origin/${{ github.base_ref }}"
+      # Backstop for the pre-commit hook: every personal adoption page in a commit of its own.
+      - name: Require one personal adoption page per commit
+        if: github.event_name == 'pull_request'
+        run: node --experimental-strip-types scripts/checks/adoption-pages.ts --base "origin/${{ github.base_ref }}"
       # Receipts only — no Jev call here. Backstop for the pre-commit hook.
       - name: Require Jev suggestions to have run on changed posts, newsletters and tags
         if: github.event_name == 'pull_request'

@@ -1,1 +1,2 @@
 lint-staged
+node --experimental-strip-types scripts/checks/adoption-pages.ts
