@@ -81,6 +81,9 @@ interface AdoptionLocale {
         municipalityOptions: Record<AdoptionMunicipality, string>
         nameCounter: (used: number, max: number) => string
         nameLabel: string
+        /** Above the submit button: what happens after sending. */
+        nextStep: (euros: number) => string
+        nextStepCompany: (euros: number) => string
         pinned: (name: string, n: number) => string
         price: string
         privacyHref: string
@@ -271,7 +274,10 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             municipalityOptions: { ...fiMunicipalities, 'ei-toivetta': 'No preference' },
             nameCounter: (used, max) => `${used}/${max}`,
             nameLabel: 'Name for the sign',
-            pinned: (name, n) => (n > 1 ? `Your sign: ${name} · ${n} signs` : `Your sign: ${name}`),
+            nextStep: (euros) =>
+                `Next, you donate €${euros} with MobilePay and get a reference code to write as the message.`,
+            nextStepCompany: (euros) => `Next, we send an invoice for €${euros} to the billing address you gave.`,
+            pinned: (name, n) => (n > 1 ? `Your sign: ${name} · ${n} signs · €${n * 30}` : `Your sign: ${name} · €30`),
             price: '€30 = one sign by the roadside',
             privacyHref: '/en/privacy-policy/',
             privacyLink: 'Read the privacy policy.',
@@ -432,7 +438,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             municipalityOptions: fiMunicipalities,
             nameCounter: (used, max) => `${used}/${max}`,
             nameLabel: 'Nimi kylttiin',
-            pinned: (name, n) => (n > 1 ? `Kylttisi: ${name} · ${n} kylttiä` : `Kylttisi: ${name}`),
+            nextStep: (euros) =>
+                `Seuraavaksi lahjoitat ${euros} € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.`,
+            nextStepCompany: (euros) => `Seuraavaksi lähetämme ${euros} euron laskun antamaasi laskutusosoitteeseen.`,
+            pinned: (name, n) =>
+                n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${n * 30} €` : `Kylttisi: ${name} · 30 €`,
             price: '30 € = yksi kyltti tienvarteen',
             privacyHref: '/fi/tietosuoja/',
             privacyLink: 'Lue tietosuojaseloste.',
@@ -595,7 +605,12 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             municipalityOptions: svMunicipalities,
             nameCounter: (used, max) => `${used}/${max}`,
             nameLabel: 'Namn på skylten',
-            pinned: (name, n) => (n > 1 ? `Din skylt: ${name} · ${n} skyltar` : `Din skylt: ${name}`),
+            nextStep: (euros) =>
+                `Härnäst ger du ${euros} € med MobilePay och får en referenskod som du skriver som meddelande.`,
+            nextStepCompany: (euros) =>
+                `Härnäst skickar vi en faktura på ${euros} € till den faktureringsadress du angav.`,
+            pinned: (name, n) =>
+                n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${n * 30} €` : `Din skylt: ${name} · 30 €`,
             price: '30 € = en skylt vid vägkanten',
             privacyHref: '/sv/dataskydd/',
             privacyLink: 'Läs integritetspolicyn.',

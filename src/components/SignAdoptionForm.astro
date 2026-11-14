@@ -39,6 +39,8 @@ const scriptData: AdoptionFormData = {
     lang,
     liveCount: t.liveCount(0).replace('0', '%n'),
     liveNames: t.liveNames('%s'),
+    nextStep: counts.map((n) => t.nextStep(n * EUROS_PER_SIGN)),
+    nextStepCompany: counts.map((n) => t.nextStepCompany(n * EUROS_PER_SIGN)),
     pinned: counts.map((n) => t.pinned('%s', n)),
     sending: t.sending,
     thanksPath: THANKS_PATH[lang],
@@ -168,6 +170,11 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
     .revoke {
         color: var(--colorsForestGreen);
         font-size: var(--textSmallFontSize);
+        margin: 0;
+    }
+    .next-step {
+        color: var(--colorsForestGreen);
+        font-weight: var(--fontWeightsSemibold);
         margin: 0;
     }
     .btn--solid:active {
@@ -351,6 +358,8 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
             </div>
 
             <div class="cf-turnstile" data-language={lang} data-sitekey={TURNSTILE_SITE_KEY}></div>
+
+            <p class="next-step" data-next-step>{t.nextStep(EUROS_PER_SIGN)}</p>
 
             <div class="submit-row">
                 <button aria-describedby="adoption-submit-hint" class="btn btn--solid" data-cta type="submit"

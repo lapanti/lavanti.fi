@@ -21,6 +21,8 @@ export interface AdoptionFormData {
     lang: Lang
     liveCount: string
     liveNames: string
+    nextStep: string[]
+    nextStepCompany: string[]
     pinned: string[]
     sending: string
     thanksPath: string
@@ -78,6 +80,7 @@ const initAdoptionForm = (): void => {
         // A replacer function, so "$&" and friends in a typed name stay literal.
         q('[data-pinned]').textContent = data.pinned[n - 1].replace('%s', () => name())
         q('[data-consent-person]').textContent = company.open ? data.consentPersonCompany : data.consentPerson
+        q('[data-next-step]').textContent = (isCompany() ? data.nextStepCompany : data.nextStep)[n - 1]
         // The company fields are required only once a company name is given.
         for (const f of ['business_id', 'billing_address', 'consent_company']) field(f).required = isCompany()
         updateReady()
