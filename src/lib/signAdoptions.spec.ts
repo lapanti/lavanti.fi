@@ -121,6 +121,12 @@ describe('parseAdoption', () => {
         })
     })
 
+    it('takes the stepper value when the other-number chip is chosen', () => {
+        const r = parseAdoption(form({ ...valid, quantity: 'muu', quantity_other: '12' }), NOW)
+        expect(r.ok && r.row.quantity).toBe(12)
+        expect(parseAdoption(form({ ...valid, quantity: 'muu' }), NOW)).toEqual({ error: 'quantity', ok: false })
+    })
+
     it('treats the page opt-in as a list opt-in', () => {
         const r = parseAdoption(form({ ...valid, page: 'yes' }), NOW)
         expect(r.ok && r.row.public).toBe(1)
