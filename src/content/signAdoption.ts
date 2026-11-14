@@ -471,7 +471,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             missingName: 'Kirjoita nimi uudelleen, niin näet kylttisi.',
             next: 'Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi.',
             payer: {
-                label: 'Maksajan nimi, jos maksat toisen henkilön MobilePaylla',
+                label: 'Maksajan nimi, jos maksat toisen henkilön MobilePayllä',
                 save: 'Tallenna',
                 saved: 'Tallennettu.',
             },
