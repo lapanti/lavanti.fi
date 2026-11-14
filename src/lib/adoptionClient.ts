@@ -80,9 +80,16 @@ export const shareUrl = (origin: string, path: string, medium: 'copy' | 'story')
 /** Instagram's and Facebook's in-app browsers can't save a generated image or share files. */
 export const isInAppBrowser = (userAgent: string): boolean => /Instagram|FBAN|FBAV|FB_IAB/i.test(userAgent)
 
+/** A same-site absolute path ("/fi/…"); anything else, such as "//host" or "javascript:", is refused. */
+const SAME_SITE_PATH = /^\/(?![/\\])[\w\-./]*$/
+
 /** The thanks page URL; carries only the ref, count and company flag. */
-export const thanksHref = (path: string, params: ThanksParams): string =>
-    `${path}?ref=${params.ref}&n=${params.quantity}&y=${params.company ? 1 : 0}`
+export const thanksHref = (path: string, params: ThanksParams): string => {
+    if (!SAME_SITE_PATH.test(path)) throw new Error('lomake')
+    const query = new URLSearchParams({ n: String(params.quantity), ref: params.ref, y: params.company ? '1' : '0' })
+
+    return `${path}?${query.toString()}`
+}
 
 /** Name width on the sign the SVG text may take before it shrinks (sign width minus padding). */
 const NAME_MAX_WIDTH = 520
