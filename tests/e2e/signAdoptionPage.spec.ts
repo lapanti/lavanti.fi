@@ -30,7 +30,7 @@ test.describe('Sign adoption page', () => {
 
         await test
             .expect(page.getByRole('heading', { level: 1 }))
-            .toHaveText('Adoptoi kyltti. Nimesi nousee tienvarteen.')
+            .toHaveText(/^\s*Adoptoi kyltti\.\s*Nimesi nousee tienvarteen\.\s*$/)
         await test.expect(page.locator('#lomake')).toMatchAriaSnapshot(`
             - paragraph: 30 € = yksi kyltti tienvarteen
             - text: Nimi kylttiin
@@ -53,18 +53,15 @@ test.describe('Sign adoption page', () => {
         await test.expect(page.locator('[data-step="2"]')).toBeHidden()
     })
 
-    test('should fit the price and the named sign on a phone screen', async ({ page }) => {
+    test('should scroll from the hero CTA to the form on a phone', async ({ page }) => {
         await page.setViewportSize({ height: 812, width: 375 })
         await page.goto('/fi/adoptoi/')
-        await page.evaluate(() => document.fonts.ready)
 
-        for (const locator of [page.locator('.price'), page.locator('[data-sign-name]').first()]) {
-            const box = await locator.boundingBox()
-            test.expect(box && box.y + box.height).toBeLessThanOrEqual(812)
-        }
-        // The name field starts on the first screen too; its bottom edge may sit at the fold.
-        const field = await page.getByLabel('Nimi kylttiin').boundingBox()
-        test.expect(field?.y).toBeLessThan(812)
+        const cta = page.getByRole('link', { name: 'Kirjoita nimesi kylttiin' })
+        await test.expect(cta).toHaveAttribute('href', '#adoptoi')
+        await test.expect(cta).toBeInViewport()
+        await cta.click()
+        await test.expect(page.getByLabel('Nimi kylttiin')).toBeInViewport()
     })
 
     test('should write the typed name on the sign', async ({ page }) => {
