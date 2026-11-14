@@ -1,9 +1,9 @@
 {
-    "asOf": "2026-11-08",
+    "asOf": "2026-11-14",
     "raised": {
         "own": {
             "banked": 2000,
-            "pending": 8000
+            "pending": 13000
         },
         "loans": {
             "banked": 0,
@@ -33,7 +33,7 @@
     "spent": {
         "media": {
             "budgeted": 11890,
-            "banked": 0,
+            "banked": 8,
             "committed": 3340
         },
         "outdoor": {
@@ -43,7 +43,7 @@
         },
         "print": {
             "budgeted": 3080,
-            "banked": 0,
+            "banked": 6,
             "committed": 524
         },
         "design": {

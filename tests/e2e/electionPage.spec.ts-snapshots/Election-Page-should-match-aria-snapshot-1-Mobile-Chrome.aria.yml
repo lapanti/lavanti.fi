@@ -118,7 +118,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /2 \d+ € \+ 9 \d+ € tilittämättä/
+    - definition: /2 \d+ € \+ \d+ \d+ € tilittämättä/
     - term: Käytetty
     - definition: /\d+ € \+ \d+ \d+ € sitouduttu/
     - term: Vielä kerättävä

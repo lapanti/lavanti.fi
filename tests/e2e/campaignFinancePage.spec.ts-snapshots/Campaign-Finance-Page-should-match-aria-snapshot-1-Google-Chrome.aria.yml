@@ -12,7 +12,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /2 \d+ € \+ 9 \d+ € tilittämättä/
+    - definition: /2 \d+ € \+ \d+ \d+ € tilittämättä/
     - term: Käytetty
     - definition: /\d+ € \+ \d+ \d+ € sitouduttu/
     - term: Vielä kerättävä
@@ -48,7 +48,7 @@
     - figure "Budjetin rahat lähteittäin sekä osuudet koko budjetista":
       - text: ""
       - list:
-        - listitem: /Omat varat 2 \d+ € \+ 8 \d+ € tilittämättä \d+,\d+ %/
+        - listitem: /Omat varat 2 \d+ € \+ \d+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Lainat 0 € \d+,\d+ %/
         - listitem: /Yksityishenkilöt 0 € \+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Yritykset 0 € \+ \d+ € tilittämättä \d+,\d+ %/
@@ -66,13 +66,13 @@
       - text: ""
       - list:
         - listitem: /Käytetty \d+ € \+ \d+ \d+ € sitouduttu/
-        - listitem: /Käyttämättä \d+ €/
+        - listitem: /Käyttämättä 5 \d+ €/
     - 'figure "Menot luokittain: maksettu, sitouduttu ja budjetoitu"':
       - text: ""
       - list:
-        - listitem: /Vaalimainonta medioissa 0 € \+ 3 \d+ € sitouduttu \/ \d+ \d+ €/
+        - listitem: /Vaalimainonta medioissa 8 € \+ 3 \d+ € sitouduttu \/ \d+ \d+ €/
         - listitem: /Ulkomainonta 0 € \+ 5 \d+ € sitouduttu \/ \d+ \d+ €/
-        - listitem: /Vaalilehdet, esitteet ja muu painettu materiaali 0 € \+ \d+ € sitouduttu \/ 3 \d+ €/
+        - listitem: /Vaalilehdet, esitteet ja muu painettu materiaali 6 € \+ \d+ € sitouduttu \/ 3 \d+ €/
         - listitem: /Mainonnan suunnittelu 0 € \+ 1 \d+ € sitouduttu \/ 1 \d+ €/
         - listitem: /Vaalitilaisuudet 0 € \/ 2 \d+ €/
         - listitem: /Vastikkeellisen tuen hankintakulut 0 € \/ 1 \d+ €/
