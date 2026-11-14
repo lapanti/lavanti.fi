@@ -41,7 +41,9 @@ const inSitemap = (page) =>
     // Exclude the noindex volunteer thank-you pages
     !/^\/(fi\/liity\/kiitos|sv\/bli-med\/tack|en\/join\/thanks)\/$/.test(new URL(page).pathname) &&
     // Exclude the noindex recommendation form and its thank-you page
-    !/^\/fi\/suosittele\/(kiitos\/)?$/.test(new URL(page).pathname)
+    !/^\/fi\/suosittele\/(kiitos\/)?$/.test(new URL(page).pathname) &&
+    // Exclude the noindex sign adoption thank-you and personal pages (the landing pages stay)
+    !/^\/(fi\/adoptoi|sv\/adoptera|en\/adopt)\/[^/]+\/$/.test(new URL(page).pathname)
 
 // https://astro.build/config
 export default defineConfig({
