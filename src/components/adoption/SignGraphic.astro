@@ -13,6 +13,7 @@ interface Props {
 
 const { lang, name } = Astro.props
 const t = adoptionContent[lang].sign
+const text = SIGN_TEXT[lang]
 /** The photo on the sign; the share image script loads the same URL (data-photo). */
 const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
 const shown = name?.trim() ?? ''
@@ -68,14 +69,14 @@ const shown = name?.trim() ?? ''
             fill={SIGN_COLORS.firstName}
             font-size={SIGN.firstName.size}
             x={SIGN.padX}
-            y={SIGN.firstName.y}>{SIGN_TEXT.firstName.toUpperCase()}</text
+            y={SIGN.firstName.y}>{text.firstName.toUpperCase()}</text
         >
         <text
             class="display"
             fill={SIGN_COLORS.lastName}
             font-size={SIGN.lastName.size}
             x={SIGN.padX - 4}
-            y={SIGN.lastName.y}>{SIGN_TEXT.lastName.toUpperCase()}</text
+            y={SIGN.lastName.y}>{text.lastName.toUpperCase()}</text
         >
         <text
             class="body"
@@ -83,7 +84,7 @@ const shown = name?.trim() ?? ''
             font-size={SIGN.tagline.size}
             font-weight="600"
             x={SIGN.padX}
-            y={SIGN.tagline.y}>{SIGN_TEXT.tagline}</text
+            y={SIGN.tagline.y}>{text.tagline}</text
         >
         <rect fill={SIGN_COLORS.band} height={SIGN.band.h} width={SIGN.width} y={SIGN.band.y}></rect>
         <text
@@ -103,7 +104,7 @@ const shown = name?.trim() ?? ''
             font-size={SIGN.payer.size}
             text-anchor="middle"
             x={SIGN.width / 2}
-            y={SIGN.payer.y}>{SIGN_TEXT.payer}</text
+            y={SIGN.payer.y}>{text.payer}</text
         >
     </svg>
     <figcaption>{t.finePrint}</figcaption>
