@@ -122,7 +122,7 @@
     - term: Spent so far
     - definition: /€\d+ \+ €\d+,\d+ committed/
     - term: Still to raise
-    - definition: /€\d+,\d+ As of 8 November \d+/
+    - definition: /€\d+,\d+ As of \d+ November \d+/
     - paragraph:
       - link "See the campaign finances":
         - /url: /en/elections/campaign-finance/
