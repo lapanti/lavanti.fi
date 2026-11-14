@@ -1,0 +1,73 @@
+---
+import type { Lang } from '../../content/nav'
+
+import { adoptionContent, MOBILEPAY_NUMBER } from '../../content/signAdoption'
+
+interface Props {
+    lang: Lang
+}
+
+/*
+ * MobilePay 46492: the number with a copy button, the /mp button that opens the app on a phone
+ * (and counts the click) and, on wide screens, the QR code. The number and the QR always travel
+ * together; a phone can't scan its own screen, so the QR is hidden there. Slot: text above.
+ */
+const { lang } = Astro.props
+const t = adoptionContent[lang].mobilePay
+---
+
+<style>
+    .mobilepay {
+        align-items: start;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    @media (min-width: 900px) {
+        .mobilepay {
+            grid-template-columns: minmax(0, 1fr) 10rem;
+        }
+    }
+    .mobilepay .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .mobilepay .number {
+        color: var(--colorsForestGreen);
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        margin: 0;
+    }
+    .mobilepay img {
+        display: none;
+        height: auto;
+        width: 10rem;
+    }
+    @media (min-width: 900px) {
+        .mobilepay img {
+            display: block;
+        }
+    }
+    .mobilepay :global(.btn) {
+        cursor: pointer;
+    }
+</style>
+
+<div class="mobilepay">
+    <div>
+        <slot />
+        <p class="number">{MOBILEPAY_NUMBER}</p>
+        <div class="actions">
+            <a class="btn btn--solid" href="/mp?utm_source=adoptoi&utm_campaign=adoptoi-kyltti">{t.open}</a>
+            <button class="btn" data-copied={t.copied} data-copy={MOBILEPAY_NUMBER} type="button">{t.copyNumber}</button
+            >
+        </div>
+    </div>
+    <img alt={t.qrAlt} height="800" loading="lazy" src="/qr/mobilepay-46492.png" width="800" />
+</div>
+
+<script src="./copy.client.ts"></script>
