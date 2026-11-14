@@ -1,0 +1,28 @@
+---
+import type { AdoptionPage } from '../../../content/adoptionPages'
+
+import AdoptionPersonal from '../../../components/adoption/AdoptionPersonal.astro'
+import { adoptionPagesFor } from '../../../content/adoptionPages'
+import { adoptionContent } from '../../../content/signAdoption'
+import PageLayout from '../../../layouts/PageLayout.astro'
+
+// Opt-in personal adoption pages from src/content/adoptionPages.json; noindex, no sitemap entry.
+export const getStaticPaths = () =>
+    adoptionPagesFor('en').map((page) => ({ params: { slug: page.slug }, props: { page } }))
+
+const { page } = Astro.props as { page: AdoptionPage }
+const t = adoptionContent.en.personal
+---
+
+<PageLayout
+    description={t.description(page.name)}
+    lang="en"
+    noindex
+    ogCard
+    pageTitle={t.pageTitle(page.name)}
+    plated
+    slug={`en/adopt/${page.slug}`}
+    title={t.title(page.name)}
+>
+    <AdoptionPersonal page={page} />
+</PageLayout>
