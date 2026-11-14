@@ -31,6 +31,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Sign adoption print lists and names to cover (npm run adoptions -- print | revoke); personal data
+/adoptions-print/
+
 # testing
 coverage-summary.json
 report.json
