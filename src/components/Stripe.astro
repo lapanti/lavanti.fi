@@ -8,8 +8,11 @@ interface Props {
      * (the synthesis section's right-edge column).
      */
     orientation?: 'horizontal' | 'vertical-reversed'
-    /** `slim` is the half-height band used at the top of inner (non-home) pages. */
-    size?: 'full' | 'slim'
+    /**
+     * `slim` is the half-height band used at the top of inner (non-home) pages. `thin` is
+     * `slim` on wide screens and a narrow band on phones.
+     */
+    size?: 'full' | 'slim' | 'thin'
 }
 
 const { orientation = 'horizontal', size = 'full' } = Astro.props
@@ -57,7 +60,11 @@ const reversed = [colors.signalBlue, colors.brightSky, colors.aquaBlue, colors.b
     aria-hidden="true"
     class:list={[
         'stripes',
-        { 'stripe--vertical': orientation === 'vertical-reversed', 'stripes--slim': size === 'slim' },
+        {
+            'stripe--vertical': orientation === 'vertical-reversed',
+            'stripes--slim': size !== 'full',
+            'stripes--thin': size === 'thin',
+        },
     ]}
 >
     <i></i><i></i><i></i><i></i><i></i>

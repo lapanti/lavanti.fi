@@ -32,10 +32,10 @@ test.describe('Sign adoption page', () => {
             .expect(page.getByRole('heading', { level: 1 }))
             .toHaveText('Adoptoi kyltti. Nimesi nousee tienvarteen.')
         await test.expect(page.locator('#lomake')).toMatchAriaSnapshot(`
+            - paragraph: 30 € = yksi kyltti tienvarteen
             - text: Nimi kylttiin
             - textbox "Nimi kylttiin"
             - paragraph: 0/24
-            - paragraph: 30 € = yksi kyltti tienvarteen
             - group "Montako kylttiä adoptoit?":
               - text: Montako kylttiä adoptoit?
               - radio "1 kyltti · 30 €" [checked]
@@ -51,6 +51,20 @@ test.describe('Sign adoption page', () => {
         `)
         await test.expect(page.getByRole('img', { name: /Havainnekuva vaalikyltistä/ })).toBeVisible()
         await test.expect(page.locator('[data-step="2"]')).toBeHidden()
+    })
+
+    test('should fit the price, the named sign and the name field on a phone screen', async ({ page }) => {
+        await page.setViewportSize({ height: 812, width: 375 })
+        await page.goto('/fi/adoptoi/')
+
+        for (const locator of [
+            page.locator('.price'),
+            page.locator('[data-sign-name]').first(),
+            page.getByLabel('Nimi kylttiin'),
+        ]) {
+            const box = await locator.boundingBox()
+            test.expect(box && box.y + box.height).toBeLessThanOrEqual(812)
+        }
     })
 
     test('should write the typed name on the sign', async ({ page }) => {
