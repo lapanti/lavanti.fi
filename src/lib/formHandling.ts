@@ -1,6 +1,6 @@
 /**
  * Helpers shared by the Pages Function handlers behind the site's own forms
- * (`src/lib/volunteers.ts`, `src/lib/recommendationSubmissions.ts`).
+ * (`src/lib/volunteers.ts`, `src/lib/recommendationSubmissions.ts`, `src/lib/signAdoptions.ts`).
  */
 
 /** Minimal D1 surface used here, so no Workers type package is needed. */
@@ -49,7 +49,7 @@ export const json = (body: unknown, status = 200): Response =>
         status,
     })
 
-const timingSafeEqual = (a: string, b: string): boolean => {
+export const timingSafeEqual = (a: string, b: string): boolean => {
     const enc = new TextEncoder()
     const x = enc.encode(a)
     const y = enc.encode(b)
