@@ -69,6 +69,16 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
 - **Logic:** `src/lib/signAdoptions.ts`; the Functions in `functions/api/adoptoi*` are thin
   wrappers, like `functions/api/liity.ts`. Shared helpers come from `src/lib/formHandling.ts`;
   `suppress()` comes from `src/lib/volunteers.ts`.
+- **Browser code:** pure helpers in `src/lib/adoptionClient.ts` and `src/lib/adoptionShareImage.ts`
+  (unit-tested); DOM glue in `src/components/adoption/*.client.ts`, loaded with
+  `<script src="./x.client.ts">` (Prettier would mangle an inline module script) and listed as knip
+  entries. Strings the scripts need reach them as JSON in `<script type="application/json">`.
+- **Layout:** `PageLayout` `variant: 'page'` renders neither eyebrow nor emphasis, so the H1 holds
+  both sentences ("Adoptoi kyltti. Nimesi nousee tienvarteen."), `ogTitle`/`ogEmphasis` split them
+  on the card, and the eyebrow sits on the form plate under the H1. The thanks pages have a
+  question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages pass `ogCard` to
+  `PageLayout` to keep the generated card on a noindex page.
+- **Checks:** `npm run check:adoption-pages` runs the personal page rule by hand.
 - **Copy:** `src/content/signAdoption.ts`, `Record<Lang, …>`, including the confirmation email
   templates. Finnish is the source; sv/en are faithful translations.
 - **Bindings:** D1 `DB`; secrets `TURNSTILE_SECRET`, `ADOPTIONS_TOKEN` (new) and `LIITY_STATS_TOKEN`.
@@ -79,7 +89,7 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
 |---|---|
 | `lang` | `fi` · `sv` · `en` |
 | `sign_name` | NFC-normalised, whitespace collapsed, 2–24 characters. Letters (`\p{L}`), space, hyphen, apostrophe (`'` `’`), period. Digits and `&` only when `company_name` is set. |
-| `quantity` | integer 1–20 |
+| `quantity` | integer 1–20; the "other number" chip posts `muu` with the stepper value in `quantity_other` |
 | `municipality` | one of the 25 municipalities of the Uusimaa electoral district (Uusimaa without Helsinki) or `ei-toivetta` |
 | `email` | same rule as the volunteer form |
 | `company_name` | optional, ≤ 100. When set: `business_id` (Y-tunnus, checksum-valid), `billing_address` (≤ 200, email or e-invoice address) and `consent_company=yes` are required |
@@ -398,3 +408,4 @@ interface AdoptionPage {
 | Date | Change |
 |------|--------|
 | 2026-11-14 | Initial spec |
+| 2026-11-14 | Synced with the implementation: quantity_other, client script pattern, H1/eyebrow layout, ogCard, check script |
