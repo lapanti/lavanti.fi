@@ -11,13 +11,34 @@ import type { Lang } from './nav'
  * `node --experimental-strip-types`.
  */
 
-/** Text on the sign itself. The physical sign is Finnish, so the graphic is too in every locale. */
-export const SIGN_TEXT = {
+interface SignText {
+    firstName: string
+    lastName: string
+    payer: string
+    tagline: string
+}
+
+const FI_SIGN_TEXT: SignText = {
     firstName: 'Lauri',
     lastName: 'Lavanti',
     payer: 'Mainoksen maksaja: Digitaalisen itsenäisyyden puolesta ry',
     tagline: 'Eduskuntavaalit 2027 · Uusimaa',
-} as const
+}
+
+/**
+ * Text on the sign graphic and the share images. The Swedish page shows a Swedish sign; the
+ * English page shows the Finnish one, since there is no English sign.
+ */
+export const SIGN_TEXT: Record<Lang, SignText> = {
+    en: FI_SIGN_TEXT,
+    fi: FI_SIGN_TEXT,
+    sv: {
+        firstName: 'Lauri',
+        lastName: 'Lavanti',
+        payer: 'Annonsens betalare: Digitaalisen itsenäisyyden puolesta ry',
+        tagline: 'Riksdagsvalet 2027 · Nyland',
+    },
+}
 
 export const MOBILEPAY_NUMBER = '46492'
 /** Title of the invoice sent to a company; the owner copies it from `npm run adoptions`. */
