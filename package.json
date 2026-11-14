@@ -31,6 +31,7 @@
     "jev:eval": "node --env-file-if-exists=.env --experimental-strip-types scripts/jev/eval.ts",
     "openverse": "node --env-file-if-exists=.env --experimental-strip-types scripts/openverse.ts",
     "recommendations": "node --env-file-if-exists=.env --experimental-strip-types scripts/recommendations/cli.ts",
+    "adoptions": "node --env-file-if-exists=.env --experimental-strip-types scripts/adoptions/cli.ts",
     "suggest:faq": "node --env-file-if-exists=.env --experimental-strip-types scripts/suggest-faq.ts",
     "suggest:links": "node --env-file-if-exists=.env --experimental-strip-types scripts/suggest-links.ts",
     "suggest:tags": "node --env-file-if-exists=.env --experimental-strip-types scripts/suggest-tags.ts",
