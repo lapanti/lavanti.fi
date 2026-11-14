@@ -65,6 +65,21 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
             top: 6.5rem;
         }
     }
+    /*
+     * Phones: a smaller sign and tighter gaps, so the price, the sign with the typed name and the
+     * name field all fit the first screen (375×812) together with the H1 and the eyebrow.
+     */
+    @media (max-width: 768px) {
+        .adoption {
+            gap: 1rem;
+        }
+        .adoption > :global(.sign-graphic) {
+            max-width: 11.5rem;
+        }
+        .step[data-step='1']:not([hidden]) {
+            gap: 1rem;
+        }
+    }
     .adoption .site-form {
         margin-top: 0;
     }
@@ -193,6 +208,8 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
         <input name="utm_campaign" type="hidden" value="" />
 
         <div class="step" data-step="1">
+            <p class="price">{t.price}</p>
+
             <div>
                 <label for="adoption-name">{t.nameLabel}<span aria-hidden="true" class="req"> *</span></label>
                 <input
@@ -209,8 +226,6 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
                     {t.nameCounter(0, MAX_NAME_LENGTH)}
                 </p>
             </div>
-
-            <p class="price">{t.price}</p>
 
             <fieldset>
                 <legend>{t.chipsLegend}</legend>
