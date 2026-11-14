@@ -70,7 +70,7 @@ export const ADOPTION_MUNICIPALITIES = [...DISTRICT_MUNICIPALITIES, NO_PREFERENC
 export type AdoptionMunicipality = (typeof ADOPTION_MUNICIPALITIES)[number]
 
 export const MAX_NAME_LENGTH = 24
-export const MAX_MESSAGE_LENGTH = 140
+const MAX_MESSAGE_LENGTH = 140
 /** Days after created_at during which an adopter may still change their message. */
 const MESSAGE_WINDOW_DAYS = 7
 /** Seconds between two writes to the same row through `viesti`. */
@@ -496,7 +496,7 @@ export const handlePending = async (request: Request, env: AdoptionEnv): Promise
     return json({ adoptions, messages })
 }
 
-export const ACTIONS = ['approve', 'reject', 'approve-message', 'reject-message', 'printed'] as const
+const ACTIONS = ['approve', 'reject', 'approve-message', 'reject-message', 'printed'] as const
 type Action = (typeof ACTIONS)[number]
 const PAID_VIA = ['mobilepay', 'lasku'] as const
 

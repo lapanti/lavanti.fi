@@ -34,11 +34,11 @@ export interface Adoption {
     status: string
 }
 
-export const EUROS_PER_SIGN = 30
+const EUROS_PER_SIGN = 30
 /** At or above this total per giver the support is disclosed by name; check the other channels too. */
-export const DISCLOSURE_LIMIT = 2000
+const DISCLOSURE_LIMIT = 2000
 /** The most one giver may give across all channels. */
-export const CAP = 6000
+const CAP = 6000
 
 /** Legal-form tokens that mark a company name; MobilePay is for private persons in their own name. */
 const COMPANY_FORM = /(?:^|[\s.,])(oyj|oy|ab|ky|tmi|ry|osk)(?=$|[\s.,])/i
@@ -131,7 +131,7 @@ const csvCell = (value: unknown): string => {
     return /[",\n]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s
 }
 
-export const PRINT_COLUMNS = ['id', 'ref_code', 'sign_name', 'quantity', 'municipality', 'company_name'] as const
+const PRINT_COLUMNS = ['id', 'ref_code', 'sign_name', 'quantity', 'municipality', 'company_name'] as const
 
 /** The print list for the sign round: one line per adoption, the name as it goes on the sign. */
 export const printCsv = (rows: Adoption[]): string =>
