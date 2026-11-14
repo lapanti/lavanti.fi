@@ -74,7 +74,7 @@
     "@resvg/resvg-js": "2.6.2",
     "@siteimprove/alfa-playwright": "0.84.3",
     "@siteimprove/alfa-test-utils": "0.84.3",
-    "@stylistic/eslint-plugin": "5.10.0",
+    "@stylistic/eslint-plugin": "6.0.0",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@types/node": "26.6.6",
