@@ -70,9 +70,16 @@ describe('loadWall', () => {
 describe('thanksHref', () => {
     it('carries the ref, count and company flag only', () => {
         expect(thanksHref('/fi/adoptoi/kiitos/', { company: true, quantity: 3, ref: 'K-12345' })).toBe(
-            '/fi/adoptoi/kiitos/?ref=K-12345&n=3&y=1'
+            '/fi/adoptoi/kiitos/?n=3&ref=K-12345&y=1'
         )
     })
+
+    it.each(['//evil.example/', 'javascript:alert(1)', 'https://evil.example/', '/\\evil.example/', 'fi/kiitos/'])(
+        'refuses %s as the thanks path',
+        (path) => {
+            expect(() => thanksHref(path, { company: false, quantity: 1, ref: 'K-12345' })).toThrow('lomake')
+        }
+    )
 })
 
 const memory = () => {
