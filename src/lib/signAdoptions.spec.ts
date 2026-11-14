@@ -178,6 +178,18 @@ describe('generators', () => {
         expect(newEditToken()).toMatch(/^[A-Za-z0-9_-]{22}$/)
     })
 
+    it('redraws values in the biased tail instead of folding them with modulo', () => {
+        const draws = [0xffffffff, 5]
+        const spy = vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
+            ;(array as Uint32Array)[0] = draws.shift() ?? 0
+
+            return array
+        })
+        expect(newRefCode()).toBe('K-10005')
+        expect(spy).toHaveBeenCalledTimes(2)
+        spy.mockRestore()
+    })
+
     it('hashes a token to hex SHA-256', async () => {
         expect(await hashToken('abc')).toBe('ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad')
     })
