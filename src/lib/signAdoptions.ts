@@ -155,7 +155,8 @@ export const parseAdoption = (form: FormData, now: Date): ParseResult => {
     const signName = normaliseName(text(form, 'sign_name'))
     if (!isValidSignName(signName, company)) return { error: 'sign_name', ok: false }
 
-    const quantityText = text(form, 'quantity')
+    // The "other number" chip posts `muu` and the stepper's value as quantity_other.
+    const quantityText = text(form, text(form, 'quantity') === 'muu' ? 'quantity_other' : 'quantity')
     const quantity = /^\d{1,2}$/.test(quantityText) ? Number(quantityText) : 0
     if (quantity < 1 || quantity > MAX_SIGNS) return { error: 'quantity', ok: false }
 
