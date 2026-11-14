@@ -75,12 +75,17 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   entries. Strings the scripts need reach them as JSON in `<script type="application/json">`.
 - **Layout:** `PageLayout` `variant: 'page'` renders neither eyebrow nor emphasis, so the H1 holds
   both sentences ("Adoptoi kyltti. Nimesi nousee tienvarteen."), `ogTitle`/`ogEmphasis` split them
-  on the card, and the eyebrow sits on the form plate under the H1. The thanks pages have a
-  question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages pass `ogCard` to
-  `PageLayout` to keep the generated card on a noindex page.
+  on the card, and the eyebrow sits on the form plate under the H1. The landing pages set
+  `compactBanner: true` (no empty band above the H1 and a 24 px stripe at ≤ 768 px) and pass
+  `tight` to the form plate, so the price, the sign with the typed name and the name field fit a
+  375×812 first screen; desktop is unchanged. The thanks pages have the H1 "Kylttisi odottaa
+  lahjoitustasi" and a question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages
+  pass `ogCard` to `PageLayout` to keep the generated card on a noindex page.
 - **Checks:** `npm run check:adoption-pages` runs the personal page rule by hand.
 - **Copy:** `src/content/signAdoption.ts`, `Record<Lang, …>`, including the confirmation email
-  templates. Finnish is the source; sv/en are faithful translations.
+  templates. Finnish is the source; sv/en are faithful translations. `SIGN_TEXT` is per locale:
+  sv shows a Swedish sign ("Riksdagsvalet 2027 · Nyland", "Annonsens betalare: …"), en the
+  Finnish one. Amounts in new strings keep a no-break space before "€".
 - **Bindings:** D1 `DB`; secrets `TURNSTILE_SECRET`, `ADOPTIONS_TOKEN` (new) and `LIITY_STATS_TOKEN`.
 
 ### Submit
@@ -182,11 +187,14 @@ punctuation and no "ei ole X, vaan Y" constructions.
 **Landing, first screen (mobile), in order:** eyebrow "Lauri Lavanti, Vihreiden
 eduskuntavaaliehdokas Uudellamaalla" · H1 "Adoptoi kyltti. Nimesi nousee tienvarteen." · sign graphic
 with Lauri's photo, ghost text "Sinun nimesi" and the "Mainoksen maksaja" line; fine print
-"Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "Nimi kylttiin" (maxlength 24, counter;
-the sign renders the typed value directly, no animation) · "30 € = yksi kyltti tienvarteen" · chips
-"1 kyltti · 30 €" (preselected), "2 kylttiä · 60 €", "5 kylttiä · 150 €", "Muu määrä kylttejä"
-(stepper 1–20) → "Lahjoituksesi: 30 €" · CTA "Adoptoi kyltti" / "Adoptoi 2 kylttiä" · live line from
-`seina`: "Jo 14 kylttiä on adoptoitu." and "Viimeksi adoptoivat: A, B ja C." (each only at ≥ 3).
+"Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "30 € = yksi kyltti tienvarteen" ·
+"Nimi kylttiin" (maxlength 24, counter; the sign renders the typed value directly, no animation) ·
+chips "1 kyltti · 30 €" (preselected), "2 kylttiä · 60 €", "5 kylttiä · 150 €", "Muu määrä kylttejä"
+(stepper 1–20) → "Lahjoituksesi: 30 €" · always visible "Digitaalisen itsenäisyyden puolesta ry on
+tukiyhdistykseni, joka järjestää vaalikeräyksen ja maksaa kyltit." + "Lue, miten kampanjani
+rahoitetaan." (link to the campaign finance page) · CTA "Adoptoi kyltti" / "Adoptoi 2 kylttiä" ·
+live line from `seina`: "Jo 14 kylttiä on adoptoitu." and "Viimeksi adoptoivat: A, B ja C." (each
+only at ≥ 3).
 
 **Below, in order:** intro → why → close + Liity → momentum (count, "Toivotut kunnat") → adopters
 list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sessionStorage) →
@@ -195,8 +203,8 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
 - pageTitle "Adoptoi vaalikyltti, nimesi tienvarteen"
 - description "Adoptoi vaalikyltti Uudellamaalla lahjoittamalla 30 euroa Lauri Lavannin kampanjalle.
   Kiitokseksi nimesi kirjoitetaan kylttiin, joka nousee tienvarteen."
-- Intro "Toivoisin, että adoptoisit kyltin. Lahjoitat 30 euroa vaalikampanjalleni, ja kiitokseksi
-  nimesi kirjoitetaan kyltin alareunaan. Kyltti nousee keväällä tienvarteen Uudellamaalla."
+- Intro "Adoptoi kyltti ja tue kampanjaani 30 eurolla. Se merkitsee minulle paljon. Kiitokseksi
+  nimesi kirjoitetaan kyltin alareunaan, ja kyltti nousee keväällä tienvarteen Uudellamaalla."
 - Why (verbatim):
   > Suomi on aina varautunut. Meillä on viljaa, lääkkeitä ja polttoainetta varastossa pahan päivän
   > varalle, ja jäänmurtajat pitävät meret auki kovimpanakin talvena. Ennen kriisi katkaisi
@@ -204,7 +212,7 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
   >
   > Kun Yhdysvallat asetti pakotteita Kansainvälisen rikostuomioistuimen pääsyyttäjälle, hän menetti
   > pääsyn sähköpostiinsa. Oikeusministeriö ehti jo päättää vaalitietojärjestelmän siirtämisestä
-  > Amazonin pilvipalveluun ja perui päätöksen vasta maaliskuussa.
+  > Amazonin pilvipalveluun ja perui päätöksen vasta maaliskuussa 2026.
   >
   > Olen yksi Digitaalinen itsenäisyys -kansalaisaloitteen vastuuhenkilöistä, ja yli 50 000
   > suomalaista allekirjoitti sen. Aloite vaatii, että yhteiskunnalle kriittiset julkiset digipalvelut
@@ -220,9 +228,9 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
   + "Kuka olen: Lauri Lavanti" (link to /fi/laurista/).
 - Close "Olen Vihreiden eduskuntavaaliehdokas Uudellamaalla. Auta minua viemään nämä asiat
   eduskuntaan." + "Liity mukaan: lavanti.fi/liity"
-- Visibility "Nimesi kirjoitetaan kyltin alareunaan, erilleen kampanjatekstistä. Sen huomaa
-  jalankulkija ja pyöräilijä, ei autoilija. Jos haluat, nimesi näkyy myös adoptoijien listalla
-  tällä sivulla."
+- Visibility "Nimesi kirjoitetaan kyltin alareunaan, erilleen kampanjatekstistä. Nimesi näkyy
+  niille, jotka kulkevat ohi jalan tai pyörällä. Jos haluat, nimesi näkyy myös adoptoijien
+  listalla tällä sivulla."
 - Transparency "Kerron budjettini avoimesti koko kampanjan ajan. Vaalirahoitussivulla näet
   budjettini ja sen, mitä kampanjat maksoivat Uudellamaalla vuonna 2023."
 - Näin lahjoitus toimii ¶1 "Lahjoitus menee tukiyhdistykseni Digitaalisen itsenäisyyden puolesta
@@ -238,8 +246,8 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
 - Fallback "Jokainen lahjoitus auttaa. Voit lahjoittaa myös haluamasi summan MobilePayllä numerolla
   46492 tai osoitteessa lavanti.fi/lahjoita." + QR + Liity.
 
-**Step 2** "Vielä yhteystieto ja lupa nimen käyttöön." · pinned "Kylttisi: {nimi}" (n > 1:
-"Kylttisi: {nimi} · 2 kylttiä") · "Missä kunnassa toivot kylttisi seisovan?" (hint "Otamme toiveen
+**Step 2** "Vielä yhteystieto ja lupa nimen käyttöön." · pinned "Kylttisi: {nimi} · 30 €" (n > 1:
+"Kylttisi: {nimi} · 2 kylttiä · 60 €") · "Missä kunnassa toivot kylttisi seisovan?" (hint "Otamme toiveen
 huomioon, mutta paikkaa emme voi luvata.") · Sähköposti (hint "Lähetämme vahvistuksen, otamme
 yhteyttä, jos nimessä on kysyttävää, ja kerromme, kun kyltit nousevat tienvarsille.") ·
 `<details>` "Lahjoitan yrityksenä": yrityksen nimi, Y-tunnus, laskutusosoite, required "Yritys on
@@ -248,23 +256,29 @@ required "Annan luvan kirjoittaa nimeni Lauri Lavannin vaalikylttiin. Tiedän, e
 kertoo tukevani hänen ehdokkuuttaan." (n > 1: "vaalikyltteihin", "kylteissä") · required "Nimi on
 oma nimeni. Olen täysi-ikäinen." (company block open: "Nimi on oma nimeni tai sen yrityksen nimi,
 jota saan edustaa. Olen täysi-ikäinen.") · optional "Nimeni saa näkyä tämän sivun adoptoijien
-listalla." · optional "Haluan oman sivun osoitteeseen lavanti.fi/fi/adoptoi/<nimi>/. Nimesi ja
-viestisi tallentuvat sivuston julkiseen lähdekoodiin. Voit pyytää sivun poistamista milloin
-tahansa." · "Voit perua luvan milloin tahansa vastaamalla vahvistusviestiimme tai kirjoittamalla
-osoitteeseen lauri@lavanti.fi. Jos perut luvan nimen käyttöön, peitämme nimen kyltistä ja poistamme
-sen sivustolta." · Turnstile + honeypot · submit "Adoptoi kyltti" / "Adoptoi 2 kylttiä".
+listalla." · optional "Haluan oman sivun osoitteeseen lavanti.fi/fi/adoptoi/<nimi>/. Sivu on
+julkinen, ja nimesi ja viestisi jäävät sivuston julkiseen muutoshistoriaan myös, jos sivu
+poistetaan. Voit pyytää sivun poistamista milloin tahansa." · "Voit perua luvan milloin tahansa
+vastaamalla vahvistusviestiimme tai kirjoittamalla osoitteeseen lauri@lavanti.fi. Jos perut luvan
+nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta." · Turnstile + honeypot ·
+"Seuraavaksi lahjoitat 30 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi." (n × 30;
+with a company name: "Seuraavaksi lähetämme 30 euron laskun antamaasi laskutusosoitteeseen.") ·
+submit "Adoptoi kyltti" / "Adoptoi 2 kylttiä".
 
-**Thanks** (URL carries only validated `?ref=K-\d{5}&n=1..20&y=0|1`):
-1. Their sign from sessionStorage; when missing, the "Nimi kylttiin" field again.
-2. "Melkein valmis! Kylttisi odottaa enää vain lahjoitustasi."
-3. "Lahjoita 30 euroa MobilePayllä numerolla 46492." (n × 30) · copy button · "Kirjoita viestiksi
-   {ref}, niin löydämme lahjoituksesi." · `/mp` button · QR on wide screens · "Maksajan nimi, jos
-   maksat toisen henkilön MobilePaylla".
+**Thanks** (URL carries only validated `?ref=K-\d{5}&n=1..20&y=0|1`), H1 "Kylttisi odottaa
+lahjoitustasi", plate heading "Mitä seuraavaksi?", then in order:
+1. The MobilePay block: heading "Melkein valmis: lahjoita 30 € MobilePayllä" (n × 30) · "Lahjoita
+   30 euroa MobilePayllä numerolla 46492." · copy button · `/mp` button · QR on wide screens ·
+   "Kirjoita viestiksi {ref}, niin löydämme lahjoituksesi." + copy · fallback "Eikö sinulla ole
+   MobilePayta? Lahjoita kortilla tai verkkopankissa osoitteessa lavanti.fi/lahjoita ja lähetä
+   viitekoodisi osoitteeseen lauri@lavanti.fi, niin yhdistämme lahjoituksen kylttiisi." · "Maksajan
+   nimi, jos maksat toisen henkilön MobilePayllä" · "Lahjoitin".
    Company (`y=1`): no MobilePay block and no "Lahjoitin"; "Lähetämme laskun antamaasi
    laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta." Invoice
    title "Lahjoitus vaalikeräykseen (Adoptoi kyltti)".
-4. "Liity mukaan: lavanti.fi/liity", visible from the start.
-5. "Lahjoitin" → thank-you message, then share:
+2. Their sign from sessionStorage; when missing, the "Nimi kylttiin" field again.
+3. "Liity mukaan: lavanti.fi/liity", visible from the start.
+4. "Lahjoitin" → thank-you message, then share:
    > Kiitos, että lähdit tukemaan eduskuntavaalikampanjaani!
    >
    > Lahjoituksesi avulla kylttisi nousee keväällä tienvarteen, ja eduskunta on piirun verran lähempänä.
@@ -286,7 +300,7 @@ sen sivustolta." · Turnstile + honeypot · submit "Adoptoi kyltti" / "Adoptoi 2
    - Share text "Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun
      nimelläni. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin:
      lavanti.fi/adoptoi"
-6. Optional "Miksi adoptoin?" (≤ 140) → `viesti`; public only after moderation and opt-in.
+5. Optional "Miksi adoptoin?" (≤ 140) → `viesti`; public only after moderation and opt-in.
 
 **Confirmation email** (`approve`, fi): subject "Kylttisi on adoptoitu", body thanks the adopter,
 repeats the name and count, says the signs go up in spring and how to revoke the name licence.
@@ -409,3 +423,4 @@ interface AdoptionPage {
 |------|--------|
 | 2026-11-14 | Initial spec |
 | 2026-11-14 | Synced with the implementation: quantity_other, client script pattern, H1/eyebrow layout, ogCard, check script |
+| 2026-11-14 | Donor review: direct-ask intro, association line under the total, next-step line and amount in the pinned summary, thanks page pays first with a no-MobilePay fallback, compact phone first screen, Swedish sign on sv, plain-language page consent, copy fixes |
