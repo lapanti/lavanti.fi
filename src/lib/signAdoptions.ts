@@ -507,7 +507,7 @@ export const handlePending = async (request: Request, env: AdoptionEnv): Promise
 
 const ACTIONS = ['approve', 'reject', 'approve-message', 'reject-message', 'printed'] as const
 type Action = (typeof ACTIONS)[number]
-const PAID_VIA = ['mobilepay', 'lasku'] as const
+const PAID_VIA = ['mobilepay', 'tilisiirto', 'lasku'] as const
 
 const ID = /^\d{1,10}$/
 
