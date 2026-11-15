@@ -415,8 +415,9 @@ interface AdoptionPage {
 
 ## Open Questions
 
-- [ ] Phase B: `ADOPTION_CLOSES`, the date in the intro, the municipality list narrowed to the
-  placement plan and the name length from the printer's quote (raise only, never lower).
+- [ ] Phase B: `ADOPTION_CLOSES`, the date in the intro and the municipality list narrowed to the
+  placement plan. The name length stays at 24 characters: the association buys the signs either
+  way and adoption only adds funding, so no printer quote gates it (owner, 2026-11-15).
 
 ---
 
