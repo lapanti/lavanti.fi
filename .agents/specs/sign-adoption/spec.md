@@ -139,7 +139,7 @@ Never an email, payer, company detail, ref or id.
 ### Owner flow
 
 - `list`: pending rows and unmoderated messages.
-- `approve <id|ref…> [--via mobilepay|lasku]`: after matching the MobilePay report by ref (or name,
+- `approve <id|ref…> [--via mobilepay|tilisiirto|lasku]`: after matching the MobilePay report by ref (or name,
   amount and date). Refuses a sign name with a company-form token (Oy, Oyj, Ab, Ky, Tmi, ry, Osk)
   without `company_name`; warns when `payer_name` differs from the sign name. Sums the approved
   donations per payer (company name, else payer name, else sign name): warns at 2 000 euros
@@ -273,8 +273,9 @@ lahjoitustasi", plate heading "Mitä seuraavaksi?", then in order:
 1. The MobilePay block: heading "Melkein valmis: lahjoita 30 € MobilePayllä" (n × 30) · "Lahjoita
    30 euroa MobilePayllä numerolla 46492." · copy button · `/mp` button · QR on wide screens ·
    "Kirjoita viestiksi {ref}, niin löydämme lahjoituksesi." + copy · fallback "Eikö sinulla ole
-   MobilePayta? Lahjoita kortilla tai verkkopankissa osoitteessa lavanti.fi/lahjoita ja lähetä
-   viitekoodisi osoitteeseen lauri@lavanti.fi, niin yhdistämme lahjoituksen kylttiisi." · "Maksajan
+   MobilePayta? Tee tilisiirto:" + Saaja Digitaalisen itsenäisyyden puolesta ry · IBAN
+   FI61 5780 3820 2478 06 + "Viesti: viitekoodisi, niin yhdistämme lahjoituksen kylttiisi."
+   (owner, 2026-11-15; matched with `approve --via tilisiirto`) · "Maksajan
    nimi, jos maksat toisen henkilön MobilePayllä" · "Lahjoitin".
    Company (`y=1`): no MobilePay block and no "Lahjoitin"; "Lähetämme laskun antamaasi
    laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta." Invoice
