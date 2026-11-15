@@ -190,9 +190,8 @@ test.describe('Sign adoption thanks page', () => {
                 .locator('[data-private]')
                 .evaluate((pay) => !!(pay.compareDocumentPosition(document.querySelector('[data-sign]')!) & 4))
         ).toBe(true)
-        await test
-            .expect(page.getByRole('link', { name: 'lavanti.fi/lahjoita' }))
-            .toHaveAttribute('href', /^\/lahjoita\?/)
+        await test.expect(page.locator('[data-transfer]')).toContainText('Digitaalisen itsenäisyyden puolesta ry')
+        await test.expect(page.locator('[data-transfer] .iban')).toHaveText('FI61 5780 3820 2478 06')
         await test.expect(page.locator('[data-missing-name]')).toBeVisible()
         await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sinun nimesi')
         await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 60 euroa MobilePayllä numerolla 46492.')

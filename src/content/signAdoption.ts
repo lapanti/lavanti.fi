@@ -41,6 +41,9 @@ export const SIGN_TEXT: Record<Lang, SignText> = {
 }
 
 export const MOBILEPAY_NUMBER = '46492'
+/** The support association's account, for donors without MobilePay. */
+export const ASSOCIATION_NAME = 'Digitaalisen itsenäisyyden puolesta ry'
+export const ASSOCIATION_IBAN = 'FI61 5780 3820 2478 06'
 /** Title of the invoice sent to a company; the owner copies it from `npm run adoptions`. */
 export const INVOICE_TITLE = 'Lahjoitus vaalikeräykseen (Adoptoi kyltti)'
 
@@ -127,8 +130,8 @@ interface AdoptionLocale {
         almost: (euros: number) => string
         companyInvoice: string
         donated: string
-        /** For a donor without MobilePay: the card/bank form at /lahjoita, then the ref by email. */
-        fallback: { after: string; before: string; link: string }
+        /** For a donor without MobilePay: a bank transfer to the association, ref as the message. */
+        fallback: { lead: string; message: string; recipient: string }
         invalid: string
         invalidLink: string
         message: { hint: string; label: string; save: string; saved: string; tooSoon: string; unavailable: string }
@@ -339,9 +342,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'We will send an invoice to the billing address you gave. The invoice has no VAT because this is a donation.',
             donated: 'I donated',
             fallback: {
-                after: 'and send your reference code to lauri@lavanti.fi, so we can match the donation to your sign.',
-                before: 'No MobilePay? Donate by card or online bank at',
-                link: 'lavanti.fi/lahjoita',
+                lead: 'No MobilePay? Make a bank transfer:',
+                message: 'Message: your reference code, so we can match the donation to your sign.',
+                recipient: 'Recipient',
             },
             invalid: 'This link is missing some details.',
             invalidLink: 'Go back and adopt a sign',
@@ -510,9 +513,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'Lähetämme laskun antamaasi laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta.',
             donated: 'Lahjoitin',
             fallback: {
-                after: 'ja lähetä viitekoodisi osoitteeseen lauri@lavanti.fi, niin yhdistämme lahjoituksen kylttiisi.',
-                before: 'Eikö sinulla ole MobilePayta? Lahjoita kortilla tai verkkopankissa osoitteessa',
-                link: 'lavanti.fi/lahjoita',
+                lead: 'Eikö sinulla ole MobilePayta? Tee tilisiirto:',
+                message: 'Viesti: viitekoodisi, niin yhdistämme lahjoituksen kylttiisi.',
+                recipient: 'Saaja',
             },
             invalid: 'Linkistä puuttuu tietoja.',
             invalidLink: 'Palaa adoptoimaan kyltti',
@@ -682,9 +685,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'Vi skickar en faktura till den faktureringsadress du angav. Fakturan har ingen moms eftersom det är en gåva.',
             donated: 'Jag gav en gåva',
             fallback: {
-                after: 'och skicka din referenskod till lauri@lavanti.fi, så kopplar vi gåvan till din skylt.',
-                before: 'Har du inte MobilePay? Ge med kort eller nätbank på',
-                link: 'lavanti.fi/lahjoita',
+                lead: 'Har du inte MobilePay? Gör en banköverföring:',
+                message: 'Meddelande: din referenskod, så kopplar vi gåvan till din skylt.',
+                recipient: 'Mottagare',
             },
             invalid: 'Länken saknar uppgifter.',
             invalidLink: 'Gå tillbaka och adoptera en skylt',

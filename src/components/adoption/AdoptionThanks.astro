@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 import type { AdoptionThanksData } from './thanks.client'
 
-import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
+import { adoptionContent, ASSOCIATION_IBAN, ASSOCIATION_NAME, SIGN_TEXT } from '../../content/signAdoption'
 import { EUROS_PER_SIGN, MAX_SIGNS } from '../../lib/adoptionClient'
 import { FORM_PATH } from '../../lib/signAdoptions'
 import Link from '../Link.astro'
@@ -145,6 +145,26 @@ const scriptData: AdoptionThanksData = {
     .thanks .btn {
         cursor: pointer;
     }
+    .transfer p,
+    .transfer dl {
+        margin: 0;
+    }
+    .transfer dl {
+        display: grid;
+        gap: 0.25rem 1rem;
+        grid-template-columns: max-content 1fr;
+        margin-block: 0.5rem;
+    }
+    .transfer dt {
+        font-weight: 700;
+    }
+    .transfer dd {
+        margin: 0;
+    }
+    .transfer .iban {
+        font-variant-numeric: tabular-nums;
+        user-select: all;
+    }
 </style>
 
 <div class="thanks" data-thanks>
@@ -165,11 +185,16 @@ const scriptData: AdoptionThanksData = {
                     >{content.mobilePay.copyRef}</button
                 >
             </div>
-            <p>
-                {t.fallback.before}
-                <a href="/lahjoita?utm_source=adoptoi&utm_campaign=adoptoi-kyltti">{t.fallback.link}</a>
-                {t.fallback.after}
-            </p>
+            <div class="transfer" data-transfer>
+                <p>{t.fallback.lead}</p>
+                <dl>
+                    <dt>{t.fallback.recipient}</dt>
+                    <dd>{ASSOCIATION_NAME}</dd>
+                    <dt>IBAN</dt>
+                    <dd class="iban">{ASSOCIATION_IBAN}</dd>
+                </dl>
+                <p>{t.fallback.message}</p>
+            </div>
             <form class="inline-form site-form" data-payer-form hidden>
                 <label for="adoption-payer">{t.payer.label}</label>
                 <div class="row">
