@@ -2,7 +2,7 @@
  * Owner inbox for Adoptoi kyltti (spec: .agents/specs/sign-adoption/spec.md § Owner flow).
  *
  *   npm run adoptions -- list
- *   npm run adoptions -- approve <id|ref…> [--via mobilepay|lasku]
+ *   npm run adoptions -- approve <id|ref…> [--via mobilepay|tilisiirto|lasku]
  *   npm run adoptions -- reject <id|ref>
  *   npm run adoptions -- approve-message <id|ref> | reject-message <id|ref>
  *   npm run adoptions -- revoke <id|ref>
@@ -110,7 +110,8 @@ const idsFrom = (args: string[], rows: Adoption[]): number[] => {
 const approve = async (args: string[]) => {
     const viaIndex = args.indexOf('--via')
     const via = viaIndex >= 0 ? args[viaIndex + 1] : undefined
-    if (via !== undefined && via !== 'mobilepay' && via !== 'lasku') fail('--via is mobilepay or lasku.')
+    if (via !== undefined && !['lasku', 'mobilepay', 'tilisiirto'].includes(via))
+        fail('--via is mobilepay, tilisiirto or lasku.')
     const refs = viaIndex >= 0 ? args.filter((_, i) => i !== viaIndex && i !== viaIndex + 1) : args
     const { adoptions } = await inbox()
     const totals = payerTotals(await approvedRows())
@@ -266,7 +267,7 @@ try {
         commands[command ?? ''] ??
         (() =>
             fail(
-                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|lasku] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug>'
+                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|tilisiirto|lasku] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug>'
             ))
     )(args)
 } catch (err) {

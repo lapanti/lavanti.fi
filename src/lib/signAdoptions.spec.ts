@@ -458,6 +458,12 @@ describe('handleAction', () => {
         expect(calls[0].args).toEqual([NOW.toISOString(), 'mobilepay', 7])
     })
 
+    it('accepts a bank transfer as the payment channel', async () => {
+        const { calls, env: x } = e({ id: 7, message: null, status: 'pending' })
+        await handleAction(act({ action: 'approve', paid_via: 'tilisiirto' }), x, '7', NOW)
+        expect(calls[0].args).toEqual([NOW.toISOString(), 'tilisiirto', 7])
+    })
+
     it.each([
         ['reject', 'pending', "status = 'rejected'"],
         ['approve-message', 'approved', 'message_approved_at = ?'],
