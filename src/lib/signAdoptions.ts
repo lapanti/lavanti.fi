@@ -81,7 +81,7 @@ const MAX_WALL_NAMES = 50
 const MAX_WALL_MESSAGES = 20
 
 /** Bump when the consent wording on the form or in the privacy notice changes. */
-const CONSENT_VERSION = '2026-11'
+const CONSENT_VERSION = '2026-11-16'
 
 export const FORM_PATH: Record<Lang, string> = { en: '/en/adopt/', fi: '/fi/adoptoi/', sv: '/sv/adoptera/' }
 export const THANKS_PATH: Record<Lang, string> = {
@@ -127,16 +127,19 @@ interface AdoptionRow {
     company_name: null | string
     consent_company_at: null | string
     consent_page_at: null | string
-    consent_print_at: string
+    /** Null for a donation without a name on the sign. */
+    consent_print_at: null | string
     consent_public_at: null | string
     consent_version: string
     created_at: string
     email: string
     lang: Lang
     municipality: AdoptionMunicipality
+    /** 0: the donor supports signs without their name on them. */
+    named: 0 | 1
     public: 0 | 1
     quantity: number
-    sign_name: string
+    sign_name: null | string
     utm_campaign: null | string
     utm_source: null | string
 }
@@ -151,9 +154,11 @@ export const parseAdoption = (form: FormData, now: Date): ParseResult => {
 
     const companyName = normaliseName(text(form, 'company_name'))
     const company = companyName !== ''
+    // "En halua nimeäni kylttiin": no name, no print or person consent, never listed or paged.
+    const named = text(form, 'unnamed') !== 'yes'
 
-    const signName = normaliseName(text(form, 'sign_name'))
-    if (!isValidSignName(signName, company)) return { error: 'sign_name', ok: false }
+    const signName = named ? normaliseName(text(form, 'sign_name')) : null
+    if (signName !== null && !isValidSignName(signName, company)) return { error: 'sign_name', ok: false }
 
     // The "other number" chip posts `muu` and the stepper's value as quantity_other.
     const quantityText = text(form, text(form, 'quantity') === 'muu' ? 'quantity_other' : 'quantity')
@@ -177,13 +182,14 @@ export const parseAdoption = (form: FormData, now: Date): ParseResult => {
         if (text(form, 'consent_company') !== 'yes') return { error: 'consent_company', ok: false }
     }
 
-    if (text(form, 'consent_print') !== 'yes') return { error: 'consent_print', ok: false }
-    if (text(form, 'consent_person') !== 'yes') return { error: 'consent_person', ok: false }
+    if (named && text(form, 'consent_print') !== 'yes') return { error: 'consent_print', ok: false }
+    if (named && text(form, 'consent_person') !== 'yes') return { error: 'consent_person', ok: false }
 
     const iso = now.toISOString()
-    const page = text(form, 'page') === 'yes'
+    // Opt-ins posted with the toggle on (ticked before it was switched) are ignored.
+    const page = named && text(form, 'page') === 'yes'
     // A personal page lists the name too, so it implies the list opt-in.
-    const listed = page || text(form, 'public') === 'yes'
+    const listed = page || (named && text(form, 'public') === 'yes')
 
     return {
         ok: true,
@@ -193,13 +199,14 @@ export const parseAdoption = (form: FormData, now: Date): ParseResult => {
             company_name: company ? companyName : null,
             consent_company_at: company ? iso : null,
             consent_page_at: page ? iso : null,
-            consent_print_at: iso,
+            consent_print_at: named ? iso : null,
             consent_public_at: listed ? iso : null,
             consent_version: CONSENT_VERSION,
             created_at: iso,
             email,
             lang,
             municipality,
+            named: named ? 1 : 0,
             public: listed ? 1 : 0,
             quantity,
             sign_name: signName,
@@ -245,9 +252,17 @@ const defaultGenerators: Generators = { ref: newRefCode, token: newEditToken }
 
 const wantsJson = (request: Request): boolean => (request.headers.get('Accept') ?? '').includes('application/json')
 
-/** The thanks URL: only the validated ref, count and company flag, never the name or token. */
-const thanksUrl = (origin: string, lang: Lang, ref: string, row: { company_name: null | string; quantity: number }) =>
-    `${origin}${THANKS_PATH[lang]}?ref=${ref}&n=${row.quantity}&y=${row.company_name ? 1 : 0}`
+/**
+ * The thanks URL: only the validated ref, count, company flag and, for a donation without a name
+ * on the sign, `u=1`; never the name or token.
+ */
+const thanksUrl = (
+    origin: string,
+    lang: Lang,
+    ref: string,
+    row: { company_name: null | string; named: 0 | 1; quantity: number }
+) =>
+    `${origin}${THANKS_PATH[lang]}?ref=${ref}&n=${row.quantity}&y=${row.company_name ? 1 : 0}${row.named ? '' : '&u=1'}`
 
 const INSERT_ATTEMPTS = 5
 
@@ -283,7 +298,7 @@ export const handleSubmit = async (
 
         return asJson
             ? json({ ref, token: gen.token() })
-            : redirect(thanksUrl(origin, lang, ref, { company_name: null, quantity: 1 }), 303)
+            : redirect(thanksUrl(origin, lang, ref, { company_name: null, named: 1, quantity: 1 }), 303)
     }
     /*
      * Configuration and database failures all show the visitor `palvelu`; the log line names
@@ -304,12 +319,13 @@ export const handleSubmit = async (
         const ref = gen.ref()
         try {
             await env.DB.prepare(
-                `INSERT INTO sign_adoptions (created_at, status, lang, sign_name, quantity, municipality, email, company_name, business_id, billing_address, public, ref_code, edit_token_hash, consent_print_at, consent_public_at, consent_page_at, consent_company_at, consent_version, utm_source, utm_campaign)
-                 VALUES (?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+                `INSERT INTO sign_adoptions (created_at, status, lang, named, sign_name, quantity, municipality, email, company_name, business_id, billing_address, public, ref_code, edit_token_hash, consent_print_at, consent_public_at, consent_page_at, consent_company_at, consent_version, utm_source, utm_campaign)
+                 VALUES (?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
             )
                 .bind(
                     r.created_at,
                     r.lang,
+                    r.named,
                     r.sign_name,
                     r.quantity,
                     r.municipality,
@@ -444,7 +460,7 @@ export const handleWall = async (env: AdoptionEnv): Promise<Response> => {
     const names = (
         await db
             .prepare(
-                `SELECT sign_name AS name FROM sign_adoptions WHERE status = 'approved' AND public = 1 ORDER BY approved_at DESC LIMIT ${MAX_WALL_NAMES}`
+                `SELECT sign_name AS name FROM sign_adoptions WHERE status = 'approved' AND named = 1 AND public = 1 ORDER BY approved_at DESC LIMIT ${MAX_WALL_NAMES}`
             )
             .all<{ name: string }>()
     ).results.map((r) => r.name)
@@ -453,7 +469,7 @@ export const handleWall = async (env: AdoptionEnv): Promise<Response> => {
         ? (
               await db
                   .prepare(
-                      `SELECT sign_name AS name, message FROM sign_adoptions WHERE status = 'approved' AND public = 1 AND message IS NOT NULL AND message_approved_at IS NOT NULL ORDER BY message_approved_at DESC LIMIT ${MAX_WALL_MESSAGES}`
+                      `SELECT sign_name AS name, message FROM sign_adoptions WHERE status = 'approved' AND named = 1 AND public = 1 AND message IS NOT NULL AND message_approved_at IS NOT NULL ORDER BY message_approved_at DESC LIMIT ${MAX_WALL_MESSAGES}`
                   )
                   .all<{ message: string; name: string }>()
           ).results.map(({ message, name }) => ({ message, name }))
@@ -477,7 +493,7 @@ const inbox = (request: Request, env: AdoptionEnv): D1Like | Response => {
 
 /** Every column the owner needs, without the token hash. */
 const INBOX_COLUMNS =
-    'id, created_at, status, lang, sign_name, quantity, municipality, email, payer_name, company_name, business_id, billing_address, public, message, message_approved_at, ref_code, consent_page_at, approved_at, paid_via, printed_at'
+    'id, created_at, status, lang, named, sign_name, quantity, municipality, email, payer_name, company_name, business_id, billing_address, public, message, message_approved_at, ref_code, consent_page_at, approved_at, paid_via, printed_at'
 
 /**
  * GET /api/adoptoi/pending — pending rows and messages awaiting moderation;
@@ -511,7 +527,10 @@ const PAID_VIA = ['mobilepay', 'tilisiirto', 'lasku'] as const
 
 const ID = /^\d{1,10}$/
 
-/** POST /api/adoptoi/:id — `{action, paid_via?}` from the CLI. */
+/**
+ * POST /api/adoptoi/:id — `{action, paid_via?, payer_name?}` from the CLI. `payer_name` on approve
+ * records the giver from the MobilePay report or bank statement (needed when no name is on the sign).
+ */
 export const handleAction = async (
     request: Request,
     env: AdoptionEnv,
@@ -521,7 +540,7 @@ export const handleAction = async (
     const db = inbox(request, env)
     if (db instanceof Response) return db
     if (!ID.test(id)) return json({ error: 'not found' }, 404)
-    let body: { action?: unknown; paid_via?: unknown }
+    let body: { action?: unknown; paid_via?: unknown; payer_name?: unknown }
     try {
         body = (await request.json()) as typeof body
     } catch {
@@ -547,7 +566,13 @@ export const handleAction = async (
     if (action === 'approve') {
         if (row.status !== 'pending') return conflict()
         const via = (PAID_VIA as readonly unknown[]).includes(body.paid_via) ? (body.paid_via as string) : null
-        await update("status = 'approved', approved_at = ?, paid_via = ?", iso, via)
+        if (body.payer_name !== undefined) {
+            const payer = typeof body.payer_name === 'string' ? normaliseName(body.payer_name) : ''
+            if (payer.length < 2 || payer.length > 100) return json({ error: 'payer_name' }, 400)
+            await update("status = 'approved', approved_at = ?, paid_via = ?, payer_name = ?", iso, via, payer)
+        } else {
+            await update("status = 'approved', approved_at = ?, paid_via = ?", iso, via)
+        }
     } else if (action === 'reject') {
         if (row.status !== 'pending') return conflict()
         await update("status = 'rejected'")

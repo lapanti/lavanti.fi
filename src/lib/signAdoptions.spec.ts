@@ -49,6 +49,16 @@ const company = {
     sign_name: '3D-Paja Oy',
 }
 
+/** "En halua nimeäni kylttiin": the name and the two name consents are left out. */
+const unnamed = {
+    'cf-turnstile-response': 'tok',
+    email: 'testi@example.fi',
+    lang: 'fi',
+    municipality: 'espoo',
+    quantity: '2',
+    unnamed: 'yes',
+}
+
 const NOW = new Date('2026-11-14T12:00:00Z')
 const gen = { ref: () => 'K-12345', token: () => 'secret-token' }
 
@@ -119,6 +129,33 @@ describe('parseAdoption', () => {
             utm_campaign: 'adoptoi',
             utm_source: 'instagram',
         })
+    })
+
+    it('accepts a donation without a name: no name, print or person consent needed', () => {
+        const r = parseAdoption(form(unnamed), NOW)
+        expect(r.ok).toBe(true)
+        if (!r.ok) return
+        expect(r.row).toMatchObject({
+            consent_page_at: null,
+            consent_print_at: null,
+            consent_public_at: null,
+            named: 0,
+            public: 0,
+            quantity: 2,
+            sign_name: null,
+        })
+    })
+
+    it('ignores a name and opt-ins posted with the no-name toggle on', () => {
+        const r = parseAdoption(
+            form({ ...valid, page: 'yes', public: 'yes', sign_name: 'Mikko 2', unnamed: 'yes' }),
+            NOW
+        )
+        expect(r.ok && r.row).toMatchObject({ consent_page_at: null, named: 0, public: 0, sign_name: null })
+        // A company may give without its name too, and still makes its declaration.
+        const c = parseAdoption(form({ ...company, consent_company: '', unnamed: 'yes' }), NOW)
+        expect(c).toEqual({ error: 'consent_company', ok: false })
+        expect(parseAdoption(form({ ...unnamed, email: '' }), NOW)).toEqual({ error: 'email', ok: false })
     })
 
     it('takes the stepper value when the other-number chip is chosen', () => {
@@ -212,6 +249,15 @@ describe('handleSubmit', () => {
         const res = await handleSubmit(post({ ...company, lang: 'sv' }, 'text/html'), env(), turnstile(true), NOW, gen)
         expect(res.status).toBe(303)
         expect(res.headers.get('Location')).toBe('https://lavanti.fi/sv/adoptera/tack/?ref=K-12345&n=2&y=1')
+    })
+
+    it('stores a donation without a name (no JS: a plain post) and marks the thanks URL', async () => {
+        const { calls, db } = fakeDb()
+        const res = await handleSubmit(post(unnamed, 'text/html'), env(db), turnstile(true), NOW, gen)
+        expect(res.headers.get('Location')).toBe('https://lavanti.fi/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+        expect(calls[0].sql).toContain('named, sign_name')
+        // named = 0 and sign_name = NULL right after lang.
+        expect(calls[0].args.slice(1, 4)).toEqual(['fi', 0, null])
     })
 
     it('returns a fixed error code and stores nothing', async () => {
@@ -386,6 +432,16 @@ describe('handleWall', () => {
         })
     })
 
+    it('counts every approved row but lists only named, opted-in ones', async () => {
+        const spy = vi.fn()
+        const fake = fakeDb({ 'COUNT(*) AS n, COALESCE': [{ n: 3, signs: 3 }] })
+        await handleWall({ DB: { prepare: (sql: string) => (spy(sql), fake.db.prepare(sql)) } })
+        const sqls = spy.mock.calls.map(([sql]) => sql as string)
+        expect(sqls.find((s) => s.includes('COALESCE'))).not.toContain('named')
+        expect(sqls.find((s) => s.includes('GROUP BY'))).not.toContain('named')
+        for (const s of sqls.filter((x) => x.includes('sign_name AS name'))) expect(s).toContain('named = 1')
+    })
+
     it('hides names and messages until three names have opted in', async () => {
         const { db } = fakeDb({
             'COUNT(*) AS n, COALESCE': [{ n: 5, signs: 5 }],
@@ -456,6 +512,22 @@ describe('handleAction', () => {
         expect(await res.json()).toEqual({ action: 'approve', id: 7 })
         expect(calls[0].sql).toContain("status = 'approved'")
         expect(calls[0].args).toEqual([NOW.toISOString(), 'mobilepay', 7])
+    })
+
+    it('records the payer from the report when approving, and refuses a bad one', async () => {
+        const { calls, env: x } = e({ id: 7, message: null, status: 'pending' })
+        await handleAction(
+            act({ action: 'approve', paid_via: 'mobilepay', payer_name: ' Åsa  Ødegaard ' }),
+            x,
+            '7',
+            NOW
+        )
+        expect(calls[0].sql).toContain('payer_name = ?')
+        expect(calls[0].args).toEqual([NOW.toISOString(), 'mobilepay', 'Åsa Ødegaard', 7])
+        const bad = e({ id: 7, message: null, status: 'pending' })
+        expect((await handleAction(act({ action: 'approve', payer_name: 'A' }), bad.env, '7')).status).toBe(400)
+        expect((await handleAction(act({ action: 'approve', payer_name: 5 }), bad.env, '7')).status).toBe(400)
+        expect(bad.calls).toHaveLength(0)
     })
 
     it('accepts a bank transfer as the payment channel', async () => {
