@@ -53,6 +53,12 @@ test.describe('Sign adoption page', () => {
         await test.expect(page.locator('[data-step="2"]')).toBeHidden()
         // The hero shows the sign instead of a photo, and no unused hero photo is preloaded.
         await test.expect(page.locator('.hero-sign svg')).toBeVisible()
+        // Both signs are the campaign's draft, with its stray font label masked.
+        const drafts = page.locator('.sign-graphic svg image')
+        await test.expect(drafts).toHaveCount(2)
+        for (const draft of await drafts.all()) {
+            await test.expect(draft).toHaveAttribute('href', /\/images\/Lauri-Lavanti-vaalikyltti-luonnos\//)
+        }
         await test.expect(page.locator('.hero picture')).toHaveCount(0)
         await test.expect(page.locator('link[rel="preload"][as="image"]')).toHaveCount(0)
     })
