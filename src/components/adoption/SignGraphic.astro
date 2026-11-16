@@ -92,33 +92,36 @@ const { mask, payer } = SIGN
         <rect fill={SIGN_COLORS.ground} height={SIGN.height} width={SIGN.width}></rect>
         <image height={SIGN.height} href={SIGN_IMAGE.src} width={SIGN.width} />
         <rect fill={SIGN_COLORS.ground} height={mask.h} width={mask.w} x={mask.x} y={mask.y}></rect>
-        <circle cx={STICKER.cx} cy={STICKER.cy} fill={SIGN_COLORS.sticker} r={STICKER.r}></circle>
-        <text class="body" fill={SIGN_COLORS.label} font-size={label.size} font-weight="600" text-anchor="middle">
-            {
-                label.lines.map((line, i) => (
-                    <tspan x={STICKER.cx} y={STICKER.cy + label.ys[i]}>
-                        {line}
-                    </tspan>
-                ))
-            }
-        </text>
-        <text
-            class="name"
-            data-fill-ghost={SIGN_COLORS.ghost}
-            data-fill-name={SIGN_COLORS.name}
-            data-sign-name
-            fill={shown ? SIGN_COLORS.name : SIGN_COLORS.ghost}
-            font-size={fit.size}
-            text-anchor="middle"
-        >
-            {
-                fit.lines.map((line, i) => (
-                    <tspan x={STICKER.cx} y={STICKER.cy + fit.ys[i]}>
-                        {line}
-                    </tspan>
-                ))
-            }
-        </text>
+        {/* Hidden for a donation without a name: the form's toggle (CSS) or the thanks page. */}
+        <g data-sticker>
+            <circle cx={STICKER.cx} cy={STICKER.cy} fill={SIGN_COLORS.sticker} r={STICKER.r}></circle>
+            <text class="body" fill={SIGN_COLORS.label} font-size={label.size} font-weight="600" text-anchor="middle">
+                {
+                    label.lines.map((line, i) => (
+                        <tspan x={STICKER.cx} y={STICKER.cy + label.ys[i]}>
+                            {line}
+                        </tspan>
+                    ))
+                }
+            </text>
+            <text
+                class="name"
+                data-fill-ghost={SIGN_COLORS.ghost}
+                data-fill-name={SIGN_COLORS.name}
+                data-sign-name
+                fill={shown ? SIGN_COLORS.name : SIGN_COLORS.ghost}
+                font-size={fit.size}
+                text-anchor="middle"
+            >
+                {
+                    fit.lines.map((line, i) => (
+                        <tspan x={STICKER.cx} y={STICKER.cy + fit.ys[i]}>
+                            {line}
+                        </tspan>
+                    ))
+                }
+            </text>
+        </g>
         <text class="body" fill={SIGN_COLORS.payer} font-size={payer.size} text-anchor="middle">
             {
                 text.payer.map((line, i) => (

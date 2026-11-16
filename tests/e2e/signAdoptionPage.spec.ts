@@ -36,6 +36,9 @@ test.describe('Sign adoption page', () => {
             - text: Nimi kylttiin
             - textbox "Nimi kylttiin"
             - paragraph: 0/24
+            - checkbox "En halua nimeäni kylttiin"
+            - text: En halua nimeäni kylttiin
+            - paragraph: Voit tukea kylttejä myös ilman, että nimesi tulee niihin.
             - group "Montako kylttiä adoptoit?":
               - text: Montako kylttiä adoptoit?
               - radio "1 kyltti · 30 €" [checked]
@@ -136,6 +139,39 @@ test.describe('Sign adoption page', () => {
         await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sjoerd')
     })
 
+    test('should let a donor support signs without their name on them', async ({ page }) => {
+        let posted = ''
+        await page.route('**/api/adoptoi', async (route) => {
+            posted = route.request().postData() ?? ''
+            await route.fulfill({ json: { ref: 'K-12345', token: 'tok' } })
+        })
+        await page.goto('/fi/adoptoi/')
+        // A name typed and a box ticked before opting out must not be sent.
+        await page.getByLabel('Nimi kylttiin').fill('Sjoerd')
+        await page.getByLabel('En halua nimeäni kylttiin').check()
+
+        await test.expect(page.getByLabel('Nimi kylttiin')).toBeHidden()
+        await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
+        await test.expect(page.locator('.hero-sign [data-sticker]')).toBeVisible()
+        await test.expect(page.locator('[data-next]')).toHaveText('Adoptoi kyltti')
+        await test.expect(page.locator('[data-total]')).toHaveText('Lahjoituksesi: 30 €')
+        await page.locator('[data-next]').click()
+
+        await test.expect(page.getByRole('heading', { level: 2, name: 'Vielä yhteystietosi.' })).toBeVisible()
+        await test.expect(page.locator('[data-pinned]')).toHaveText('Kylttisi ilman nimeä · 30 €')
+        for (const name of ['consent_print', 'consent_person', 'public', 'page']) {
+            await test.expect(page.locator(`input[name="${name}"]`)).toBeHidden()
+        }
+        await page.getByLabel('Missä kunnassa toivot kylttisi seisovan?').selectOption('espoo')
+        await page.getByRole('textbox', { name: 'Sähköposti' }).fill('tuki@example.fi')
+        await page.locator('button[type="submit"]').click()
+
+        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0&u=1')
+        test.expect(posted).toContain('name="unnamed"')
+        test.expect(posted).not.toContain('Sjoerd')
+        test.expect(posted).not.toContain('consent_print')
+    })
+
     test('should show the live line and the wall from seina', async ({ page }) => {
         await page.goto('/fi/adoptoi/')
 
@@ -170,6 +206,37 @@ test.describe('Sign adoption page', () => {
 
         const results = await new AxeBuilder({ page }).disableRules(['color-contrast']).analyze()
         test.expect(results.violations).toEqual([])
+    })
+})
+
+test.describe('Sign adoption page without JavaScript', () => {
+    test.use({ javaScriptEnabled: false })
+
+    test('should post a donation without a name as a plain form', async ({ page }) => {
+        let posted = ''
+        await page.route('https://challenges.cloudflare.com/**', (route) => route.abort())
+        // astro preview has no Functions: answer like handleSubmit does for a plain post.
+        await page.route('**/api/adoptoi', async (route) => {
+            posted = route.request().postData() ?? ''
+            await route.fulfill({ headers: { Location: '/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1' }, status: 303 })
+        })
+        await page.goto('/fi/adoptoi/')
+        await page.getByLabel('En halua nimeäni kylttiin').check()
+        await test.expect(page.getByLabel('Nimi kylttiin')).toBeHidden()
+        await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
+        await test.expect(page.locator('input[name="consent_print"]')).toBeHidden()
+
+        await page.getByText('2 kylttiä · 60 €').click()
+        await page.getByLabel('Missä kunnassa toivot kylttisi seisovan?').selectOption('vantaa')
+        await page.getByRole('textbox', { name: 'Sähköposti' }).fill('tuki@example.fi')
+        await page.locator('button[type="submit"]').click()
+
+        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+        const body = new URLSearchParams(posted)
+        test.expect(body.get('unnamed')).toBe('yes')
+        test.expect(body.get('sign_name')).toBe('')
+        test.expect(body.get('quantity')).toBe('2')
+        test.expect(body.has('consent_print')).toBe(false)
     })
 })
 

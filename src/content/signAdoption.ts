@@ -88,6 +88,7 @@ interface AdoptionLocale {
         nextStep: (euros: number) => string
         nextStepCompany: (euros: number) => string
         pinned: (name: string, n: number) => string
+        pinnedUnnamed: (n: number) => string
         price: string
         privacyHref: string
         privacyLink: string
@@ -96,8 +97,12 @@ interface AdoptionLocale {
         revokeNote: string
         sending: string
         step2Heading: string
+        step2HeadingUnnamed: string
         submitHint: string
+        submitHintUnnamed: string
         total: (euros: number) => string
+        /** The opt-out under the name field, and one sentence saying signs can be supported without a name. */
+        unnamed: { hint: string; label: string }
     }
     /** Path prefix of the personal pages: `<base><slug>/`. */
     base: string
@@ -284,6 +289,8 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 `Next, you donate €${euros} with MobilePay and get a reference code to write as the message.`,
             nextStepCompany: (euros) => `Next, we send an invoice for €${euros} to the billing address you gave.`,
             pinned: (name, n) => (n > 1 ? `Your sign: ${name} · ${n} signs · €${n * 30}` : `Your sign: ${name} · €30`),
+            pinnedUnnamed: (n) =>
+                n > 1 ? `Your signs without a name · ${n} signs · €${n * 30}` : 'Your sign without a name · €30',
             price: '€30 = one sign by the roadside',
             privacyHref: '/en/privacy-policy/',
             privacyLink: 'Read the privacy policy.',
@@ -293,8 +300,14 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'You can withdraw your permission at any time by replying to our confirmation email or writing to lauri@lavanti.fi. If you withdraw permission to use your name, we cover the name on the sign and remove it from the website.',
             sending: 'Sending…',
             step2Heading: 'Just your contact details and permission to use your name.',
+            step2HeadingUnnamed: 'Just your contact details.',
             submitHint: 'Fill in the name, municipality and email and tick the two required boxes to send.',
+            submitHintUnnamed: 'Choose a municipality and fill in your email to send.',
             total: (euros) => `Your donation: €${euros}`,
+            unnamed: {
+                hint: 'You can also support signs without your name on them.',
+                label: "I don't want my name on the sign",
+            },
         },
         join: { href: '/en/join/', label: 'lavanti.fi/en/join', lead: 'Join in:' },
         mail: ({ company, name, quantity, ref }) => ({
@@ -463,6 +476,8 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             nextStepCompany: (euros) => `Seuraavaksi lähetämme ${euros} euron laskun antamaasi laskutusosoitteeseen.`,
             pinned: (name, n) =>
                 n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${n * 30} €` : `Kylttisi: ${name} · 30 €`,
+            pinnedUnnamed: (n) =>
+                n > 1 ? `Kylttisi ilman nimeä · ${n} kylttiä · ${n * 30} €` : 'Kylttisi ilman nimeä · 30 €',
             price: '30 € = yksi kyltti tienvarteen',
             privacyHref: '/fi/tietosuoja/',
             privacyLink: 'Lue tietosuojaseloste.',
@@ -472,8 +487,14 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'Voit perua luvan milloin tahansa vastaamalla vahvistusviestiimme tai kirjoittamalla osoitteeseen lauri@lavanti.fi. Jos perut luvan nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta.',
             sending: 'Lähetetään…',
             step2Heading: 'Vielä yhteystieto ja lupa nimen käyttöön.',
+            step2HeadingUnnamed: 'Vielä yhteystietosi.',
             submitHint: 'Valitse kunta, täytä sähköposti ja rastita kaksi pakollista kohtaa, niin voit lähettää.',
+            submitHintUnnamed: 'Valitse kunta ja täytä sähköposti, niin voit lähettää.',
             total: (euros) => `Lahjoituksesi: ${euros} €`,
+            unnamed: {
+                hint: 'Voit tukea kylttejä myös ilman, että nimesi tulee niihin.',
+                label: 'En halua nimeäni kylttiin',
+            },
         },
         join: { href: '/fi/liity/', label: 'lavanti.fi/liity', lead: 'Liity mukaan:' },
         mail: ({ company, name, quantity, ref }) => ({
@@ -640,6 +661,8 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 `Härnäst skickar vi en faktura på ${euros} € till den faktureringsadress du angav.`,
             pinned: (name, n) =>
                 n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${n * 30} €` : `Din skylt: ${name} · 30 €`,
+            pinnedUnnamed: (n) =>
+                n > 1 ? `Dina skyltar utan namn · ${n} skyltar · ${n * 30} €` : 'Din skylt utan namn · 30 €',
             price: '30 € = en skylt vid vägkanten',
             privacyHref: '/sv/dataskydd/',
             privacyLink: 'Läs integritetspolicyn.',
@@ -649,8 +672,14 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 'Du kan när som helst återkalla ditt tillstånd genom att svara på vårt bekräftelsemejl eller skriva till lauri@lavanti.fi. Om du återkallar tillståndet att använda ditt namn täcker vi namnet på skylten och tar bort det från webbplatsen.',
             sending: 'Skickar…',
             step2Heading: 'Bara kontaktuppgifter och tillstånd att använda ditt namn.',
+            step2HeadingUnnamed: 'Bara dina kontaktuppgifter.',
             submitHint: 'Välj kommun, fyll i e-post och kryssa i de två obligatoriska rutorna för att skicka.',
+            submitHintUnnamed: 'Välj kommun och fyll i e-post för att skicka.',
             total: (euros) => `Din gåva: ${euros} €`,
+            unnamed: {
+                hint: 'Du kan också stödja skyltar utan att ditt namn kommer på dem.',
+                label: 'Jag vill inte ha mitt namn på skylten',
+            },
         },
         join: { href: '/sv/bli-med/', label: 'lavanti.fi/sv/bli-med', lead: 'Bli med:' },
         mail: ({ company, name, quantity, ref }) => ({
