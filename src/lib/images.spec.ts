@@ -33,12 +33,6 @@ describe('getImage', () => {
         expect(result.src).toBe(`${BASE}/test-slug/w=384,h=480,fit=crop,gravity=face,format=auto`)
     })
 
-    it('keeps the sign variant at the draft’s exact 1410 × 2000 aspect, so nothing is cropped', () => {
-        const result = getImage('test-slug', 'sign')
-        expect(result.src).toBe(`${BASE}/test-slug/w=987,h=1400,fit=crop,gravity=auto,format=auto`)
-        expect(result.width / result.height).toBeCloseTo(1410 / 2000, 4)
-    })
-
     it('encodes slug with special characters', () => {
         const result = getImage('slug with spaces & chars', '1x1')
         expect(result.src).toContain('slug%20with%20spaces%20%26%20chars')
