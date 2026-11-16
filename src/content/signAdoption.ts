@@ -306,7 +306,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hello,',
                 '',
-                `thank you for adopting ${quantity > 1 ? `${quantity} election signs` : 'an election sign'}! We have received your donation (${ref}), and the name "${name}" will be written on the bottom edge of ${quantity > 1 ? 'the signs' : 'the sign'}.`,
+                `thank you for adopting ${quantity > 1 ? `${quantity} election signs` : 'an election sign'}! We have received your donation (${ref}), and the name "${name}" will go on ${quantity > 1 ? 'a round sticker on each sign' : 'a round sticker on the sign'}.`,
                 '',
                 company ? 'The invoice is on its way to the billing address you gave.' : '',
                 'The signs go up by the roadsides of Uusimaa in spring. We will let you know when yours is out.',
@@ -337,7 +337,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             title: (name) => `${name} adopted a sign`,
         },
         sign: {
-            figureLabel: 'Illustration of the election sign with your name on its bottom edge',
+            figureLabel: 'Illustration of the election sign with your name on a round sticker',
             finePrint: 'Illustration. The final sign may differ from the picture.',
             ghostName: 'Your name',
         },
@@ -476,7 +476,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hei,',
                 '',
-                `kiitos, että adoptoit ${quantity > 1 ? `${quantity} vaalikylttiä` : 'vaalikyltin'}! Lahjoituksesi (${ref}) on vastaanotettu, ja nimi "${name}" kirjoitetaan ${quantity > 1 ? 'kylttien' : 'kyltin'} alareunaan.`,
+                `kiitos, että adoptoit ${quantity > 1 ? `${quantity} vaalikylttiä` : 'vaalikyltin'}! Lahjoituksesi (${ref}) on vastaanotettu, ja nimi "${name}" tulee ${quantity > 1 ? 'jokaiseen kylttiin' : 'kylttiin'} pyöreään tarraan.`,
                 '',
                 company ? 'Lasku on tulossa antamaasi laskutusosoitteeseen.' : '',
                 'Kyltit nousevat Uudenmaan tienvarsille keväällä. Kerromme, kun omasi on paikallaan.',
@@ -508,7 +508,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             title: (name) => `${name} adoptoi kyltin`,
         },
         sign: {
-            figureLabel: 'Havainnekuva vaalikyltistä, jonka alareunassa on nimesi',
+            figureLabel: 'Havainnekuva vaalikyltistä, jonka pyöreässä tarrassa on nimesi',
             finePrint: 'Havainnekuva. Lopullinen kyltti voi poiketa kuvasta.',
             ghostName: 'Sinun nimesi',
         },
@@ -649,7 +649,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hej,',
                 '',
-                `tack för att du adopterade ${quantity > 1 ? `${quantity} valskyltar` : 'en valskylt'}! Vi har tagit emot din gåva (${ref}), och namnet "${name}" skrivs längst ner på ${quantity > 1 ? 'skyltarna' : 'skylten'}.`,
+                `tack för att du adopterade ${quantity > 1 ? `${quantity} valskyltar` : 'en valskylt'}! Vi har tagit emot din gåva (${ref}), och namnet "${name}" hamnar på en rund dekal på ${quantity > 1 ? 'varje skylt' : 'skylten'}.`,
                 '',
                 company ? 'Fakturan kommer till den faktureringsadress du angav.' : '',
                 'Skyltarna kommer upp vid vägkanterna i Nyland i vår. Vi hör av oss när din står på plats.',
@@ -680,7 +680,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             title: (name) => `${name} adopterade en skylt`,
         },
         sign: {
-            figureLabel: 'Illustration av valskylten med ditt namn längst ner',
+            figureLabel: 'Illustration av valskylten med ditt namn på en rund dekal',
             finePrint: 'Illustration. Den slutliga skylten kan avvika från bilden.',
             ghostName: 'Ditt namn',
         },
