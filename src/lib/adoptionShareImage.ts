@@ -169,7 +169,8 @@ export interface SignDrawing {
     ghost: string
     /** The sign draft; null when it failed to load (or tainted the canvas): the ground stays. */
     image: (CanvasImageSource & { height: number; width: number }) | null
-    name: string
+    /** The name in the sticker ('' shows the ghost text); null draws no sticker (no name on the sign). */
+    name: null | string
     /**
      * `firstName`/`lastName` feed the share image wordmark; `payer` is the two-line "Mainoksen
      * maksaja" line; `sticker` the label over the name ("Tämän kyltin", "adoptoi").
@@ -178,7 +179,7 @@ export interface SignDrawing {
 }
 
 /** Draws the white sticker with its label and the name (or ghost text) fitted inside. */
-const drawSticker = (ctx: CanvasLike, sign: SignDrawing) => {
+const drawSticker = (ctx: CanvasLike, sign: SignDrawing & { name: string }) => {
     const { cx, cy, r } = STICKER
     const measure: Measure = (text, font) => {
         ctx.font = font
@@ -214,8 +215,9 @@ export const drawSign = (ctx: CanvasLike, x: number, y: number, scale: number, s
     ctx.fillRect(mask.x, mask.y, mask.w, mask.h)
 
     ctx.textBaseline = 'alphabetic'
-    drawSticker(ctx, sign)
+    if (sign.name !== null) drawSticker(ctx, { ...sign, name: sign.name })
 
+    ctx.textAlign = 'center'
     ctx.fillStyle = SIGN_COLORS.payer
     ctx.font = `400 ${SIGN.payer.size}px "${BODY_FONT}"`
     sign.text.payer.forEach((line, i) => ctx.fillText(line, SIGN.payer.x, SIGN.payer.ys[i]))

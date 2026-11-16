@@ -295,6 +295,20 @@ test.describe('Sign adoption thanks page', () => {
         await test.expect(page.locator('[data-share-image="story"]')).toHaveAttribute('src', /^blob:/)
     })
 
+    test('should thank a donor without a name and share a sign without a sticker', async ({ page }) => {
+        await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+
+        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 60 € MobilePayllä')
+        await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
+        await test.expect(page.locator('[data-missing-name]')).toBeHidden()
+        await page.getByRole('button', { name: 'Lahjoitin' }).click()
+        await test.expect(page.locator('.thank-you')).toContainText('Sinä teet sen mahdolliseksi. Kiitos!')
+        const story = page.locator('[data-share-image="story"]')
+        await test.expect(story).toHaveAttribute('src', /^blob:/)
+        await test.expect(story).toHaveAttribute('alt', 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä')
+        await test.expect(page.locator('[data-message-form]')).toBeHidden()
+    })
+
     test('should skip MobilePay for a company', async ({ page }) => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=1')
 

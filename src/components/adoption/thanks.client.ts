@@ -28,6 +28,8 @@ export interface AdoptionThanksData {
     refNote: string
     shareText: string
     sign: { firstName: string; lastName: string; payer: readonly string[]; sticker: readonly string[] }
+    /** Share copy for a donation without a name on the sign (`u=1`). */
+    unnamed: { headline: string; imageAlt: string; text: string }
 }
 
 type LoadedImage = HTMLImageElement & { height: number; width: number }
@@ -70,7 +72,15 @@ const initAdoptionThanks = (): void => {
     // Only this visit's own entry counts: a stale one from an earlier adoption is ignored.
     const own: null | StoredAdoption = stored && stored.ref === params.ref ? stored : null
     let name = own?.name ?? ''
-    setSignName(document, name)
+    const unnamed = params.unnamed === true
+    if (unnamed) {
+        // No name on the sign: no sticker, no name prompt and no message, which shows only with a name.
+        document.querySelectorAll<HTMLElement>('[data-sign]').forEach((figure) => (figure.dataset.unnamed = ''))
+    } else {
+        setSignName(document, name)
+    }
+    const headline = unnamed ? data.unnamed.headline : data.headline
+    const shareText = unnamed ? data.unnamed.text : data.shareText
 
     q('[data-almost]').textContent = data.almost[params.quantity - 1]
     q('[data-donate]').textContent = data.donate[params.quantity - 1]
@@ -106,7 +116,7 @@ const initAdoptionThanks = (): void => {
             )
         })
         const messageForm = q<HTMLFormElement>('[data-message-form]')
-        messageForm.hidden = false
+        messageForm.hidden = unnamed
         messageForm.addEventListener('submit', async (event) => {
             event.preventDefault()
             const value = (messageForm.elements.namedItem('message') as HTMLTextAreaElement).value
@@ -130,10 +140,10 @@ const initAdoptionThanks = (): void => {
         drawShareImage(ctx, format, {
             cta: data.cta,
             ghost: data.ghost,
-            headline: data.headline,
+            headline,
             image,
             logo,
-            name,
+            name: unnamed ? null : name,
             text: data.sign,
         })
 
@@ -144,7 +154,7 @@ const initAdoptionThanks = (): void => {
     const renderShareImages = async (): Promise<void> => {
         await rendering
         rendering = (async () => {
-            const sample = `${data.headline} ${data.cta} ${name} ${data.ghost} ${data.sign.lastName}`
+            const sample = `${headline} ${data.cta} ${name} ${data.ghost} ${data.sign.lastName}`
             await Promise.all([
                 document.fonts.load(`800 100px "${DISPLAY_FONT}"`, sample),
                 document.fonts.load(`700 40px "${DISPLAY_FONT}"`, sample),
@@ -162,7 +172,7 @@ const initAdoptionThanks = (): void => {
                 objectUrls.push(url)
                 const img = q<HTMLImageElement>(`[data-share-image="${format}"]`)
                 img.src = url
-                img.alt = data.imageAlt.replace('%s', () => name || data.ghost)
+                img.alt = unnamed ? data.unnamed.imageAlt : data.imageAlt.replace('%s', () => name || data.ghost)
                 files.push(new File([blob], `adoptoi-kyltti-${format}.png`, { type: 'image/png' }))
                 if (format === 'story') {
                     const link = q<HTMLAnchorElement>('[data-download]')
@@ -187,14 +197,14 @@ const initAdoptionThanks = (): void => {
     q('[data-share]').addEventListener('click', async () => {
         await copyLink()
         try {
-            await navigator.share({ files: files.slice(0, 1), text: data.shareText })
+            await navigator.share({ files: files.slice(0, 1), text: shareText })
         } catch {
             // The visitor closed the share sheet.
         }
     })
     q('[data-download]').addEventListener('click', () => void copyLink())
 
-    if (!own) {
+    if (!own && !unnamed) {
         // No stored name (another browser, or the in-app browser was torn down): ask for it again.
         q('[data-missing-name]').hidden = false
         const input = q<HTMLInputElement>('#adoption-thanks-name')

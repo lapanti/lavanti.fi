@@ -42,11 +42,16 @@ const scriptData: AdoptionThanksData = {
     refNote: content.mobilePay.refNote('%s'),
     shareText: t.share.text,
     sign: SIGN_TEXT[lang],
+    unnamed: t.share.unnamed,
 }
 ---
 
 <style>
     .thanks [hidden] {
+        display: none;
+    }
+    /* A donation without a name on the sign (u=1): the script marks the sign, and the sticker goes. */
+    .thanks :global([data-unnamed] [data-sticker]) {
         display: none;
     }
     .thanks-grid {

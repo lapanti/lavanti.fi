@@ -156,6 +156,8 @@ interface AdoptionLocale {
             share: string
             story: string
             text: string
+            /** A donation without a name on the sign: no sticker, so no "my name" wording. */
+            unnamed: { headline: string; imageAlt: string; text: string }
         }
         thankYou: string[]
     }
@@ -398,6 +400,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 share: 'Share the image',
                 story: 'Story (9:16)',
                 text: "I adopted Lauri Lavanti's election sign, and in spring it goes up by the roadside with my name on it. Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt",
+                unnamed: {
+                    headline: "I supported Lauri Lavanti's election signs",
+                    imageAlt: "Share image: I supported Lauri Lavanti's election signs",
+                    text: "I supported Lauri Lavanti's election signs, and in spring they go up by the roadside. Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt",
+                },
             },
             thankYou: [
                 'Thank you for choosing to support my parliamentary election campaign!',
@@ -581,6 +588,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 share: 'Jaa kuva',
                 story: 'Tarina (9:16)',
                 text: 'Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun nimelläni. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi',
+                unnamed: {
+                    headline: 'Tuin Lauri Lavannin vaalikylttejä',
+                    imageAlt: 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä',
+                    text: 'Tuin Lauri Lavannin vaalikylttejä, ja keväällä ne nousevat tienvarsille. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi',
+                },
             },
             thankYou: [
                 'Kiitos, että lähdit tukemaan eduskuntavaalikampanjaani!',
@@ -770,6 +782,11 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 share: 'Dela bilden',
                 story: 'Story (9:16)',
                 text: 'Jag adopterade Lauri Lavantis valskylt, och i vår kommer den upp vid vägkanten med mitt namn. Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera',
+                unnamed: {
+                    headline: 'Jag stödde Lauri Lavantis valskyltar',
+                    imageAlt: 'Delningsbild: Jag stödde Lauri Lavantis valskyltar',
+                    text: 'Jag stödde Lauri Lavantis valskyltar, och i vår kommer de upp vid vägkanterna. Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera',
+                },
             },
             thankYou: [
                 'Tack för att du valde att stödja min riksdagsvalskampanj!',
