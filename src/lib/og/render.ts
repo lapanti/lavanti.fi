@@ -7,8 +7,6 @@ import process from 'node:process'
 import satori from 'satori'
 import sharp from 'sharp'
 
-import { SIGN, SIGN_COLORS } from '../adoptionShareImage'
-import { estimateWidth, fitStickerLabel, fitStickerName, STICKER, type StickerText } from '../signSticker'
 import { colors } from '../styles'
 
 const WIDTH = 1200
@@ -69,79 +67,6 @@ const headlineSize = (text: string): number => {
     if (n <= 85) return 38
 
     return 32
-}
-
-/** `adoption-sign.jpg` is the sign draft at 444 × 630, so the sign fills the column height. */
-const SIGN_SCALE = HEIGHT / SIGN.height
-const SIGN_LEFT = (PORTRAIT_WIDTH - SIGN.width * SIGN_SCALE) / 2
-
-/** Text lines placed by baseline (sign units), centred on `cx` in a `span`-wide box: satori has no SVG text. */
-const signLines = (fit: StickerText, cx: number, cy: number, color: string, span = 2 * STICKER.r): Node[] =>
-    fit.lines.map((line, i) => {
-        const size = fit.size * SIGN_SCALE
-        const width = span * SIGN_SCALE
-
-        return el(
-            'div',
-            {
-                color,
-                display: 'flex',
-                fontSize: size,
-                justifyContent: 'center',
-                left: SIGN_LEFT + cx * SIGN_SCALE - width / 2,
-                lineHeight: 1,
-                position: 'absolute',
-                // A 1-line-height box puts the baseline about 0.8 em below its top.
-                top: (cy + fit.ys[i]) * SIGN_SCALE - 0.8 * size,
-                width,
-            },
-            line
-        )
-    })
-
-/**
- * The left column of a personal adoption card: the sign draft with the same overlays as
- * SignGraphic.astro (label mask, the sticker with the adopter's name, the payer line). Satori
- * only has Big Shoulders here, so the small label and payer text use it instead of IBM Plex Sans.
- */
-const signColumn = (sign: NonNullable<OgCard['sign']>): Node => {
-    const s = SIGN_SCALE
-    const { mask, payer } = SIGN
-    const box = (x: number, y: number, w: number, h: number) => ({
-        height: h * s,
-        left: SIGN_LEFT + x * s,
-        position: 'absolute',
-        top: y * s,
-        width: w * s,
-    })
-    const payerFit: StickerText = { lines: [...sign.payer], size: payer.size, ys: payer.ys.map((y) => y - STICKER.cy) }
-
-    return el(
-        'div',
-        {
-            backgroundColor: SIGN_COLORS.ground,
-            display: 'flex',
-            height: HEIGHT,
-            position: 'relative',
-            width: PORTRAIT_WIDTH,
-        },
-        [
-            el('img', box(0, 0, SIGN.width, SIGN.height), undefined, {
-                height: HEIGHT,
-                src: portraitUriFor('adoption-sign.jpg'),
-                width: SIGN.width * s,
-            }),
-            el('div', { ...box(mask.x, mask.y, mask.w, mask.h), backgroundColor: SIGN_COLORS.ground }),
-            el('div', {
-                ...box(STICKER.cx - STICKER.r, STICKER.cy - STICKER.r, 2 * STICKER.r, 2 * STICKER.r),
-                backgroundColor: SIGN_COLORS.sticker,
-                borderRadius: '50%',
-            }),
-            ...signLines(fitStickerLabel(sign.sticker, estimateWidth), STICKER.cx, STICKER.cy, SIGN_COLORS.label),
-            ...signLines(fitStickerName(sign.name, estimateWidth), STICKER.cx, STICKER.cy, SIGN_COLORS.name),
-            ...signLines(payerFit, payer.x, STICKER.cy, SIGN_COLORS.payer, 2 * (930 - payer.x)),
-        ]
-    )
 }
 
 const words = (text: string, color: string): Node[] =>
@@ -208,14 +133,12 @@ export async function renderOgCard(card: OgCard): Promise<Uint8Array> {
             width: WIDTH,
         },
         [
-            card.sign
-                ? signColumn(card.sign)
-                : el(
-                      'img',
-                      { height: HEIGHT, objectFit: 'cover', objectPosition: '100% 50%', width: PORTRAIT_WIDTH },
-                      undefined,
-                      { height: HEIGHT, src: portraitUriFor(card.photo), width: PORTRAIT_WIDTH }
-                  ),
+            el(
+                'img',
+                { height: HEIGHT, objectFit: 'cover', objectPosition: '100% 50%', width: PORTRAIT_WIDTH },
+                undefined,
+                { height: HEIGHT, src: portraitUriFor(card.photo), width: PORTRAIT_WIDTH }
+            ),
             el(
                 'div',
                 {
