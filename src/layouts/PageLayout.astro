@@ -42,6 +42,11 @@ interface Props {
     /** With type CollectionPage: list the media gallery photos as the JSON-LD ItemList. */
     gallery?: boolean
     heroImage?: string
+    /**
+     * Split variant: show the Adoptoi kyltti sign instead of the hero photo. `heroImage` still
+     * picks the OG card portrait, but is neither preloaded nor shown.
+     */
+    heroSign?: boolean
     intro?: string
     lang?: Lang
     langAlternates?: Record<Lang, string>
@@ -82,6 +87,7 @@ const {
     faqSection = false,
     gallery = false,
     heroImage,
+    heroSign = false,
     intro,
     lang,
     langAlternates,
@@ -140,8 +146,8 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
 >
     <Fragment slot="head">
         <HeroPreloadLinks
-            heroImage={heroImage}
-            mobileHeroImage={mobileHeroImage}
+            heroImage={heroSign ? undefined : heroImage}
+            mobileHeroImage={heroSign ? undefined : mobileHeroImage}
             mode={variant === 'split' ? 'art-directed' : 'page'}
         />
     </Fragment>
@@ -153,6 +159,7 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
         emphasis={emphasis}
         eyebrow={eyebrow}
         heroImage={heroImage}
+        heroSign={heroSign}
         intro={intro}
         lang={lang}
         mobileHeroImage={mobileHeroImage}
