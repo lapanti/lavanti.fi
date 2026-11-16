@@ -27,14 +27,14 @@ export interface AdoptionThanksData {
     payerSaved: string
     refNote: string
     shareText: string
-    sign: { firstName: string; lastName: string; payer: readonly string[]; sticker: readonly string[] }
+    sign: { firstName: string; lastName: string; payer: string; sticker: readonly string[]; tagline: string }
     /** Share copy for a donation without a name on the sign (`u=1`). */
     unnamed: { headline: string; imageAlt: string; text: string }
 }
 
 type LoadedImage = HTMLImageElement & { height: number; width: number }
 
-/** An image, or null when it fails (a cross-origin image without CORS must not break the PNG). */
+/** An image, or null when it fails (a cross-origin photo without CORS must not break the PNG). */
 const loadImage = (src: string, crossOrigin: boolean): Promise<LoadedImage | null> =>
     new Promise((resolve) => {
         const img = new Image()
@@ -49,7 +49,7 @@ const toBlob = (canvas: HTMLCanvasElement): Promise<Blob | null> =>
         try {
             canvas.toBlob(resolve, 'image/png')
         } catch {
-            // A tainted canvas (sign served without CORS) throws; the caller redraws without it.
+            // A tainted canvas (photo served without CORS) throws; the caller redraws without it.
             resolve(null)
         }
     })
@@ -131,7 +131,7 @@ const initAdoptionThanks = (): void => {
 
     let files: File[] = []
     const objectUrls: string[] = []
-    const draw = async (format: ShareFormat, image: LoadedImage | null, logo: LoadedImage | null) => {
+    const draw = async (format: ShareFormat, photo: LoadedImage | null, logo: LoadedImage | null) => {
         const canvas = document.createElement('canvas')
         canvas.width = SHARE_SIZES[format].width
         canvas.height = SHARE_SIZES[format].height
@@ -141,9 +141,10 @@ const initAdoptionThanks = (): void => {
             cta: data.cta,
             ghost: data.ghost,
             headline,
-            image,
             logo,
             name: unnamed ? null : name,
+            payer: data.sign.payer,
+            photo,
             text: data.sign,
         })
 
@@ -158,15 +159,15 @@ const initAdoptionThanks = (): void => {
             await Promise.all([
                 document.fonts.load(`800 100px "${DISPLAY_FONT}"`, sample),
                 document.fonts.load(`700 40px "${DISPLAY_FONT}"`, sample),
-                document.fonts.load(`600 18px "${BODY_FONT}"`, data.sign.sticker.join(' ')),
-                document.fonts.load(`400 26px "${BODY_FONT}"`, data.sign.payer.join(' ')),
+                document.fonts.load(`600 26px "${BODY_FONT}"`, `${data.sign.tagline} ${data.sign.sticker.join(' ')}`),
+                document.fonts.load(`400 20px "${BODY_FONT}"`, data.sign.payer),
             ]).catch(() => undefined)
-            const imageSrc = document.querySelector<HTMLElement>('[data-sign]')?.dataset.image ?? ''
-            const [image, logo] = await Promise.all([loadImage(imageSrc, true), loadImage(data.logo, false)])
+            const photoSrc = document.querySelector<HTMLElement>('[data-sign]')?.dataset.photo ?? ''
+            const [photo, logo] = await Promise.all([loadImage(photoSrc, true), loadImage(data.logo, false)])
             objectUrls.splice(0).forEach((url) => URL.revokeObjectURL(url))
             files = []
             for (const format of ['story', 'feed'] as const) {
-                const blob = (await draw(format, image, logo)) ?? (await draw(format, null, logo))
+                const blob = (await draw(format, photo, logo)) ?? (await draw(format, null, logo))
                 if (!blob) continue
                 const url = URL.createObjectURL(blob)
                 objectUrls.push(url)

@@ -27,31 +27,31 @@ export { BODY_FONT, DISPLAY_FONT } from './signSticker'
 
 const DEEP_FOREST = '#163E35'
 
-/** Cloudflare Images id of the campaign's road-sign draft (Finnish), the base of every sign. */
-export const SIGN_IMAGE_SLUG = 'Lauri-Lavanti-vaalikyltti-luonnos'
-
 /**
- * Sign geometry in SVG user units (also the canvas units at scale 1): the draft's own pixels. The
- * draft carries the name, photo, slogan, logo and URL; only three things are drawn over it. The
- * adopter's name sits in the round sticker (`STICKER` in signSticker.ts) right of "LAURI".
+ * Sign geometry in SVG user units (also the canvas units at scale 1). The adopter's name sits in
+ * the round sticker (`STICKER` in signSticker.ts) where the photo meets the text, right of Lauri.
  */
 export const SIGN = {
-    height: 2000,
-    /** The draft's stray "BIG SHOULDERS" font label, top right, painted over with the ground. */
-    mask: { h: 32, w: 174, x: 1144, y: 26 },
-    /** Two lines in the free ground between the party logo (ends x 338) and LAVANTI.FI (x 930). */
-    payer: { size: 26, x: 634, ys: [1924, 1960] },
-    width: 1410,
+    firstName: { size: 46, y: 592 },
+    height: 860,
+    lastName: { size: 136, y: 708 },
+    padX: 40,
+    payer: { size: 20, y: 834 },
+    photo: { h: 520, y: 0 },
+    tagline: { size: 26, y: 756 },
+    width: 600,
 } as const
 
 export const SIGN_COLORS = {
+    background: DEEP_FOREST,
+    firstName: colors.aquaBlue,
     ghost: 'rgba(22, 62, 53, 0.55)',
-    /** The draft's dark green ground, sampled from the image (0, 61, 36). */
-    ground: '#003D24',
     label: 'rgba(22, 62, 53, 0.8)',
+    lastName: colors.white,
     name: DEEP_FOREST,
     payer: 'rgba(255, 255, 255, 0.85)',
     sticker: colors.white,
+    tagline: colors.oat,
 } as const
 
 /** Top to bottom: blue against the ground, dark green at the image edge. */
@@ -165,17 +165,29 @@ export const shareLayout = (format: ShareFormat, headlineLines: number): ShareLa
 
 const display = (weight: number) => (size: number) => `${weight} ${size}px "${DISPLAY_FONT}"`
 
+/** Draws `image` to cover the box, cropping the overflow evenly (CSS object-fit: cover). */
+const drawCover = (
+    ctx: CanvasLike,
+    image: CanvasImageSource & { height: number; width: number },
+    x: number,
+    y: number,
+    w: number,
+    h: number
+) => {
+    const scale = Math.max(w / image.width, h / image.height)
+    const sw = w / scale
+    const sh = h / scale
+    ctx.drawImage(image, (image.width - sw) / 2, (image.height - sh) / 2, sw, sh, x, y, w, h)
+}
+
 export interface SignDrawing {
     ghost: string
-    /** The sign draft; null when it failed to load (or tainted the canvas): the ground stays. */
-    image: (CanvasImageSource & { height: number; width: number }) | null
     /** The name in the sticker ('' shows the ghost text); null draws no sticker (no name on the sign). */
     name: null | string
-    /**
-     * `firstName`/`lastName` feed the share image wordmark; `payer` is the two-line "Mainoksen
-     * maksaja" line; `sticker` the label over the name ("Tämän kyltin", "adoptoi").
-     */
-    text: { firstName: string; lastName: string; payer: readonly string[]; sticker: readonly string[] }
+    payer: string
+    photo: (CanvasImageSource & { height: number; width: number }) | null
+    /** `sticker` is the label over the name, two lines ("Tämän kyltin", "adoptoi"). */
+    text: { firstName: string; lastName: string; sticker: readonly string[]; tagline: string }
 }
 
 /** Draws the white sticker with its label and the name (or ghost text) fitted inside. */
@@ -208,19 +220,28 @@ export const drawSign = (ctx: CanvasLike, x: number, y: number, scale: number, s
     ctx.save()
     ctx.translate(x, y)
     ctx.transform(scale, 0, 0, scale, 0, 0)
-    ctx.fillStyle = SIGN_COLORS.ground
+    ctx.fillStyle = SIGN_COLORS.background
     ctx.fillRect(0, 0, SIGN.width, SIGN.height)
-    if (sign.image) ctx.drawImage(sign.image, 0, 0, SIGN.width, SIGN.height)
-    const { mask } = SIGN
-    ctx.fillRect(mask.x, mask.y, mask.w, mask.h)
+    if (sign.photo) drawCover(ctx, sign.photo, 0, SIGN.photo.y, SIGN.width, SIGN.photo.h)
 
     ctx.textBaseline = 'alphabetic'
+    ctx.textAlign = 'left'
+    ctx.fillStyle = SIGN_COLORS.firstName
+    ctx.font = display(800)(SIGN.firstName.size)
+    ctx.fillText(sign.text.firstName.toUpperCase(), SIGN.padX, SIGN.firstName.y)
+    ctx.fillStyle = SIGN_COLORS.lastName
+    ctx.font = display(800)(SIGN.lastName.size)
+    ctx.fillText(sign.text.lastName.toUpperCase(), SIGN.padX - 4, SIGN.lastName.y)
+    ctx.fillStyle = SIGN_COLORS.tagline
+    ctx.font = `600 ${SIGN.tagline.size}px "${BODY_FONT}"`
+    ctx.fillText(sign.text.tagline, SIGN.padX, SIGN.tagline.y)
+
     if (sign.name !== null) drawSticker(ctx, { ...sign, name: sign.name })
 
     ctx.textAlign = 'center'
     ctx.fillStyle = SIGN_COLORS.payer
     ctx.font = `400 ${SIGN.payer.size}px "${BODY_FONT}"`
-    sign.text.payer.forEach((line, i) => ctx.fillText(line, SIGN.payer.x, SIGN.payer.ys[i]))
+    ctx.fillText(sign.payer, SIGN.width / 2, SIGN.payer.y)
     ctx.restore()
 }
 

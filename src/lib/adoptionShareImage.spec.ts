@@ -57,13 +57,14 @@ const recorder = () => {
 
 const sign: SignDrawing = {
     ghost: 'Sinun nimesi',
-    image: null,
     name: 'Sjoerd',
+    payer: 'Mainoksen maksaja: Digitaalisen itsenäisyyden puolesta ry',
+    photo: null,
     text: {
         firstName: 'Lauri',
         lastName: 'Lavanti',
-        payer: ['Mainoksen maksaja:', 'Digitaalisen itsenäisyyden puolesta ry'],
         sticker: ['Tämän kyltin', 'adoptoi'],
+        tagline: 'Eduskuntavaalit 2027 · Uusimaa',
     },
 }
 
@@ -106,20 +107,20 @@ describe('drawSign', () => {
         const { calls, ctx } = recorder()
         drawSign(ctx, 10, 20, 0.5, sign)
         const texts = calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])
-        expect(texts).toEqual(['Tämän kyltin', 'adoptoi', 'Sjoerd', ...sign.text.payer])
+        expect(texts).toEqual(['LAURI', 'LAVANTI', sign.text.tagline, 'Tämän kyltin', 'adoptoi', 'Sjoerd', sign.payer])
         expect(calls[0].op).toBe('save')
         expect(calls.at(-1)?.op).toBe('restore')
         const arc = calls.find((c) => c.op === 'arc')
         expect(arc?.args.slice(0, 3)).toEqual([STICKER.cx, STICKER.cy, STICKER.r])
         expect(arc?.fill).toBe(SIGN_COLORS.sticker)
-        const name = calls.filter((c) => c.op === 'fillText')[2]
+        const name = calls.filter((c) => c.op === 'fillText')[5]
         expect(name.args.slice(1)).toEqual([STICKER.cx, STICKER.cy + STICKER.nameOne.y])
         expect(name.fill).toBe(SIGN_COLORS.name)
 
         const ghost = recorder()
         drawSign(ghost.ctx, 0, 0, 1, { ...sign, name: '  ' })
         // At the recorder's wide half-em letters the ghost text takes two lines.
-        const nameCalls = ghost.calls.filter((c) => c.op === 'fillText').slice(2, -2)
+        const nameCalls = ghost.calls.filter((c) => c.op === 'fillText').slice(5, -1)
         expect(nameCalls.map((c) => c.args[0]).join(' ')).toBe('Sinun nimesi')
         for (const c of nameCalls) expect(c.fill).toBe('rgba(22, 62, 53, 0.55)')
     })
@@ -127,7 +128,7 @@ describe('drawSign', () => {
     it('wraps a 24-character name onto two lines inside the sticker', () => {
         const { calls, ctx } = recorder()
         drawSign(ctx, 0, 0, 1, { ...sign, name: 'Anna-Liisa Väisänen-Ødeg' })
-        const lines = calls.filter((c) => c.op === 'fillText').slice(2, 4)
+        const lines = calls.filter((c) => c.op === 'fillText').slice(5, 7)
         expect(lines.map((c) => c.args[0])).toEqual(['Anna-Liisa', 'Väisänen-Ødeg'])
         for (const line of lines) {
             expect(line.font).toMatch(/^700 [\d.]+px/)
@@ -137,48 +138,39 @@ describe('drawSign', () => {
         expect(lines.map((c) => c.args[2])).toEqual(STICKER.nameTwo.ys.map((y) => STICKER.cy + y))
     })
 
-    it('draws no sticker for a donation without a name, only the payer line', () => {
+    it('draws no sticker for a donation without a name', () => {
         const { calls, ctx } = recorder()
         drawSign(ctx, 0, 0, 1, { ...sign, name: null })
         expect(calls.some((c) => c.op === 'arc')).toBe(false)
-        expect(calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])).toEqual([...sign.text.payer])
+        expect(calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])).toEqual([
+            sign.text.firstName.toUpperCase(),
+            sign.text.lastName.toUpperCase(),
+            sign.text.tagline,
+            sign.payer,
+        ])
     })
 
-    it('draws the draft over the ground, then masks its stray font label', () => {
+    it('crops the photo to cover its box', () => {
         const { calls, ctx } = recorder()
-        const image = { height: 1400, width: 987 } as unknown as SignDrawing['image']
-        drawSign(ctx, 0, 0, 1, { ...sign, image })
-        const draws = calls.filter((c) => ['drawImage', 'fillRect'].includes(c.op))
-        expect(draws.map((c) => c.op)).toEqual(['fillRect', 'drawImage', 'fillRect'])
-        expect(draws[1].args.slice(1)).toEqual([0, 0, SIGN.width, SIGN.height])
-        const { mask } = SIGN
-        expect(draws[2]).toMatchObject({ args: [mask.x, mask.y, mask.w, mask.h], fill: SIGN_COLORS.ground })
-        // The label ("BIG SHOULDERS") spans x 1152–1309, y 34–49 on the draft.
-        expect(mask.x).toBeLessThan(1152)
-        expect(mask.x + mask.w).toBeGreaterThan(1309)
-        expect(mask.y).toBeLessThan(34)
-        expect(mask.y + mask.h).toBeGreaterThan(49)
+        const photo = { height: 480, width: 800 } as unknown as SignDrawing['photo']
+        drawSign(ctx, 0, 0, 1, { ...sign, photo })
+        const draw = calls.find((c) => c.op === 'drawImage')
+        // 800 × 480 into 600 × 520: scale by height (520/480), crop the sides evenly.
+        const sw = 600 / (520 / 480)
+        const expected = [(800 - sw) / 2, 0, sw, 480, 0, 0, 600, 520]
+        draw?.args.slice(1).forEach((v, i) => expect(v).toBeCloseTo(expected[i]))
     })
 
-    it('keeps the payer line between the party logo and LAVANTI.FI, under the stripes', () => {
-        const { calls, ctx } = recorder()
-        drawSign(ctx, 0, 0, 1, sign)
-        const payer = calls.filter((c) => c.op === 'fillText').slice(-2)
-        expect(payer.map((c) => c.args.slice(1))).toEqual(SIGN.payer.ys.map((y) => [SIGN.payer.x, y]))
-        for (const line of sign.text.payer) {
-            const half = (line.length * 0.5 * SIGN.payer.size) / 2
-            expect(SIGN.payer.x - half).toBeGreaterThan(338)
-            expect(SIGN.payer.x + half).toBeLessThan(930)
-        }
-        expect(SIGN.payer.ys[0] - SIGN.payer.size).toBeGreaterThan(1872) // the stripe's lowest edge
-        expect(SIGN.payer.ys[1]).toBeLessThan(SIGN.height - 0.25 * SIGN.payer.size)
+    it('keeps the payer line inside the sign, below the tagline', () => {
+        expect(SIGN.payer.y).toBeLessThan(SIGN.height)
+        expect(SIGN.payer.y - SIGN.payer.size).toBeGreaterThan(SIGN.tagline.y)
     })
 })
 
 describe('drawShareImage', () => {
     it('draws the chrome, headline, sign, call to action and one stripe run', () => {
         const { calls, ctx } = recorder()
-        const logo = { height: 410, width: 1316 } as unknown as SignDrawing['image']
+        const logo = { height: 410, width: 1316 } as unknown as SignDrawing['photo']
         const layout = drawShareImage(ctx, 'story', {
             ...sign,
             cta: 'Adoptoi sinäkin: lavanti.fi/adoptoi',
