@@ -1,5 +1,8 @@
 ---
+import type { Lang } from '../../content/nav'
+
 import { typographics } from '../../lib/styles'
+import SignGraphic from '../adoption/SignGraphic.astro'
 import Images from '../heroBanner/Images.astro'
 
 interface Props {
@@ -9,12 +12,16 @@ interface Props {
     emphasis?: string
     eyebrow?: string
     heroImage?: string
+    /** Show the Adoptoi kyltti sign (ghost name) in place of the photo; needs `lang`. */
+    heroSign?: boolean
     intro?: string
+    lang?: Lang
     mobileHeroImage?: string
     title: string
 }
 
-const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, intro, mobileHeroImage, title } = Astro.props
+const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, heroSign, intro, lang, mobileHeroImage, title } =
+    Astro.props
 ---
 
 <style
@@ -41,6 +48,13 @@ const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, intro, mobileHeroI
            so it doesn't sit on top of (and hide) the hero image underneath it. */
         padding-top: var(--headerSize);
         position: relative;
+    }
+
+    .hero-sign {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
     }
 
     .hero-right {
@@ -113,6 +127,10 @@ const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, intro, mobileHeroI
             width: 260px;
         }
 
+        .hero-sign {
+            padding: 6.5rem 1.5rem 2rem;
+        }
+
         .hero-right {
             grid-column: 2;
             padding: 6.5rem 2.5rem 2rem 1rem;
@@ -169,7 +187,15 @@ const { alt, ctaHref, ctaLabel, emphasis, eyebrow, heroImage, intro, mobileHeroI
     }
 </style>
 <section class="hero">
-    <Images alt={alt} heroImage={heroImage} mobileHeroImage={mobileHeroImage} showMark={false} />
+    {
+        heroSign && lang ? (
+            <div class="hero-left hero-sign">
+                <SignGraphic hero lang={lang} />
+            </div>
+        ) : (
+            <Images alt={alt} heroImage={heroImage} mobileHeroImage={mobileHeroImage} showMark={false} />
+        )
+    }
     <div class="hero-right">
         {eyebrow && <div class="hero-kicker">{eyebrow}</div>}
         <h1>

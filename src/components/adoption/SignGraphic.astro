@@ -7,17 +7,22 @@ import { getImage } from '../../lib/images'
 import { estimateWidth, fitStickerLabel, fitStickerName, STICKER } from '../../lib/signSticker'
 
 interface Props {
+    /**
+     * The hero copy: decorative (the form's sign below carries the description), always the ghost
+     * text and left out of `setSignName`, so typing in the form only changes the form's sign.
+     */
+    hero?: boolean
     lang: Lang
     /** A fixed name (personal pages); without it the ghost text shows until a script sets one. */
     name?: string
 }
 
-const { lang, name } = Astro.props
+const { hero = false, lang, name } = Astro.props
 const t = adoptionContent[lang].sign
 const text = SIGN_TEXT[lang]
 /** The photo on the sign; the share image script loads the same URL (data-photo). */
 const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
-const shown = name?.trim() ?? ''
+const shown = hero ? '' : (name?.trim() ?? '')
 // Server-side fit from estimated widths; the browser re-fits with real ones when a name is typed.
 const label = fitStickerLabel(text.sticker, estimateWidth)
 const fit = fitStickerName(shown || t.ghostName, estimateWidth)
@@ -51,6 +56,22 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
     .sign-graphic .body {
         font-family: 'IBM Plex Sans', sans-serif;
     }
+    /* In the split hero the sign sits on deep forest, so a white frame sets it off like a board. */
+    .sign-graphic.hero {
+        margin: 0 auto;
+        max-width: 10.5rem;
+    }
+    @media (min-width: 769px) {
+        .sign-graphic.hero {
+            max-width: 17rem;
+        }
+    }
+    .sign-graphic.hero svg {
+        border: 0.375rem solid var(--colorsWhite);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+        box-sizing: border-box;
+        display: block;
+    }
     .sign-graphic figcaption {
         color: var(--colorsForestGreen);
         font-size: var(--textSmallFontSize);
@@ -58,8 +79,18 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
     }
 </style>
 
-<figure class="sign-graphic" data-ghost={t.ghostName} data-photo={SIGN_PHOTO.src} data-sign>
-    <svg aria-label={t.figureLabel} role="img" viewBox={`0 0 ${SIGN.width} ${SIGN.height}`}>
+<figure
+    aria-hidden={hero ? 'true' : undefined}
+    class:list={['sign-graphic', { hero }]}
+    data-ghost={t.ghostName}
+    data-photo={SIGN_PHOTO.src}
+    data-sign={hero ? undefined : ''}
+>
+    <svg
+        aria-label={hero ? undefined : t.figureLabel}
+        role={hero ? undefined : 'img'}
+        viewBox={`0 0 ${SIGN.width} ${SIGN.height}`}
+    >
         <rect fill={SIGN_COLORS.background} height={SIGN.height} width={SIGN.width}></rect>
         <image
             height={SIGN.photo.h}
@@ -126,5 +157,5 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
             y={SIGN.payer.y}>{text.payer}</text
         >
     </svg>
-    <figcaption>{t.finePrint}</figcaption>
+    {!hero && <figcaption>{t.finePrint}</figcaption>}
 </figure>
