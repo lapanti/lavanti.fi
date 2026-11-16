@@ -8,12 +8,15 @@ import {
     formatPages,
     looksLikeCompany,
     mailtoUrl,
+    needsPayer,
     pageEntry,
     payerKey,
     payerTotals,
     printCsv,
+    printRound,
     resolveIds,
     sameName,
+    signLabel,
 } from './entry'
 
 const row = (patch: Partial<Adoption> = {}): Adoption => ({
@@ -29,6 +32,7 @@ const row = (patch: Partial<Adoption> = {}): Adoption => ({
     message: null,
     message_approved_at: null,
     municipality: 'kirkkonummi',
+    named: 1,
     paid_via: null,
     payer_name: null,
     printed_at: null,
@@ -38,6 +42,37 @@ const row = (patch: Partial<Adoption> = {}): Adoption => ({
     sign_name: 'Sjoerd',
     status: 'pending',
     ...patch,
+})
+
+/** A donation without a name on the sign. */
+const unnamed = (patch: Partial<Adoption> = {}) => row({ named: 0, sign_name: null, ...patch })
+
+describe('donations without a name', () => {
+    it('marks them in the list and asks for the payer only when nothing else names the giver', () => {
+        expect(signLabel(unnamed())).toBe('[EI NIMEÄ KYLTTIIN]')
+        expect(signLabel(row())).toBe('Sjoerd')
+        expect(needsPayer(unnamed())).toBe(true)
+        expect(needsPayer(unnamed({ payer_name: 'Matti' }))).toBe(false)
+        expect(needsPayer(unnamed({ company_name: 'Paja Oy' }))).toBe(false)
+        expect(needsPayer(row())).toBe(false)
+        expect(payerKey(unnamed({ payer_name: 'Matti' }))).toBe('matti')
+    })
+
+    it('leaves them out of the print list but counts their signs', () => {
+        const round = printRound([row({ quantity: 2 }), unnamed({ id: 2, quantity: 3 }), unnamed({ id: 3 })])
+        expect(round.named.map((r) => r.id)).toEqual([1])
+        expect(round.unnamed.map((r) => r.id)).toEqual([2, 3])
+        expect(round.unnamedSigns).toBe(4)
+    })
+
+    it('writes a confirmation without the name or the revocation line', () => {
+        const body = decodeURIComponent(mailtoUrl(unnamed({ quantity: 2 })))
+        expect(body).toContain('Kiitos, että tuet kylttejä')
+        expect(body).toContain('nimesi ei tule kyltteihin')
+        expect(body).not.toContain('perua luvan')
+        expect(decodeURIComponent(mailtoUrl(unnamed({ lang: 'sv' })))).toContain('inte på skylten')
+        expect(decodeURIComponent(mailtoUrl(unnamed({ lang: 'en' })))).toContain('does not go on the sign')
+    })
 })
 
 describe('looksLikeCompany', () => {
@@ -100,8 +135,9 @@ describe('adoptionSlug', () => {
 
 describe('pageEntry', () => {
     it('carries only an approved message', () => {
-        expect(pageEntry(row({ message: 'Hei' }), [])).toEqual({ lang: 'fi', name: 'Sjoerd', slug: 'sjoerd' })
-        expect(pageEntry(row({ message: 'Hei', message_approved_at: '2026-11-14' }), [])).toEqual({
+        const named = (patch: Partial<Adoption>) => ({ ...row(patch), sign_name: 'Sjoerd' })
+        expect(pageEntry(named({ message: 'Hei' }), [])).toEqual({ lang: 'fi', name: 'Sjoerd', slug: 'sjoerd' })
+        expect(pageEntry(named({ message: 'Hei', message_approved_at: '2026-11-14' }), [])).toEqual({
             lang: 'fi',
             message: 'Hei',
             name: 'Sjoerd',

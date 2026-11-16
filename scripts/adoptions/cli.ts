@@ -2,7 +2,7 @@
  * Owner inbox for Adoptoi kyltti (spec: .agents/specs/sign-adoption/spec.md § Owner flow).
  *
  *   npm run adoptions -- list
- *   npm run adoptions -- approve <id|ref…> [--via mobilepay|tilisiirto|lasku]
+ *   npm run adoptions -- approve <id|ref…> [--via mobilepay|tilisiirto|lasku] [--payer "<name>"]
  *   npm run adoptions -- reject <id|ref>
  *   npm run adoptions -- approve-message <id|ref> | reject-message <id|ref>
  *   npm run adoptions -- revoke <id|ref>
@@ -12,8 +12,11 @@
  * approve: after matching the MobilePay report by ref (or name, amount and date). Refuses a
  * company-form name without company details, warns when the payer differs from the sign name,
  * warns at 2 000 euros per giver and stops above 6 000. Prints the confirmation as a mailto: link.
- * print: writes the approved, unprinted rows to adoptions-print/<date>.csv (gitignored) and marks
- * them printed. revoke: deletes the row; a printed name goes to adoptions-print/cover.csv.
+ * A donation without a name on the sign and no payer name needs `--payer` (one ref) with the name
+ * from the MobilePay report or bank statement, so the giver stays identifiable for the limits.
+ * print: writes the approved, unprinted named rows to adoptions-print/<date>.csv (gitignored),
+ * counts the signs without a name apart, and marks all of them printed. revoke: deletes the row; a
+ * printed name goes to adoptions-print/cover.csv. page add refuses a row without a name.
  * page add|remove: changes one entry of src/content/adoptionPages.json in a commit of its own
  * (GPG-signed) on its own branch from origin/main, pushes it and opens the PR.
  *
@@ -37,12 +40,15 @@ import {
     formatPages,
     looksLikeCompany,
     mailtoUrl,
+    needsPayer,
     pageEntry,
     payerKey,
     payerTotals,
     printCsv,
+    printRound,
     resolveIds,
     sameName,
+    signLabel,
 } from './entry.ts'
 /* eslint-enable import-x/extensions */
 
@@ -85,7 +91,7 @@ const git = (...args: string[]): string => execFileSync('git', args, { cwd: ROOT
 const errorText = (err: unknown): string => (err instanceof Error ? err.message : String(err))
 
 const describe = (r: Adoption) =>
-    `${r.id}  ${r.ref_code}  ${r.created_at.slice(0, 10)}  ${r.sign_name} × ${r.quantity} (${donation(r)} €)  ${r.municipality}  ${r.lang}` +
+    `${r.id}  ${r.ref_code}  ${r.created_at.slice(0, 10)}  ${signLabel(r)} × ${r.quantity} (${donation(r)} €)  ${r.municipality}  ${r.lang}` +
     (r.company_name ? `\n    yritys: ${r.company_name} ${r.business_id} → ${r.billing_address}` : '') +
     (r.payer_name ? `\n    maksaja: ${r.payer_name}` : '') +
     `\n    ${r.email}${r.public ? '  · listalla' : ''}${r.consent_page_at ? '  · oma sivu' : ''}`
@@ -95,7 +101,7 @@ const list = async () => {
     console.log(adoptions.length === 0 ? 'No pending adoptions.' : 'Pending adoptions:\n')
     for (const r of adoptions) console.log(`${describe(r)}\n`)
     if (messages.length > 0) console.log('Messages awaiting moderation:\n')
-    for (const r of messages) console.log(`${r.id}  ${r.ref_code}  ${r.sign_name}: ${r.message}\n`)
+    for (const r of messages) console.log(`${r.id}  ${r.ref_code}  ${signLabel(r)}: ${r.message}\n`)
 }
 
 /** Ids from the arguments, resolved against `rows`; unknown ones stop the command. */
@@ -107,23 +113,38 @@ const idsFrom = (args: string[], rows: Adoption[]): number[] => {
     return ids
 }
 
+/** `--flag value` out of the arguments: the value (or undefined) and the arguments without both. */
+const takeFlag = (args: string[], flag: string): [string | undefined, string[]] => {
+    const i = args.indexOf(flag)
+    if (i < 0) return [undefined, args]
+    if (args[i + 1] === undefined) fail(`${flag} needs a value.`)
+
+    return [args[i + 1], args.filter((_, j) => j !== i && j !== i + 1)]
+}
+
 const approve = async (args: string[]) => {
-    const viaIndex = args.indexOf('--via')
-    const via = viaIndex >= 0 ? args[viaIndex + 1] : undefined
+    const [via, rest] = takeFlag(args, '--via')
     if (via !== undefined && !['lasku', 'mobilepay', 'tilisiirto'].includes(via))
         fail('--via is mobilepay, tilisiirto or lasku.')
-    const refs = viaIndex >= 0 ? args.filter((_, i) => i !== viaIndex && i !== viaIndex + 1) : args
+    const [payer, refs] = takeFlag(rest, '--payer')
+    if (payer !== undefined && refs.length !== 1) fail('--payer goes with exactly one id or ref.')
     const { adoptions } = await inbox()
     const totals = payerTotals(await approvedRows())
 
     for (const id of idsFrom(refs, adoptions)) {
-        const r = adoptions.find((x) => x.id === id)!
-        if (looksLikeCompany(r.sign_name) && !r.company_name) {
+        const found = adoptions.find((x) => x.id === id)!
+        if (needsPayer(found) && payer === undefined) {
+            console.error(`${found.ref_code}: no name on the sign and no payer name. Find the payer in the`)
+            console.error(`  MobilePay report or bank statement and run: approve ${found.ref_code} --payer "<name>"`)
+            continue
+        }
+        const r = payer === undefined ? found : { ...found, payer_name: payer }
+        if (r.sign_name !== null && looksLikeCompany(r.sign_name) && !r.company_name) {
             console.error(`${r.ref_code}: "${r.sign_name}" looks like a company but has no company details;`)
             console.error('  a company name goes on a sign only when the company pays by invoice. Skipped.')
             continue
         }
-        if (r.payer_name && !sameName(r.payer_name, r.sign_name)) {
+        if (r.payer_name && r.sign_name !== null && !sameName(r.payer_name, r.sign_name)) {
             console.warn(`${r.ref_code}: payer "${r.payer_name}" differs from the sign name "${r.sign_name}".`)
         }
         const key = payerKey(r)
@@ -136,9 +157,12 @@ const approve = async (args: string[]) => {
         if (check === 'warn')
             console.warn(`${r.ref_code}: ${key} reaches ${total} € (≥ 2 000 €): tarkista myös muut kanavat.`)
 
-        await act(r.id, 'approve', { paid_via: via ?? (r.company_name ? 'lasku' : 'mobilepay') })
+        await act(r.id, 'approve', {
+            paid_via: via ?? (r.company_name ? 'lasku' : 'mobilepay'),
+            ...(payer === undefined ? {} : { payer_name: payer }),
+        })
         totals.set(key, total)
-        console.log(`Approved ${r.ref_code} ${r.sign_name} × ${r.quantity}.`)
+        console.log(`Approved ${r.ref_code} ${signLabel(r)} × ${r.quantity}.`)
         if (r.company_name) {
             console.log(`  Invoice: ${INVOICE_TITLE}, ${donation(r)} €, no VAT → ${r.billing_address}`)
         }
@@ -163,7 +187,9 @@ const revoke = async (args: string[]) => {
     for (const id of idsFrom(args, rows)) {
         const r = rows.find((x) => x.id === id)!
         await api(`/${id}`, { method: 'DELETE' })
-        console.log(`Revoked and deleted ${r.ref_code} ${r.sign_name}.`)
+        console.log(`Revoked and deleted ${r.ref_code} ${signLabel(r)}.`)
+        // A sign without a name has nothing to cover and no personal page.
+        if (r.sign_name === null) continue
         if (r.printed_at) {
             mkdirSync(PRINT_DIR, { recursive: true })
             appendFileSync(
@@ -181,12 +207,21 @@ const revoke = async (args: string[]) => {
 const print = async () => {
     const rows = (await approvedRows()).filter((r) => !r.printed_at)
     if (rows.length === 0) return console.log('Nothing new to print.')
-    mkdirSync(PRINT_DIR, { recursive: true })
-    const file = join(PRINT_DIR, `${helsinkiDateOf(new Date())}.csv`)
-    if (existsSync(file)) fail(`${file} exists; move it away first so no round is overwritten.`)
-    writeFileSync(file, printCsv(rows))
+    const round = printRound(rows)
+    if (round.named.length > 0) {
+        mkdirSync(PRINT_DIR, { recursive: true })
+        const file = join(PRINT_DIR, `${helsinkiDateOf(new Date())}.csv`)
+        if (existsSync(file)) fail(`${file} exists; move it away first so no round is overwritten.`)
+        writeFileSync(file, printCsv(round.named))
+        const signs = round.named.reduce((n, r) => n + r.quantity, 0)
+        console.log(`Wrote ${round.named.length} adoptions (${signs} signs) to ${file}.`)
+    }
+    if (round.unnamed.length > 0) {
+        console.log(
+            `${round.unnamed.length} donations without a name: ${round.unnamedSigns} more signs, no sticker (not in the CSV).`
+        )
+    }
     for (const r of rows) await act(r.id, 'printed')
-    console.log(`Wrote ${rows.length} adoptions (${rows.reduce((n, r) => n + r.quantity, 0)} signs) to ${file}.`)
 }
 
 /**
@@ -230,9 +265,10 @@ const page = async ([sub, arg]: string[]) => {
         const rows = await approvedRows()
         const [id] = idsFrom(arg ? [arg] : [], rows)
         const r = rows.find((x) => x.id === id)!
+        const signName = r.sign_name ?? fail(`${r.ref_code} has no name on the sign, so it gets no personal page.`)
         if (!r.consent_page_at) fail(`${r.ref_code} did not ask for a personal page.`)
         const entry = pageEntry(
-            r,
+            { ...r, sign_name: signName },
             readPages().map((p) => p.slug)
         )
         commitPages(`feat/adoptoi-page-${entry.slug}`, `feat(adoptoi): add page for ${entry.slug}`, (pages) => [
@@ -267,7 +303,7 @@ try {
         commands[command ?? ''] ??
         (() =>
             fail(
-                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|tilisiirto|lasku] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug>'
+                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|tilisiirto|lasku] [--payer "<name>"] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug>'
             ))
     )(args)
 } catch (err) {
