@@ -51,6 +51,10 @@ test.describe('Sign adoption page', () => {
         `)
         await test.expect(page.getByRole('img', { name: /Havainnekuva vaalikyltistä/ })).toBeVisible()
         await test.expect(page.locator('[data-step="2"]')).toBeHidden()
+        // The hero shows the sign instead of a photo, and no unused hero photo is preloaded.
+        await test.expect(page.locator('.hero-sign svg')).toBeVisible()
+        await test.expect(page.locator('.hero picture')).toHaveCount(0)
+        await test.expect(page.locator('link[rel="preload"][as="image"]')).toHaveCount(0)
     })
 
     test('should scroll from the hero CTA to the form on a phone', async ({ page }) => {
@@ -66,11 +70,14 @@ test.describe('Sign adoption page', () => {
 
     test('should write the typed name on the sign', async ({ page }) => {
         await page.goto('/fi/adoptoi/')
-        const sign = page.locator('[data-sign-name]').first()
+        // The form's sign follows the field; the hero's copy keeps the ghost text.
+        const sign = page.locator('[data-sign] [data-sign-name]')
+        const heroSign = page.locator('.hero-sign [data-sign-name]')
         await test.expect(sign).toHaveText('Sinun nimesi')
 
         await page.getByLabel('Nimi kylttiin').fill('Åsa Ødegaard')
         await test.expect(sign).toHaveText('Åsa Ødegaard')
+        await test.expect(heroSign).toHaveText('Sinun nimesi')
         await test.expect(page.locator('#adoption-name-counter')).toHaveText('12/24')
     })
 
