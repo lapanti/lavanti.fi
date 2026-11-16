@@ -137,6 +137,13 @@ describe('drawSign', () => {
         expect(lines.map((c) => c.args[2])).toEqual(STICKER.nameTwo.ys.map((y) => STICKER.cy + y))
     })
 
+    it('draws no sticker for a donation without a name, only the payer line', () => {
+        const { calls, ctx } = recorder()
+        drawSign(ctx, 0, 0, 1, { ...sign, name: null })
+        expect(calls.some((c) => c.op === 'arc')).toBe(false)
+        expect(calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])).toEqual([...sign.text.payer])
+    })
+
     it('draws the draft over the ground, then masks its stray font label', () => {
         const { calls, ctx } = recorder()
         const image = { height: 1400, width: 987 } as unknown as SignDrawing['image']
