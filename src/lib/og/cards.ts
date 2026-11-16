@@ -2,7 +2,7 @@ import type { Lang } from '../../content/nav'
 
 import { adoptionPages } from '../../content/adoptionPages'
 import { LANGS } from '../../content/nav'
-import { adoptionContent } from '../../content/signAdoption'
+import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
 import { sloganContent } from '../../content/slogan'
 import { getCategoryPath, tags } from '../../content/tags'
 import { newsletterSlug } from '../newsletterRoutes'
@@ -21,6 +21,8 @@ export interface OgCard {
     id: string
     lang: Lang
     photo?: string
+    /** A personal adoption page: the sign with this name in its sticker replaces the portrait. */
+    sign?: { name: string; payer: readonly string[]; sticker: readonly string[] }
     title: string
 }
 
@@ -141,6 +143,7 @@ async function build(): Promise<OgCard[]> {
             emphasis: t.personal.ogEmphasis,
             id: ogId(`${t.base}${page.slug}`.replace(/^\/|\/$/g, '')),
             lang: page.lang,
+            sign: { name: page.name, payer: SIGN_TEXT[page.lang].payer, sticker: SIGN_TEXT[page.lang].sticker },
             title: cleanCardText(page.name),
         })
     }
