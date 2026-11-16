@@ -24,6 +24,7 @@ export interface AdoptionFormData {
     nextStep: string[]
     nextStepCompany: string[]
     pinned: string[]
+    pinnedUnnamed: string[]
     sending: string
     thanksPath: string
     total: string[]
@@ -62,6 +63,11 @@ const initAdoptionForm = (): void => {
     }
     const name = () => nameInput.value.normalize('NFC').replace(/\s+/g, ' ').trim()
     const isCompany = () => field('company_name').value.trim() !== ''
+    const unnamedInput = field('unnamed')
+    const unnamed = () => unnamedInput.checked
+    /** The name and everything that only makes sense with it; CSS hides them when opted out. */
+    const NAMED_ONLY = ['sign_name', 'consent_print', 'consent_person', 'public', 'page']
+    const NAMED_REQUIRED = new Set(['sign_name', 'consent_print', 'consent_person'])
 
     const updateReady = () => {
         const ready = form.checkValidity()
@@ -77,8 +83,15 @@ const initAdoptionForm = (): void => {
         form.querySelectorAll('[data-cta]').forEach((b) => (b.textContent = data.cta[n - 1]))
         q('[data-total]').textContent = data.total[n - 1]
         q('[data-consent-print]').textContent = data.consentPrint[n - 1]
+        // Disabled fields are neither validated nor posted, so a box ticked before opting out stays out.
+        for (const f of NAMED_ONLY) {
+            field(f).disabled = unnamed()
+            field(f).required = !unnamed() && NAMED_REQUIRED.has(f)
+        }
         // A replacer function, so "$&" and friends in a typed name stay literal.
-        q('[data-pinned]').textContent = data.pinned[n - 1].replace('%s', () => name())
+        q('[data-pinned]').textContent = unnamed()
+            ? data.pinnedUnnamed[n - 1]
+            : data.pinned[n - 1].replace('%s', () => name())
         q('[data-consent-person]').textContent = company.open ? data.consentPersonCompany : data.consentPerson
         q('[data-next-step]').textContent = (isCompany() ? data.nextStepCompany : data.nextStep)[n - 1]
         // The company fields are required only once a company name is given.
@@ -123,7 +136,7 @@ const initAdoptionForm = (): void => {
     })
     q('[data-back]').addEventListener('click', () => {
         showStep(1)
-        nameInput.focus()
+        ;(unnamed() ? unnamedInput : nameInput).focus()
     })
 
     let sending = false
@@ -142,12 +155,14 @@ const initAdoptionForm = (): void => {
             const result = (await res.json()) as { error?: string; ref?: string; token?: string }
             if (!res.ok || !result.ref) throw new Error(result.error ?? 'lomake')
             writeStoredAdoption(() => window.sessionStorage, {
-                name: name(),
+                name: unnamed() ? '' : name(),
                 quantity: n,
                 ref: result.ref,
                 token: result.token ?? '',
             })
-            window.location.assign(thanksHref(data.thanksPath, { company: isCompany(), quantity: n, ref: result.ref }))
+            window.location.assign(
+                thanksHref(data.thanksPath, { company: isCompany(), quantity: n, ref: result.ref, unnamed: unnamed() })
+            )
         } catch (err) {
             sending = false
             render()
