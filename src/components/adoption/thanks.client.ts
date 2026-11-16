@@ -27,7 +27,7 @@ export interface AdoptionThanksData {
     payerSaved: string
     refNote: string
     shareText: string
-    sign: { firstName: string; lastName: string; payer: string; tagline: string }
+    sign: { firstName: string; lastName: string; payer: string; sticker: readonly string[]; tagline: string }
 }
 
 type LoadedImage = HTMLImageElement & { height: number; width: number }
@@ -148,9 +148,9 @@ const initAdoptionThanks = (): void => {
             const sample = `${data.headline} ${data.cta} ${name} ${data.ghost} ${data.sign.lastName}`
             await Promise.all([
                 document.fonts.load(`800 100px "${DISPLAY_FONT}"`, sample),
-                document.fonts.load(`700 46px "${DISPLAY_FONT}"`, sample),
-                document.fonts.load(`600 26px "${BODY_FONT}"`, data.sign.tagline),
-                document.fonts.load(`400 17px "${BODY_FONT}"`, data.sign.payer),
+                document.fonts.load(`700 40px "${DISPLAY_FONT}"`, sample),
+                document.fonts.load(`600 26px "${BODY_FONT}"`, `${data.sign.tagline} ${data.sign.sticker.join(' ')}`),
+                document.fonts.load(`400 20px "${BODY_FONT}"`, data.sign.payer),
             ]).catch(() => undefined)
             const photoSrc = document.querySelector<HTMLElement>('[data-sign]')?.dataset.photo ?? ''
             const [photo, logo] = await Promise.all([loadImage(photoSrc, true), loadImage(data.logo, false)])

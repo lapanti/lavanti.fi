@@ -5,6 +5,8 @@
 
 import type { Lang } from '../content/nav'
 
+import { estimateWidth, fitStickerName, type Measure, STICKER } from './signSticker'
+
 export const EUROS_PER_SIGN = 30
 export const MAX_SIGNS = 20
 /** sessionStorage key for the adopter's own sign name, ref and edit token (never in a URL). */
@@ -96,23 +98,42 @@ export const thanksHref = (path: string, params: ThanksParams): string => {
     return `${path}?${query.toString()}`
 }
 
-/** Name width on the sign the SVG text may take before it shrinks (sign width minus padding). */
-const NAME_MAX_WIDTH = 520
+const SVG_NS = 'http://www.w3.org/2000/svg'
+
+/** measureText on a scratch canvas, or the server estimate where there is no 2D canvas. */
+const browserMeasure = (doc: Document | null): Measure => {
+    const ctx = doc?.createElement('canvas').getContext?.('2d')
+    if (!ctx) return estimateWidth
+
+    return (text, font) => {
+        ctx.font = font
+        return ctx.measureText(text).width
+    }
+}
 
 /**
- * Writes `name` (or the ghost text when empty) into every sign graphic under `root`, with
- * textContent only, and shrinks the font when a long name would overflow the band.
+ * Writes `name` (or the ghost text when empty) into the sticker of every sign graphic under
+ * `root`, one `<tspan>` per line with textContent only, wrapped and sized by `fitStickerName`.
  */
-export const setSignName = (root: ParentNode, name: string): void => {
+export const setSignName = (root: ParentNode, name: string, measure?: Measure): void => {
+    const doc = 'ownerDocument' in root && root.ownerDocument ? root.ownerDocument : (root as Document)
+    const fit = (text: string) => fitStickerName(text, (measure ??= browserMeasure(doc)))
     root.querySelectorAll<HTMLElement>('[data-sign]').forEach((figure) => {
         const text = figure.querySelector<SVGTextElement>('[data-sign-name]')
         if (!text) return
         const value = name.trim()
-        text.textContent = value || (figure.dataset.ghost ?? '')
+        const { lines, size, ys } = fit(value || (figure.dataset.ghost ?? ''))
+        text.replaceChildren(
+            ...lines.map((line, i) => {
+                const span = doc.createElementNS(SVG_NS, 'tspan')
+                span.setAttribute('x', String(STICKER.cx))
+                span.setAttribute('y', String(STICKER.cy + ys[i]))
+                span.textContent = line
+                return span
+            })
+        )
         text.setAttribute('fill', (value ? text.dataset.fillName : text.dataset.fillGhost) ?? '')
-        text.setAttribute('font-size', '46')
-        const width = typeof text.getComputedTextLength === 'function' ? text.getComputedTextLength() : 0
-        if (width > NAME_MAX_WIDTH) text.setAttribute('font-size', String(Math.floor((46 * NAME_MAX_WIDTH) / width)))
+        text.setAttribute('font-size', String(size))
     })
 }
 

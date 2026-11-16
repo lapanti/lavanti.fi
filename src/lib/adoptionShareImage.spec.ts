@@ -9,10 +9,12 @@ import {
     SHARE_SIZES,
     shareLayout,
     SIGN,
+    SIGN_COLORS,
     type SignDrawing,
     STRIPE_RUN,
     wrapText,
 } from './adoptionShareImage'
+import { STICKER } from './signSticker'
 import { colors } from './styles'
 
 interface Call {
@@ -36,7 +38,10 @@ const recorder = () => {
         (...args: unknown[]) =>
             void calls.push({ args, fill: ctx.fillStyle, font: ctx.font, op })
     Object.assign(ctx, {
+        arc: record('arc'),
+        beginPath: record('beginPath'),
         drawImage: record('drawImage'),
+        fill: record('fill'),
         fillRect: record('fillRect'),
         fillText: record('fillText'),
         measureText: (text: string) => ({ width: text.length * 0.5 * Number(/(\d+)px/.exec(ctx.font)?.[1] ?? 10) }),
@@ -55,7 +60,12 @@ const sign: SignDrawing = {
     name: 'Sjoerd',
     payer: 'Mainoksen maksaja: Digitaalisen itsenäisyyden puolesta ry',
     photo: null,
-    text: { firstName: 'Lauri', lastName: 'Lavanti', tagline: 'Eduskuntavaalit 2027 · Uusimaa' },
+    text: {
+        firstName: 'Lauri',
+        lastName: 'Lavanti',
+        sticker: ['Tämän kyltin', 'adoptoi'],
+        tagline: 'Eduskuntavaalit 2027 · Uusimaa',
+    },
 }
 
 describe('wrapText', () => {
@@ -93,19 +103,39 @@ describe('shareLayout', () => {
 })
 
 describe('drawSign', () => {
-    it('draws the name, or the ghost text when the name is empty', () => {
+    it('draws the name in the sticker, or the ghost text when the name is empty', () => {
         const { calls, ctx } = recorder()
         drawSign(ctx, 10, 20, 0.5, sign)
         const texts = calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])
-        expect(texts).toEqual(['LAURI', 'LAVANTI', sign.text.tagline, 'Sjoerd', sign.payer])
+        expect(texts).toEqual(['LAURI', 'LAVANTI', sign.text.tagline, 'Tämän kyltin', 'adoptoi', 'Sjoerd', sign.payer])
         expect(calls[0].op).toBe('save')
         expect(calls.at(-1)?.op).toBe('restore')
+        const arc = calls.find((c) => c.op === 'arc')
+        expect(arc?.args.slice(0, 3)).toEqual([STICKER.cx, STICKER.cy, STICKER.r])
+        expect(arc?.fill).toBe(SIGN_COLORS.sticker)
+        const name = calls.filter((c) => c.op === 'fillText')[5]
+        expect(name.args.slice(1)).toEqual([STICKER.cx, STICKER.cy + STICKER.nameOne.y])
+        expect(name.fill).toBe(SIGN_COLORS.name)
 
         const ghost = recorder()
         drawSign(ghost.ctx, 0, 0, 1, { ...sign, name: '  ' })
-        const nameCall = ghost.calls.filter((c) => c.op === 'fillText')[3]
-        expect(nameCall.args[0]).toBe('Sinun nimesi')
-        expect(nameCall.fill).toBe('rgba(22, 62, 53, 0.55)')
+        // At the recorder's wide half-em letters the ghost text takes two lines.
+        const nameCalls = ghost.calls.filter((c) => c.op === 'fillText').slice(5, -1)
+        expect(nameCalls.map((c) => c.args[0]).join(' ')).toBe('Sinun nimesi')
+        for (const c of nameCalls) expect(c.fill).toBe('rgba(22, 62, 53, 0.55)')
+    })
+
+    it('wraps a 24-character name onto two lines inside the sticker', () => {
+        const { calls, ctx } = recorder()
+        drawSign(ctx, 0, 0, 1, { ...sign, name: 'Anna-Liisa Väisänen-Ødeg' })
+        const lines = calls.filter((c) => c.op === 'fillText').slice(5, 7)
+        expect(lines.map((c) => c.args[0])).toEqual(['Anna-Liisa', 'Väisänen-Ødeg'])
+        for (const line of lines) {
+            expect(line.font).toMatch(/^700 [\d.]+px/)
+            const size = Number(/(\d+(?:\.\d+)?)px/.exec(line.font ?? '')?.[1])
+            expect(String(line.args[0]).length * 0.5 * size).toBeLessThanOrEqual(STICKER.nameTwo.width)
+        }
+        expect(lines.map((c) => c.args[2])).toEqual(STICKER.nameTwo.ys.map((y) => STICKER.cy + y))
     })
 
     it('crops the photo to cover its box', () => {
@@ -113,9 +143,15 @@ describe('drawSign', () => {
         const photo = { height: 480, width: 800 } as unknown as SignDrawing['photo']
         drawSign(ctx, 0, 0, 1, { ...sign, photo })
         const draw = calls.find((c) => c.op === 'drawImage')
-        // 800 × 480 into 600 × 440: scale by height (440/480), crop the sides evenly.
-        const sw = 600 / (440 / 480)
-        expect(draw?.args.slice(1)).toEqual([(800 - sw) / 2, 0, sw, 480, 0, 0, 600, 440])
+        // 800 × 480 into 600 × 520: scale by height (520/480), crop the sides evenly.
+        const sw = 600 / (520 / 480)
+        const expected = [(800 - sw) / 2, 0, sw, 480, 0, 0, 600, 520]
+        draw?.args.slice(1).forEach((v, i) => expect(v).toBeCloseTo(expected[i]))
+    })
+
+    it('keeps the payer line inside the sign, below the tagline', () => {
+        expect(SIGN.payer.y).toBeLessThan(SIGN.height)
+        expect(SIGN.payer.y - SIGN.payer.size).toBeGreaterThan(SIGN.tagline.y)
     })
 })
 

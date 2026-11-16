@@ -11,35 +11,46 @@
  * on the deep forest ground, so the stripe runs blue to green from the ground down to the edge.
  */
 
+import {
+    BODY_FONT,
+    DISPLAY_FONT,
+    fitStickerLabel,
+    fitStickerName,
+    labelFont,
+    type Measure,
+    nameFont,
+    STICKER,
+} from './signSticker'
 import { colors } from './styles'
 
-export const DISPLAY_FONT = 'Big Shoulders Display'
-export const BODY_FONT = 'IBM Plex Sans'
+export { BODY_FONT, DISPLAY_FONT } from './signSticker'
 
 const DEEP_FOREST = '#163E35'
 
-/** Sign geometry in SVG user units (also the canvas units at scale 1). */
+/**
+ * Sign geometry in SVG user units (also the canvas units at scale 1). The adopter's name sits in
+ * the round sticker (`STICKER` in signSticker.ts) where the photo meets the text, right of Lauri.
+ */
 export const SIGN = {
-    band: { h: 92, y: 718 },
-    firstName: { size: 46, y: 512 },
+    firstName: { size: 46, y: 592 },
     height: 860,
-    lastName: { size: 136, y: 628 },
-    nameText: { size: 46, y: 778 },
+    lastName: { size: 136, y: 708 },
     padX: 40,
-    payer: { size: 17, y: 840 },
-    photo: { h: 440, y: 0 },
-    tagline: { size: 26, y: 676 },
+    payer: { size: 20, y: 834 },
+    photo: { h: 520, y: 0 },
+    tagline: { size: 26, y: 756 },
     width: 600,
 } as const
 
 export const SIGN_COLORS = {
     background: DEEP_FOREST,
-    band: colors.white,
     firstName: colors.aquaBlue,
     ghost: 'rgba(22, 62, 53, 0.55)',
+    label: 'rgba(22, 62, 53, 0.8)',
     lastName: colors.white,
     name: DEEP_FOREST,
     payer: 'rgba(255, 255, 255, 0.85)',
+    sticker: colors.white,
     tagline: colors.oat,
 } as const
 
@@ -67,7 +78,18 @@ const SIZES: Record<ShareFormat, { cta: number; headline: number; logo: number }
 /** The subset of CanvasRenderingContext2D the drawing uses, so tests can pass a recorder. */
 export type CanvasLike = Pick<
     CanvasRenderingContext2D,
-    'drawImage' | 'fillRect' | 'fillText' | 'measureText' | 'restore' | 'rotate' | 'save' | 'transform' | 'translate'
+    | 'arc'
+    | 'beginPath'
+    | 'drawImage'
+    | 'fill'
+    | 'fillRect'
+    | 'fillText'
+    | 'measureText'
+    | 'restore'
+    | 'rotate'
+    | 'save'
+    | 'transform'
+    | 'translate'
 > & {
     fillStyle: CanvasRenderingContext2D['fillStyle']
     font: string
@@ -163,7 +185,33 @@ export interface SignDrawing {
     name: string
     payer: string
     photo: (CanvasImageSource & { height: number; width: number }) | null
-    text: { firstName: string; lastName: string; tagline: string }
+    /** `sticker` is the label over the name, two lines ("Tämän kyltin", "adoptoi"). */
+    text: { firstName: string; lastName: string; sticker: readonly string[]; tagline: string }
+}
+
+/** Draws the white sticker with its label and the name (or ghost text) fitted inside. */
+const drawSticker = (ctx: CanvasLike, sign: SignDrawing) => {
+    const { cx, cy, r } = STICKER
+    const measure: Measure = (text, font) => {
+        ctx.font = font
+        return ctx.measureText(text).width
+    }
+    ctx.fillStyle = SIGN_COLORS.sticker
+    ctx.beginPath()
+    ctx.arc(cx, cy, r, 0, 2 * Math.PI)
+    ctx.fill()
+
+    ctx.textAlign = 'center'
+    const label = fitStickerLabel(sign.text.sticker, measure)
+    ctx.fillStyle = SIGN_COLORS.label
+    ctx.font = labelFont(label.size)
+    label.lines.forEach((line, i) => ctx.fillText(line, cx, cy + label.ys[i]))
+
+    const name = sign.name.trim()
+    const fit = fitStickerName(name || sign.ghost, measure)
+    ctx.fillStyle = name ? SIGN_COLORS.name : SIGN_COLORS.ghost
+    ctx.font = nameFont(fit.size)
+    fit.lines.forEach((line, i) => ctx.fillText(line, cx, cy + fit.ys[i]))
 }
 
 /** The sign at (x, y), `scale` times its SVG size. */
@@ -187,13 +235,7 @@ export const drawSign = (ctx: CanvasLike, x: number, y: number, scale: number, s
     ctx.font = `600 ${SIGN.tagline.size}px "${BODY_FONT}"`
     ctx.fillText(sign.text.tagline, SIGN.padX, SIGN.tagline.y)
 
-    ctx.fillStyle = SIGN_COLORS.band
-    ctx.fillRect(0, SIGN.band.y, SIGN.width, SIGN.band.h)
-    const name = sign.name.trim()
-    ctx.textAlign = 'center'
-    ctx.fillStyle = name ? SIGN_COLORS.name : SIGN_COLORS.ghost
-    fitFontSize(ctx, name || sign.ghost, display(700), SIGN.width - 2 * SIGN.padX, SIGN.nameText.size, 24)
-    ctx.fillText(name || sign.ghost, SIGN.width / 2, SIGN.nameText.y)
+    drawSticker(ctx, sign)
 
     ctx.fillStyle = SIGN_COLORS.payer
     ctx.font = `400 ${SIGN.payer.size}px "${BODY_FONT}"`

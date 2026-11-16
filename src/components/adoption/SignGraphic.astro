@@ -4,6 +4,7 @@ import type { Lang } from '../../content/nav'
 import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
 import { SIGN, SIGN_COLORS } from '../../lib/adoptionShareImage'
 import { getImage } from '../../lib/images'
+import { estimateWidth, fitStickerLabel, fitStickerName, STICKER } from '../../lib/signSticker'
 
 interface Props {
     lang: Lang
@@ -17,6 +18,9 @@ const text = SIGN_TEXT[lang]
 /** The photo on the sign; the share image script loads the same URL (data-photo). */
 const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
 const shown = name?.trim() ?? ''
+// Server-side fit from estimated widths; the browser re-fits with real ones when a name is typed.
+const label = fitStickerLabel(text.sticker, estimateWidth)
+const fit = fitStickerName(shown || t.ghostName, estimateWidth)
 ---
 
 <style>
@@ -86,18 +90,33 @@ const shown = name?.trim() ?? ''
             x={SIGN.padX}
             y={SIGN.tagline.y}>{text.tagline}</text
         >
-        <rect fill={SIGN_COLORS.band} height={SIGN.band.h} width={SIGN.width} y={SIGN.band.y}></rect>
+        <circle cx={STICKER.cx} cy={STICKER.cy} fill={SIGN_COLORS.sticker} r={STICKER.r}></circle>
+        <text class="body" fill={SIGN_COLORS.label} font-size={label.size} font-weight="600" text-anchor="middle">
+            {
+                label.lines.map((line, i) => (
+                    <tspan x={STICKER.cx} y={STICKER.cy + label.ys[i]}>
+                        {line}
+                    </tspan>
+                ))
+            }
+        </text>
         <text
             class="display name"
             data-fill-ghost={SIGN_COLORS.ghost}
             data-fill-name={SIGN_COLORS.name}
             data-sign-name
             fill={shown ? SIGN_COLORS.name : SIGN_COLORS.ghost}
-            font-size={SIGN.nameText.size}
+            font-size={fit.size}
             text-anchor="middle"
-            x={SIGN.width / 2}
-            y={SIGN.nameText.y}>{shown || t.ghostName}</text
         >
+            {
+                fit.lines.map((line, i) => (
+                    <tspan x={STICKER.cx} y={STICKER.cy + fit.ys[i]}>
+                        {line}
+                    </tspan>
+                ))
+            }
+        </text>
         <text
             class="body"
             fill={SIGN_COLORS.payer}

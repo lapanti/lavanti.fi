@@ -75,7 +75,11 @@ describe('fitStickerName', () => {
     const real: Measure = (text, font) => (MEASURED[text] ?? estimateWidth(text, font) / size(font)) * size(font)
 
     it('keeps a short name on one line at full size', () => {
-        expect(fitStickerName('Sjoerd', halfEm)).toEqual({ lines: ['Sjoerd'], size: 40, ys: [STICKER.nameOne.y] })
+        expect(fitStickerName('Sjoerd', halfEm)).toEqual({
+            lines: ['Sjoerd'],
+            size: STICKER.nameOne.max,
+            ys: [STICKER.nameOne.y],
+        })
     })
 
     it('keeps the ghost text on one line', () => {
@@ -102,12 +106,14 @@ describe('fitStickerName', () => {
 
     it('shrinks a slightly long name on one line before wrapping it', () => {
         const fit = fitStickerName('Ab', (text, font) => 4 * size(font))
-        expect(fit).toEqual({ lines: ['Ab'], size: 39, ys: [STICKER.nameOne.y] })
+        // 4 em at 44 is 176 units against 168: 44 × 168 / 176 = 42.
+        expect(fit).toEqual({ lines: ['Ab'], size: 42, ys: [STICKER.nameOne.y] })
     })
 
     it('stays on one line when wrapping would not make it larger', () => {
         const fit = fitStickerName('Ab', (text, font) => (text === 'Ab' ? 6 : 100) * size(font))
-        expect(fit).toEqual({ lines: ['Ab'], size: 26, ys: [STICKER.nameOne.y] })
+        // 28 is under the one-line minimum, but one letter per line is far smaller still.
+        expect(fit).toEqual({ lines: ['Ab'], size: 28, ys: [STICKER.nameOne.y] })
     })
 })
 
