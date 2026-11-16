@@ -12,31 +12,37 @@ import type { Lang } from './nav'
  */
 
 interface SignText {
-    /** The share image wordmark; the sign draft carries its own. */
     firstName: string
     lastName: string
-    /** The "Mainoksen maksaja" line drawn on the sign, two lines so it fits beside the logo. */
-    payer: readonly [string, string]
+    payer: string
     /** The label over the name in the round sticker, two lines so it fits the circle. */
     sticker: readonly [string, string]
+    tagline: string
 }
 
 const FI_SIGN_TEXT: SignText = {
     firstName: 'Lauri',
     lastName: 'Lavanti',
-    payer: ['Mainoksen maksaja:', 'Digitaalisen itsenäisyyden puolesta ry'],
+    payer: 'Mainoksen maksaja: Digitaalisen itsenäisyyden puolesta ry',
     sticker: ['Tämän kyltin', 'adoptoi'],
+    tagline: 'Eduskuntavaalit 2027 · Uusimaa',
 }
 
 /**
- * Text on the sign graphic and the share images. The sign itself is the Finnish draft in every
- * locale (the payer line too, since it is printed on that sign); only the sticker label is
- * translated, so the reader knows what the name means.
+ * Text on the sign graphic and the share images. The Swedish page shows a Swedish sign; the
+ * English page shows the Finnish one, since there is no English sign, with the sticker label
+ * in English so the reader knows what the name means.
  */
 export const SIGN_TEXT: Record<Lang, SignText> = {
     en: { ...FI_SIGN_TEXT, sticker: ['This sign was', 'adopted by'] },
     fi: FI_SIGN_TEXT,
-    sv: { ...FI_SIGN_TEXT, sticker: ['Den här skylten', 'adopterades av'] },
+    sv: {
+        firstName: 'Lauri',
+        lastName: 'Lavanti',
+        payer: 'Annonsens betalare: Digitaalisen itsenäisyyden puolesta ry',
+        sticker: ['Den här skylten', 'adopterades av'],
+        tagline: 'Riksdagsvalet 2027 · Nyland',
+    },
 }
 
 export const MOBILEPAY_NUMBER = '46492'
