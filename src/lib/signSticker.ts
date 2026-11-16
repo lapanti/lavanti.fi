@@ -12,16 +12,20 @@
 export const DISPLAY_FONT = 'Big Shoulders Display'
 export const BODY_FONT = 'IBM Plex Sans'
 
-/** Sticker geometry in sign units. Line positions are baselines relative to the centre. */
+/**
+ * Sticker geometry in sign units (the draft's own pixels, 1410 × 2000). Line positions are
+ * baselines relative to the centre. The circle sits in the empty ground right of "LAURI" and above
+ * "LAVANTI": the largest free circle there has r 128 and touches both, so r 118 keeps a margin.
+ */
 export const STICKER = {
-    cx: 488,
-    cy: 516,
-    label: { size: 16, width: 145, ys: [-50, -30] },
+    cx: 632,
+    cy: 148,
+    label: { size: 18, width: 164, ys: [-57, -34] },
     /** One name line, at most `max` units tall; below `min` it wraps instead. */
-    nameOne: { max: 44, min: 30, width: 168, y: 32 },
+    nameOne: { max: 50, min: 34, width: 190, y: 36 },
     /** Two name lines: the lower one sits low in the circle, so both get its narrower chord. */
-    nameTwo: { max: 33, width: 152, ys: [13, 50] },
-    r: 104,
+    nameTwo: { max: 37, width: 172, ys: [15, 57] },
+    r: 118,
 } as const
 
 /** Width of `text` set in a CSS `font` such as `700 40px "Big Shoulders Display"`. */

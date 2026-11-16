@@ -37,9 +37,10 @@ describe('STICKER', () => {
         for (const y of label.ys) expect(label.width).toBeLessThan(2 * halfChord(extent(y, label.size)))
     })
 
-    it('stays on the sign', () => {
-        expect(STICKER.cx + STICKER.r).toBeLessThanOrEqual(600)
-        expect(STICKER.cy + STICKER.r).toBeLessThan(860)
+    it('stays on the sign, in the ground between LAURI and the top edge', () => {
+        expect(STICKER.cx - STICKER.r).toBeGreaterThan(505) // LAURI ends at x 505
+        expect(STICKER.cx + STICKER.r).toBeLessThanOrEqual(1410)
+        expect(STICKER.cy - STICKER.r).toBeGreaterThan(0)
     })
 })
 
@@ -106,14 +107,14 @@ describe('fitStickerName', () => {
 
     it('shrinks a slightly long name on one line before wrapping it', () => {
         const fit = fitStickerName('Ab', (text, font) => 4 * size(font))
-        // 4 em at 44 is 176 units against 168: 44 × 168 / 176 = 42.
-        expect(fit).toEqual({ lines: ['Ab'], size: 42, ys: [STICKER.nameOne.y] })
+        // 4 em at 50 is 200 units against 190: 50 × 190 / 200 = 47.5.
+        expect(fit).toEqual({ lines: ['Ab'], size: 47.5, ys: [STICKER.nameOne.y] })
     })
 
     it('stays on one line when wrapping would not make it larger', () => {
         const fit = fitStickerName('Ab', (text, font) => (text === 'Ab' ? 6 : 100) * size(font))
-        // 28 is under the one-line minimum, but one letter per line is far smaller still.
-        expect(fit).toEqual({ lines: ['Ab'], size: 28, ys: [STICKER.nameOne.y] })
+        // 31.5 is under the one-line minimum, but one letter per line is far smaller still.
+        expect(fit).toEqual({ lines: ['Ab'], size: 31.5, ys: [STICKER.nameOne.y] })
     })
 })
 

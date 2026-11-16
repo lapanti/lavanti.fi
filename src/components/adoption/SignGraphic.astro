@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 
 import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
-import { SIGN, SIGN_COLORS } from '../../lib/adoptionShareImage'
+import { SIGN, SIGN_COLORS, SIGN_IMAGE_SLUG } from '../../lib/adoptionShareImage'
 import { getImage } from '../../lib/images'
 import { estimateWidth, fitStickerLabel, fitStickerName, STICKER } from '../../lib/signSticker'
 
@@ -20,12 +20,13 @@ interface Props {
 const { hero = false, lang, name } = Astro.props
 const t = adoptionContent[lang].sign
 const text = SIGN_TEXT[lang]
-/** The photo on the sign; the share image script loads the same URL (data-photo). */
-const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
+/** The campaign's sign draft; the share image script loads the same URL (data-image). */
+const SIGN_IMAGE = getImage(SIGN_IMAGE_SLUG, 'sign')
 const shown = hero ? '' : (name?.trim() ?? '')
 // Server-side fit from estimated widths; the browser re-fits with real ones when a name is typed.
 const label = fitStickerLabel(text.sticker, estimateWidth)
 const fit = fitStickerName(shown || t.ghostName, estimateWidth)
+const { mask, payer } = SIGN
 ---
 
 <style>
@@ -43,14 +44,12 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
     }
     .sign-graphic svg {
         box-shadow: 0 10px 30px rgba(22, 62, 53, 0.25);
+        display: block;
         height: auto;
         width: 100%;
     }
-    .sign-graphic .display {
-        font-family: 'Big Shoulders Display', sans-serif;
-        font-weight: 800;
-    }
     .sign-graphic .name {
+        font-family: 'Big Shoulders Display', sans-serif;
         font-weight: 700;
     }
     .sign-graphic .body {
@@ -70,7 +69,6 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
         border: 0.375rem solid var(--colorsWhite);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
         box-sizing: border-box;
-        display: block;
     }
     .sign-graphic figcaption {
         color: var(--colorsForestGreen);
@@ -83,7 +81,7 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
     aria-hidden={hero ? 'true' : undefined}
     class:list={['sign-graphic', { hero }]}
     data-ghost={t.ghostName}
-    data-photo={SIGN_PHOTO.src}
+    data-image={SIGN_IMAGE.src}
     data-sign={hero ? undefined : ''}
 >
     <svg
@@ -91,36 +89,9 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
         role={hero ? undefined : 'img'}
         viewBox={`0 0 ${SIGN.width} ${SIGN.height}`}
     >
-        <rect fill={SIGN_COLORS.background} height={SIGN.height} width={SIGN.width}></rect>
-        <image
-            height={SIGN.photo.h}
-            href={SIGN_PHOTO.src}
-            preserveAspectRatio="xMidYMid slice"
-            width={SIGN.width}
-            y={SIGN.photo.y}
-        />
-        <text
-            class="display"
-            fill={SIGN_COLORS.firstName}
-            font-size={SIGN.firstName.size}
-            x={SIGN.padX}
-            y={SIGN.firstName.y}>{text.firstName.toUpperCase()}</text
-        >
-        <text
-            class="display"
-            fill={SIGN_COLORS.lastName}
-            font-size={SIGN.lastName.size}
-            x={SIGN.padX - 4}
-            y={SIGN.lastName.y}>{text.lastName.toUpperCase()}</text
-        >
-        <text
-            class="body"
-            fill={SIGN_COLORS.tagline}
-            font-size={SIGN.tagline.size}
-            font-weight="600"
-            x={SIGN.padX}
-            y={SIGN.tagline.y}>{text.tagline}</text
-        >
+        <rect fill={SIGN_COLORS.ground} height={SIGN.height} width={SIGN.width}></rect>
+        <image height={SIGN.height} href={SIGN_IMAGE.src} width={SIGN.width} />
+        <rect fill={SIGN_COLORS.ground} height={mask.h} width={mask.w} x={mask.x} y={mask.y}></rect>
         <circle cx={STICKER.cx} cy={STICKER.cy} fill={SIGN_COLORS.sticker} r={STICKER.r}></circle>
         <text class="body" fill={SIGN_COLORS.label} font-size={label.size} font-weight="600" text-anchor="middle">
             {
@@ -132,7 +103,7 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
             }
         </text>
         <text
-            class="display name"
+            class="name"
             data-fill-ghost={SIGN_COLORS.ghost}
             data-fill-name={SIGN_COLORS.name}
             data-sign-name
@@ -148,14 +119,15 @@ const fit = fitStickerName(shown || t.ghostName, estimateWidth)
                 ))
             }
         </text>
-        <text
-            class="body"
-            fill={SIGN_COLORS.payer}
-            font-size={SIGN.payer.size}
-            text-anchor="middle"
-            x={SIGN.width / 2}
-            y={SIGN.payer.y}>{text.payer}</text
-        >
+        <text class="body" fill={SIGN_COLORS.payer} font-size={payer.size} text-anchor="middle">
+            {
+                text.payer.map((line, i) => (
+                    <tspan x={payer.x} y={payer.ys[i]}>
+                        {line}
+                    </tspan>
+                ))
+            }
+        </text>
     </svg>
     {!hero && <figcaption>{t.finePrint}</figcaption>}
 </figure>
