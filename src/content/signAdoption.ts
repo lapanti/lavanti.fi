@@ -48,7 +48,8 @@ export const INVOICE_TITLE = 'Lahjoitus vaalikeräykseen (Adoptoi kyltti)'
 
 interface MailInput {
     company: boolean
-    name: string
+    /** Null for a donation without a name on the sign. */
+    name: null | string
     quantity: number
     ref: string
 }
@@ -300,19 +301,28 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hello,',
                 '',
-                `thank you for adopting ${quantity > 1 ? `${quantity} election signs` : 'an election sign'}! We have received your donation (${ref}), and the name "${name}" will go on ${quantity > 1 ? 'a round sticker on each sign' : 'a round sticker on the sign'}.`,
+                name === null
+                    ? `thank you for supporting ${quantity > 1 ? `${quantity} election signs` : 'an election sign'}! We have received your donation (${ref}). As you wished, your name does not go on ${quantity > 1 ? 'the signs' : 'the sign'}.`
+                    : `thank you for adopting ${quantity > 1 ? `${quantity} election signs` : 'an election sign'}! We have received your donation (${ref}), and the name "${name}" will go on ${quantity > 1 ? 'a round sticker on each sign' : 'a round sticker on the sign'}.`,
                 '',
                 company ? 'The invoice is on its way to the billing address you gave.' : '',
                 'The signs go up by the roadsides of Uusimaa in spring. We will let you know when yours is out.',
                 '',
-                'You can withdraw your permission to use the name at any time by replying to this message. We then cover the name on the sign and remove it from the website.',
+                name === null
+                    ? ''
+                    : 'You can withdraw your permission to use the name at any time by replying to this message. We then cover the name on the sign and remove it from the website.',
                 '',
                 'Best wishes,',
                 'Lauri Lavanti',
             ]
                 .filter((line, i, all) => line !== '' || all[i - 1] !== '')
                 .join('\n'),
-            subject: quantity > 1 ? 'Your signs are adopted' : 'Your sign is adopted',
+            subject:
+                name === null
+                    ? 'Thank you for supporting the signs'
+                    : quantity > 1
+                      ? 'Your signs are adopted'
+                      : 'Your sign is adopted',
         }),
         mobilePay: {
             copied: 'Copied',
@@ -470,12 +480,16 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hei,',
                 '',
-                `kiitos, että adoptoit ${quantity > 1 ? `${quantity} vaalikylttiä` : 'vaalikyltin'}! Lahjoituksesi (${ref}) on vastaanotettu, ja nimi "${name}" tulee ${quantity > 1 ? 'jokaiseen kylttiin' : 'kylttiin'} pyöreään tarraan.`,
+                name === null
+                    ? `kiitos, että tuet ${quantity > 1 ? `${quantity} vaalikylttiä` : 'vaalikylttiä'}! Lahjoituksesi (${ref}) on vastaanotettu. Toiveesi mukaan nimesi ei tule ${quantity > 1 ? 'kyltteihin' : 'kylttiin'}.`
+                    : `kiitos, että adoptoit ${quantity > 1 ? `${quantity} vaalikylttiä` : 'vaalikyltin'}! Lahjoituksesi (${ref}) on vastaanotettu, ja nimi "${name}" tulee ${quantity > 1 ? 'jokaiseen kylttiin' : 'kylttiin'} pyöreään tarraan.`,
                 '',
                 company ? 'Lasku on tulossa antamaasi laskutusosoitteeseen.' : '',
                 'Kyltit nousevat Uudenmaan tienvarsille keväällä. Kerromme, kun omasi on paikallaan.',
                 '',
-                'Voit perua luvan nimen käyttöön milloin tahansa vastaamalla tähän viestiin. Silloin peitämme nimen kyltistä ja poistamme sen sivustolta.',
+                name === null
+                    ? ''
+                    : 'Voit perua luvan nimen käyttöön milloin tahansa vastaamalla tähän viestiin. Silloin peitämme nimen kyltistä ja poistamme sen sivustolta.',
                 '',
                 'Lämpimin terveisin',
                 'Lauri Lavanti',
@@ -483,7 +497,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 .filter((line, i, all) => line !== '' || all[i - 1] !== '')
                 .join('\n'),
             // "Kylttisi" reads as one sign or several, so one subject fits both.
-            subject: 'Kylttisi on adoptoitu',
+            subject: name === null ? 'Kiitos, että tuet kylttejä' : 'Kylttisi on adoptoitu',
         }),
         mobilePay: {
             copied: 'Kopioitu',
@@ -643,19 +657,28 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             body: [
                 'Hej,',
                 '',
-                `tack för att du adopterade ${quantity > 1 ? `${quantity} valskyltar` : 'en valskylt'}! Vi har tagit emot din gåva (${ref}), och namnet "${name}" hamnar på en rund dekal på ${quantity > 1 ? 'varje skylt' : 'skylten'}.`,
+                name === null
+                    ? `tack för att du stöder ${quantity > 1 ? `${quantity} valskyltar` : 'en valskylt'}! Vi har tagit emot din gåva (${ref}). Som du önskade kommer ditt namn inte på ${quantity > 1 ? 'skyltarna' : 'skylten'}.`
+                    : `tack för att du adopterade ${quantity > 1 ? `${quantity} valskyltar` : 'en valskylt'}! Vi har tagit emot din gåva (${ref}), och namnet "${name}" hamnar på en rund dekal på ${quantity > 1 ? 'varje skylt' : 'skylten'}.`,
                 '',
                 company ? 'Fakturan kommer till den faktureringsadress du angav.' : '',
                 'Skyltarna kommer upp vid vägkanterna i Nyland i vår. Vi hör av oss när din står på plats.',
                 '',
-                'Du kan när som helst återkalla tillståndet att använda namnet genom att svara på det här meddelandet. Då täcker vi namnet på skylten och tar bort det från webbplatsen.',
+                name === null
+                    ? ''
+                    : 'Du kan när som helst återkalla tillståndet att använda namnet genom att svara på det här meddelandet. Då täcker vi namnet på skylten och tar bort det från webbplatsen.',
                 '',
                 'Varma hälsningar',
                 'Lauri Lavanti',
             ]
                 .filter((line, i, all) => line !== '' || all[i - 1] !== '')
                 .join('\n'),
-            subject: quantity > 1 ? 'Dina skyltar är adopterade' : 'Din skylt är adopterad',
+            subject:
+                name === null
+                    ? 'Tack för att du stöder skyltarna'
+                    : quantity > 1
+                      ? 'Dina skyltar är adopterade'
+                      : 'Din skylt är adopterad',
         }),
         mobilePay: {
             copied: 'Kopierat',
