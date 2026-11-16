@@ -107,6 +107,9 @@ describe('thanksHref', () => {
         expect(thanksHref('/fi/adoptoi/kiitos/', { company: true, quantity: 3, ref: 'K-12345' })).toBe(
             '/fi/adoptoi/kiitos/?ref=K-12345&n=3&y=1'
         )
+        expect(thanksHref('/fi/adoptoi/kiitos/', { company: false, quantity: 1, ref: 'K-12345', unnamed: true })).toBe(
+            '/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0&u=1'
+        )
     })
 
     it.each(['//evil.example/', 'javascript:alert(1)', 'https://evil.example/', '/\\evil.example/', 'fi/kiitos/'])(
@@ -131,11 +134,23 @@ const memory = () => {
 
 describe('parseThanksParams', () => {
     it('accepts the three validated keys', () => {
-        expect(parseThanksParams('?ref=K-48213&n=2&y=0')).toEqual({ company: false, quantity: 2, ref: 'K-48213' })
-        expect(parseThanksParams('ref=K-48213&n=20&y=1')).toEqual({ company: true, quantity: 20, ref: 'K-48213' })
+        expect(parseThanksParams('?ref=K-48213&n=2&y=0')).toEqual({
+            company: false,
+            quantity: 2,
+            ref: 'K-48213',
+            unnamed: false,
+        })
+        expect(parseThanksParams('ref=K-48213&n=20&y=1')).toMatchObject({ company: true, quantity: 20, unnamed: false })
+    })
+
+    it('reads the optional no-name flag', () => {
+        expect(parseThanksParams('?ref=K-48213&n=2&y=0&u=1')).toMatchObject({ unnamed: true })
+        expect(parseThanksParams('?ref=K-48213&n=2&y=0&u=0')).toMatchObject({ unnamed: false })
     })
 
     it.each([
+        '?ref=K-48213&n=1&y=0&u=2',
+        '?ref=K-48213&n=1&y=0&u=',
         '',
         '?ref=K-4821&n=1&y=0',
         '?ref=<script>&n=1&y=0',

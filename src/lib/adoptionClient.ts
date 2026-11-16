@@ -16,24 +16,28 @@ export interface ThanksParams {
     company: boolean
     quantity: number
     ref: string
+    /** A donation for signs without the donor's name on them (`u=1`). */
+    unnamed?: boolean
 }
 
 /**
- * The thanks page query: `?ref=K-NNNNN&n=1..20&y=0|1`. Anything else, extra keys included, is
- * rejected as a whole so nothing unvalidated reaches the page.
+ * The thanks page query: `?ref=K-NNNNN&n=1..20&y=0|1`, plus `&u=1` for a donation without a name
+ * on the sign. Anything else, extra keys included, is rejected as a whole so nothing unvalidated
+ * reaches the page.
  */
 export const parseThanksParams = (search: string): null | ThanksParams => {
     const params = new URLSearchParams(search)
     const keys = [...params.keys()]
-    if (keys.some((k) => !['n', 'ref', 'y'].includes(k))) return null
+    if (keys.some((k) => !['n', 'ref', 'u', 'y'].includes(k))) return null
     const ref = params.get('ref') ?? ''
     const n = params.get('n') ?? ''
     const y = params.get('y') ?? ''
-    if (!/^K-\d{5}$/.test(ref) || !/^\d{1,2}$/.test(n) || !/^[01]$/.test(y)) return null
+    const u = params.get('u') ?? '0'
+    if (!/^K-\d{5}$/.test(ref) || !/^\d{1,2}$/.test(n) || !/^[01]$/.test(y) || !/^[01]$/.test(u)) return null
     const quantity = Number(n)
     if (quantity < 1 || quantity > MAX_SIGNS) return null
 
-    return { company: y === '1', quantity, ref }
+    return { company: y === '1', quantity, ref, unnamed: u === '1' }
 }
 
 export interface StoredAdoption {
@@ -85,14 +89,15 @@ export const isInAppBrowser = (userAgent: string): boolean => /Instagram|FBAN|FB
 /** A same-site absolute path ("/fi/…"); anything else, such as "//host" or "javascript:", is refused. */
 const SAME_SITE_PATH = /^\/(?![/\\])[\w\-./]*$/
 
-/** The thanks page URL; carries only the ref, count and company flag. */
+/** The thanks page URL; carries only the ref, count, company flag and the no-name flag. */
 export const thanksHref = (path: string, params: ThanksParams): string => {
     if (!SAME_SITE_PATH.test(path)) throw new Error('lomake')
-    // Entries, not an object, so the URL keeps its documented ref, n, y order.
+    // Entries, not an object, so the URL keeps its documented ref, n, y (u) order.
     const query = new URLSearchParams([
         ['ref', params.ref],
         ['n', String(params.quantity)],
         ['y', params.company ? '1' : '0'],
+        ...(params.unnamed ? [['u', '1']] : []),
     ])
 
     return `${path}?${query.toString()}`
