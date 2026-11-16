@@ -86,9 +86,9 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   pass `ogCard` to `PageLayout` to keep the generated card on a noindex page.
 - **Checks:** `npm run check:adoption-pages` runs the personal page rule by hand.
 - **Copy:** `src/content/signAdoption.ts`, `Record<Lang, …>`, including the confirmation email
-  templates. Finnish is the source; sv/en are faithful translations. `SIGN_TEXT`: the sign is the
-  Finnish draft in every locale (payer line included); only the sticker label is translated.
-  Amounts in new strings keep a no-break space before "€".
+  templates. Finnish is the source; sv/en are faithful translations. `SIGN_TEXT` is per locale:
+  sv shows a Swedish sign ("Riksdagsvalet 2027 · Nyland", "Annonsens betalare: …"), en the
+  Finnish one. Amounts in new strings keep a no-break space before "€".
 - **Bindings:** D1 `DB`; secrets `TURNSTILE_SECRET`, `ADOPTIONS_TOKEN` (new) and `LIITY_STATS_TOKEN`.
 
 ### Submit
@@ -220,14 +220,9 @@ punctuation and no "ei ole X, vaan Y" constructions.
 H1 "Adoptoi kyltti." + emphasis "Nimesi nousee tienvarteen." · intro (the direct ask) · CTA
 "Kirjoita nimesi kylttiin" → `#adoptoi`.
 
-**Sign graphic:** the campaign's road-sign draft (CF Images `Lauri-Lavanti-vaalikyltti-luonnos`,
-1410 × 2000, variant `sign`; the SVG's units are its pixels) with three overlays: a ground-colour
-(`#003D24`) rect over the draft's stray "BIG SHOULDERS" font label, the "Mainoksen maksaja:" /
-"Digitaalisen itsenäisyyden puolesta ry" line on two lines in the free ground between the Vihreät
-logo and LAVANTI.FI, and a round white sticker (r 118) in the empty ground right of "LAURI",
-above "LAVANTI", covering no lettering (geometry: `SIGN` in `src/lib/adoptionShareImage.ts` and
-`STICKER` in `src/lib/signSticker.ts`, shared by the SVG, the share PNGs, the live preview and the
-personal page OG cards, whose portrait column shows the sign from `src/lib/og/assets/adoption-sign.jpg`).
+**Sign graphic:** Lauri's photo over the deep forest name block, the "Mainoksen maksaja" line at
+the foot, and a round white sticker where the photo meets the text, right of Lauri (geometry:
+`STICKER` in `src/lib/signSticker.ts`, shared by the SVG, the share PNGs and the live preview).
 The sticker reads "Tämän kyltin" / "adoptoi" (sv "Den här skylten" / "adopterades av", en
 "This sign was" / "adopted by") over the name in Big Shoulders Display bold. A name stays on one
 line while it fits large enough, otherwise wraps at a space or after a hyphen (or halfway) onto
