@@ -96,6 +96,7 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
 | Field | Rule |
 |---|---|
 | `lang` | `fi` · `sv` · `en` |
+| `unnamed` | optional `yes`: a donation for signs without the donor's name on them (see No name on the sign). `sign_name`, `consent_print`, `consent_person`, `public` and `page` are then ignored and not required |
 | `sign_name` | NFC-normalised, whitespace collapsed, 2–24 characters. Letters (`\p{L}`), space, hyphen, apostrophe (`'` `’`), period. Digits and `&` only when `company_name` is set. |
 | `quantity` | integer 1–20; the "other number" chip posts `muu` with the stepper value in `quantity_other` |
 | `municipality` | one of the 25 municipalities of the Uusimaa electoral district (Uusimaa without Helsinki) or `ei-toivetta` |
@@ -118,7 +119,35 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   success and stores nothing.
 - **Stored per row:** the fields above, `created_at`, `status` (`pending`), `ref_code`,
   `edit_token_hash`, `consent_print_at`, `consent_public_at`, `consent_page_at`,
-  `consent_company_at`, `consent_version`. No IP, user agent or Turnstile token.
+  `consent_company_at`, `consent_version`, `named`. No IP, user agent or Turnstile token.
+
+### No name on the sign
+
+Owner request 2026-11-16: people can donate for signs without their name on them.
+
+- **Form, step 1:** a checkbox "En halua nimeäni kylttiin" (sv "Jag vill inte ha mitt namn på
+  skylten", en "I don't want my name on the sign") under the name field, with the hint "Voit tukea
+  kylttejä myös ilman, että nimesi tulee niihin." When it is on, CSS (`:has()`) hides the name field,
+  the form sign's sticker and, in step 2, `consent_print`, `consent_person`, `public`, `page` and the
+  revocation sentence; the step 2 heading reads "Vielä yhteystietosi." and the pinned line "Kylttisi
+  ilman nimeä · 30 €". The CTA and total stay n × 30 €. Email, municipality, the company block and
+  Turnstile stay. The script disables the hidden inputs so none are posted; without a script the
+  markup has no `required` on them and the server ignores them.
+- **Storage:** migration `0005_sign_adoptions_unnamed.sql` rebuilds `sign_adoptions` with
+  `named INTEGER NOT NULL DEFAULT 1` and nullable `sign_name` and `consent_print_at` (a CHECK keeps
+  both set when `named = 1`). An unnamed row has `named = 0`, both NULL, `public = 0`, no page.
+- **Thanks:** the URL gets `&u=1`. The sign shows no sticker, the name prompt and the message form
+  are hidden, and the share PNGs have no sticker, with "Tuin Lauri Lavannin vaalikylttejä" as the
+  headline and share text "Tuin Lauri Lavannin vaalikylttejä, ja keväällä ne nousevat tienvarsille.
+  …". The thank-you message stays.
+- **Wall:** unnamed rows count in `signs` and `municipalities`, never in `names` or `messages`
+  (`named = 1` in those queries).
+- **Giver identity (legal):** the 6 000 € cap and 2 000 € disclosure still need the giver. An
+  unnamed private row without `payer_name` is approved only with `--payer "<name>"` from the
+  MobilePay report or bank statement; `approve` stores it as `payer_name`.
+- **CLI:** `list` marks the row `[EI NIMEÄ KYLTTIIN]`; `print` leaves it out of the CSV, prints the
+  count of signs without a sticker and marks it printed; `page add` refuses it; `revoke` writes no
+  cover line. The confirmation mail has its own wording without the revocation line.
 
 ### Message and payer name (`viesti`)
 
@@ -134,7 +163,7 @@ Public, no auth. Returns only:
 - `signs`: the sum of `quantity` over approved rows, or `null` when fewer than 3 rows are approved.
 - `municipalities`: approved sign counts per municipality through `suppress()` (cells under 3 merge
   into `muu`), without `ei-toivetta`.
-- `names`: approved rows with `public = 1`, newest approval first, at most 50; empty when fewer than 3.
+- `names`: approved rows with `named = 1` and `public = 1`, newest approval first, at most 50; empty when fewer than 3.
 - `messages`: `{name, message}` for approved, public rows with an approved message, at most 20.
 
 Never an email, payer, company detail, ref or id.
@@ -343,6 +372,13 @@ Feature: Adopt a campaign sign
     Given a sign name with digits and no company, a quantity of 21, a bad Y-tunnus or a missing consent
     When it is POSTed
     Then the response carries a fixed error code and nothing is stored
+
+  Scenario: No name on the sign
+    Given "En halua nimeäni kylttiin" is on, with a municipality, an email and a passing Turnstile check
+    When it is POSTed, with or without a script
+    Then one pending row exists with named = 0 and no sign name or print consent
+    And the thanks URL carries u=1, the thanks page and share images show no sticker
+    And the row counts on the wall but its name list never includes it
 
   Scenario: Honeypot
     Given website is non-empty
