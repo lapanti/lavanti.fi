@@ -44,7 +44,8 @@ const initAdoptionWall = (): void => {
             if (className) li.className = className
             tiles.append(li)
         }
-        if (own)
+        // A donation without a name on the sign stores an empty name: no tile for it.
+        if (own?.name)
             tile(
                 data.ownTile.replace('%s', () => own.name),
                 'own'
