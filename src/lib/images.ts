@@ -36,11 +36,6 @@ const VARIANTS: Record<string, VariantDef> = {
      * out of frame once object-fit: cover squeezes it into the landscape band.
      */
     postThumb: { fit: 'crop', gravity: 'face', h: 720, w: 1432 },
-    /**
-     * The whole Adoptoi kyltti sign draft, scaled without cropping: the source is 1410 × 2000 and
-     * this keeps its exact aspect, large enough for the story share PNG (about 860 px wide).
-     */
-    sign: { fit: 'crop', gravity: 'auto', h: 1400, w: 987 },
     /** 16:9 poster frame behind a VideoEmbed facade — matches the player's own aspect ratio. */
     video: { fit: 'crop', gravity: 'auto', h: 720, w: 1280 },
 }
