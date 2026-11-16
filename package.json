@@ -92,7 +92,7 @@
     "happy-dom": "21.0.4",
     "husky": "9.1.7",
     "knip": "6.45.1",
-    "lint-staged": "17.6.0",
+    "lint-staged": "17.6.1",
     "prettier": "3.10.1",
     "prettier-plugin-astro": "0.14.1",
     "satori": "0.63.2",
