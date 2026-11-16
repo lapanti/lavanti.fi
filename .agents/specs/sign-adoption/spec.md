@@ -2,15 +2,15 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-11-14
+> **Last updated**: 2026-11-16
 
 ---
 
 ## Intent
 
 A visitor donates 30 euros per campaign sign to the support association's election fundraiser
-(vaalikeräys). As thanks, their name is written or printed on the bottom edge of a roadside sign,
-visibly separate from the campaign text. The page turns a small donation into something the donor
+(vaalikeräys). As thanks, their name goes on a round white sticker on a roadside sign ("Tämän
+kyltin adoptoi" over the name), visibly separate from the campaign text. The page turns a small donation into something the donor
 can picture, share and point at in spring.
 
 The association, Digitaalisen itsenäisyyden puolesta ry, orders and pays for every sign; each sign
@@ -77,7 +77,10 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   the site. Landing: eyebrow "Lauri Lavanti, Vihreiden eduskuntavaaliehdokas Uudellamaalla", H1
   "Adoptoi kyltti." + emphasis "Nimesi nousee tienvarteen.", the direct-ask paragraph as `intro`,
   and a CTA "Kirjoita nimesi kylttiin" (`#adoptoi`) that scrolls to the form plate. The headline is
-  there to make the visitor scroll; the form is one tap or one swipe away. Thanks pages: H1
+  there to make the visitor scroll; the form is one tap or one swipe away. The landing pages set
+  `heroSign: true`: the hero shows the sign with the ghost name (decorative, `aria-hidden`, not
+  updated by typing) in place of the photo, which is then not preloaded; `heroImage` stays only
+  for the OG card portrait. The CTA stays on the first screen at 375 × 812. Thanks pages: H1
   "Kylttisi odottaa" + emphasis "lahjoitustasi", CTA "Viimeistele adoptio" (`#lahjoitus`) to the
   payment plate, and a question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages
   pass `ogCard` to `PageLayout` to keep the generated card on a noindex page.
@@ -188,8 +191,16 @@ punctuation and no "ei ole X, vaan Y" constructions.
 H1 "Adoptoi kyltti." + emphasis "Nimesi nousee tienvarteen." · intro (the direct ask) · CTA
 "Kirjoita nimesi kylttiin" → `#adoptoi`.
 
+**Sign graphic:** Lauri's photo over the deep forest name block, the "Mainoksen maksaja" line at
+the foot, and a round white sticker where the photo meets the text, right of Lauri (geometry:
+`STICKER` in `src/lib/signSticker.ts`, shared by the SVG, the share PNGs and the live preview).
+The sticker reads "Tämän kyltin" / "adoptoi" (sv "Den här skylten" / "adopterades av", en
+"This sign was" / "adopted by") over the name in Big Shoulders Display bold. A name stays on one
+line while it fits large enough, otherwise wraps at a space or after a hyphen (or halfway) onto
+two, and shrinks until every line fits the circle; a 24-character name never overflows.
+
 **Form plate, in order:** sign graphic
-with Lauri's photo, ghost text "Sinun nimesi" and the "Mainoksen maksaja" line; fine print
+with ghost text "Sinun nimesi" in the sticker; fine print
 "Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "30 € = yksi kyltti tienvarteen" ·
 "Nimi kylttiin" (maxlength 24, counter; the sign renders the typed value directly, no animation) ·
 chips "1 kyltti · 30 €" (preselected), "2 kylttiä · 60 €", "5 kylttiä · 150 €", "Muu määrä kylttejä"
@@ -205,9 +216,9 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
 
 - pageTitle "Adoptoi vaalikyltti, nimesi tienvarteen"
 - description "Adoptoi vaalikyltti Uudellamaalla lahjoittamalla 30 euroa Lauri Lavannin kampanjalle.
-  Kiitokseksi nimesi kirjoitetaan kylttiin, joka nousee tienvarteen."
+  Kiitokseksi nimesi tulee pyöreään tarraan tienvarren kylttiin."
 - Intro "Adoptoi kyltti ja tue kampanjaani 30 eurolla. Se merkitsee minulle paljon. Kiitokseksi
-  nimesi kirjoitetaan kyltin alareunaan, ja kyltti nousee keväällä tienvarteen Uudellamaalla."
+  nimesi tulee kylttiin pyöreään tarraan, ja kyltti nousee keväällä tienvarteen Uudellamaalla."
 - Why (verbatim):
   > Suomi on aina varautunut. Meillä on viljaa, lääkkeitä ja polttoainetta varastossa pahan päivän
   > varalle, ja jäänmurtajat pitävät meret auki kovimpanakin talvena. Ennen kriisi katkaisi
@@ -231,7 +242,8 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
   + "Kuka olen: Lauri Lavanti" (link to /fi/laurista/).
 - Close "Olen Vihreiden eduskuntavaaliehdokas Uudellamaalla. Auta minua viemään nämä asiat
   eduskuntaan." + "Liity mukaan: lavanti.fi/liity"
-- Visibility "Nimesi kirjoitetaan kyltin alareunaan, erilleen kampanjatekstistä. Nimesi näkyy
+- Visibility "Nimesi tulee kylttiin pyöreään tarraan, jossa lukee "Tämän kyltin adoptoi" ja
+  nimesi. Tarra on erillään kampanjatekstistä. Nimesi näkyy
   niille, jotka kulkevat ohi jalan tai pyörällä. Jos haluat, nimesi näkyy myös adoptoijien
   listalla tällä sivulla."
 - Transparency "Kerron budjettini avoimesti koko kampanjan ajan. Vaalirahoitussivulla näet
