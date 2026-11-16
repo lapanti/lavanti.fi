@@ -15,6 +15,8 @@ interface SignText {
     firstName: string
     lastName: string
     payer: string
+    /** The label over the name in the round sticker, two lines so it fits the circle. */
+    sticker: readonly [string, string]
     tagline: string
 }
 
@@ -22,20 +24,23 @@ const FI_SIGN_TEXT: SignText = {
     firstName: 'Lauri',
     lastName: 'Lavanti',
     payer: 'Mainoksen maksaja: Digitaalisen itsenäisyyden puolesta ry',
+    sticker: ['Tämän kyltin', 'adoptoi'],
     tagline: 'Eduskuntavaalit 2027 · Uusimaa',
 }
 
 /**
  * Text on the sign graphic and the share images. The Swedish page shows a Swedish sign; the
- * English page shows the Finnish one, since there is no English sign.
+ * English page shows the Finnish one, since there is no English sign, with the sticker label
+ * in English so the reader knows what the name means.
  */
 export const SIGN_TEXT: Record<Lang, SignText> = {
-    en: FI_SIGN_TEXT,
+    en: { ...FI_SIGN_TEXT, sticker: ['This sign was', 'adopted by'] },
     fi: FI_SIGN_TEXT,
     sv: {
         firstName: 'Lauri',
         lastName: 'Lavanti',
         payer: 'Annonsens betalare: Digitaalisen itsenäisyyden puolesta ry',
+        sticker: ['Den här skylten', 'adopterades av'],
         tagline: 'Riksdagsvalet 2027 · Nyland',
     },
 }

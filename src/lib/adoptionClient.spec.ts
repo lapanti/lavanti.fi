@@ -14,6 +14,7 @@ import {
     thanksHref,
     writeStoredAdoption,
 } from './adoptionClient'
+import { estimateWidth, STICKER } from './signSticker'
 
 describe('setSignName', () => {
     const page = () => {
@@ -35,12 +36,46 @@ describe('setSignName', () => {
         expect(text.getAttribute('fill')).toBe('grey')
     })
 
-    it('shrinks a name wider than the band', () => {
+    it('centres one line in the sticker', () => {
         const doc = page()
-        const text = doc.querySelector('[data-sign-name]') as unknown as { getComputedTextLength: () => number }
-        text.getComputedTextLength = () => 1040
-        setSignName(doc, 'Anna-Liisa Kuusiniemi-Ab')
-        expect(doc.querySelector('[data-sign-name]')!.getAttribute('font-size')).toBe('23')
+        setSignName(doc, 'Sjoerd', (t, font) => t.length * 0.5 * Number(/(\d+)px/.exec(font)?.[1]))
+        const spans = doc.querySelectorAll('[data-sign-name] tspan')
+        expect(spans).toHaveLength(1)
+        expect(spans[0].getAttribute('x')).toBe(String(STICKER.cx))
+        expect(spans[0].getAttribute('y')).toBe(String(STICKER.cy + STICKER.nameOne.y))
+        expect(doc.querySelector('[data-sign-name]')!.getAttribute('font-size')).toBe(String(STICKER.nameOne.max))
+    })
+
+    it('wraps a long name onto two lines and shrinks it to fit the sticker', () => {
+        const doc = page()
+        setSignName(doc, 'Anna-Liisa Väisänen-Ødeg', (t, font) => t.length * 0.5 * Number(/([\d.]+)px/.exec(font)?.[1]))
+        const spans = [...doc.querySelectorAll('[data-sign-name] tspan')]
+        expect(spans.map((s) => s.textContent)).toEqual(['Anna-Liisa', 'Väisänen-Ødeg'])
+        expect(spans.map((s) => s.getAttribute('y'))).toEqual(STICKER.nameTwo.ys.map((y) => String(STICKER.cy + y)))
+        const size = Number(doc.querySelector('[data-sign-name]')!.getAttribute('font-size'))
+        expect(13 * 0.5 * size).toBeLessThanOrEqual(STICKER.nameTwo.width)
+    })
+
+    it('falls back to the width estimate without a 2D canvas', () => {
+        const doc = page()
+        setSignName(doc, 'W'.repeat(24))
+        const size = Number(doc.querySelector('[data-sign-name]')!.getAttribute('font-size'))
+        expect(size).toBeGreaterThan(0)
+        expect(estimateWidth('W'.repeat(12), `700 ${size}px "Big Shoulders Display"`)).toBeLessThanOrEqual(
+            STICKER.nameTwo.width
+        )
+    })
+
+    it('measures on a canvas when the browser has one', () => {
+        const doc = page()
+        const measureText = vi.fn((t: string) => ({ width: t.length * 10 }))
+        vi.spyOn(doc, 'createElement').mockReturnValue({
+            getContext: () => ({ font: '', measureText }),
+        } as unknown as HTMLElement)
+        setSignName(doc, 'Sjoerd')
+        expect(measureText).toHaveBeenCalledWith('Sjoerd')
+        // 60 units wide at any size: fits at the full size.
+        expect(doc.querySelector('[data-sign-name]')!.getAttribute('font-size')).toBe(String(STICKER.nameOne.max))
     })
 })
 

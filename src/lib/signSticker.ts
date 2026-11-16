@@ -14,14 +14,14 @@ export const BODY_FONT = 'IBM Plex Sans'
 
 /** Sticker geometry in sign units. Line positions are baselines relative to the centre. */
 export const STICKER = {
-    cx: 496,
-    cy: 520,
-    label: { size: 15, width: 134, ys: [-46, -27] },
+    cx: 488,
+    cy: 516,
+    label: { size: 16, width: 145, ys: [-50, -30] },
     /** One name line, at most `max` units tall; below `min` it wraps instead. */
-    nameOne: { max: 40, min: 28, width: 156, y: 30 },
+    nameOne: { max: 44, min: 30, width: 168, y: 32 },
     /** Two name lines: the lower one sits low in the circle, so both get its narrower chord. */
-    nameTwo: { max: 30, width: 140, ys: [12, 46] },
-    r: 96,
+    nameTwo: { max: 33, width: 152, ys: [13, 50] },
+    r: 104,
 } as const
 
 /** Width of `text` set in a CSS `font` such as `700 40px "Big Shoulders Display"`. */
