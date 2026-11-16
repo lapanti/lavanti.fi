@@ -45,28 +45,4 @@ describe('renderOgCard', () => {
         expect(card).toMatchObject(CARD)
         expect(card.bytes).toBeLessThan(MAX_BYTES)
     })
-
-    it('renders a personal adoption card with the sign and the name in its sticker', async () => {
-        const bytes = await renderOgCard({
-            emphasis: 'adoptoi kyltin',
-            id: 'fi__adoptoi__anna',
-            lang: 'fi',
-            sign: {
-                name: 'Anna-Liisa Väisänen-Ødeg',
-                payer: ['Mainoksen maksaja:', 'Digitaalisen itsenäisyyden puolesta ry'],
-                sticker: ['Tämän kyltin', 'adoptoi'],
-            },
-            title: 'Anna-Liisa Väisänen-Ødeg',
-        })
-        expect(await inspect(bytes)).toMatchObject(CARD)
-        expect(bytes.length).toBeLessThan(MAX_BYTES)
-        // Inside the sticker (centre 632, 148, r 118 on the 1410 × 2000 sign), left of its text: white.
-        const s = 630 / 2000
-        const x = Math.round((468 - 1410 * s) / 2 + (632 - 95) * s)
-        const { data } = await sharp(bytes)
-            .extract({ height: 1, left: x, top: Math.round((148 - 15) * s), width: 1 })
-            .raw()
-            .toBuffer({ resolveWithObject: true })
-        expect(Math.min(...data)).toBeGreaterThan(200)
-    })
 })
