@@ -14,6 +14,13 @@
     - heading "Mitä uutiskirjeissä on käsitelty?" [level=2]
     - list:
       - listitem:
+        - article "Digieuro vaatii yksityisyyden jo rakenteeseen":
+          - link "Digieuro vaatii yksityisyyden jo rakenteeseen":
+            - /url: /fi/uutiskirje/10/digieuro-vaatii-yksityisyyden-jo-rakenteeseen/
+            - heading "Digieuro vaatii yksityisyyden jo rakenteeseen" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Digieuro voi vähentää riippuvuutta Visasta ja Mastercardista, jos offline-maksu, yksityisyys ja maksuton peruskäyttö kirjataan lakiin.
+      - listitem:
         - article "Digiministeri ilman ministeriötä jää vaille valtaa":
           - link "Digiministeri ilman ministeriötä jää vaille valtaa":
             - /url: /fi/uutiskirje/9/digiministeri-ilman-ministeriota-jaa-vaille-valtaa/
@@ -27,13 +34,6 @@
             - heading "Kun toimittajaa ei voi vaihtaa, hankintalaki on jo epäonnistunut" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: /Julkishallinnon järjestelmissä toimittajan vaihto on usein mahdotonta\. Neljän kaupungin eVaka maksoi 9 miljoonaa, Helsingin Asti \d+ miljoonaa ja jäi kesken\./
-      - listitem:
-        - article "Hyötyykö Suomi datakeskuksista?":
-          - link "Hyötyykö Suomi datakeskuksista?":
-            - /url: /fi/uutiskirje/7/hyotyyko-suomi-datakeskuksista/
-            - heading "Hyötyykö Suomi datakeskuksista?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Suomessa on \d+ datakeskusta, jotka kuluttavat noin 2 prosenttia sähköstä\. Sähkövero nousi 1\.\d+\.\d+ luokkaan I\. Luvut, Irlannin vertailu ja kuntien luvitus\./
     - paragraph:
       - text: Kaikki lähetetyt kirjeet julkaistaan
       - link "arkistoon":
