@@ -14,6 +14,13 @@
     - heading "What have recent issues covered?" [level=2]
     - list:
       - listitem:
+        - article "The digital euro needs privacy built into its structure":
+          - link "The digital euro needs privacy built into its structure":
+            - /url: /en/newsletter/10/digital-euro-needs-privacy-built-in/
+            - heading "The digital euro needs privacy built into its structure" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: A digital euro could cut Europe's reliance on Visa and Mastercard, if offline payments, built-in privacy and free basic use are written into law.
+      - listitem:
         - article "A digital minister without a ministry has no power":
           - link "A digital minister without a ministry has no power":
             - /url: /en/newsletter/9/a-digital-minister-without-a-ministry-has-no-power/
@@ -27,13 +34,6 @@
             - heading "When a vendor cannot be switched, procurement law has already failed" [level=3]
           - time: /\d+\.\d+\.\d+/
           - paragraph: /In most Finnish public systems, switching vendors is impossible\. Four cities built eVaka for 9 million euros; Helsinki spent \d+ million on an unfinished Asti\./
-      - listitem:
-        - article "Does Finland benefit from data centres?":
-          - link "Does Finland benefit from data centres?":
-            - /url: /en/newsletter/7/does-finland-benefit-from-data-centres/
-            - heading "Does Finland benefit from data centres?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Finland has \d+ data centres using about 2 per cent of its electricity\. The electricity tax rose to class I on 1 July \d+\. The numbers, Ireland, permitting\./
     - paragraph:
       - text: Every issue reaches the
       - link "archive":
