@@ -723,7 +723,7 @@ jobs:
             ${{ needs.deploy.outputs.deployment-url }}/fi/
             ${{ needs.deploy.outputs.deployment-url }}/en/
             ${{ needs.deploy.outputs.deployment-url }}/sv/
-            ${{ needs.deploy.outputs.deployment-url }}/fi/about/
+            ${{ needs.deploy.outputs.deployment-url }}/fi/laurista/
             ${{ needs.deploy.outputs.deployment-url }}/fi/blog/
             ${{ needs.deploy.outputs.deployment-url }}/fi/blog/1/kotihoidon-tuen-kuntalisa/
           configPath: .github/lighthouserc.json
