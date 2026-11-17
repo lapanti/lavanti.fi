@@ -32,7 +32,7 @@ jobs:
             https://lavanti.fi/fi/
             https://lavanti.fi/en/
             https://lavanti.fi/sv/
-            https://lavanti.fi/fi/about/
+            https://lavanti.fi/fi/laurista/
             https://lavanti.fi/fi/blog/
             https://lavanti.fi/fi/blog/1/kotihoidon-tuen-kuntalisa/
           configPath: .github/lighthouserc-production.json
