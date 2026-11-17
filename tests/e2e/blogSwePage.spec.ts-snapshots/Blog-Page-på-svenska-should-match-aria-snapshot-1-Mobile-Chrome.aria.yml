@@ -135,23 +135,23 @@
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
         - listitem:
-          - article "Matinköpsstödet ska tillhöra folket, inte kvittona":
-            - 'link "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona Matinköpsstödet ska tillhöra folket, inte kvittona"':
-              - /url: /sv/blog/98/matinkopsstodet-ska-tillhora-folket/
-              - 'img "Marknadsgrönt initiativ: Matinköpsstödet ska tillhöra folket, inte kvittona"'
-              - heading "Matinköpsstödet ska tillhöra folket, inte kvittona" [level=3]
+          - article /Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/:
+            - link /Lauri Lavanti håller Gröna fullmäktigegruppens gruppanförande om Kyrkslätts budget \d+ vid talarstolen i fullmäktigesalen\. Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/:
+              - /url: /sv/blog/103/kyrkslatts-budget-grona-gruppanforande/
+              - img /Lauri Lavanti håller Gröna fullmäktigegruppens gruppanförande om Kyrkslätts budget \d+ vid talarstolen i fullmäktigesalen\./
+              - heading /Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/ [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "/De marknadsgrönas initiativ: mat till allmänna momssatsen \\d+,\\d+ procent och hela intäkten tillbaka som en månatlig basinkomst, cirka \\d+ euro per person\\./"
+            - paragraph: /Kyrkslätts budget \d+ skär cirka \d+ \d+ euro i småbarnspedagogiken utan barnkonsekvensanalys\. Gröna fullmäktigegruppens gruppanförande och video\./
           - list:
+            - listitem:
+              - link "Kyrkslätt":
+                - /url: /sv/kategori/kyrkslatt/
+            - listitem:
+              - link "Småbarnspedagogik":
+                - /url: /sv/kategori/smabarnspedagogik/
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
-            - listitem:
-              - link "Marknadsgrön":
-                - /url: /sv/kategori/marknadsgron/
-            - listitem:
-              - link "Grundläggande":
-                - /url: /sv/kategori/grundtrygghet/
       - paragraph:
         - link "Alla inlägg om Ekonomi":
           - /url: /sv/kategori/ekonomi/

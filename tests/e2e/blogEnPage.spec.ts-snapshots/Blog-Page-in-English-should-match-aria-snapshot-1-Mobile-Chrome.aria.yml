@@ -135,23 +135,23 @@
               - link "Economy":
                 - /url: /en/category/economy/
         - listitem:
-          - article "The food-purchase subsidy belongs to people, not receipts":
-            - 'link "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts The food-purchase subsidy belongs to people, not receipts"':
-              - /url: /en/blog/98/food-subsidy-belongs-to-people/
-              - 'img "Market Greens proposal: The food-purchase subsidy belongs to people, not receipts"'
-              - heading "The food-purchase subsidy belongs to people, not receipts" [level=3]
+          - article /Kirkkonummi's \d+ budget cuts early childhood education/:
+            - link /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\. Kirkkonummi's \d+ budget cuts early childhood education/:
+              - /url: /en/blog/103/kirkkonummi-budget-green-group-speech/
+              - img /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\./
+              - heading /Kirkkonummi's \d+ budget cuts early childhood education/ [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "/A Market Greens proposal: food to the standard \\d+\\.\\d+% VAT rate and all of the revenue back to people as a monthly basic income of about \\d+ euros each\\./"
+            - paragraph: /Kirkkonummi's \d+ budget cuts about €\d+,\d+ from early childhood education without a child impact assessment\. The Green council group's speech and video\./
           - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /en/category/kirkkonummi/
+            - listitem:
+              - link "Early childhood education":
+                - /url: /en/category/early-childhood-education/
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/
-            - listitem:
-              - link "Marketgreen":
-                - /url: /en/category/marketgreen/
-            - listitem:
-              - link "Basic welfare":
-                - /url: /en/category/basic-welfare/
       - paragraph:
         - link "All posts about Economy":
           - /url: /en/category/economy/

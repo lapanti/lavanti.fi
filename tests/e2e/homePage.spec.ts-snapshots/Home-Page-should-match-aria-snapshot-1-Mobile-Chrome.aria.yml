@@ -126,6 +126,24 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article /Kirkkonummi's \d+ budget cuts early childhood education/:
+          - link /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\. Kirkkonummi's \d+ budget cuts early childhood education/:
+            - /url: /en/blog/103/kirkkonummi-budget-green-group-speech/
+            - img /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\./
+            - heading /Kirkkonummi's \d+ budget cuts early childhood education/ [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Kirkkonummi's \d+ budget cuts about €\d+,\d+ from early childhood education without a child impact assessment\. The Green council group's speech and video\./
+        - list:
+          - listitem:
+            - link "Kirkkonummi":
+              - /url: /en/category/kirkkonummi/
+          - listitem:
+            - link "Early childhood education":
+              - /url: /en/category/early-childhood-education/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+      - listitem:
         - article "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
           - link "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
             - /url: /en/blog/100/happy-60th-porkkala-upper-secondary-school-are-we-ready-to-keep-investing-in-education-and-culture/
@@ -263,24 +281,6 @@
           - listitem:
             - link "Nature":
               - /url: /en/category/nature/
-      - listitem:
-        - article "Sweden threatens to pull ahead in the AI start-up race":
-          - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
-            - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
-            - img "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits."
-            - heading "Sweden threatens to pull ahead in the AI start-up race" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Finnish AI start-ups stall at funding while Sweden pulls ahead. Two reforms: pension funds in venture capital and a Saminvest-style fund of funds."
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Entrepreneurship":
-              - /url: /en/category/entrepreneurship/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
