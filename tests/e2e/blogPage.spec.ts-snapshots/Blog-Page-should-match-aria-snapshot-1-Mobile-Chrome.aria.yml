@@ -135,23 +135,23 @@
               - link "Talous":
                 - /url: /fi/kategoria/talous/
         - listitem:
-          - article "Muutetaan ruoan alv perustuloksi":
-            - 'link "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi Muutetaan ruoan alv perustuloksi"':
-              - /url: /fi/blog/98/ruuan-alv-perustuloksi/
-              - 'img "Markkinavihreä ehdotus: Muutetaan ruoan alv perustuloksi"'
-              - heading "Muutetaan ruoan alv perustuloksi" [level=3]
+          - article /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
+            - link /Lauri Lavanti pitää Vihreän valtuustoryhmän ryhmäpuheenvuoron Kirkkonummen talousarviosta \d+ valtuustosalin puhujanpöntössä\. Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
+              - /url: /fi/blog/103/kirkkonummen-talousarvio-vihreiden-ryhmapuheenvuoro/
+              - img /Lauri Lavanti pitää Vihreän valtuustoryhmän ryhmäpuheenvuoron Kirkkonummen talousarviosta \d+ valtuustosalin puhujanpöntössä\./
+              - heading /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/ [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: "/Markkinavihreiden avaus: ruoka yleiseen \\d+,\\d+ prosentin alv-kantaan ja koko tuotto takaisin ihmisille kuukausittaisena perustulona, noin \\d+ euroa henkeä kohden\\./"
+            - paragraph: /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta noin \d+ \d+ euroa ilman lapsivaikutusten arviointia\. Vihreiden ryhmäpuheenvuoro ja video\./
           - list:
+            - listitem:
+              - link "Kirkkonummi":
+                - /url: /fi/kategoria/kirkkonummi/
+            - listitem:
+              - link "Varhaiskasvatus":
+                - /url: /fi/kategoria/varhaiskasvatus/
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
-            - listitem:
-              - link "Markkinavihreä":
-                - /url: /fi/kategoria/markkinavihrea/
-            - listitem:
-              - link "Perusturva":
-                - /url: /fi/kategoria/perusturva/
       - paragraph:
         - link "Kaikki kirjoitukset aiheesta Talous":
           - /url: /fi/kategoria/talous/
