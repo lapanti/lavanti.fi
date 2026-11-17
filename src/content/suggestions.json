@@ -28,8 +28,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "economy": {
-      "checkedAt": "2026-11-10",
-      "contentHash": "a6a950022f2f77a2aa35c0dc1ff5dabd0e4c8f24e9e8dfaae2484bf7f22120a9",
+      "checkedAt": "2026-11-17",
+      "contentHash": "5d0bfbb92b9f433ca7286af6643f262eaa2f79aac3c308737b3ee33fa6991b7e",
       "model": "typesafe/jev-1.13-20260917"
     },
     "enlightenment": {
@@ -48,8 +48,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "kirkkonummi": {
-      "checkedAt": "2026-11-09",
-      "contentHash": "85464dcbb133f845fc618761a83c4087335b51d107147898a8316fbeded013c9",
+      "checkedAt": "2026-11-17",
+      "contentHash": "fc749abdbaacf92e0cc2528fdd8179d01efc8a3225ad38927d697fcf7dfe29a0",
       "model": "typesafe/jev-1.13-20260917"
     },
     "municipal-elections-2025": {
@@ -97,6 +97,11 @@
     "post:102": {
       "checkedAt": "2026-11-10",
       "contentHash": "1990dec9421fb772a3dcc1d29a71fc4a3fab1c85f09edbea39375439023548c3",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:103": {
+      "checkedAt": "2026-11-17",
+      "contentHash": "84523630f8a6869208ce5c5d070484fcc2cee9fe666898546aa48114ee6edf57",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:11": {
