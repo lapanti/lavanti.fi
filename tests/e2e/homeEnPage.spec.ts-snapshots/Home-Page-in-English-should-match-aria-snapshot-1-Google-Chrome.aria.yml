@@ -128,6 +128,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Chat control is already in Finland, and the passport register should be abolished":
+          - 'link "Lauri Lavanti looking seriously straight into the camera in front of a board-formed concrete wall, for a post on chat control and the passport register, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Chat control is already in Finland, and the passport register should be abolished"':
+            - /url: /en/blog/101/chat-control-and-passport-register/
+            - 'img "Lauri Lavanti looking seriously straight into the camera in front of a board-formed concrete wall, for a post on chat control and the passport register, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
+            - heading "Chat control is already in Finland, and the passport register should be abolished" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Voluntary chat control is in force in Finland until April \d+\. What is Finland's position on chat control and why abolish the passport register\?/
+        - list:
+          - listitem:
+            - link "Privacy":
+              - /url: /en/category/privacy/
+          - listitem:
+            - link "Freedom":
+              - /url: /en/category/freedom/
+          - listitem:
+            - link "Technology":
+              - /url: /en/category/technology/
+      - listitem:
         - article /Kirkkonummi's \d+ budget cuts early childhood education/:
           - link /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\. Kirkkonummi's \d+ budget cuts early childhood education/:
             - /url: /en/blog/103/kirkkonummi-budget-green-group-speech/
@@ -265,24 +283,6 @@
           - listitem:
             - link "National politics":
               - /url: /en/category/national-politics/
-      - listitem:
-        - article "Microsoft's data centre is already being built in Kirkkonummi":
-          - 'link "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky. Microsoft''s data centre is already being built in Kirkkonummi"':
-            - /url: /en/blog/93/microsoft-data-centre-kirkkonummi/
-            - 'img "Microsoft data centre in Staffanstorp, Sweden: a fenced site behind a road and a give-way sign under a cloudy sky."'
-            - heading "Microsoft's data centre is already being built in Kirkkonummi" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Microsoft data centre in Kirkkonummi, Espoo and Vihti brings a building site and may bring district heating. Next big power users need the same rules.
-        - list:
-          - listitem:
-            - link "Infrastructure":
-              - /url: /en/category/infrastructure/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Nature":
-              - /url: /en/category/nature/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
