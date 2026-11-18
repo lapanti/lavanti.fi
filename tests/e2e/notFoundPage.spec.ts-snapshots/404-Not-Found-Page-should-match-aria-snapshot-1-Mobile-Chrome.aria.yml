@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Chat control on jo Suomessa, passirekisteri pitää lakkauttaa":
+          - 'link "Lauri Lavanti katsoo vakavana suoraan kameraan betoniseinän edessä kirjoituksessa chat controlista ja passirekisteristä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Chat control on jo Suomessa, passirekisteri pitää lakkauttaa"':
+            - /url: /fi/blog/101/chat-control-ja-passirekisteri/
+            - 'img "Lauri Lavanti katsoo vakavana suoraan kameraan betoniseinän edessä kirjoituksessa chat controlista ja passirekisteristä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
+            - heading "Chat control on jo Suomessa, passirekisteri pitää lakkauttaa" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Chat control on voimassa Suomessa vapaaehtoisena huhtikuuhun \d+\. Mikä on Suomen kanta chat controliin ja miksi passirekisteri pitäisi lakkauttaa\?/
+        - list:
+          - listitem:
+            - link "Yksityisyydensuoja":
+              - /url: /fi/kategoria/yksityisyydensuoja/
+          - listitem:
+            - link "Vapaus":
+              - /url: /fi/kategoria/vapaus/
+          - listitem:
+            - link "Teknologia":
+              - /url: /fi/kategoria/teknologia/
+      - listitem:
         - article /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
           - link /Lauri Lavanti pitää Vihreän valtuustoryhmän ryhmäpuheenvuoron Kirkkonummen talousarviosta \d+ valtuustosalin puhujanpöntössä\. Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
             - /url: /fi/blog/103/kirkkonummen-talousarvio-vihreiden-ryhmapuheenvuoro/
@@ -127,18 +145,3 @@
           - listitem:
             - link /Eduskuntavaalit \d+/:
               - /url: /fi/kategoria/eduskuntavaalit-2027/
-      - listitem:
-        - article "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
-          - link "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?":
-            - /url: /fi/blog/96/julkinen-sektori-mista-rahat-tulevat-mihin-menevat/
-            - img "Eduskuntatalon pylväsjulkisivu Helsingissä, jossa julkisen sektorin budjetista päätetään"
-            - heading "Mistä julkisen sektorin rahat tulevat ja mihin ne menevät?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Julkinen sektori kerää vuonna \d+ arviolta \d+ miljardia euroa ja käyttää \d+ miljardia\. Katso kaavioista, mistä rahat tulevat ja mihin ne menevät\./
-        - list:
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
