@@ -128,6 +128,24 @@
       - /url: /en/blog/all/
     - list:
       - listitem:
+        - article "Chat control is already in Finland, and the passport register should be abolished":
+          - 'link "Lauri Lavanti looking seriously straight into the camera in front of a board-formed concrete wall, for a post on chat control and the passport register, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Chat control is already in Finland, and the passport register should be abolished"':
+            - /url: /en/blog/101/chat-control-and-passport-register/
+            - 'img "Lauri Lavanti looking seriously straight into the camera in front of a board-formed concrete wall, for a post on chat control and the passport register, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri."'
+            - heading "Chat control is already in Finland, and the passport register should be abolished" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Voluntary chat control is in force in Finland until April \d+\. What is Finland's position on chat control and why abolish the passport register\?/
+        - list:
+          - listitem:
+            - link "Privacy":
+              - /url: /en/category/privacy/
+          - listitem:
+            - link "Freedom":
+              - /url: /en/category/freedom/
+          - listitem:
+            - link "Technology":
+              - /url: /en/category/technology/
+      - listitem:
         - article "Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
           - link "Johanna Fleming and Lauri Lavanti in front of Lyyra, the House of Culture and Education, in Kirkkonummi in wintry sunshine Happy 60th, Porkkala Upper Secondary School! Are we ready to keep investing in education and culture?":
             - /url: /en/blog/100/happy-60th-porkkala-upper-secondary-school-are-we-ready-to-keep-investing-in-education-and-culture/
@@ -265,24 +283,6 @@
           - listitem:
             - link "Nature":
               - /url: /en/category/nature/
-      - listitem:
-        - article "Sweden threatens to pull ahead in the AI start-up race":
-          - link "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits. Sweden threatens to pull ahead in the AI start-up race":
-            - /url: /en/blog/92/sweden-threatens-to-pull-ahead-in-the-ai-start-up-race/
-            - img "MP Mari Holopainen and Lauri Lavanti smiling in side-by-side portraits."
-            - heading "Sweden threatens to pull ahead in the AI start-up race" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: "Finnish AI start-ups stall at funding while Sweden pulls ahead. Two reforms: pension funds in venture capital and a Saminvest-style fund of funds."
-        - list:
-          - listitem:
-            - link "AI":
-              - /url: /en/category/artificial-intelligence/
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "Entrepreneurship":
-              - /url: /en/category/entrepreneurship/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

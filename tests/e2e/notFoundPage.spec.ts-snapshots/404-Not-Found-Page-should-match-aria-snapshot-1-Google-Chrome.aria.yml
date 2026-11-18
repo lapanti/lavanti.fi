@@ -5,6 +5,24 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Chat control on jo Suomessa, passirekisteri pitää lakkauttaa":
+          - 'link "Lauri Lavanti katsoo vakavana suoraan kameraan betoniseinän edessä kirjoituksessa chat controlista ja passirekisteristä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Chat control on jo Suomessa, passirekisteri pitää lakkauttaa"':
+            - /url: /fi/blog/101/chat-control-ja-passirekisteri/
+            - 'img "Lauri Lavanti katsoo vakavana suoraan kameraan betoniseinän edessä kirjoituksessa chat controlista ja passirekisteristä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri."'
+            - heading "Chat control on jo Suomessa, passirekisteri pitää lakkauttaa" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: /Chat control on voimassa Suomessa vapaaehtoisena huhtikuuhun \d+\. Mikä on Suomen kanta chat controliin ja miksi passirekisteri pitäisi lakkauttaa\?/
+        - list:
+          - listitem:
+            - link "Yksityisyydensuoja":
+              - /url: /fi/kategoria/yksityisyydensuoja/
+          - listitem:
+            - link "Vapaus":
+              - /url: /fi/kategoria/vapaus/
+          - listitem:
+            - link "Teknologia":
+              - /url: /fi/kategoria/teknologia/
+      - listitem:
         - article /Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
           - link /Johanna Fleming ja Lauri Lavanti Sivistyksen talo Lyyran edessä Kirkkonummella talvisessa auringonpaisteessa Onnea \d+-vuotias Porkkalan lukio! Olemmeko valmiita panostamaan sivistykseen jatkossakin\?/:
             - /url: /fi/blog/100/onnea-60-vuotias-porkkalan-lukio-olemmeko-valmiita-panostamaan-sivistykseen-jatkossakin/
@@ -124,21 +142,3 @@
           - listitem:
             - link "Kansallinen politiikka":
               - /url: /fi/kategoria/kansallinen-politiikka/
-      - listitem:
-        - article "Microsoftin datakeskus rakentuu jo Kirkkonummelle":
-          - 'link "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla. Microsoftin datakeskus rakentuu jo Kirkkonummelle"':
-            - /url: /fi/blog/93/microsoft-datakeskus-kirkkonummi/
-            - 'img "Microsoftin datakeskus Staffanstorpissa Ruotsissa: aidattu laitosalue tien ja kärkikolmion takana pilvisen taivaan alla."'
-            - heading "Microsoftin datakeskus rakentuu jo Kirkkonummelle" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Microsoft datakeskus Kirkkonummella, Espoossa ja Vihdissä tuo työmaan ja voi tuoda kaukolämpöä. Seuraaville suurille sähkönkäyttäjille tarvitaan samat säännöt.
-        - list:
-          - listitem:
-            - link "Infra":
-              - /url: /fi/kategoria/infra/
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Luonto":
-              - /url: /fi/kategoria/luonto/
