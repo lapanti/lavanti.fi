@@ -158,10 +158,14 @@ describe('parseAdoption', () => {
         expect(parseAdoption(form({ ...unnamed, email: '' }), NOW)).toEqual({ error: 'email', ok: false })
     })
 
-    it('takes the stepper value when the other-number chip is chosen', () => {
-        const r = parseAdoption(form({ ...valid, quantity: 'muu', quantity_other: '12' }), NOW)
-        expect(r.ok && r.row.quantity).toBe(12)
-        expect(parseAdoption(form({ ...valid, quantity: 'muu' }), NOW)).toEqual({ error: 'quantity', ok: false })
+    it('accepts only a package sign count', () => {
+        for (const n of ['1', '2', '3', '5', '10']) {
+            const r = parseAdoption(form({ ...valid, quantity: n }), NOW)
+            expect(r.ok && r.row.quantity).toBe(Number(n))
+        }
+        for (const n of ['4', '12', '20', 'muu', '']) {
+            expect(parseAdoption(form({ ...valid, quantity: n }), NOW)).toEqual({ error: 'quantity', ok: false })
+        }
     })
 
     it('treats the page opt-in as a list opt-in', () => {

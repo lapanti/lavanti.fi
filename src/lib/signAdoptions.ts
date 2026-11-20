@@ -13,7 +13,6 @@
  */
 
 import { type Lang, LANGS } from '../content/nav'
-import { MAX_SIGNS } from './adoptionClient'
 import {
     backToForm,
     type D1Like,
@@ -27,6 +26,7 @@ import {
     verifyTurnstile,
 } from './formHandling'
 import { helsinkiDayStartUtc, isCalendarDay } from './publishing'
+import { isPackage } from './signPackages'
 import { suppress, utmSlug } from './volunteers'
 
 export interface AdoptionEnv {
@@ -160,10 +160,10 @@ export const parseAdoption = (form: FormData, now: Date): ParseResult => {
     const signName = named ? normaliseName(text(form, 'sign_name')) : null
     if (signName !== null && !isValidSignName(signName, company)) return { error: 'sign_name', ok: false }
 
-    // The "other number" chip posts `muu` and the stepper's value as quantity_other.
-    const quantityText = text(form, text(form, 'quantity') === 'muu' ? 'quantity_other' : 'quantity')
+    // Only a package's sign count (1, 2, 3, 5, 10) is accepted; the price follows from it.
+    const quantityText = text(form, 'quantity')
     const quantity = /^\d{1,2}$/.test(quantityText) ? Number(quantityText) : 0
-    if (quantity < 1 || quantity > MAX_SIGNS) return { error: 'quantity', ok: false }
+    if (!isPackage(quantity)) return { error: 'quantity', ok: false }
 
     const municipality = text(form, 'municipality') as AdoptionMunicipality
     if (!ADOPTION_MUNICIPALITIES.includes(municipality)) return { error: 'municipality', ok: false }

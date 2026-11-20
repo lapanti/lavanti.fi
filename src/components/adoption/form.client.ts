@@ -3,8 +3,8 @@
  * the fetch submit that keeps the edit token out of the URL, and the live line from `seina`.
  * Pure helpers live in src/lib/adoptionClient.ts (unit-tested); this file only wires the DOM.
  *
- * Without a script the form still works: both steps show, the other-number chip posts
- * quantity_other, and the function answers with a 303 to the thanks page.
+ * Without a script the form still works: both steps show, the package chip posts its sign
+ * count, and the function answers with a 303 to the thanks page.
  */
 
 import type { Lang } from '../../content/nav'
@@ -14,20 +14,20 @@ import { joinNames, loadWall, setSignName, thanksHref, writeStoredAdoption } fro
 export interface AdoptionFormData {
     consentPerson: string
     consentPersonCompany: string
-    consentPrint: string[]
+    consentPrint: Record<number, string>
     counter: string
-    cta: string[]
+    cta: Record<number, string>
     errors: Record<string, string>
     lang: Lang
     liveCount: string
     liveNames: string
-    nextStep: string[]
-    nextStepCompany: string[]
-    pinned: string[]
-    pinnedUnnamed: string[]
+    nextStep: Record<number, string>
+    nextStepCompany: Record<number, string>
+    pinned: Record<number, string>
+    pinnedUnnamed: Record<number, string>
     sending: string
     thanksPath: string
-    total: string[]
+    total: Record<number, string>
 }
 
 declare global {
@@ -49,7 +49,6 @@ const initAdoptionForm = (): void => {
     const step1 = q<HTMLElement>('[data-step="1"]')
     const step2 = q<HTMLElement>('[data-step="2"]')
     const nameInput = field('sign_name')
-    const otherInput = field('quantity_other')
     const company = q<HTMLDetailsElement>('[data-company]')
     const submitButton = q<HTMLButtonElement>('button[type="submit"]')
     const submitHint = document.getElementById('adoption-submit-hint')!
@@ -57,9 +56,10 @@ const initAdoptionForm = (): void => {
 
     const chosenChip = () => form.querySelector<HTMLInputElement>('input[name="quantity"]:checked')?.value ?? '1'
     const quantity = () => {
-        const value = Number(chosenChip() === 'muu' ? otherInput.value : chosenChip())
+        const value = Number(chosenChip())
 
-        return Number.isInteger(value) && value >= 1 && value <= data.cta.length ? value : 1
+        // Only a package count has copy; anything else falls back to one sign.
+        return Object.prototype.hasOwnProperty.call(data.cta, value) ? value : 1
     }
     const name = () => nameInput.value.normalize('NFC').replace(/\s+/g, ' ').trim()
     const isCompany = () => field('company_name').value.trim() !== ''
@@ -79,21 +79,18 @@ const initAdoptionForm = (): void => {
         const n = quantity()
         setSignName(document, nameInput.value)
         counter.textContent = data.counter.replace('%n', String([...nameInput.value].length))
-        q<HTMLElement>('[data-other]').hidden = chosenChip() !== 'muu'
-        form.querySelectorAll('[data-cta]').forEach((b) => (b.textContent = data.cta[n - 1]))
-        q('[data-total]').textContent = data.total[n - 1]
-        q('[data-consent-print]').textContent = data.consentPrint[n - 1]
+        form.querySelectorAll('[data-cta]').forEach((b) => (b.textContent = data.cta[n]))
+        q('[data-total]').textContent = data.total[n]
+        q('[data-consent-print]').textContent = data.consentPrint[n]
         // Disabled fields are neither validated nor posted, so a box ticked before opting out stays out.
         for (const f of NAMED_ONLY) {
             field(f).disabled = unnamed()
             field(f).required = !unnamed() && NAMED_REQUIRED.has(f)
         }
         // A replacer function, so "$&" and friends in a typed name stay literal.
-        q('[data-pinned]').textContent = unnamed()
-            ? data.pinnedUnnamed[n - 1]
-            : data.pinned[n - 1].replace('%s', () => name())
+        q('[data-pinned]').textContent = unnamed() ? data.pinnedUnnamed[n] : data.pinned[n].replace('%s', () => name())
         q('[data-consent-person]').textContent = company.open ? data.consentPersonCompany : data.consentPerson
-        q('[data-next-step]').textContent = (isCompany() ? data.nextStepCompany : data.nextStep)[n - 1]
+        q('[data-next-step]').textContent = (isCompany() ? data.nextStepCompany : data.nextStep)[n]
         // The company fields are required only once a company name is given.
         for (const f of ['business_id', 'billing_address', 'consent_company']) field(f).required = isCompany()
         updateReady()
@@ -108,7 +105,7 @@ const initAdoptionForm = (): void => {
         errorBox.textContent = data.errors[code] ?? data.errors.lomake
         errorBox.hidden = false
         if (STEP1_FIELDS.includes(code)) showStep(1)
-        const target = form.elements.namedItem(code === 'quantity' ? 'quantity_other' : code)
+        const target = form.elements.namedItem(code)
         if (target instanceof HTMLElement) {
             target.setAttribute('aria-invalid', 'true')
             target.setAttribute('aria-describedby', 'adoption-error')
@@ -129,7 +126,6 @@ const initAdoptionForm = (): void => {
 
     q('[data-next]').addEventListener('click', () => {
         if (!nameInput.reportValidity()) return
-        if (chosenChip() === 'muu' && !otherInput.reportValidity()) return
         render()
         showStep(2)
         q<HTMLElement>('[data-step="2"] h2').focus()
@@ -149,7 +145,6 @@ const initAdoptionForm = (): void => {
         const n = quantity()
         const body = new FormData(form)
         body.set('quantity', String(n))
-        body.delete('quantity_other')
         try {
             const res = await fetch(form.action, { body, headers: { Accept: 'application/json' }, method: 'POST' })
             const result = (await res.json()) as { error?: string; ref?: string; token?: string }

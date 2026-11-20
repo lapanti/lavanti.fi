@@ -5,10 +5,9 @@
 
 import type { Lang } from '../content/nav'
 
+import { isPackage } from './signPackages'
 import { estimateWidth, fitStickerName, type Measure, STICKER } from './signSticker'
 
-export const EUROS_PER_SIGN = 30
-export const MAX_SIGNS = 20
 /** sessionStorage key for the adopter's own sign name, ref and edit token (never in a URL). */
 export const STORAGE_KEY = 'adoptoi'
 
@@ -21,7 +20,7 @@ export interface ThanksParams {
 }
 
 /**
- * The thanks page query: `?ref=K-NNNNN&n=1..20&y=0|1`, plus `&u=1` for a donation without a name
+ * The thanks page query: `?ref=K-NNNNN&n=<package count>&y=0|1`, plus `&u=1` for a donation without a name
  * on the sign. Anything else, extra keys included, is rejected as a whole so nothing unvalidated
  * reaches the page.
  */
@@ -35,7 +34,7 @@ export const parseThanksParams = (search: string): null | ThanksParams => {
     const u = params.get('u') ?? '0'
     if (!/^K-\d{5}$/.test(ref) || !/^\d{1,2}$/.test(n) || !/^[01]$/.test(y) || !/^[01]$/.test(u)) return null
     const quantity = Number(n)
-    if (quantity < 1 || quantity > MAX_SIGNS) return null
+    if (!isPackage(quantity)) return null
 
     return { company: y === '1', quantity, ref, unnamed: u === '1' }
 }

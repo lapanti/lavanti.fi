@@ -43,12 +43,14 @@ test.describe('Sign adoption page', () => {
               - text: Montako kylttiä adoptoit?
               - radio "1 kyltti · 30 €" [checked]
               - text: 1 kyltti · 30 €
-              - radio "2 kylttiä · 60 €"
-              - text: 2 kylttiä · 60 €
-              - radio "5 kylttiä · 150 €"
-              - text: 5 kylttiä · 150 €
-              - radio "Muu määrä kylttejä"
-              - text: Muu määrä kylttejä
+              - radio "2 kylttiä · 55 € 27,50 €/kyltti"
+              - text: 2 kylttiä · 55 € 27,50 €/kyltti
+              - radio "3 kylttiä · 80 € 26,67 €/kyltti"
+              - text: 3 kylttiä · 80 € 26,67 €/kyltti
+              - radio "Suosituin 5 kylttiä · 100 € 20 €/kyltti"
+              - text: Suosituin 5 kylttiä · 100 € 20 €/kyltti
+              - radio "10 kylttiä · 190 € 19 €/kyltti"
+              - text: 10 kylttiä · 190 € 19 €/kyltti
             - paragraph: "Lahjoituksesi: 30 €"
             - button "Adoptoi kyltti"
         `)
@@ -86,15 +88,15 @@ test.describe('Sign adoption page', () => {
 
     test('should follow the chip in the CTA, total and consent', async ({ page }) => {
         await page.goto('/fi/adoptoi/')
-        await page.getByText('2 kylttiä · 60 €').click()
+        await page.getByText('2 kylttiä · 55 €').click()
 
-        await test.expect(page.locator('[data-total]')).toHaveText('Lahjoituksesi: 60 €')
+        await test.expect(page.locator('[data-total]')).toHaveText('Lahjoituksesi: 55 €')
         await test.expect(page.locator('[data-next]')).toHaveText('Adoptoi 2 kylttiä')
 
-        await page.getByText('Muu määrä kylttejä').click()
-        await page.getByLabel('Kylttien määrä').fill('7')
-        await test.expect(page.locator('[data-next]')).toHaveText('Adoptoi 7 kylttiä')
-        await test.expect(page.locator('[data-total]')).toHaveText('Lahjoituksesi: 210 €')
+        await page.getByText('5 kylttiä · 100 €').click()
+        await test.expect(page.locator('[data-next]')).toHaveText('Adoptoi 5 kylttiä')
+        await test.expect(page.locator('[data-total]')).toHaveText('Lahjoituksesi: 100 €')
+        await test.expect(page.getByText('Muu määrä kylttejä')).toHaveCount(0)
     })
 
     test('should move to step 2 on the same page and post with fetch', async ({ page }) => {
@@ -105,14 +107,14 @@ test.describe('Sign adoption page', () => {
         })
         await page.goto('/fi/adoptoi/')
         await page.getByLabel('Nimi kylttiin').fill('Sjoerd')
-        await page.getByText('2 kylttiä · 60 €').click()
+        await page.getByText('2 kylttiä · 55 €').click()
         await page.locator('[data-next]').click()
 
         await test.expect(page.locator('[data-step="1"]')).toBeHidden()
-        await test.expect(page.locator('[data-pinned]')).toHaveText('Kylttisi: Sjoerd · 2 kylttiä · 60 €')
+        await test.expect(page.locator('[data-pinned]')).toHaveText('Kylttisi: Sjoerd · 2 kylttiä · 55 €')
         await test
             .expect(page.locator('[data-next-step]'))
-            .toHaveText('Seuraavaksi lahjoitat 60 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.')
+            .toHaveText('Seuraavaksi lahjoitat 55 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.')
         await test.expect(page.locator('[data-consent-print]')).toContainText('vaalikyltteihin')
         // The engaging question comes before the email field.
         const order = await page.locator('[data-step="2"] label').allTextContents()
@@ -129,7 +131,7 @@ test.describe('Sign adoption page', () => {
         await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0')
         test.expect(posted).toContain('Sjoerd')
         test.expect(page.url()).not.toContain('tok')
-        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 60 euroa MobilePayllä numerolla 46492.')
+        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 55 euroa MobilePayllä numerolla 46492.')
         await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sjoerd')
     })
 
@@ -220,7 +222,7 @@ test.describe('Sign adoption page without JavaScript', () => {
         await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
         await test.expect(page.locator('input[name="consent_print"]')).toBeHidden()
 
-        await page.getByText('2 kylttiä · 60 €').click()
+        await page.getByText('2 kylttiä · 55 €').click()
         await page.getByLabel('Missä kunnassa toivot kylttisi seisovan?').selectOption('vantaa')
         await page.getByRole('textbox', { name: 'Sähköposti' }).fill('tuki@example.fi')
         await page.locator('button[type="submit"]').click()
@@ -257,7 +259,7 @@ test.describe('Sign adoption thanks page', () => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0')
 
         await test.expect(page.getByRole('heading', { level: 1 })).toHaveText('Kylttisi odottaa lahjoitustasi')
-        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 60 € MobilePayllä')
+        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 55 € MobilePayllä')
         // The payment block comes before the sign preview.
         test.expect(
             await page
@@ -268,7 +270,7 @@ test.describe('Sign adoption thanks page', () => {
         await test.expect(page.locator('[data-transfer] .iban')).toHaveText('FI61 5780 3820 2478 06')
         await test.expect(page.locator('[data-missing-name]')).toBeVisible()
         await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sinun nimesi')
-        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 60 euroa MobilePayllä numerolla 46492.')
+        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 55 euroa MobilePayllä numerolla 46492.')
         await test
             .expect(page.locator('[data-ref-note]'))
             .toHaveText('Kirjoita viestiksi K-12345, niin löydämme lahjoituksesi.')
@@ -292,7 +294,7 @@ test.describe('Sign adoption thanks page', () => {
     test('should thank a donor without a name and share a sign without a sticker', async ({ page }) => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
 
-        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 60 € MobilePayllä')
+        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 55 € MobilePayllä')
         await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
         await test.expect(page.locator('[data-missing-name]')).toBeHidden()
         await page.getByRole('button', { name: 'Lahjoitin' }).click()

@@ -11,6 +11,10 @@ import type { Lang } from './nav'
  * `node --experimental-strip-types`.
  */
 
+/** 25 → "25", 27.5 → "27,50" in fi-FI or "27.50" in en-GB: cents only when there are any. */
+const formatEuros = (euros: number, locale: 'en-GB' | 'fi-FI' | 'sv-FI'): string =>
+    new Intl.NumberFormat(locale, { minimumFractionDigits: Number.isInteger(euros) ? 0 : 2 }).format(euros)
+
 interface SignText {
     firstName: string
     lastName: string
@@ -67,8 +71,11 @@ interface AdoptionLocale {
         back: string
         billingAddress: string
         businessId: string
-        chip: (n: number) => string
-        chipOther: string
+        chip: (n: number, euros: number) => string
+        /** The badge on the package the page points to. */
+        chipFeatured: string
+        /** The per-sign price under a multi-sign package. */
+        chipPerSign: (euros: number) => string
         chipsLegend: string
         companyDeclaration: string
         companyName: string
@@ -93,12 +100,11 @@ interface AdoptionLocale {
         /** Above the submit button: what happens after sending. */
         nextStep: (euros: number) => string
         nextStepCompany: (euros: number) => string
-        pinned: (name: string, n: number) => string
-        pinnedUnnamed: (n: number) => string
+        pinned: (name: string, n: number, euros: number) => string
+        pinnedUnnamed: (n: number, euros: number) => string
         price: string
         privacyHref: string
         privacyLink: string
-        quantityLabel: string
         requiredNote: string
         revokeNote: string
         sending: string
@@ -250,8 +256,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             back: 'Change the name or number',
             billingAddress: 'Billing address (email or e-invoice address)',
             businessId: 'Business ID (Y-tunnus)',
-            chip: (n) => `${n} ${n === 1 ? 'sign' : 'signs'} · €${n * 30}`,
-            chipOther: 'Another number of signs',
+            chip: (n, euros) => `${n} ${n === 1 ? 'sign' : 'signs'} · €${euros}`,
+            chipFeatured: 'Most popular',
+            chipPerSign: (euros) => `€${formatEuros(euros, 'en-GB')} per sign`,
             chipsLegend: 'How many signs will you adopt?',
             companyDeclaration:
                 'The company is Finnish and is not a public body or controlled by the state, a municipality or a wellbeing services county.',
@@ -281,7 +288,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 lomake: 'Sending the form failed. Please try again.',
                 municipality: 'Choose a municipality or "No preference".',
                 palvelu: 'Adopting a sign does not work right now. Please try again shortly or email lauri@lavanti.fi.',
-                quantity: 'Choose between 1 and 20 signs.',
+                quantity: 'Choose a sign package.',
                 sign_name:
                     'Check the name: 2 to 24 letters, spaces, hyphens, apostrophes or full stops. Digits and "&" only for a company.',
                 varmistus: 'The check failed. Please try again.',
@@ -296,13 +303,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             nextStep: (euros) =>
                 `Next, you donate €${euros} with MobilePay and get a reference code to write as the message.`,
             nextStepCompany: (euros) => `Next, we send an invoice for €${euros} to the billing address you gave.`,
-            pinned: (name, n) => (n > 1 ? `Your sign: ${name} · ${n} signs · €${n * 30}` : `Your sign: ${name} · €30`),
-            pinnedUnnamed: (n) =>
-                n > 1 ? `Your signs without a name · ${n} signs · €${n * 30}` : 'Your sign without a name · €30',
+            pinned: (name, n, euros) =>
+                n > 1 ? `Your sign: ${name} · ${n} signs · €${euros}` : `Your sign: ${name} · €30`,
+            pinnedUnnamed: (n, euros) =>
+                n > 1 ? `Your signs without a name · ${n} signs · €${euros}` : 'Your sign without a name · €30',
             price: '€30 = one sign by the roadside',
             privacyHref: '/en/privacy-policy/',
             privacyLink: 'Read the privacy policy.',
-            quantityLabel: 'Number of signs',
             requiredNote: 'Fields marked with an asterisk (*) are required.',
             revokeNote:
                 'You can withdraw your permission at any time by replying to our confirmation email or writing to lauri@lavanti.fi. If you withdraw permission to use your name, we cover the name on the sign and remove it from the website.',
@@ -440,8 +447,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             back: 'Muuta nimeä tai määrää',
             billingAddress: 'Laskutusosoite (sähköposti tai verkkolaskuosoite)',
             businessId: 'Y-tunnus',
-            chip: (n) => `${n} ${n === 1 ? 'kyltti' : 'kylttiä'} · ${n * 30} €`,
-            chipOther: 'Muu määrä kylttejä',
+            chip: (n, euros) => `${n} ${n === 1 ? 'kyltti' : 'kylttiä'} · ${euros} €`,
+            chipFeatured: 'Suosituin',
+            chipPerSign: (euros) => `${formatEuros(euros, 'fi-FI')} €/kyltti`,
             chipsLegend: 'Montako kylttiä adoptoit?',
             companyDeclaration:
                 'Yritys on suomalainen, eikä se ole julkisyhteisö tai valtion, kunnan tai hyvinvointialueen määräysvallassa.',
@@ -472,7 +480,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 municipality: 'Valitse kunta tai "Ei toivetta".',
                 palvelu:
                     'Kyltin adoptointi ei juuri nyt onnistu. Yritä hetken päästä uudelleen tai lähetä viesti osoitteeseen lauri@lavanti.fi.',
-                quantity: 'Valitse vähintään 1 ja enintään 20 kylttiä.',
+                quantity: 'Valitse kylttipaketti.',
                 sign_name:
                     'Tarkista nimi: vähintään 2 ja enintään 24 merkkiä, joissa on kirjaimia, välilyöntejä, yhdysmerkkejä, heittomerkkejä tai pisteitä. Numerot ja "&" vain yrityksen nimessä.',
                 varmistus: 'Varmistus epäonnistui. Yritä uudelleen.',
@@ -487,14 +495,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             nextStep: (euros) =>
                 `Seuraavaksi lahjoitat ${euros} € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi.`,
             nextStepCompany: (euros) => `Seuraavaksi lähetämme ${euros} euron laskun antamaasi laskutusosoitteeseen.`,
-            pinned: (name, n) =>
-                n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${n * 30} €` : `Kylttisi: ${name} · 30 €`,
-            pinnedUnnamed: (n) =>
-                n > 1 ? `Kylttisi ilman nimeä · ${n} kylttiä · ${n * 30} €` : 'Kylttisi ilman nimeä · 30 €',
+            pinned: (name, n, euros) =>
+                n > 1 ? `Kylttisi: ${name} · ${n} kylttiä · ${euros} €` : `Kylttisi: ${name} · 30 €`,
+            pinnedUnnamed: (n, euros) =>
+                n > 1 ? `Kylttisi ilman nimeä · ${n} kylttiä · ${euros} €` : 'Kylttisi ilman nimeä · 30 €',
             price: '30 € = yksi kyltti tienvarteen',
             privacyHref: '/fi/tietosuoja/',
             privacyLink: 'Lue tietosuojaseloste.',
-            quantityLabel: 'Kylttien määrä',
             requiredNote: 'Tähdellä (*) merkityt kohdat ovat pakollisia.',
             revokeNote:
                 'Voit perua luvan milloin tahansa vastaamalla vahvistusviestiimme tai kirjoittamalla osoitteeseen lauri@lavanti.fi. Jos perut luvan nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta.',
@@ -628,8 +635,9 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             back: 'Ändra namnet eller antalet',
             billingAddress: 'Faktureringsadress (e-post eller e-fakturaadress)',
             businessId: 'FO-nummer',
-            chip: (n) => `${n} ${n === 1 ? 'skylt' : 'skyltar'} · ${n * 30} €`,
-            chipOther: 'Ett annat antal skyltar',
+            chip: (n, euros) => `${n} ${n === 1 ? 'skylt' : 'skyltar'} · ${euros} €`,
+            chipFeatured: 'Populärast',
+            chipPerSign: (euros) => `${formatEuros(euros, 'sv-FI')} €/skylt`,
             chipsLegend: 'Hur många skyltar adopterar du?',
             companyDeclaration:
                 'Företaget är finländskt och är inte ett offentligt samfund eller under bestämmande inflytande av staten, en kommun eller ett välfärdsområde.',
@@ -661,7 +669,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 municipality: 'Välj en kommun eller "Ingen önskan".',
                 palvelu:
                     'Det går inte att adoptera en skylt just nu. Försök igen om en stund eller skicka e-post till lauri@lavanti.fi.',
-                quantity: 'Välj mellan 1 och 20 skyltar.',
+                quantity: 'Välj ett skyltpaket.',
                 sign_name:
                     'Kontrollera namnet: 2 till 24 bokstäver, mellanslag, bindestreck, apostrofer eller punkter. Siffror och "&" bara i ett företagsnamn.',
                 varmistus: 'Kontrollen misslyckades. Försök igen.',
@@ -677,14 +685,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 `Härnäst ger du ${euros} € med MobilePay och får en referenskod som du skriver som meddelande.`,
             nextStepCompany: (euros) =>
                 `Härnäst skickar vi en faktura på ${euros} € till den faktureringsadress du angav.`,
-            pinned: (name, n) =>
-                n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${n * 30} €` : `Din skylt: ${name} · 30 €`,
-            pinnedUnnamed: (n) =>
-                n > 1 ? `Dina skyltar utan namn · ${n} skyltar · ${n * 30} €` : 'Din skylt utan namn · 30 €',
+            pinned: (name, n, euros) =>
+                n > 1 ? `Din skylt: ${name} · ${n} skyltar · ${euros} €` : `Din skylt: ${name} · 30 €`,
+            pinnedUnnamed: (n, euros) =>
+                n > 1 ? `Dina skyltar utan namn · ${n} skyltar · ${euros} €` : 'Din skylt utan namn · 30 €',
             price: '30 € = en skylt vid vägkanten',
             privacyHref: '/sv/dataskydd/',
             privacyLink: 'Läs integritetspolicyn.',
-            quantityLabel: 'Antal skyltar',
             requiredNote: 'Fält märkta med asterisk (*) är obligatoriska.',
             revokeNote:
                 'Du kan när som helst återkalla ditt tillstånd genom att svara på vårt bekräftelsemejl eller skriva till lauri@lavanti.fi. Om du återkallar tillståndet att använda ditt namn täcker vi namnet på skylten och tar bort det från webbplatsen.',
