@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 import type { Slogan } from '../../content/slogan'
 
-import { campaignFinance, financeLabels } from '../../content/campaignFinance'
+import { campaignFinance, donationMethodsHref, financeLabels } from '../../content/campaignFinance'
 import { heroCtaLabel } from '../../content/slogan'
 import { typographics } from '../../lib/styles'
 
@@ -14,9 +14,13 @@ interface Props {
 
 const { description, lang, slogan } = Astro.props
 
-/* The campaign asks for donations while they are open; otherwise the button leads to the platform below. */
+/*
+ * The campaign asks for donations while they are open; otherwise the button leads to the
+ * platform below. The ask lands on the election page's donation methods, which put MobilePay
+ * and bank transfer ahead of the party's donation page.
+ */
 const cta = campaignFinance.donationsOpen
-    ? { href: campaignFinance.donationUrl, label: financeLabels[lang].donate.cta }
+    ? { href: donationMethodsHref[lang], label: financeLabels[lang].donate.cta }
     : { href: '#driver', label: heroCtaLabel[lang] }
 ---
 
