@@ -96,6 +96,34 @@ export interface CampaignFinance extends FinanceFigures {
      * that stays the same when the destination moves.
      */
     donationUrl: string
+    /**
+     * MobilePay link to the support association: the short URL, so `functions/mp.ts`
+     * counts the click before redirecting to the MobilePay box. Not gated by
+     * `donationsOpen`, which covers the party's donation page only.
+     */
+    mobilePayUrl: string
+}
+
+/**
+ * The donation methods block on each election page. Every on-site "support the campaign"
+ * call to action links here rather than to `donationUrl`, so donors see MobilePay and bank
+ * transfer before the party's page. The election and finance pages link their own copy of
+ * the block by the bare fragment.
+ */
+export const donationMethodsHref: Record<Lang, string> = {
+    en: '/en/elections/#support',
+    fi: '/fi/eduskuntavaalit/#tue',
+    sv: '/sv/riksdagsvalet/#stod',
+}
+
+/**
+ * Where MobilePay and bank transfer donations land: the support association, not the
+ * party. The donation terms pages print the same account; change both together.
+ */
+export const supportAssociation = {
+    iban: 'FI61 5780 3820 2478 06',
+    mobilePayNumber: '46492',
+    name: 'Digitaalisen itsenäisyyden puolesta ry',
 }
 
 interface BenchmarkSet {
@@ -134,6 +162,7 @@ export const campaignFinance: CampaignFinance = {
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: true,
     donorCountMinimum: 25,
+    mobilePayUrl: 'https://lavanti.fi/mp',
 }
 
 /**
@@ -184,6 +213,32 @@ export interface FinanceLabels {
     committed: string
     /** Donation call to action, and what to say while `donationsOpen` is false. */
     donate: { cta: string; pending: string }
+    /**
+     * The "how can I support" block, in the order it shows the methods: MobilePay and bank
+     * transfer to the support association first, the party's donation page last.
+     */
+    donationMethods: {
+        bankTransfer: {
+            iban: string
+            /** What to write in the payment message. */
+            message: string
+            messageLabel: string
+            recipient: string
+            /** Link to the bank transfer section of the donation terms. */
+            terms: string
+            title: string
+        }
+        card: { link: string; title: string }
+        /** Copy button text; the button's accessible name appends the field label. */
+        copy: string
+        /** Announced and shown on the button after a successful copy. */
+        copied: string
+        eyebrow: string
+        heading: string
+        /** Names the association that receives MobilePay and bank transfer donations. */
+        intro: (association: string) => string
+        mobilePay: { link: string; number: string; title: string }
+    }
     /** Under the raised figure; receives `formatInteger(donors, lang)` output. */
     donors: (count: string) => string
     gap: string
@@ -228,6 +283,24 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         donate: {
             cta: 'Support the campaign',
             pending: 'The donation link will be published here as soon as the donation page opens.',
+        },
+        donationMethods: {
+            bankTransfer: {
+                iban: 'Account number (IBAN)',
+                message: 'Your own name. For a company or an association, its name and business ID.',
+                messageLabel: 'Message',
+                recipient: 'Recipient',
+                terms: 'Read the donation terms',
+                title: 'By bank transfer',
+            },
+            card: { link: 'Donate on the Greens’ page', title: 'By card or online bank' },
+            copied: 'Copied',
+            copy: 'Copy',
+            eyebrow: 'Support',
+            heading: 'How can I support the campaign?',
+            intro: (association) =>
+                `The quickest way to donate is MobilePay or a bank transfer. Both go to my support association, ${association}.`,
+            mobilePay: { link: 'Donate with MobilePay', number: 'MobilePay number', title: 'With MobilePay' },
         },
         donors: (count) => `${count} donors`,
         gap: 'Still to raise',
@@ -276,6 +349,24 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             cta: 'Tue kampanjaa',
             pending: 'Lahjoituslinkki julkaistaan tällä sivulla heti, kun lahjoitussivu avautuu.',
         },
+        donationMethods: {
+            bankTransfer: {
+                iban: 'Tilinumero (IBAN)',
+                message: 'Oma nimesi. Yrityksen tai yhdistyksen puolesta sen nimi ja Y-tunnus.',
+                messageLabel: 'Viesti',
+                recipient: 'Saaja',
+                terms: 'Lue lahjoitusehdot',
+                title: 'Tilisiirrolla',
+            },
+            card: { link: 'Lahjoita Vihreiden sivulla', title: 'Kortilla tai verkkopankissa' },
+            copied: 'Kopioitu',
+            copy: 'Kopioi',
+            eyebrow: 'Tue',
+            heading: 'Miten voin tukea kampanjaa?',
+            intro: (association) =>
+                `Nopeimmin lahjoitat MobilePaylla tai tilisiirrolla. Molemmat lahjoitukset ottaa vastaan tukiyhdistykseni ${association}.`,
+            mobilePay: { link: 'Lahjoita MobilePaylla', number: 'MobilePay-numero', title: 'MobilePaylla' },
+        },
         donors: (count) => `${count} lahjoittajaa`,
         gap: 'Vielä kerättävä',
         mean: 'keskiarvo',
@@ -321,6 +412,24 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
         donate: {
             cta: 'Stöd kampanjen',
             pending: 'Donationslänken publiceras här så snart donationssidan öppnas.',
+        },
+        donationMethods: {
+            bankTransfer: {
+                iban: 'Kontonummer (IBAN)',
+                message: 'Ditt eget namn. För ett företag eller en förening dess namn och FO-nummer.',
+                messageLabel: 'Meddelande',
+                recipient: 'Mottagare',
+                terms: 'Läs donationsvillkoren',
+                title: 'Med banköverföring',
+            },
+            card: { link: 'Donera på De Grönas sida', title: 'Med kort eller nätbank' },
+            copied: 'Kopierat',
+            copy: 'Kopiera',
+            eyebrow: 'Stöd',
+            heading: 'Hur kan jag stödja kampanjen?',
+            intro: (association) =>
+                `Snabbast donerar du med MobilePay eller banköverföring. Båda donationerna tas emot av min stödförening ${association}.`,
+            mobilePay: { link: 'Donera med MobilePay', number: 'MobilePay-nummer', title: 'Med MobilePay' },
         },
         donors: (count) => `${count} donatorer`,
         gap: 'Kvar att samla in',

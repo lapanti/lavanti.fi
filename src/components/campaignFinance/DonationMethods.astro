@@ -1,0 +1,246 @@
+---
+/**
+ * The ways to donate, for the election and finance pages, ordered by what the campaign
+ * prefers: MobilePay (`/mp`) and bank transfer go straight to the support association and
+ * come first; the party's donation page (`/lahjoita`) comes last and alone waits on
+ * `donationsOpen`. Every value a donor has to type is printed with a copy button, so a
+ * bank transfer needs no visit to the terms page.
+ */
+import type { Lang } from '../../content/nav'
+
+import { campaignFinance, financeLabels, supportAssociation } from '../../content/campaignFinance'
+import Plate from '../Plate.astro'
+
+interface Props {
+    /** Section anchor; localized like every other section id on these pages. */
+    id: string
+    lang: Lang
+}
+
+/** Donation terms page per locale, and the anchor of its bank transfer heading. */
+const donationTerms: Record<Lang, string> = {
+    en: '/en/elections/campaign-finance/donation-terms/#bank-transfer',
+    fi: '/fi/eduskuntavaalit/vaalirahoitus/lahjoitusehdot/#tilisiirto',
+    sv: '/sv/riksdagsvalet/valfinansiering/donationsvillkor/#bankoverforing',
+}
+
+const { id, lang } = Astro.props
+const labels = financeLabels[lang].donationMethods
+const pending = financeLabels[lang].donate.pending
+
+/** `copy` is what lands on the clipboard: the IBAN without spaces pastes into any bank form. */
+const mobilePayFields = [
+    {
+        copy: supportAssociation.mobilePayNumber,
+        label: labels.mobilePay.number,
+        value: supportAssociation.mobilePayNumber,
+    },
+]
+const bankFields = [
+    { copy: supportAssociation.name, label: labels.bankTransfer.recipient, value: supportAssociation.name },
+    {
+        copy: supportAssociation.iban.replaceAll(' ', ''),
+        label: labels.bankTransfer.iban,
+        value: supportAssociation.iban,
+    },
+]
+
+/*
+ * Copy buttons render hidden and the script reveals them only where the Clipboard API
+ * exists, so a browser without it never shows a button that does nothing. One delegated
+ * listener serves every button on the page.
+ */
+const copyScript = `(function(){
+    if(!navigator.clipboard) return
+    document.querySelectorAll('button[data-copy]').forEach(function(button){ button.hidden = false })
+    if(window.__donationCopyBound) return
+    window.__donationCopyBound = true
+    document.addEventListener('click', function(event){
+        var button = event.target.closest && event.target.closest('button[data-copy]')
+        if(!button) return
+        navigator.clipboard.writeText(button.getAttribute('data-copy')).then(function(){
+            var idle = button.getAttribute('data-idle')
+            var done = button.getAttribute('data-done')
+            var status = button.closest('section').querySelector('[data-copy-status]')
+            button.textContent = done
+            if(status) status.textContent = done
+            setTimeout(function(){
+                button.textContent = idle
+                if(status) status.textContent = ''
+            }, 2000)
+        })
+    })
+})()`
+---
+
+<style>
+    .intro {
+        padding-top: 1rem;
+    }
+
+    .methods {
+        display: grid;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 1.5rem 0 0;
+    }
+
+    .methods > li {
+        border-left: 4px solid var(--colorsSand);
+        display: grid;
+        gap: 0.75rem;
+        align-content: start;
+        padding: 0.25rem 0 0.25rem 0.75rem;
+    }
+
+    .methods h3 {
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .methods p,
+    .fields {
+        margin: 0;
+    }
+
+    .fields {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .fields dt {
+        font-size: 0.875rem;
+    }
+
+    .fields dd {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.75rem;
+        margin: 0;
+    }
+
+    .value {
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .copy {
+        background: transparent;
+        border: 1px solid currentcolor;
+        color: var(--colorsDeepForest);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 0.125rem 0.625rem;
+    }
+
+    .copy:hover {
+        background: var(--colorsDeepForest);
+        color: var(--colorsLightSand);
+    }
+
+    .copy[hidden] {
+        display: none;
+    }
+
+    .status {
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    @media (min-width: 769px) {
+        .methods {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>
+
+<Plate eyebrow={labels.eyebrow} ground="white" heading={labels.heading} id={id}>
+    <p class="intro">{labels.intro(supportAssociation.name)}</p>
+    <ul class="methods">
+        <li>
+            <h3>{labels.mobilePay.title}</h3>
+            <dl class="fields">
+                {
+                    mobilePayFields.map((field) => (
+                        <div>
+                            <dt>{field.label}</dt>
+                            <dd>
+                                <span class="value">{field.value}</span>
+                                <button
+                                    aria-label={`${labels.copy}: ${field.label}`}
+                                    class="copy"
+                                    data-copy={field.copy}
+                                    data-done={labels.copied}
+                                    data-idle={labels.copy}
+                                    hidden
+                                    type="button"
+                                >
+                                    {labels.copy}
+                                </button>
+                            </dd>
+                        </div>
+                    ))
+                }
+            </dl>
+            <p>
+                <a class="link-rule" href={campaignFinance.mobilePayUrl}>{labels.mobilePay.link}</a>
+            </p>
+        </li>
+        <li>
+            <h3>{labels.bankTransfer.title}</h3>
+            <dl class="fields">
+                {
+                    bankFields.map((field) => (
+                        <div>
+                            <dt>{field.label}</dt>
+                            <dd>
+                                <span class="value">{field.value}</span>
+                                <button
+                                    aria-label={`${labels.copy}: ${field.label}`}
+                                    class="copy"
+                                    data-copy={field.copy}
+                                    data-done={labels.copied}
+                                    data-idle={labels.copy}
+                                    hidden
+                                    type="button"
+                                >
+                                    {labels.copy}
+                                </button>
+                            </dd>
+                        </div>
+                    ))
+                }
+                <div>
+                    <dt>{labels.bankTransfer.messageLabel}</dt>
+                    <dd>{labels.bankTransfer.message}</dd>
+                </div>
+            </dl>
+            <p>
+                <a class="link-rule" href={donationTerms[lang]}>{labels.bankTransfer.terms}</a>
+            </p>
+        </li>
+        <li>
+            <h3>{labels.card.title}</h3>
+            <p>
+                {
+                    campaignFinance.donationsOpen ? (
+                        <a class="link-rule" href={campaignFinance.donationUrl}>
+                            {labels.card.link}
+                        </a>
+                    ) : (
+                        pending
+                    )
+                }
+            </p>
+        </li>
+    </ul>
+    <p aria-live="polite" class="status" data-copy-status></p>
+    <script is:inline set:html={copyScript} />
+</Plate>
