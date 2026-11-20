@@ -7,7 +7,7 @@ emphasis: 'finances'
 intro: 'I accept support from private individuals, companies and associations. This page always has up-to-date figures on how much has been raised, where it came from and what it has been spent on.'
 description: 'The finances of Lauri Lavanti’s parliamentary election campaign in the open: budget, funds raised by source, money spent and a comparison with 2023 campaigns.'
 slug: 'en/elections/campaign-finance'
-updatedDate: '2026-11-14'
+updatedDate: '2026-11-20'
 type: 'WebPage'
 breadcrumbParent: 'elections'
 breadcrumbName: 'Campaign finance'
@@ -91,6 +91,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
         <p>I break the money down the same way as the statutory disclosure that elected members file with the audit office. The striped part is money already agreed but not yet in the campaign account.</p>
         <p>Support can come from private individuals, companies and associations. I publish every contribution of 2,000 euros or more with the supporter’s name. I also file a voluntary advance disclosure for the campaign with the audit office. The advance disclosure is not mandatory.</p>
         <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
+        <p>You can also donate by bank transfer directly to my support association, <a href="https://www.digiitsenaisyys.fi/">Digitaalisen itsenäisyyden puolesta ry</a>. The account number and instructions are in the <a href="/en/elections/campaign-finance/donation-terms/">donation terms</a>.</p>
     </Prose>
 </Plate>
 
