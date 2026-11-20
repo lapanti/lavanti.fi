@@ -32,9 +32,10 @@ Figures change throughout the campaign. Every number on the page and in the teas
 - Breadcrumb trail under the election page: the pages set `breadcrumbParent: 'elections'`, and `PageLayout` builds the trail and its `BreadcrumbList` from it.
 - Footer link, `llms.txt` pillar link, e2e page objects and specs, `langSwap` and `horizontalScroll` cases.
 - The donation link: `campaignFinance.donationUrl` is the constant short URL `https://lavanti.fi/lahjoita`, and the finance page's button links to it. Print, social and every other reference use the same short URL. The only place that holds the real destination (the donation page on vihreat.fi or uudenmaanvihreat.fi) is a Cloudflare Single Redirect rule on the lavanti.fi zone, a 302 kept outside the repo, so changing the destination is a dashboard edit with no deploy. The page may go live before the donation page exists: `campaignFinance.donationsOpen` gates the button, and while it is false the page prints a "link is coming" line instead. Opening donations is two steps done together: point the rule at the donation page, then set `donationsOpen: true`.
+- The donation methods block (`DonationMethods.astro`) right below the hero on the three election pages and the three finance pages, ordered by preference because each extra step loses donors: (1) MobilePay to the support association, its number with a copy button and a link to `campaignFinance.mobilePayUrl`, the short URL `https://lavanti.fi/mp` that `functions/mp.ts` counts before redirecting; (2) bank transfer to the association, recipient and IBAN printed with copy buttons (the IBAN copies without spaces), the payment message rule, and a link to the terms page's bank transfer heading (`#tilisiirto`, `#bankoverforing`, `#bank-transfer`); (3) card or online bank via `donationUrl`, the party's page, last. Account details come from `supportAssociation` in `campaignFinance.ts`; the terms pages print the same values. Copy buttons render `hidden` and an inline script reveals them only where `navigator.clipboard` exists. `donationsOpen` gates only the party link; while false that item prints `donate.pending`. The site repeats a donation call to action wherever it fits, and every on-site one links to this block, never straight to `donationUrl`: the election and finance pages' hero button and the finance page's "Tue kampanjaa" link use the bare fragment, the front-page hero uses `donationMethodsHref[lang]` (the election page's block).
 
 ### Out of scope
-- A donation form or payment handling on this site: donations are taken on the party's page.
+- A donation form or payment handling on this site: card and online bank donations are taken on the party's page, MobilePay and bank transfers by the support association.
 - `Dataset` JSON-LD (`dist-head.ts` allows only known types).
 - Main navigation entry (nav stays at six items; footer + election page carry the link).
 - Script that re-fetches or recomputes VTV data (2023 data is final; method documented in the data module).
@@ -286,6 +287,7 @@ export interface CampaignFinance extends FinanceFigures {
     donationsOpen: boolean                    // manual
     donationUrl: string                       // manual
     donorCountMinimum: number                 // fewest donors the page prints (manual)
+    mobilePayUrl: string                      // short URL https://lavanti.fi/mp (manual)
 }
 
 /** Internal: `Benchmark` carries the shape consumers need, so this stays unexported. */
@@ -312,6 +314,17 @@ export interface FinanceLabels {
     budgetRow: string                       // benchmark row label for the campaign budget
     categories: Record<ExpenseCategory, string>
     committed: string                       // suffix after a committed amount: "sitouduttu"
+    donate: { cta: string; pending: string }
+    donationMethods: {                      // DonationMethods block, MobilePay → bank transfer → party
+        bankTransfer: { iban: string; message: string; messageLabel: string; recipient: string; terms: string; title: string }
+        card: { link: string; title: string }
+        copied: string                      // shown and announced after a copy
+        copy: string                        // button text; accessible name is "<copy>: <field label>"
+        eyebrow: string
+        heading: string
+        intro: (association: string) => string
+        mobilePay: { link: string; number: string; title: string }
+    }
     donors: (count: string) => string       // receives formatInteger output; "24 lahjoittajaa"
     gap: string
     mean: string
@@ -444,3 +457,4 @@ The sender needs a fine-grained PAT scoped to this repo with Contents read/write
 | 2026-09-30 | Site review: benchmark prose renders from data (`range`, `formatInteger`, `formatDecimal`, `benchmarkSet`); FAQ cost answer is the one test-guarded copy; funding FAQ no longer implies the current mix; breadcrumbs moved in scope; summary and teaser scenarios match `summaryTiles` |
 | 2026-10-05 | Both sides of the budget: `ownCommitment` removed (no pledge figure); income split into banked/pending and spending into budgeted/banked/committed per the seven statutory expense categories, pending and committed hatched; category bars with budget markers; the summary tiles now carry spending, reversing the 2026-09-25 rule, since every figure comes from the budget sheet and a zero there is confirmed; automation-owned figures moved to `campaignFinanceFigures.json`, written whole in Prettier-identical canonical order; payload reshaped accordingly |
 | 2026-10-22 | Donor count: optional `donors` in the payload and figures file, shown as a second line under the raised figure (`detail`) once it reaches the manual `donorCountMinimum` (25) |
+| 2026-11-20 | Donation methods block below the hero on election and finance pages: MobilePay `/mp` and bank transfer to the support association first, with copy buttons for number, recipient and IBAN; party link last; `mobilePayUrl` and `supportAssociation` added |
