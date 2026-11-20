@@ -3,6 +3,15 @@ import type { FaqItem } from '../../lib/jsonld'
 export interface LocalTag {
     descriptions: { en: string[]; fi: string[]; sv: string[] }
     /**
+     * An outside site that is the topic's home, linked in a closing paragraph
+     * after the descriptions: `{lead} <a href>{label}</a>.`
+     */
+    externalLink?: {
+        href: { en: string; fi: string; sv: string }
+        label: { en: string; fi: string; sv: string }
+        lead: { en: string; fi: string; sv: string }
+    }
+    /**
      * Per-locale category FAQ. A locale renders the plate and FAQPage JSON-LD
      * only with 2+ entries (hasFaqSection); an absent locale renders neither.
      */

@@ -117,7 +117,17 @@ const langAlternates = {
     variant="split"
 >
     <Plate ground="white">
-        <PostProse>{bodyParagraphs.map((p) => <Paragraph>{p}</Paragraph>)}</PostProse>
+        <PostProse>
+            {bodyParagraphs.map((p) => <Paragraph>{p}</Paragraph>)}
+            {
+                tag.externalLink && (
+                    <Paragraph>
+                        {tag.externalLink.lead[lang]}{' '}
+                        <a href={tag.externalLink.href[lang]}>{tag.externalLink.label[lang]}</a>.
+                    </Paragraph>
+                )
+            }
+        </PostProse>
     </Plate>
     {
         featured.length > 0 && (
