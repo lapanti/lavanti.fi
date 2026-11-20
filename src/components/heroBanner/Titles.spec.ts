@@ -103,7 +103,7 @@ describe('<Titles />', () => {
         })
 
         const expected = campaignFinance.donationsOpen
-            ? { href: 'https://lavanti.fi/lahjoita', text: 'Support the campaign' }
+            ? { href: '/en/elections/#support', text: 'Support the campaign' }
             : { href: '#driver', text: 'Explore my platform' }
         const link = getByRole(result, 'link')
 
