@@ -100,9 +100,10 @@ describe('payer totals and caps', () => {
 
     it('sums approved donations per giver', () => {
         const totals = payerTotals([row({ quantity: 2 }), row({ quantity: 3 }), row({ sign_name: 'Anna' })])
-        expect(totals.get('sjoerd')).toBe(150)
+        expect(totals.get('sjoerd')).toBe(135)
         expect(totals.get('anna')).toBe(30)
-        expect(donation(row({ quantity: 20 }))).toBe(600)
+        expect(donation(row({ quantity: 10 }))).toBe(190)
+        expect(() => donation(row({ quantity: 4 }))).toThrow(RangeError)
     })
 
     it('warns from 2 000 euros and stops above 6 000', () => {

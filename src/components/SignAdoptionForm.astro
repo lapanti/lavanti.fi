@@ -4,8 +4,8 @@ import type { AdoptionFormData } from './adoption/form.client'
 
 import { adoptionContent } from '../content/signAdoption'
 import { TURNSTILE_SITE_KEY } from '../content/volunteer'
-import { EUROS_PER_SIGN, MAX_SIGNS } from '../lib/adoptionClient'
 import { ADOPTION_MUNICIPALITIES, MAX_NAME_LENGTH, NO_PREFERENCE, THANKS_PATH } from '../lib/signAdoptions'
+import { byPackage, packageEuros, perSignEuros, SIGN_PACKAGES } from '../lib/signPackages'
 import { utmFormScript } from '../lib/utmFormScript'
 import SignGraphic from './adoption/SignGraphic.astro'
 import Link from './Link.astro'
@@ -17,35 +17,33 @@ interface Props {
 const { lang } = Astro.props
 const content = adoptionContent[lang]
 const t = content.form
-const counts = Array.from({ length: MAX_SIGNS }, (_, i) => i + 1)
-const CHIPS = [1, 2, 5]
 const collator = new Intl.Collator(lang === 'en' ? 'fi' : lang)
 const municipalities = ADOPTION_MUNICIPALITIES.filter((m) => m !== NO_PREFERENCE).sort((a, b) =>
     collator.compare(t.municipalityOptions[a], t.municipalityOptions[b])
 )
 
 /*
- * Everything the script needs that depends on the sign count, precomputed for 1..20 so no copy
+ * Everything the script needs that depends on the sign count, precomputed per package so no copy
  * is assembled in the browser. `%s` stands for the name and `%n` for a number; the script fills
  * them in with textContent only.
  */
 const scriptData: AdoptionFormData = {
     consentPerson: t.consentPerson,
     consentPersonCompany: t.consentPersonCompany,
-    consentPrint: counts.map((n) => t.consentPrint(n)),
+    consentPrint: byPackage((p) => t.consentPrint(p.signs)),
     counter: t.nameCounter(0, MAX_NAME_LENGTH).replace('0', '%n'),
-    cta: counts.map((n) => t.cta(n)),
+    cta: byPackage((p) => t.cta(p.signs)),
     errors: t.errors,
     lang,
     liveCount: t.liveCount(0).replace('0', '%n'),
     liveNames: t.liveNames('%s'),
-    nextStep: counts.map((n) => t.nextStep(n * EUROS_PER_SIGN)),
-    nextStepCompany: counts.map((n) => t.nextStepCompany(n * EUROS_PER_SIGN)),
-    pinned: counts.map((n) => t.pinned('%s', n)),
-    pinnedUnnamed: counts.map((n) => t.pinnedUnnamed(n)),
+    nextStep: byPackage((p) => t.nextStep(p.euros)),
+    nextStepCompany: byPackage((p) => t.nextStepCompany(p.euros)),
+    pinned: byPackage((p) => t.pinned('%s', p.signs, p.euros)),
+    pinnedUnnamed: byPackage((p) => t.pinnedUnnamed(p.signs, p.euros)),
     sending: t.sending,
     thanksPath: THANKS_PATH[lang],
-    total: counts.map((n) => t.total(n * EUROS_PER_SIGN)),
+    total: byPackage((p) => t.total(p.euros)),
 }
 const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'namn' : 'name'}>/`
 ---
@@ -105,10 +103,11 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
     .adoption .total {
         font-size: 1.375rem;
     }
+    /* Even package cards: two per row on a phone, more as the column widens. */
     .chips {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
         gap: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
     }
     .chips label {
         margin: 0;
@@ -119,29 +118,37 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
         position: absolute;
         width: 1px;
     }
-    .chips span {
+    .chips .chip {
         border: 2px solid var(--colorsForestGreen);
         color: var(--colorsForestGreen);
         cursor: pointer;
-        display: inline-block;
+        align-content: start;
+        box-sizing: border-box;
+        display: grid;
         font-weight: var(--fontWeightsSemibold);
+        height: 100%;
         padding: 0.5rem 0.875rem;
     }
-    .chips input:checked + span {
+    .chips .per-sign {
+        font-size: var(--textSmallFontSize);
+        font-weight: normal;
+    }
+    /* The package the page points to: a heavier frame and a badge above the count. */
+    .chips .featured .chip {
+        border-width: 3px;
+    }
+    .chips .badge {
+        font-size: var(--textSmallFontSize);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+    .chips input:checked + .chip {
         background: var(--colorsForestGreen);
         color: var(--colorsWhite);
     }
-    .chips input:focus-visible + span {
+    .chips input:focus-visible + .chip {
         outline: 3px solid var(--colorsSignalBlue);
         outline-offset: 2px;
-    }
-    .adoption input[type='number'] {
-        background: var(--colorsWhite);
-        border: 1px solid var(--colorsForestGreen);
-        font: inherit;
-        min-height: 3rem;
-        padding: 0.625rem 0.75rem;
-        width: 7rem;
     }
     .counter,
     .hint,
@@ -254,33 +261,21 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
                 <legend>{t.chipsLegend}</legend>
                 <div class="chips">
                     {
-                        CHIPS.map((n) => (
-                            <label>
-                                <input checked={n === 1} name="quantity" type="radio" value={String(n)} />
-                                <span>{t.chip(n)}</span>
+                        SIGN_PACKAGES.map((p) => (
+                            <label class:list={{ featured: p.featured }}>
+                                <input checked={p.signs === 1} name="quantity" type="radio" value={String(p.signs)} />
+                                <span class="chip">
+                                    {p.featured && <span class="badge">{t.chipFeatured}</span>}
+                                    <span>{t.chip(p.signs, p.euros)}</span>
+                                    {p.signs > 1 && <span class="per-sign">{t.chipPerSign(perSignEuros(p))}</span>}
+                                </span>
                             </label>
                         ))
                     }
-                    <label>
-                        <input name="quantity" type="radio" value="muu" />
-                        <span>{t.chipOther}</span>
-                    </label>
                 </div>
             </fieldset>
-            <div data-other hidden>
-                <label for="adoption-quantity-other">{t.quantityLabel}</label>
-                <input
-                    id="adoption-quantity-other"
-                    inputmode="numeric"
-                    max={MAX_SIGNS}
-                    min="1"
-                    name="quantity_other"
-                    type="number"
-                    value="3"
-                />
-            </div>
 
-            <p aria-live="polite" class="total" data-total>{t.total(EUROS_PER_SIGN)}</p>
+            <p aria-live="polite" class="total" data-total>{t.total(packageEuros(1))}</p>
             <p class="hint association">
                 {t.association.text}
                 <Link href={t.association.href}>{t.association.link}</Link>
@@ -399,7 +394,7 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
 
             <div class="cf-turnstile" data-language={lang} data-sitekey={TURNSTILE_SITE_KEY}></div>
 
-            <p class="next-step" data-next-step>{t.nextStep(EUROS_PER_SIGN)}</p>
+            <p class="next-step" data-next-step>{t.nextStep(packageEuros(1))}</p>
 
             <div class="submit-row">
                 <button aria-describedby="adoption-submit-hint" class="btn btn--solid" data-cta type="submit"

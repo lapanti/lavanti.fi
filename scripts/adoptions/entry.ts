@@ -8,6 +8,7 @@ import type { AdoptionPage } from '../../src/content/adoptionPages.ts'
 import type { Lang } from '../../src/content/nav.ts'
 
 import { adoptionContent } from '../../src/content/signAdoption.ts'
+import { packageEuros } from '../../src/lib/signPackages.ts'
 /* eslint-enable import-x/extensions */
 
 /** One row as `GET /api/adoptoi/pending` returns it. */
@@ -46,7 +47,6 @@ export const signLabel = (row: Pick<Adoption, 'sign_name'>): string => row.sign_
 export const needsPayer = (row: Pick<Adoption, 'company_name' | 'payer_name' | 'sign_name'>): boolean =>
     row.sign_name === null && row.company_name === null && row.payer_name === null
 
-const EUROS_PER_SIGN = 30
 /** At or above this total per giver the support is disclosed by name; check the other channels too. */
 const DISCLOSURE_LIMIT = 2000
 /** The most one giver may give across all channels. */
@@ -69,7 +69,8 @@ export const sameName = (a: string, b: string): boolean => norm(a) === norm(b)
 export const payerKey = (row: Pick<Adoption, 'company_name' | 'payer_name' | 'sign_name'>): string =>
     norm(row.company_name ?? row.payer_name ?? row.sign_name ?? '')
 
-export const donation = (row: Pick<Adoption, 'quantity'>): number => row.quantity * EUROS_PER_SIGN
+/** The package price for the row's sign count; throws for a count no package offers. */
+export const donation = (row: Pick<Adoption, 'quantity'>): number => packageEuros(row.quantity)
 
 /** Euros already approved per giver. */
 export const payerTotals = (approved: Adoption[]): Map<string, number> => {

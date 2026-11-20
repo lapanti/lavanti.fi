@@ -140,7 +140,7 @@ describe('parseThanksParams', () => {
             ref: 'K-48213',
             unnamed: false,
         })
-        expect(parseThanksParams('ref=K-48213&n=20&y=1')).toMatchObject({ company: true, quantity: 20, unnamed: false })
+        expect(parseThanksParams('ref=K-48213&n=10&y=1')).toMatchObject({ company: true, quantity: 10, unnamed: false })
     })
 
     it('reads the optional no-name flag', () => {

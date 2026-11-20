@@ -3,8 +3,8 @@ import type { Lang } from '../../content/nav'
 import type { AdoptionThanksData } from './thanks.client'
 
 import { adoptionContent, ASSOCIATION_IBAN, ASSOCIATION_NAME, SIGN_TEXT } from '../../content/signAdoption'
-import { EUROS_PER_SIGN, MAX_SIGNS } from '../../lib/adoptionClient'
 import { FORM_PATH } from '../../lib/signAdoptions'
+import { byPackage } from '../../lib/signPackages'
 import Link from '../Link.astro'
 import MobilePayBox from './MobilePayBox.astro'
 import SignGraphic from './SignGraphic.astro'
@@ -27,11 +27,10 @@ const LOGOS: Record<Lang, string> = {
     fi: '/logos/Vihreat_Logo_HOR_NEG_FIN.png',
     sv: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE.png',
 }
-const amounts = Array.from({ length: MAX_SIGNS }, (_, i) => (i + 1) * EUROS_PER_SIGN)
 const scriptData: AdoptionThanksData = {
-    almost: amounts.map((euros) => t.almost(euros)),
+    almost: byPackage((p) => t.almost(p.euros)),
     cta: t.share.cta,
-    donate: amounts.map((euros) => content.mobilePay.donate(euros)),
+    donate: byPackage((p) => content.mobilePay.donate(p.euros)),
     formPath: FORM_PATH[lang],
     ghost: content.sign.ghostName,
     headline: t.share.headline,

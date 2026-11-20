@@ -7,6 +7,8 @@ const SAMPLE_ARGS: unknown[][] = [
     [1, 24],
     [2, 24],
     ['Sjoerd', 2],
+    ['Sjoerd', 2, 55],
+    [27.5],
     [{ company: false, name: 'Sjoerd', quantity: 1, ref: 'K-12345' }],
     [{ company: true, name: 'Sjoerd', quantity: 2, ref: 'K-12345' }],
 ]
@@ -69,16 +71,18 @@ describe('adoptionContent', () => {
         const fi = adoptionContent.fi.form
         expect(fi.cta(1)).toBe('Adoptoi kyltti')
         expect(fi.cta(2)).toBe('Adoptoi 2 kylttiä')
-        expect(fi.chip(5)).toBe('5 kylttiä · 150 €')
+        expect(fi.chip(5, 100)).toBe('5 kylttiä · 100 €')
+        expect(fi.chipPerSign(27.5)).toBe('27,50 €/kyltti')
+        expect(adoptionContent.en.form.chipPerSign(20)).toBe('€20 per sign')
         // A no-break space keeps the amount and the euro sign on one line.
-        expect(fi.pinned('Sjoerd', 1)).toBe('Kylttisi: Sjoerd · 30 €')
-        expect(fi.pinned('Sjoerd', 2)).toBe('Kylttisi: Sjoerd · 2 kylttiä · 60 €')
+        expect(fi.pinned('Sjoerd', 1, 30)).toBe('Kylttisi: Sjoerd · 30 €')
+        expect(fi.pinned('Sjoerd', 2, 55)).toBe('Kylttisi: Sjoerd · 2 kylttiä · 55 €')
         expect(fi.nextStep(60)).toContain('lahjoitat 60 € MobilePayllä')
         expect(adoptionContent.fi.thanks.almost(60)).toBe('Melkein valmis: lahjoita 60 € MobilePayllä')
         expect(fi.nextStepCompany(60)).toContain('60 euron laskun')
         expect(fi.consentPrint(2)).toContain('vaalikyltteihin')
         expect(adoptionContent.fi.mobilePay.donate(60)).toBe('Lahjoita 60 euroa MobilePayllä numerolla 46492.')
-        expect(adoptionContent.en.form.chip(1)).toBe('1 sign · €30')
+        expect(adoptionContent.en.form.chip(1, 30)).toBe('1 sign · €30')
         expect(adoptionContent.sv.form.cta(3)).toBe('Adoptera 3 skyltar')
     })
 
