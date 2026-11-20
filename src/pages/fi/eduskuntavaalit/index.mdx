@@ -7,14 +7,14 @@ emphasis: 'eduskuntaan'
 intro: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella. Vaalipäivä on sunnuntai 18.4.2027 ja ennakkoäänestys kotimaassa 7.–13.4.2027.'
 description: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä. Vaalipäivä on 18.4.2027 — teemoina talous, sivistys ja vapaus tekoälyn aikana.'
 slug: 'fi/eduskuntavaalit'
-updatedDate: '2026-11-05'
+updatedDate: '2026-11-20'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
 alt: 'Lauri Lavanti seisoo nurmikolla kerrostalojen edessä kädet taskuissa, yllään tummansininen pikkutakki ja kukkakuvioinen paita.'
 plated: true
 variant: 'split'
-ctaHref: 'https://lavanti.fi/lahjoita'
+ctaHref: '#tue'
 ctaLabel: 'Tue kampanjaa'
 eventCalendar: true
 langAlternates:
@@ -37,11 +37,12 @@ faq:
     - q: 'Voiko Lauri Lavantia äänestää ennakkoon?'
       a: 'Kyllä. Ennakkoäänestys on kotimaassa 7.–13. huhtikuuta 2027, ja ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa. Vaalipäivänä 18.4.2027 äänestetään omassa äänestyspaikassa, joka kerrotaan äänioikeusilmoituksessa.'
     - q: 'Miten Lauri Lavannin kampanjaa voi tukea?'
-      a: 'Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle osoitteessa lavanti.fi/lahjoita. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.'
+      a: 'Kampanjaa voi tukea lahjoittamalla tai liittymällä kampanjatiimiin. Nopeimmin lahjoitat MobilePaylla numeroon 46492 tai tilisiirrolla tukiyhdistykselle Digitaalisen itsenäisyyden puolesta ry tilinumeroon FI61 5780 3820 2478 06. Kortilla tai verkkopankissa voi lahjoittaa osoitteessa lavanti.fi/lahjoita. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.'
 ---
 
 import ImageWithCaption from '../../../components/body/ImageWithCaption.astro'
 import PhotoStrip from '../../../components/body/PhotoStrip.astro'
+import DonationMethods from '../../../components/campaignFinance/DonationMethods.astro'
 import FinanceTeaser from '../../../components/campaignFinance/FinanceTeaser.astro'
 import EventCalendar from '../../../components/EventCalendar.astro'
 import Eyebrow from '../../../components/Eyebrow.astro'
@@ -54,6 +55,8 @@ import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import { electionPhotos } from '../../../content/electionPhotos'
 import { visibleCampaignEvents } from '../../../lib/visibleEvents'
+
+<DonationMethods id="tue" lang="fi" />
 
 <Plate eyebrow="Vaalit" ground="offWhite" heading="Eduskuntavaalit 2027 lyhyesti" id="lyhyesti">
     <FactsList

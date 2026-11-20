@@ -16,7 +16,7 @@ mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
 alt: 'Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden.'
 plated: true
 variant: 'split'
-ctaHref: 'https://lavanti.fi/lahjoita'
+ctaHref: '#stod'
 ctaLabel: 'Stöd kampanjen'
 langAlternates:
     en: '/en/elections/campaign-finance/'
@@ -38,6 +38,7 @@ import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.as
 import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../../components/Plate.astro'
 import Prose from '../../../../components/Prose.astro'
+import DonationMethods from '../../../../components/campaignFinance/DonationMethods.astro'
 import FinanceBars from '../../../../components/campaignFinance/FinanceBars.astro'
 import FinanceStack from '../../../../components/campaignFinance/FinanceStack.astro'
 import FinanceStats from '../../../../components/campaignFinance/FinanceStats.astro'
@@ -59,6 +60,8 @@ export const labels = financeLabels.sv
 export const national = benchmarkSet(benchmark2023, 'all')
 export const budget = budgetSegments(campaignFinance, 'sv')
 export const spending = spendingSegments(campaignFinance, 'sv')
+
+<DonationMethods id="stod" lang="sv" />
 
 <Plate eyebrow="Läget" ground="offWhite" heading="Hur ser kampanjens ekonomi ut just nu?" id="ikorthet">
     <FinanceStats items={summaryTiles(campaignFinance, 'sv')} />
@@ -90,8 +93,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
     <Prose>
         <p>Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Den randiga delen är pengar som redan är överenskomna men ännu inte finns på kampanjens konto.</p>
         <p>Stöd kan ges av privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket. Förhandsredovisningen är inte obligatorisk.</p>
-        <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
-        <p>Du kan också donera med banköverföring direkt till min stödförening, <a href="https://www.digiitsenaisyys.fi/">Digitaalisen itsenäisyyden puolesta ry</a>. Kontonumret och anvisningarna finns i <a href="/sv/riksdagsvalet/valfinansiering/donationsvillkor/">donationsvillkoren</a>.</p>
+        <p><a class="link-rule" href="#stod">{labels.donate.cta}</a></p>
     </Prose>
 </Plate>
 

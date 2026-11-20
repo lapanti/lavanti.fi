@@ -16,7 +16,7 @@ mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
 alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
 plated: true
 variant: 'split'
-ctaHref: 'https://lavanti.fi/lahjoita'
+ctaHref: '#support'
 ctaLabel: 'Support the campaign'
 langAlternates:
     en: '/en/elections/campaign-finance/'
@@ -38,6 +38,7 @@ import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.as
 import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../../components/Plate.astro'
 import Prose from '../../../../components/Prose.astro'
+import DonationMethods from '../../../../components/campaignFinance/DonationMethods.astro'
 import FinanceBars from '../../../../components/campaignFinance/FinanceBars.astro'
 import FinanceStack from '../../../../components/campaignFinance/FinanceStack.astro'
 import FinanceStats from '../../../../components/campaignFinance/FinanceStats.astro'
@@ -59,6 +60,8 @@ export const labels = financeLabels.en
 export const national = benchmarkSet(benchmark2023, 'all')
 export const budget = budgetSegments(campaignFinance, 'en')
 export const spending = spendingSegments(campaignFinance, 'en')
+
+<DonationMethods id="support" lang="en" />
 
 <Plate eyebrow="At a glance" ground="offWhite" heading="Where do the campaign finances stand?" id="inbrief">
     <FinanceStats items={summaryTiles(campaignFinance, 'en')} />
@@ -90,8 +93,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
     <Prose>
         <p>I break the money down the same way as the statutory disclosure that elected members file with the audit office. The striped part is money already agreed but not yet in the campaign account.</p>
         <p>Support can come from private individuals, companies and associations. I publish every contribution of 2,000 euros or more with the supporter’s name. I also file a voluntary advance disclosure for the campaign with the audit office. The advance disclosure is not mandatory.</p>
-        <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
-        <p>You can also donate by bank transfer directly to my support association, <a href="https://www.digiitsenaisyys.fi/">Digitaalisen itsenäisyyden puolesta ry</a>. The account number and instructions are in the <a href="/en/elections/campaign-finance/donation-terms/">donation terms</a>.</p>
+        <p><a class="link-rule" href="#support">{labels.donate.cta}</a></p>
     </Prose>
 </Plate>
 
