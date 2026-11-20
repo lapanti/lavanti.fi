@@ -98,7 +98,7 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
 | `lang` | `fi` · `sv` · `en` |
 | `unnamed` | optional `yes`: a donation for signs without the donor's name on them (see No name on the sign). `sign_name`, `consent_print`, `consent_person`, `public` and `page` are then ignored and not required |
 | `sign_name` | NFC-normalised, whitespace collapsed, 2–24 characters. Letters (`\p{L}`), space, hyphen, apostrophe (`'` `’`), period. Digits and `&` only when `company_name` is set. |
-| `quantity` | integer 1–20; the "other number" chip posts `muu` with the stepper value in `quantity_other` |
+| `quantity` | a package sign count: 1, 2, 3, 5 or 10 (`src/lib/signPackages.ts`); anything else is `quantity` |
 | `municipality` | one of the 25 municipalities of the Uusimaa electoral district (Uusimaa without Helsinki) or `ei-toivetta` |
 | `email` | same rule as the volunteer form |
 | `company_name` | optional, ≤ 100. When set: `business_id` (Y-tunnus, checksum-valid), `billing_address` (≤ 200, email or e-invoice address) and `consent_company=yes` are required |
@@ -130,9 +130,14 @@ Owner request 2026-11-16: people can donate for signs without their name on them
   kylttejä myös ilman, että nimesi tulee niihin." When it is on, CSS (`:has()`) hides the name field,
   the form sign's sticker and, in step 2, `consent_print`, `consent_person`, `public`, `page` and the
   revocation sentence; the step 2 heading reads "Vielä yhteystietosi." and the pinned line "Kylttisi
-  ilman nimeä · 30 €". The CTA and total stay n × 30 €. Email, municipality, the company block and
+  ilman nimeä · 30 €". The CTA and total follow the package price. Email, municipality, the company block and
   Turnstile stay. The script disables the hidden inputs so none are posted; without a script the
   markup has no `required` on them and the server ignores them.
+- **Packages:** one sign 30 €, two 55 €, three 80 €, five 100 € (featured, "Suosituin"), ten 190 €.
+  Every bigger package costs more in total and less per sign. Five signs for 100 € is the
+  package the page points to: three signs cost nearly as much, and ten signs set the top. There is no
+  free count, so four signs can never cost more than five. `SIGN_PACKAGES` is the only price source
+  for the form, the thanks page and the CLI (`donation`).
 - **Storage:** migration `0005_sign_adoptions_unnamed.sql` rebuilds `sign_adoptions` with
   `named INTEGER NOT NULL DEFAULT 1` and nullable `sign_name` and `consent_print_at` (a CHECK keeps
   both set when `named = 1`). An unnamed row has `named = 0`, both NULL, `public = 0`, no page.
@@ -232,8 +237,8 @@ two, and shrinks until every line fits the circle; a 24-character name never ove
 with ghost text "Sinun nimesi" in the sticker; fine print
 "Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "30 € = yksi kyltti tienvarteen" ·
 "Nimi kylttiin" (maxlength 24, counter; the sign renders the typed value directly, no animation) ·
-chips "1 kyltti · 30 €" (preselected), "2 kylttiä · 60 €", "5 kylttiä · 150 €", "Muu määrä kylttejä"
-(stepper 1–20) → "Lahjoituksesi: 30 €" · always visible "Digitaalisen itsenäisyyden puolesta ry on
+package cards "1 kyltti · 30 €" (preselected), "2 kylttiä · 55 €" + "27,50 €/kyltti", "3 kylttiä · 80 €"
++ "26,67 €/kyltti", "Suosituin" "5 kylttiä · 100 €" + "20 €/kyltti", "10 kylttiä · 190 €" + "19 €/kyltti" → "Lahjoituksesi: 30 €" · always visible "Digitaalisen itsenäisyyden puolesta ry on
 tukiyhdistykseni, joka järjestää vaalikeräyksen ja maksaa kyltit." + "Lue, miten kampanjani
 rahoitetaan." (link to the campaign finance page) · CTA "Adoptoi kyltti" / "Adoptoi 2 kylttiä" ·
 live line from `seina`: "Jo 14 kylttiä on adoptoitu." and "Viimeksi adoptoivat: A, B ja C." (each
@@ -291,7 +296,7 @@ list (with the visitor's own pending tile "Nimi (odottaa vahvistusta)" from sess
   46492 tai osoitteessa lavanti.fi/lahjoita." + QR + Liity.
 
 **Step 2** "Vielä yhteystieto ja lupa nimen käyttöön." · pinned "Kylttisi: {nimi} · 30 €" (n > 1:
-"Kylttisi: {nimi} · 2 kylttiä · 60 €") · "Missä kunnassa toivot kylttisi seisovan?" (hint "Otamme toiveen
+"Kylttisi: {nimi} · 2 kylttiä · 55 €") · "Missä kunnassa toivot kylttisi seisovan?" (hint "Otamme toiveen
 huomioon, mutta paikkaa emme voi luvata.") · Sähköposti (hint "Lähetämme vahvistuksen, otamme
 yhteyttä, jos nimessä on kysyttävää, ja kerromme, kun kyltit nousevat tienvarsille.") ·
 `<details>` "Lahjoitan yrityksenä": yrityksen nimi, Y-tunnus, laskutusosoite, required "Yritys on
@@ -305,13 +310,13 @@ julkinen, ja nimesi ja viestisi jäävät sivuston julkiseen muutoshistoriaan my
 poistetaan. Voit pyytää sivun poistamista milloin tahansa." · "Voit perua luvan milloin tahansa
 vastaamalla vahvistusviestiimme tai kirjoittamalla osoitteeseen lauri@lavanti.fi. Jos perut luvan
 nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta." · Turnstile + honeypot ·
-"Seuraavaksi lahjoitat 30 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi." (n × 30;
+"Seuraavaksi lahjoitat 30 € MobilePayllä ja saat viitekoodin, jonka kirjoitat viestiksi." (the package price;
 with a company name: "Seuraavaksi lähetämme 30 euron laskun antamaasi laskutusosoitteeseen.") ·
 submit "Adoptoi kyltti" / "Adoptoi 2 kylttiä".
 
-**Thanks** (URL carries only validated `?ref=K-\d{5}&n=1..20&y=0|1`), H1 "Kylttisi odottaa
+**Thanks** (URL carries only validated `?ref=K-\d{5}&n=1|2|3|5|10&y=0|1`), H1 "Kylttisi odottaa
 lahjoitustasi", plate heading "Mitä seuraavaksi?", then in order:
-1. The MobilePay block: heading "Melkein valmis: lahjoita 30 € MobilePayllä" (n × 30) · "Lahjoita
+1. The MobilePay block: heading "Melkein valmis: lahjoita 30 € MobilePayllä" (the package price) · "Lahjoita
    30 euroa MobilePayllä numerolla 46492." · copy button · `/mp` button · QR on wide screens ·
    "Kirjoita viestiksi {ref}, niin löydämme lahjoituksesi." + copy · fallback "Eikö sinulla ole
    MobilePayta? Tee tilisiirto:" + Saaja Digitaalisen itsenäisyyden puolesta ry · IBAN
@@ -364,7 +369,7 @@ Feature: Adopt a campaign sign
     And the response is {ref, token} and never echoes the input
 
   Scenario: Rejected submission
-    Given a sign name with digits and no company, a quantity of 21, a bad Y-tunnus or a missing consent
+    Given a sign name with digits and no company, a quantity of 4, a bad Y-tunnus or a missing consent
     When it is POSTed
     Then the response carries a fixed error code and nothing is stored
 
@@ -477,3 +482,4 @@ interface AdoptionPage {
 | 2026-11-14 | Initial spec |
 | 2026-11-14 | Synced with the implementation: quantity_other, client script pattern, H1/eyebrow layout, ogCard, check script |
 | 2026-11-14 | Donor review: direct-ask intro, association line under the total, next-step line and amount in the pinned summary, thanks page pays first with a no-MobilePay fallback, compact phone first screen, Swedish sign on sv, plain-language page consent, copy fixes |
+| 2026-11-20 | Sign packages 1/2/3/5/10 for 30/55/80/100/190 €, five featured; the free count is gone |
