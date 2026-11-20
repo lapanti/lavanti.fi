@@ -18,6 +18,19 @@ export const marketgreenTag: LocalTag = {
             'Marknadsgrön är inte en varumärkesövning. Det är en substantiell ekonomisk-politisk hållning: skadeskatter i stället för arbetsskatter, konkurrens i stället för skydd av etablerade aktörer, öppna upphandlingar i stället för leverantörsberoende, och en stat som köper teknik på sina egna villkor. Arbetet på den här sidan kopplar hållningen till AI-erans industripolitik, överförbarhet av offentliga upphandlingar och De grönas bredare ekonomiska linje.',
         ],
     },
+    externalLink: {
+        href: {
+            en: 'https://markkinavihreat.fi/en/',
+            fi: 'https://markkinavihreat.fi/',
+            sv: 'https://markkinavihreat.fi/sv/',
+        },
+        label: { en: 'markkinavihreat.fi', fi: 'markkinavihreat.fi', sv: 'markkinavihreat.fi' },
+        lead: {
+            en: 'Markkinavihreät, the network within the Greens that I founded, has its own site at',
+            fi: 'Perustamani Markkinavihreät-verkosto toimii Vihreiden sisällä, ja sen omat sivut ovat osoitteessa',
+            sv: 'Markkinavihreät (de marknadsgröna), nätverket inom De Gröna som jag grundade, har en egen webbplats på',
+        },
+    },
     id: 'marketgreen',
     metaDescription: {
         en: 'Marketgreen — market economy with priced externalities, fair competition, and tax shifted from work to harm. Greens as Finland’s market-liberal party.',

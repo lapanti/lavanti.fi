@@ -177,3 +177,28 @@ describe('category page FAQ', () => {
         expect(jsonLdTypes(result)).not.toContain('FAQPage')
     })
 })
+
+describe('category page external link', () => {
+    const linked: LocalTag = {
+        ...baseTag,
+        externalLink: {
+            href: { en: 'https://example.org/en/', fi: 'https://example.org/', sv: 'https://example.org/sv/' },
+            label: { en: 'example.org', fi: 'example.org', sv: 'example.org' },
+            lead: { en: 'Read more at', fi: 'Lue lisää sivustolta', sv: 'Läs mer på' },
+        },
+    }
+
+    it('links the locale href after the descriptions', async () => {
+        const result = await render(linked, 'sv')
+        const link = [...result.querySelectorAll('a')].find((a) => a.textContent === 'example.org')
+
+        expect(link?.getAttribute('href')).toBe('https://example.org/sv/')
+        expect(link?.parentElement?.textContent).toContain('Läs mer på')
+    })
+
+    it('renders no link for a tag without one', async () => {
+        const result = await render(baseTag, 'fi')
+
+        expect([...result.querySelectorAll('a')].some((a) => a.textContent === 'example.org')).toBe(false)
+    })
+})
