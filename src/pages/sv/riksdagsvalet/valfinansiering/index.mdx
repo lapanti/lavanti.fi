@@ -7,7 +7,7 @@ emphasis: 'finansiering'
 intro: 'Jag tar emot stöd från privatpersoner, företag och föreningar. På den här sidan hittar du alltid aktuella uppgifter om hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.'
 description: 'Finansieringen av Lauri Lavantis riksdagsvalskampanj öppet: budget, insamlade medel per källa, använda pengar och en jämförelse med valkampanjerna 2023.'
 slug: 'sv/riksdagsvalet/valfinansiering'
-updatedDate: '2026-11-14'
+updatedDate: '2026-11-20'
 type: 'WebPage'
 breadcrumbParent: 'elections'
 breadcrumbName: 'Valfinansiering'
@@ -91,6 +91,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
         <p>Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Den randiga delen är pengar som redan är överenskomna men ännu inte finns på kampanjens konto.</p>
         <p>Stöd kan ges av privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket. Förhandsredovisningen är inte obligatorisk.</p>
         <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
+        <p>Du kan också donera med banköverföring direkt till min stödförening, <a href="https://www.digiitsenaisyys.fi/">Digitaalisen itsenäisyyden puolesta ry</a>. Kontonumret och anvisningarna finns i <a href="/sv/riksdagsvalet/valfinansiering/donationsvillkor/">donationsvillkoren</a>.</p>
     </Prose>
 </Plate>
 

@@ -7,7 +7,7 @@ emphasis: 'rahoitus'
 intro: 'Otan vastaan tukea yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Tältä sivulta löydät aina ajantasaisen tiedon siitä, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.'
 description: 'Lauri Lavannin eduskuntavaalikampanjan rahoitus avoimesti: budjetti, kerätyt varat lähteittäin, käytetyt rahat ja vertailu vuoden 2023 vaalikampanjoihin.'
 slug: 'fi/eduskuntavaalit/vaalirahoitus'
-updatedDate: '2026-11-14'
+updatedDate: '2026-11-20'
 type: 'WebPage'
 breadcrumbParent: 'elections'
 breadcrumbName: 'Vaalirahoitus'
@@ -91,6 +91,7 @@ export const spending = spendingSegments(campaignFinance, 'fi')
         <p>Erittelen rahat samalla tavalla kuin vaalirahoitusilmoituksessa, jonka valitut kansanedustajat tekevät tarkastusvirastolle. Raidoitettu osa on rahaa, josta on jo sovittu mutta joka ei ole vielä kampanjan tilillä.</p>
         <p>Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset. Julkistan jokaisen vähintään 2 000 euron tuen tukijan nimellä. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle. Ennakkoilmoitus ei ole pakollinen.</p>
         <p>{campaignFinance.donationsOpen ? <a class="link-rule" href={campaignFinance.donationUrl}>{labels.donate.cta}</a> : labels.donate.pending}</p>
+        <p>Voit lahjoittaa myös tilisiirrolla suoraan tukiyhdistykselleni, <a href="https://www.digiitsenaisyys.fi/">Digitaalisen itsenäisyyden puolesta ry:lle</a>. Tilinumero ja ohjeet ovat <a href="/fi/eduskuntavaalit/vaalirahoitus/lahjoitusehdot/">lahjoitusehdoissa</a>.</p>
     </Prose>
 </Plate>
 
