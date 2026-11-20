@@ -66,6 +66,7 @@ const finance = (overrides: Partial<CampaignFinance> = {}): CampaignFinance => (
     donationUrl: 'https://lavanti.fi/lahjoita',
     donationsOpen: false,
     donorCountMinimum: 20,
+    mobilePayUrl: 'https://lavanti.fi/mp',
     raised: raisedWith({ own: income(10000) }),
     spent: spentWith({ media: expense(10000, 5000) }),
     ...overrides,
