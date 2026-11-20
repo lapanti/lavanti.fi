@@ -2,10 +2,15 @@
 import { typographics } from '../lib/styles'
 
 interface Props {
+    /**
+     * Explicit fragment target. Not `id`: MDX hands every markdown heading an auto-slug `id`,
+     * and rendering those would add an anchor to every h2 on the site.
+     */
+    anchor?: string
     itemProp?: string
 }
 
-const { itemProp } = Astro.props
+const { anchor, itemProp } = Astro.props
 ---
 
 <style
@@ -41,12 +46,17 @@ const { itemProp } = Astro.props
         text-transform: uppercase;
     }
 
+    h2[id] {
+        /* Clears the sticky header when a link lands on the heading. */
+        scroll-margin-top: 6.5rem;
+    }
+
     @media (min-width: 769px) {
         :global(.prose) h2 {
             font-size: 2.625rem;
         }
     }
 </style>
-<h2 itemprop={itemProp}>
+<h2 id={anchor} itemprop={itemProp}>
     <slot />
 </h2>
