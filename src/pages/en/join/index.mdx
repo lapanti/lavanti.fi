@@ -10,7 +10,7 @@ langAlternates:
     en: '/en/join/'
     fi: '/fi/liity/'
     sv: '/sv/bli-med/'
-updatedDate: '2026-10-05'
+updatedDate: '2026-11-14'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
@@ -20,6 +20,7 @@ variant: 'split'
 ---
 
 import PhotoStrip from '../../../components/body/PhotoStrip.astro'
+import Link from '../../../components/Link.astro'
 import Plate from '../../../components/Plate.astro'
 import Prose from '../../../components/Prose.astro'
 import VolunteerForm from '../../../components/VolunteerForm.astro'
@@ -31,4 +32,7 @@ import { joinPhotos } from '../../../content/joinPhotos'
     </Prose>
     <PhotoStrip lang="en" photos={joinPhotos} />
     <VolunteerForm lang="en" />
+    <Prose>
+        You can also support the campaign by adopting an election sign: <Link href="/en/adopt/">lavanti.fi/en/adopt</Link>
+    </Prose>
 </Plate>

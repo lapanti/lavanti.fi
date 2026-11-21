@@ -16,6 +16,8 @@ interface Props {
     emphasis?: string
     eyebrow?: string
     heroImage?: string
+    /** Split variant only: the Adoptoi kyltti sign in place of the photo. */
+    heroSign?: boolean
     intro?: string
     lang?: Lang
     mobileHeroImage?: string
@@ -34,6 +36,7 @@ const {
     emphasis,
     eyebrow,
     heroImage,
+    heroSign,
     intro,
     lang,
     mobileHeroImage,
@@ -91,7 +94,9 @@ const {
             emphasis={emphasis}
             eyebrow={eyebrow}
             heroImage={heroImage}
+            heroSign={heroSign}
             intro={intro}
+            lang={lang}
             mobileHeroImage={mobileHeroImage}
             title={title}
         />

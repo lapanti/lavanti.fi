@@ -18,4 +18,21 @@ describe('<TitleBanner />', () => {
 
         expect(result.firstChild).toMatchSnapshot()
     })
+
+    it('shows the sign in place of the split hero photo when asked', async () => {
+        const props = {
+            heroImage: 'Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2',
+            lang: 'fi',
+            mobileHeroImage: 'Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka',
+            title,
+            variant: 'split',
+        }
+        const sign = await renderAstroComponent(TitleBanner, { props: { ...props, heroSign: true } })
+        expect(sign.querySelector('picture')).toBeNull()
+        const figure = sign.querySelector('.hero-sign .sign-graphic')
+        expect(figure?.getAttribute('aria-hidden')).toBe('true')
+        // Left out of setSignName: the hero keeps the ghost text while the form's sign updates.
+        expect(figure?.hasAttribute('data-sign')).toBe(false)
+        expect(figure?.querySelector('[data-sign-name]')?.textContent).toContain('Sinun')
+    })
 })
