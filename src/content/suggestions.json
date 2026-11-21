@@ -355,13 +355,13 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:62": {
-      "checkedAt": "2026-10-21",
-      "contentHash": "51fe2a7c66379c9e1343c0801b7c4f05d75d2f35199cf5f599598a20ac1cd57d",
+      "checkedAt": "2026-11-21",
+      "contentHash": "af1be4c90aab27d3e389ed6f5ee522aed50bd1c39616ad38771661dbc67d7d80",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:63": {
-      "checkedAt": "2026-09-30",
-      "contentHash": "4298c80fc96e6797d42bd7769c70f470db3d0dc31433724ae240ca79ed171f58",
+      "checkedAt": "2026-11-21",
+      "contentHash": "79928b11fbbf9ed38255d020414a2fdcaec96f37bdb82d21fe77cb94dccf3a02",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:64": {
@@ -545,8 +545,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:97": {
-      "checkedAt": "2026-11-02",
-      "contentHash": "2eccd3df7675af25d94d53a95a589c063591b9980bf424ec27a33e8a691900be",
+      "checkedAt": "2026-11-21",
+      "contentHash": "ad7dea1d446152ebfbfbc9f678de853993339ef6caf83d2900d2317628a5c342",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:98": {
@@ -649,6 +649,11 @@
     "kirkkonummi": {
       "checkedAt": "2026-09-23",
       "contentHash": "c3ae7700f08c21b6c096a23c79ea7ee06f8efb4187cfd2e92e153a4f5b86e229",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "marketgreen": {
+      "checkedAt": "2026-11-21",
+      "contentHash": "d4b8ff1f1fefb80c4defe54f563acbbf4f4423465aeece7d730513229bb6de82",
       "model": "typesafe/jev-1.13-20260917"
     },
     "municipal-elections-2025": {
