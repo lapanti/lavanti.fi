@@ -44,5 +44,5 @@ export const marketgreenTag: LocalTag = {
         sv: 'Marknads­grön — fungerande marknads­ekonomi',
     },
     slugs: { en: 'marketgreen', fi: 'markkinavihrea', sv: 'marknadsgron' },
-    updatedDate: '2026-06-25',
+    updatedDate: '2026-11-21',
 }
