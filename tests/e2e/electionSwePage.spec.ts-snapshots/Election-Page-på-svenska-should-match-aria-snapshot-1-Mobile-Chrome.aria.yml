@@ -5,8 +5,42 @@
     - emphasis: i riksdagsvalet
   - paragraph: /Lauri Lavanti är De Grönas riksdagskandidat i Nylands valkrets i riksdagsvalet \d+, kommunfullmäktigeledamot i Kyrkslätt och ledande programutvecklare \(diplomingenjör, Aalto-universitetet\)\. Hans mål är ett digitalt självständigt Finland där ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet\. Valdagen är söndagen den \d+\.\d+\.\d+ och förhandsröstningen i Finland pågår 7–\d+\.\d+\.\d+\./
   - link "Stöd kampanjen":
-    - /url: https://lavanti.fi/lahjoita
+    - /url: "#stod"
   - article:
+    - text: Stöd
+    - heading "Hur kan jag stödja kampanjen?" [level=2]
+    - paragraph: Snabbast donerar du med MobilePay eller banköverföring. Båda donationerna tas emot av min stödförening Digitaalisen itsenäisyyden puolesta ry.
+    - list:
+      - listitem:
+        - heading "Med MobilePay" [level=3]
+        - term: MobilePay-nummer
+        - definition:
+          - text: /\d+/
+          - 'button "Kopiera: MobilePay-nummer"'
+        - paragraph:
+          - link "Donera med MobilePay":
+            - /url: https://lavanti.fi/mp
+      - listitem:
+        - heading "Med banköverföring" [level=3]
+        - term: Mottagare
+        - definition:
+          - text: Digitaalisen itsenäisyyden puolesta ry
+          - 'button "Kopiera: Mottagare"'
+        - term: Kontonummer (IBAN)
+        - definition:
+          - text: /FI61 \d+ \d+ \d+ \d+/
+          - 'button "Kopiera: Kontonummer (IBAN)"'
+        - term: Meddelande
+        - definition: Ditt eget namn. För ett företag eller en förening dess namn och FO-nummer.
+        - paragraph:
+          - link "Läs donationsvillkoren":
+            - /url: /sv/riksdagsvalet/valfinansiering/donationsvillkor/#bankoverforing
+      - listitem:
+        - heading "Med kort eller nätbank" [level=3]
+        - paragraph:
+          - link "Donera på De Grönas sida":
+            - /url: https://lavanti.fi/lahjoita
+    - paragraph
     - text: Valet
     - heading /Riksdagsvalet \d+ i korthet/ [level=2]
     - list:
@@ -176,7 +210,7 @@
     - heading "Kan man förhandsrösta på Lauri Lavanti?" [level=3]
     - paragraph: /Ja\. Förhandsröstningen pågår i Finland 7–\d+ april \d+, och man kan förhandsrösta på vilket allmänt förhandsröstningsställe som helst\. På valdagen \d+\.\d+\.\d+ röstar man på sitt eget röstningsställe, som anges i meddelandet om rösträtt\./
     - heading "Hur kan man stödja Lauri Lavantis kampanj?" [level=3]
-    - paragraph: Kampanjen kan stödjas genom att gå med i kampanjteamet eller donera till kampanjen på lavanti.fi/lahjoita. Sidan om valfinansiering visar kampanjens budget, insamlade medel per källa och använda pengar. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter.
+    - paragraph: /Kampanjen kan stödjas genom att donera eller gå med i kampanjteamet\. Snabbast donerar man med MobilePay till nummer \d+ eller med banköverföring till stödföreningen Digitaalisen itsenäisyyden puolesta ry, kontonummer FI61 \d+ \d+ \d+ \d+\. Med kort eller nätbank kan man donera på lavanti\.fi\/lahjoita\. Sidan om valfinansiering visar kampanjens budget, insamlade medel per källa och använda pengar\. Dessutom kan man prenumerera på nyhetsbrevet, dela texterna och diskutera valtemana\. Man går med i kampanjteamet genom att ta kontakt via webbplatsens kontaktuppgifter\./
     - heading "Prenumerera på nyhetsbrevet" [level=2]
     - paragraph: Prenumerera på mitt nyhetsbrev och få analyser av den senaste utvecklingen inom AI och teknik, samt dess påverkan på samhället, direkt till din inkorg.
     - text: E-post

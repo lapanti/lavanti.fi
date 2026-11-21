@@ -5,8 +5,42 @@
     - emphasis: eduskuntaan
   - paragraph: /Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa \d+, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta\. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella\. Vaalipäivä on sunnuntai \d+\.\d+\.\d+ ja ennakkoäänestys kotimaassa 7\.–\d+\.\d+\.\d+\./
   - link "Tue kampanjaa":
-    - /url: https://lavanti.fi/lahjoita
+    - /url: "#tue"
   - article:
+    - text: Tue
+    - heading "Miten voin tukea kampanjaa?" [level=2]
+    - paragraph: Nopeimmin lahjoitat MobilePaylla tai tilisiirrolla. Molemmat lahjoitukset ottaa vastaan tukiyhdistykseni Digitaalisen itsenäisyyden puolesta ry.
+    - list:
+      - listitem:
+        - heading "MobilePaylla" [level=3]
+        - term: MobilePay-numero
+        - definition:
+          - text: /\d+/
+          - 'button "Kopioi: MobilePay-numero"'
+        - paragraph:
+          - link "Lahjoita MobilePaylla":
+            - /url: https://lavanti.fi/mp
+      - listitem:
+        - heading "Tilisiirrolla" [level=3]
+        - term: Saaja
+        - definition:
+          - text: Digitaalisen itsenäisyyden puolesta ry
+          - 'button "Kopioi: Saaja"'
+        - term: Tilinumero (IBAN)
+        - definition:
+          - text: /FI61 \d+ \d+ \d+ \d+/
+          - 'button "Kopioi: Tilinumero (IBAN)"'
+        - term: Viesti
+        - definition: Oma nimesi. Yrityksen tai yhdistyksen puolesta sen nimi ja Y-tunnus.
+        - paragraph:
+          - link "Lue lahjoitusehdot":
+            - /url: /fi/eduskuntavaalit/vaalirahoitus/lahjoitusehdot/#tilisiirto
+      - listitem:
+        - heading "Kortilla tai verkkopankissa" [level=3]
+        - paragraph:
+          - link "Lahjoita Vihreiden sivulla":
+            - /url: https://lavanti.fi/lahjoita
+    - paragraph
     - text: Vaalit
     - heading /Eduskuntavaalit \d+ lyhyesti/ [level=2]
     - list:
@@ -176,7 +210,7 @@
     - heading "Voiko Lauri Lavantia äänestää ennakkoon?" [level=3]
     - paragraph: /Kyllä\. Ennakkoäänestys on kotimaassa 7\.–\d+\. huhtikuuta \d+, ja ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa\. Vaalipäivänä \d+\.\d+\.\d+ äänestetään omassa äänestyspaikassa, joka kerrotaan äänioikeusilmoituksessa\./
     - heading "Miten Lauri Lavannin kampanjaa voi tukea?" [level=3]
-    - paragraph: Kampanjaa voi tukea liittymällä kampanjatiimiin tai lahjoittamalla kampanjalle osoitteessa lavanti.fi/lahjoita. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta.
+    - paragraph: /Kampanjaa voi tukea lahjoittamalla tai liittymällä kampanjatiimiin\. Nopeimmin lahjoitat MobilePaylla numeroon \d+ tai tilisiirrolla tukiyhdistykselle Digitaalisen itsenäisyyden puolesta ry tilinumeroon FI61 \d+ \d+ \d+ \d+\. Kortilla tai verkkopankissa voi lahjoittaa osoitteessa lavanti\.fi\/lahjoita\. Vaalirahoitussivu kertoo kampanjan budjetin, kerätyt varat lähteittäin ja käytetyt rahat\. Lisäksi voi tilata uutiskirjeen, jakaa kirjoituksia ja keskustella vaaliteemoista\. Kampanjatiimiin pääsee mukaan ottamalla yhteyttä sivuston yhteystietojen kautta\./
     - heading "Tilaa uutiskirje" [level=2]
     - paragraph: Tilaamalla uutiskirjeeni saat sähköpostiisi analyysejä tuoreimmista kehityskuluista tekoälyn ja teknologian saralla sekä arvioita niiden vaikutuksista yhteiskuntaan.
     - text: Sähköposti

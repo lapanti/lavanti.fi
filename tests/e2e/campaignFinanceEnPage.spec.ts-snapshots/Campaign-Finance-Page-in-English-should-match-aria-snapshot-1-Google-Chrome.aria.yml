@@ -5,8 +5,42 @@
     - emphasis: finances
   - paragraph: I accept support from private individuals, companies and associations. This page always has up-to-date figures on how much has been raised, where it came from and what it has been spent on.
   - link "Support the campaign":
-    - /url: https://lavanti.fi/lahjoita
+    - /url: "#support"
   - article:
+    - text: Support
+    - heading "How can I support the campaign?" [level=2]
+    - paragraph: The quickest way to donate is MobilePay or a bank transfer. Both go to my support association, Digitaalisen itsenäisyyden puolesta ry.
+    - list:
+      - listitem:
+        - heading "With MobilePay" [level=3]
+        - term: MobilePay number
+        - definition:
+          - text: /\d+/
+          - 'button "Copy: MobilePay number"'
+        - paragraph:
+          - link "Donate with MobilePay":
+            - /url: https://lavanti.fi/mp
+      - listitem:
+        - heading "By bank transfer" [level=3]
+        - term: Recipient
+        - definition:
+          - text: Digitaalisen itsenäisyyden puolesta ry
+          - 'button "Copy: Recipient"'
+        - term: Account number (IBAN)
+        - definition:
+          - text: /FI61 \d+ \d+ \d+ \d+/
+          - 'button "Copy: Account number (IBAN)"'
+        - term: Message
+        - definition: Your own name. For a company or an association, its name and business ID.
+        - paragraph:
+          - link "Read the donation terms":
+            - /url: /en/elections/campaign-finance/donation-terms/#bank-transfer
+      - listitem:
+        - heading "By card or online bank" [level=3]
+        - paragraph:
+          - link "Donate on the Greens’ page":
+            - /url: https://lavanti.fi/lahjoita
+    - paragraph
     - text: At a glance
     - heading "Where do the campaign finances stand?" [level=2]
     - term: Campaign budget
@@ -59,7 +93,7 @@
     - paragraph: /Support can come from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name\. I also file a voluntary advance disclosure for the campaign with the audit office\. The advance disclosure is not mandatory\./
     - paragraph:
       - link "Support the campaign":
-        - /url: https://lavanti.fi/lahjoita
+        - /url: "#support"
     - text: Spending
     - heading "What has the money been spent on?" [level=2]
     - figure "Spending paid and committed, against the money raised":
