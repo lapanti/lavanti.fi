@@ -46,9 +46,11 @@ const bankFields = [
 ]
 
 /*
- * Copy buttons render hidden and the script reveals them only where the Clipboard API
- * exists, so a browser without it never shows a button that does nothing. One delegated
- * listener serves every button on the page.
+ * Copy buttons are icon-only; the accessible name and tooltip carry "<copy>: <field>".
+ * They render hidden and the script reveals them only where the Clipboard API exists, so a
+ * browser without it never shows a button that does nothing. After a copy the button shows
+ * a check mark for two seconds and the live region announces it. One delegated listener
+ * serves every button on the page.
  */
 const copyScript = `(function(){
     if(!navigator.clipboard) return
@@ -59,13 +61,11 @@ const copyScript = `(function(){
         var button = event.target.closest && event.target.closest('button[data-copy]')
         if(!button) return
         navigator.clipboard.writeText(button.getAttribute('data-copy')).then(function(){
-            var idle = button.getAttribute('data-idle')
-            var done = button.getAttribute('data-done')
             var status = button.closest('section').querySelector('[data-copy-status]')
-            button.textContent = done
-            if(status) status.textContent = done
+            button.classList.add('is-done')
+            if(status) status.textContent = button.getAttribute('data-done')
             setTimeout(function(){
-                button.textContent = idle
+                button.classList.remove('is-done')
                 if(status) status.textContent = ''
             }, 2000)
         })
@@ -127,13 +127,16 @@ const copyScript = `(function(){
     }
 
     .copy {
+        align-items: center;
         background: transparent;
         border: 1px solid currentcolor;
         color: var(--colorsDeepForest);
         cursor: pointer;
-        font: inherit;
-        font-size: 0.875rem;
-        padding: 0.125rem 0.625rem;
+        display: inline-flex;
+        height: 2.25rem;
+        justify-content: center;
+        padding: 0;
+        width: 2.25rem;
     }
 
     .copy:hover {
@@ -141,8 +144,31 @@ const copyScript = `(function(){
         color: var(--colorsLightSand);
     }
 
+    .copy svg {
+        height: 1.125rem;
+        width: 1.125rem;
+    }
+
+    /* `is-done` is set by the copy script, so the template never shows it to the linter. */
+    .copy .done,
+    .copy:global(.is-done) .idle {
+        display: none;
+    }
+
+    .copy:global(.is-done) .done {
+        display: block;
+    }
+
     .copy[hidden] {
         display: none;
+    }
+
+    .action {
+        padding-top: 0.25rem;
+    }
+
+    .action .btn {
+        text-align: center;
     }
 
     .status {
@@ -178,19 +204,43 @@ const copyScript = `(function(){
                                     class="copy"
                                     data-copy={field.copy}
                                     data-done={labels.copied}
-                                    data-idle={labels.copy}
                                     hidden
+                                    title={`${labels.copy}: ${field.label}`}
                                     type="button"
                                 >
-                                    {labels.copy}
+                                    <svg
+                                        aria-hidden="true"
+                                        class="idle"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <rect height="13" rx="2" width="13" x="9" y="9" />
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                    </svg>
+                                    <svg
+                                        aria-hidden="true"
+                                        class="done"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M20 6 9 17l-5-5" />
+                                    </svg>
                                 </button>
                             </dd>
                         </div>
                     ))
                 }
             </dl>
-            <p>
-                <a class="link-rule" href={campaignFinance.mobilePayUrl}>{labels.mobilePay.link}</a>
+            <p class="action">
+                <a class="btn btn--solid" href={campaignFinance.mobilePayUrl}>{labels.mobilePay.link}</a>
             </p>
         </li>
         <li>
@@ -207,11 +257,35 @@ const copyScript = `(function(){
                                     class="copy"
                                     data-copy={field.copy}
                                     data-done={labels.copied}
-                                    data-idle={labels.copy}
                                     hidden
+                                    title={`${labels.copy}: ${field.label}`}
                                     type="button"
                                 >
-                                    {labels.copy}
+                                    <svg
+                                        aria-hidden="true"
+                                        class="idle"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <rect height="13" rx="2" width="13" x="9" y="9" />
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                    </svg>
+                                    <svg
+                                        aria-hidden="true"
+                                        class="done"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M20 6 9 17l-5-5" />
+                                    </svg>
                                 </button>
                             </dd>
                         </div>
@@ -228,10 +302,10 @@ const copyScript = `(function(){
         </li>
         <li>
             <h3>{labels.card.title}</h3>
-            <p>
+            <p class="action">
                 {
                     campaignFinance.donationsOpen ? (
-                        <a class="link-rule" href={campaignFinance.donationUrl}>
+                        <a class="btn" href={campaignFinance.donationUrl}>
                             {labels.card.link}
                         </a>
                     ) : (
