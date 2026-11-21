@@ -47,8 +47,8 @@ test.describe('Sign adoption page', () => {
               - text: 2 kylttiä · 55 € 27,50 €/kyltti
               - radio "3 kylttiä · 80 € 26,67 €/kyltti"
               - text: 3 kylttiä · 80 € 26,67 €/kyltti
-              - radio "Suosituin 5 kylttiä · 100 € 20 €/kyltti"
-              - text: Suosituin 5 kylttiä · 100 € 20 €/kyltti
+              - radio "5 kylttiä · 100 € 20 €/kyltti"
+              - text: 5 kylttiä · 100 € 20 €/kyltti
               - radio "10 kylttiä · 190 € 19 €/kyltti"
               - text: 10 kylttiä · 190 € 19 €/kyltti
             - paragraph: "Lahjoituksesi: 30 €"
