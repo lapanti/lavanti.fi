@@ -38,7 +38,7 @@
       - listitem:
         - heading "Kortilla tai verkkopankissa" [level=3]
         - paragraph:
-          - link "Lahjoita Vihreiden sivulla":
+          - link "Lahjoituspalvelu":
             - /url: https://lavanti.fi/lahjoita
     - paragraph
     - text: Vaalit

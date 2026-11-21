@@ -38,7 +38,7 @@
       - listitem:
         - heading "By card or online bank" [level=3]
         - paragraph:
-          - link "Donate on the Greens’ page":
+          - link "Donation service":
             - /url: https://lavanti.fi/lahjoita
     - paragraph
     - text: The election
