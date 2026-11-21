@@ -5,8 +5,42 @@
     - emphasis: finansiering
   - paragraph: Jag tar emot stöd från privatpersoner, företag och föreningar. På den här sidan hittar du alltid aktuella uppgifter om hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.
   - link "Stöd kampanjen":
-    - /url: https://lavanti.fi/lahjoita
+    - /url: "#stod"
   - article:
+    - text: Stöd
+    - heading "Hur kan jag stödja kampanjen?" [level=2]
+    - paragraph: Snabbast donerar du med MobilePay eller banköverföring. Båda donationerna tas emot av min stödförening Digitaalisen itsenäisyyden puolesta ry.
+    - list:
+      - listitem:
+        - heading "Med MobilePay" [level=3]
+        - term: MobilePay-nummer
+        - definition:
+          - text: /\d+/
+          - 'button "Kopiera: MobilePay-nummer"'
+        - paragraph:
+          - link "Donera med MobilePay":
+            - /url: https://lavanti.fi/mp
+      - listitem:
+        - heading "Med banköverföring" [level=3]
+        - term: Mottagare
+        - definition:
+          - text: Digitaalisen itsenäisyyden puolesta ry
+          - 'button "Kopiera: Mottagare"'
+        - term: Kontonummer (IBAN)
+        - definition:
+          - text: /FI61 \d+ \d+ \d+ \d+/
+          - 'button "Kopiera: Kontonummer (IBAN)"'
+        - term: Meddelande
+        - definition: Ditt eget namn. För ett företag eller en förening dess namn och FO-nummer.
+        - paragraph:
+          - link "Läs donationsvillkoren":
+            - /url: /sv/riksdagsvalet/valfinansiering/donationsvillkor/#bankoverforing
+      - listitem:
+        - heading "Med kort eller nätbank" [level=3]
+        - paragraph:
+          - link "Donera på De Grönas sida":
+            - /url: https://lavanti.fi/lahjoita
+    - paragraph
     - text: Läget
     - heading "Hur ser kampanjens ekonomi ut just nu?" [level=2]
     - term: Kampanjbudget
@@ -59,7 +93,7 @@
     - paragraph: /Stöd kan ges av privatpersoner, företag och föreningar\. Jag offentliggör varje stöd på minst 2 \d+ euro med stödjarens namn\. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket\. Förhandsredovisningen är inte obligatorisk\./
     - paragraph:
       - link "Stöd kampanjen":
-        - /url: https://lavanti.fi/lahjoita
+        - /url: "#stod"
     - text: Kostnader
     - heading "Vad har pengarna använts till?" [level=2]
     - figure "Betalda och bundna utgifter i förhållande till insamlade pengar":

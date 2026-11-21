@@ -5,8 +5,42 @@
     - emphasis: rahoitus
   - paragraph: Otan vastaan tukea yksityishenkilöiltä, yrityksiltä ja yhdistyksiltä. Tältä sivulta löydät aina ajantasaisen tiedon siitä, paljonko rahaa on kerätty, mistä se on tullut ja mihin se on käytetty.
   - link "Tue kampanjaa":
-    - /url: https://lavanti.fi/lahjoita
+    - /url: "#tue"
   - article:
+    - text: Tue
+    - heading "Miten voin tukea kampanjaa?" [level=2]
+    - paragraph: Nopeimmin lahjoitat MobilePaylla tai tilisiirrolla. Molemmat lahjoitukset ottaa vastaan tukiyhdistykseni Digitaalisen itsenäisyyden puolesta ry.
+    - list:
+      - listitem:
+        - heading "MobilePaylla" [level=3]
+        - term: MobilePay-numero
+        - definition:
+          - text: /\d+/
+          - 'button "Kopioi: MobilePay-numero"'
+        - paragraph:
+          - link "Lahjoita MobilePaylla":
+            - /url: https://lavanti.fi/mp
+      - listitem:
+        - heading "Tilisiirrolla" [level=3]
+        - term: Saaja
+        - definition:
+          - text: Digitaalisen itsenäisyyden puolesta ry
+          - 'button "Kopioi: Saaja"'
+        - term: Tilinumero (IBAN)
+        - definition:
+          - text: /FI61 \d+ \d+ \d+ \d+/
+          - 'button "Kopioi: Tilinumero (IBAN)"'
+        - term: Viesti
+        - definition: Oma nimesi. Yrityksen tai yhdistyksen puolesta sen nimi ja Y-tunnus.
+        - paragraph:
+          - link "Lue lahjoitusehdot":
+            - /url: /fi/eduskuntavaalit/vaalirahoitus/lahjoitusehdot/#tilisiirto
+      - listitem:
+        - heading "Kortilla tai verkkopankissa" [level=3]
+        - paragraph:
+          - link "Lahjoita Vihreiden sivulla":
+            - /url: https://lavanti.fi/lahjoita
+    - paragraph
     - text: Tilanne
     - heading "Mikä on kampanjan rahatilanne nyt?" [level=2]
     - term: Kampanjabudjetti
@@ -59,7 +93,7 @@
     - paragraph: /Tukea voivat antaa yksityishenkilöt, yritykset ja yhdistykset\. Julkistan jokaisen vähintään 2 \d+ euron tuen tukijan nimellä\. Teen kampanjasta myös vapaaehtoisen ennakkoilmoituksen tarkastusvirastolle\. Ennakkoilmoitus ei ole pakollinen\./
     - paragraph:
       - link "Tue kampanjaa":
-        - /url: https://lavanti.fi/lahjoita
+        - /url: "#tue"
     - text: Kulut
     - heading "Mihin rahaa on käytetty?" [level=2]
     - figure "Maksetut menot ja menot, joihin on sitouduttu, suhteessa kerättyyn rahaan":
