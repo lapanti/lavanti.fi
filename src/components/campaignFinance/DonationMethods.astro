@@ -93,10 +93,11 @@ const copyScript = `(function(){
         padding: 1.5rem 0 0;
     }
 
+    /* A column, so the action sits at the bottom and the buttons line up across columns. */
     .methods > li {
-        align-content: start;
         border-left: 4px solid var(--colorsSand);
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 0.75rem;
         padding: 0.25rem 0 0.25rem 0.75rem;
     }
@@ -129,13 +130,12 @@ const copyScript = `(function(){
         margin: 0;
     }
 
-    /* Value and icon share a row; a long value wraps inside its own column. */
+    /* Value and icon share a row, icon at the right edge; a long value wraps in its own column. */
     .fields .copyable {
         align-items: center;
         column-gap: 0.25rem;
         display: grid;
-        grid-template-columns: minmax(0, auto) 2.75rem;
-        justify-content: start;
+        grid-template-columns: minmax(0, 1fr) 2.75rem;
     }
 
     .value {
@@ -181,7 +181,9 @@ const copyScript = `(function(){
         display: none;
     }
 
-    .action {
+    /* `.methods` raises specificity over `.methods p { margin: 0 }`. */
+    .methods .action {
+        margin-top: auto;
         padding-top: 0.5rem;
     }
 
