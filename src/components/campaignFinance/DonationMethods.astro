@@ -9,6 +9,8 @@
 import type { Lang } from '../../content/nav'
 
 import { campaignFinance, financeLabels, supportAssociation } from '../../content/campaignFinance'
+import { typographics } from '../../lib/styles'
+import Eyebrow from '../Eyebrow.astro'
 import Plate from '../Plate.astro'
 
 interface Props {
@@ -73,7 +75,12 @@ const copyScript = `(function(){
 })()`
 ---
 
-<style>
+<style
+    define:vars={{
+        titleFontFamily: typographics.title.fontFamily,
+        titleFontWeight: typographics.title.fontWeight,
+    }}
+>
     .intro {
         padding-top: 1rem;
     }
@@ -87,15 +94,19 @@ const copyScript = `(function(){
     }
 
     .methods > li {
+        align-content: start;
         border-left: 4px solid var(--colorsSand);
         display: grid;
         gap: 0.75rem;
-        align-content: start;
         padding: 0.25rem 0 0.25rem 0.75rem;
     }
 
     .methods h3 {
-        font-size: 1.25rem;
+        color: var(--colorsDeepForest);
+        font-family: var(--titleFontFamily);
+        font-size: 1.1875rem;
+        font-weight: var(--titleFontWeight);
+        line-height: 1.3;
         margin: 0;
     }
 
@@ -106,19 +117,25 @@ const copyScript = `(function(){
 
     .fields {
         display: grid;
-        gap: 0.5rem;
+        gap: 0.75rem;
     }
 
-    .fields dt {
-        font-size: 0.875rem;
+    .fields > div {
+        display: grid;
+        gap: 0.25rem;
     }
 
     .fields dd {
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.25rem 0.75rem;
         margin: 0;
+    }
+
+    /* Value and icon share a row; a long value wraps inside its own column. */
+    .fields .copyable {
+        align-items: center;
+        column-gap: 0.25rem;
+        display: grid;
+        grid-template-columns: minmax(0, auto) 2.75rem;
+        justify-content: start;
     }
 
     .value {
@@ -126,27 +143,28 @@ const copyScript = `(function(){
         font-variant-numeric: tabular-nums;
     }
 
+    /* 44px hit area; the negative margin keeps it from growing the row. */
     .copy {
         align-items: center;
         background: transparent;
-        border: 1px solid currentcolor;
-        color: var(--colorsDeepForest);
+        border: 0;
+        color: var(--colorsDarkGreen);
         cursor: pointer;
         display: inline-flex;
-        height: 2.25rem;
+        height: 2.75rem;
         justify-content: center;
+        margin-block: -0.5rem;
         padding: 0;
-        width: 2.25rem;
+        width: 2.75rem;
     }
 
     .copy:hover {
-        background: var(--colorsDeepForest);
-        color: var(--colorsLightSand);
+        color: var(--colorsDeepForest);
     }
 
     .copy svg {
-        height: 1.125rem;
-        width: 1.125rem;
+        height: 1.25rem;
+        width: 1.25rem;
     }
 
     /* `is-done` is set by the copy script, so the template never shows it to the linter. */
@@ -164,11 +182,13 @@ const copyScript = `(function(){
     }
 
     .action {
-        padding-top: 0.25rem;
+        padding-top: 0.5rem;
     }
 
     .action .btn {
+        display: block;
         text-align: center;
+        width: 100%;
     }
 
     .status {
@@ -182,7 +202,7 @@ const copyScript = `(function(){
 
     @media (min-width: 769px) {
         .methods {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
 </style>
@@ -196,8 +216,10 @@ const copyScript = `(function(){
                 {
                     mobilePayFields.map((field) => (
                         <div>
-                            <dt>{field.label}</dt>
-                            <dd>
+                            <dt>
+                                <Eyebrow>{field.label}</Eyebrow>
+                            </dt>
+                            <dd class="copyable">
                                 <span class="value">{field.value}</span>
                                 <button
                                     aria-label={`${labels.copy}: ${field.label}`}
@@ -249,8 +271,10 @@ const copyScript = `(function(){
                 {
                     bankFields.map((field) => (
                         <div>
-                            <dt>{field.label}</dt>
-                            <dd>
+                            <dt>
+                                <Eyebrow>{field.label}</Eyebrow>
+                            </dt>
+                            <dd class="copyable">
                                 <span class="value">{field.value}</span>
                                 <button
                                     aria-label={`${labels.copy}: ${field.label}`}
@@ -292,7 +316,9 @@ const copyScript = `(function(){
                     ))
                 }
                 <div>
-                    <dt>{labels.bankTransfer.messageLabel}</dt>
+                    <dt>
+                        <Eyebrow>{labels.bankTransfer.messageLabel}</Eyebrow>
+                    </dt>
                     <dd>{labels.bankTransfer.message}</dd>
                 </div>
             </dl>
