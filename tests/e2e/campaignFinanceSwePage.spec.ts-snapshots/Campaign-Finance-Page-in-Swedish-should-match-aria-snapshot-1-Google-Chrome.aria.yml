@@ -36,7 +36,7 @@
           - link "Läs donationsvillkoren":
             - /url: /sv/riksdagsvalet/valfinansiering/donationsvillkor/#bankoverforing
       - listitem:
-        - heading "Med kort eller nätbank" [level=3]
+        - heading "I De Grönas donationstjänst" [level=3]
         - paragraph:
           - link "Donationstjänst":
             - /url: https://lavanti.fi/lahjoita
