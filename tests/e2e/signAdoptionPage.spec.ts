@@ -203,6 +203,33 @@ test.describe('Sign adoption page', () => {
         const results = await new AxeBuilder({ page }).disableRules(['color-contrast']).analyze()
         test.expect(results.violations).toEqual([])
     })
+
+    test('should keep the chosen package visible in forced colours', async ({ page }) => {
+        await page.emulateMedia({ forcedColors: 'active' })
+        await page.goto('/fi/adoptoi/')
+        const chipBg = (value: string) =>
+            page
+                .locator(`input[name="quantity"][value="${value}"] + .chip`)
+                .evaluate((el) => getComputedStyle(el).backgroundColor)
+        await page.locator('input[name="quantity"][value="5"]').check({ force: true })
+        test.expect(await chipBg('5')).not.toBe(await chipBg('2'))
+    })
+
+    // The form sits on a plain background, so contrast is checked there, with every package state.
+    for (const path of ['/fi/adoptoi/', '/sv/adoptera/', '/en/adopt/']) {
+        test(`should meet WCAG 2.2 AA in the form at ${path}, the featured package chosen or not`, async ({ page }) => {
+            await page.goto(path)
+            const axe = () =>
+                new AxeBuilder({ page })
+                    .include('#lomake')
+                    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+                    .analyze()
+            test.expect((await axe()).violations).toEqual([])
+
+            await page.locator('input[name="quantity"][value="5"]').check({ force: true })
+            test.expect((await axe()).violations).toEqual([])
+        })
+    }
 })
 
 test.describe('Sign adoption page without JavaScript', () => {
