@@ -133,7 +133,7 @@ Owner request 2026-11-16: people can donate for signs without their name on them
   ilman nimeä · 30 €". The CTA and total follow the package price. Email, municipality, the company block and
   Turnstile stay. The script disables the hidden inputs so none are posted; without a script the
   markup has no `required` on them and the server ignores them.
-- **Packages:** one sign 30 €, two 55 €, three 80 €, five 100 € (featured, "Suosituin"), ten 190 €.
+- **Packages:** one sign 30 €, two 55 €, three 80 €, five 100 € (featured with a heavier frame; the page never calls it the most popular), ten 190 €.
   Every bigger package costs more in total and less per sign. Five signs for 100 € is the
   package the page points to: three signs cost nearly as much, and ten signs set the top. There is no
   free count, so four signs can never cost more than five. `SIGN_PACKAGES` is the only price source
@@ -238,7 +238,7 @@ with ghost text "Sinun nimesi" in the sticker; fine print
 "Havainnekuva. Lopullinen kyltti voi poiketa kuvasta." · "30 € = yksi kyltti tienvarteen" ·
 "Nimi kylttiin" (maxlength 24, counter; the sign renders the typed value directly, no animation) ·
 package cards "1 kyltti · 30 €" (preselected), "2 kylttiä · 55 €" + "27,50 €/kyltti", "3 kylttiä · 80 €"
-+ "26,67 €/kyltti", "Suosituin" "5 kylttiä · 100 €" + "20 €/kyltti", "10 kylttiä · 190 €" + "19 €/kyltti" → "Lahjoituksesi: 30 €" · always visible "Digitaalisen itsenäisyyden puolesta ry on
++ "26,67 €/kyltti", "5 kylttiä · 100 €" + "20 €/kyltti", "10 kylttiä · 190 €" + "19 €/kyltti" → "Lahjoituksesi: 30 €" · always visible "Digitaalisen itsenäisyyden puolesta ry on
 tukiyhdistykseni, joka järjestää vaalikeräyksen ja maksaa kyltit." + "Lue, miten kampanjani
 rahoitetaan." (link to the campaign finance page) · CTA "Adoptoi kyltti" / "Adoptoi 2 kylttiä" ·
 live line from `seina`: "Jo 14 kylttiä on adoptoitu." and "Viimeksi adoptoivat: A, B ja C." (each
@@ -483,3 +483,4 @@ interface AdoptionPage {
 | 2026-11-14 | Synced with the implementation: quantity_other, client script pattern, H1/eyebrow layout, ogCard, check script |
 | 2026-11-14 | Donor review: direct-ask intro, association line under the total, next-step line and amount in the pinned summary, thanks page pays first with a no-MobilePay fallback, compact phone first screen, Swedish sign on sv, plain-language page consent, copy fixes |
 | 2026-11-20 | Sign packages 1/2/3/5/10 for 30/55/80/100/190 €, five featured; the free count is gone |
+| 2026-11-21 | Dropped the "Suosituin" badge: the featured package keeps only its heavier frame |

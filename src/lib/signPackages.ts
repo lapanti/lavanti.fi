@@ -9,7 +9,7 @@
 
 export interface SignPackage {
     euros: number
-    /** The package the form highlights ("Suosituin"). */
+    /** The package the form highlights (a heavier frame only; no "most popular" claim). */
     featured?: true
     signs: number
 }

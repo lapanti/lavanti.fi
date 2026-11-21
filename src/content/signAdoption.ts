@@ -72,8 +72,6 @@ interface AdoptionLocale {
         billingAddress: string
         businessId: string
         chip: (n: number, euros: number) => string
-        /** The badge on the package the page points to. */
-        chipFeatured: string
         /** The per-sign price under a multi-sign package. */
         chipPerSign: (euros: number) => string
         chipsLegend: string
@@ -257,7 +255,6 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             billingAddress: 'Billing address (email or e-invoice address)',
             businessId: 'Business ID (Y-tunnus)',
             chip: (n, euros) => `${n} ${n === 1 ? 'sign' : 'signs'} · €${euros}`,
-            chipFeatured: 'Most popular',
             chipPerSign: (euros) => `€${formatEuros(euros, 'en-GB')} per sign`,
             chipsLegend: 'How many signs will you adopt?',
             companyDeclaration:
@@ -448,7 +445,6 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             billingAddress: 'Laskutusosoite (sähköposti tai verkkolaskuosoite)',
             businessId: 'Y-tunnus',
             chip: (n, euros) => `${n} ${n === 1 ? 'kyltti' : 'kylttiä'} · ${euros} €`,
-            chipFeatured: 'Suosituin',
             chipPerSign: (euros) => `${formatEuros(euros, 'fi-FI')} €/kyltti`,
             chipsLegend: 'Montako kylttiä adoptoit?',
             companyDeclaration:
@@ -636,7 +632,6 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             billingAddress: 'Faktureringsadress (e-post eller e-fakturaadress)',
             businessId: 'FO-nummer',
             chip: (n, euros) => `${n} ${n === 1 ? 'skylt' : 'skyltar'} · ${euros} €`,
-            chipFeatured: 'Populärast',
             chipPerSign: (euros) => `${formatEuros(euros, 'sv-FI')} €/skylt`,
             chipsLegend: 'Hur många skyltar adopterar du?',
             companyDeclaration:

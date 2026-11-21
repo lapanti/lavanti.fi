@@ -133,14 +133,9 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
         font-size: var(--textSmallFontSize);
         font-weight: normal;
     }
-    /* The package the page points to: a heavier frame and a badge above the count. */
+    /* The package the page points to: a heavier frame only, no "most popular" claim. */
     .chips .featured .chip {
         border-width: 3px;
-    }
-    .chips .badge {
-        font-size: var(--textSmallFontSize);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
     }
     .chips input:checked + .chip {
         background: var(--colorsForestGreen);
@@ -265,7 +260,6 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
                             <label class:list={{ featured: p.featured }}>
                                 <input checked={p.signs === 1} name="quantity" type="radio" value={String(p.signs)} />
                                 <span class="chip">
-                                    {p.featured && <span class="badge">{t.chipFeatured}</span>}
                                     <span>{t.chip(p.signs, p.euros)}</span>
                                     {p.signs > 1 && <span class="per-sign">{t.chipPerSign(perSignEuros(p))}</span>}
                                 </span>
