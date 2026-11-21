@@ -299,7 +299,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             eyebrow: 'Support',
             heading: 'How can I support the campaign?',
             intro: (association) =>
-                `The quickest way to donate is MobilePay or a bank transfer. Both go to my support association, ${association}.`,
+                `The quickest way to donate is MobilePay or a bank transfer. All donations go to my support association, ${association}.`,
             mobilePay: { link: 'Donate with MobilePay', number: 'MobilePay number', title: 'With MobilePay' },
         },
         donors: (count) => `${count} donors`,
@@ -364,7 +364,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             eyebrow: 'Tue',
             heading: 'Miten voin tukea kampanjaa?',
             intro: (association) =>
-                `Nopeimmin lahjoitat MobilePaylla tai tilisiirrolla. Molemmat lahjoitukset ottaa vastaan tukiyhdistykseni ${association}.`,
+                `Nopeimmin lahjoitat MobilePaylla tai tilisiirrolla. Kaikki lahjoitukset ottaa vastaan tukiyhdistykseni ${association}.`,
             mobilePay: { link: 'Lahjoita MobilePaylla', number: 'MobilePay-numero', title: 'MobilePaylla' },
         },
         donors: (count) => `${count} lahjoittajaa`,
@@ -428,7 +428,7 @@ export const financeLabels: Record<Lang, FinanceLabels> = {
             eyebrow: 'Stöd',
             heading: 'Hur kan jag stödja kampanjen?',
             intro: (association) =>
-                `Snabbast donerar du med MobilePay eller banköverföring. Båda donationerna tas emot av min stödförening ${association}.`,
+                `Snabbast donerar du med MobilePay eller banköverföring. Alla donationer tas emot av min stödförening ${association}.`,
             mobilePay: { link: 'Donera med MobilePay', number: 'MobilePay-nummer', title: 'Med MobilePay' },
         },
         donors: (count) => `${count} donatorer`,
