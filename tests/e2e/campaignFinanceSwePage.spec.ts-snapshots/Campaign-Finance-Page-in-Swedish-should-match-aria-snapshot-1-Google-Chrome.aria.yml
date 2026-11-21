@@ -38,7 +38,7 @@
       - listitem:
         - heading "Med kort eller nätbank" [level=3]
         - paragraph:
-          - link "Donera på De Grönas sida":
+          - link "Donationstjänst":
             - /url: https://lavanti.fi/lahjoita
     - paragraph
     - text: Läget
