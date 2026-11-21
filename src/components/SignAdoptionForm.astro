@@ -147,6 +147,17 @@ const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'na
         background: var(--colorsForestGreen);
         color: var(--colorsWhite);
     }
+    /*
+     * Forced colours (Windows high contrast) drop backgrounds, which alone mark the chosen
+     * package; system colours keep the choice visible.
+     */
+    @media (forced-colors: active) {
+        .chips input:checked + .chip {
+            background: Highlight;
+            color: HighlightText;
+            forced-color-adjust: none;
+        }
+    }
     .chips input:focus-visible + .chip {
         outline: 3px solid var(--colorsSignalBlue);
         outline-offset: 2px;
