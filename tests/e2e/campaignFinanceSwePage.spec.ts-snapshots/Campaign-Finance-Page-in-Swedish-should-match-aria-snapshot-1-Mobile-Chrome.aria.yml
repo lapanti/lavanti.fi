@@ -46,7 +46,7 @@
     - term: Kampanjbudget
     - definition: /\d+ \d+ €/
     - term: Insamlat hittills
-    - definition: /2 \d+ € \+ \d+ \d+ € ej inbetalt/
+    - definition: /3 \d+ € \+ \d+ \d+ € ej inbetalt/
     - term: Använt hittills
     - definition: /\d+ € \+ \d+ \d+ € bundet/
     - term: Kvar att samla in
@@ -84,7 +84,7 @@
       - list:
         - listitem: /Egna medel 2 \d+ € \+ \d+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Lån 0 € \d+,\d+ %/
-        - listitem: /Privatpersoner 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
+        - listitem: /Privatpersoner 1 \d+ € \+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Företag 0 € \+ \d+ € ej inbetalt \d+,\d+ %/
         - listitem: /Partiet och partiföreningar 0 € \d+,\d+ %/
         - listitem: /Föreningar och andra aktörer 0 € \d+,\d+ %/

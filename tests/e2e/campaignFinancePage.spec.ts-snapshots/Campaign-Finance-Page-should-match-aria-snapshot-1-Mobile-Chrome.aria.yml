@@ -46,7 +46,7 @@
     - term: Kampanjabudjetti
     - definition: /\d+ \d+ €/
     - term: Kerätty
-    - definition: /2 \d+ € \+ \d+ \d+ € tilittämättä/
+    - definition: /3 \d+ € \+ \d+ \d+ € tilittämättä/
     - term: Käytetty
     - definition: /\d+ € \+ \d+ \d+ € sitouduttu/
     - term: Vielä kerättävä
@@ -84,7 +84,7 @@
       - list:
         - listitem: /Omat varat 2 \d+ € \+ \d+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Lainat 0 € \d+,\d+ %/
-        - listitem: /Yksityishenkilöt 0 € \+ \d+ € tilittämättä \d+,\d+ %/
+        - listitem: /Yksityishenkilöt 1 \d+ € \+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Yritykset 0 € \+ \d+ € tilittämättä \d+,\d+ %/
         - listitem: /Puolue ja puolueyhdistykset 0 € \d+,\d+ %/
         - listitem: /Yhdistykset ja muut tahot 0 € \d+,\d+ %/

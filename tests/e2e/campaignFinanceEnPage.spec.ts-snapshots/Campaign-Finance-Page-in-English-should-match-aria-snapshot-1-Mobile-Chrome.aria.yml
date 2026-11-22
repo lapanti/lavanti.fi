@@ -84,7 +84,7 @@
       - list:
         - listitem: /My own funds €\d+,\d+ \+ €\d+,\d+ pending \d+\.\d+%/
         - listitem: Loans €0 0.0%
-        - listitem: /Private individuals €0 \+ €\d+ pending 1\.6%/
+        - listitem: /Private individuals €\d+,\d+ \+ €\d+ pending 2\.5%/
         - listitem: /Companies €0 \+ €\d+ pending 1\.1%/
         - listitem: The party and party associations €0 0.0%
         - listitem: Associations and other bodies €0 0.0%
