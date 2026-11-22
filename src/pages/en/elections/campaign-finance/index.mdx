@@ -7,7 +7,7 @@ emphasis: 'finances'
 intro: 'I accept support from private individuals, companies and associations. This page always has up-to-date figures on how much has been raised, where it came from and what it has been spent on.'
 description: 'The finances of Lauri Lavanti’s parliamentary election campaign in the open: budget, funds raised by source, money spent and a comparison with 2023 campaigns.'
 slug: 'en/elections/campaign-finance'
-updatedDate: '2026-11-21'
+updatedDate: '2026-11-22'
 type: 'WebPage'
 breadcrumbParent: 'elections'
 breadcrumbName: 'Campaign finance'
@@ -24,7 +24,7 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Who funds Lauri Lavanti’s campaign?'
-      a: 'The campaign’s money comes from Lauri Lavanti’s own funds and from private individuals, companies and associations. No loans are taken for the campaign. The amount for each source is shown separately, as is the date the figures were last checked. Every contribution of 2,000 euros or more is published with the supporter’s name.'
+      a: 'The campaign’s money comes from Lauri Lavanti’s own funds and from private individuals, companies and associations. No loans are taken for the campaign. The amount for each source is shown separately, as is the date the figures were last checked. Every contribution of 2,000 euros or more is published with the supporter’s name. Smaller supporters are not named.'
     - q: 'Does Lauri Lavanti accept corporate funding?'
       a: 'Yes. Lauri Lavanti accepts support from companies, private individuals and associations, but no loans. He publishes every contribution of 2,000 euros or more with the supporter’s name. He also files a voluntary advance disclosure for the campaign with the National Audit Office of Finland. The law does not require candidates to file an advance disclosure.'
     - q: 'Where is the election funding disclosure published?'
@@ -92,7 +92,7 @@ export const spending = spendingSegments(campaignFinance, 'en')
     <FinanceStack caption="The budget by source and shares of the whole budget" lang="en" segments={budget.segments} total={budget.total} />
     <Prose>
         <p>I break the money down the same way as the statutory disclosure that elected members file with the audit office. The striped part is money already agreed but not yet in the campaign account.</p>
-        <p>Support can come from private individuals, companies and associations. I publish every contribution of 2,000 euros or more with the supporter’s name. I also file a voluntary advance disclosure for the campaign with the audit office. The advance disclosure is not mandatory.</p>
+        <p>Support can come from private individuals, companies and associations. I publish every contribution of 2,000 euros or more with the supporter’s name. I do not publish the names of smaller supporters. I also file a voluntary advance disclosure for the campaign with the audit office. The advance disclosure is not mandatory.</p>
         <p><a class="link-rule" href="#support">{labels.donate.cta}</a></p>
     </Prose>
 </Plate>
