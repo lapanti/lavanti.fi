@@ -7,7 +7,7 @@ emphasis: 'finansiering'
 intro: 'Jag tar emot stöd från privatpersoner, företag och föreningar. På den här sidan hittar du alltid aktuella uppgifter om hur mycket som samlats in, varifrån pengarna kommer och vad de har använts till.'
 description: 'Finansieringen av Lauri Lavantis riksdagsvalskampanj öppet: budget, insamlade medel per källa, använda pengar och en jämförelse med valkampanjerna 2023.'
 slug: 'sv/riksdagsvalet/valfinansiering'
-updatedDate: '2026-11-21'
+updatedDate: '2026-11-22'
 type: 'WebPage'
 breadcrumbParent: 'elections'
 breadcrumbName: 'Valfinansiering'
@@ -24,7 +24,7 @@ langAlternates:
     sv: '/sv/riksdagsvalet/valfinansiering/'
 faq:
     - q: 'Vem finansierar Lauri Lavantis kampanj?'
-      a: 'Kampanjens pengar kommer från Lauri Lavantis egna medel samt från privatpersoner, företag och föreningar. Inga lån tas för kampanjen. Beloppet för varje källa redovisas separat, liksom datumet då uppgifterna senast kontrollerades. Varje stöd på minst 2 000 euro offentliggörs med stödjarens namn.'
+      a: 'Kampanjens pengar kommer från Lauri Lavantis egna medel samt från privatpersoner, företag och föreningar. Inga lån tas för kampanjen. Beloppet för varje källa redovisas separat, liksom datumet då uppgifterna senast kontrollerades. Varje stöd på minst 2 000 euro offentliggörs med stödjarens namn. Mindre stödjare namnges inte.'
     - q: 'Tar Lauri Lavanti emot företagsstöd?'
       a: 'Ja. Lauri Lavanti tar emot stöd från företag, privatpersoner och föreningar, men inga lån. Han offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Dessutom lämnar han in en frivillig förhandsredovisning för kampanjen till Statens revisionsverk. Lagen kräver ingen förhandsredovisning av kandidaterna.'
     - q: 'Var offentliggörs redovisningen av valfinansieringen?'
@@ -92,7 +92,7 @@ export const spending = spendingSegments(campaignFinance, 'sv')
     <FinanceStack caption="Budgetens pengar per källa samt andelar av hela budgeten" lang="sv" segments={budget.segments} total={budget.total} />
     <Prose>
         <p>Jag specificerar pengarna på samma sätt som i den redovisning av valfinansieringen som valda ledamöter lämnar in till revisionsverket. Den randiga delen är pengar som redan är överenskomna men ännu inte finns på kampanjens konto.</p>
-        <p>Stöd kan ges av privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket. Förhandsredovisningen är inte obligatorisk.</p>
+        <p>Stöd kan ges av privatpersoner, företag och föreningar. Jag offentliggör varje stöd på minst 2 000 euro med stödjarens namn. Namnen på mindre stödjare offentliggör jag inte. Jag lämnar också in en frivillig förhandsredovisning för kampanjen till revisionsverket. Förhandsredovisningen är inte obligatorisk.</p>
         <p><a class="link-rule" href="#stod">{labels.donate.cta}</a></p>
     </Prose>
 </Plate>
