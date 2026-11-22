@@ -90,7 +90,7 @@
         - listitem: Associations and other bodies €0 0.0%
         - listitem: /Still to raise €\d+,\d+ \d+\.\d+%/
     - paragraph: I break the money down the same way as the statutory disclosure that elected members file with the audit office. The striped part is money already agreed but not yet in the campaign account.
-    - paragraph: /Support can come from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name\. I also file a voluntary advance disclosure for the campaign with the audit office\. The advance disclosure is not mandatory\./
+    - paragraph: /Support can come from private individuals, companies and associations\. I publish every contribution of \d+,\d+ euros or more with the supporter’s name\. I do not publish the names of smaller supporters\. I also file a voluntary advance disclosure for the campaign with the audit office\. The advance disclosure is not mandatory\./
     - paragraph:
       - link "Support the campaign":
         - /url: "#support"
@@ -127,7 +127,7 @@
     - text: Q & A
     - heading "Questions about campaign finance" [level=2]
     - heading "Who funds Lauri Lavanti’s campaign?" [level=3]
-    - paragraph: /The campaign’s money comes from Lauri Lavanti’s own funds and from private individuals, companies and associations\. No loans are taken for the campaign\. The amount for each source is shown separately, as is the date the figures were last checked\. Every contribution of \d+,\d+ euros or more is published with the supporter’s name\./
+    - paragraph: /The campaign’s money comes from Lauri Lavanti’s own funds and from private individuals, companies and associations\. No loans are taken for the campaign\. The amount for each source is shown separately, as is the date the figures were last checked\. Every contribution of \d+,\d+ euros or more is published with the supporter’s name\. Smaller supporters are not named\./
     - heading "Does Lauri Lavanti accept corporate funding?" [level=3]
     - paragraph: /Yes\. Lauri Lavanti accepts support from companies, private individuals and associations, but no loans\. He publishes every contribution of \d+,\d+ euros or more with the supporter’s name\. He also files a voluntary advance disclosure for the campaign with the National Audit Office of Finland\. The law does not require candidates to file an advance disclosure\./
     - heading "Where is the election funding disclosure published?" [level=3]
