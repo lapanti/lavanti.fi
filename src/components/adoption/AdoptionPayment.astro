@@ -14,7 +14,7 @@ interface Props {
 
 /*
  * The payment step between the form and the thanks page: the amount, MobilePay 46492, the ref,
- * the bank-transfer fallback and the payer name, then "Lahjoitin", a link to the thanks page with
+ * the bank-transfer fallback, the payer name and the optional "Miksi adoptoin?" message, then "Lahjoitin", a link to the thanks page with
  * the same query. A company (y=1) gets the invoice note and a plain continue link instead.
  * payment.client.ts fills in everything that depends on the validated query.
  */
@@ -25,6 +25,7 @@ const scriptData: AdoptionPaymentData = {
     almost: byPackage((p) => t.almost(p.euros)),
     continue: t.continue,
     donate: byPackage((p) => content.mobilePay.donate(p.euros)),
+    message: { saved: t.message.saved, unavailable: t.message.unavailable },
     payerSaved: t.payer.saved,
     refNote: content.mobilePay.refNote('%s'),
     thanksPath: THANKS_PATH[lang],
@@ -69,7 +70,8 @@ const scriptData: AdoptionPaymentData = {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-    .payment .inline-form input {
+    .payment .inline-form input,
+    .payment .inline-form textarea {
         flex: 1 1 14rem;
         min-height: 3rem;
     }
@@ -143,6 +145,21 @@ const scriptData: AdoptionPaymentData = {
                 <p aria-live="polite" class="status" data-status></p>
             </form>
         </div>
+
+        <form class="inline-form site-form" data-message-form hidden>
+            <label for="adoption-message">{t.message.label}</label>
+            <p class="status" id="adoption-message-hint">{t.message.hint}</p>
+            <textarea
+                aria-describedby="adoption-message-hint"
+                id="adoption-message"
+                maxlength="140"
+                name="message"
+                rows="3"></textarea>
+            <div class="row">
+                <button class="btn" type="submit">{t.message.save}</button>
+            </div>
+            <p aria-live="polite" class="status" data-status></p>
+        </form>
 
         <p data-company hidden>{t.companyInvoice}</p>
 

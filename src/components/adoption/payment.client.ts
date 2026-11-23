@@ -9,6 +9,7 @@ export interface AdoptionPaymentData {
     almost: Record<number, string>
     continue: string
     donate: Record<number, string>
+    message: { saved: string; unavailable: string }
     payerSaved: string
     refNote: string
     thanksPath: string
@@ -37,37 +38,43 @@ const initAdoptionPayment = (): void => {
         q('[data-private]').hidden = true
         q('[data-company]').hidden = false
         donated.textContent = data.continue
-        return
+    } else {
+        q('[data-almost]').textContent = data.almost[params.quantity]
+        q('[data-donate]').textContent = data.donate[params.quantity]
+        q('[data-ref-note]').textContent = data.refNote.replace('%s', () => params.ref)
+        q<HTMLButtonElement>('[data-ref-copy]').dataset.copy = params.ref
     }
-
-    q('[data-almost]').textContent = data.almost[params.quantity]
-    q('[data-donate]').textContent = data.donate[params.quantity]
-    q('[data-ref-note]').textContent = data.refNote.replace('%s', () => params.ref)
-    q<HTMLButtonElement>('[data-ref-copy]').dataset.copy = params.ref
 
     const stored = readStoredAdoption(() => window.sessionStorage)
     // Saving needs the edit token, which only the browser that sent the form holds.
     const token = stored && stored.ref === params.ref ? stored.token : ''
     if (!token) return
-    const payerForm = q<HTMLFormElement>('[data-payer-form]')
-    payerForm.hidden = false
-    payerForm.addEventListener('submit', async (event) => {
-        event.preventDefault()
-        const value = (payerForm.elements.namedItem('payer_name') as HTMLInputElement).value
-        let status = 0
-        try {
-            const res = await fetch('/api/adoptoi/viesti', {
-                body: JSON.stringify({ payer_name: value, ref: params.ref, token }),
-                headers: { 'Content-Type': 'application/json' },
-                method: 'POST',
-            })
-            status = res.status
-        } catch {
-            // Offline or blocked: reported below as unavailable.
-        }
-        q('[data-payer-form] [data-status]').textContent =
-            status === 200 ? data.payerSaved : status === 429 ? data.tooSoon : data.unavailable
-    })
+
+    /** Wires a form that posts one field to `viesti` and reports the result in its status line. */
+    const wire = (selector: string, field: 'message' | 'payer_name', saved: string, unavailable: string) => {
+        const form = q<HTMLFormElement>(selector)
+        form.hidden = false
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault()
+            const value = (form.elements.namedItem(field) as HTMLInputElement | HTMLTextAreaElement).value
+            let status = 0
+            try {
+                const res = await fetch('/api/adoptoi/viesti', {
+                    body: JSON.stringify({ [field]: value, ref: params.ref, token }),
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST',
+                })
+                status = res.status
+            } catch {
+                // Offline or blocked: reported below as unavailable.
+            }
+            q(`${selector} [data-status]`).textContent =
+                status === 200 ? saved : status === 429 ? data.tooSoon : unavailable
+        })
+    }
+    if (!params.company) wire('[data-payer-form]', 'payer_name', data.payerSaved, data.unavailable)
+    // The message shows on the wall next to the name, so a donation without one has none.
+    if (!params.unnamed) wire('[data-message-form]', 'message', data.message.saved, data.message.unavailable)
 }
 
 // Loaded with <script src> from AdoptionPayment.astro.

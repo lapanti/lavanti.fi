@@ -151,6 +151,8 @@ interface AdoptionLocale {
         fallback: { lead: string; message: string; recipient: string }
         invalid: string
         invalidLink: string
+        /** The optional "Miksi adoptoin?" on the payment step; tooSoon is shared with payer. */
+        message: { hint: string; label: string; save: string; saved: string; unavailable: string }
         missingName: string
         next: string
         payer: { label: string; save: string; saved: string; tooSoon: string; unavailable: string }
@@ -380,6 +382,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'This link is missing some details.',
             invalidLink: 'Go back and adopt a sign',
+            message: {
+                hint: 'Up to 140 characters. The message appears on the page only after we have checked it, and only if you allowed your name to be shown.',
+                label: 'Why did I adopt? (optional)',
+                save: 'Save the message',
+                saved: 'Thank you! We will check the message before it appears.',
+                unavailable: 'Saving the message does not work right now. Please email lauri@lavanti.fi.',
+            },
             missingName: 'Type the name again to see your sign.',
             next: 'We will check the donation and send a confirmation to your email.',
             payer: {
@@ -559,6 +568,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'Linkistä puuttuu tietoja.',
             invalidLink: 'Palaa adoptoimaan kyltti',
+            message: {
+                hint: 'Enintään 140 merkkiä. Viesti näkyy sivulla vasta, kun olemme tarkistaneet sen, ja vain jos annoit luvan nimesi näyttämiseen.',
+                label: 'Miksi adoptoin? (vapaaehtoinen)',
+                save: 'Tallenna viesti',
+                saved: 'Kiitos! Tarkistamme viestin ennen kuin se näkyy.',
+                unavailable: 'Viestin tallennus ei juuri nyt onnistu. Lähetä viesti osoitteeseen lauri@lavanti.fi.',
+            },
             missingName: 'Kirjoita nimi uudelleen, niin näet kylttisi.',
             next: 'Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi.',
             payer: {
@@ -742,6 +758,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'Länken saknar uppgifter.',
             invalidLink: 'Gå tillbaka och adoptera en skylt',
+            message: {
+                hint: 'Högst 140 tecken. Meddelandet syns på sidan först när vi har granskat det, och bara om du gav tillstånd att visa ditt namn.',
+                label: 'Varför adopterade jag? (frivilligt)',
+                save: 'Spara meddelandet',
+                saved: 'Tack! Vi granskar meddelandet innan det syns.',
+                unavailable: 'Det går inte att spara meddelandet just nu. Skicka e-post till lauri@lavanti.fi.',
+            },
             missingName: 'Skriv namnet igen, så ser du din skylt.',
             next: 'Vi kontrollerar gåvan och skickar en bekräftelse till din e-post.',
             payer: {
