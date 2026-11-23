@@ -29,9 +29,11 @@ All three locales (fi, sv, en) launch together. There is no "first 20" hook.
 ### In scope
 - Landing pages `/fi/adoptoi/`, `/sv/adoptera/`, `/en/adopt/` with a live sign preview, quantity
   chips and a two-step form (step 2 on the same page, no reload).
-- Thanks pages `/fi/adoptoi/kiitos/`, `/sv/adoptera/tack/`, `/en/adopt/thanks/` (noindex): pay first
-  (MobilePay 46492 or invoice for companies), then the thank-you message, share images and an
-  optional public message.
+- Payment pages `/fi/adoptoi/lahjoita/`, `/sv/adoptera/donera/`, `/en/adopt/donate/` (noindex):
+  MobilePay 46492, the ref and a bank transfer (or the invoice note for companies), then
+  "Lahjoitin" on to the thanks page.
+- Thanks pages `/fi/adoptoi/kiitos/`, `/sv/adoptera/tack/`, `/en/adopt/thanks/` (noindex): only the
+  thanks, a share text and one 3:4 share image, each copied or downloaded with one click.
 - D1 table `sign_adoptions` and the Pages Functions under `/api/adoptoi*`.
 - Owner CLI `npm run adoptions` (moderation, approval, print list, revocation, personal pages).
 - Opt-in personal pages `/<lang-base>/<slug>/` built statically from `src/content/adoptionPages.json`.
@@ -51,12 +53,13 @@ All three locales (fi, sv, en) launch together. There is no "first 20" hook.
 
 ```
 /fi/adoptoi/ · /sv/adoptera/ · /en/adopt/        landing (indexed, OG card from frontmatter)
+/…/lahjoita/ · /…/donera/ · /…/donate/          payment step (noindex, X-Robots-Tag, not in sitemap)
 /…/kiitos/ · /…/tack/ · /…/thanks/               thanks (noindex, X-Robots-Tag, not in sitemap)
 /…/<slug>/                                       personal page (noindex, not in sitemap, own OG card)
 
 POST   /api/adoptoi            Turnstile + validate → pending row → JSON {ref, token}
-                               (Accept: application/json) or 303 thanks?ref&n&y (no JS)
-POST   /api/adoptoi/viesti     ref + token → message (≤ 140) and/or payer_name
+                               (Accept: application/json) or 303 lahjoita?ref&n&y (no JS)
+POST   /api/adoptoi/viesti     ref + token → payer_name (and message, which no page sends now)
 GET    /api/adoptoi/seina      public, Cache-Control: public, max-age=60 → the wall
 GET    /api/adoptoi/pending    Bearer ADOPTIONS_TOKEN [?status=approved] → rows
 POST   /api/adoptoi/:id        Bearer ADOPTIONS_TOKEN, JSON {action[, paid_via]}
@@ -80,9 +83,11 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   there to make the visitor scroll; the form is one tap or one swipe away. The landing pages set
   `heroSign: true`: the hero shows the sign with the ghost name (decorative, `aria-hidden`, not
   updated by typing) in place of the photo, which is then not preloaded; `heroImage` stays only
-  for the OG card portrait. The CTA stays on the first screen at 375 × 812. Thanks pages: H1
+  for the OG card portrait. The CTA stays on the first screen at 375 × 812. Payment pages: H1
   "Kylttisi odottaa" + emphasis "lahjoitustasi", CTA "Viimeistele adoptio" (`#lahjoitus`) to the
-  payment plate, and a question heading ("Mitä seuraavaksi?") for the AEO check. Personal pages
+  payment plate, and a question heading ("Mitä seuraavaksi?") for the AEO check. Thanks pages: H1
+  "Kiitos" + emphasis "lahjoituksesta", CTA "Jaa kylttisi" (`#jaa`), plate heading "Kerrotko
+  kyltistäsi kavereillesi?". Personal pages
   pass `ogCard` to `PageLayout` to keep the generated card on a noindex page.
 - **Checks:** `npm run check:adoption-pages` runs the personal page rule by hand.
 - **Copy:** `src/content/signAdoption.ts`, `Record<Lang, …>`, including the confirmation email
@@ -137,14 +142,13 @@ Owner request 2026-11-16: people can donate for signs without their name on them
   Every bigger package costs more in total and less per sign. Five signs for 100 € is the
   package the page points to: three signs cost nearly as much, and ten signs set the top. There is no
   free count, so four signs can never cost more than five. `SIGN_PACKAGES` is the only price source
-  for the form, the thanks page and the CLI (`donation`).
+  for the form, the payment step and the CLI (`donation`).
 - **Storage:** migration `0005_sign_adoptions_unnamed.sql` rebuilds `sign_adoptions` with
   `named INTEGER NOT NULL DEFAULT 1` and nullable `sign_name` and `consent_print_at` (a CHECK keeps
   both set when `named = 1`). An unnamed row has `named = 0`, both NULL, `public = 0`, no page.
-- **Thanks:** the URL gets `&u=1`. The sign shows no sticker, the name prompt and the message form
-  are hidden, and the share PNGs have no sticker, with "Tuin Lauri Lavannin vaalikylttejä" as the
-  headline and share text "Tuin Lauri Lavannin vaalikylttejä, ja keväällä ne nousevat tienvarsille.
-  …". The thank-you message stays.
+- **Thanks:** the payment and thanks URLs get `&u=1`. The name prompt is hidden, and the share PNG
+  has no sticker, with "Tuin Lauri Lavannin vaalikylttejä" as the headline and share text "Tuin
+  Lauri Lavannin vaalikylttejä, ja keväällä ne nousevat tienvarsille. …".
 - **Wall:** unnamed rows count in `signs` and `municipalities`, never in `names` or `messages`
   (`named = 1` in those queries).
 - **Giver identity (legal):** the 6 000 € cap and 2 000 € disclosure still need the giver. An
@@ -201,7 +205,7 @@ The page leaves the site on the next deploy; git history keeps the name (no hist
 because a rewrite unsigns commits). The consent text says so.
 
 - Slug: the name lowercased, diacritics stripped, non-alphanumerics collapsed to `-`; never
-  `kiitos`, `tack` or `thanks`; unique.
+  `kiitos`, `tack`, `thanks`, `lahjoita`, `donera` or `donate`; unique.
 - Page: "{Nimi} adoptoi kyltin", the approved message, the sign, share links, an OG card and
   "Adoptoi sinäkin kyltti" + Liity. `noindex`, not in the sitemap, `llms.txt` or RSS.
 - **Repo rule (AGENTS.md):** every page is added, changed or removed in its own commit that touches
@@ -314,43 +318,40 @@ nimen käyttöön, peitämme nimen kyltistä ja poistamme sen sivustolta." · Tu
 with a company name: "Seuraavaksi lähetämme 30 euron laskun antamaasi laskutusosoitteeseen.") ·
 submit "Adoptoi kyltti" / "Adoptoi 2 kylttiä".
 
-**Thanks** (URL carries only validated `?ref=K-\d{5}&n=1|2|3|5|10&y=0|1`), H1 "Kylttisi odottaa
-lahjoitustasi", plate heading "Mitä seuraavaksi?", then in order:
+**Payment step** (`/fi/adoptoi/lahjoita/`; the URL carries only validated
+`?ref=K-\d{5}&n=1|2|3|5|10&y=0|1[&u=1]`), H1 "Kylttisi odottaa lahjoitustasi", plate heading "Mitä
+seuraavaksi?", then in order:
 1. The MobilePay block: heading "Melkein valmis: lahjoita 30 € MobilePayllä" (the package price) · "Lahjoita
    30 euroa MobilePayllä numerolla 46492." · copy button · `/mp` button · QR on wide screens ·
    "Kirjoita viestiksi {ref}, niin löydämme lahjoituksesi." + copy · fallback "Eikö sinulla ole
    MobilePayta? Tee tilisiirto:" + Saaja Digitaalisen itsenäisyyden puolesta ry · IBAN
    FI61 5780 3820 2478 06 + "Viesti: viitekoodisi, niin yhdistämme lahjoituksen kylttiisi."
    (owner, 2026-11-15; matched with `approve --via tilisiirto`) · "Maksajan
-   nimi, jos maksat toisen henkilön MobilePayllä" · "Lahjoitin".
-   Company (`y=1`): no MobilePay block and no "Lahjoitin"; "Lähetämme laskun antamaasi
-   laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta." Invoice
-   title "Lahjoitus vaalikeräykseen (Adoptoi kyltti)".
-2. Their sign from sessionStorage; when missing, the "Nimi kylttiin" field again.
-3. "Liity mukaan: lavanti.fi/liity", visible from the start.
-4. "Lahjoitin" → thank-you message, then share:
-   > Kiitos, että lähdit tukemaan eduskuntavaalikampanjaani!
-   >
-   > Lahjoituksesi avulla kylttisi nousee keväällä tienvarteen, ja eduskunta on piirun verran lähempänä.
-   >
-   > Kun talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella, rakennetaan digitaalisesti itsenäinen Suomi.
-   >
-   > Sinä teet sen mahdolliseksi. Kiitos!
+   nimi, jos maksat toisen henkilön MobilePayllä" (only with the edit token in sessionStorage).
+2. "Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi." · "Lahjoitin", a link to the
+   thanks page with the same query.
+   Company (`y=1`): no MobilePay block; "Lähetämme laskun antamaasi laskutusosoitteeseen. Laskussa
+   ei ole arvonlisäveroa, koska kyse on lahjoituksesta." and "Jatka" in place of "Lahjoitin".
+   Invoice title "Lahjoitus vaalikeräykseen (Adoptoi kyltti)".
 
-   + "Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi."
-   - One share PNG, 3:4 at 1080×1440 (the tallest the Instagram app keeps uncropped), drawn on canvas after `FontFace` loads Big
-     Shoulders (latin + latin-ext). Chrome: wordmark + Vihreät logo on a top row, 76 px side
-     padding, `lavanti.fi` visible, one stripe run at the foot; deep forest ground, never dark green
-     text or rules on it. Text "Adoptoin Lauri Lavannin vaalikyltin" + their sign + "Adoptoi
-     sinäkin: lavanti.fi/adoptoi". Shown as `<img>` ("Paina kuvaa pitkään ja tallenna se.") plus
-     `navigator.share({files})` or download where supported; Instagram/Facebook in-app browsers get
-     an "Avaa selaimessa" hint.
-   - On share the UTM URL goes to the clipboard: "Lisää tarinaan linkkitarra. Osoite on jo
-     leikepöydällä."
-   - Share text "Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun
-     nimelläni. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin:
-     lavanti.fi/adoptoi"
-5. Optional "Miksi adoptoin?" (≤ 140) → `viesti`; public only after moderation and opt-in.
+**Thanks** (same query), H1 "Kiitos lahjoituksesta", plate heading "Kerrotko kyltistäsi
+kavereillesi?", and nothing else but:
+1. When sessionStorage holds no name for this ref (and `u` is not set), the "Nimi kylttiin" field,
+   so the image carries the name.
+2. The share text in a box + "Kopioi teksti" (`clipboard.writeText`, label turns "Kopioitu"). The
+   text follows the count: "Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen
+   minun nimelläni." or "Adoptoin 5 Lauri Lavannin vaalikylttiä, ja keväällä ne nousevat
+   tienvarsille minun nimelläni.", then "Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla.
+   Adoptoi sinäkin: lavanti.fi/adoptoi".
+3. One share PNG, 3:4 at 1080×1440 (the tallest the Instagram app keeps uncropped; the profile grid
+   crops to 3:4), drawn on canvas after `FontFace` loads Big Shoulders (latin + latin-ext). Chrome:
+   wordmark + Vihreät logo on a top row, 76 px side padding, `lavanti.fi` visible, one stripe run
+   at the foot; deep forest ground, never dark green text or rules on it. Headline "Adoptoin Lauri
+   Lavannin vaalikyltin" (or "Adoptoin 5 Lauri Lavannin vaalikylttiä") + their sign + "Adoptoi
+   sinäkin: lavanti.fi/adoptoi". Under it "Kopioi kuva" (`clipboard.write` with an `image/png`
+   `ClipboardItem`, called without an `await` before it so Safari keeps the click; hidden where
+   unsupported) and "Lataa kuva" (a download link to the blob). Instagram/Facebook in-app browsers
+   get an "Avaa sivu selaimessa" hint.
 
 **Confirmation email** (`approve`, fi): subject "Kylttisi on adoptoitu", body thanks the adopter,
 repeats the name and count, says the signs go up in spring and how to revoke the name licence.
@@ -377,7 +378,7 @@ Feature: Adopt a campaign sign
     Given "En halua nimeäni kylttiin" is on, with a municipality, an email and a passing Turnstile check
     When it is POSTed, with or without a script
     Then one pending row exists with named = 0 and no sign name or print consent
-    And the thanks URL carries u=1, the thanks page and share images show no sticker
+    And the payment and thanks URLs carry u=1, and the share image shows no sticker
     And the row counts on the wall but its name list never includes it
 
   Scenario: Honeypot
@@ -403,11 +404,16 @@ Feature: Adopt a campaign sign
   Scenario: Thanks page without stored name
     Given /fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0 and empty sessionStorage
     When the page loads
-    Then the "Nimi kylttiin" field shows instead of a broken sign and the amount reads 60 euros
+    Then the "Nimi kylttiin" field shows, and typing in it redraws the share image with the name
+
+  Scenario: Payment step leads on
+    Given /fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0
+    When the page loads
+    Then the amount reads 100 euros and "Lahjoitin" links to /fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0
 
   Scenario: Invalid thanks parameters
     Given ?ref=<script>&n=99
-    When the thanks page loads
+    When the payment or thanks page loads
     Then no ref or amount is rendered and the page links back to the form
 
   Scenario: Personal page commit isolation
@@ -417,13 +423,13 @@ Feature: Adopt a campaign sign
 ```
 
 ### Definition of Done
-- [ ] Landing, thanks and personal routes build for fi/sv/en; thanks and personal pages are noindex
-  and absent from the sitemap; thanks paths send `X-Robots-Tag: noindex`.
+- [ ] Landing, payment, thanks and personal routes build for fi/sv/en; payment, thanks and personal
+  pages are noindex and absent from the sitemap; payment and thanks paths send `X-Robots-Tag: noindex`.
 - [ ] Unit tests cover the parser, every handler, the share-image layout and the CLI helpers;
   coverage of the new `src/lib` files ≥ 80 %.
 - [ ] Privacy notice (fi/sv/en) has the section, with `updatedDate` bumped.
-- [ ] E2E covers the steps, preview, chip → CTA label, thanks parameter validation, empty
-  sessionStorage on thanks, and a mocked `seina`.
+- [ ] E2E covers the steps, preview, chip → CTA label, payment and thanks parameter validation, the
+  "Lahjoitin" link, empty sessionStorage on thanks, both copy buttons and a mocked `seina`.
 
 ---
 
@@ -438,7 +444,7 @@ Feature: Adopt a campaign sign
 
 ```typescript
 interface AdoptionPage {
-    slug: string // [a-z0-9-]+, unique, not kiitos/tack/thanks
+    slug: string // [a-z0-9-]+, unique, not kiitos/tack/thanks/lahjoita/donera/donate
     name: string // the approved sign name
     lang: Lang
     message?: string // the approved message, ≤ 140
@@ -457,7 +463,7 @@ interface AdoptionPage {
 
 ## Anti-patterns
 
-- **Do not** put the edit token, sign name or email in a URL. The thanks URL carries ref, n and y only.
+- **Do not** put the edit token, sign name or email in a URL. The payment and thanks URLs carry ref, n, y and u only.
 - **Do not** use purchase vocabulary in any locale, or mention refunds.
 - **Do not** seed the adopters list or momentum with example names or counts.
 - **Do not** show a count, municipality cell or name list below the suppression threshold of 3.
@@ -472,6 +478,9 @@ interface AdoptionPage {
 - [ ] Phase B: `ADOPTION_CLOSES`, the date in the intro and the municipality list narrowed to the
   placement plan. The name length stays at 24 characters: the association buys the signs either
   way and adoption only adds funding, so no printer quote gates it (owner, 2026-11-15).
+- [ ] The "Miksi adoptoin?" message has no form since the thanks page became share-only
+  (2026-11-23). `viesti`, moderation and the wall's messages section still accept and show one:
+  move the form to the payment step, or drop messages.
 
 ---
 
@@ -484,3 +493,4 @@ interface AdoptionPage {
 | 2026-11-14 | Donor review: direct-ask intro, association line under the total, next-step line and amount in the pinned summary, thanks page pays first with a no-MobilePay fallback, compact phone first screen, Swedish sign on sv, plain-language page consent, copy fixes |
 | 2026-11-20 | Sign packages 1/2/3/5/10 for 30/55/80/100/190 €, five featured; the free count is gone |
 | 2026-11-21 | Dropped the "Suosituin" badge: the featured package keeps only its heavier frame |
+| 2026-11-23 | Payment moved to its own step (`lahjoita`, `donera`, `donate`); the thanks page holds only the thanks, a copyable share text and one 3:4 share image (copy or download), with count-aware copy. The message form, story image and link-sticker hint are gone |
