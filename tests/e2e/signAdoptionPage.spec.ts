@@ -298,8 +298,9 @@ test.describe('Sign adoption payment step', () => {
             .toHaveText('Kirjoita viestiksi K-12345, niin löydämme lahjoituksesi.')
         await test.expect(page.locator('.transfer')).toContainText('Digitaalisen itsenäisyyden puolesta ry')
         await test.expect(page.locator('.transfer .iban')).toHaveText('FI61 5780 3820 2478 06')
-        // Without the edit token there is nothing to save a payer's name with.
+        // Without the edit token there is nothing to save a payer's name or a message with.
         await test.expect(page.locator('[data-payer-form]')).toBeHidden()
+        await test.expect(page.locator('[data-message-form]')).toBeHidden()
 
         const donated = page.getByRole('link', { name: 'Lahjoitin' })
         await test.expect(donated).toHaveAttribute('href', '/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0')
@@ -307,7 +308,12 @@ test.describe('Sign adoption payment step', () => {
         await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0')
     })
 
-    test('should offer the payer name with the edit token', async ({ page }) => {
+    test('should save the payer name and the message with the edit token', async ({ page }) => {
+        const posted: unknown[] = []
+        await page.route('**/api/adoptoi/viesti', async (route) => {
+            posted.push(route.request().postDataJSON())
+            await route.fulfill({ json: {} })
+        })
         await page.goto('/fi/adoptoi/')
         await page.evaluate(() =>
             sessionStorage.setItem(
@@ -317,7 +323,29 @@ test.describe('Sign adoption payment step', () => {
         )
         await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=0')
 
+        await page.getByLabel('Miksi adoptoin? (vapaaehtoinen)').fill('Kirkkonummi ansaitsee paremman.')
+        await page.getByRole('button', { name: 'Tallenna viesti' }).click()
+        await test
+            .expect(page.locator('[data-message-form] [data-status]'))
+            .toHaveText('Kiitos! Tarkistamme viestin ennen kuin se näkyy.')
+        await page.getByLabel(/^Maksajan nimi/).fill('Anna Virtanen')
+        await page.getByRole('button', { exact: true, name: 'Tallenna' }).click()
+        await test.expect(page.locator('[data-payer-form] [data-status]')).toHaveText('Tallennettu.')
+        test.expect(posted).toEqual([
+            { message: 'Kirkkonummi ansaitsee paremman.', ref: 'K-12345', token: 't' },
+            { payer_name: 'Anna Virtanen', ref: 'K-12345', token: 't' },
+        ])
+    })
+
+    test('should ask no message for a donation without a name', async ({ page }) => {
+        await page.goto('/fi/adoptoi/')
+        await page.evaluate(() =>
+            sessionStorage.setItem('adoptoi', JSON.stringify({ name: '', quantity: 2, ref: 'K-12345', token: 't' }))
+        )
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0&u=1')
+
         await test.expect(page.locator('[data-payer-form]')).toBeVisible()
+        await test.expect(page.locator('[data-message-form]')).toBeHidden()
     })
 
     test('should keep the unnamed flag on the way to the thanks page', async ({ page }) => {
