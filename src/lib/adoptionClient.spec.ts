@@ -9,7 +9,6 @@ import {
     readStoredAdoption,
     resetWall,
     setSignName,
-    shareUrl,
     STORAGE_KEY,
     thanksHref,
     writeStoredAdoption,
@@ -198,12 +197,6 @@ describe('joinNames', () => {
 })
 
 describe('share helpers', () => {
-    it('tags the share URL', () => {
-        expect(shareUrl('https://lavanti.fi', '/fi/adoptoi/', 'story')).toBe(
-            'https://lavanti.fi/fi/adoptoi/?utm_source=adoptoi&utm_medium=story&utm_campaign=adoptoi-kyltti'
-        )
-    })
-
     it('spots the Instagram and Facebook in-app browsers', () => {
         expect(isInAppBrowser('Mozilla/5.0 (iPhone) Instagram 300.0')).toBe(true)
         expect(isInAppBrowser('Mozilla/5.0 [FBAN/FBIOS;FBAV/400.0]')).toBe(true)

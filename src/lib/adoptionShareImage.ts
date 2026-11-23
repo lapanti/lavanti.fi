@@ -42,6 +42,9 @@ export const SIGN = {
     width: 600,
 } as const
 
+/** The photo on the sign, shared by the SVG and the share PNG. */
+export const SIGN_PHOTO_ID = 'Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka'
+
 export const SIGN_COLORS = {
     background: DEEP_FOREST,
     firstName: colors.aquaBlue,

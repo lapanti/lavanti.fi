@@ -151,25 +151,22 @@ interface AdoptionLocale {
         fallback: { lead: string; message: string; recipient: string }
         invalid: string
         invalidLink: string
-        message: { hint: string; label: string; save: string; saved: string; tooSoon: string; unavailable: string }
         missingName: string
         next: string
-        payer: { label: string; save: string; saved: string }
+        payer: { label: string; save: string; saved: string; tooSoon: string; unavailable: string }
         share: {
-            clipboard: string
+            copyImage: string
+            copyText: string
             cta: string
             download: string
-            headline: string
-            heading: string
-            imageAlt: (name: string) => string
+            /** The share copy follows the sign count: "Adoptoin 5 Lauri Lavannin vaalikylttiä". */
+            headline: (n: number) => string
+            imageAlt: (name: string, n: number) => string
             inApp: string
-            longPress: string
-            share: string
-            text: string
+            text: (n: number) => string
             /** A donation without a name on the sign: no sticker, so no "my name" wording. */
             unnamed: { headline: string; imageAlt: string; text: string }
         }
-        thankYou: string[]
     }
     wall: {
         adoptersHeading: string
@@ -383,44 +380,37 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'This link is missing some details.',
             invalidLink: 'Go back and adopt a sign',
-            message: {
-                hint: 'Up to 140 characters. The message appears on the page only after we have checked it, and only if you allowed your name to be shown.',
-                label: 'Why did I adopt? (optional)',
-                save: 'Save the message',
-                saved: 'Thank you! We will check the message before it appears.',
-                tooSoon: 'Wait a moment and try again.',
-                unavailable: 'Saving the message does not work right now. Please email lauri@lavanti.fi.',
-            },
             missingName: 'Type the name again to see your sign.',
             next: 'We will check the donation and send a confirmation to your email.',
             payer: {
                 label: "Payer's name, if you pay with someone else's MobilePay",
                 save: 'Save',
                 saved: 'Saved.',
+                tooSoon: 'Wait a moment and try again.',
+                unavailable: "Saving does not work right now. Please email the payer's name to lauri@lavanti.fi.",
             },
             share: {
-                clipboard: 'Add a link sticker to your story. The address is already on your clipboard.',
+                copyImage: 'Copy the image',
+                copyText: 'Copy the text',
                 cta: 'Adopt one too: lavanti.fi/en/adopt',
                 download: 'Download the image',
-                heading: 'Tell your friends about your sign',
-                headline: "I adopted Lauri Lavanti's election sign",
-                imageAlt: (name) => `Share image: ${name} adopted Lauri Lavanti's election sign`,
+                headline: (n) =>
+                    n > 1
+                        ? `I adopted ${n} of Lauri Lavanti's election signs`
+                        : "I adopted Lauri Lavanti's election sign",
+                imageAlt: (name, n) =>
+                    n > 1
+                        ? `Share image: ${name} adopted ${n} of Lauri Lavanti's election signs`
+                        : `Share image: ${name} adopted Lauri Lavanti's election sign`,
                 inApp: 'Open the page in your browser to save the image.',
-                longPress: 'Press and hold the image to save it.',
-                share: 'Share the image',
-                text: "I adopted Lauri Lavanti's election sign, and in spring it goes up by the roadside with my name on it. Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt",
+                text: (n) =>
+                    `${n > 1 ? `I adopted ${n} of Lauri Lavanti's election signs, and in spring they go up by the roadside with my name on them.` : "I adopted Lauri Lavanti's election sign, and in spring it goes up by the roadside with my name on it."} Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt`,
                 unnamed: {
                     headline: "I supported Lauri Lavanti's election signs",
                     imageAlt: "Share image: I supported Lauri Lavanti's election signs",
                     text: "I supported Lauri Lavanti's election signs, and in spring they go up by the roadside. Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt",
                 },
             },
-            thankYou: [
-                'Thank you for choosing to support my parliamentary election campaign!',
-                'Your donation puts your sign up by the roadside in spring, bringing parliament a step closer.',
-                'When the economy, education, and freedom work together in the age of AI, we build a digitally independent Finland.',
-                'You make that possible. Thank you!',
-            ],
         },
         wall: {
             adoptersHeading: 'Adopters',
@@ -569,44 +559,35 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'Linkistä puuttuu tietoja.',
             invalidLink: 'Palaa adoptoimaan kyltti',
-            message: {
-                hint: 'Enintään 140 merkkiä. Viesti näkyy sivulla vasta, kun olemme tarkistaneet sen, ja vain jos annoit luvan nimesi näyttämiseen.',
-                label: 'Miksi adoptoin? (vapaaehtoinen)',
-                save: 'Tallenna viesti',
-                saved: 'Kiitos! Tarkistamme viestin ennen kuin se näkyy.',
-                tooSoon: 'Odota hetki ja yritä uudelleen.',
-                unavailable: 'Viestin tallennus ei juuri nyt onnistu. Lähetä viesti osoitteeseen lauri@lavanti.fi.',
-            },
             missingName: 'Kirjoita nimi uudelleen, niin näet kylttisi.',
             next: 'Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi.',
             payer: {
                 label: 'Maksajan nimi, jos maksat toisen henkilön MobilePayllä',
                 save: 'Tallenna',
                 saved: 'Tallennettu.',
+                tooSoon: 'Odota hetki ja yritä uudelleen.',
+                unavailable: 'Tallennus ei juuri nyt onnistu. Lähetä maksajan nimi osoitteeseen lauri@lavanti.fi.',
             },
             share: {
-                clipboard: 'Lisää tarinaan linkkitarra. Osoite on jo leikepöydällä.',
+                copyImage: 'Kopioi kuva',
+                copyText: 'Kopioi teksti',
                 cta: 'Adoptoi sinäkin: lavanti.fi/adoptoi',
                 download: 'Lataa kuva',
-                heading: 'Kerro kyltistäsi kavereillesi',
-                headline: 'Adoptoin Lauri Lavannin vaalikyltin',
-                imageAlt: (name) => `Jakokuva: ${name} adoptoi Lauri Lavannin vaalikyltin`,
+                headline: (n) =>
+                    n > 1 ? `Adoptoin ${n} Lauri Lavannin vaalikylttiä` : 'Adoptoin Lauri Lavannin vaalikyltin',
+                imageAlt: (name, n) =>
+                    n > 1
+                        ? `Jakokuva: ${name} adoptoi ${n} Lauri Lavannin vaalikylttiä`
+                        : `Jakokuva: ${name} adoptoi Lauri Lavannin vaalikyltin`,
                 inApp: 'Avaa sivu selaimessa, niin voit tallentaa kuvan.',
-                longPress: 'Paina kuvaa pitkään ja tallenna se.',
-                share: 'Jaa kuva',
-                text: 'Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun nimelläni. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi',
+                text: (n) =>
+                    `${n > 1 ? `Adoptoin ${n} Lauri Lavannin vaalikylttiä, ja keväällä ne nousevat tienvarsille minun nimelläni.` : 'Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun nimelläni.'} Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi`,
                 unnamed: {
                     headline: 'Tuin Lauri Lavannin vaalikylttejä',
                     imageAlt: 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä',
                     text: 'Tuin Lauri Lavannin vaalikylttejä, ja keväällä ne nousevat tienvarsille. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi',
                 },
             },
-            thankYou: [
-                'Kiitos, että lähdit tukemaan eduskuntavaalikampanjaani!',
-                'Lahjoituksesi avulla kylttisi nousee keväällä tienvarteen, ja eduskunta on piirun verran lähempänä.',
-                'Kun talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella, rakennetaan digitaalisesti itsenäinen Suomi.',
-                'Sinä teet sen mahdolliseksi. Kiitos!',
-            ],
         },
         wall: {
             adoptersHeading: 'Adoptoijat',
@@ -761,44 +742,37 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             invalid: 'Länken saknar uppgifter.',
             invalidLink: 'Gå tillbaka och adoptera en skylt',
-            message: {
-                hint: 'Högst 140 tecken. Meddelandet syns på sidan först när vi har granskat det, och bara om du gav tillstånd att visa ditt namn.',
-                label: 'Varför adopterade jag? (frivilligt)',
-                save: 'Spara meddelandet',
-                saved: 'Tack! Vi granskar meddelandet innan det syns.',
-                tooSoon: 'Vänta en stund och försök igen.',
-                unavailable: 'Det går inte att spara meddelandet just nu. Skicka e-post till lauri@lavanti.fi.',
-            },
             missingName: 'Skriv namnet igen, så ser du din skylt.',
             next: 'Vi kontrollerar gåvan och skickar en bekräftelse till din e-post.',
             payer: {
                 label: 'Betalarens namn, om du betalar med någon annans MobilePay',
                 save: 'Spara',
                 saved: 'Sparat.',
+                tooSoon: 'Vänta en stund och försök igen.',
+                unavailable: 'Det går inte att spara just nu. Skicka betalarens namn till lauri@lavanti.fi.',
             },
             share: {
-                clipboard: 'Lägg till ett länkklistermärke i din story. Adressen finns redan i urklippet.',
+                copyImage: 'Kopiera bilden',
+                copyText: 'Kopiera texten',
                 cta: 'Adoptera du också: lavanti.fi/sv/adoptera',
                 download: 'Ladda ner bilden',
-                heading: 'Berätta om din skylt för dina vänner',
-                headline: 'Jag adopterade Lauri Lavantis valskylt',
-                imageAlt: (name) => `Delningsbild: ${name} adopterade Lauri Lavantis valskylt`,
+                headline: (n) =>
+                    n > 1
+                        ? `Jag adopterade ${n} av Lauri Lavantis valskyltar`
+                        : 'Jag adopterade Lauri Lavantis valskylt',
+                imageAlt: (name, n) =>
+                    n > 1
+                        ? `Delningsbild: ${name} adopterade ${n} av Lauri Lavantis valskyltar`
+                        : `Delningsbild: ${name} adopterade Lauri Lavantis valskylt`,
                 inApp: 'Öppna sidan i webbläsaren, så kan du spara bilden.',
-                longPress: 'Tryck länge på bilden och spara den.',
-                share: 'Dela bilden',
-                text: 'Jag adopterade Lauri Lavantis valskylt, och i vår kommer den upp vid vägkanten med mitt namn. Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera',
+                text: (n) =>
+                    `${n > 1 ? `Jag adopterade ${n} av Lauri Lavantis valskyltar, och i vår kommer de upp vid vägkanterna med mitt namn.` : 'Jag adopterade Lauri Lavantis valskylt, och i vår kommer den upp vid vägkanten med mitt namn.'} Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera`,
                 unnamed: {
                     headline: 'Jag stödde Lauri Lavantis valskyltar',
                     imageAlt: 'Delningsbild: Jag stödde Lauri Lavantis valskyltar',
                     text: 'Jag stödde Lauri Lavantis valskyltar, och i vår kommer de upp vid vägkanterna. Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera',
                 },
             },
-            thankYou: [
-                'Tack för att du valde att stödja min riksdagsvalskampanj!',
-                'Med din gåva kommer din skylt upp vid vägkanten i vår, och riksdagen kommer en bit närmare.',
-                'När ekonomi, bildning och frihet fungerar tillsammans i AI-tidevarvet byggs ett digitalt självständigt Finland.',
-                'Du gör det möjligt. Tack!',
-            ],
         },
         wall: {
             adoptersHeading: 'Skyltfaddrar',

@@ -78,10 +78,6 @@ const LIST_LOCALE: Record<Lang, string> = { en: 'en-GB', fi: 'fi-FI', sv: 'sv-FI
 export const joinNames = (names: string[], lang: Lang): string =>
     new Intl.ListFormat(LIST_LOCALE[lang], { style: 'long', type: 'conjunction' }).format(names)
 
-/** The share URL with campaign tags, so the link sticker's visits are attributable. */
-export const shareUrl = (origin: string, path: string, medium: 'copy' | 'story'): string =>
-    `${origin}${path}?utm_source=adoptoi&utm_medium=${medium}&utm_campaign=adoptoi-kyltti`
-
 /** Instagram's and Facebook's in-app browsers can't save a generated image or share files. */
 export const isInAppBrowser = (userAgent: string): boolean => /Instagram|FBAN|FBAV|FB_IAB/i.test(userAgent)
 

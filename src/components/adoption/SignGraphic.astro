@@ -2,7 +2,7 @@
 import type { Lang } from '../../content/nav'
 
 import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
-import { SIGN, SIGN_COLORS } from '../../lib/adoptionShareImage'
+import { SIGN, SIGN_COLORS, SIGN_PHOTO_ID } from '../../lib/adoptionShareImage'
 import { getImage } from '../../lib/images'
 import { estimateWidth, fitStickerLabel, fitStickerName, STICKER } from '../../lib/signSticker'
 
@@ -21,7 +21,7 @@ const { hero = false, lang, name } = Astro.props
 const t = adoptionContent[lang].sign
 const text = SIGN_TEXT[lang]
 /** The photo on the sign; the share image script loads the same URL (data-photo). */
-const SIGN_PHOTO = getImage('Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka', 'heroLandscape')
+const SIGN_PHOTO = getImage(SIGN_PHOTO_ID, 'heroLandscape')
 const shown = hero ? '' : (name?.trim() ?? '')
 // Server-side fit from estimated widths; the browser re-fits with real ones when a name is typed.
 const label = fitStickerLabel(text.sticker, estimateWidth)

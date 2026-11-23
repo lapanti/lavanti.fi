@@ -28,8 +28,8 @@ const scriptData: AdoptionPaymentData = {
     payerSaved: t.payer.saved,
     refNote: content.mobilePay.refNote('%s'),
     thanksPath: THANKS_PATH[lang],
-    tooSoon: t.message.tooSoon,
-    unavailable: t.message.unavailable,
+    tooSoon: t.payer.tooSoon,
+    unavailable: t.payer.unavailable,
 }
 ---
 

@@ -1,32 +1,21 @@
 /**
- * Browser glue for AdoptionThanks.astro. Reads only the validated query (ref, n, y) and the
- * adopter's own sessionStorage entry; writes only textContent. Draws the share PNGs on a canvas
+ * Browser glue for AdoptionThanks.astro. Reads only the validated query (ref, n, y, u) and the
+ * adopter's own sessionStorage entry; writes only textContent. Draws the 3:4 share PNG on a canvas
  * once the fonts are loaded. Pure helpers: src/lib/adoptionClient.ts, src/lib/adoptionShareImage.ts.
  */
 
-import {
-    isInAppBrowser,
-    parseThanksParams,
-    readStoredAdoption,
-    setSignName,
-    shareUrl,
-    type StoredAdoption,
-} from '../../lib/adoptionClient'
+import { isInAppBrowser, parseThanksParams, readStoredAdoption } from '../../lib/adoptionClient'
 import { BODY_FONT, DISPLAY_FONT, drawShareImage, SHARE_SIZE } from '../../lib/adoptionShareImage'
 
 export interface AdoptionThanksData {
-    almost: Record<number, string>
+    copied: string
     cta: string
-    donate: Record<number, string>
-    formPath: string
     ghost: string
-    headline: string
-    imageAlt: string
+    headline: Record<number, string>
+    imageAlt: Record<number, string>
     logo: string
-    message: { saved: string; tooSoon: string; unavailable: string }
-    payerSaved: string
-    refNote: string
-    shareText: string
+    photo: string
+    shareText: Record<number, string>
     sign: { firstName: string; lastName: string; payer: string; sticker: readonly string[]; tagline: string }
     /** Share copy for a donation without a name on the sign (`u=1`). */
     unnamed: { headline: string; imageAlt: string; text: string }
@@ -54,6 +43,12 @@ const toBlob = (canvas: HTMLCanvasElement): Promise<Blob | null> =>
         }
     })
 
+/** Copying a PNG needs the async clipboard with ClipboardItem (absent in older Firefox). */
+const canCopyImage = (): boolean =>
+    typeof ClipboardItem !== 'undefined' &&
+    typeof navigator.clipboard?.write === 'function' &&
+    (typeof ClipboardItem.supports !== 'function' || ClipboardItem.supports('image/png'))
+
 const initAdoptionThanks = (): void => {
     const root = document.querySelector<HTMLElement>('[data-thanks]')
     const dataEl = document.getElementById('adoption-thanks-data')
@@ -70,66 +65,32 @@ const initAdoptionThanks = (): void => {
 
     const stored = readStoredAdoption(() => window.sessionStorage)
     // Only this visit's own entry counts: a stale one from an earlier adoption is ignored.
-    const own: null | StoredAdoption = stored && stored.ref === params.ref ? stored : null
-    let name = own?.name ?? ''
+    let name = stored && stored.ref === params.ref ? stored.name : ''
     const unnamed = params.unnamed === true
-    if (unnamed) {
-        // No name on the sign: no sticker, no name prompt and no message, which shows only with a name.
-        document.querySelectorAll<HTMLElement>('[data-sign]').forEach((figure) => (figure.dataset.unnamed = ''))
-    } else {
-        setSignName(document, name)
+    const n = params.quantity
+    const headline = unnamed ? data.unnamed.headline : data.headline[n]
+    const shareText = unnamed ? data.unnamed.text : data.shareText[n]
+    q('[data-share-text]').textContent = shareText
+
+    /** Shows the copied label on `button` for a moment. */
+    const confirm = (button: HTMLElement) => {
+        const label = button.textContent
+        button.textContent = data.copied
+        window.setTimeout(() => (button.textContent = label), 2000)
     }
-    const headline = unnamed ? data.unnamed.headline : data.headline
-    const shareText = unnamed ? data.unnamed.text : data.shareText
 
-    q('[data-almost]').textContent = data.almost[params.quantity]
-    q('[data-donate]').textContent = data.donate[params.quantity]
-    q('[data-ref-note]').textContent = data.refNote.replace('%s', () => params.ref)
-    q<HTMLButtonElement>('[data-ref-copy]').dataset.copy = params.ref
-
-    const post = async (body: Record<string, string>): Promise<number> => {
-        try {
-            const res = await fetch('/api/adoptoi/viesti', {
-                body: JSON.stringify({ ...body, ref: params.ref, token: own?.token ?? '' }),
-                headers: { 'Content-Type': 'application/json' },
-                method: 'POST',
-            })
-
-            return res.status
-        } catch {
-            return 0
-        }
-    }
-    const statusText = (status: number, saved: string) =>
-        status === 200 ? saved : status === 429 ? data.message.tooSoon : data.message.unavailable
-
-    // Saving needs the edit token, which only the browser that sent the form holds.
-    if (own?.token) {
-        const payerForm = q<HTMLFormElement>('[data-payer-form]')
-        if (!params.company) payerForm.hidden = false
-        payerForm.addEventListener('submit', async (event) => {
-            event.preventDefault()
-            const value = (payerForm.elements.namedItem('payer_name') as HTMLInputElement).value
-            q('[data-payer-form] [data-status]').textContent = statusText(
-                await post({ payer_name: value }),
-                data.payerSaved
-            )
-        })
-        const messageForm = q<HTMLFormElement>('[data-message-form]')
-        messageForm.hidden = unnamed
-        messageForm.addEventListener('submit', async (event) => {
-            event.preventDefault()
-            const value = (messageForm.elements.namedItem('message') as HTMLTextAreaElement).value
-            q('[data-message-form] [data-status]').textContent = statusText(
-                await post({ message: value }),
-                data.message.saved
-            )
-        })
-    }
+    const copyText = q<HTMLButtonElement>('[data-copy-text]')
+    copyText.hidden = !navigator.clipboard
+    copyText.addEventListener('click', () => {
+        void navigator.clipboard.writeText(shareText).then(
+            () => confirm(copyText),
+            () => undefined
+        )
+    })
 
     if (isInAppBrowser(navigator.userAgent)) q('[data-in-app]').hidden = false
 
-    let files: File[] = []
+    let blob: Blob | null = null
     const objectUrls: string[] = []
     const draw = async (photo: LoadedImage | null, logo: LoadedImage | null) => {
         const canvas = document.createElement('canvas')
@@ -152,7 +113,7 @@ const initAdoptionThanks = (): void => {
     }
 
     let rendering: Promise<void> | undefined
-    const renderShareImages = async (): Promise<void> => {
+    const renderShareImage = async (): Promise<void> => {
         await rendering
         rendering = (async () => {
             const sample = `${headline} ${data.cta} ${name} ${data.ghost} ${data.sign.lastName}`
@@ -162,70 +123,45 @@ const initAdoptionThanks = (): void => {
                 document.fonts.load(`600 26px "${BODY_FONT}"`, `${data.sign.tagline} ${data.sign.sticker.join(' ')}`),
                 document.fonts.load(`400 20px "${BODY_FONT}"`, data.sign.payer),
             ]).catch(() => undefined)
-            const photoSrc = document.querySelector<HTMLElement>('[data-sign]')?.dataset.photo ?? ''
-            const [photo, logo] = await Promise.all([loadImage(photoSrc, true), loadImage(data.logo, false)])
+            const [photo, logo] = await Promise.all([loadImage(data.photo, true), loadImage(data.logo, false)])
+            const drawn = (await draw(photo, logo)) ?? (await draw(null, logo))
+            if (!drawn) return
+            blob = drawn
             objectUrls.splice(0).forEach((url) => URL.revokeObjectURL(url))
-            files = []
-            const blob = (await draw(photo, logo)) ?? (await draw(null, logo))
-            if (blob) {
-                const url = URL.createObjectURL(blob)
-                objectUrls.push(url)
-                const img = q<HTMLImageElement>('[data-share-image]')
-                img.src = url
-                img.alt = unnamed ? data.unnamed.imageAlt : data.imageAlt.replace('%s', () => name || data.ghost)
-                files.push(new File([blob], 'adoptoi-kyltti.png', { type: 'image/png' }))
-                const link = q<HTMLAnchorElement>('[data-download]')
-                link.href = url
-                link.hidden = false
-            }
-            const shareButton = q<HTMLButtonElement>('[data-share]')
-            shareButton.hidden = !(files.length > 0 && navigator.canShare?.({ files: [files[0]] }))
+            const url = URL.createObjectURL(drawn)
+            objectUrls.push(url)
+            const img = q<HTMLImageElement>('[data-share-image]')
+            img.src = url
+            img.alt = unnamed ? data.unnamed.imageAlt : data.imageAlt[n].replace('%s', () => name || data.ghost)
+            const link = q<HTMLAnchorElement>('[data-download]')
+            link.href = url
+            link.hidden = false
+            q('[data-copy-image]').hidden = !canCopyImage()
         })()
         await rendering
     }
 
-    const copyLink = async () => {
-        try {
-            await navigator.clipboard.writeText(shareUrl(window.location.origin, data.formPath, 'story'))
-            q('[data-clipboard]').hidden = false
-        } catch {
-            // Clipboard access can be refused; sharing still works without the link sticker hint.
-        }
-    }
-    q('[data-share]').addEventListener('click', async () => {
-        await copyLink()
-        try {
-            await navigator.share({ files: files.slice(0, 1), text: shareText })
-        } catch {
-            // The visitor closed the share sheet.
-        }
+    const copyImage = q<HTMLButtonElement>('[data-copy-image]')
+    copyImage.addEventListener('click', () => {
+        if (!blob) return
+        // No await before write(): Safari drops the click's user activation across one.
+        void navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]).then(
+            () => confirm(copyImage),
+            () => undefined
+        )
     })
-    q('[data-download]').addEventListener('click', () => void copyLink())
 
-    if (!own && !unnamed) {
+    if (!(stored && stored.ref === params.ref) && !unnamed) {
         // No stored name (another browser, or the in-app browser was torn down): ask for it again.
         q('[data-missing-name]').hidden = false
         const input = q<HTMLInputElement>('#adoption-thanks-name')
         input.addEventListener('input', () => {
             name = input.value.normalize('NFC').replace(/\s+/g, ' ').trim()
-            setSignName(document, input.value)
-            if (!q('[data-after]').hidden) void renderShareImages()
+            void renderShareImage()
         })
     }
 
-    const showAfter = () => {
-        q('[data-after]').hidden = false
-        q('.thank-you').focus()
-        void renderShareImages()
-    }
-    if (params.company) {
-        // A company pays later by invoice: no MobilePay, no "I donated", straight to the thanks.
-        q('[data-private]').hidden = true
-        q('[data-company]').hidden = false
-        showAfter()
-    } else {
-        q('[data-donated]').addEventListener('click', showAfter)
-    }
+    void renderShareImage()
 }
 
 // Loaded with <script src> from AdoptionThanks.astro.
