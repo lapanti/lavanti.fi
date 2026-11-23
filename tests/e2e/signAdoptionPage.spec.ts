@@ -128,11 +128,10 @@ test.describe('Sign adoption page', () => {
         await page.locator('input[name="consent_person"]').check()
         await page.locator('button[type="submit"]').click()
 
-        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0')
+        await page.waitForURL('**/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0')
         test.expect(posted).toContain('Sjoerd')
         test.expect(page.url()).not.toContain('tok')
         await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 55 euroa MobilePayllä numerolla 46492.')
-        await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sjoerd')
     })
 
     test('should let a donor support signs without their name on them', async ({ page }) => {
@@ -162,7 +161,7 @@ test.describe('Sign adoption page', () => {
         await page.getByRole('textbox', { name: 'Sähköposti' }).fill('tuki@example.fi')
         await page.locator('button[type="submit"]').click()
 
-        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0&u=1')
+        await page.waitForURL('**/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=0&u=1')
         test.expect(posted).toContain('name="unnamed"')
         test.expect(posted).not.toContain('Sjoerd')
         test.expect(posted).not.toContain('consent_print')
@@ -190,11 +189,17 @@ test.describe('Sign adoption page', () => {
         await test.expect(page.locator('[data-wall]')).toBeHidden()
     })
 
-    test('should be in the sitemap while the thanks pages are not', async ({ request }) => {
+    test('should be in the sitemap while the payment and thanks pages are not', async ({ request }) => {
         const sitemap = await (await request.get('/sitemap-0.xml')).text()
         test.expect(sitemap).toContain('/fi/adoptoi/</loc>')
-        test.expect(sitemap).not.toContain('/fi/adoptoi/kiitos/')
-        test.expect(sitemap).not.toContain('/en/adopt/thanks/')
+        for (const path of [
+            '/fi/adoptoi/kiitos/',
+            '/en/adopt/thanks/',
+            '/fi/adoptoi/lahjoita/',
+            '/sv/adoptera/donera/',
+        ]) {
+            test.expect(sitemap).not.toContain(path)
+        }
     })
 
     test('should pass accessibility test', async ({ page }) => {
@@ -241,7 +246,7 @@ test.describe('Sign adoption page without JavaScript', () => {
         // astro preview has no Functions: answer like handleSubmit does for a plain post.
         await page.route('**/api/adoptoi', async (route) => {
             posted = route.request().postData() ?? ''
-            await route.fulfill({ headers: { Location: '/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1' }, status: 303 })
+            await route.fulfill({ headers: { Location: '/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0&u=1' }, status: 303 })
         })
         await page.goto('/fi/adoptoi/')
         await page.getByLabel('En halua nimeäni kylttiin').check()
@@ -254,13 +259,95 @@ test.describe('Sign adoption page without JavaScript', () => {
         await page.getByRole('textbox', { name: 'Sähköposti' }).fill('tuki@example.fi')
         await page.locator('button[type="submit"]').click()
 
-        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+        await page.waitForURL('**/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0&u=1')
         const body = new URLSearchParams(posted)
         test.expect(body.get('unnamed')).toBe('yes')
         test.expect(body.get('sign_name')).toBe('')
         test.expect(body.get('quantity')).toBe('2')
         test.expect(body.has('consent_print')).toBe(false)
     })
+})
+
+test.describe('Sign adoption payment step', () => {
+    test.beforeEach(async ({ page }) => {
+        await mockApi(page)
+    })
+
+    test('should stay out of search', async ({ page }) => {
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=0')
+
+        await test.expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/)
+    })
+
+    test('should reject invalid parameters', async ({ page }) => {
+        await page.goto('/fi/adoptoi/lahjoita/?ref=<script>&n=99&y=0')
+
+        await test.expect(page.locator('[data-invalid]')).toBeVisible()
+        await test.expect(page.locator('[data-valid]')).toBeHidden()
+        await test.expect(page.locator('[data-invalid] a')).toHaveAttribute('href', '/fi/adoptoi/')
+    })
+
+    test('should show the amount, MobilePay, the ref and the bank transfer, then link on', async ({ page }) => {
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0')
+
+        await test.expect(page.getByRole('heading', { level: 1 })).toHaveText('Kylttisi odottaa lahjoitustasi')
+        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 100 € MobilePayllä')
+        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 100 euroa MobilePayllä numerolla 46492.')
+        await test
+            .expect(page.locator('[data-ref-note]'))
+            .toHaveText('Kirjoita viestiksi K-12345, niin löydämme lahjoituksesi.')
+        await test.expect(page.locator('.transfer')).toContainText('Digitaalisen itsenäisyyden puolesta ry')
+        await test.expect(page.locator('.transfer .iban')).toHaveText('FI61 5780 3820 2478 06')
+        // Without the edit token there is nothing to save a payer's name with.
+        await test.expect(page.locator('[data-payer-form]')).toBeHidden()
+
+        const donated = page.getByRole('link', { name: 'Lahjoitin' })
+        await test.expect(donated).toHaveAttribute('href', '/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0')
+        await donated.click()
+        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0')
+    })
+
+    test('should offer the payer name with the edit token', async ({ page }) => {
+        await page.goto('/fi/adoptoi/')
+        await page.evaluate(() =>
+            sessionStorage.setItem(
+                'adoptoi',
+                JSON.stringify({ name: 'Sjoerd', quantity: 1, ref: 'K-12345', token: 't' })
+            )
+        )
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=0')
+
+        await test.expect(page.locator('[data-payer-form]')).toBeVisible()
+    })
+
+    test('should keep the unnamed flag on the way to the thanks page', async ({ page }) => {
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0&u=1')
+
+        await test
+            .expect(page.getByRole('link', { name: 'Lahjoitin' }))
+            .toHaveAttribute('href', '/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+    })
+
+    test('should skip MobilePay for a company', async ({ page }) => {
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=1')
+
+        await test.expect(page.locator('[data-private]')).toBeHidden()
+        await test.expect(page.locator('[data-company]')).toContainText('Lähetämme laskun')
+        await test
+            .expect(page.getByRole('link', { name: 'Jatka' }))
+            .toHaveAttribute('href', '/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=1')
+    })
+
+    for (const path of ['/fi/adoptoi/lahjoita/', '/sv/adoptera/donera/', '/en/adopt/donate/']) {
+        test(`should meet WCAG 2.2 AA at ${path}`, async ({ page }) => {
+            await page.goto(`${path}?ref=K-12345&n=5&y=0`)
+            const results = await new AxeBuilder({ page })
+                .include('[data-payment]')
+                .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+                .analyze()
+            test.expect(results.violations).toEqual([])
+        })
+    }
 })
 
 test.describe('Sign adoption thanks page', () => {
@@ -279,64 +366,78 @@ test.describe('Sign adoption thanks page', () => {
 
         await test.expect(page.locator('[data-invalid]')).toBeVisible()
         await test.expect(page.locator('[data-valid]')).toBeHidden()
-        await test.expect(page.locator('[data-invalid] a')).toHaveAttribute('href', '/fi/adoptoi/')
+    })
+
+    test('should hold only the thanks, the share text and the share image', async ({ page }) => {
+        await page.goto('/fi/adoptoi/')
+        await page.evaluate(() =>
+            sessionStorage.setItem(
+                'adoptoi',
+                JSON.stringify({ name: 'Sjoerd', quantity: 5, ref: 'K-12345', token: 't' })
+            )
+        )
+        await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0')
+
+        await test.expect(page.getByRole('heading', { level: 1 })).toHaveText('Kiitos lahjoituksesta')
+        await test.expect(page.locator('[data-share-text]')).toHaveText(/^Adoptoin 5 Lauri Lavannin vaalikylttiä,/)
+        await test.expect(page.locator('[data-missing-name]')).toBeHidden()
+        for (const gone of ['[data-almost]', '[data-message-form]', '[data-sign]', '.thank-you']) {
+            await test.expect(page.locator(gone)).toHaveCount(0)
+        }
+        const image = page.locator('[data-share-image]')
+        await test.expect(image).toHaveAttribute('src', /^blob:/)
+        await test.expect(image).toHaveAttribute('alt', 'Jakokuva: Sjoerd adoptoi 5 Lauri Lavannin vaalikylttiä')
+        test.expect(await image.evaluate((img: HTMLImageElement) => img.naturalHeight / img.naturalWidth)).toBe(4 / 3)
+        await test.expect(page.getByRole('link', { name: 'Lataa kuva' })).toHaveAttribute('href', /^blob:/)
+    })
+
+    test('should copy the share text and the image with one click', async ({ browserName, context, page }) => {
+        test.skip(browserName !== 'chromium', 'Clipboard permissions are Chromium-only in Playwright')
+        await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+        await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0')
+
+        const copyText = page.getByRole('button', { name: 'Kopioi teksti' })
+        await copyText.click()
+        await test.expect(page.locator('[data-copy-text]')).toHaveText('Kopioitu')
+        test.expect(await page.evaluate(() => navigator.clipboard.readText())).toMatch(
+            /^Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen/
+        )
+
+        await test.expect(page.locator('[data-share-image]')).toHaveAttribute('src', /^blob:/)
+        await page.getByRole('button', { name: 'Kopioi kuva' }).click()
+        await test.expect(page.locator('[data-copy-image]')).toHaveText('Kopioitu')
+        const types = await page.evaluate(async () => (await navigator.clipboard.read()).flatMap((item) => item.types))
+        test.expect(types).toContain('image/png')
     })
 
     test('should ask for the name again when sessionStorage is empty', async ({ page }) => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0')
 
-        await test.expect(page.getByRole('heading', { level: 1 })).toHaveText('Kylttisi odottaa lahjoitustasi')
-        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 55 € MobilePayllä')
-        // The payment block comes before the sign preview.
-        test.expect(
-            await page
-                .locator('[data-private]')
-                .evaluate((pay) => !!(pay.compareDocumentPosition(document.querySelector('[data-sign]')!) & 4))
-        ).toBe(true)
-        await test.expect(page.locator('[data-transfer]')).toContainText('Digitaalisen itsenäisyyden puolesta ry')
-        await test.expect(page.locator('[data-transfer] .iban')).toHaveText('FI61 5780 3820 2478 06')
         await test.expect(page.locator('[data-missing-name]')).toBeVisible()
-        await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sinun nimesi')
-        await test.expect(page.locator('[data-donate]')).toHaveText('Lahjoita 55 euroa MobilePayllä numerolla 46492.')
-        await test
-            .expect(page.locator('[data-ref-note]'))
-            .toHaveText('Kirjoita viestiksi K-12345, niin löydämme lahjoituksesi.')
-        // Without the edit token there is nothing to save a message with.
-        await test.expect(page.locator('[data-message-form]')).toBeHidden()
-
+        await test.expect(page.locator('[data-share-image]')).toHaveAttribute('alt', /Sinun nimesi/)
         await page.getByLabel('Nimi kylttiin').fill('Sjoerd')
-        await test.expect(page.locator('[data-sign-name]').first()).toHaveText('Sjoerd')
-    })
-
-    test('should reveal the thank-you and share images after "Lahjoitin"', async ({ page }) => {
-        await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0')
-        await test.expect(page.locator('[data-after]')).toBeHidden()
-
-        await page.getByRole('button', { name: 'Lahjoitin' }).click()
-        await test.expect(page.locator('[data-after]')).toBeVisible()
-        await test.expect(page.locator('.thank-you')).toContainText('Sinä teet sen mahdolliseksi. Kiitos!')
-        await test.expect(page.locator('[data-share-image]')).toHaveAttribute('src', /^blob:/)
+        await test.expect(page.locator('[data-share-image]')).toHaveAttribute('alt', /Sjoerd adoptoi 2/)
     })
 
     test('should thank a donor without a name and share a sign without a sticker', async ({ page }) => {
         await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
 
-        await test.expect(page.locator('[data-almost]')).toHaveText('Melkein valmis: lahjoita 55 € MobilePayllä')
-        await test.expect(page.locator('[data-sign] [data-sticker]')).toBeHidden()
         await test.expect(page.locator('[data-missing-name]')).toBeHidden()
-        await page.getByRole('button', { name: 'Lahjoitin' }).click()
-        await test.expect(page.locator('.thank-you')).toContainText('Sinä teet sen mahdolliseksi. Kiitos!')
-        const story = page.locator('[data-share-image]')
-        await test.expect(story).toHaveAttribute('src', /^blob:/)
-        await test.expect(story).toHaveAttribute('alt', 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä')
-        await test.expect(page.locator('[data-message-form]')).toBeHidden()
+        await test.expect(page.locator('[data-share-text]')).toHaveText(/^Tuin Lauri Lavannin vaalikylttejä/)
+        await test
+            .expect(page.locator('[data-share-image]'))
+            .toHaveAttribute('alt', 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä')
     })
 
-    test('should skip MobilePay for a company', async ({ page }) => {
-        await page.goto('/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=1')
-
-        await test.expect(page.locator('[data-private]')).toBeHidden()
-        await test.expect(page.locator('[data-company]')).toContainText('Lähetämme laskun')
-        await test.expect(page.locator('[data-after]')).toBeVisible()
-    })
+    for (const path of ['/fi/adoptoi/kiitos/', '/sv/adoptera/tack/', '/en/adopt/thanks/']) {
+        test(`should meet WCAG 2.2 AA at ${path}`, async ({ page }) => {
+            await page.goto(`${path}?ref=K-12345&n=5&y=0`)
+            await test.expect(page.locator('[data-share-image]')).toHaveAttribute('src', /^blob:/)
+            const results = await new AxeBuilder({ page })
+                .include('[data-thanks]')
+                .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+                .analyze()
+            test.expect(results.violations).toEqual([])
+        })
+    }
 })
