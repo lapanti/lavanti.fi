@@ -4,7 +4,7 @@
  * Pure helpers live in src/lib/adoptionClient.ts (unit-tested); this file only wires the DOM.
  *
  * Without a script the form still works: both steps show, the package chip posts its sign
- * count, and the function answers with a 303 to the thanks page.
+ * count, and the function answers with a 303 to the payment step.
  */
 
 import type { Lang } from '../../content/nav'
@@ -23,10 +23,11 @@ export interface AdoptionFormData {
     liveNames: string
     nextStep: Record<number, string>
     nextStepCompany: Record<number, string>
+    /** The payment step the form lands on (company or not). */
+    payPath: string
     pinned: Record<number, string>
     pinnedUnnamed: Record<number, string>
     sending: string
-    thanksPath: string
     total: Record<number, string>
 }
 
@@ -156,7 +157,7 @@ const initAdoptionForm = (): void => {
                 token: result.token ?? '',
             })
             window.location.assign(
-                thanksHref(data.thanksPath, { company: isCompany(), quantity: n, ref: result.ref, unnamed: unnamed() })
+                thanksHref(data.payPath, { company: isCompany(), quantity: n, ref: result.ref, unnamed: unnamed() })
             )
         } catch (err) {
             sending = false

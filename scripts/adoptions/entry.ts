@@ -100,7 +100,7 @@ export const resolveIds = (args: string[], rows: Adoption[]): { ids: number[]; u
     return { ids, unknown }
 }
 
-const RESERVED = new Set(['kiitos', 'tack', 'thanks'])
+const RESERVED = new Set(['donate', 'donera', 'kiitos', 'lahjoita', 'tack', 'thanks'])
 
 /** The name lowercased, diacritics stripped, non-alphanumerics collapsed to `-`; unique among `taken`. */
 export const adoptionSlug = (name: string, taken: Iterable<string>): string => {

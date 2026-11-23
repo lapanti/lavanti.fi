@@ -4,7 +4,7 @@ import type { AdoptionFormData } from './adoption/form.client'
 
 import { adoptionContent } from '../content/signAdoption'
 import { TURNSTILE_SITE_KEY } from '../content/volunteer'
-import { ADOPTION_MUNICIPALITIES, MAX_NAME_LENGTH, NO_PREFERENCE, THANKS_PATH } from '../lib/signAdoptions'
+import { ADOPTION_MUNICIPALITIES, MAX_NAME_LENGTH, NO_PREFERENCE, PAY_PATH } from '../lib/signAdoptions'
 import { byPackage, packageEuros, perSignEuros, SIGN_PACKAGES } from '../lib/signPackages'
 import { utmFormScript } from '../lib/utmFormScript'
 import SignGraphic from './adoption/SignGraphic.astro'
@@ -39,10 +39,10 @@ const scriptData: AdoptionFormData = {
     liveNames: t.liveNames('%s'),
     nextStep: byPackage((p) => t.nextStep(p.euros)),
     nextStepCompany: byPackage((p) => t.nextStepCompany(p.euros)),
+    payPath: PAY_PATH[lang],
     pinned: byPackage((p) => t.pinned('%s', p.signs, p.euros)),
     pinnedUnnamed: byPackage((p) => t.pinnedUnnamed(p.signs, p.euros)),
     sending: t.sending,
-    thanksPath: THANKS_PATH[lang],
     total: byPackage((p) => t.total(p.euros)),
 }
 const pagePath = `${content.base}<${lang === 'fi' ? 'nimi' : lang === 'sv' ? 'namn' : 'name'}>/`

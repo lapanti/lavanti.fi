@@ -89,6 +89,12 @@ export const THANKS_PATH: Record<Lang, string> = {
     fi: '/fi/adoptoi/kiitos/',
     sv: '/sv/adoptera/tack/',
 }
+/** The payment step the form lands on; its "Lahjoitin" leads on to THANKS_PATH. */
+export const PAY_PATH: Record<Lang, string> = {
+    en: '/en/adopt/donate/',
+    fi: '/fi/adoptoi/lahjoita/',
+    sv: '/sv/adoptera/donera/',
+}
 
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/
 const REF = /^K-\d{5}$/
@@ -253,22 +259,21 @@ const defaultGenerators: Generators = { ref: newRefCode, token: newEditToken }
 const wantsJson = (request: Request): boolean => (request.headers.get('Accept') ?? '').includes('application/json')
 
 /**
- * The thanks URL: only the validated ref, count, company flag and, for a donation without a name
+ * The payment-step URL: only the validated ref, count, company flag and, for a donation without a name
  * on the sign, `u=1`; never the name or token.
  */
-const thanksUrl = (
+const payUrl = (
     origin: string,
     lang: Lang,
     ref: string,
     row: { company_name: null | string; named: 0 | 1; quantity: number }
-) =>
-    `${origin}${THANKS_PATH[lang]}?ref=${ref}&n=${row.quantity}&y=${row.company_name ? 1 : 0}${row.named ? '' : '&u=1'}`
+) => `${origin}${PAY_PATH[lang]}?ref=${ref}&n=${row.quantity}&y=${row.company_name ? 1 : 0}${row.named ? '' : '&u=1'}`
 
 const INSERT_ATTEMPTS = 5
 
 /**
  * POST /api/adoptoi. A fetch with `Accept: application/json` gets `{ref, token}` (or `{error}`);
- * a plain form post gets a 303 to the thanks page (or back to the form with `?virhe=`).
+ * a plain form post gets a 303 to the payment step (or back to the form with `?virhe=`).
  */
 export const handleSubmit = async (
     request: Request,
@@ -298,7 +303,7 @@ export const handleSubmit = async (
 
         return asJson
             ? json({ ref, token: gen.token() })
-            : redirect(thanksUrl(origin, lang, ref, { company_name: null, named: 1, quantity: 1 }), 303)
+            : redirect(payUrl(origin, lang, ref, { company_name: null, named: 1, quantity: 1 }), 303)
     }
     /*
      * Configuration and database failures all show the visitor `palvelu`; the log line names
@@ -346,7 +351,7 @@ export const handleSubmit = async (
                 )
                 .run()
 
-            return asJson ? json({ ref, token }) : redirect(thanksUrl(origin, lang, ref, r), 303)
+            return asJson ? json({ ref, token }) : redirect(payUrl(origin, lang, ref, r), 303)
         } catch (err) {
             const message = errorMessage(err)
             // A ref collision is retried with a fresh ref; anything else is a storage failure.

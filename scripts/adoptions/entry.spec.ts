@@ -130,6 +130,7 @@ describe('adoptionSlug', () => {
     it('avoids taken and reserved slugs', () => {
         expect(adoptionSlug('Sjoerd', ['sjoerd', 'sjoerd-2'])).toBe('sjoerd-3')
         expect(adoptionSlug('Kiitos', [])).toBe('kiitos-2')
+        expect(adoptionSlug('Lahjoita', [])).toBe('lahjoita-2')
         expect(adoptionSlug('…', [])).toBe('kummi')
     })
 })

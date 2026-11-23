@@ -249,16 +249,16 @@ describe('handleSubmit', () => {
         expect(calls[0].args).not.toContain('secret-token')
     })
 
-    it('redirects a plain form post to the thanks page with ref, count and company flag only', async () => {
+    it('redirects a plain form post to the payment step with ref, count and company flag only', async () => {
         const res = await handleSubmit(post({ ...company, lang: 'sv' }, 'text/html'), env(), turnstile(true), NOW, gen)
         expect(res.status).toBe(303)
-        expect(res.headers.get('Location')).toBe('https://lavanti.fi/sv/adoptera/tack/?ref=K-12345&n=2&y=1')
+        expect(res.headers.get('Location')).toBe('https://lavanti.fi/sv/adoptera/donera/?ref=K-12345&n=2&y=1')
     })
 
     it('stores a donation without a name (no JS: a plain post) and marks the thanks URL', async () => {
         const { calls, db } = fakeDb()
         const res = await handleSubmit(post(unnamed, 'text/html'), env(db), turnstile(true), NOW, gen)
-        expect(res.headers.get('Location')).toBe('https://lavanti.fi/fi/adoptoi/kiitos/?ref=K-12345&n=2&y=0&u=1')
+        expect(res.headers.get('Location')).toBe('https://lavanti.fi/fi/adoptoi/lahjoita/?ref=K-12345&n=2&y=0&u=1')
         expect(calls[0].sql).toContain('named, sign_name')
         // named = 0 and sign_name = NULL right after lang.
         expect(calls[0].args.slice(1, 4)).toEqual(['fi', 0, null])
@@ -280,7 +280,7 @@ describe('handleSubmit', () => {
         const res = await handleSubmit(post({ ...valid, website: 'bot' }), env(db), turnstile(true), NOW, gen)
         expect(await res.json()).toEqual({ ref: 'K-12345', token: 'secret-token' })
         const html = await handleSubmit(post({ ...valid, website: 'bot' }, ''), env(db), turnstile(true), NOW, gen)
-        expect(html.headers.get('Location')).toContain('/fi/adoptoi/kiitos/?ref=K-12345&n=1&y=0')
+        expect(html.headers.get('Location')).toContain('/fi/adoptoi/lahjoita/?ref=K-12345&n=1&y=0')
         expect(calls).toHaveLength(0)
     })
 

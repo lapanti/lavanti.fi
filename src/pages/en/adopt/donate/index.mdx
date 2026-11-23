@@ -1,0 +1,30 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Donate and finish your sign adoption'
+title: 'Your sign is waiting'
+emphasis: 'for your donation'
+ctaHref: '#donation'
+ctaLabel: 'Finish your adoption'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
+description: 'Finish adopting your election sign with a donation by MobilePay or bank transfer, and your name goes up by the roadside in spring.'
+slug: 'en/adopt/donate'
+langAlternates:
+    en: '/en/adopt/donate/'
+    fi: '/fi/adoptoi/lahjoita/'
+    sv: '/sv/adoptera/donera/'
+updatedDate: '2026-11-23'
+type: 'WebPage'
+noindex: true
+plated: true
+variant: 'split'
+---
+
+import Plate from '../../../../components/Plate.astro'
+import AdoptionPayment from '../../../../components/adoption/AdoptionPayment.astro'
+
+<Plate ground="offWhite" heading="What happens next?" id="donation">
+    <AdoptionPayment lang="en" />
+</Plate>

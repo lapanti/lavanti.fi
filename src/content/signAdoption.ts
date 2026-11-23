@@ -141,9 +141,11 @@ interface AdoptionLocale {
         ghostName: string
     }
     thanks: {
-        /** First heading on the thanks page; the amount follows the sign count. */
+        /** First heading on the payment step; the amount follows the sign count. */
         almost: (euros: number) => string
         companyInvoice: string
+        /** The company's way on from the payment step, in place of "Lahjoitin". */
+        continue: string
         donated: string
         /** For a donor without MobilePay: a bank transfer to the association, ref as the message. */
         fallback: { lead: string; message: string; recipient: string }
@@ -372,6 +374,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             almost: (euros) => `Almost done: donate €${euros} with MobilePay`,
             companyInvoice:
                 'We will send an invoice to the billing address you gave. The invoice has no VAT because this is a donation.',
+            continue: 'Continue',
             donated: 'I donated',
             fallback: {
                 lead: 'No MobilePay? Make a bank transfer:',
@@ -557,6 +560,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             almost: (euros) => `Melkein valmis: lahjoita ${euros} € MobilePayllä`,
             companyInvoice:
                 'Lähetämme laskun antamaasi laskutusosoitteeseen. Laskussa ei ole arvonlisäveroa, koska kyse on lahjoituksesta.',
+            continue: 'Jatka',
             donated: 'Lahjoitin',
             fallback: {
                 lead: 'Eikö sinulla ole MobilePayta? Tee tilisiirto:',
@@ -748,6 +752,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             almost: (euros) => `Nästan klart: ge ${euros} € med MobilePay`,
             companyInvoice:
                 'Vi skickar en faktura till den faktureringsadress du angav. Fakturan har ingen moms eftersom det är en gåva.',
+            continue: 'Fortsätt',
             donated: 'Jag gav en gåva',
             fallback: {
                 lead: 'Har du inte MobilePay? Gör en banköverföring:',

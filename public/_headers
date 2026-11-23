@@ -12,7 +12,7 @@
 /fi/suosittele/*
   X-Robots-Tag: noindex
 
-# The sign adoption thank-you pages (noindex meta + sitemap filter). Never /fi/adoptoi/*: the
+# The sign adoption payment and thank-you pages (noindex meta + sitemap filter). Never /fi/adoptoi/*: the
 # landing page is indexed. Personal adoption pages carry the noindex meta only.
 /fi/adoptoi/kiitos/*
   X-Robots-Tag: noindex
@@ -21,6 +21,15 @@
   X-Robots-Tag: noindex
 
 /en/adopt/thanks/*
+  X-Robots-Tag: noindex
+
+/fi/adoptoi/lahjoita/*
+  X-Robots-Tag: noindex
+
+/sv/adoptera/donera/*
+  X-Robots-Tag: noindex
+
+/en/adopt/donate/*
   X-Robots-Tag: noindex
 
 # The pages.dev production alias and preview deployments mirror the site; only lavanti.fi is indexed
