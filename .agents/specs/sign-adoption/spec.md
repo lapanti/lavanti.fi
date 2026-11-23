@@ -59,7 +59,7 @@ All three locales (fi, sv, en) launch together. There is no "first 20" hook.
 
 POST   /api/adoptoi            Turnstile + validate → pending row → JSON {ref, token}
                                (Accept: application/json) or 303 lahjoita?ref&n&y (no JS)
-POST   /api/adoptoi/viesti     ref + token → payer_name (and message, which no page sends now)
+POST   /api/adoptoi/viesti     ref + token → message (≤ 140) and/or payer_name, from the payment step
 GET    /api/adoptoi/seina      public, Cache-Control: public, max-age=60 → the wall
 GET    /api/adoptoi/pending    Bearer ADOPTIONS_TOKEN [?status=approved] → rows
 POST   /api/adoptoi/:id        Bearer ADOPTIONS_TOKEN, JSON {action[, paid_via]}
@@ -328,6 +328,8 @@ seuraavaksi?", then in order:
    FI61 5780 3820 2478 06 + "Viesti: viitekoodisi, niin yhdistämme lahjoituksen kylttiisi."
    (owner, 2026-11-15; matched with `approve --via tilisiirto`) · "Maksajan
    nimi, jos maksat toisen henkilön MobilePayllä" (only with the edit token in sessionStorage).
+   Then the optional "Miksi adoptoin?" (≤ 140) → `viesti`, public only after moderation and opt-in;
+   needs the edit token, hidden for `u=1`, shown for companies too.
 2. "Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi." · "Lahjoitin", a link to the
    thanks page with the same query.
    Company (`y=1`): no MobilePay block; "Lähetämme laskun antamaasi laskutusosoitteeseen. Laskussa
@@ -478,9 +480,6 @@ interface AdoptionPage {
 - [ ] Phase B: `ADOPTION_CLOSES`, the date in the intro and the municipality list narrowed to the
   placement plan. The name length stays at 24 characters: the association buys the signs either
   way and adoption only adds funding, so no printer quote gates it (owner, 2026-11-15).
-- [ ] The "Miksi adoptoin?" message has no form since the thanks page became share-only
-  (2026-11-23). `viesti`, moderation and the wall's messages section still accept and show one:
-  move the form to the payment step, or drop messages.
 
 ---
 
@@ -494,3 +493,4 @@ interface AdoptionPage {
 | 2026-11-20 | Sign packages 1/2/3/5/10 for 30/55/80/100/190 €, five featured; the free count is gone |
 | 2026-11-21 | Dropped the "Suosituin" badge: the featured package keeps only its heavier frame |
 | 2026-11-23 | Payment moved to its own step (`lahjoita`, `donera`, `donate`); the thanks page holds only the thanks, a copyable share text and one 3:4 share image (copy or download), with count-aware copy. The message form, story image and link-sticker hint are gone |
+| 2026-11-23 | "Miksi adoptoin?" moved to the payment step (owner) |
