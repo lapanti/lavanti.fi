@@ -12,7 +12,7 @@ import {
     shareUrl,
     type StoredAdoption,
 } from '../../lib/adoptionClient'
-import { BODY_FONT, DISPLAY_FONT, drawShareImage, SHARE_SIZES, type ShareFormat } from '../../lib/adoptionShareImage'
+import { BODY_FONT, DISPLAY_FONT, drawShareImage, SHARE_SIZE } from '../../lib/adoptionShareImage'
 
 export interface AdoptionThanksData {
     almost: Record<number, string>
@@ -131,13 +131,13 @@ const initAdoptionThanks = (): void => {
 
     let files: File[] = []
     const objectUrls: string[] = []
-    const draw = async (format: ShareFormat, photo: LoadedImage | null, logo: LoadedImage | null) => {
+    const draw = async (photo: LoadedImage | null, logo: LoadedImage | null) => {
         const canvas = document.createElement('canvas')
-        canvas.width = SHARE_SIZES[format].width
-        canvas.height = SHARE_SIZES[format].height
+        canvas.width = SHARE_SIZE.width
+        canvas.height = SHARE_SIZE.height
         const ctx = canvas.getContext('2d')
         if (!ctx) return null
-        drawShareImage(ctx, format, {
+        drawShareImage(ctx, {
             cta: data.cta,
             ghost: data.ghost,
             headline,
@@ -166,20 +166,17 @@ const initAdoptionThanks = (): void => {
             const [photo, logo] = await Promise.all([loadImage(photoSrc, true), loadImage(data.logo, false)])
             objectUrls.splice(0).forEach((url) => URL.revokeObjectURL(url))
             files = []
-            for (const format of ['story', 'feed'] as const) {
-                const blob = (await draw(format, photo, logo)) ?? (await draw(format, null, logo))
-                if (!blob) continue
+            const blob = (await draw(photo, logo)) ?? (await draw(null, logo))
+            if (blob) {
                 const url = URL.createObjectURL(blob)
                 objectUrls.push(url)
-                const img = q<HTMLImageElement>(`[data-share-image="${format}"]`)
+                const img = q<HTMLImageElement>('[data-share-image]')
                 img.src = url
                 img.alt = unnamed ? data.unnamed.imageAlt : data.imageAlt.replace('%s', () => name || data.ghost)
-                files.push(new File([blob], `adoptoi-kyltti-${format}.png`, { type: 'image/png' }))
-                if (format === 'story') {
-                    const link = q<HTMLAnchorElement>('[data-download]')
-                    link.href = url
-                    link.hidden = false
-                }
+                files.push(new File([blob], 'adoptoi-kyltti.png', { type: 'image/png' }))
+                const link = q<HTMLAnchorElement>('[data-download]')
+                link.href = url
+                link.hidden = false
             }
             const shareButton = q<HTMLButtonElement>('[data-share]')
             shareButton.hidden = !(files.length > 0 && navigator.canShare?.({ files: [files[0]] }))

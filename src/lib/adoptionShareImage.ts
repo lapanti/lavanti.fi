@@ -57,12 +57,8 @@ export const SIGN_COLORS = {
 /** Top to bottom: blue against the ground, dark green at the image edge. */
 export const STRIPE_RUN = [colors.signalBlue, colors.brightSky, colors.aquaBlue, colors.brightGreen, colors.darkGreen]
 
-export type ShareFormat = 'feed' | 'story'
-
-export const SHARE_SIZES: Record<ShareFormat, { height: number; width: number }> = {
-    feed: { height: 1350, width: 1080 },
-    story: { height: 1920, width: 1080 },
-}
+/** The one share image: 3:4, the tallest the Instagram app keeps uncropped in feed and grid. */
+export const SHARE_SIZE = { height: 1440, width: 1080 } as const
 
 export const SHARE_PAD = 76
 const STRIPE_BAND = 14
@@ -70,10 +66,7 @@ const TOP_ROW = 120
 const GAP = 48
 const SIGN_FRAME = 8
 
-const SIZES: Record<ShareFormat, { cta: number; headline: number; logo: number }> = {
-    feed: { cta: 40, headline: 84, logo: 60 },
-    story: { cta: 48, headline: 104, logo: 72 },
-}
+const SIZES = { cta: 44, headline: 92, logo: 64 } as const
 
 /** The subset of CanvasRenderingContext2D the drawing uses, so tests can pass a recorder. */
 export type CanvasLike = Pick<
@@ -142,9 +135,9 @@ export interface ShareLayout {
 }
 
 /** Where everything goes on a share image with `headlineLines` lines of headline. */
-export const shareLayout = (format: ShareFormat, headlineLines: number): ShareLayout => {
-    const { height, width } = SHARE_SIZES[format]
-    const sizes = SIZES[format]
+export const shareLayout = (headlineLines: number): ShareLayout => {
+    const { height, width } = SHARE_SIZE
+    const sizes = SIZES
     const stripeY = height - STRIPE_BAND * STRIPE_RUN.length
     const lineHeight = Math.round(sizes.headline * 1.02)
     const headlineY = SHARE_PAD + TOP_ROW
@@ -252,17 +245,17 @@ export interface ShareDrawing extends SignDrawing {
 }
 
 /** One share PNG: chrome, headline, the adopter's sign and the call to action. */
-export const drawShareImage = (ctx: CanvasLike, format: ShareFormat, drawing: ShareDrawing): ShareLayout => {
-    const { height, width } = SHARE_SIZES[format]
+export const drawShareImage = (ctx: CanvasLike, drawing: ShareDrawing): ShareLayout => {
+    const { height, width } = SHARE_SIZE
     const inner = width - 2 * SHARE_PAD
     ctx.fillStyle = DEEP_FOREST
     ctx.fillRect(0, 0, width, height)
 
     // Top row: the wordmark (as NameLogo draws it: tilted, small first name over the surname)…
-    const { headline: headlineSize } = SIZES[format]
+    const { headline: headlineSize } = SIZES
     ctx.font = display(800)(headlineSize)
     const lines = wrapText(ctx, drawing.headline, inner)
-    const layout = shareLayout(format, lines.length)
+    const layout = shareLayout(lines.length)
     ctx.save()
     ctx.translate(SHARE_PAD, layout.logo.y + layout.logo.height)
     ctx.rotate((-10 * Math.PI) / 180)

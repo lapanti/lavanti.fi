@@ -338,7 +338,7 @@ lahjoitustasi", plate heading "Mitä seuraavaksi?", then in order:
    > Sinä teet sen mahdolliseksi. Kiitos!
 
    + "Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi."
-   - Share PNGs: story 1080×1920 and feed 1080×1350, drawn on canvas after `FontFace` loads Big
+   - One share PNG, 3:4 at 1080×1440 (the tallest the Instagram app keeps uncropped), drawn on canvas after `FontFace` loads Big
      Shoulders (latin + latin-ext). Chrome: wordmark + Vihreät logo on a top row, 76 px side
      padding, `lavanti.fi` visible, one stripe run at the foot; deep forest ground, never dark green
      text or rules on it. Text "Adoptoin Lauri Lavannin vaalikyltin" + their sign + "Adoptoi

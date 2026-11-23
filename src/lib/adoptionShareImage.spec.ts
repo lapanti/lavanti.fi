@@ -6,7 +6,7 @@ import {
     drawSign,
     fitFontSize,
     SHARE_PAD,
-    SHARE_SIZES,
+    SHARE_SIZE,
     shareLayout,
     SIGN,
     SIGN_COLORS,
@@ -91,9 +91,9 @@ describe('fitFontSize', () => {
 })
 
 describe('shareLayout', () => {
-    it.each(['story', 'feed'] as const)('keeps the %s sign inside the padding and above the call to action', (f) => {
-        const { height, width } = SHARE_SIZES[f]
-        const l = shareLayout(f, 2)
+    it('keeps the sign inside the padding and above the call to action', () => {
+        const { height, width } = SHARE_SIZE
+        const l = shareLayout(2)
         expect(l.sign.x).toBeGreaterThanOrEqual(SHARE_PAD - 0.001)
         expect(l.sign.x + SIGN.width * l.sign.scale).toBeLessThanOrEqual(width - SHARE_PAD + 0.001)
         expect(l.sign.y).toBeGreaterThan(l.headline.y + 2 * l.headline.lineHeight)
@@ -171,13 +171,13 @@ describe('drawShareImage', () => {
     it('draws the chrome, headline, sign, call to action and one stripe run', () => {
         const { calls, ctx } = recorder()
         const logo = { height: 410, width: 1316 } as unknown as SignDrawing['photo']
-        const layout = drawShareImage(ctx, 'story', {
+        const layout = drawShareImage(ctx, {
             ...sign,
             cta: 'Adoptoi sinäkin: lavanti.fi/adoptoi',
             headline: 'Adoptoin Lauri Lavannin vaalikyltin',
             logo,
         })
-        expect(calls[0]).toMatchObject({ args: [0, 0, 1080, 1920], fill: '#163E35', op: 'fillRect' })
+        expect(calls[0]).toMatchObject({ args: [0, 0, 1080, 1440], fill: '#163E35', op: 'fillRect' })
         const texts = calls.filter((c) => c.op === 'fillText').map((c) => c.args[0])
         expect(texts).toContain('Adoptoi sinäkin: lavanti.fi/adoptoi')
         expect(texts.join(' ')).toContain('Adoptoin Lauri')
@@ -190,7 +190,7 @@ describe('drawShareImage', () => {
 
     it('never draws dark green text', () => {
         const { calls, ctx } = recorder()
-        drawShareImage(ctx, 'feed', { ...sign, cta: 'x', headline: 'y', logo: null })
+        drawShareImage(ctx, { ...sign, cta: 'x', headline: 'y', logo: null })
         for (const c of calls.filter((x) => x.op === 'fillText')) expect(c.fill).not.toBe(colors.darkGreen)
     })
 })

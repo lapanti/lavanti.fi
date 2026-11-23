@@ -157,14 +157,12 @@ interface AdoptionLocale {
             clipboard: string
             cta: string
             download: string
-            feed: string
             headline: string
             heading: string
             imageAlt: (name: string) => string
             inApp: string
             longPress: string
             share: string
-            story: string
             text: string
             /** A donation without a name on the sign: no sticker, so no "my name" wording. */
             unnamed: { headline: string; imageAlt: string; text: string }
@@ -401,14 +399,12 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 clipboard: 'Add a link sticker to your story. The address is already on your clipboard.',
                 cta: 'Adopt one too: lavanti.fi/en/adopt',
                 download: 'Download the image',
-                feed: 'Post (4:5)',
                 heading: 'Tell your friends about your sign',
                 headline: "I adopted Lauri Lavanti's election sign",
                 imageAlt: (name) => `Share image: ${name} adopted Lauri Lavanti's election sign`,
                 inApp: 'Open the page in your browser to save the image.',
                 longPress: 'Press and hold the image to save it.',
                 share: 'Share the image',
-                story: 'Story (9:16)',
                 text: "I adopted Lauri Lavanti's election sign, and in spring it goes up by the roadside with my name on it. Lauri is the Greens' parliamentary candidate in Uusimaa. Adopt one too: lavanti.fi/en/adopt",
                 unnamed: {
                     headline: "I supported Lauri Lavanti's election signs",
@@ -588,14 +584,12 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 clipboard: 'Lisää tarinaan linkkitarra. Osoite on jo leikepöydällä.',
                 cta: 'Adoptoi sinäkin: lavanti.fi/adoptoi',
                 download: 'Lataa kuva',
-                feed: 'Julkaisu (4:5)',
                 heading: 'Kerro kyltistäsi kavereillesi',
                 headline: 'Adoptoin Lauri Lavannin vaalikyltin',
                 imageAlt: (name) => `Jakokuva: ${name} adoptoi Lauri Lavannin vaalikyltin`,
                 inApp: 'Avaa sivu selaimessa, niin voit tallentaa kuvan.',
                 longPress: 'Paina kuvaa pitkään ja tallenna se.',
                 share: 'Jaa kuva',
-                story: 'Tarina (9:16)',
                 text: 'Adoptoin Lauri Lavannin vaalikyltin, ja keväällä se nousee tienvarteen minun nimelläni. Lauri on Vihreiden eduskuntavaaliehdokas Uudellamaalla. Adoptoi sinäkin: lavanti.fi/adoptoi',
                 unnamed: {
                     headline: 'Tuin Lauri Lavannin vaalikylttejä',
@@ -781,14 +775,12 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 clipboard: 'Lägg till ett länkklistermärke i din story. Adressen finns redan i urklippet.',
                 cta: 'Adoptera du också: lavanti.fi/sv/adoptera',
                 download: 'Ladda ner bilden',
-                feed: 'Inlägg (4:5)',
                 heading: 'Berätta om din skylt för dina vänner',
                 headline: 'Jag adopterade Lauri Lavantis valskylt',
                 imageAlt: (name) => `Delningsbild: ${name} adopterade Lauri Lavantis valskylt`,
                 inApp: 'Öppna sidan i webbläsaren, så kan du spara bilden.',
                 longPress: 'Tryck länge på bilden och spara den.',
                 share: 'Dela bilden',
-                story: 'Story (9:16)',
                 text: 'Jag adopterade Lauri Lavantis valskylt, och i vår kommer den upp vid vägkanten med mitt namn. Lauri är De Grönas riksdagskandidat i Nyland. Adoptera du också: lavanti.fi/sv/adoptera',
                 unnamed: {
                     headline: 'Jag stödde Lauri Lavantis valskyltar',

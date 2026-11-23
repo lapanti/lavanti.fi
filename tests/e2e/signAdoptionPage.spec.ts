@@ -315,7 +315,7 @@ test.describe('Sign adoption thanks page', () => {
         await page.getByRole('button', { name: 'Lahjoitin' }).click()
         await test.expect(page.locator('[data-after]')).toBeVisible()
         await test.expect(page.locator('.thank-you')).toContainText('Sinä teet sen mahdolliseksi. Kiitos!')
-        await test.expect(page.locator('[data-share-image="story"]')).toHaveAttribute('src', /^blob:/)
+        await test.expect(page.locator('[data-share-image]')).toHaveAttribute('src', /^blob:/)
     })
 
     test('should thank a donor without a name and share a sign without a sticker', async ({ page }) => {
@@ -326,7 +326,7 @@ test.describe('Sign adoption thanks page', () => {
         await test.expect(page.locator('[data-missing-name]')).toBeHidden()
         await page.getByRole('button', { name: 'Lahjoitin' }).click()
         await test.expect(page.locator('.thank-you')).toContainText('Sinä teet sen mahdolliseksi. Kiitos!')
-        const story = page.locator('[data-share-image="story"]')
+        const story = page.locator('[data-share-image]')
         await test.expect(story).toHaveAttribute('src', /^blob:/)
         await test.expect(story).toHaveAttribute('alt', 'Jakokuva: Tuin Lauri Lavannin vaalikylttejä')
         await test.expect(page.locator('[data-message-form]')).toBeHidden()
