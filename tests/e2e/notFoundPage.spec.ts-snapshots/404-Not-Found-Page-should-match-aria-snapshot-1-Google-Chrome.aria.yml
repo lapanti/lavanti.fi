@@ -5,6 +5,21 @@
     - heading "Olisiko se joku seuraavista?" [level=2]
     - list:
       - listitem:
+        - article "Kannustinloukut puretaan perustulolla, ei lisäehdoilla":
+          - link /Kelan Helsingin toimiston virkailijat työssään vuonna \d+\. Kannustinloukku syntyy tukien rakenteesta, joka pienentää tukea tulojen kasvaessa\. Kannustinloukut puretaan perustulolla, ei lisäehdoilla/:
+            - /url: /fi/blog/102/kannustinloukku-puretaan-perustulolla/
+            - img /Kelan Helsingin toimiston virkailijat työssään vuonna \d+\. Kannustinloukku syntyy tukien rakenteesta, joka pienentää tukea tulojen kasvaessa\./
+            - heading "Kannustinloukut puretaan perustulolla, ei lisäehdoilla" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Kannustinloukku syntyy, kun tuki pienenee tulojen kasvaessa. Miksi ehtojen tiukentaminen ei pura sitä ja miten perustulo tekee työstä aina kannattavaa?
+        - list:
+          - listitem:
+            - link "Perusturva":
+              - /url: /fi/kategoria/perusturva/
+          - listitem:
+            - link "Talous":
+              - /url: /fi/kategoria/talous/
+      - listitem:
         - article "Chat control on jo Suomessa, passirekisteri pitää lakkauttaa":
           - 'link "Lauri Lavanti katsoo vakavana suoraan kameraan betoniseinän edessä kirjoituksessa chat controlista ja passirekisteristä, yllään tummansininen pikkutakki ja kukkakuvioinen paita. Kuva: Markus Isomeri. Chat control on jo Suomessa, passirekisteri pitää lakkauttaa"':
             - /url: /fi/blog/101/chat-control-ja-passirekisteri/
@@ -127,21 +142,3 @@
           - listitem:
             - link "Opetus":
               - /url: /fi/kategoria/opetus/
-      - listitem:
-        - article "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-          - link "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy. Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti":
-            - /url: /fi/blog/97/tyoelakkeiden-rahoitus-indeksin-jaadytys/
-            - img "Eläketurvakeskuksen toimitalo Helsingin Pasilassa. ETK:n tilastot ja laskelmat kertovat, miten työeläkkeiden rahoitus kehittyy."
-            - heading "Työeläkkeiden indeksijäädytys jakaisi taakkaa oikeudenmukaisesti" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Työeläkkeiden rahoitus nojaa joka vuoden työllisten maksuihin. Neljä ETK:n tietoihin perustuvaa kaaviota näyttää, miksi ehdotan työeläkeindeksin jäädytystä.
-        - list:
-          - listitem:
-            - link "Talous":
-              - /url: /fi/kategoria/talous/
-          - listitem:
-            - link "Kansallinen politiikka":
-              - /url: /fi/kategoria/kansallinen-politiikka/
-          - listitem:
-            - link /Eduskuntavaalit \d+/:
-              - /url: /fi/kategoria/eduskuntavaalit-2027/

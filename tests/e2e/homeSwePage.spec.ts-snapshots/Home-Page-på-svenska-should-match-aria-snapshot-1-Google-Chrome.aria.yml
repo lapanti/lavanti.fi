@@ -128,6 +128,21 @@
       - /url: /sv/blog/all/
     - list:
       - listitem:
+        - article "Incitamentsfällorna rivs med basinkomst, inte med fler villkor":
+          - link /Tjänstemän på FPA:s kontor i Helsingfors i arbete år \d+\. En incitamentsfälla uppstår ur ett stödsystem som minskar stödet när inkomsterna växer\. Incitamentsfällorna rivs med basinkomst, inte med fler villkor/:
+            - /url: /sv/blog/102/incitamentsfallorna-rivs-med-basinkomst/
+            - img /Tjänstemän på FPA:s kontor i Helsingfors i arbete år \d+\. En incitamentsfälla uppstår ur ett stödsystem som minskar stödet när inkomsterna växer\./
+            - heading "Incitamentsfällorna rivs med basinkomst, inte med fler villkor" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Incitamentsfällan uppstår när stödet minskar då inkomsterna stiger. Varför strängare villkor inte river den och hur basinkomsten gör arbete alltid lönsamt?
+        - list:
+          - listitem:
+            - link "Grundläggande":
+              - /url: /sv/kategori/grundtrygghet/
+          - listitem:
+            - link "Ekonomi":
+              - /url: /sv/kategori/ekonomi/
+      - listitem:
         - article "Chat control gäller redan i Finland, passregistret bör avskaffas":
           - 'link "Lauri Lavanti tittar allvarligt rakt in i kameran framför en betongvägg, i en text om chat control och passregistret, klädd i en marinblå kavaj och en blommig skjorta. Foto: Markus Isomeri. Chat control gäller redan i Finland, passregistret bör avskaffas"':
             - /url: /sv/blog/101/chat-control-och-passregistret/
@@ -268,21 +283,6 @@
           - listitem:
             - link /Riksdagsvalet \d+/:
               - /url: /sv/kategori/riksdagsvalet-2027/
-      - listitem:
-        - article "Varifrån kommer den offentliga sektorns pengar och vart går de?":
-          - link "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget Varifrån kommer den offentliga sektorns pengar och vart går de?":
-            - /url: /sv/blog/96/offentlig-sektor-varifran-kommer-pengarna-och-vart-gar-de/
-            - img "Riksdagshusets kolonnfasad i Helsingfors, där man beslutar om den offentliga sektorns budget"
-            - heading "Varifrån kommer den offentliga sektorns pengar och vart går de?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /Den offentliga sektorn tar \d+ in uppskattningsvis \d+ miljarder euro och använder \d+ miljarder\. Se i diagrammen varifrån pengarna kommer och vart de går\./
-        - list:
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev
