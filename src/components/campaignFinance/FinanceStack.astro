@@ -143,7 +143,12 @@ const HATCHED_TONES = new Set<Tone>(['needed'])
         font-size: var(--figuresFontSize);
         font-weight: var(--figuresFontWeight);
         justify-self: end;
-        white-space: nowrap;
+        /*
+         * Wraps only at the plain spaces around "+" and before the pending label or
+         * share: each amount is joined by no-break spaces. A nowrap line overflows a
+         * phone once a long label ("Yksityishenkilöt") meets a pending figure.
+         */
+        text-align: end;
     }
 
     .share {
