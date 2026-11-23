@@ -135,20 +135,17 @@
               - link "Economy":
                 - /url: /en/category/economy/
         - listitem:
-          - article /Kirkkonummi's \d+ budget cuts early childhood education/:
-            - link /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\. Kirkkonummi's \d+ budget cuts early childhood education/:
-              - /url: /en/blog/103/kirkkonummi-budget-green-group-speech/
-              - img /Lauri Lavanti delivers the Green council group's speech on the Kirkkonummi \d+ budget at the speaker's lectern in the council chamber\./
-              - heading /Kirkkonummi's \d+ budget cuts early childhood education/ [level=3]
+          - article "Basic income removes incentive traps, not extra conditions":
+            - link /Clerks at the Helsinki office of Kela, the Social Insurance Institution of Finland, at work in \d+\. An incentive trap arises from a benefit structure that cuts support as income grows\. Basic income removes incentive traps, not extra conditions/:
+              - /url: /en/blog/102/basic-income-removes-incentive-traps/
+              - img /Clerks at the Helsinki office of Kela, the Social Insurance Institution of Finland, at work in \d+\. An incentive trap arises from a benefit structure that cuts support as income grows\./
+              - heading "Basic income removes incentive traps, not extra conditions" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kirkkonummi's \d+ budget cuts about €\d+,\d+ from early childhood education without a child impact assessment\. The Green council group's speech and video\./
+            - paragraph: An incentive trap arises when support shrinks as income grows. Why tighter conditions do not remove it, and how basic income makes work always pay.
           - list:
             - listitem:
-              - link "Kirkkonummi":
-                - /url: /en/category/kirkkonummi/
-            - listitem:
-              - link "Early childhood education":
-                - /url: /en/category/early-childhood-education/
+              - link "Basic welfare":
+                - /url: /en/category/basic-welfare/
             - listitem:
               - link "Economy":
                 - /url: /en/category/economy/

@@ -126,6 +126,21 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article "Basic income removes incentive traps, not extra conditions":
+          - link /Clerks at the Helsinki office of Kela, the Social Insurance Institution of Finland, at work in \d+\. An incentive trap arises from a benefit structure that cuts support as income grows\. Basic income removes incentive traps, not extra conditions/:
+            - /url: /en/blog/102/basic-income-removes-incentive-traps/
+            - img /Clerks at the Helsinki office of Kela, the Social Insurance Institution of Finland, at work in \d+\. An incentive trap arises from a benefit structure that cuts support as income grows\./
+            - heading "Basic income removes incentive traps, not extra conditions" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: An incentive trap arises when support shrinks as income grows. Why tighter conditions do not remove it, and how basic income makes work always pay.
+        - list:
+          - listitem:
+            - link "Basic welfare":
+              - /url: /en/category/basic-welfare/
+          - listitem:
+            - link "Economy":
+              - /url: /en/category/economy/
+      - listitem:
         - article "Chat control is already in Finland, and the passport register should be abolished":
           - 'link "Lauri Lavanti looking seriously straight into the camera in front of a board-formed concrete wall, for a post on chat control and the passport register, wearing a navy blazer and a floral shirt. Photo: Markus Isomeri. Chat control is already in Finland, and the passport register should be abolished"':
             - /url: /en/blog/101/chat-control-and-passport-register/
@@ -266,21 +281,6 @@
           - listitem:
             - link /Parliamentary elections \d+/:
               - /url: /en/category/parliamentary-elections-2027/
-      - listitem:
-        - article "Where does the public sector's money come from and where does it go?":
-          - link "The columned facade of Parliament House in Helsinki, where the public sector budget is decided Where does the public sector's money come from and where does it go?":
-            - /url: /en/blog/96/public-sector-where-the-money-comes-from-and-where-it-goes/
-            - img "The columned facade of Parliament House in Helsinki, where the public sector budget is decided"
-            - heading "Where does the public sector's money come from and where does it go?" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: /The public sector collects an estimated €160bn in \d+ and spends €174bn\. See the charts for where the money comes from and where it goes\./
-        - list:
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter

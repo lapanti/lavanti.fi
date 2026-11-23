@@ -135,20 +135,17 @@
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/
         - listitem:
-          - article /Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/:
-            - link /Lauri Lavanti håller Gröna fullmäktigegruppens gruppanförande om Kyrkslätts budget \d+ vid talarstolen i fullmäktigesalen\. Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/:
-              - /url: /sv/blog/103/kyrkslatts-budget-grona-gruppanforande/
-              - img /Lauri Lavanti håller Gröna fullmäktigegruppens gruppanförande om Kyrkslätts budget \d+ vid talarstolen i fullmäktigesalen\./
-              - heading /Kyrkslätts budget \d+ skär ned på småbarnspedagogiken/ [level=3]
+          - article "Incitamentsfällorna rivs med basinkomst, inte med fler villkor":
+            - link /Tjänstemän på FPA:s kontor i Helsingfors i arbete år \d+\. En incitamentsfälla uppstår ur ett stödsystem som minskar stödet när inkomsterna växer\. Incitamentsfällorna rivs med basinkomst, inte med fler villkor/:
+              - /url: /sv/blog/102/incitamentsfallorna-rivs-med-basinkomst/
+              - img /Tjänstemän på FPA:s kontor i Helsingfors i arbete år \d+\. En incitamentsfälla uppstår ur ett stödsystem som minskar stödet när inkomsterna växer\./
+              - heading "Incitamentsfällorna rivs med basinkomst, inte med fler villkor" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kyrkslätts budget \d+ skär cirka \d+ \d+ euro i småbarnspedagogiken utan barnkonsekvensanalys\. Gröna fullmäktigegruppens gruppanförande och video\./
+            - paragraph: Incitamentsfällan uppstår när stödet minskar då inkomsterna stiger. Varför strängare villkor inte river den och hur basinkomsten gör arbete alltid lönsamt?
           - list:
             - listitem:
-              - link "Kyrkslätt":
-                - /url: /sv/kategori/kyrkslatt/
-            - listitem:
-              - link "Småbarnspedagogik":
-                - /url: /sv/kategori/smabarnspedagogik/
+              - link "Grundläggande":
+                - /url: /sv/kategori/grundtrygghet/
             - listitem:
               - link "Ekonomi":
                 - /url: /sv/kategori/ekonomi/

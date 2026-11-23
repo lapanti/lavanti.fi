@@ -135,20 +135,17 @@
               - link "Talous":
                 - /url: /fi/kategoria/talous/
         - listitem:
-          - article /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
-            - link /Lauri Lavanti pitää Vihreän valtuustoryhmän ryhmäpuheenvuoron Kirkkonummen talousarviosta \d+ valtuustosalin puhujanpöntössä\. Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/:
-              - /url: /fi/blog/103/kirkkonummen-talousarvio-vihreiden-ryhmapuheenvuoro/
-              - img /Lauri Lavanti pitää Vihreän valtuustoryhmän ryhmäpuheenvuoron Kirkkonummen talousarviosta \d+ valtuustosalin puhujanpöntössä\./
-              - heading /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta/ [level=3]
+          - article "Kannustinloukut puretaan perustulolla, ei lisäehdoilla":
+            - link /Kelan Helsingin toimiston virkailijat työssään vuonna \d+\. Kannustinloukku syntyy tukien rakenteesta, joka pienentää tukea tulojen kasvaessa\. Kannustinloukut puretaan perustulolla, ei lisäehdoilla/:
+              - /url: /fi/blog/102/kannustinloukku-puretaan-perustulolla/
+              - img /Kelan Helsingin toimiston virkailijat työssään vuonna \d+\. Kannustinloukku syntyy tukien rakenteesta, joka pienentää tukea tulojen kasvaessa\./
+              - heading "Kannustinloukut puretaan perustulolla, ei lisäehdoilla" [level=3]
             - time: /\d+\.\d+\.\d+/
-            - paragraph: /Kirkkonummen talousarvio \d+ leikkaa varhaiskasvatuksesta noin \d+ \d+ euroa ilman lapsivaikutusten arviointia\. Vihreiden ryhmäpuheenvuoro ja video\./
+            - paragraph: Kannustinloukku syntyy, kun tuki pienenee tulojen kasvaessa. Miksi ehtojen tiukentaminen ei pura sitä ja miten perustulo tekee työstä aina kannattavaa?
           - list:
             - listitem:
-              - link "Kirkkonummi":
-                - /url: /fi/kategoria/kirkkonummi/
-            - listitem:
-              - link "Varhaiskasvatus":
-                - /url: /fi/kategoria/varhaiskasvatus/
+              - link "Perusturva":
+                - /url: /fi/kategoria/perusturva/
             - listitem:
               - link "Talous":
                 - /url: /fi/kategoria/talous/
