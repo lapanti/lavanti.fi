@@ -76,7 +76,7 @@
     "@siteimprove/alfa-test-utils": "0.84.4",
     "@stylistic/eslint-plugin": "6.0.1",
     "@testing-library/dom": "10.4.2",
-    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/jest-dom": "8.0.0",
     "@types/node": "26.6.7",
     "@vitest/coverage-v8": "5.1.1",
     "@vitest/eslint-plugin": "1.6.28",
