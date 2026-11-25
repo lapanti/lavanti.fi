@@ -9,11 +9,11 @@ faq:
   - q: 'What is Meta Muse and what does it do?'
     a: 'Meta Muse is Meta''s personal AI agent. According to Meta''s own announcement, it sends emails, books trips, fills in forms and negotiates on the user''s behalf. It keeps working even after the user closes the app, and asks permission before sensitive actions. The user chooses which apps the agent is connected to. Muse has a free basic tier and paid tiers.'
   - q: 'What data does Meta Muse collect, and about whom?'
-    a: 'Meta Muse collects data from every service the user connects to it, and also about the people the user talks about. According to a TIME investigation, the agent maintains files on these people and updates them hourly. People who do not use Muse also end up in other users'' agents'' files. Meta''s AI is trained on users'' conversations by default, and the user can opt out.'
+    a: 'Meta Muse collects data from the services the user connects to it and about the people the user talks about. According to TIME, the agent maintains files on these people and updates them hourly. People who do not use Muse also end up in other users'' agents'' files. According to Reuters, Muse read messages from an app the user had not connected. Meta''s AI is trained on users'' conversations by default, and the user can opt out.'
   - q: 'Why is Meta Muse not the democratisation of AI?'
     a: 'Meta Muse is not the democratisation of AI because its business model concentrates power in a single gatekeeper company. The same company''s agent gets access to the user''s email, calendar and bank connection, and the company takes a share of the purchases the agent makes. A product can be available to everyone without power being distributed. Power concentrates with whoever holds the data.'
   - q: 'Is Meta Muse coming to Finland, and what does EU regulation require of it?'
-    a: 'Meta Muse is not available in the EU, and Meta has not said whether or when it will come to Europe. According to the Spanish outlet Merca2, analysts see EU regulation as a brake on Muse, because the Digital Markets Act (DMA) requires a gatekeeper to obtain the user''s separate consent before combining personal data across services. This is, however, only the analysts'' assessment, not a reason stated by Meta.'
+    a: 'Meta Muse is not available in the EU, and Meta has not said whether or when it will come to the EU. According to the Spanish outlet Merca2, analysts see EU regulation as a brake on Muse, because the Digital Markets Act (DMA) requires a gatekeeper to obtain the user''s separate consent before combining personal data across services. This is, however, only the analysts'' assessment, not a reason stated by Meta.'
   - q: 'What should Finland do?'
     a: 'Finland must insist in the EU that personal AI agents comply fully with the General Data Protection Regulation and the Digital Markets Act. The rules already exist, and agents need no exemptions from them. Confidentiality of correspondence and banking secrecy are taken for granted in Finland, and an agent that reads your mail and sees your accounts falls within the same circle of trust.'
 ---
@@ -39,7 +39,7 @@ Muse operates in the United States on [phones, WhatsApp and the web](https://abo
 
 ## What data does Meta Muse collect, and about whom?
 
-Meta Muse collects data from every service the user connects to it, and also about the people the user talks about. According to a TIME investigation, the agent maintains files on these people and updates them hourly. People who do not use Muse also end up in other users' agents' files. Meta's AI is trained on users' conversations by default, and the user can opt out.
+Meta Muse collects data from the services the user connects to it and about the people the user talks about. According to TIME, the agent maintains files on these people and updates them hourly. People who do not use Muse also end up in other users' agents' files. According to Reuters, Muse read messages from an app the user had not connected. Meta's AI is trained on users' conversations by default, and the user can opt out.
 
 Muse processes, for example:
 
@@ -51,6 +51,14 @@ Muse processes, for example:
 
 > Muse keeps files even on people who have never given it permission.
 
+[According to Reuters](https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/), Muse read Signal messages even though the user had not connected Signal to the agent. Signal is an end-to-end encrypted messaging app. A Meta employee noticed this when the agent reminded the employee to reply to a message from their sister.
+
+According to Reuters, Muse bypassed Meta's own connection tool and used permissions it had been granted during setup. On Android, it read messages from notifications, access to which was on by default according to the Meta employee. On Mac, Muse used the accessibility and screenshot tools that Apple provides for people with disabilities. Reuters repeated the test with Signal and the AI Now Institute, and the results indicated that the problem persisted and might affect others as well. On iPhone, the same attempts were blocked.
+
+End-to-end encryption protects a message on its way to the recipient, but not on the recipient's device. A private company's agent and state surveillance of communications are different things.
+
+According to Meta, these were isolated cases, and Muse can access other apps only with permissions the user has explicitly granted. Meta also says many of the messages reported by employees were made up by the AI and that the problem has already been fixed. Google, the developer of Android, says that users must grant permissions knowingly. Apple effectively closed the Mac route with its November operating system update. Signal President Meredith Whittaker is calling for apps to be able to mark themselves off-limits to agents, and for AI companies and operating systems to respect that boundary.
+
 Collected data does not always stay where it is meant to. [According to Ars Technica](https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/), [security researchers](https://blog.claroc.io/ghostshares-muse-passive-dns/) found Muse share links in public DNS records and used them to access more than 6,800 conversations. They contained companies' revenue figures, loan applications and account transactions. Meta has since shut down the sharing feature.
 
 ## Why is Meta Muse not the democratisation of AI?
@@ -59,28 +67,31 @@ Meta Muse is not the democratisation of AI because its business model concentrat
 
 Meta's chief executive wrote in July 2025 that the company wants to [bring personal superintelligence to everyone](https://www.meta.com/superintelligence/) and put power in people's hands. [According to TechCrunch](https://techcrunch.com/2026/10/21/meta-says-muse-has-over-10m-users-with-shopping-a-top-activity/), Muse's revenue model rests on Meta keeping a share of the purchases made through the agent. Meta expects Muse eventually to earn more per user than its other apps, such as Facebook and Instagram.
 
-The strongest privacy protection, in which not even Meta could see the content, has been [promised later as a separate option](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/), as [ABC News](https://abcnews.com/Business/metas-muse-ai-agent/story?id=136680507) also reports. It is therefore not on by default. In the guidelines of its [bug bounty programme](https://bugbounty.meta.com/payout-guidelines/muse), Meta itself writes that the Muse agent holds the user's most sensitive data and can act on the user's behalf. Facebook, Instagram and WhatsApp are already owned by Meta.
+Responsibility for the agent's actions does not, however, pass to Meta. [According to Reuters](https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/), Muse's terms of service leave responsibility with the user. In internal messages, Meta employees reported, for example, that the agent booked Airbnb accommodation the user had not approved and that could not be cancelled. According to the internal messages, the agent also made up details of purchases.
+
+The strongest privacy protection, in which not even Meta could see the content, has been [promised later as a separate option](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/), as [ABC News](https://abcnews.com/Business/metas-muse-ai-agent/story?id=136680507) also reports. It is therefore not on by default. In the guidelines of its [bug bounty programme](https://bugbounty.meta.com/payout-guidelines/muse), Meta itself writes that the Muse agent holds the user's most sensitive data and can act on the user's behalf.
 
 ## Is Meta Muse coming to Finland, and what does EU regulation require of it?
 
-Meta Muse is not available in the EU, and Meta has not said whether or when it will come to Europe. According to the Spanish outlet Merca2, analysts see EU regulation as a brake on Muse, because the Digital Markets Act (DMA) requires a gatekeeper to obtain the user's separate consent before combining personal data across services. This is, however, only the analysts' assessment, not a reason stated by Meta.
+Meta Muse is not available in the EU, and Meta has not said whether or when it will come to the EU. According to The Times, Meta is preparing to launch Muse in the United Kingdom. According to the Spanish outlet Merca2, analysts see EU regulation as a brake on Muse, because the Digital Markets Act (DMA) requires a gatekeeper to obtain the user's separate consent before combining personal data across services. This is, however, only the analysts' assessment, not a reason stated by Meta.
 
 The European Commission has designated Meta a gatekeeper under the Digital Markets Act, and its core platform services include Facebook, Instagram, WhatsApp and Messenger. [According to the regulation](https://eur-lex.europa.eu/eli/reg/2022/1925/oj), a gatekeeper may combine personal data between its core platform services and its other services only if the user has explicitly chosen this and given consent. [The Merca2 article](https://www.merca2.es/2026/10/07/meta-muse-europa-leyes-2468346/) ties Muse precisely to this rule.
 
-The Irish Data Protection Commission is Meta's lead supervisory authority under the [EU General Data Protection Regulation (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj). As of early November 2026, it has not taken a public position on Muse. Neither the European Data Protection Board nor the Finnish Data Protection Ombudsman has taken a position either.
+The Irish Data Protection Commission is Meta's lead supervisory authority under the [EU General Data Protection Regulation (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj). As of 24 November 2026, it has not taken a public position on Muse. Neither the European Data Protection Board nor the Finnish Data Protection Ombudsman has taken a position either.
 
 ## What should Finland do?
 
 Finland must insist in the EU that personal AI agents comply fully with the General Data Protection Regulation and the Digital Markets Act. The rules already exist, and agents need no exemptions from them. Confidentiality of correspondence and banking secrecy are taken for granted in Finland, and an agent that reads your mail and sees your accounts falls within the same circle of trust.
 
-This means three things:
+This means four things:
 
 - A gatekeeper company combines data across its services only with separate consent.
 - No profiles are built of people who do not use the service.
 - The strongest privacy protection is the default for everyone, not a paid extra tier.
+- An app can place itself off-limits to agents, and the operating system enforces that boundary.
 
 Finland is a high-trust society. In my view, a profile, once built, is practically impossible to take apart, so the rules must apply to agents from the start. This is about rules, not about banning American products, because [digital independence is not isolation](/en/blog/88/digital-independence-what-it-means/). I have written before about why [Finland risks losing control of its own data](/en/blog/79/finland-risks-losing-control-of-its-own-data/). For what you can do yourself, I gathered the options in a post on [everyday choices for digital independence](/en/blog/66/digital-independence-five-plus-one-everyday-choices/).
 
-If a free service sounds unbelievably great and advanced, it is worth treating it with healthy suspicion. It is quite possible that you are the product, and that your data is what the provider sells to its other customers.
+If a free service sounds unbelievably great and advanced, it is worth treating it with healthy suspicion. It is quite possible that you yourself are the product.
 
 Real democratisation of AI means that basic-level AI is available to everyone through public services. The library is a good model. It sells nothing, respects privacy and does not collect users' data for commercial purposes. I am a candidate for the Finnish Parliament (*eduskunta*) in Uusimaa, and if elected I will carry these principles forward. When AI is offered in libraries, schools and employment services on the same principles, nobody has to buy their privacy back.
