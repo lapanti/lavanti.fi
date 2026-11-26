@@ -1,4 +1,7 @@
+import type { CollectionInfo } from '../lib/jsonld'
 import type { Lang } from './nav'
+
+import { getDownloadUrl } from '../lib/images'
 
 export interface GalleryPhoto {
     /** Localised description of the thumbnail (the first available crop). */
@@ -185,3 +188,13 @@ export const galleryPhotos: GalleryPhoto[] = [
         id: 'studio-sivuttain',
     },
 ]
+
+/** The media gallery as CollectionPage items: each photo by its alt text, at its full-resolution download. */
+export function galleryCollection(lang: Lang): CollectionInfo {
+    return {
+        items: galleryPhotos.map((photo) => ({
+            name: photo.alt[lang],
+            url: getDownloadUrl((photo.crops.nelio ?? photo.crops.pysty ?? photo.crops.vaaka)!),
+        })),
+    }
+}
