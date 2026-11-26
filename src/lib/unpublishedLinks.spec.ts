@@ -21,6 +21,10 @@ describe('unwrapLinks', () => {
     it.each([
         ['an absolute site URL', '<a class="x" href="https://lavanti.fi/sv/blog/72/kodare-mot-maskin/#rubrik">x</a>'],
         ['an English post', '<a href="/en/blog/72/coder-vs-machine/">x</a>'],
+        [
+            'an entity-escaped anchor in an RSS feed',
+            '&lt;a href=&quot;/fi/blog/72/koodari-vastaan-kone/&quot;&gt;x&lt;/a&gt;',
+        ],
     ])('unwraps %s', (_, html) => {
         expect(unwrapLinks(html, scheduled)).toBe('x')
     })
@@ -30,6 +34,7 @@ describe('unwrapLinks', () => {
         ['a post id with 72 as a prefix', '<a href="/fi/blog/720/x/">x</a>'],
         ['an off-site URL', '<a href="https://example.com/fi/blog/72/x/">x</a>'],
         ['the blog index', '<a href="/fi/blog/">x</a>'],
+        ['an escaped anchor to a published post', '&lt;a href=&quot;/fi/blog/7/x/&quot;&gt;x&lt;/a&gt;'],
     ])('leaves %s alone', (_, html) => {
         expect(unwrapLinks(html, scheduled)).toBe(html)
     })
