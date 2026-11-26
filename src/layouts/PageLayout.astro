@@ -7,6 +7,7 @@ import Faq from '../components/Faq.astro'
 import HeroPreloadLinks from '../components/HeroPreloadLinks.astro'
 import Stripe from '../components/Stripe.astro'
 import TitleBanner from '../components/TitleBanner.astro'
+import { galleryCollection } from '../content/gallery'
 import { pageBreadcrumbs } from '../lib/breadcrumbs'
 import { faqSectionLabels, hasFaqSection } from '../lib/faq'
 import { getImage } from '../lib/images'
@@ -38,6 +39,8 @@ interface Props {
      * rendering it automatically from `faq` would duplicate them.
      */
     faqSection?: boolean
+    /** With type CollectionPage: list the media gallery photos as the JSON-LD ItemList. */
+    gallery?: boolean
     heroImage?: string
     intro?: string
     lang?: Lang
@@ -72,6 +75,7 @@ const {
     eyebrow,
     faq,
     faqSection = false,
+    gallery = false,
     heroImage,
     intro,
     lang,
@@ -111,7 +115,7 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
 
 <BaseLayout
     breadcrumbs={breadcrumbs}
-    collection={collection}
+    collection={collection ?? (gallery && lang ? galleryCollection(lang) : undefined)}
     createdAt={createdAt}
     description={description}
     events={eventCalendar ? visibleCampaignEvents() : undefined}
