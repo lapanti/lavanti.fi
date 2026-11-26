@@ -276,11 +276,15 @@ const jsonLd = JSON.stringify(
                           inLanguage: lang,
                           ...(collection
                               ? {
-                                    about: {
-                                        '@type': 'DefinedTerm',
-                                        inDefinedTermSet: collection.about.termSet,
-                                        name: stripSoftHyphens(collection.about.name),
-                                    },
+                                    ...(collection.about
+                                        ? {
+                                              about: {
+                                                  '@type': 'DefinedTerm',
+                                                  inDefinedTermSet: collection.about.termSet,
+                                                  name: stripSoftHyphens(collection.about.name),
+                                              },
+                                          }
+                                        : {}),
                                     mainEntity: {
                                         '@type': 'ItemList',
                                         itemListElement: collection.items.map((item, i) => ({

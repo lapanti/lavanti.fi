@@ -971,6 +971,25 @@ describe('<Head />', () => {
         })
     })
 
+    it('should emit an ItemList mainEntity and no about for a collection without a topic', async () => {
+        const result = await renderAstroComponent(Head, {
+            props: {
+                collection: { items: [{ name: 'Kuva', url: 'https://lavanti.fi/images/kuva/w=3000' }] },
+                lang: 'fi',
+                slug: 'fi/media',
+                title: 'Kuvapankki',
+                type: 'CollectionPage',
+            },
+        })
+
+        const page = Array.from(result.querySelectorAll('script[type="application/ld+json"]'))
+            .map((s) => JSON.parse(s.textContent || '{}'))
+            .find((j) => j['@type'] === 'CollectionPage')
+        expect(page.about).toBeUndefined()
+        expect(page.mainEntity['@type']).toBe('ItemList')
+        expect(page.mainEntity.numberOfItems).toBe(1)
+    })
+
     it('should not emit BreadcrumbList when breadcrumbs prop is absent', async () => {
         const result = await renderAstroComponent(Head, {
             props: {

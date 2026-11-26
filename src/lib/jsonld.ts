@@ -42,9 +42,10 @@ export type FaqItem = { a: string; q: string }
 
 /**
  * What a CollectionPage collects: the topic it is about (a DefinedTerm in the
- * site's category set) and its items in display order, as an ItemList.
+ * site's category set; absent for collections outside it, such as the media
+ * gallery) and its items in display order, as an ItemList.
  */
 export type CollectionInfo = {
-    about: { name: string; termSet: string }
+    about?: { name: string; termSet: string }
     items: Array<{ name: string; url: string }>
 }
