@@ -1,10 +1,14 @@
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import {
     checkLlmsTxt,
+    checkPageLinks,
     checkRedirectsOutput,
+    collectFunctionRoutes,
     extractLlmsLinks,
     extractOgImage,
+    extractPageLinks,
     normalizePath,
     parseRedirects,
     rootRedirectRules,
@@ -141,5 +145,54 @@ describe('checkRedirectsOutput', () => {
 
         expect(problems).toHaveLength(1)
         expect(problems[0]).toContain('dead-end')
+    })
+})
+
+describe('extractPageLinks', () => {
+    it('keeps root-relative and site-origin links and skips external, protocol-relative and /images/ ones', () => {
+        const html = [
+            '<a href="/fi/blog/1/a/">a</a>',
+            '<a class="x" href="https://lavanti.fi/sv/media/">b</a>',
+            '<a href="https://example.com/fi/">c</a>',
+            '<a href="//cdn.example.com/x">d</a>',
+            '<a href="mailto:lauri@example.com">e</a>',
+            '<a download href="/images/kuva/w=3000">f</a>',
+            '<link href="/fi/rss.xml">',
+        ].join('')
+        expect(extractPageLinks(html)).toEqual(['/fi/blog/1/a/', '/sv/media/'])
+    })
+})
+
+describe('checkPageLinks', () => {
+    const servable = new Set(['/fi/', '/fi/blog/80/kuka-omistaa/', '/fi/rss.xml'])
+    const redirectSources = new Set(['/fi/blog/80/'])
+    const functionRoutes = new Set(['/lahjoita/'])
+
+    it('passes built pages, assets, fragments and Pages Function routes', () => {
+        const links = ['/fi/', '/fi/blog/80/kuka-omistaa/#otsikko', '/fi/rss.xml', '/lahjoita']
+        expect(checkPageLinks(links, servable, redirectSources, functionRoutes)).toEqual([])
+    })
+
+    it('flags a link to an unbuilt (scheduled) post once per page', () => {
+        const links = ['/fi/blog/72/koodari-vastaan-kone/', '/fi/blog/72/koodari-vastaan-kone/']
+        expect(checkPageLinks(links, servable, redirectSources, functionRoutes)).toEqual([
+            'links a missing page "/fi/blog/72/koodari-vastaan-kone/"',
+        ])
+    })
+
+    it('flags a link to a redirect source', () => {
+        expect(checkPageLinks(['/fi/blog/80/'], servable, redirectSources, functionRoutes)[0]).toContain(
+            'redirect source'
+        )
+    })
+})
+
+describe('collectFunctionRoutes', () => {
+    it('maps the repo functions/ tree to routes, skipping dynamic segments', () => {
+        const routes = collectFunctionRoutes(join(import.meta.dirname, '..', '..', 'functions'))
+        expect(routes).toContain('/')
+        expect(routes).toContain('/lahjoita/')
+        expect(routes).toContain('/api/suosittele/stats/')
+        expect([...routes].some((route) => route.includes('['))).toBe(false)
     })
 })
