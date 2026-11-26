@@ -15,6 +15,7 @@ import { createSitemapAlternates } from './src/lib/sitemapAlternates'
 import { buildPageDateMap } from './src/lib/sitemapLastmod'
 import { redirects, shortLinks } from './src/lib/redirects'
 import { redirectsFile } from './src/lib/redirectsIntegration'
+import { unpublishedLinks } from './src/lib/unpublishedLinks'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -91,5 +92,7 @@ export default defineConfig({
         // as an `astro preview` fallback).
         redirectsFile(),
         notFoundPages(),
+        // Unlink posts that link a scheduled post, which is not in this build (src/lib/unpublishedLinks.ts).
+        unpublishedLinks(join(__dirname, 'src', 'content', 'posts')),
     ],
 })
