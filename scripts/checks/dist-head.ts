@@ -22,7 +22,8 @@
  *   - JSON-LD graph: exactly one WebSite node, with the site @id; every page
  *     entity (WebPage, BlogPosting, CollectionPage, ProfilePage) has isPartOf
  *     pointing at it; at most one canonical Person node, and every other
- *     reference to Lauri carries the Person @id
+ *     reference to Lauri carries the Person @id; WebPage-only properties
+ *     (primaryImageOfPage, breadcrumb, …) appear on WebPage types only
  *   - LCP hero preload drift guard (.agents/specs/lcp-delivery.md): every
  *     fetchpriority=high hero has an image preload whose imagesrcset/imagesizes
  *     are byte-equal to the hero <img>/<source> markup, with no crossorigin and
@@ -114,6 +115,27 @@ function jsonLdNodes(value: unknown): Array<Record<string, unknown>> {
     return [node, ...Object.values(node).flatMap(jsonLdNodes)]
 }
 
+/*
+ * schema.org declares these properties on WebPage only. Placed on a CreativeWork such as
+ * BlogPosting they fail validation (UNKNOWN_FIELD), which Ahrefs reports site-wide.
+ */
+const WEBPAGE_ONLY_PROPERTIES = ['breadcrumb', 'lastReviewed', 'primaryImageOfPage', 'relatedLink', 'significantLink']
+const WEBPAGE_TYPES = new Set(['AboutPage', 'CollectionPage', 'FAQPage', 'ItemPage', 'ProfilePage', 'WebPage'])
+
+/** Property-domain rules: a WebPage-only property on any other typed node. */
+export function checkJsonLdDomains(blocks: Array<Record<string, unknown>>): string[] {
+    const problems: string[] = []
+    for (const node of jsonLdNodes(blocks)) {
+        const type = node['@type']
+        if (typeof type !== 'string' || WEBPAGE_TYPES.has(type)) continue
+        for (const prop of WEBPAGE_ONLY_PROPERTIES) {
+            if (prop in node) problems.push(`${prop} is a WebPage property, found on ${type}`)
+        }
+    }
+
+    return problems
+}
+
 /**
  * Graph-linking rules over the page's parsed JSON-LD blocks. Guest co-authors are
  * Person nodes without an @id by design, so the reference rule only covers Lauri,
@@ -141,6 +163,8 @@ export function checkJsonLdGraph(blocks: Array<Record<string, unknown>>): string
     if (canonical.length > 1) problems.push(`expected at most one canonical Person node, found ${canonical.length}`)
     const unlinked = persons.filter((n) => n['@id'] !== PERSON_ID).length
     if (unlinked > 0) problems.push(`${unlinked} Person reference(s) to ${PERSON_NAME} without @id ${PERSON_ID}`)
+
+    problems.push(...checkJsonLdDomains(blocks))
 
     return problems
 }

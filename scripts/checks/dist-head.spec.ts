@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { checkJsonLdGraph, checkPage, findTags, isSkippablePage, parseAttrs } from './dist-head'
+import { checkJsonLdDomains, checkJsonLdGraph, checkPage, findTags, isSkippablePage, parseAttrs } from './dist-head'
 
 // ── shared test fixtures ──────────────────────────────────────────────────────
 
@@ -426,5 +426,29 @@ describe('checkJsonLdGraph', () => {
         expect(checkJsonLdGraph([{ ...ctx, ...canonical }, { ...page, about: canonical }, WEBSITE])).toContain(
             'expected at most one canonical Person node, found 2'
         )
+    })
+})
+
+describe('checkJsonLdDomains', () => {
+    const image = { '@type': 'ImageObject', url: 'https://lavanti.fi/og/x.jpg' }
+
+    it('allows primaryImageOfPage on the WebPage a BlogPosting is the main entity of', () => {
+        const posting = {
+            '@type': 'BlogPosting',
+            image,
+            mainEntityOfPage: { '@type': 'WebPage', primaryImageOfPage: image },
+        }
+        expect(checkJsonLdDomains([posting])).toEqual([])
+    })
+
+    it('flags primaryImageOfPage on a BlogPosting', () => {
+        expect(checkJsonLdDomains([{ '@type': 'BlogPosting', primaryImageOfPage: image }])).toEqual([
+            'primaryImageOfPage is a WebPage property, found on BlogPosting',
+        ])
+    })
+
+    it('flags WebPage-only properties on nested nodes', () => {
+        const page = { '@type': 'CollectionPage', mainEntity: { '@type': 'ItemList', breadcrumb: 'x' } }
+        expect(checkJsonLdDomains([page])).toEqual(['breadcrumb is a WebPage property, found on ItemList'])
     })
 })
