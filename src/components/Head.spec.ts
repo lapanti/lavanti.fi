@@ -1040,7 +1040,7 @@ describe('<Head />', () => {
         expect(result).toBeDefined()
     })
 
-    it('should emit ImageObject for image and primaryImageOfPage in BlogPosting JSON-LD when ogImage is set', async () => {
+    it('should emit ImageObject image on BlogPosting and primaryImageOfPage on its WebPage when ogImage is set', async () => {
         const ogImage = 'https://res.cloudinary.com/example/image/upload/v1/test.jpg'
         const result = await renderAstroComponent(Head, {
             props: {
@@ -1058,10 +1058,12 @@ describe('<Head />', () => {
         expect(jsonLd.image.url).toBe(ogImage)
         expect(jsonLd.image.width).toBe(1200)
         expect(jsonLd.image.height).toBe(630)
-        expect(jsonLd.primaryImageOfPage['@type']).toBe('ImageObject')
-        expect(jsonLd.primaryImageOfPage.url).toBe(ogImage)
-        expect(jsonLd.primaryImageOfPage.width).toBe(1200)
-        expect(jsonLd.primaryImageOfPage.height).toBe(630)
+        expect(jsonLd.primaryImageOfPage).toBeUndefined()
+        const page = jsonLd.mainEntityOfPage
+        expect(page.primaryImageOfPage['@type']).toBe('ImageObject')
+        expect(page.primaryImageOfPage.url).toBe(ogImage)
+        expect(page.primaryImageOfPage.width).toBe(1200)
+        expect(page.primaryImageOfPage.height).toBe(630)
     })
 
     it('should not emit image or primaryImageOfPage in BlogPosting JSON-LD when ogImage is absent', async () => {
@@ -1078,6 +1080,7 @@ describe('<Head />', () => {
         expect(jsonLd['@type']).toBe('BlogPosting')
         expect(jsonLd.image).toBeUndefined()
         expect(jsonLd.primaryImageOfPage).toBeUndefined()
+        expect(jsonLd.mainEntityOfPage.primaryImageOfPage).toBeUndefined()
     })
 
     it('should emit bare string image and no primaryImageOfPage for non-BlogPosting type with ogImage', async () => {
