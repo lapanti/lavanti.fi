@@ -21,13 +21,16 @@ import { helsinkiDateOf, isPublishedBy } from './publishing'
 const POST_ANCHOR =
     /<a\b[^>]*?\shref="(?:https:\/\/lavanti\.fi)?\/(?:fi|sv|en)\/blog\/(\d+)\/[^"]*"[^>]*>([\s\S]*?)<\/a>/g
 
-/** Replace every anchor to an unpublished post with its inner HTML. */
+/* The same anchor entity-escaped, as post bodies appear inside the RSS feeds' XML. */
+const ESCAPED_POST_ANCHOR =
+    /&lt;a\b(?:(?!&gt;).)*?\shref=&quot;(?:https:\/\/lavanti\.fi)?\/(?:fi|sv|en)\/blog\/(\d+)\/(?:(?!&quot;).)*&quot;(?:(?!&gt;).)*&gt;([\s\S]*?)&lt;\/a&gt;/g
+
+/** Replace every anchor to an unpublished post, raw or entity-escaped, with its inner markup. */
 export function unwrapLinks(html: string, unpublished: ReadonlySet<number>): string {
     if (unpublished.size === 0) return html
+    const unwrap = (anchor: string, id: string, inner: string) => (unpublished.has(Number(id)) ? inner : anchor)
 
-    return html.replace(POST_ANCHOR, (anchor, id: string, inner: string) =>
-        unpublished.has(Number(id)) ? inner : anchor
-    )
+    return html.replace(POST_ANCHOR, unwrap).replace(ESCAPED_POST_ANCHOR, unwrap)
 }
 
 /** Ids of the posts whose publishDate is after `today` (YYYY-MM-DD, Helsinki). */
@@ -45,11 +48,11 @@ export function unpublishedPostIds(postsDir: string, today: string): Set<number>
     return ids
 }
 
-/** Rewrite every built HTML file under `dir`; returns how many changed. */
+/** Rewrite every built HTML page and XML feed under `dir`; returns how many changed. */
 export function unwrapLinksInDir(dir: string, unpublished: ReadonlySet<number>): number {
     let changed = 0
     for (const entry of readdirSync(dir, { recursive: true, withFileTypes: true })) {
-        if (!entry.isFile() || !entry.name.endsWith('.html')) continue
+        if (!entry.isFile() || !/\.(html|xml)$/.test(entry.name)) continue
         const file = join(entry.parentPath, entry.name)
         const html = readFileSync(file, 'utf8')
         const rewritten = unwrapLinks(html, unpublished)
