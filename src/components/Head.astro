@@ -244,15 +244,7 @@ const jsonLd = JSON.stringify(
                 ...(type === BLOGPOSTING
                     ? {
                           ...(ogImageUrl
-                              ? {
-                                    image: { '@type': 'ImageObject', height: 630, url: ogImageUrl, width: 1200 },
-                                    primaryImageOfPage: {
-                                        '@type': 'ImageObject',
-                                        height: 630,
-                                        url: ogImageUrl,
-                                        width: 1200,
-                                    },
-                                }
+                              ? { image: { '@type': 'ImageObject', height: 630, url: ogImageUrl, width: 1200 } }
                               : {}),
                           dateModified: updatedAt ?? createdAt,
                           datePublished: createdAt,
@@ -262,6 +254,17 @@ const jsonLd = JSON.stringify(
                               '@type': WEBPAGE,
                               inLanguage: lang,
                               isPartOf,
+                              /* primaryImageOfPage is a WebPage property: on the BlogPosting it fails schema.org validation. */
+                              ...(ogImageUrl
+                                  ? {
+                                        primaryImageOfPage: {
+                                            '@type': 'ImageObject',
+                                            height: 630,
+                                            url: ogImageUrl,
+                                            width: 1200,
+                                        },
+                                    }
+                                  : {}),
                           },
                           /* A personal blog: the author publishes it. Google accepts a Person here. */
                           publisher: personRef,
