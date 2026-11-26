@@ -14,6 +14,8 @@
  *     covers the derived locale-less aliases and bare-id post redirects, which
  *     are generated at build time and never see a source-map audit. The root
  *     `/` → `/fi/` | `/sv/` Pages Function redirect is checked the same way.
+ *   - page links: every internal <a href> on every built page resolves to a
+ *     built page, asset or Pages Function route, and not to a redirect source.
  *
  * Unit tests cover the pure checks; the CLI runs them against dist/.
  *
@@ -111,6 +113,62 @@ export function checkLlmsTxt(markdown: string, servable: Set<string>, redirectSo
 }
 
 /**
+ * Internal `<a href>` targets of a built HTML document as root-relative paths: site-origin
+ * and root-relative links. Protocol-relative and off-site links are not ours to check, and
+ * /images/* (Cloudflare Images transforms) are served off-dist.
+ */
+export function extractPageLinks(html: string): string[] {
+    const links: string[] = []
+    for (const match of html.matchAll(/<a\b[^>]*?\shref="([^"]+)"/g)) {
+        const raw = match[1].replaceAll('&amp;', '&')
+        const path = raw.startsWith(`${SITE}/`) ? raw.slice(SITE.length) : raw
+        if (path.startsWith('/') && !path.startsWith('//') && !path.startsWith('/images/')) links.push(path)
+    }
+
+    return links
+}
+
+/**
+ * Problem descriptions for one page's internal links (empty = ok). A link must reach a built
+ * page or asset, or a Pages Function route (the /lahjoita and /mp short links). A link to a
+ * missing page is how a post linking a scheduled post shipped a 404 (Ahrefs, 2026-11).
+ */
+export function checkPageLinks(
+    links: string[],
+    servable: Set<string>,
+    redirectSources: Set<string>,
+    functionRoutes: Set<string>
+): string[] {
+    const problems = new Set<string>()
+    for (const raw of links) {
+        const path = normalizePath(raw)
+        if (servable.has(path) || functionRoutes.has(path)) continue
+        problems.add(
+            redirectSources.has(path)
+                ? `links a redirect source "${raw}" — link the canonical target instead`
+                : `links a missing page "${raw}"`
+        )
+    }
+
+    return [...problems]
+}
+
+/** Routes served by Pages Functions (functions/*.ts), as normalised paths; `/` is the root redirect. */
+export function collectFunctionRoutes(functionsDir: string): Set<string> {
+    const routes = new Set<string>()
+    const walk = (dir: string, prefix: string): void => {
+        for (const entry of readdirSync(dir, { withFileTypes: true })) {
+            if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}/${entry.name}`)
+            else if (/\.ts$/.test(entry.name) && !entry.name.startsWith('_') && !entry.name.includes('['))
+                routes.add(normalizePath(`${prefix}/${entry.name.replace(/\.ts$/, '').replace(/^index$/, '')}`))
+        }
+    }
+    walk(functionsDir, '')
+
+    return routes
+}
+
+/**
  * Extract the `og:image` URL from a built HTML document as a root-relative path, or
  * null when there is none or it points off-site. Handles both attribute orders
  * (`content`/`property`), since Head.astro emits `content` first.
@@ -199,9 +257,17 @@ if (isMain) {
      * A page pointing at a card the endpoint never enumerated is a silent broken share
      * image; /images/* fallbacks (Cloudflare Images) live off-dist and are skipped.
      */
+    const functionRoutes = collectFunctionRoutes(process.argv[3] ?? 'functions')
     let ogChecked = 0
+    let linksChecked = 0
     for (const page of pages) {
-        const ogPath = extractOgImage(readFileSync(join(distDir, page, 'index.html'), 'utf8'))
+        const html = readFileSync(join(distDir, page, 'index.html'), 'utf8')
+        /* Meta-refresh redirect stubs carry only their target link, which _redirects already covers. */
+        const links = /http-equiv="refresh"/.test(html) ? [] : extractPageLinks(html)
+        linksChecked += links.length
+        for (const problem of checkPageLinks(links, servable, redirectSources, functionRoutes)) report(page, problem)
+
+        const ogPath = extractOgImage(html)
         if (!ogPath?.startsWith('/og/')) continue
         ogChecked++
         /*
@@ -213,7 +279,7 @@ if (isMain) {
 
     if (!hasError) {
         console.log(
-            `OK: llms.txt links, ${rules.length} redirect rules, and ${ogChecked} og:image cards resolve against ${pages.size} built pages`
+            `OK: llms.txt links, ${linksChecked} page links, ${rules.length} redirect rules, and ${ogChecked} og:image cards resolve against ${pages.size} built pages`
         )
     }
     process.exit(hasError ? 1 : 0)
