@@ -18,8 +18,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "digital-independence": {
-      "checkedAt": "2026-11-05",
-      "contentHash": "347f904252c35d08887744e60400e8d7e12e8e995d8df8049e810663f7e2c240",
+      "checkedAt": "2026-11-27",
+      "contentHash": "69f55263550270b236835928db4c0ae18b5060bd138e5008666dc3ef4dc56bdc",
       "model": "typesafe/jev-1.13-20260917"
     },
     "digitalisation": {
@@ -63,8 +63,8 @@
       "model": "typesafe/jev-1.13-20260917"
     },
     "parliamentary-elections-2027": {
-      "checkedAt": "2026-11-05",
-      "contentHash": "6bef36350eba890b2a7b02011f25febd83edbfe46d5aa5606e273c458be177de",
+      "checkedAt": "2026-11-27",
+      "contentHash": "b498cb57a5b3146aaf2bbc7130674c6639642c73a9ebeea101193b4df851b78e",
       "model": "typesafe/jev-1.13-20260917"
     }
   },
@@ -102,6 +102,11 @@
     "post:103": {
       "checkedAt": "2026-11-17",
       "contentHash": "84523630f8a6869208ce5c5d070484fcc2cee9fe666898546aa48114ee6edf57",
+      "model": "typesafe/jev-1.13-20260917"
+    },
+    "post:104": {
+      "checkedAt": "2026-11-27",
+      "contentHash": "ccb12f5eedad3df0e24d65b07381ef6b8464ee83574a2de6644029c94b92d184",
       "model": "typesafe/jev-1.13-20260917"
     },
     "post:11": {
