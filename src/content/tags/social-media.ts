@@ -18,7 +18,7 @@ export const socialMediaTag: LocalTag = {
     id: 'social-media',
     metaDescription: {
         en: 'Posts about social media and its impact on politics and communication.',
-        fi: 'Kirjoituksia sosiaalisesta mediasta, sen vaikutuksesta politiikkaan ja viestintään.',
+        fi: 'Sosiaalisesta mediasta: merkittävä osa poliittisesta keskustelusta käydään ulkomaisten alustoilla. Se, joka hallitsee algoritmeja, hallitsee keskustelua.',
         sv: 'Texter om sociala medier och deras påverkan på politik och kommunikation.',
     },
     names: { en: 'Social media', fi: 'Sosiaalinen media', sv: 'Sociala medier' },
@@ -28,5 +28,5 @@ export const socialMediaTag: LocalTag = {
         sv: 'Sociala medier i politik och kommunikation',
     },
     slugs: { en: 'social-media', fi: 'sosiaalinen-media', sv: 'sociala-medier' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

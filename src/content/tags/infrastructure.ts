@@ -21,7 +21,7 @@ export const infrastructureTag: LocalTag = {
     id: 'infrastructure',
     metaDescription: {
         en: 'Posts about infrastructure, construction, and municipal engineering.',
-        fi: 'Kirjoituksia infrastruktuurista, rakentamisesta ja kunnallistekniikasta.',
+        fi: 'Infrastruktuurista ja kunnallistekniikasta: sähköverkko, datakeskukset ja joukkoliikenne. Investoinnit tulevat toimivan sähkömarkkinan perässä.',
         sv: 'Texter om infrastruktur, byggande och kommunalteknik.',
     },
     names: { en: 'Infra\u00ADstructure', fi: 'Infra', sv: 'Infra\u00ADstruktur' },
@@ -31,5 +31,5 @@ export const infrastructureTag: LocalTag = {
         sv: 'Infrastruktur – byggande och kommunal\u00ADteknik',
     },
     slugs: { en: 'infrastructure', fi: 'infra', sv: 'infrastruktur' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

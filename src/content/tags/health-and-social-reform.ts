@@ -21,7 +21,7 @@ export const healthAndSocialReformTag: LocalTag = {
     id: 'health-and-social-reform',
     metaDescription: {
         en: 'Posts about the social and health reform, welfare areas, and the organisation of health and social services.',
-        fi: 'Kirjoituksia sote-uudistuksesta, hyvinvointialueista ja sosiaali- ja terveyspalvelujen järjestämisestä.',
+        fi: 'Sote-uudistuksesta ja hyvinvointialueista. Ennaltaehkäisy on halvempaa kuin hoito, ja oikeat palvelut oikeaan aikaan hillitsevät kustannusten kasvua.',
         sv: 'Texter om vård- och servicereformen, välfärdsområdena och organisering av social- och hälsovårdstjänster.',
     },
     names: { en: 'Social & health reform', fi: 'Sote-uudistus', sv: 'Vård- och service\u00ADreform' },
@@ -31,5 +31,5 @@ export const healthAndSocialReformTag: LocalTag = {
         sv: 'Vård- och servicereform – väl\u00ADfärds\u00ADområder',
     },
     slugs: { en: 'health-and-social-reform', fi: 'sote-uudistus', sv: 'vard-och-servicereform' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

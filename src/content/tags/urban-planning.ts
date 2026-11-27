@@ -21,7 +21,7 @@ export const urbanPlanningTag: LocalTag = {
     id: 'urban-planning',
     metaDescription: {
         en: 'Posts about urban planning, land use, and city development.',
-        fi: 'Kirjoituksia kaavoituksesta, maankäytöstä ja kaupunkikehityksestä.',
+        fi: 'Kaavoituksesta ja maankäytöstä: uudet kodit hyvien junayhteyksien varrelle, pysäköintinormin purku ja päätösten vaikutusten arviointi jo ennen päätöstä.',
         sv: 'Texter om planläggning, markanvändning och stadsutveckling.',
     },
     names: { en: 'Urban planning', fi: 'Kaavoitus', sv: 'Plan\u00ADläggning' },
@@ -31,5 +31,5 @@ export const urbanPlanningTag: LocalTag = {
         sv: 'Planläggning och mark\u00ADanvändnings\u00ADpolitik',
     },
     slugs: { en: 'urban-planning', fi: 'kaavoitus', sv: 'planlaggning' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

@@ -21,7 +21,7 @@ export const regionalElections2022Tag: LocalTag = {
     id: 'regional-elections-2022',
     metaDescription: {
         en: 'Posts about the 2022 regional elections and the launch of welfare areas in Western Uusimaa.',
-        fi: 'Kirjoituksia vuoden 2022 aluevaaleista ja hyvinvointialueiden käynnistymisestä Länsi-Uudellamaalla.',
+        fi: 'Vuoden 2022 aluevaaleista Länsi-Uudellamaalla: lähipalvelut lähelle, hoitohenkilökunnan jaksaminen ja ennaltaehkäisy, joka on halvempaa kuin hoito.',
         sv: 'Texter om regionvalet 2022 och starten av välfärdsområdena i Västra Nyland.',
     },
     names: { en: 'Regional elections 2022', fi: 'Aluevaalit 2022', sv: 'Regionval 2022' },
@@ -31,5 +31,5 @@ export const regionalElections2022Tag: LocalTag = {
         sv: 'Regionval 2022 – Västra Nylands val',
     },
     slugs: { en: 'regional-elections-2022', fi: 'aluevaalit-2022', sv: 'regionval-2022' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

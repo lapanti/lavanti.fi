@@ -21,7 +21,7 @@ export const regionalElections2025Tag: LocalTag = {
     id: 'regional-elections-2025',
     metaDescription: {
         en: 'Posts about the 2025 regional elections and the future of welfare areas.',
-        fi: 'Kirjoituksia vuoden 2025 aluevaaleista ja hyvinvointialueiden tulevaisuudesta.',
+        fi: 'Vuoden 2025 kunta- ja aluevaaleista: lasten ja nuorten mahdollisuudet, avoin päätöksenteko ja Esseitä maahanmuutosta -sarja. Minut valittiin kunnanvaltuustoon.',
         sv: 'Texter om regionvalet 2025 och välfärdsområdenas framtid.',
     },
     names: { en: 'Regional elections 2025', fi: 'Aluevaalit 2025', sv: 'Regionval 2025' },
@@ -31,5 +31,5 @@ export const regionalElections2025Tag: LocalTag = {
         sv: 'Regionval 2025 – val till väl\u00ADfärds\u00ADområdet',
     },
     slugs: { en: 'regional-elections-2025', fi: 'aluevaalit-2025', sv: 'regionval-2025' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }
