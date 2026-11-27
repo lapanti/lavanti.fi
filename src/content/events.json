@@ -1,63 +1,5 @@
 [
     {
-        "date": "2026-11-17",
-        "endTime": "13:50",
-        "id": "digitaalista-itsenaisyytta-ei-rakenneta-ilman-politiikkaa",
-        "locales": {
-            "en": {
-                "description": "Lauri speaks at the Digital Sovereignty event at The Museum of Technology. In his speech he asks why Finnish IT companies stay out of politics while global tech giants influence regulation openly and with large sums of money, and what that means for Finland's digital independence.",
-                "locality": "Helsinki",
-                "title": "Digital Independence Is Not Built Without Politics",
-                "venue": "The Museum of Technology"
-            },
-            "fi": {
-                "description": "Lauri puhuu Digitaalinen suvereniteetti -tapahtumassa Tekniikan museossa. Puheessa hän kysyy, miksi suomalaiset IT-yritykset pysyttelevät erossa politiikasta, kun kansainväliset teknologiajätit vaikuttavat sääntelyyn avoimesti ja isoilla summilla – ja mitä se tarkoittaa Suomen digitaaliselle itsenäisyydelle.",
-                "locality": "Helsinki",
-                "title": "Digitaalista itsenäisyyttä ei rakenneta ilman politiikkaa",
-                "venue": "Tekniikan museo"
-            },
-            "sv": {
-                "description": "Lauri talar vid evenemanget Digital suveränitet på Tekniska museet. I talet frågar han varför finländska it-företag håller sig borta från politiken, medan internationella teknikjättar påverkar regleringen öppet och med stora summor – och vad det betyder för Finlands digitala självständighet.",
-                "locality": "Helsingfors",
-                "title": "Digital självständighet byggs inte utan politik",
-                "venue": "Tekniska museet"
-            }
-        },
-        "postalCode": "00560",
-        "startTime": "13:10",
-        "streetAddress": "Viikintie 1",
-        "topicConfirmed": true
-    },
-    {
-        "date": "2026-11-22",
-        "endTime": "16:00",
-        "id": "kampanjatiimin-avoin-tilaisuus",
-        "locales": {
-            "en": {
-                "description": "Have you wondered what campaigns are really about? Now you can have a say. At the campaign team's open meeting you can give your views on the campaign programme, meaning what the campaign talks about. We will also go through the important dates and what campaigning means in practice. Welcome!",
-                "locality": "Espoo",
-                "title": "Open campaign team meeting",
-                "venue": "Entresse Library, Blue room"
-            },
-            "fi": {
-                "description": "Oletko miettinyt, mistä kampanjoissa oikein on kyse? Nyt pääset vaikuttamaan. Kampanjatiimin avoimessa tapaamisessa voit sanoa sanasi kampanjaohjelmasta eli siitä, mistä kampanja puhuu. Lisäksi käymme läpi tärkeät päivämäärät ja sen, mitä kampanjointi käytännössä tarkoittaa. Tervetuloa mukaan!",
-                "locality": "Espoo",
-                "title": "Kampanjatiimin avoin tapaaminen",
-                "venue": "Entressen kirjasto, Blue room"
-            },
-            "sv": {
-                "description": "Har du undrat vad en kampanj egentligen går ut på? Nu kan du påverka. På kampanjteamets öppna träff kan du säga din åsikt om kampanjens program, alltså vad kampanjen handlar om. Dessutom går vi igenom viktiga datum och vad kampanjarbete innebär i praktiken. Välkommen med!",
-                "locality": "Esbo",
-                "title": "Kampanjteamets öppna träff",
-                "venue": "Entresse bibliotek, Blue room"
-            }
-        },
-        "postalCode": "02770",
-        "startTime": "14:00",
-        "streetAddress": "Siltakatu 11",
-        "topicConfirmed": false
-    },
-    {
         "date": "2026-11-30",
         "endTime": "19:30",
         "fbUrl": "https://fb.me/e/4WfF0fkf3",
@@ -85,6 +27,35 @@
         "postalCode": "02400",
         "startTime": "18:00",
         "streetAddress": "Kirkkotori 1",
+        "topicConfirmed": true
+    },
+    {
+        "date": "2026-12-05",
+        "endTime": "11:00",
+        "id": "veikkolan-joulumarkkinat",
+        "locales": {
+            "en": {
+                "description": "Come and chat at the Veikkola Christmas Market! I will be at Koskentori from 10 to 11 a.m. Ask me anything about what is on your mind in Kirkkonummi, such as the Veikkola library building! The market is organised by the Veikkola village association (Veikkolan kyläyhdistys) and continues until 2 p.m. The square is accessible. Contact person: Lauri Lavanti.",
+                "locality": "Kirkkonummi",
+                "title": "Veikkola Christmas Market",
+                "venue": "Koskentori, Veikkola centre"
+            },
+            "fi": {
+                "description": "Tule juttelemaan Veikkolan joulumarkkinoille! Olen paikalla Koskentorilla kello 10–11. Kysy kaikesta mikä Kirkkonummella mietityttää, kuten Veikkolan kirjastorakennuksesta! Markkinat järjestää Veikkolan kyläyhdistys, ja ne jatkuvat kello 14 asti. Tori on esteetön. Yhteyshenkilö: Lauri Lavanti.",
+                "locality": "Kirkkonummi",
+                "title": "Veikkolan joulumarkkinat",
+                "venue": "Koskentori, Veikkolan keskusta"
+            },
+            "sv": {
+                "description": "Kom och prata på julmarknaden i Veikkola! Jag är på plats på Koskentori kl. 10–11. Fråga om allt som du funderar på i Kyrkslätt, till exempel om bibliotekshuset i Veikkola! Marknaden ordnas av Veikkolan kyläyhdistys och pågår till kl. 14. Torget är tillgängligt. Kontaktperson: Lauri Lavanti.",
+                "locality": "Kyrkslätt",
+                "title": "Julmarknaden i Veikkola",
+                "venue": "Koskentori, Veikkola centrum"
+            }
+        },
+        "postalCode": "02880",
+        "startTime": "10:00",
+        "streetAddress": "Koskentori",
         "topicConfirmed": true
     }
 ]
