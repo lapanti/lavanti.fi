@@ -53,6 +53,17 @@ describe('<PledgeList />', () => {
         ])
     })
 
+    it('should keep whitespace out of the organizer links, so the CSS comma follows the name directly', async () => {
+        const result = await renderAstroComponent(PledgeList, {
+            props: { lang: 'fi', pledges: [pledge('one')] },
+        })
+
+        expect([...result.querySelectorAll('.pledge-organizers a')].map((a) => a.textContent)).toEqual([
+            'Järjestö A',
+            'Järjestö B',
+        ])
+    })
+
     it('should give the source link an accessible name with the title', async () => {
         const result = await renderAstroComponent(PledgeList, {
             props: { lang: 'en', pledges: [pledge('one')] },

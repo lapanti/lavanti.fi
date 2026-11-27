@@ -156,10 +156,9 @@ const readLabels: Record<Lang, Record<PledgeKind, string>> = {
                         <ul>
                             {pledge.organizers.map((organizer) => (
                                 <li>
-                                    {/* set:text keeps formatter whitespace out of the link, before the CSS comma. */}
-                                    <a href={organizer.url} rel="noopener noreferrer">
-                                        {organizer.name[lang]}
-                                    </a>
+                                    {/* A wrapped anchor carries whitespace into the link, before the CSS comma. */}
+                                    {/* prettier-ignore */}
+                                    <a href={organizer.url} rel="noopener noreferrer">{organizer.name[lang]}</a>
                                 </li>
                             ))}
                         </ul>
