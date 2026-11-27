@@ -66,7 +66,7 @@ export const municipalElections2025Tag: LocalTag = {
     id: 'municipal-elections-2025',
     local: true,
     metaDescription: {
-        en: 'Posts about the 2025 municipal elections in Kirkkonummi and key themes in local politics.',
+        en: "On the 2025 municipal elections in Kirkkonummi: education as the municipality's most important task, a vibrant town centre and evidence-based decision-making.",
         fi: 'Vuoden 2025 kuntavaaleista Kirkkonummella: koulutus kunnan tärkeimpänä tehtävänä, elinvoimainen keskusta ja tietoon perustuva päätöksenteko.',
         sv: 'Om kommunalvalet 2025 i Kyrkslätt: utbildning som kommunens viktigaste uppgift, ett livskraftigt centrum och beslutsfattande som bygger på kunskap.',
     },

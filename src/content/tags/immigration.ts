@@ -20,7 +20,7 @@ export const immigrationTag: LocalTag = {
     },
     id: 'immigration',
     metaDescription: {
-        en: 'Posts about immigration, integration, and immigration policy.',
+        en: 'Immigration and the facts: the Essays on immigration series covers each form in turn, compares Finland with Sweden and Denmark and tests myths with data.',
         fi: 'Maahanmuutosta faktojen valossa: Esseitä maahanmuutosta -sarja käy läpi maahanmuuton muodot, vertaa Suomea Ruotsiin ja Tanskaan ja purkaa myyttejä tilastoilla.',
         sv: 'Invandring och fakta: serien Essäer om invandring går igenom invandringens former, jämför Finland med Sverige och Danmark och bemöter myter med statistik.',
     },

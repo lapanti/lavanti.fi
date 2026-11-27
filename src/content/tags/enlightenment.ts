@@ -21,7 +21,7 @@ export const enlightenmentTag: LocalTag = {
     featured: [37, 60],
     id: 'enlightenment',
     metaDescription: {
-        en: 'In the AI era enlightenment must stay seamless from early childhood to working life — so no one gets left behind.',
+        en: 'On enlightenment in the AI era: learning must stay seamless from early childhood education to working life, so that no one gets left behind.',
         fi: 'Tekoälyn aikakaudella sivistyksen on pysyttävä saumattomana varhaiskasvatuksesta työelämään — että kukaan ei jää jälkeen.',
         sv: 'Om bildning i AI-eran: lärandet måste förbli sömlöst från småbarnspedagogiken till arbetslivet, så att ingen lämnas efter.',
     },

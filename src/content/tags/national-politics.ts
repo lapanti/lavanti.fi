@@ -50,7 +50,7 @@ export const nationalPoliticsTag: LocalTag = {
     featured: [61, 77, 79],
     id: 'national-politics',
     metaDescription: {
-        en: 'Finnish national politics — parliament, coalitions and fiscal agreements — from a councillor watching Helsinki decisions land in practice.',
+        en: "National politics through a councillor's eyes: the debt brake, fiscal adjustment and cuts to state transfers hit municipal budgets across Uusimaa.",
         fi: 'Kansallista politiikkaa kunnanvaltuutetun silmin: velkajarru, sopeutustoimet ja valtionosuuksien leikkaukset näkyvät kuntien budjeteissa koko Uudellamaalla.',
         sv: 'Rikspolitik ur en fullmäktigeledamots perspektiv: skuldbromsen, anpassningsåtgärderna och nedskurna statsandelar syns i kommunernas budgetar i hela Nyland.',
     },

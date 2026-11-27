@@ -65,7 +65,7 @@ export const economyTag: LocalTag = {
     featured: [80, 57, 71],
     id: 'economy',
     metaDescription: {
-        en: 'Finland’s economy needs to work through the AI era — new companies, new jobs, and world-class public services.',
+        en: "On economic policy: Finland's economy needs to work through the AI era, with new companies, new jobs and world-class public services.",
         fi: 'Suomen talous tulee saada toimivaksi tekoälyn aikakaudella — uusia yrityksiä, työpaikkoja ja maailmanluokan julkisia palveluita.',
         sv: 'Om ekonomisk politik: Finlands ekonomi måste fungera i AI-eran, med nya företag, nya jobb och offentliga tjänster i världsklass.',
     },

@@ -20,7 +20,7 @@ export const transportationTag: LocalTag = {
     },
     id: 'transportation',
     metaDescription: {
-        en: 'Posts about transport, public transit, and sustainable mobility.',
+        en: "On public transport and sustainable mobility: fixing HSL's funding model instead of raising fares, the West Railway, and dynamic road pricing for congestion.",
         fi: 'Joukkoliikenteestä ja kestävästä liikkumisesta: HSL:n rahoitusmallin korjaus hinnankorotusten sijaan, Länsirata ja dynaamiset tienkäyttömaksut ruuhkiin.',
         sv: 'Om kollektivtrafik och hållbar mobilitet: HRT:s finansieringsmodell rättas till i stället för höjda biljettpriser, Västbanan och dynamiska vägavgifter mot köer.',
     },

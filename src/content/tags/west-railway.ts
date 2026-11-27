@@ -18,7 +18,7 @@ export const westRailwayTag: LocalTag = {
     id: 'west-railway',
     local: true,
     metaDescription: {
-        en: 'Posts about the Western railway and its importance for public transport in the region.',
+        en: 'On the West Railway and a commuter rail station in northern Kirkkonummi. I voted to join the project, but the council withdrew without an impact assessment.',
         fi: 'Länsiradasta ja Pohjois-Kirkkonummen lähijuna-asemasta. Äänestin liittymisen puolesta, mutta valtuusto vetäytyi hankkeesta ilman vaikutusten arviointia.',
         sv: 'Om Västbanan och en närtågsstation i norra Kyrkslätt. Jag röstade för att kommunen skulle gå med, men fullmäktige drog sig ur utan konsekvensbedömning.',
     },
