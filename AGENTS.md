@@ -50,7 +50,7 @@ All agents and workflows shall follow these rules for every change:
 2. **Micro-commits** — Each commit shall represent one logical, independently reversible change. Follow [Conventional Commits](https://www.conventionalcommits.org/).
 3. **Push immediately** — Every commit shall be pushed to remote immediately after committing.
 4. **Co-authored-by trailer** — Every commit made by an AI agent shall include a `Co-authored-by` trailer identifying the agent (e.g. `Co-authored-by: Claude Sonnet <claude-sonnet@anthropic.com>`).
-5. **Draft PR on first commit** — After the first commit on a new feature branch is pushed, open a draft PR using `gh pr create --draft`. Suggest the PR title and body to the user for approval before creating.
+5. **Draft PR on first commit** — After the first commit on a new feature branch is pushed, open a draft PR using `gh pr create --draft`. No approval of the title and body is needed, but this repository is public: PR text and commit messages must never name or quote private repositories, private documents, or their contents.
 6. **AI usage note in PR** — Every PR containing AI-generated code shall include the following note as the **first line** of the PR description: `> This PR containes AI-generated code. The author has reviewed and is responsible for all AI-generated content.`
 7. **Mark ready after human review** — After all work on a feature branch is complete and the human author has reviewed all AI-generated changes, mark the draft PR as ready for review using `gh pr ready`. Human review is a prerequisite — never mark a PR ready immediately after the final commit without it.
 
