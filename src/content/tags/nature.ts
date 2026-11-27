@@ -22,7 +22,7 @@ export const natureTag: LocalTag = {
     metaDescription: {
         en: 'Posts about nature, the environment and outdoor recreation in Uusimaa and across Finland.',
         fi: 'Luonnosta ja ulkoilusta Uudellamaalla. Ikimetsän pitää olla junamatkan päässä, ja asukkaiden on päästävä vaikuttamaan lähimetsien hoitoon suunnitteluvaiheessa.',
-        sv: 'Texter om natur, miljö och friluftsliv i Nyland och i hela Finland.',
+        sv: 'Om natur och friluftsliv i Nyland. Urskog ska finnas en tågresa bort, och invånarna ska kunna påverka skötseln av sina närskogar redan i planeringsfasen.',
     },
     names: { en: 'Nature', fi: 'Luonto', sv: 'Natur' },
     pageTitle: {

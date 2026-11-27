@@ -19,7 +19,7 @@ export const socialMediaTag: LocalTag = {
     metaDescription: {
         en: 'Posts about social media and its impact on politics and communication.',
         fi: 'Sosiaalisesta mediasta: merkittävä osa poliittisesta keskustelusta käydään ulkomaisten alustoilla. Se, joka hallitsee algoritmeja, hallitsee keskustelua.',
-        sv: 'Texter om sociala medier och deras påverkan på politik och kommunikation.',
+        sv: 'Om sociala medier: en betydande del av den politiska debatten förs på utländska plattformar. Den som styr algoritmerna styr debatten.',
     },
     names: { en: 'Social media', fi: 'Sosiaalinen media', sv: 'Sociala medier' },
     pageTitle: {

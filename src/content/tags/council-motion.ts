@@ -23,7 +23,7 @@ export const councilMotionTag: LocalTag = {
     metaDescription: {
         en: 'Council motions and posts about the work and decisions of Kirkkonummi municipal council.',
         fi: 'Valtuustoaloitteeni Kirkkonummella vihreän valtuustoryhmän kanssa: Pride-liputus, digitaalinen huoltovarmuus ja kuntastrategian lupausten muuttaminen teoiksi.',
-        sv: 'Fullmäktigeinitiativ och texter om Kyrkslätts fullmäktiges verksamhet och beslut.',
+        sv: 'Mina motioner i Kyrkslätts fullmäktige med den gröna fullmäktigegruppen: Pride-flaggning, digital försörjningsberedskap och kommunstrategins löften i praktiken.',
     },
     names: { en: 'Council motion', fi: 'Valtuusto\u00ADaloite', sv: 'Fullmäktige\u00ADinitiativ' },
     pageTitle: {

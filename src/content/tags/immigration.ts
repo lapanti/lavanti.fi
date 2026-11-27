@@ -22,7 +22,7 @@ export const immigrationTag: LocalTag = {
     metaDescription: {
         en: 'Posts about immigration, integration, and immigration policy.',
         fi: 'Maahanmuutosta faktojen valossa: Esseitä maahanmuutosta -sarja käy läpi maahanmuuton muodot, vertaa Suomea Ruotsiin ja Tanskaan ja purkaa myyttejä tilastoilla.',
-        sv: 'Texter om immigration, integration och invandrarpolitik.',
+        sv: 'Invandring och fakta: serien Essäer om invandring går igenom invandringens former, jämför Finland med Sverige och Danmark och bemöter myter med statistik.',
     },
     names: { en: 'Immigration', fi: 'Maahan\u00ADmuutto', sv: 'Immigration' },
     pageTitle: {

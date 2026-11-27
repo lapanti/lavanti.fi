@@ -22,7 +22,7 @@ export const earlyChildhoodEducationTag: LocalTag = {
     metaDescription: {
         en: "Posts about early childhood education, daycare, and children's services.",
         fi: 'Varhaiskasvatuksesta, päiväkodeista ja opettajapulasta. Laadukas varhaiskasvatus antaa jokaiselle lapselle eväät kouluun ja on kunnan tärkeimpiä tehtäviä.',
-        sv: 'Texter om småbarnspedagogik, daghem och barntjänster.',
+        sv: 'Om småbarnspedagogik, daghem och lärarbrist. God småbarnspedagogik ger varje barn en bra start i skolan och är en av kommunens viktigaste uppgifter.',
     },
     names: { en: 'Early childhood education', fi: 'Varhais\u00ADkasvatus', sv: 'Småbarns\u00ADpedagogik' },
     pageTitle: {

@@ -22,7 +22,7 @@ export const transportationTag: LocalTag = {
     metaDescription: {
         en: 'Posts about transport, public transit, and sustainable mobility.',
         fi: 'Joukkoliikenteestä ja kestävästä liikkumisesta: HSL:n rahoitusmallin korjaus hinnankorotusten sijaan, Länsirata ja dynaamiset tienkäyttömaksut ruuhkiin.',
-        sv: 'Texter om trafik, kollektivtrafik och hållbar rörlighet.',
+        sv: 'Om kollektivtrafik och hållbar mobilitet: HRT:s finansieringsmodell rättas till i stället för höjda biljettpriser, Västbanan och dynamiska vägavgifter mot köer.',
     },
     names: { en: 'Transport', fi: 'Liikenne', sv: 'Trafik' },
     pageTitle: {

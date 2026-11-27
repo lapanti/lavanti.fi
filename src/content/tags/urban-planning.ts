@@ -22,7 +22,7 @@ export const urbanPlanningTag: LocalTag = {
     metaDescription: {
         en: 'Posts about urban planning, land use, and city development.',
         fi: 'Kaavoituksesta ja maankäytöstä: uudet kodit hyvien junayhteyksien varrelle, pysäköintinormin purku ja päätösten vaikutusten arviointi jo ennen päätöstä.',
-        sv: 'Texter om planläggning, markanvändning och stadsutveckling.',
+        sv: 'Om planläggning och markanvändning: nya bostäder längs goda tågförbindelser, slopad parkeringsnorm och konsekvensbedömning av besluten redan innan de fattas.',
     },
     names: { en: 'Urban planning', fi: 'Kaavoitus', sv: 'Plan\u00ADläggning' },
     pageTitle: {

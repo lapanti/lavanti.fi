@@ -22,7 +22,7 @@ export const healthAndSocialReformTag: LocalTag = {
     metaDescription: {
         en: 'Posts about the social and health reform, welfare areas, and the organisation of health and social services.',
         fi: 'Sote-uudistuksesta ja hyvinvointialueista. Ennaltaehkäisy on halvempaa kuin hoito, ja oikeat palvelut oikeaan aikaan hillitsevät kustannusten kasvua.',
-        sv: 'Texter om vård- och servicereformen, välfärdsområdena och organisering av social- och hälsovårdstjänster.',
+        sv: 'Om vårdreformen och välfärdsområdena. Förebyggande arbete är billigare än vård, och rätt tjänster i rätt tid bromsar kostnadsökningen.',
     },
     names: { en: 'Social & health reform', fi: 'Sote-uudistus', sv: 'Vård- och service\u00ADreform' },
     pageTitle: {

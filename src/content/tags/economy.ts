@@ -67,7 +67,7 @@ export const economyTag: LocalTag = {
     metaDescription: {
         en: 'Finland’s economy needs to work through the AI era — new companies, new jobs, and world-class public services.',
         fi: 'Suomen talous tulee saada toimivaksi tekoälyn aikakaudella — uusia yrityksiä, työpaikkoja ja maailmanluokan julkisia palveluita.',
-        sv: 'Finlands ekonomi måste fungera i AI-eran — nya företag, nya jobb och offentliga tjänster i världsklass.',
+        sv: 'Om ekonomisk politik: Finlands ekonomi måste fungera i AI-eran, med nya företag, nya jobb och offentliga tjänster i världsklass.',
     },
     names: { en: 'Economy', fi: 'Talous', sv: 'Ekonomi' },
     pageTitle: {
@@ -76,5 +76,5 @@ export const economyTag: LocalTag = {
         sv: 'Ekonomi som fungerar i AI-erans Finland',
     },
     slugs: { en: 'economy', fi: 'talous', sv: 'ekonomi' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

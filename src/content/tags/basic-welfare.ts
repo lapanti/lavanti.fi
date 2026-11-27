@@ -22,7 +22,7 @@ export const basicWelfareTag: LocalTag = {
     metaDescription: {
         en: 'Posts about basic welfare, social benefits, and social services.',
         fi: 'Perusturvasta: miksi YEL-uudistus nostaa yrittämisen kynnystä ja miksi kotihoidon tuen tilalle tarvitaan perustulo ja pidempi vanhempainvapaa.',
-        sv: 'Texter om grundläggande trygghet, sociala förmåner och socialtjänster.',
+        sv: 'Om grundtrygghet: varför FöPL-reformen höjer tröskeln för företagande och varför basinkomst och längre föräldraledighet behövs i stället för hemvårdsstöd.',
     },
     names: { en: 'Basic welfare', fi: 'Perusturva', sv: 'Grund\u00ADläggande' },
     pageTitle: {
