@@ -1,0 +1,43 @@
+---
+/**
+ * The newest signed petitions and pledges, for the election page. Reads the same data
+ * module as the pledges page, so the two can never disagree.
+ */
+import type { Lang } from '../../content/nav'
+
+import { pledgePages, sortedPledges } from '../../content/pledges'
+import Plate from '../Plate.astro'
+import PledgeList from './PledgeList.astro'
+
+interface Props {
+    /** Section anchor; localized like every other section id on the election pages. */
+    id: string
+    lang: Lang
+}
+
+const { id, lang } = Astro.props
+
+/** How many entries the election page shows before the link to the full list. */
+const TEASER_COUNT = 3
+
+const labels: Record<Lang, { cta: string; eyebrow: string; heading: string }> = {
+    en: { cta: 'All petitions and pledges', eyebrow: 'Pledges', heading: 'What have I committed to?' },
+    fi: { cta: 'Kaikki vetoomukset ja sitoumukset', eyebrow: 'Sitoumukset', heading: 'Mihin olen sitoutunut?' },
+    sv: { cta: 'Alla upprop och åtaganden', eyebrow: 'Åtaganden', heading: 'Vad har jag förbundit mig till?' },
+}
+
+const items = sortedPledges().slice(0, TEASER_COUNT)
+---
+
+<style>
+    .foot {
+        padding-top: 0.5rem;
+    }
+</style>
+
+<Plate eyebrow={labels[lang].eyebrow} ground="offWhite" heading={labels[lang].heading} id={id}>
+    <PledgeList lang={lang} pledges={items} />
+    <p class="foot">
+        <a class="link-rule" href={pledgePages[lang]}>{labels[lang].cta}</a>
+    </p>
+</Plate>
