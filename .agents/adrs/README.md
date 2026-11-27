@@ -1,9 +1,12 @@
 # Architecture Decision Records
 
-Empty by design so far. `/review-implementation` reads this directory and its checklist asks
-whether the code is consistent with the ADRs here; with no records, that check passes vacuously.
-That is the correct outcome, not a missing step — this repo has recorded its decisions in
-`AGENTS.md` and in `.agents/specs/` instead.
+`/review-implementation` reads this directory and its checklist asks whether the code is
+consistent with the ADRs here. Most of this repo's decisions live in `AGENTS.md` and in
+`.agents/specs/`; records here are the exceptions that span features.
+
+| ADR | Decision |
+|-----|----------|
+| [2026-11-27-content-data-json-or-ts](2026-11-27-content-data-json-or-ts.md) | JSON + TS wrapper for appended record lists in `src/content/`, TypeScript otherwise |
 
 Add a record here when a decision is architectural, costly to reverse, and not already implied by
 a spec: the framework or hosting choice, the URL and redirect scheme, the content model, the
