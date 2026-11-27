@@ -18,8 +18,8 @@ export const greenPartyTag: LocalTag = {
     id: 'green-party',
     metaDescription: {
         en: 'Green Party politics from inside — congress decisions, programme choices, and the trade-offs of being a Green representative.',
-        fi: 'Vihreää politiikkaa sisältä — puoluekokouksen päätöksiä, valintoja ja kompromisseja vihreänä edustajana.',
-        sv: 'Grön politik inifrån — partikongressbeslut, programval och avvägningar som grön företrädare.',
+        fi: 'Vihreää politiikkaa sisältä käsin: se muovautuu sisäisestä keskustelusta, tiedosta ja päätöksenteon kompromisseista. Kerron valinnoistani avoimesti.',
+        sv: 'Grön politik inifrån: den formas av intern debatt, kunskap och kompromisser i beslutsfattandet. Jag berättar öppet om mina val.',
     },
     names: { en: 'Green Party', fi: 'Vihreät', sv: 'De Gröna' },
     pageTitle: {
@@ -28,5 +28,5 @@ export const greenPartyTag: LocalTag = {
         sv: 'Grön politik — sedd inifrån partiet',
     },
     slugs: { en: 'green-party', fi: 'vihreat', sv: 'de-grona' },
-    updatedDate: '2026-05-20',
+    updatedDate: '2026-11-27',
 }
