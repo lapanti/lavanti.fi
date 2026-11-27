@@ -20,7 +20,7 @@ export const regionalElections2025Tag: LocalTag = {
     },
     id: 'regional-elections-2025',
     metaDescription: {
-        en: 'Posts about the 2025 regional elections and the future of welfare areas.',
+        en: "The 2025 municipal and regional elections: young people's opportunities, open decision-making and the Essays on immigration series. I was elected councillor.",
         fi: 'Vuoden 2025 kunta- ja aluevaaleista: lasten ja nuorten mahdollisuudet, avoin päätöksenteko ja Esseitä maahanmuutosta -sarja. Minut valittiin kunnanvaltuustoon.',
         sv: 'Kommunal- och välfärdsområdesvalet 2025: barns och ungas möjligheter, öppet beslutsfattande och serien Essäer om invandring. Jag valdes till kommunfullmäktige.',
     },

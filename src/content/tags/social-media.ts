@@ -17,7 +17,7 @@ export const socialMediaTag: LocalTag = {
     },
     id: 'social-media',
     metaDescription: {
-        en: 'Posts about social media and its impact on politics and communication.',
+        en: 'On social media: a significant share of political debate now takes place on foreign platforms. Whoever controls the algorithms controls the debate.',
         fi: 'Sosiaalisesta mediasta: merkittävä osa poliittisesta keskustelusta käydään ulkomaisten alustoilla. Se, joka hallitsee algoritmeja, hallitsee keskustelua.',
         sv: 'Om sociala medier: en betydande del av den politiska debatten förs på utländska plattformar. Den som styr algoritmerna styr debatten.',
     },

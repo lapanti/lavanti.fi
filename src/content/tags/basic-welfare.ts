@@ -20,7 +20,7 @@ export const basicWelfareTag: LocalTag = {
     },
     id: 'basic-welfare',
     metaDescription: {
-        en: 'Posts about basic welfare, social benefits, and social services.',
+        en: 'On basic security: why the YEL reform makes starting a business harder, and why basic income and longer parental leave should replace the home care allowance.',
         fi: 'Perusturvasta: miksi YEL-uudistus nostaa yrittämisen kynnystä ja miksi kotihoidon tuen tilalle tarvitaan perustulo ja pidempi vanhempainvapaa.',
         sv: 'Om grundtrygghet: varför FöPL-reformen höjer tröskeln för företagande och varför basinkomst och längre föräldraledighet behövs i stället för hemvårdsstöd.',
     },

@@ -21,7 +21,7 @@ export const councilMotionTag: LocalTag = {
     id: 'council-motion',
     local: true,
     metaDescription: {
-        en: 'Council motions and posts about the work and decisions of Kirkkonummi municipal council.',
+        en: "My council motions in Kirkkonummi with the Green group: Pride flags, digital security of supply and turning the municipal strategy's promises into action.",
         fi: 'Valtuustoaloitteeni Kirkkonummella vihreän valtuustoryhmän kanssa: Pride-liputus, digitaalinen huoltovarmuus ja kuntastrategian lupausten muuttaminen teoiksi.',
         sv: 'Mina motioner i Kyrkslätts fullmäktige med den gröna fullmäktigegruppen: Pride-flaggning, digital försörjningsberedskap och kommunstrategins löften i praktiken.',
     },

@@ -20,7 +20,7 @@ export const speechTag: LocalTag = {
     },
     id: 'speech',
     metaDescription: {
-        en: 'My speeches in full: addresses in the Kirkkonummi municipal council, at the party congress and at events.',
+        en: 'My speeches in full: Kirkkonummi council speeches on the West Railway, Pride flags and the budget, plus speeches at the Green party congress and other events.',
         fi: 'Puheeni kokonaisuudessaan: valtuustopuheenvuorot Länsiradasta, Pride-liputuksesta ja talousarviosta sekä puheet puoluekokouksessa ja tapahtumissa.',
         sv: 'Mina tal i sin helhet: anföranden i Kyrkslätts fullmäktige om Västbanan, Pride-flaggning och budgeten samt tal på partikongressen och evenemang.',
     },

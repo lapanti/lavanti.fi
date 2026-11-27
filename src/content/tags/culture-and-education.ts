@@ -53,7 +53,7 @@ export const cultureAndEducationTag: LocalTag = {
     featured: [37, 49],
     id: 'culture-and-education',
     metaDescription: {
-        en: 'Posts about culture, civic education, libraries, and leisure services.',
+        en: "On education, culture and libraries: why cuts to central government transfers hit libraries first, and what Kirkkonummi's new Lyyra centre brings to residents.",
         fi: 'Sivistyksestä, kulttuurista ja kirjastoista: miksi valtionosuuksien leikkaukset osuvat ensin kirjastoihin ja mitä Kirkkonummen Lyyra tuo kuntalaisille.',
         sv: 'Om bildning, kultur och bibliotek: varför nedskärningar i statsandelarna först drabbar biblioteken och vad Kyrkslätts Lyyra ger invånarna.',
     },

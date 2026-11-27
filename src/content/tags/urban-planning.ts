@@ -20,7 +20,7 @@ export const urbanPlanningTag: LocalTag = {
     },
     id: 'urban-planning',
     metaDescription: {
-        en: 'Posts about urban planning, land use, and city development.',
+        en: 'On zoning and land use: new homes along good rail connections, scrapping parking minimums, and assessing the impact of decisions before they are made.',
         fi: 'Kaavoituksesta ja maankäytöstä: uudet kodit hyvien junayhteyksien varrelle, pysäköintinormin purku ja päätösten vaikutusten arviointi jo ennen päätöstä.',
         sv: 'Om planläggning och markanvändning: nya bostäder längs goda tågförbindelser, slopad parkeringsnorm och konsekvensbedömning av besluten redan innan de fattas.',
     },

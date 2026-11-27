@@ -20,7 +20,7 @@ export const earlyChildhoodEducationTag: LocalTag = {
     },
     id: 'early-childhood-education',
     metaDescription: {
-        en: "Posts about early childhood education, daycare, and children's services.",
+        en: 'On early childhood education, daycare and the teacher shortage. Quality early education gives every child a good start at school and is a core municipal task.',
         fi: 'Varhaiskasvatuksesta, päiväkodeista ja opettajapulasta. Laadukas varhaiskasvatus antaa jokaiselle lapselle eväät kouluun ja on kunnan tärkeimpiä tehtäviä.',
         sv: 'Om småbarnspedagogik, daghem och lärarbrist. God småbarnspedagogik ger varje barn en bra start i skolan och är en av kommunens viktigaste uppgifter.',
     },

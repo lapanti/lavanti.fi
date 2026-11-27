@@ -20,7 +20,7 @@ export const westernUusimaaTag: LocalTag = {
     },
     id: 'western-uusimaa',
     metaDescription: {
-        en: 'Posts about the Western Uusimaa welfare area and social and health policy.',
+        en: 'Western Uusimaa wellbeing services county: health centres, child health clinics and rescue services from Hanko to Espoo. I ran in its 2022 and 2025 elections.',
         fi: 'Länsi-Uudenmaan hyvinvointialueesta: terveyskeskukset, neuvolat ja pelastustoimi Hangosta Espooseen. Olin ehdolla aluevaaleissa 2022 ja 2025.',
         sv: 'Västra Nylands välfärdsområde: hälsostationer, rådgivningar och räddningsväsendet från Hangö till Esbo. Jag var kandidat i välfärdsområdesvalen 2022 och 2025.',
     },

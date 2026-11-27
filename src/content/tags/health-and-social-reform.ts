@@ -20,7 +20,7 @@ export const healthAndSocialReformTag: LocalTag = {
     },
     id: 'health-and-social-reform',
     metaDescription: {
-        en: 'Posts about the social and health reform, welfare areas, and the organisation of health and social services.',
+        en: 'On the health and social care reform and wellbeing counties. Prevention costs less than treatment, and the right services at the right time curb costs.',
         fi: 'Sote-uudistuksesta ja hyvinvointialueista. Ennaltaehkäisy on halvempaa kuin hoito, ja oikeat palvelut oikeaan aikaan hillitsevät kustannusten kasvua.',
         sv: 'Om vårdreformen och välfärdsområdena. Förebyggande arbete är billigare än vård, och rätt tjänster i rätt tid bromsar kostnadsökningen.',
     },

@@ -20,7 +20,7 @@ export const natureTag: LocalTag = {
     },
     id: 'nature',
     metaDescription: {
-        en: 'Posts about nature, the environment and outdoor recreation in Uusimaa and across Finland.',
+        en: 'On nature and outdoor life in Uusimaa. Old-growth forest should be a train ride away, and residents should help plan how their local forests are managed.',
         fi: 'Luonnosta ja ulkoilusta Uudellamaalla. Ikimetsän pitää olla junamatkan päässä, ja asukkaiden on päästävä vaikuttamaan lähimetsien hoitoon suunnitteluvaiheessa.',
         sv: 'Om natur och friluftsliv i Nyland. Urskog ska finnas en tågresa bort, och invånarna ska kunna påverka skötseln av sina närskogar redan i planeringsfasen.',
     },
