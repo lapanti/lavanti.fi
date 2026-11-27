@@ -1,0 +1,179 @@
+---
+/**
+ * Petitions and pledges the candidate has signed, newest first. Renders the list only;
+ * the page or the teaser wraps it in a Plate.
+ */
+import type { Lang } from '../../content/nav'
+import type { Pledge, PledgeKind } from '../../content/pledges'
+
+import { formatDate } from '../../lib/campaignFinance'
+import { colors, typographics } from '../../lib/styles'
+
+interface Props {
+    lang: Lang
+    pledges: Pledge[]
+}
+
+const { lang, pledges } = Astro.props
+
+const kindLabels: Record<Lang, Record<PledgeKind, string>> = {
+    en: { petition: 'Petition', pledge: 'Pledge' },
+    fi: { petition: 'Vetoomus', pledge: 'Sitoumus' },
+    sv: { petition: 'Upprop', pledge: 'Åtagande' },
+}
+
+const signedLabels: Record<Lang, string> = { en: 'signed', fi: 'allekirjoitettu', sv: 'undertecknat' }
+
+const organizerLabels: Record<Lang, string> = { en: 'Organised by', fi: 'Järjestäjät', sv: 'Arrangörer' }
+
+const readLabels: Record<Lang, Record<PledgeKind, string>> = {
+    en: { petition: 'Read the petition', pledge: 'Read the pledge' },
+    fi: { petition: 'Lue vetoomus', pledge: 'Lue sitoumus' },
+    sv: { petition: 'Läs uppropet', pledge: 'Läs åtagandet' },
+}
+---
+
+<style
+    define:vars={{
+        metaFontFamily: typographics.meta.fontFamily,
+        metaFontSize: typographics.meta.fontSize,
+        metaFontWeight: typographics.meta.fontWeight,
+        metaLetterSpacing: typographics.meta.letterSpacing,
+        metaLineHeight: typographics.meta.lineHeight,
+        rule: colors.forestGreen,
+        titleFontFamily: typographics.title.fontFamily,
+        titleFontSize: typographics.title.fontSize,
+        titleFontWeight: typographics.title.fontWeight,
+        titleLineHeight: typographics.title.lineHeight,
+    }}
+>
+    .pledge-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .pledge-list > li {
+        border-top: 3px solid var(--rule);
+        padding-block: 1.875rem;
+    }
+
+    .pledge-meta {
+        color: var(--colorsDarkGreen);
+        font-family: var(--metaFontFamily);
+        font-size: var(--metaFontSize);
+        font-weight: var(--metaFontWeight);
+        letter-spacing: var(--metaLetterSpacing);
+        line-height: var(--metaLineHeight);
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .pledge-list h3 {
+        color: var(--colorsForestGreen);
+        font-family: var(--titleFontFamily);
+        font-size: var(--titleFontSize);
+        font-weight: var(--titleFontWeight);
+        line-height: var(--titleLineHeight);
+        margin: 0;
+        padding-top: 0.5rem;
+    }
+
+    .pledge-summary,
+    .pledge-note {
+        color: var(--colorsTextPrimary);
+        font-family: var(--textFontFamily);
+        font-size: var(--textFontSize);
+        font-weight: var(--textFontWeight);
+        line-height: var(--textLineHeight);
+        margin: 0;
+        padding-top: 0.625rem;
+    }
+
+    .pledge-note {
+        border-left: 3px solid var(--colorsDarkGreen);
+        margin-top: 0.875rem;
+        padding: 0 0 0 1rem;
+    }
+
+    .pledge-organizers,
+    .pledge-link {
+        color: var(--colorsTextSecondary);
+        font-family: var(--textSmallFontFamily);
+        font-size: var(--textSmallFontSize);
+        font-weight: var(--textSmallFontWeight);
+        line-height: var(--textSmallLineHeight);
+        margin: 0;
+        padding-top: 0.625rem;
+    }
+
+    /* Inline list: the separators are CSS, so template whitespace cannot leak in before them. */
+    .pledge-organizers ul {
+        display: inline;
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 0.25em;
+    }
+
+    .pledge-organizers li {
+        display: inline;
+    }
+
+    .pledge-organizers li + li::before {
+        content: ', ';
+    }
+
+    /* Link.astro's printed-link treatment; Link itself would add the Finnish new-tab note. */
+    .pledge-list a {
+        color: var(--colorsDarkGreen);
+        text-decoration: underline;
+        text-decoration-thickness: 0.125rem;
+        transition: text-decoration-thickness var(--dur-base) var(--ease);
+    }
+
+    .pledge-list a:hover {
+        text-decoration-thickness: 3px;
+    }
+</style>
+
+<ol class="pledge-list">
+    {
+        pledges.map((pledge) => {
+            const locale = pledge.locales[lang]
+
+            return (
+                <li data-pledge-id={pledge.id} id={pledge.id}>
+                    <p class="pledge-meta">
+                        {kindLabels[lang][pledge.kind]} · {signedLabels[lang]}{' '}
+                        <time datetime={pledge.signedDate}>{formatDate(pledge.signedDate, lang)}</time>
+                    </p>
+                    <h3>{locale.title}</h3>
+                    <p class="pledge-summary">{locale.summary}</p>
+                    {locale.note && <p class="pledge-note">{locale.note}</p>}
+                    <div class="pledge-organizers">
+                        <span>{organizerLabels[lang]}:</span>
+                        <ul>
+                            {pledge.organizers.map((organizer) => (
+                                <li>
+                                    <a href={organizer.url} rel="noopener noreferrer">
+                                        {organizer.name[lang]}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <p class="pledge-link">
+                        {/* Same visible text on every item, so the accessible name carries the title. */}
+                        <a
+                            aria-label={`${readLabels[lang][pledge.kind]}: ${locale.title}`}
+                            href={pledge.url}
+                            rel="noopener noreferrer"
+                        >
+                            {readLabels[lang][pledge.kind]}
+                        </a>
+                    </p>
+                </li>
+            )
+        })
+    }
+</ol>
