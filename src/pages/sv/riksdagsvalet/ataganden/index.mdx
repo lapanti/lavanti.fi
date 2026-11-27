@@ -1,0 +1,55 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: sv
+pageTitle: 'Upprop och åtaganden i riksdagsvalet 2027'
+title: 'Upprop och'
+emphasis: 'åtaganden'
+intro: 'Organisationer ber riksdagsvalskandidater att underteckna upprop och förbinda sig till deras mål. På den här sidan listar jag alla som jag har undertecknat. Så kan du kontrollera vad jag lovar att driva i riksdagen.'
+description: 'Upprop och kandidatåtaganden som Lauri Lavanti har undertecknat inför riksdagsvalet 2027: vad de kräver, vem som står bakom dem och varför jag skrev under.'
+slug: 'sv/riksdagsvalet/ataganden'
+updatedDate: '2026-11-27'
+type: 'WebPage'
+breadcrumbParent: 'elections'
+breadcrumbName: 'Åtaganden'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti tittar in i kameran i en halvbild på en bostadsgård, med gräsmatta och förbipasserande i bakgrunden.'
+plated: true
+variant: 'split'
+ctaHref: '#lista'
+ctaLabel: 'Se åtagandena'
+langAlternates:
+    en: '/en/elections/pledges/'
+    fi: '/fi/eduskuntavaalit/sitoumukset/'
+    sv: '/sv/riksdagsvalet/ataganden/'
+faq:
+    - q: 'Vad är ett kandidatåtagande?'
+      a: 'Ett kandidatåtagande är ett löfte som en organisation eller kampanj har formulerat och som en riksdagsvalskandidat undertecknar före valet. Genom att skriva under förbinder sig kandidaten att driva målen om hen blir invald i riksdagen. Arrangörerna publicerar ofta en lista över de kandidater som har skrivit under.'
+    - q: 'Vad har Lauri Lavanti förbundit sig till i riksdagsvalet 2027?'
+      a: 'Lauri Lavanti listar varje upprop och kandidatåtagande som han har undertecknat på sidan lavanti.fi/sv/riksdagsvalet/ataganden. För vart och ett anges datumet för underskriften, arrangörerna, kraven och en länk till originaltexten.'
+---
+
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import PledgeList from '../../../../components/pledges/PledgeList.astro'
+import Prose from '../../../../components/Prose.astro'
+import { sortedPledges } from '../../../../content/pledges'
+
+<Plate eyebrow="Varför" ground="sand" heading="Varför publicerar jag mina åtaganden?">
+    <Prose>
+        <p>En kandidats löfte är värt något bara om det går att kontrollera i efterhand. Därför samlar jag här alla upprop och åtaganden som jag undertecknar före riksdagsvalet. För vart och ett berättar jag vad det kräver, vem som står bakom det och varför jag skrev under.</p>
+        <p>Av samma skäl redovisar jag öppet <a href="/sv/riksdagsvalet/valfinansiering/">min kampanjs finansiering</a>. Mer om kampanjen hittar du på <a href="/sv/riksdagsvalet/">sidan om riksdagsvalet</a>.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Lista" ground="offWhite" heading="Vilka upprop och åtaganden har jag undertecknat?" id="lista">
+    <PledgeList lang="sv" pledges={sortedPledges()} />
+</Plate>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Vanliga frågor om åtagandena" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="sv" />
+</NewsletterPlate>

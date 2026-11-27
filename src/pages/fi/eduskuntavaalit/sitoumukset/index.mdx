@@ -1,0 +1,55 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: fi
+pageTitle: 'Vetoomukset ja sitoumukset vaaleissa 2027'
+title: 'Vetoomukset ja'
+emphasis: 'sitoumukset'
+intro: 'Järjestöt pyytävät eduskuntavaaliehdokkaita allekirjoittamaan vetoomuksia ja sitoutumaan tavoitteisiinsa. Listaan tälle sivulle jokaisen, jonka olen allekirjoittanut. Näin voit tarkistaa, mitä lupaan ajaa eduskunnassa.'
+description: 'Lauri Lavannin allekirjoittamat vetoomukset ja ehdokassitoumukset eduskuntavaaleissa 2027: mitä ne vaativat, kuka ne järjestää ja miksi allekirjoitin.'
+slug: 'fi/eduskuntavaalit/sitoumukset'
+updatedDate: '2026-11-27'
+type: 'WebPage'
+breadcrumbParent: 'elections'
+breadcrumbName: 'Sitoumukset'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti katsoo kameraan puolilähikuvassa kerrostalopihalla, taustalla nurmikkoa ja ohikulkijoita.'
+plated: true
+variant: 'split'
+ctaHref: '#lista'
+ctaLabel: 'Katso sitoumukset'
+langAlternates:
+    en: '/en/elections/pledges/'
+    fi: '/fi/eduskuntavaalit/sitoumukset/'
+    sv: '/sv/riksdagsvalet/ataganden/'
+faq:
+    - q: 'Mikä on ehdokassitoumus?'
+      a: 'Ehdokassitoumus on järjestön tai kampanjan laatima lupaus, jonka eduskuntavaaliehdokas allekirjoittaa ennen vaaleja. Allekirjoittamalla ehdokas sitoutuu edistämään sen tavoitteita, jos hänet valitaan eduskuntaan. Järjestäjät julkaisevat usein listan allekirjoittaneista ehdokkaista.'
+    - q: 'Mihin Lauri Lavanti on sitoutunut eduskuntavaaleissa 2027?'
+      a: 'Lauri Lavanti listaa jokaisen allekirjoittamansa vetoomuksen ja ehdokassitoumuksen sivulla lavanti.fi/fi/eduskuntavaalit/sitoumukset. Jokaisesta kerrotaan allekirjoituspäivä, järjestäjät, vaatimukset ja linkki alkuperäiseen tekstiin.'
+---
+
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import PledgeList from '../../../../components/pledges/PledgeList.astro'
+import Prose from '../../../../components/Prose.astro'
+import { sortedPledges } from '../../../../content/pledges'
+
+<Plate eyebrow="Miksi" ground="sand" heading="Miksi julkaisen sitoumukseni?">
+    <Prose>
+        <p>Ehdokkaan lupaus on arvokas vain, jos sen voi jälkikäteen tarkistaa. Siksi kokoan tänne jokaisen vetoomuksen ja sitoumuksen, jonka allekirjoitan ennen eduskuntavaaleja. Jokaisesta kerron, mitä se vaatii, kuka sen järjestää ja miksi allekirjoitin.</p>
+        <p>Samasta syystä kerron avoimesti myös <a href="/fi/eduskuntavaalit/vaalirahoitus/">kampanjani rahoituksesta</a>. Lisää kampanjasta löydät <a href="/fi/eduskuntavaalit/">eduskuntavaalisivulta</a>.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="Lista" ground="offWhite" heading="Mitä vetoomuksia ja sitoumuksia olen allekirjoittanut?" id="lista">
+    <PledgeList lang="fi" pledges={sortedPledges()} />
+</Plate>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Usein kysyttyä sitoumuksista" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="fi" />
+</NewsletterPlate>

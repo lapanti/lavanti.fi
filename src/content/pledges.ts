@@ -3,7 +3,7 @@
  *
  * The entries live in `pledges.json` (ADR: .agents/adrs/2026-11-27-content-data-json-or-ts.md):
  * adding one means copying the previous entry. Adding or editing an entry also requires an
- * `updatedDate` bump on the three pledges pages; `pledges.spec.ts` fails until it is done.
+ * `updatedDate` bump on the three pledges pages; `scripts/checks/updated-date.ts` enforces it.
  */
 
 import type { Lang } from './nav'
