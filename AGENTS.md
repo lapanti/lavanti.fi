@@ -173,3 +173,9 @@ To publish a post on a future date, merge it to `main` normally with `publishDat
 - **Nightly automation** (`scheduled-publish.yml`, 22:00 UTC = Helsinki midnight) diffs due posts against the live sitemap (self-healing; `npm run check:publish-due` runs the same check locally). When a post is due it regenerates snapshot baselines, commits them API-signed to `chore/scheduled-publish-{date}`, and opens an **auto-merge PR** — merging it is the production deploy.
 - **Exemption to Git Workflow rule 7**: these automated baseline PRs merge without human review. They contain only mechanically regenerated goldens; the post content itself was human-reviewed in its own PR.
 - **Newsletter issues** (`src/content/newsletters/`) ride the same mechanism: their `publishDate` must equal `sent` + 42 days (schema-enforced), so a new issue is merged with the future date and goes public through the nightly job. Spec: `.agents/specs/newsletter/archive.md`.
+
+---
+
+## Personal adoption pages
+
+Opt-in Adoptoi kyltti pages (`/fi/adoptoi/<slug>/` and the sv/en equivalents) are built from `src/content/adoptionPages.json`. **Every page is added, changed or removed in its own commit that touches only that file and only that entry** (`feat(adoptoi): add page for <slug>` / `chore(adoptoi): remove page for <slug>`), so one `git revert` or removal commit undoes exactly one page. `npm run adoptions -- page add|remove` makes that commit on its own branch and opens the PR. `scripts/checks/adoption-pages.ts` enforces the rule from pre-commit and in CI. Removal takes the page off the site on the next deploy; git history keeps the name (no history rewrites), which the consent text says. Spec: `.agents/specs/sign-adoption/spec.md`.

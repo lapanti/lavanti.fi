@@ -1,0 +1,123 @@
+---
+import type { Lang } from '../../content/nav'
+import type { AdoptionThanksData } from './thanks.client'
+
+import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
+import { SIGN_PHOTO_ID } from '../../lib/adoptionShareImage'
+import { getImage } from '../../lib/images'
+import { FORM_PATH } from '../../lib/signAdoptions'
+import { byPackage } from '../../lib/signPackages'
+import Link from '../Link.astro'
+
+interface Props {
+    lang: Lang
+}
+
+/*
+ * The thanks page body after the payment step, and nothing else: the share text with a copy
+ * button and the 3:4 share image with copy and download buttons. thanks.client.ts fills both in
+ * from the validated query and sessionStorage; with invalid parameters only the "link is missing
+ * details" note shows.
+ */
+const { lang } = Astro.props
+const content = adoptionContent[lang]
+const t = content.thanks
+const LOGOS: Record<Lang, string> = {
+    en: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE_ENG.png',
+    fi: '/logos/Vihreat_Logo_HOR_NEG_FIN.png',
+    sv: '/logos/Vihreat_Logo_HOR_NEG_FIN_SWE.png',
+}
+const scriptData: AdoptionThanksData = {
+    copied: content.mobilePay.copied,
+    cta: t.share.cta,
+    ghost: content.sign.ghostName,
+    headline: byPackage((p) => t.share.headline(p.signs)),
+    imageAlt: byPackage((p) => t.share.imageAlt('%s', p.signs)),
+    logo: LOGOS[lang],
+    photo: getImage(SIGN_PHOTO_ID, 'heroLandscape').src,
+    shareText: byPackage((p) => t.share.text(p.signs)),
+    sign: SIGN_TEXT[lang],
+    unnamed: t.share.unnamed,
+}
+---
+
+<style>
+    .thanks [hidden] {
+        display: none;
+    }
+    .thanks .share:not([hidden]) {
+        display: grid;
+        gap: 1rem;
+        max-width: 36rem;
+    }
+    .thanks p {
+        color: var(--colorsForestGreen);
+        margin: 0;
+    }
+    .thanks .share-text {
+        background: var(--colorsWhite);
+        border-left: 4px solid var(--colorsBrightGreen);
+        font-size: 1.125rem;
+        padding: 1rem;
+    }
+    .thanks figure {
+        margin: 1rem 0 0;
+    }
+    .thanks img {
+        display: block;
+        height: auto;
+        max-width: 24rem;
+        width: 100%;
+    }
+    .thanks .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .thanks .btn {
+        cursor: pointer;
+    }
+    .thanks .missing-name:not([hidden]) {
+        display: grid;
+        gap: 0.5rem;
+    }
+    .thanks .missing-name input {
+        min-height: 3rem;
+    }
+    .thanks .hint {
+        font-size: var(--textSmallFontSize);
+    }
+</style>
+
+<div class="thanks" data-thanks>
+    <p data-invalid hidden>
+        {t.invalid}
+        <Link href={FORM_PATH[lang]}>{t.invalidLink}</Link>
+    </p>
+
+    <div class="share" data-valid hidden>
+        <div class="missing-name site-form" data-missing-name hidden>
+            <label for="adoption-thanks-name">{content.form.nameLabel}</label>
+            <p class="hint" id="adoption-thanks-name-hint">{t.missingName}</p>
+            <input aria-describedby="adoption-thanks-name-hint" id="adoption-thanks-name" maxlength="24" type="text" />
+        </div>
+
+        <p class="share-text" data-share-text></p>
+        <div class="actions">
+            <button class="btn" data-copy-text type="button">{t.share.copyText}</button>
+        </div>
+
+        <figure>
+            <img alt="" data-share-image height="1440" width="1080" />
+        </figure>
+        <div class="actions">
+            <button class="btn btn--solid" data-copy-image hidden type="button">{t.share.copyImage}</button>
+            <a class="btn" data-download download="adoptoi-kyltti.png" hidden href="#">{t.share.download}</a>
+        </div>
+        <p data-in-app hidden>{t.share.inApp}</p>
+    </div>
+</div>
+
+<script id="adoption-thanks-data" is:inline set:html={JSON.stringify(scriptData)} type="application/json" />
+
+<script src="./thanks.client.ts"></script>

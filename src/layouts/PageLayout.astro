@@ -42,11 +42,21 @@ interface Props {
     /** With type CollectionPage: list the media gallery photos as the JSON-LD ItemList. */
     gallery?: boolean
     heroImage?: string
+    /**
+     * Split variant: show the Adoptoi kyltti sign instead of the hero photo. `heroImage` still
+     * picks the OG card portrait, but is neither preloaded nor shown.
+     */
+    heroSign?: boolean
     intro?: string
     lang?: Lang
     langAlternates?: Record<Lang, string>
     mobileHeroImage?: string
     noindex?: boolean
+    /**
+     * Use the generated per-page card even though the page is noindex. For pages that are
+     * shared by link but kept out of search (personal adoption pages, which cards.ts builds).
+     */
+    ogCard?: boolean
     pageTitle: string
     plated?: boolean
     slug?: string
@@ -77,11 +87,13 @@ const {
     faqSection = false,
     gallery = false,
     heroImage,
+    heroSign = false,
     intro,
     lang,
     langAlternates,
     mobileHeroImage,
     noindex,
+    ogCard = false,
     pageTitle,
     plated = false,
     slug,
@@ -99,7 +111,7 @@ const {
  * default social card.
  */
 const ogImage =
-    slug && !noindex
+    slug && (!noindex || ogCard)
         ? new URL(`/og/${ogId(slug)}.jpg`, Astro.site).href
         : getImage('og-image-lauri-lavanti', 'ogFlat').src
 
@@ -134,8 +146,8 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
 >
     <Fragment slot="head">
         <HeroPreloadLinks
-            heroImage={heroImage}
-            mobileHeroImage={mobileHeroImage}
+            heroImage={heroSign ? undefined : heroImage}
+            mobileHeroImage={heroSign ? undefined : mobileHeroImage}
             mode={variant === 'split' ? 'art-directed' : 'page'}
         />
     </Fragment>
@@ -147,6 +159,7 @@ const breadcrumbs: BreadcrumbItem[] | undefined =
         emphasis={emphasis}
         eyebrow={eyebrow}
         heroImage={heroImage}
+        heroSign={heroSign}
         intro={intro}
         lang={lang}
         mobileHeroImage={mobileHeroImage}

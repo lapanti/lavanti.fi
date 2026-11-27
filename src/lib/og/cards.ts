@@ -1,6 +1,8 @@
 import type { Lang } from '../../content/nav'
 
+import { adoptionPages } from '../../content/adoptionPages'
 import { LANGS } from '../../content/nav'
+import { adoptionContent } from '../../content/signAdoption'
 import { sloganContent } from '../../content/slogan'
 import { getCategoryPath, tags } from '../../content/tags'
 import { newsletterSlug } from '../newsletterRoutes'
@@ -126,6 +128,20 @@ async function build(): Promise<OgCard[]> {
             id: ogId(newsletterSlug(issue.lang, issue.id, issue.slug)),
             lang: issue.lang,
             title: cleanCardText(issue.ogTitle ?? issue.title),
+        })
+    }
+
+    /*
+     * Personal adoption pages are noindex but shared by link, so they get a card of their own:
+     * the adopter's name with "adoptoi kyltin" (per language) in green.
+     */
+    for (const page of adoptionPages) {
+        const t = adoptionContent[page.lang]
+        cards.push({
+            emphasis: t.personal.ogEmphasis,
+            id: ogId(`${t.base}${page.slug}`.replace(/^\/|\/$/g, '')),
+            lang: page.lang,
+            title: cleanCardText(page.name),
         })
     }
 

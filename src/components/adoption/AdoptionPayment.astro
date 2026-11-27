@@ -1,0 +1,176 @@
+---
+import type { Lang } from '../../content/nav'
+import type { AdoptionPaymentData } from './payment.client'
+
+import { adoptionContent, ASSOCIATION_IBAN, ASSOCIATION_NAME } from '../../content/signAdoption'
+import { FORM_PATH, THANKS_PATH } from '../../lib/signAdoptions'
+import { byPackage } from '../../lib/signPackages'
+import Link from '../Link.astro'
+import MobilePayBox from './MobilePayBox.astro'
+
+interface Props {
+    lang: Lang
+}
+
+/*
+ * The payment step between the form and the thanks page: the amount, MobilePay 46492, the ref,
+ * the bank-transfer fallback, the payer name and the optional "Miksi adoptoin?" message, then "Lahjoitin", a link to the thanks page with
+ * the same query. A company (y=1) gets the invoice note and a plain continue link instead.
+ * payment.client.ts fills in everything that depends on the validated query.
+ */
+const { lang } = Astro.props
+const content = adoptionContent[lang]
+const t = content.thanks
+const scriptData: AdoptionPaymentData = {
+    almost: byPackage((p) => t.almost(p.euros)),
+    continue: t.continue,
+    donate: byPackage((p) => content.mobilePay.donate(p.euros)),
+    message: { saved: t.message.saved, unavailable: t.message.unavailable },
+    payerSaved: t.payer.saved,
+    refNote: content.mobilePay.refNote('%s'),
+    thanksPath: THANKS_PATH[lang],
+    tooSoon: t.payer.tooSoon,
+    unavailable: t.payer.unavailable,
+}
+---
+
+<style>
+    .payment [hidden] {
+        display: none;
+    }
+    .payment .steps:not([hidden]) {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .payment p {
+        color: var(--colorsForestGreen);
+        margin: 0;
+    }
+    .payment .almost {
+        color: var(--colorsForestGreen);
+        margin: 0;
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+    .payment .donate {
+        font-size: 1.25rem;
+        font-weight: var(--fontWeightsSemibold);
+    }
+    /* :not([hidden]) so the script's hidden attribute still wins over display: grid. */
+    .payment .inline-form:not([hidden]) {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+        max-width: 36rem;
+    }
+    .payment .inline-form .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .payment .inline-form input,
+    .payment .inline-form textarea {
+        flex: 1 1 14rem;
+        min-height: 3rem;
+    }
+    .payment .status {
+        font-size: var(--textSmallFontSize);
+    }
+    /* The ref line, then its copy button on a row of its own. */
+    .payment .ref {
+        display: grid;
+        gap: 0.5rem;
+        justify-items: start;
+    }
+    .payment .btn {
+        cursor: pointer;
+    }
+    .transfer p,
+    .transfer dl {
+        margin: 0;
+    }
+    .transfer dl {
+        display: grid;
+        gap: 0.25rem 1rem;
+        grid-template-columns: max-content 1fr;
+        margin-block: 0.5rem;
+    }
+    .transfer dt {
+        font-weight: 700;
+    }
+    .transfer dd {
+        margin: 0;
+    }
+    .transfer .iban {
+        font-variant-numeric: tabular-nums;
+        user-select: all;
+    }
+</style>
+
+<div class="payment" data-payment>
+    <p data-invalid hidden>
+        {t.invalid}
+        <Link href={FORM_PATH[lang]}>{t.invalidLink}</Link>
+    </p>
+
+    <div class="steps" data-valid hidden>
+        <div class="steps" data-private>
+            <h3 class="almost" data-almost></h3>
+            <MobilePayBox lang={lang}>
+                <p class="donate" data-donate></p>
+            </MobilePayBox>
+            <div class="ref">
+                <p data-ref-note></p>
+                <button class="btn" data-copied={content.mobilePay.copied} data-ref-copy type="button"
+                    >{content.mobilePay.copyRef}</button
+                >
+            </div>
+            <div class="transfer">
+                <p>{t.fallback.lead}</p>
+                <dl>
+                    <dt>{t.fallback.recipient}</dt>
+                    <dd>{ASSOCIATION_NAME}</dd>
+                    <dt>IBAN</dt>
+                    <dd class="iban">{ASSOCIATION_IBAN}</dd>
+                </dl>
+                <p>{t.fallback.message}</p>
+            </div>
+            <form class="inline-form site-form" data-payer-form hidden>
+                <label for="adoption-payer">{t.payer.label}</label>
+                <div class="row">
+                    <input autocomplete="name" id="adoption-payer" maxlength="100" name="payer_name" type="text" />
+                    <button class="btn" type="submit">{t.payer.save}</button>
+                </div>
+                <p aria-live="polite" class="status" data-status></p>
+            </form>
+        </div>
+
+        <form class="inline-form site-form" data-message-form hidden>
+            <label for="adoption-message">{t.message.label}</label>
+            <p class="status" id="adoption-message-hint">{t.message.hint}</p>
+            <textarea
+                aria-describedby="adoption-message-hint"
+                id="adoption-message"
+                maxlength="140"
+                name="message"
+                rows="3"></textarea>
+            <div class="row">
+                <button class="btn" type="submit">{t.message.save}</button>
+            </div>
+            <p aria-live="polite" class="status" data-status></p>
+        </form>
+
+        <p data-company hidden>{t.companyInvoice}</p>
+
+        <p>{t.next}</p>
+        <div>
+            <a class="btn btn--solid" data-donated href={THANKS_PATH[lang]}>{t.donated}</a>
+        </div>
+    </div>
+</div>
+
+<script id="adoption-payment-data" is:inline set:html={JSON.stringify(scriptData)} type="application/json" />
+
+<script src="./payment.client.ts"></script>

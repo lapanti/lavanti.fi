@@ -1,0 +1,164 @@
+---
+import type { Lang } from '../../content/nav'
+
+import { adoptionContent, SIGN_TEXT } from '../../content/signAdoption'
+import { SIGN, SIGN_COLORS, SIGN_PHOTO_ID } from '../../lib/adoptionShareImage'
+import { getImage } from '../../lib/images'
+import { estimateWidth, fitStickerLabel, fitStickerName, STICKER } from '../../lib/signSticker'
+
+interface Props {
+    /**
+     * The hero copy: decorative (the form's sign below carries the description), always the ghost
+     * text and left out of `setSignName`, so typing in the form only changes the form's sign.
+     */
+    hero?: boolean
+    lang: Lang
+    /** A fixed name (personal pages); without it the ghost text shows until a script sets one. */
+    name?: string
+}
+
+const { hero = false, lang, name } = Astro.props
+const t = adoptionContent[lang].sign
+const text = SIGN_TEXT[lang]
+/** The photo on the sign; the share image script loads the same URL (data-photo). */
+const SIGN_PHOTO = getImage(SIGN_PHOTO_ID, 'heroLandscape')
+const shown = hero ? '' : (name?.trim() ?? '')
+// Server-side fit from estimated widths; the browser re-fits with real ones when a name is typed.
+const label = fitStickerLabel(text.sticker, estimateWidth)
+const fit = fitStickerName(shown || t.ghostName, estimateWidth)
+---
+
+<style>
+    /* Narrow on phones so the name field under the sign stays on the first screen. */
+    .sign-graphic {
+        margin: 0 auto;
+        max-width: 15rem;
+        width: 100%;
+    }
+    @media (min-width: 1000px) {
+        .sign-graphic {
+            margin: 0;
+            max-width: 22rem;
+        }
+    }
+    .sign-graphic svg {
+        box-shadow: 0 10px 30px rgba(22, 62, 53, 0.25);
+        height: auto;
+        width: 100%;
+    }
+    .sign-graphic .display {
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-weight: 800;
+    }
+    .sign-graphic .name {
+        font-weight: 700;
+    }
+    .sign-graphic .body {
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+    /* In the split hero the sign sits on deep forest, so a white frame sets it off like a board. */
+    .sign-graphic.hero {
+        margin: 0 auto;
+        max-width: 10.5rem;
+    }
+    @media (min-width: 769px) {
+        .sign-graphic.hero {
+            max-width: 17rem;
+        }
+    }
+    .sign-graphic.hero svg {
+        border: 0.375rem solid var(--colorsWhite);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+        box-sizing: border-box;
+        display: block;
+    }
+    .sign-graphic figcaption {
+        color: var(--colorsForestGreen);
+        font-size: var(--textSmallFontSize);
+        margin-top: 0.5rem;
+    }
+</style>
+
+<figure
+    aria-hidden={hero ? 'true' : undefined}
+    class:list={['sign-graphic', { hero }]}
+    data-ghost={t.ghostName}
+    data-photo={SIGN_PHOTO.src}
+    data-sign={hero ? undefined : ''}
+>
+    <svg
+        aria-label={hero ? undefined : t.figureLabel}
+        role={hero ? undefined : 'img'}
+        viewBox={`0 0 ${SIGN.width} ${SIGN.height}`}
+    >
+        <rect fill={SIGN_COLORS.background} height={SIGN.height} width={SIGN.width}></rect>
+        <image
+            height={SIGN.photo.h}
+            href={SIGN_PHOTO.src}
+            preserveAspectRatio="xMidYMid slice"
+            width={SIGN.width}
+            y={SIGN.photo.y}
+        />
+        <text
+            class="display"
+            fill={SIGN_COLORS.firstName}
+            font-size={SIGN.firstName.size}
+            x={SIGN.padX}
+            y={SIGN.firstName.y}>{text.firstName.toUpperCase()}</text
+        >
+        <text
+            class="display"
+            fill={SIGN_COLORS.lastName}
+            font-size={SIGN.lastName.size}
+            x={SIGN.padX - 4}
+            y={SIGN.lastName.y}>{text.lastName.toUpperCase()}</text
+        >
+        <text
+            class="body"
+            fill={SIGN_COLORS.tagline}
+            font-size={SIGN.tagline.size}
+            font-weight="600"
+            x={SIGN.padX}
+            y={SIGN.tagline.y}>{text.tagline}</text
+        >
+        {/* Hidden for a donation without a name: the form's toggle (CSS) or the thanks page. */}
+        <g data-sticker>
+            <circle cx={STICKER.cx} cy={STICKER.cy} fill={SIGN_COLORS.sticker} r={STICKER.r}></circle>
+            <text class="body" fill={SIGN_COLORS.label} font-size={label.size} font-weight="600" text-anchor="middle">
+                {
+                    label.lines.map((line, i) => (
+                        <tspan x={STICKER.cx} y={STICKER.cy + label.ys[i]}>
+                            {line}
+                        </tspan>
+                    ))
+                }
+            </text>
+            <text
+                class="display name"
+                data-fill-ghost={SIGN_COLORS.ghost}
+                data-fill-name={SIGN_COLORS.name}
+                data-sign-name
+                fill={shown ? SIGN_COLORS.name : SIGN_COLORS.ghost}
+                font-size={fit.size}
+                text-anchor="middle"
+            >
+                {
+                    fit.lines.map((line, i) => (
+                        <tspan x={STICKER.cx} y={STICKER.cy + fit.ys[i]}>
+                            {line}
+                        </tspan>
+                    ))
+                }
+            </text>
+        </g>
+        <text
+            class="body"
+            fill={SIGN_COLORS.payer}
+            font-size={SIGN.payer.size}
+            text-anchor="middle"
+            x={SIGN.width / 2}
+            y={SIGN.payer.y}>{text.payer}</text
+        >
+    </svg>
+    {!hero && <figcaption>{t.finePrint}</figcaption>}
+</figure>
