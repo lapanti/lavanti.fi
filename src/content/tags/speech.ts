@@ -21,7 +21,7 @@ export const speechTag: LocalTag = {
     id: 'speech',
     metaDescription: {
         en: 'My speeches in full: addresses in the Kirkkonummi municipal council, at the party congress and at events.',
-        fi: 'Puheeni kokonaisuudessaan: puheenvuorot Kirkkonummen valtuustossa, puoluekokouksessa ja tapahtumissa.',
+        fi: 'Puheeni kokonaisuudessaan: valtuustopuheenvuorot Länsiradasta, Pride-liputuksesta ja talousarviosta sekä puheet puoluekokouksessa ja tapahtumissa.',
         sv: 'Mina tal i sin helhet: anföranden i Kyrkslätts fullmäktige, på partikongressen och vid evenemang.',
     },
     names: { en: 'Speech', fi: 'Puhe', sv: 'Tal' },
@@ -31,5 +31,5 @@ export const speechTag: LocalTag = {
         sv: 'Tal – mina tal och anföranden i sin helhet',
     },
     slugs: { en: 'speech', fi: 'puhe', sv: 'tal' },
-    updatedDate: '2026-11-17',
+    updatedDate: '2026-11-27',
 }

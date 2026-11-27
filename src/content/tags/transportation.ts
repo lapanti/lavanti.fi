@@ -21,7 +21,7 @@ export const transportationTag: LocalTag = {
     id: 'transportation',
     metaDescription: {
         en: 'Posts about transport, public transit, and sustainable mobility.',
-        fi: 'Kirjoituksia liikenteestä, joukkoliikenteestä ja kestävästä liikkumisesta.',
+        fi: 'Joukkoliikenteestä ja kestävästä liikkumisesta: HSL:n rahoitusmallin korjaus hinnankorotusten sijaan, Länsirata ja dynaamiset tienkäyttömaksut ruuhkiin.',
         sv: 'Texter om trafik, kollektivtrafik och hållbar rörlighet.',
     },
     names: { en: 'Transport', fi: 'Liikenne', sv: 'Trafik' },
@@ -31,5 +31,5 @@ export const transportationTag: LocalTag = {
         sv: 'Kollektivtrafik och hållbar rörlighet',
     },
     slugs: { en: 'transportation', fi: 'liikenne', sv: 'trafik' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

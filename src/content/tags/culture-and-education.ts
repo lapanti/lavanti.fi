@@ -54,7 +54,7 @@ export const cultureAndEducationTag: LocalTag = {
     id: 'culture-and-education',
     metaDescription: {
         en: 'Posts about culture, civic education, libraries, and leisure services.',
-        fi: 'Kirjoituksia sivistyksestä, kulttuurista, kirjastoista ja vapaa-ajan palveluista.',
+        fi: 'Sivistyksestä, kulttuurista ja kirjastoista: miksi valtionosuuksien leikkaukset osuvat ensin kirjastoihin ja mitä Kirkkonummen Lyyra tuo kuntalaisille.',
         sv: 'Texter om bildning, kultur, bibliotek och fritidstjänster.',
     },
     names: { en: 'Culture & education', fi: 'Sivistys', sv: 'Bildning' },
@@ -64,5 +64,5 @@ export const cultureAndEducationTag: LocalTag = {
         sv: 'Bildning, kultur och fritidstjänster',
     },
     slugs: { en: 'culture-and-education', fi: 'kulttuuri', sv: 'kultur' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

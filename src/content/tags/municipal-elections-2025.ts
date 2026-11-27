@@ -67,7 +67,7 @@ export const municipalElections2025Tag: LocalTag = {
     local: true,
     metaDescription: {
         en: 'Posts about the 2025 municipal elections in Kirkkonummi and key themes in local politics.',
-        fi: 'Kirjoituksia vuoden 2025 kuntavaaleista Kirkkonummella ja kunnallispolitiikan keskeisistä teemoista.',
+        fi: 'Vuoden 2025 kuntavaaleista Kirkkonummella: koulutus kunnan tärkeimpänä tehtävänä, elinvoimainen keskusta ja tietoon perustuva päätöksenteko.',
         sv: 'Texter om kommunalvalet 2025 i Kyrkslätt och centrala teman i kommunalpolitiken.',
     },
     names: { en: 'Municipal elections 2025', fi: 'Kuntavaalit 2025', sv: 'Kommu\u00ADnalval 2025' },
@@ -77,5 +77,5 @@ export const municipalElections2025Tag: LocalTag = {
         sv: 'Kommunalval 2025 – Kyrkslätt kommun',
     },
     slugs: { en: 'municipal-elections-2025', fi: 'kuntavaalit-2025', sv: 'kommunalval-2025' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

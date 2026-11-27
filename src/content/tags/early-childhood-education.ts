@@ -21,7 +21,7 @@ export const earlyChildhoodEducationTag: LocalTag = {
     id: 'early-childhood-education',
     metaDescription: {
         en: "Posts about early childhood education, daycare, and children's services.",
-        fi: 'Kirjoituksia varhaiskasvatuksesta, päiväkodeista ja lasten palveluista.',
+        fi: 'Varhaiskasvatuksesta, päiväkodeista ja opettajapulasta. Laadukas varhaiskasvatus antaa jokaiselle lapselle eväät kouluun ja on kunnan tärkeimpiä tehtäviä.',
         sv: 'Texter om småbarnspedagogik, daghem och barntjänster.',
     },
     names: { en: 'Early childhood education', fi: 'Varhais\u00ADkasvatus', sv: 'Småbarns\u00ADpedagogik' },
@@ -31,5 +31,5 @@ export const earlyChildhoodEducationTag: LocalTag = {
         sv: 'Små\u00ADbarns\u00ADpedagogik – lärande och omsorg',
     },
     slugs: { en: 'early-childhood-education', fi: 'varhaiskasvatus', sv: 'smabarnspedagogik' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

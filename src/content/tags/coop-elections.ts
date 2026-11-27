@@ -18,7 +18,7 @@ export const coopElectionsTag: LocalTag = {
     id: 'coop-elections',
     metaDescription: {
         en: 'Posts about co-op elections and S Group member democracy.',
-        fi: 'Kirjoituksia osuuskauppavaaleista ja S-ryhmän jäsendemokratiasta.',
+        fi: 'Osuuskauppavaaleista ja S-ryhmän demokratiasta. Edustajisto vaikuttaa hintoihin ja lähipalveluihin, joten jokaisen asiakasomistajan ääni painaa.',
         sv: 'Texter om kooperativvalet och S-gruppens medlemsdemokrati.',
     },
     names: { en: 'Co-op elections', fi: 'Osuus\u00ADkauppa\u00ADvaalit', sv: 'Kooperativ\u00ADval' },
@@ -28,5 +28,5 @@ export const coopElectionsTag: LocalTag = {
         sv: 'Kooperativval – S-gruppens demokrati',
     },
     slugs: { en: 'coop-elections', fi: 'osuuskauppavaalit', sv: 'kooperativval' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

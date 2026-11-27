@@ -21,7 +21,7 @@ export const natureTag: LocalTag = {
     id: 'nature',
     metaDescription: {
         en: 'Posts about nature, the environment and outdoor recreation in Uusimaa and across Finland.',
-        fi: 'Kirjoituksia luonnosta, ympäristöstä ja ulkoilusta Uudellamaalla ja koko Suomessa.',
+        fi: 'Luonnosta ja ulkoilusta Uudellamaalla. Ikimetsän pitää olla junamatkan päässä, ja asukkaiden on päästävä vaikuttamaan lähimetsien hoitoon suunnitteluvaiheessa.',
         sv: 'Texter om natur, miljö och friluftsliv i Nyland och i hela Finland.',
     },
     names: { en: 'Nature', fi: 'Luonto', sv: 'Natur' },
@@ -31,5 +31,5 @@ export const natureTag: LocalTag = {
         sv: 'Natur, miljö och friluftsliv i Nyland',
     },
     slugs: { en: 'nature', fi: 'luonto', sv: 'natur' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

@@ -21,7 +21,7 @@ export const basicWelfareTag: LocalTag = {
     id: 'basic-welfare',
     metaDescription: {
         en: 'Posts about basic welfare, social benefits, and social services.',
-        fi: 'Kirjoituksia perusturvasta, sosiaalietuuksista ja sosiaalipalveluista.',
+        fi: 'Perusturvasta: miksi YEL-uudistus nostaa yrittämisen kynnystä ja miksi kotihoidon tuen tilalle tarvitaan perustulo ja pidempi vanhempainvapaa.',
         sv: 'Texter om grundläggande trygghet, sociala förmåner och socialtjänster.',
     },
     names: { en: 'Basic welfare', fi: 'Perusturva', sv: 'Grund\u00ADläggande' },
@@ -31,5 +31,5 @@ export const basicWelfareTag: LocalTag = {
         sv: 'Om grundläggande trygghet och socialskydd',
     },
     slugs: { en: 'basic-welfare', fi: 'perusturva', sv: 'grundtrygghet' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }

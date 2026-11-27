@@ -21,7 +21,7 @@ export const immigrationTag: LocalTag = {
     id: 'immigration',
     metaDescription: {
         en: 'Posts about immigration, integration, and immigration policy.',
-        fi: 'Kirjoituksia maahanmuutosta, kotoutumisesta ja maahanmuuttopolitiikasta.',
+        fi: 'Maahanmuutosta faktojen valossa: Esseitä maahanmuutosta -sarja käy läpi maahanmuuton muodot, vertaa Suomea Ruotsiin ja Tanskaan ja purkaa myyttejä tilastoilla.',
         sv: 'Texter om immigration, integration och invandrarpolitik.',
     },
     names: { en: 'Immigration', fi: 'Maahan\u00ADmuutto', sv: 'Immigration' },
@@ -31,5 +31,5 @@ export const immigrationTag: LocalTag = {
         sv: 'Immigration och integrations\u00ADpolitik',
     },
     slugs: { en: 'immigration', fi: 'maahanmuutto', sv: 'invandring' },
-    updatedDate: '2026-10-02',
+    updatedDate: '2026-11-27',
 }
