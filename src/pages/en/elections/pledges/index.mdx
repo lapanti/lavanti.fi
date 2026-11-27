@@ -1,0 +1,55 @@
+---
+layout: '../../../../layouts/PageLayout.astro'
+lang: en
+pageTitle: 'Petitions and pledges for the 2027 election'
+title: 'Petitions and'
+emphasis: 'pledges'
+intro: 'Organisations ask parliamentary candidates to sign petitions and commit to their goals. This page lists every one I have signed, so you can check what I promise to work for in parliament.'
+description: 'Petitions and candidate pledges Lauri Lavanti has signed for the 2027 Finnish parliamentary election: what they demand, who organises them and why I signed.'
+slug: 'en/elections/pledges'
+updatedDate: '2026-11-27'
+type: 'WebPage'
+breadcrumbParent: 'elections'
+breadcrumbName: 'Pledges'
+heroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-pysty-v2
+mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-lahikuva-hero-vaaka
+alt: 'Lauri Lavanti looks into the camera in a half-length portrait in a residential courtyard, with a lawn and passers-by behind him.'
+plated: true
+variant: 'split'
+ctaHref: '#list'
+ctaLabel: 'See the pledges'
+langAlternates:
+    en: '/en/elections/pledges/'
+    fi: '/fi/eduskuntavaalit/sitoumukset/'
+    sv: '/sv/riksdagsvalet/ataganden/'
+faq:
+    - q: 'What is a candidate pledge?'
+      a: 'A candidate pledge is a commitment drafted by an organisation or campaign that a parliamentary candidate signs before the election. By signing, the candidate commits to advancing its goals if elected to parliament. Organisers often publish a list of the candidates who have signed.'
+    - q: 'What has Lauri Lavanti committed to in the 2027 parliamentary election?'
+      a: 'Lauri Lavanti lists every petition and candidate pledge he has signed on the page lavanti.fi/en/elections/pledges. Each entry gives the signing date, the organisers, the demands and a link to the original text.'
+---
+
+import Faq from '../../../../components/Faq.astro'
+import NewsletterPlate from '../../../../components/frontPage/NewsletterPlate.astro'
+import NewsletterSubscribe from '../../../../components/NewsletterSubscribe.astro'
+import Plate from '../../../../components/Plate.astro'
+import PledgeList from '../../../../components/pledges/PledgeList.astro'
+import Prose from '../../../../components/Prose.astro'
+import { sortedPledges } from '../../../../content/pledges'
+
+<Plate eyebrow="Why" ground="sand" heading="Why do I publish my pledges?">
+    <Prose>
+        <p>A candidate’s promise is only worth something if it can be checked afterwards. That is why I collect here every petition and pledge I sign before the parliamentary election. For each one I explain what it demands, who organises it and why I signed.</p>
+        <p>For the same reason I publish my <a href="/en/elections/campaign-finance/">campaign finances</a> in the open. You can read more about the campaign on the <a href="/en/elections/">election page</a>.</p>
+    </Prose>
+</Plate>
+
+<Plate eyebrow="List" ground="offWhite" heading="Which petitions and pledges have I signed?" id="list">
+    <PledgeList lang="en" pledges={sortedPledges()} />
+</Plate>
+
+<Faq eyebrow="Q & A" faq={frontmatter.faq} heading="Frequently asked questions about pledges" />
+
+<NewsletterPlate>
+    <NewsletterSubscribe lang="en" />
+</NewsletterPlate>
