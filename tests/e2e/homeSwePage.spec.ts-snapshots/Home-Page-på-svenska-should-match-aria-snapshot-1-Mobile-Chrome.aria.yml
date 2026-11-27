@@ -126,6 +126,24 @@
     - heading "Inlägg" [level=2]
     - list:
       - listitem:
+        - article "Ett spelinstitut skulle styra finansieringen till växande studior":
+          - link "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna. Ett spelinstitut skulle styra finansieringen till växande studior":
+            - /url: /sv/blog/83/nationellt-spelinstitut/
+            - img "Scrabblebrickor av trä på ett träbord, i mitten ordet innovation format av brickorna."
+            - heading "Ett spelinstitut skulle styra finansieringen till växande studior" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Den finländska spelbranschen är en betydande kulturexport, men stödet hamnar hos storbolagen. Ett spelinstitut skulle styra samma pengar till nya studior.
+        - list:
+          - listitem:
+            - link "Bildning":
+              - /url: /sv/kategori/kultur/
+          - listitem:
+            - link "Företagande":
+              - /url: /sv/kategori/foretagande/
+          - listitem:
+            - link "Teknologi":
+              - /url: /sv/kategori/teknologi/
+      - listitem:
         - article "Incitamentsfällorna rivs med basinkomst, inte med fler villkor":
           - link /Tjänstemän på FPA:s kontor i Helsingfors i arbete år \d+\. En incitamentsfälla uppstår ur ett stödsystem som minskar stödet när inkomsterna växer\. Incitamentsfällorna rivs med basinkomst, inte med fler villkor/:
             - /url: /sv/blog/102/incitamentsfallorna-rivs-med-basinkomst/
@@ -263,24 +281,6 @@
           - listitem:
             - link "Utbildning":
               - /url: /sv/kategori/utbildning/
-      - listitem:
-        - article "Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-          - link "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas. Arbetspensionernas indexfrysning skulle fördela bördan rättvist":
-            - /url: /sv/blog/97/finansiering-av-arbetspensioner-indexfrysning/
-            - img "Pensionsskyddscentralens kontorshus i Böle i Helsingfors. PSC:s statistik och beräkningar visar hur arbetspensionernas finansiering utvecklas."
-            - heading "Arbetspensionernas indexfrysning skulle fördela bördan rättvist" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Arbetspensionerna finansieras med avgifter från årets sysselsatta. Fyra diagram med PSC:s uppgifter visar varför jag föreslår att arbetspensionsindexet fryses.
-        - list:
-          - listitem:
-            - link "Ekonomi":
-              - /url: /sv/kategori/ekonomi/
-          - listitem:
-            - link "Nationell politik":
-              - /url: /sv/kategori/nationell-politik/
-          - listitem:
-            - link /Riksdagsvalet \d+/:
-              - /url: /sv/kategori/riksdagsvalet-2027/
     - link "Alla inlägg":
       - /url: /sv/blog/all/
     - text: Nyhetsbrev

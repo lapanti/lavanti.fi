@@ -126,6 +126,24 @@
     - heading "Writing" [level=2]
     - list:
       - listitem:
+        - article "A Games Institute Would Steer Funding to Growing Studios":
+          - link "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle. A Games Institute Would Steer Funding to Growing Studios":
+            - /url: /en/blog/83/national-games-institute/
+            - img "Wooden Scrabble tiles on a wooden table, spelling the word innovation in the middle."
+            - heading "A Games Institute Would Steer Funding to Growing Studios" [level=3]
+          - time: /\d+\.\d+\.\d+/
+          - paragraph: Finnish games are a major cultural export, yet public support piles up at the largest companies. A games institute would send the same money to new studios.
+        - list:
+          - listitem:
+            - link "Culture & education":
+              - /url: /en/category/culture-and-education/
+          - listitem:
+            - link "Entrepreneurship":
+              - /url: /en/category/entrepreneurship/
+          - listitem:
+            - link "Technology":
+              - /url: /en/category/technology/
+      - listitem:
         - article "Basic income removes incentive traps, not extra conditions":
           - link /Clerks at the Helsinki office of Kela, the Social Insurance Institution of Finland, at work in \d+\. An incentive trap arises from a benefit structure that cuts support as income grows\. Basic income removes incentive traps, not extra conditions/:
             - /url: /en/blog/102/basic-income-removes-incentive-traps/
@@ -263,24 +281,6 @@
           - listitem:
             - link "Education":
               - /url: /en/category/education/
-      - listitem:
-        - article "A pension index freeze would share the burden fairly":
-          - link "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops. A pension index freeze would share the burden fairly":
-            - /url: /en/blog/97/pension-funding-and-the-index-freeze/
-            - img "The office building of the Finnish Centre for Pensions in Pasila, Helsinki. ETK's statistics and projections show how earnings-related pension funding develops."
-            - heading "A pension index freeze would share the burden fairly" [level=3]
-          - time: /\d+\.\d+\.\d+/
-          - paragraph: Earnings-related pensions are funded by each year's workers' contributions. Four charts based on ETK data show why I propose freezing the pension index.
-        - list:
-          - listitem:
-            - link "Economy":
-              - /url: /en/category/economy/
-          - listitem:
-            - link "National politics":
-              - /url: /en/category/national-politics/
-          - listitem:
-            - link /Parliamentary elections \d+/:
-              - /url: /en/category/parliamentary-elections-2027/
     - link "All posts":
       - /url: /en/blog/all/
     - text: Newsletter
