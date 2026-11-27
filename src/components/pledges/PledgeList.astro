@@ -143,10 +143,11 @@ const readLabels: Record<Lang, Record<PledgeKind, string>> = {
 
             return (
                 <li data-pledge-id={pledge.id} id={pledge.id}>
-                    <p class="pledge-meta">
+                    {/* A div, not a p: SiteImprove sia-r72/r73 fail an uppercase, tight-leading paragraph. */}
+                    <div class="pledge-meta">
                         {kindLabels[lang][pledge.kind]} · {signedLabels[lang]}{' '}
                         <time datetime={pledge.signedDate}>{formatDate(pledge.signedDate, lang)}</time>
-                    </p>
+                    </div>
                     <h3>{locale.title}</h3>
                     <p class="pledge-summary">{locale.summary}</p>
                     {locale.note && <p class="pledge-note">{locale.note}</p>}
