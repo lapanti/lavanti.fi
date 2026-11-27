@@ -22,7 +22,7 @@ export const regionalElections2022Tag: LocalTag = {
     metaDescription: {
         en: 'Posts about the 2022 regional elections and the launch of welfare areas in Western Uusimaa.',
         fi: 'Vuoden 2022 aluevaaleista Länsi-Uudellamaalla: lähipalvelut lähelle, hoitohenkilökunnan jaksaminen ja ennaltaehkäisy, joka on halvempaa kuin hoito.',
-        sv: 'Texter om regionvalet 2022 och starten av välfärdsområdena i Västra Nyland.',
+        sv: 'Om välfärdsområdesvalet 2022 i Västra Nyland: närservice nära invånarna, vårdpersonalens ork och förebyggande arbete som är billigare än vård.',
     },
     names: { en: 'Regional elections 2022', fi: 'Aluevaalit 2022', sv: 'Regionval 2022' },
     pageTitle: {

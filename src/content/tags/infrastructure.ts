@@ -22,7 +22,7 @@ export const infrastructureTag: LocalTag = {
     metaDescription: {
         en: 'Posts about infrastructure, construction, and municipal engineering.',
         fi: 'Infrastruktuurista ja kunnallistekniikasta: sähköverkko, datakeskukset ja joukkoliikenne. Investoinnit tulevat toimivan sähkömarkkinan perässä.',
-        sv: 'Texter om infrastruktur, byggande och kommunalteknik.',
+        sv: 'Om infrastruktur och kommunalteknik: elnätet, datacenter och kollektivtrafiken. Investeringarna följer en fungerande elmarknad.',
     },
     names: { en: 'Infra\u00ADstructure', fi: 'Infra', sv: 'Infra\u00ADstruktur' },
     pageTitle: {

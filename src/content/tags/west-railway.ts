@@ -20,7 +20,7 @@ export const westRailwayTag: LocalTag = {
     metaDescription: {
         en: 'Posts about the Western railway and its importance for public transport in the region.',
         fi: 'Länsiradasta ja Pohjois-Kirkkonummen lähijuna-asemasta. Äänestin liittymisen puolesta, mutta valtuusto vetäytyi hankkeesta ilman vaikutusten arviointia.',
-        sv: 'Texter om Västbanan och dess betydelse för regionens kollektivtrafik.',
+        sv: 'Om Västbanan och en närtågsstation i norra Kyrkslätt. Jag röstade för att kommunen skulle gå med, men fullmäktige drog sig ur utan konsekvensbedömning.',
     },
     names: { en: 'Western railway', fi: 'Länsirata', sv: 'Västbanan' },
     pageTitle: {

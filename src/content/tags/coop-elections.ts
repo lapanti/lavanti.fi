@@ -19,7 +19,7 @@ export const coopElectionsTag: LocalTag = {
     metaDescription: {
         en: 'Posts about co-op elections and S Group member democracy.',
         fi: 'Osuuskauppavaaleista ja S-ryhmän demokratiasta. Edustajisto vaikuttaa hintoihin ja lähipalveluihin, joten jokaisen asiakasomistajan ääni painaa.',
-        sv: 'Texter om kooperativvalet och S-gruppens medlemsdemokrati.',
+        sv: 'Om andelslagsvalen och S-gruppens demokrati. Varuboden-Oslas fullmäktige påverkar priser och närservice, så varje ägarkunds röst väger tungt.',
     },
     names: { en: 'Co-op elections', fi: 'Osuus\u00ADkauppa\u00ADvaalit', sv: 'Kooperativ\u00ADval' },
     pageTitle: {

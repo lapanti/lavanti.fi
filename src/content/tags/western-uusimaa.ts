@@ -22,7 +22,7 @@ export const westernUusimaaTag: LocalTag = {
     metaDescription: {
         en: 'Posts about the Western Uusimaa welfare area and social and health policy.',
         fi: 'Länsi-Uudenmaan hyvinvointialueesta: terveyskeskukset, neuvolat ja pelastustoimi Hangosta Espooseen. Olin ehdolla aluevaaleissa 2022 ja 2025.',
-        sv: 'Texter om välfärdsområdet Västra Nyland och social- och hälsovårdspolitik.',
+        sv: 'Västra Nylands välfärdsområde: hälsostationer, rådgivningar och räddningsväsendet från Hangö till Esbo. Jag var kandidat i välfärdsområdesvalen 2022 och 2025.',
     },
     names: { en: 'Western Uusimaa', fi: 'Länsi-Uusimaa', sv: 'Västra Nyland' },
     pageTitle: {

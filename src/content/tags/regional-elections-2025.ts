@@ -22,7 +22,7 @@ export const regionalElections2025Tag: LocalTag = {
     metaDescription: {
         en: 'Posts about the 2025 regional elections and the future of welfare areas.',
         fi: 'Vuoden 2025 kunta- ja aluevaaleista: lasten ja nuorten mahdollisuudet, avoin päätöksenteko ja Esseitä maahanmuutosta -sarja. Minut valittiin kunnanvaltuustoon.',
-        sv: 'Texter om regionvalet 2025 och välfärdsområdenas framtid.',
+        sv: 'Kommunal- och välfärdsområdesvalet 2025: barns och ungas möjligheter, öppet beslutsfattande och serien Essäer om invandring. Jag valdes till kommunfullmäktige.',
     },
     names: { en: 'Regional elections 2025', fi: 'Aluevaalit 2025', sv: 'Regionval 2025' },
     pageTitle: {

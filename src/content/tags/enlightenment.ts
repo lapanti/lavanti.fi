@@ -23,7 +23,7 @@ export const enlightenmentTag: LocalTag = {
     metaDescription: {
         en: 'In the AI era enlightenment must stay seamless from early childhood to working life — so no one gets left behind.',
         fi: 'Tekoälyn aikakaudella sivistyksen on pysyttävä saumattomana varhaiskasvatuksesta työelämään — että kukaan ei jää jälkeen.',
-        sv: 'I AI-eran måste bildningen förbli sömlös från småbarnspedagogiken till arbetslivet — så att ingen lämnas efter.',
+        sv: 'Om bildning i AI-eran: lärandet måste förbli sömlöst från småbarnspedagogiken till arbetslivet, så att ingen lämnas efter.',
     },
     names: { en: 'Enlighten\u00ADment', fi: 'Sivistys', sv: 'Lärande' },
     pageTitle: {
@@ -32,5 +32,5 @@ export const enlightenmentTag: LocalTag = {
         sv: 'Sömlös bildning i AI-erans Finland',
     },
     slugs: { en: 'enlightenment', fi: 'sivistys', sv: 'bildning' },
-    updatedDate: '2026-11-02',
+    updatedDate: '2026-11-27',
 }

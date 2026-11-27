@@ -52,7 +52,7 @@ export const nationalPoliticsTag: LocalTag = {
     metaDescription: {
         en: 'Finnish national politics — parliament, coalitions and fiscal agreements — from a councillor watching Helsinki decisions land in practice.',
         fi: 'Kansallista politiikkaa kunnanvaltuutetun silmin: velkajarru, sopeutustoimet ja valtionosuuksien leikkaukset näkyvät kuntien budjeteissa koko Uudellamaalla.',
-        sv: 'Finlands nationella politik — riksdag, koalitioner och finanspolitiska avtal — ur en kommunal förtroendevalds perspektiv.',
+        sv: 'Rikspolitik ur en fullmäktigeledamots perspektiv: skuldbromsen, anpassningsåtgärderna och nedskurna statsandelar syns i kommunernas budgetar i hela Nyland.',
     },
     names: { en: 'National politics', fi: 'Kansallinen politiikka', sv: 'Nationell politik' },
     pageTitle: {

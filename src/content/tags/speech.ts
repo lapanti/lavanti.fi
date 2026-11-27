@@ -22,7 +22,7 @@ export const speechTag: LocalTag = {
     metaDescription: {
         en: 'My speeches in full: addresses in the Kirkkonummi municipal council, at the party congress and at events.',
         fi: 'Puheeni kokonaisuudessaan: valtuustopuheenvuorot Länsiradasta, Pride-liputuksesta ja talousarviosta sekä puheet puoluekokouksessa ja tapahtumissa.',
-        sv: 'Mina tal i sin helhet: anföranden i Kyrkslätts fullmäktige, på partikongressen och vid evenemang.',
+        sv: 'Mina tal i sin helhet: anföranden i Kyrkslätts fullmäktige om Västbanan, Pride-flaggning och budgeten samt tal på partikongressen och evenemang.',
     },
     names: { en: 'Speech', fi: 'Puhe', sv: 'Tal' },
     pageTitle: {
