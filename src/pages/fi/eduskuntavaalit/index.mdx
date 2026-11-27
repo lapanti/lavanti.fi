@@ -7,7 +7,7 @@ emphasis: 'eduskuntaan'
 intro: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä eduskuntavaaleissa 2027, Kirkkonummen kunnanvaltuutettu, johtava ohjelmistokehittäjä ja diplomi-insinööri Aallosta. Hänen tavoitteenaan on digitaalisesti itsenäinen Suomi, jossa talous, sivistys ja vapaus toimivat yhdessä tekoälyn aikakaudella. Vaalipäivä on sunnuntai 18.4.2027 ja ennakkoäänestys kotimaassa 7.–13.4.2027.'
 description: 'Lauri Lavanti on Vihreiden eduskuntavaaliehdokas Uudenmaan vaalipiirissä. Vaalipäivä on 18.4.2027 — teemoina talous, sivistys ja vapaus tekoälyn aikana.'
 slug: 'fi/eduskuntavaalit'
-updatedDate: '2026-11-20'
+updatedDate: '2026-11-27'
 type: 'WebPage'
 heroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-pysty-v2
 mobileHeroImage: Lauri-Lavanti-kerrostalopihalla-kadet-taskuissa-hero-vaaka
@@ -52,6 +52,7 @@ import NewsletterPlate from '../../../components/frontPage/NewsletterPlate.astro
 import Pillar from '../../../components/frontPage/Pillar.astro'
 import NewsletterSubscribe from '../../../components/NewsletterSubscribe.astro'
 import Plate from '../../../components/Plate.astro'
+import PledgesTeaser from '../../../components/pledges/PledgesTeaser.astro'
 import Prose from '../../../components/Prose.astro'
 import { electionPhotos } from '../../../content/electionPhotos'
 import { visibleCampaignEvents } from '../../../lib/visibleEvents'
@@ -142,6 +143,8 @@ import { visibleCampaignEvents } from '../../../lib/visibleEvents'
         <p>Lauri Lavantia voivat äänestää Uudenmaan vaalipiirissä äänioikeutetut. Äänestyspäätöksen tueksi kannattaa lukea <a href="/fi/blog/">kirjoituksia</a> ja tilata uutiskirje alta.</p>
     </Prose>
 </Plate>
+
+<PledgesTeaser id="sitoumukset" lang="fi" />
 
 <FinanceTeaser href="/fi/eduskuntavaalit/vaalirahoitus/" id="rahoitus" lang="fi" />
 
