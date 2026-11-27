@@ -5,7 +5,16 @@ import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 import { FIGURES_PATH, FINANCE_PAGES } from '../ci/update-campaign-finance'
-import { findOffenders, readUpdatedDate, today, unitOf, unitsOf, withoutUpdatedDate } from './updated-date'
+import {
+    findOffenders,
+    PLEDGE_PAGES,
+    PLEDGES_PATH,
+    readUpdatedDate,
+    today,
+    unitOf,
+    unitsOf,
+    withoutUpdatedDate,
+} from './updated-date'
 
 describe('unitOf', () => {
     it('treats a page as its own unit, carrying updatedDate in its frontmatter', () => {
@@ -198,6 +207,21 @@ describe('findOffenders', () => {
         write(FIGURES_PATH, '{ "asOf": "2026-01-02" }\n')
         git('add', '-A')
         expect(staged([FIGURES_PATH])).toEqual(FINANCE_PAGES.map((p) => ({ field: p, unit: p })))
+    })
+
+    it('requires the pledges pages to bump when only the pledges file changed', () => {
+        write(PLEDGES_PATH, '[]\n')
+        for (const pledgePage of PLEDGE_PAGES) write(pledgePage, page('2026-01-01', 'Sitoumukset'))
+        git('add', '-A')
+        git('commit', '-qm', 'pledges seed')
+
+        write(PLEDGES_PATH, '[{ "id": "new" }]\n')
+        git('add', '-A')
+        expect(staged([PLEDGES_PATH])).toEqual(PLEDGE_PAGES.map((p) => ({ field: p, unit: p })))
+
+        for (const pledgePage of PLEDGE_PAGES) write(pledgePage, page('2026-09-11', 'Sitoumukset'))
+        git('add', '-A')
+        expect(staged([PLEDGES_PATH, ...PLEDGE_PAGES])).toEqual([])
     })
 })
 
