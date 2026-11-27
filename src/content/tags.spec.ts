@@ -13,7 +13,11 @@ const KEBAB_CASE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 // pageTitle with suffix '| Lauri Lavanti' (15 chars) must fit 50–60 chars total
 const PAGE_TITLE_MIN = 34
 const PAGE_TITLE_MAX = 44
-// metaDescription is used directly as <meta name="description"> content
+/*
+ * metaDescription is used directly as <meta name="description"> content; same 120–160 range
+ * that scripts/checks/content.sh enforces on MDX descriptions
+ */
+const META_DESCRIPTION_MIN = 120
 const META_DESCRIPTION_MAX = 160
 
 describe('tags data', () => {
@@ -57,12 +61,16 @@ describe('tags data', () => {
         }
     })
 
-    it.each(tags)('$id — metaDescription ≤ 160 chars per locale', ({ id, metaDescription }) => {
+    it.each(tags)('$id — metaDescription 120–160 chars per locale', ({ id, metaDescription }) => {
         for (const locale of LOCALES) {
-            expect(
-                metaDescription[locale].length,
-                `${id} metaDescription.${locale} is ${metaDescription[locale].length} chars (max ${META_DESCRIPTION_MAX})`
-            ).toBeLessThanOrEqual(META_DESCRIPTION_MAX)
+            // Code points, as `wc -m` counts them in scripts/checks/content.sh; soft hyphens are invisible
+            const length = [...metaDescription[locale].replace(/­/g, '')].length
+            expect(length, `${id} metaDescription.${locale} is ${length} chars`).toBeGreaterThanOrEqual(
+                META_DESCRIPTION_MIN
+            )
+            expect(length, `${id} metaDescription.${locale} is ${length} chars`).toBeLessThanOrEqual(
+                META_DESCRIPTION_MAX
+            )
         }
     })
 
