@@ -1,0 +1,44 @@
+[
+    {
+        "id": "luontoaarteet-turvaan",
+        "kind": "petition",
+        "locales": {
+            "en": {
+                "note": "Nature cannot wait for the next parliamentary term: a felled old-growth forest does not grow back for decades. That is why I commit to advancing a strong nature law and the protection of old-growth forests in parliament.",
+                "summary": "A petition for a strong nature law, an end to logging old-growth forests on state land and keeping the Climate Act. Candidates who sign commit to advancing these goals in parliament.",
+                "title": "Luontoaarteet turvaan (Protect our natural treasures)"
+            },
+            "fi": {
+                "note": "Luonto ei voi odottaa seuraavaa vaalikautta, sillä kaadettu vanha metsä ei kasva takaisin vuosikymmeniin. Siksi sitoudun edistämään eduskunnassa vahvaa luontolakia ja vanhojen metsien suojelua.",
+                "summary": "Vetoomus vahvan luontolain, valtion maiden vanhojen metsien hakkuiden lopettamisen ja ilmastolain säilyttämisen puolesta. Allekirjoittanut ehdokas sitoutuu edistämään tavoitteita eduskunnassa.",
+                "title": "Luontoaarteet turvaan"
+            },
+            "sv": {
+                "note": "Naturen kan inte vänta till nästa valperiod, för en avverkad gammal skog växer inte tillbaka på årtionden. Därför förbinder jag mig att i riksdagen driva en stark naturlag och skyddet av gamla skogar.",
+                "summary": "Ett upprop för en stark naturlag, ett stopp för avverkningen av gamla skogar på statens mark och för att klimatlagen ska bestå. Kandidater som undertecknar förbinder sig att driva målen i riksdagen.",
+                "title": "Luontoaarteet turvaan (Skydda våra naturskatter)"
+            }
+        },
+        "organizers": [
+            {
+                "name": {
+                    "en": "Finnish Association for Nature Conservation",
+                    "fi": "Suomen luonnonsuojeluliitto",
+                    "sv": "Finlands naturskyddsförbund"
+                },
+                "url": "https://www.sll.fi/"
+            },
+            {
+                "name": { "en": "Greenpeace", "fi": "Greenpeace", "sv": "Greenpeace" },
+                "url": "https://www.greenpeace.org/finland/"
+            },
+            {
+                "name": { "en": "Kone Foundation", "fi": "Koneen Säätiö", "sv": "Koneen Säätiö" },
+                "url": "https://www.koneensaatio.fi/"
+            }
+        ],
+        "signedDate": "2026-10-19",
+        "tags": ["nature"],
+        "url": "https://luontoaarteet.fi/"
+    }
+]
