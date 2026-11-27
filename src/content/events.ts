@@ -1,6 +1,6 @@
 import type { Lang } from './nav'
 
-// The attribute is for the e2e page objects and scripts/checks/events-due.ts, which Node loads through its own ESM loader.
+// The attribute is for scripts/checks/events-due.ts, which Node loads through its own ESM loader.
 import data from './events.json' with { type: 'json' }
 
 interface CampaignEventLocale {
