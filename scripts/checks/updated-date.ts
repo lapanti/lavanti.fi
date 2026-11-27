@@ -23,7 +23,8 @@
  *     so the entry, not the file, is the unit checked.
  *
  * src/content/campaignFinance.ts and src/content/campaignFinanceFigures.json count
- * as content of the three finance pages.
+ * as content of the three finance pages; src/content/pledges.json as content of the
+ * three pledges pages.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -39,6 +40,15 @@ export const SKIP_MARKER = '[skip-updated-date]'
 const ENTRY_FILE = /^src[/\\]content[/\\](posts|newsletters)[/\\](\d+)[/\\](?:fi|sv|en)\.mdx$/
 const ENTRY_META = /^src[/\\]content[/\\](posts|newsletters)[/\\](\d+)[/\\]meta\.json$/
 const PAGE_FILE = /^src[/\\]pages[/\\].+\.mdx$/
+
+export const PLEDGES_PATH = 'src/content/pledges.json'
+
+/** The pages that render the full pledges list; the election-page teaser follows the finance precedent and is not one. */
+export const PLEDGE_PAGES = [
+    'src/pages/fi/eduskuntavaalit/sitoumukset/index.mdx',
+    'src/pages/sv/riksdagsvalet/ataganden/index.mdx',
+    'src/pages/en/elections/pledges/index.mdx',
+] as const
 
 export interface Offender {
     /** Where the reader-facing content lives: a page path or a post directory. */
@@ -71,6 +81,9 @@ export function unitsOf(file: string): { unit: string; field: string }[] {
     const normalised = file.replace(/\\/g, '/')
     if (normalised === FINANCE_MODULE || normalised === FIGURES_PATH) {
         return FINANCE_PAGES.map((page) => ({ field: page, unit: page }))
+    }
+    if (normalised === PLEDGES_PATH) {
+        return PLEDGE_PAGES.map((page) => ({ field: page, unit: page }))
     }
     const unit = unitOf(file)
 
