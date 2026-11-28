@@ -27,6 +27,8 @@ export interface Adoption {
     municipality: string
     /** 0: a donation for signs without the donor's name on them (sign_name is null). */
     named: number
+    /** Set when MobilePay online confirmed the payment; the row still waits for approval. */
+    paid_at: null | string
     paid_via: null | string
     payer_name: null | string
     printed_at: null | string

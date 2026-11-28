@@ -1,11 +1,18 @@
-import { describe, expect, it, vi } from 'vitest'
+import type { D1Like } from './formHandling'
+
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { fakeDb, turnstile } from '../../tests/formFakes'
+import { fakeMobilePay, MOBILEPAY_ENV, signedWebhook } from '../../tests/mobilePayFakes'
+import { resetTokenCache } from './mobilePay'
 import {
     ADOPTION_MUNICIPALITIES,
     DISTRICT_MUNICIPALITIES,
     handleAction,
     handleMessage,
+    handleMobilePayWebhook,
+    handlePayStart,
+    handlePayStatus,
     handlePending,
     handleRevoke,
     handleStats,
@@ -611,5 +618,192 @@ describe('handleStats', () => {
             since: null,
             since_count: null,
         })
+    })
+})
+
+describe('MobilePay online', () => {
+    beforeEach(resetTokenCache)
+
+    const T = new Date('2026-11-28T10:00:00Z')
+    const REFERENCE = 'adoptoi-K-12345-abc'
+    const mpEnv = (results: Record<string, unknown[]> = {}) => {
+        const fake = fakeDb(results)
+
+        return { calls: fake.calls, env: { ...MOBILEPAY_ENV, DB: fake.db, MOBILEPAY_WEBHOOK_SECRET: 'whsec' } }
+    }
+    const owned = async (patch: Record<string, unknown> = {}) => ({
+        company_name: null,
+        edit_token_hash: await hashToken('tok'),
+        id: 7,
+        lang: 'fi',
+        named: 1,
+        paid_at: null,
+        quantity: 5,
+        status: 'pending',
+        ...patch,
+    })
+    const start = (body: unknown) =>
+        new Request('https://lavanti.fi/api/adoptoi/maksu', { body: JSON.stringify(body), method: 'POST' })
+    const status = (ref: string) => new Request(`https://lavanti.fi/api/adoptoi/maksu?ref=${ref}`)
+    const authorized = {
+        aggregate: { authorizedAmount: { value: 10000 }, capturedAmount: { value: 0 } },
+        state: 'AUTHORIZED',
+        userDetails: { firstName: 'Åsa', lastName: 'Ødegaard' },
+    }
+    const mobilePayWithCapture = () =>
+        fakeMobilePay((url) =>
+            url.endsWith('/capture') ? { aggregate: { capturedAmount: { value: 10000 } } } : authorized
+        )
+    const pendingRow = { 'id, status, paid_at': [{ id: 7, paid_at: null, status: 'pending' }] }
+
+    it('answers 503, not a raw error, when the database fails', async () => {
+        const errorLog = vi.spyOn(console, 'error').mockImplementation(() => undefined)
+        const broken = {
+            prepare: () => {
+                throw new Error('no such table: sign_adoptions')
+            },
+        } as unknown as D1Like
+        const env = { ...MOBILEPAY_ENV, DB: broken }
+        const { fetchFn } = fakeMobilePay()
+        expect((await handlePayStatus(status('K-12345'), env, fetchFn)).status).toBe(503)
+        expect((await handlePayStart(start({ ref: 'K-12345', token: 'tok' }), env, fetchFn)).status).toBe(503)
+        expect(errorLog).toHaveBeenCalledTimes(2)
+        errorLog.mockRestore()
+    })
+
+    it('reports whether it is switched on', async () => {
+        const get = new Request('https://lavanti.fi/api/adoptoi/maksu')
+        const off = await handlePayStatus(get, { DB: fakeDb().db }, fakeMobilePay().fetchFn)
+        expect(await off.json()).toEqual({ enabled: false })
+        expect(await (await handlePayStatus(get, mpEnv().env, fakeMobilePay().fetchFn)).json()).toEqual({
+            enabled: true,
+        })
+    })
+
+    it('starts a payment for the package amount and stores its reference', async () => {
+        const { calls, env: x } = mpEnv({ 'WHERE ref_code': [await owned()] })
+        const mp = fakeMobilePay({ redirectUrl: 'https://landing.vipps.no?token=x' })
+        const res = await handlePayStart(start({ ref: 'K-12345', token: 'tok' }), x, mp.fetchFn, T)
+        expect(await res.json()).toEqual({ redirectUrl: 'https://landing.vipps.no?token=x' })
+        const reference = `adoptoi-K-12345-${T.getTime().toString(36)}`
+        expect(JSON.parse(mp.calls[1].init.body as string)).toMatchObject({
+            amount: { currency: 'EUR', value: 10000 },
+            paymentDescription: 'Lahjoitus vaalikeräykseen (Adoptoi kyltti)',
+            profile: { scope: 'name' },
+            reference,
+            returnUrl: 'https://lavanti.fi/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0&mp=1',
+        })
+        expect(calls[0]).toEqual({
+            args: [reference, 7],
+            sql: 'UPDATE sign_adoptions SET mp_reference = ? WHERE id = ?',
+        })
+    })
+
+    it('refuses a wrong token, a company, a paid row and a missing configuration', async () => {
+        const mp = fakeMobilePay({ redirectUrl: 'https://landing.vipps.no' })
+        const tryStart = async (body: unknown, patch: Record<string, unknown> = {}) =>
+            (await handlePayStart(start(body), mpEnv({ 'WHERE ref_code': [await owned(patch)] }).env, mp.fetchFn))
+                .status
+        expect(await tryStart({ ref: 'K-12345', token: 'nope' })).toBe(404)
+        expect(await tryStart({ ref: 'K-1', token: 'tok' })).toBe(404)
+        expect(await tryStart({ ref: 'K-12345', token: 'tok' }, { company_name: '3D-Paja Oy' })).toBe(409)
+        expect(await tryStart({ ref: 'K-12345', token: 'tok' }, { paid_at: '2026-11-28T09:00:00Z' })).toBe(409)
+        expect(await tryStart({ ref: 'K-12345', token: 'tok' }, { status: 'approved' })).toBe(409)
+        const off = await handlePayStart(start({ ref: 'K-12345', token: 'tok' }), { DB: fakeDb().db }, mp.fetchFn)
+        expect(off.status).toBe(503)
+        const bad = new Request('https://lavanti.fi/api/adoptoi/maksu', { body: '{', method: 'POST' })
+        expect((await handlePayStart(bad, mpEnv().env, mp.fetchFn)).status).toBe(400)
+        expect(mp.calls).toHaveLength(0)
+    })
+
+    it('answers 503 and stores nothing when MobilePay fails', async () => {
+        const { calls, env: x } = mpEnv({ 'WHERE ref_code': [await owned()] })
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {})
+        const res = await handlePayStart(start({ ref: 'K-12345', token: 'tok' }), x, fakeMobilePay({}, 500).fetchFn)
+        expect(res.status).toBe(503)
+        expect(calls).toHaveLength(0)
+        expect(spy.mock.calls[0][0]).not.toContain('tok')
+        spy.mockRestore()
+    })
+
+    it('captures an authorized payment and marks the row paid with the shared name', async () => {
+        const { calls, env: x } = mpEnv({
+            ...pendingRow,
+            'paid_at, mp_reference': [{ mp_reference: REFERENCE, paid_at: null }],
+        })
+        const mp = mobilePayWithCapture()
+        expect(await (await handlePayStatus(status('K-12345'), x, mp.fetchFn, T)).json()).toEqual({ state: 'paid' })
+        expect(mp.calls.map((c) => c.url.replace('https://apitest.vipps.no', ''))).toEqual([
+            '/accesstoken/get',
+            `/epayment/v1/payments/${REFERENCE}`,
+            `/epayment/v1/payments/${REFERENCE}/capture`,
+        ])
+        expect(JSON.parse(mp.calls[2].init.body as string)).toEqual({
+            modificationAmount: { currency: 'EUR', value: 10000 },
+        })
+        expect(calls[0].sql).toContain("paid_at = ?, paid_via = 'mobilepay'")
+        expect(calls[0].args).toEqual([T.toISOString(), 'Åsa Ødegaard', 7])
+    })
+
+    it('reports paid, failed and pending without capturing', async () => {
+        const check = async (
+            ref: string,
+            results: Record<string, unknown[]>,
+            answer: Record<string, unknown> = { state: 'CREATED' }
+        ) => {
+            const mp = fakeMobilePay(answer)
+            const body = await (await handlePayStatus(status(ref), mpEnv(results).env, mp.fetchFn)).json()
+            expect(mp.calls.some((c) => c.url.endsWith('/capture'))).toBe(false)
+
+            return body
+        }
+        const live = { ...pendingRow, 'paid_at, mp_reference': [{ mp_reference: REFERENCE, paid_at: null }] }
+        const paid = { 'paid_at, mp_reference': [{ mp_reference: REFERENCE, paid_at: '2026-11-28T09:00:00Z' }] }
+        const rejected = { ...live, 'id, status, paid_at': [{ id: 7, paid_at: null, status: 'rejected' }] }
+        expect(await check('K-12345', paid)).toEqual({ state: 'paid' })
+        expect(await check('K-12345', {})).toEqual({ state: 'failed' })
+        expect(await check('<script>', {})).toEqual({ state: 'failed' })
+        expect(await check('K-12345', live)).toEqual({ state: 'pending' })
+        expect(await check('K-12345', live, { state: 'EXPIRED' })).toEqual({ state: 'failed' })
+        expect(await check('K-12345', rejected, authorized)).toEqual({ state: 'failed' })
+    })
+
+    it('settles the payment a signed AUTHORIZED webhook names', async () => {
+        const { calls, env: x } = mpEnv(pendingRow)
+        const body = JSON.stringify({ msn: '123456', name: 'AUTHORIZED', reference: REFERENCE, success: true })
+        const res = await handleMobilePayWebhook(
+            await signedWebhook(body, 'whsec'),
+            x,
+            mobilePayWithCapture().fetchFn,
+            T
+        )
+        expect(await res.json()).toEqual({ state: 'paid' })
+        expect(calls[0].args).toEqual([T.toISOString(), 'Åsa Ødegaard', 7])
+    })
+
+    it('refuses an unsigned webhook, ignores other events and needs the secret', async () => {
+        const { env: x } = mpEnv(pendingRow)
+        const mp = fakeMobilePay()
+        const body = JSON.stringify({ name: 'AUTHORIZED', reference: REFERENCE })
+        expect((await handleMobilePayWebhook(await signedWebhook(body, 'other'), x, mp.fetchFn)).status).toBe(401)
+        const aborted = JSON.stringify({ name: 'ABORTED', reference: REFERENCE })
+        expect(
+            await (await handleMobilePayWebhook(await signedWebhook(aborted, 'whsec'), x, mp.fetchFn)).json()
+        ).toEqual({ ignored: true })
+        const noSecret = { ...x, MOBILEPAY_WEBHOOK_SECRET: undefined }
+        expect((await handleMobilePayWebhook(await signedWebhook(body, 'whsec'), noSecret, mp.fetchFn)).status).toBe(
+            503
+        )
+        expect(mp.calls).toHaveLength(0)
+    })
+
+    it('keeps the online payment channel when the owner approves', async () => {
+        const { calls, db } = fakeDb({ 'WHERE id = ?': [{ id: 7, message: null, status: 'pending' }] })
+        const req = authed('https://lavanti.fi/api/adoptoi/7', {
+            body: JSON.stringify({ action: 'approve', paid_via: 'tilisiirto' }),
+            method: 'POST',
+        })
+        await handleAction(req, { ADOPTIONS_TOKEN: 'admin', DB: db }, '7', T)
+        expect(calls[0].sql).toContain('paid_via = COALESCE(paid_via, ?)')
     })
 })

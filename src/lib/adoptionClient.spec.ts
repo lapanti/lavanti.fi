@@ -6,6 +6,7 @@ import {
     joinNames,
     loadWall,
     parseThanksParams,
+    pollPayment,
     readStoredAdoption,
     resetWall,
     setSignName,
@@ -147,7 +148,15 @@ describe('parseThanksParams', () => {
         expect(parseThanksParams('?ref=K-48213&n=2&y=0&u=0')).toMatchObject({ unnamed: false })
     })
 
+    it('reads the flag MobilePay returns with, and leaves it out of the thanks link', () => {
+        const params = parseThanksParams('?ref=K-48213&n=5&y=0&u=1&mp=1')
+        expect(params).toMatchObject({ quantity: 5, returned: true, unnamed: true })
+        expect(parseThanksParams('?ref=K-48213&n=5&y=0')?.returned).toBeUndefined()
+        expect(thanksHref('/fi/adoptoi/kiitos/', params!)).toBe('/fi/adoptoi/kiitos/?ref=K-48213&n=5&y=0&u=1')
+    })
+
     it.each([
+        '?ref=K-48213&n=1&y=0&mp=2',
         '?ref=K-48213&n=1&y=0&u=2',
         '?ref=K-48213&n=1&y=0&u=',
         '',
@@ -160,6 +169,35 @@ describe('parseThanksParams', () => {
         '?ref=K-48213&n=1&y=0&name=Sjoerd',
     ])('rejects %s', (search) => {
         expect(parseThanksParams(search)).toBeNull()
+    })
+})
+
+describe('pollPayment', () => {
+    const answers = (...states: (null | string)[]) => {
+        const urls: string[] = []
+        const fetchFn = (async (url: string) => {
+            urls.push(url)
+            const state = states.shift()
+            if (state === null) throw new Error('offline')
+
+            return Response.json({ state })
+        }) as typeof fetch
+
+        return { fetchFn, urls }
+    }
+    const noWait = async () => {}
+
+    it('asks until MobilePay has an answer', async () => {
+        const { fetchFn, urls } = answers('pending', null, 'paid')
+        expect(await pollPayment('K-48213', fetchFn, 15, noWait)).toBe('paid')
+        expect(urls).toEqual(Array(3).fill('/api/adoptoi/maksu?ref=K-48213'))
+        expect(await pollPayment('K-48213', answers('failed').fetchFn, 15, noWait)).toBe('failed')
+    })
+
+    it('gives up as pending after the last try', async () => {
+        const { fetchFn, urls } = answers('pending', 'pending', 'pending')
+        expect(await pollPayment('K-48213', fetchFn, 3, noWait)).toBe('pending')
+        expect(urls).toHaveLength(3)
     })
 })
 

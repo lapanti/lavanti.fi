@@ -378,6 +378,116 @@ test.describe('Sign adoption payment step', () => {
     }
 })
 
+test.describe('Sign adoption payment step with MobilePay online', () => {
+    const LANDING = 'https://landing.vipps.no/?token=x'
+
+    /** `/api/adoptoi/maksu`: GET answers `{enabled}` or, with ?ref=, `{state}`; POST answers `start`. */
+    const mockMobilePay = async (
+        page: Page,
+        { enabled = true, start = { redirectUrl: LANDING } as unknown, startStatus = 200, state = 'pending' } = {}
+    ) => {
+        const started: unknown[] = []
+        await page.route('**/api/adoptoi/maksu**', async (route) => {
+            const req = route.request()
+            if (req.method() === 'POST') {
+                started.push(req.postDataJSON())
+                return route.fulfill({ json: start, status: startStatus })
+            }
+            const asked = new URL(req.url()).searchParams.has('ref')
+
+            return route.fulfill({ json: asked ? { state } : { enabled } })
+        })
+        await page.route('https://landing.vipps.no/**', (route) =>
+            route.fulfill({ body: '<title>MobilePay</title>', contentType: 'text/html' })
+        )
+
+        return started
+    }
+
+    const withToken = async (page: Page) => {
+        await page.goto('/fi/adoptoi/')
+        await page.evaluate(() =>
+            sessionStorage.setItem(
+                'adoptoi',
+                JSON.stringify({ name: 'Sjoerd', quantity: 5, ref: 'K-12345', token: 't' })
+            )
+        )
+    }
+
+    test.beforeEach(async ({ page }) => {
+        await mockApi(page)
+    })
+
+    test('should open MobilePay with the amount filled in', async ({ page }) => {
+        const started = await mockMobilePay(page)
+        await withToken(page)
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0')
+
+        const button = page.getByRole('button', { name: 'Lahjoita 100 € MobilePayllä' })
+        await test.expect(button).toBeVisible()
+        await test.expect(page.locator('[data-manual]')).toBeHidden()
+        // The ref stays for the bank transfer; MobilePay shares the payer's name, so no field for it.
+        await test.expect(page.locator('[data-ref-note]')).toBeVisible()
+        await test.expect(page.locator('[data-payer-form]')).toBeHidden()
+        await test.expect(page.locator('[data-message-form]')).toBeVisible()
+        const results = await new AxeBuilder({ page })
+            .include('[data-payment]')
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+            .analyze()
+        test.expect(results.violations).toEqual([])
+
+        await button.click()
+        await page.waitForURL(LANDING)
+        test.expect(started).toEqual([{ ref: 'K-12345', token: 't' }])
+    })
+
+    test('should keep the number when MobilePay online is off or there is no edit token', async ({ page }) => {
+        await mockMobilePay(page, { enabled: false })
+        await withToken(page)
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0')
+        await test.expect(page.locator('[data-payer-form]')).toBeVisible()
+        await test.expect(page.locator('[data-online]')).toBeHidden()
+        await test.expect(page.locator('[data-manual]')).toBeVisible()
+
+        await page.unrouteAll({ behavior: 'ignoreErrors' })
+        await mockApi(page)
+        await mockMobilePay(page)
+        await page.evaluate(() => sessionStorage.clear())
+        await page.reload()
+        await test.expect(page.locator('[data-manual]')).toBeVisible()
+        await test.expect(page.locator('[data-online]')).toBeHidden()
+    })
+
+    test('should go on to the thanks page once MobilePay confirms, even in a new tab', async ({ page }) => {
+        await mockMobilePay(page, { state: 'paid' })
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0&u=1&mp=1')
+
+        await page.waitForURL('**/fi/adoptoi/kiitos/?ref=K-12345&n=5&y=0&u=1')
+    })
+
+    test('should offer another try when the donation was not completed', async ({ page }) => {
+        await mockMobilePay(page, { state: 'failed' })
+        await withToken(page)
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0&mp=1')
+
+        await test.expect(page.getByRole('status')).toHaveText(/^Lahjoitus jäi kesken/)
+        await test.expect(page.getByRole('button', { name: 'Lahjoita 100 € MobilePayllä' })).toBeVisible()
+    })
+
+    test('should fall back to the number when MobilePay does not answer', async ({ page }) => {
+        await mockMobilePay(page, { start: { error: 'palvelu' }, startStatus: 503 })
+        await withToken(page)
+        await page.goto('/fi/adoptoi/lahjoita/?ref=K-12345&n=5&y=0')
+
+        await page.getByRole('button', { name: 'Lahjoita 100 € MobilePayllä' }).click()
+        await test
+            .expect(page.getByRole('status'))
+            .toHaveText('MobilePay ei vastaa juuri nyt. Lahjoita numerolla 46492 alla.')
+        await test.expect(page.locator('[data-manual]')).toBeVisible()
+        await test.expect(page.locator('[data-online]')).toBeHidden()
+    })
+})
+
 test.describe('Sign adoption thanks page', () => {
     test.beforeEach(async ({ page }) => {
         await mockApi(page)

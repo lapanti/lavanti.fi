@@ -33,6 +33,7 @@ const row = (patch: Partial<Adoption> = {}): Adoption => ({
     message_approved_at: null,
     municipality: 'kirkkonummi',
     named: 1,
+    paid_at: null,
     paid_via: null,
     payer_name: null,
     printed_at: null,

@@ -13,7 +13,8 @@ interface Props {
 }
 
 /*
- * The payment step between the form and the thanks page: the amount, MobilePay 46492, the ref,
+ * The payment step between the form and the thanks page: the amount, MobilePay 46492 (or, when
+ * MobilePay online is switched on, a button that opens MobilePay with the amount filled in), the ref,
  * the bank-transfer fallback, the payer name and the optional "Miksi adoptoin?" message, then "Lahjoitin", a link to the thanks page with
  * the same query. A company (y=1) gets the invoice note and a plain continue link instead.
  * payment.client.ts fills in everything that depends on the validated query.
@@ -26,6 +27,13 @@ const scriptData: AdoptionPaymentData = {
     continue: t.continue,
     donate: byPackage((p) => content.mobilePay.donate(p.euros)),
     message: { saved: t.message.saved, unavailable: t.message.unavailable },
+    online: {
+        checking: t.online.checking,
+        donate: byPackage((p) => t.online.donate(p.euros)),
+        failed: t.online.failed,
+        slow: t.online.slow,
+        unavailable: t.online.unavailable,
+    },
     payerSaved: t.payer.saved,
     refNote: content.mobilePay.refNote('%s'),
     thanksPath: THANKS_PATH[lang],
@@ -57,6 +65,9 @@ const scriptData: AdoptionPaymentData = {
     .payment .donate {
         font-size: 1.25rem;
         font-weight: var(--fontWeightsSemibold);
+    }
+    .payment .online .btn {
+        font-size: 1.25rem;
     }
     /* :not([hidden]) so the script's hidden attribute still wins over display: grid. */
     .payment .inline-form:not([hidden]) {
@@ -118,9 +129,15 @@ const scriptData: AdoptionPaymentData = {
     <div class="steps" data-valid hidden>
         <div class="steps" data-private>
             <h3 class="almost" data-almost></h3>
-            <MobilePayBox lang={lang}>
-                <p class="donate" data-donate></p>
-            </MobilePayBox>
+            <p class="status" data-online-status hidden role="status"></p>
+            <div class="online" data-online hidden>
+                <button class="btn btn--solid" data-online-donate type="button"></button>
+            </div>
+            <div data-manual>
+                <MobilePayBox lang={lang}>
+                    <p class="donate" data-donate></p>
+                </MobilePayBox>
+            </div>
             <div class="ref">
                 <p data-ref-note></p>
                 <button class="btn" data-copied={content.mobilePay.copied} data-ref-copy type="button"

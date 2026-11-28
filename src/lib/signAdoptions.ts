@@ -1,7 +1,8 @@
 /**
  * Server logic for Adoptoi kyltti (spec: .agents/specs/sign-adoption/spec.md): the adoption form
  * (`POST /api/adoptoi`), the adopter's own message (`POST /api/adoptoi/viesti`), the public wall
- * (`GET /api/adoptoi/seina`), the owner inbox the `npm run adoptions` CLI reads and the stats
+ * (`GET /api/adoptoi/seina`), MobilePay online (`/api/adoptoi/maksu` and the webhook
+ * `/api/adoptoi/mobilepay`), the owner inbox the `npm run adoptions` CLI reads and the stats
  * endpoint. The Pages Functions in `functions/api/adoptoi*` are thin wrappers around these handlers.
  *
  * Data rules:
@@ -13,6 +14,7 @@
  */
 
 import { type Lang, LANGS } from '../content/nav'
+import { adoptionContent } from '../content/signAdoption'
 import {
     backToForm,
     type D1Like,
@@ -25,14 +27,27 @@ import {
     timingSafeEqual,
     verifyTurnstile,
 } from './formHandling'
+import {
+    capturePayment,
+    createPayment,
+    getPayment,
+    type MobilePayConfig,
+    mobilePayConfig,
+    type MobilePayEnv,
+    paymentReference,
+    refOfPayment,
+    verifyWebhook,
+} from './mobilePay'
 import { helsinkiDayStartUtc, isCalendarDay } from './publishing'
-import { isPackage } from './signPackages'
+import { isPackage, packageEuros } from './signPackages'
 import { suppress, utmSlug } from './volunteers'
 
-export interface AdoptionEnv {
+export interface AdoptionEnv extends MobilePayEnv {
     ADOPTIONS_TOKEN?: string
     DB?: D1Like
     LIITY_STATS_TOKEN?: string
+    /** The secret `npm run adoptions -- mobilepay-webhook` prints when it registers the webhook. */
+    MOBILEPAY_WEBHOOK_SECRET?: string
     TURNSTILE_SECRET?: string
 }
 
@@ -432,6 +447,189 @@ export const handleMessage = async (request: Request, env: AdoptionEnv, now = ne
     return json({ saved: true })
 }
 
+/** Profile data asked for in the MobilePay app, so the giver is known without the payer-name field. */
+const PAYMENT_SCOPE = 'name'
+/** Final states in which nothing was reserved. */
+const FAILED_STATES = ['ABORTED', 'EXPIRED', 'TERMINATED']
+
+type PaymentState = 'failed' | 'paid' | 'pending'
+
+/**
+ * Brings a row up to date with a MobilePay payment: an authorized payment is captured in full and
+ * the row gets paid_at, paid_via 'mobilepay' and the name the donor shared in the app. The payment
+ * is always read from the API, so a webhook body is never trusted and a replay changes nothing.
+ * A second payment for an already paid row, or one for a rejected row, is left uncaptured and its
+ * reservation lapses.
+ */
+const settlePayment = async (
+    db: D1Like,
+    config: MobilePayConfig,
+    fetchFn: FetchLike,
+    reference: string,
+    now: Date
+): Promise<PaymentState> => {
+    const ref = refOfPayment(reference)
+    if (!ref) return 'failed'
+    const row = await db
+        .prepare('SELECT id, status, paid_at FROM sign_adoptions WHERE ref_code = ?')
+        .bind(ref)
+        .first<{ id: number; paid_at: null | string; status: string }>()
+    if (!row || row.status === 'rejected') return 'failed'
+    if (row.paid_at) return 'paid'
+
+    const payment = await getPayment(config, fetchFn, reference)
+    if (FAILED_STATES.includes(payment.state)) return 'failed'
+    if (payment.state !== 'AUTHORIZED' || payment.authorized === 0) return 'pending'
+    if (payment.captured < payment.authorized) {
+        await capturePayment(config, fetchFn, reference, payment.authorized - payment.captured)
+    }
+    await db
+        .prepare(
+            "UPDATE sign_adoptions SET paid_at = ?, paid_via = 'mobilepay', payer_name = COALESCE(?, payer_name) WHERE id = ? AND paid_at IS NULL"
+        )
+        .bind(now.toISOString(), payment.payerName, row.id)
+        .run()
+
+    return 'paid'
+}
+
+/**
+ * GET /api/adoptoi/maksu — `{enabled}`: whether MobilePay online payments are switched on.
+ * With `?ref=K-NNNNN`, `{state}` (paid, pending or failed) for the page the donor returns to from
+ * MobilePay. That page often opens in a new tab without the edit token, so the ref alone is
+ * enough; an unknown ref answers `failed`, like an unpaid one. Also settles the payment, so a
+ * missed webhook never leaves a paid row unmarked.
+ */
+export const handlePayStatus = async (
+    request: Request,
+    env: AdoptionEnv,
+    fetchFn: FetchLike,
+    now = new Date()
+): Promise<Response> => {
+    const config = mobilePayConfig(env)
+    const ref = new URL(request.url).searchParams.get('ref')
+    if (ref === null) return json({ enabled: config !== null && env.DB !== undefined })
+    if (!config || !env.DB) return json({ error: 'palvelu' }, 503)
+    if (!REF.test(ref)) return json({ state: 'failed' })
+
+    try {
+        const row = await env.DB.prepare('SELECT paid_at, mp_reference FROM sign_adoptions WHERE ref_code = ?')
+            .bind(ref)
+            .first<{ mp_reference: null | string; paid_at: null | string }>()
+        if (row?.paid_at) return json({ state: 'paid' })
+        if (!row?.mp_reference) return json({ state: 'failed' })
+
+        return json({ state: await settlePayment(env.DB, config, fetchFn, row.mp_reference, now) })
+    } catch (err) {
+        console.error(`adoptoi: MobilePay status failed: ${errorMessage(err)}`)
+        return json({ error: 'palvelu' }, 503)
+    }
+}
+
+interface PayRow {
+    company_name: null | string
+    edit_token_hash: string
+    id: number
+    lang: Lang
+    named: 0 | 1
+    paid_at: null | string
+    quantity: number
+    status: string
+}
+
+/**
+ * POST /api/adoptoi/maksu — `{ref, token}` from the payment step. Creates a MobilePay payment for
+ * the package amount and returns `{redirectUrl}` for the page to open. Every call makes a new
+ * reference and stores it on the row; MobilePay sends the donor back to the payment step with `&mp=1`.
+ */
+export const handlePayStart = async (
+    request: Request,
+    env: AdoptionEnv,
+    fetchFn: FetchLike,
+    now = new Date()
+): Promise<Response> => {
+    const config = mobilePayConfig(env)
+    if (!config || !env.DB) return json({ error: 'palvelu' }, 503)
+    let body: Record<string, unknown>
+    try {
+        body = (await request.json()) as Record<string, unknown>
+    } catch {
+        return json({ error: 'lomake' }, 400)
+    }
+    const ref = typeof body.ref === 'string' ? body.ref : ''
+    const token = typeof body.token === 'string' ? body.token : ''
+    if (!REF.test(ref) || token === '') return json({ error: 'not found' }, 404)
+
+    let row: null | PayRow
+    try {
+        row = await env.DB.prepare(
+            'SELECT id, status, lang, named, quantity, company_name, edit_token_hash, paid_at FROM sign_adoptions WHERE ref_code = ?'
+        )
+            .bind(ref)
+            .first<PayRow>()
+    } catch (err) {
+        console.error(`adoptoi: MobilePay payment failed: ${errorMessage(err)}`)
+        return json({ error: 'palvelu' }, 503)
+    }
+    if (!row || !timingSafeEqual(row.edit_token_hash, await hashToken(token))) {
+        return json({ error: 'not found' }, 404)
+    }
+    // A company gets an invoice; a paid or handled row needs no new payment.
+    if (row.company_name || row.paid_at || row.status !== 'pending') return json({ error: 'suljettu' }, 409)
+
+    const reference = paymentReference(ref, now)
+    try {
+        const redirectUrl = await createPayment(config, fetchFn, {
+            cents: packageEuros(row.quantity) * 100,
+            description: adoptionContent[row.lang].mobilePay.paymentDescription,
+            reference,
+            returnUrl: `${payUrl(new URL(request.url).origin, row.lang, ref, row)}&mp=1`,
+            scope: PAYMENT_SCOPE,
+        })
+        /*
+         * The status check polls this reference. The webhook finds the row from the reference
+         * itself, so a payment is matched even if this write fails.
+         */
+        await env.DB.prepare('UPDATE sign_adoptions SET mp_reference = ? WHERE id = ?').bind(reference, row.id).run()
+
+        return json({ redirectUrl })
+    } catch (err) {
+        console.error(`adoptoi: MobilePay payment failed: ${errorMessage(err)}`)
+        return json({ error: 'palvelu' }, 503)
+    }
+}
+
+/**
+ * POST /api/adoptoi/mobilepay — the Vipps MobilePay webhook. Checks the signature, then settles
+ * the payment an AUTHORIZED event names. A 5xx makes MobilePay retry.
+ */
+export const handleMobilePayWebhook = async (
+    request: Request,
+    env: AdoptionEnv,
+    fetchFn: FetchLike,
+    now = new Date()
+): Promise<Response> => {
+    const config = mobilePayConfig(env)
+    if (!config || !env.DB || !env.MOBILEPAY_WEBHOOK_SECRET) return json({ error: 'palvelu' }, 503)
+    const body = await request.text()
+    if (!(await verifyWebhook(request, body, env.MOBILEPAY_WEBHOOK_SECRET))) {
+        return json({ error: 'unauthorized' }, 401)
+    }
+    let event: { name?: unknown; reference?: unknown }
+    try {
+        event = JSON.parse(body) as typeof event
+    } catch {
+        return json({ error: 'bad request' }, 400)
+    }
+    if (event.name !== 'AUTHORIZED' || typeof event.reference !== 'string') return json({ ignored: true })
+    try {
+        return json({ state: await settlePayment(env.DB, config, fetchFn, event.reference, now) })
+    } catch (err) {
+        console.error(`adoptoi: MobilePay webhook failed: ${errorMessage(err)}`)
+        return json({ error: 'palvelu' }, 503)
+    }
+}
+
 /** GET /api/adoptoi/seina — the public wall. Cached for a minute at the edge and in the browser. */
 export const handleWall = async (env: AdoptionEnv): Promise<Response> => {
     const wall = (body: unknown, status = 200) =>
@@ -498,7 +696,7 @@ const inbox = (request: Request, env: AdoptionEnv): D1Like | Response => {
 
 /** Every column the owner needs, without the token hash. */
 const INBOX_COLUMNS =
-    'id, created_at, status, lang, named, sign_name, quantity, municipality, email, payer_name, company_name, business_id, billing_address, public, message, message_approved_at, ref_code, consent_page_at, approved_at, paid_via, printed_at'
+    'id, created_at, status, lang, named, sign_name, quantity, municipality, email, payer_name, company_name, business_id, billing_address, public, message, message_approved_at, ref_code, consent_page_at, approved_at, paid_via, paid_at, printed_at'
 
 /**
  * GET /api/adoptoi/pending — pending rows and messages awaiting moderation;
@@ -574,9 +772,15 @@ export const handleAction = async (
         if (body.payer_name !== undefined) {
             const payer = typeof body.payer_name === 'string' ? normaliseName(body.payer_name) : ''
             if (payer.length < 2 || payer.length > 100) return json({ error: 'payer_name' }, 400)
-            await update("status = 'approved', approved_at = ?, paid_via = ?, payer_name = ?", iso, via, payer)
+            await update(
+                "status = 'approved', approved_at = ?, paid_via = COALESCE(paid_via, ?), payer_name = ?",
+                iso,
+                via,
+                payer
+            )
         } else {
-            await update("status = 'approved', approved_at = ?, paid_via = ?", iso, via)
+            // A MobilePay online payment already set paid_via; approval keeps it.
+            await update("status = 'approved', approved_at = ?, paid_via = COALESCE(paid_via, ?)", iso, via)
         }
     } else if (action === 'reject') {
         if (row.status !== 'pending') return conflict()

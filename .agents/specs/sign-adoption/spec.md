@@ -2,7 +2,7 @@
 
 > **Pattern**: [The Spec](https://asdlc.io/patterns/the-spec) — Living document, permanent source of truth.
 > **Status**: `Active`
-> **Last updated**: 2026-11-16
+> **Last updated**: 2026-11-28
 
 ---
 
@@ -60,13 +60,16 @@ All three locales (fi, sv, en) launch together. There is no "first 20" hook.
 POST   /api/adoptoi            Turnstile + validate → pending row → JSON {ref, token}
                                (Accept: application/json) or 303 lahjoita?ref&n&y (no JS)
 POST   /api/adoptoi/viesti     ref + token → message (≤ 140) and/or payer_name, from the payment step
+GET    /api/adoptoi/maksu      {enabled}; ?ref=K-NNNNN → {state: paid|pending|failed} (settles too)
+POST   /api/adoptoi/maksu      ref + token → MobilePay online payment → {redirectUrl}
+POST   /api/adoptoi/mobilepay  Vipps MobilePay webhook (HMAC-signed) → settles the payment
 GET    /api/adoptoi/seina      public, Cache-Control: public, max-age=60 → the wall
 GET    /api/adoptoi/pending    Bearer ADOPTIONS_TOKEN [?status=approved] → rows
 POST   /api/adoptoi/:id        Bearer ADOPTIONS_TOKEN, JSON {action[, paid_via]}
 DELETE /api/adoptoi/:id        Bearer ADOPTIONS_TOKEN → revoke (row deleted)
 GET    /api/adoptoi/stats      Bearer LIITY_STATS_TOKEN [?since=YYYY-MM-DD] → counts
 local  npm run adoptions -- list | approve | reject | approve-message | reject-message
-                            | revoke | print | page add | page remove
+                            | revoke | print | page add | page remove | mobilepay-webhook
 ```
 
 - **Logic:** `src/lib/signAdoptions.ts`; the Functions in `functions/api/adoptoi*` are thin
@@ -95,6 +98,44 @@ local  npm run adoptions -- list | approve | reject | approve-message | reject-m
   sv shows a Swedish sign ("Riksdagsvalet 2027 · Nyland", "Annonsens betalare: …"), en the
   Finnish one. Amounts in new strings keep a no-break space before "€".
 - **Bindings:** D1 `DB`; secrets `TURNSTILE_SECRET`, `ADOPTIONS_TOKEN` (new) and `LIITY_STATS_TOKEN`.
+  MobilePay online (optional, see below): `MOBILEPAY_CLIENT_ID`, `MOBILEPAY_CLIENT_SECRET`,
+  `MOBILEPAY_SUBSCRIPTION_KEY`, `MOBILEPAY_MSN`, `MOBILEPAY_WEBHOOK_SECRET`, and `MOBILEPAY_API`
+  (`https://apitest.vipps.no` for the test environment; production when unset).
+
+### MobilePay online
+
+The payment step can open MobilePay with the amount already filled in, through the Vipps MobilePay
+[ePayment API](https://developer.vippsmobilepay.com/api/epayment/) directly (no payment service
+provider). It is off until all four API keys are set; until then the page shows only number 46492, as before.
+Client: `src/lib/mobilePay.ts` (fetch and Web Crypto, no imports).
+
+- **Switch:** `GET /api/adoptoi/maksu` → `{enabled}`. The page asks on load. Online mode needs the edit
+  token in sessionStorage; without it (no script, another browser) the page keeps the number.
+- **Start:** the button "Lahjoita 100 € MobilePayllä" posts `{ref, token}`. The server checks the token,
+  refuses a company, a paid or a handled row (409), creates a `WEB_REDIRECT` payment for the package
+  price in euro cents with `profile.scope = "name"`, stores the reference in `mp_reference` and
+  returns `redirectUrl`. Reference: `adoptoi-K-NNNNN-<time base36>`, new per attempt (the API wants
+  8–64 characters, and an aborted or expired reference can't be reused). Description:
+  `mobilePay.paymentDescription` per locale. On an error the page says so and shows the number again.
+- **Return:** MobilePay sends the donor to the payment step with `&mp=1`. The page polls
+  `GET /api/adoptoi/maksu?ref=` every 2 s, 15 times: `paid` → the thanks page; `failed` → "Lahjoitus
+  jäi kesken…" and the button again; still `pending` → "Emme ole vielä saaneet vahvistusta…" and the
+  number stays hidden, so nobody donates twice. The phone often opens the return URL in a new tab
+  without sessionStorage, so the status check takes the ref alone and answers only paid, pending or
+  failed (an unknown ref reads as failed).
+- **Settle:** the webhook (`epayments.payment.authorized.v1`, signature checked with
+  `MOBILEPAY_WEBHOOK_SECRET`) and the status check share one step. It finds the row from the ref inside
+  the reference, reads the payment from the API (never trusting a webhook body), captures what is
+  reserved and sets `paid_at`, `paid_via = 'mobilepay'` and `payer_name` from the shared name. A paid row
+  or a rejected row gets no capture; that reservation lapses.
+- **Owner:** the row stays `pending` until `approve`; names still need moderation. `list` shows
+  "MAKSETTU MobilePayllä"; `approve` keeps `paid_via`; `reject` on a paid row reminds to refund it in the
+  MobilePay portal. The payer-name field is not shown in online mode.
+- **Setup:** order online payments for the MobilePay account in portal.vippsmobilepay.com; the
+  Developer section gives the test keys. Set the keys (with `MOBILEPAY_API=https://apitest.vipps.no`)
+  in Pages and `.env`, apply migration 0006, then run
+  `npm run adoptions -- mobilepay-webhook https://<host>/api/adoptoi/mobilepay` once per environment and
+  store the printed secret as `MOBILEPAY_WEBHOOK_SECRET`.
 
 ### Submit
 
@@ -443,6 +484,8 @@ Feature: Adopt a campaign sign
 `message?`, `message_at?`, `message_approved_at?`, `ref_code` UNIQUE, `edit_token_hash`,
 `consent_print_at`, `consent_public_at?`, `consent_page_at?`, `consent_company_at?`,
 `consent_version`, `utm_source?`, `utm_campaign?`, `approved_at?`, `paid_via?`, `printed_at?`.
+`migrations/0006_sign_adoptions_mobilepay.sql` adds `mp_reference?` (the latest online payment
+reference) and `paid_at?` (when an online payment was captured).
 
 ```typescript
 interface AdoptionPage {
@@ -494,3 +537,4 @@ interface AdoptionPage {
 | 2026-11-21 | Dropped the "Suosituin" badge: the featured package keeps only its heavier frame |
 | 2026-11-23 | Payment moved to its own step (`lahjoita`, `donera`, `donate`); the thanks page holds only the thanks, a copyable share text and one 3:4 share image (copy or download), with count-aware copy. The message form, story image and link-sticker hint are gone |
 | 2026-11-23 | "Miksi adoptoin?" moved to the payment step (owner) |
+| 2026-11-28 | MobilePay online through the ePayment API: a donate button, the return check, webhook and capture, `mp_reference` and `paid_at`; off until the keys are set |
