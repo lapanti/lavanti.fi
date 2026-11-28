@@ -406,7 +406,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 checking: 'Checking your donation with MobilePay…',
                 donate: (euros) => `Donate €${euros} with MobilePay`,
                 failed: 'The donation was not completed, and nothing was taken from your account. You can try again.',
-                slow: 'We have not heard back from MobilePay yet. If you approved the donation, you will get a confirmation by email.',
+                slow: 'We have not heard back from MobilePay yet. If you approved the donation, you can see it in your MobilePay app. We will send a confirmation to your email once we have checked it.',
                 unavailable: 'MobilePay is not responding right now. Use number 46492 below.',
             },
             payer: {
@@ -600,7 +600,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 checking: 'Tarkistamme lahjoitustasi MobilePaystä…',
                 donate: (euros) => `Lahjoita ${euros} € MobilePayllä`,
                 failed: 'Lahjoitus jäi kesken, eikä tililtäsi veloitettu mitään. Voit yrittää uudelleen.',
-                slow: 'Emme ole vielä saaneet vahvistusta MobilePaystä. Jos hyväksyit lahjoituksen, saat vahvistuksen sähköpostiisi.',
+                slow: 'Emme ole vielä saaneet vahvistusta MobilePaystä. Jos hyväksyit lahjoituksen, näet sen MobilePay-sovelluksessasi. Lähetämme vahvistuksen sähköpostiisi, kun olemme tarkistaneet sen.',
                 unavailable: 'MobilePay ei vastaa juuri nyt. Lahjoita numerolla 46492 alla.',
             },
             payer: {
@@ -798,7 +798,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
                 checking: 'Vi kontrollerar din gåva hos MobilePay…',
                 donate: (euros) => `Ge ${euros} € med MobilePay`,
                 failed: 'Gåvan blev inte klar, och inget drogs från ditt konto. Du kan försöka igen.',
-                slow: 'Vi har inte fått någon bekräftelse från MobilePay ännu. Om du godkände gåvan får du en bekräftelse per e-post.',
+                slow: 'Vi har inte fått någon bekräftelse från MobilePay ännu. Om du godkände gåvan ser du den i din MobilePay-app. Vi skickar en bekräftelse per e-post när vi har kontrollerat den.',
                 unavailable: 'MobilePay svarar inte just nu. Använd numret 46492 nedan.',
             },
             payer: {
