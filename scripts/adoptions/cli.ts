@@ -74,12 +74,13 @@ const fail = (message: string): never => {
     throw new Error(message)
 }
 
-const token = process.env.ADOPTIONS_TOKEN ?? exit('Missing ADOPTIONS_TOKEN (set it in .env).')
+// Read on first use: mobilepay-webhook talks to MobilePay only and needs no admin token.
+const token = (): string => process.env.ADOPTIONS_TOKEN ?? exit('Missing ADOPTIONS_TOKEN (set it in .env).')
 
 const api = async (path: string, init: RequestInit = {}): Promise<Response> => {
     const res = await fetch(`${ORIGIN}/api/adoptoi${path}`, {
         ...init,
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', ...init.headers },
+        headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json', ...init.headers },
     })
     if (!res.ok) fail(`${init.method ?? 'GET'} ${path} failed: ${res.status} ${(await res.text()).slice(0, 200)}`)
 
