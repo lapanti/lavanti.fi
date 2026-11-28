@@ -8,6 +8,7 @@
  *   npm run adoptions -- revoke <id|ref>
  *   npm run adoptions -- print
  *   npm run adoptions -- page add <id|ref> | page remove <slug>
+ *   npm run adoptions -- mobilepay-webhook <url>
  *
  * approve: after matching the MobilePay report by ref (or name, amount and date). Refuses a
  * company-form name without company details, warns when the payer differs from the sign name,
@@ -20,7 +21,13 @@
  * page add|remove: changes one entry of src/content/adoptionPages.json in a commit of its own
  * (GPG-signed) on its own branch from origin/main, pushes it and opens the PR.
  *
+ * mobilepay-webhook: registers the MobilePay online webhook once per environment and prints its
+ * secret for the Pages secret MOBILEPAY_WEBHOOK_SECRET. `list` marks rows MobilePay online already
+ * confirmed; `reject` on one reminds to refund it in the MobilePay portal.
+ *
  * Env (.env): ADOPTIONS_TOKEN. ADOPTIONS_URL overrides the site origin (default https://lavanti.fi).
+ * mobilepay-webhook also needs MOBILEPAY_CLIENT_ID, MOBILEPAY_CLIENT_SECRET, MOBILEPAY_MSN,
+ * MOBILEPAY_SUBSCRIPTION_KEY and, for the test environment, MOBILEPAY_API=https://apitest.vipps.no.
  */
 
 /* eslint-disable import-x/extensions -- node --experimental-strip-types needs explicit extensions */
@@ -32,6 +39,7 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { INVOICE_TITLE } from '../../src/content/signAdoption.ts'
+import { mobilePayConfig, registerWebhook } from '../../src/lib/mobilePay.ts'
 import { helsinkiDateOf } from '../../src/lib/publishing.ts'
 import {
     type Adoption,
@@ -93,6 +101,7 @@ const errorText = (err: unknown): string => (err instanceof Error ? err.message 
 const describe = (r: Adoption) =>
     `${r.id}  ${r.ref_code}  ${r.created_at.slice(0, 10)}  ${signLabel(r)} × ${r.quantity} (${donation(r)} €)  ${r.municipality}  ${r.lang}` +
     (r.company_name ? `\n    yritys: ${r.company_name} ${r.business_id} → ${r.billing_address}` : '') +
+    (r.paid_at ? `\n    MAKSETTU MobilePayllä ${r.paid_at.slice(0, 10)}` : '') +
     (r.payer_name ? `\n    maksaja: ${r.payer_name}` : '') +
     `\n    ${r.email}${r.public ? '  · listalla' : ''}${r.consent_page_at ? '  · oma sivu' : ''}`
 
@@ -158,6 +167,7 @@ const approve = async (args: string[]) => {
             console.warn(`${r.ref_code}: ${key} reaches ${total} € (≥ 2 000 €): tarkista myös muut kanavat.`)
 
         await act(r.id, 'approve', {
+            // A row MobilePay online already confirmed keeps paid_via 'mobilepay' on the server.
             paid_via: via ?? (r.company_name ? 'lasku' : 'mobilepay'),
             ...(payer === undefined ? {} : { payer_name: payer }),
         })
@@ -174,9 +184,23 @@ const simple = (action: string, done: string) => async (args: string[]) => {
     const { adoptions, messages } = await inbox()
     const rows = [...adoptions, ...messages, ...(action === 'reject' ? [] : await approvedRows())]
     for (const id of idsFrom(args, rows)) {
+        const r = rows.find((x) => x.id === id)
         await act(id, action)
-        console.log(`${done} ${rows.find((r) => r.id === id)?.ref_code ?? id}.`)
+        console.log(`${done} ${r?.ref_code ?? id}.`)
+        if (action === 'reject' && r?.paid_at) {
+            console.warn('  MobilePay online already took this donation: refund it in portal.vippsmobilepay.com.')
+        }
     }
+}
+
+/** Registers the MobilePay webhook once per environment and prints the secret for the Pages settings. */
+const mobilePayWebhook = async ([url]: string[]) => {
+    const config = mobilePayConfig(process.env) ?? fail('Set the MOBILEPAY_* keys in .env first.')
+    if (!url?.startsWith('https://'))
+        fail('Usage: npm run adoptions -- mobilepay-webhook https://lavanti.fi/api/adoptoi/mobilepay')
+    const { id, secret } = await registerWebhook(config, fetch, url)
+    console.log(`Registered webhook ${id} for ${url} at ${config.api}.`)
+    console.log(`Set this as the Pages secret MOBILEPAY_WEBHOOK_SECRET (shown once): ${secret}`)
 }
 
 const readPages = (): AdoptionPage[] => JSON.parse(readFileSync(join(ROOT, PAGES_FILE), 'utf8')) as AdoptionPage[]
@@ -292,6 +316,7 @@ const commands: Record<string, (args: string[]) => Promise<void>> = {
     approve,
     'approve-message': simple('approve-message', 'Approved the message of'),
     list,
+    'mobilepay-webhook': mobilePayWebhook,
     page,
     print,
     reject: simple('reject', 'Rejected'),
@@ -303,7 +328,7 @@ try {
         commands[command ?? ''] ??
         (() =>
             fail(
-                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|tilisiirto|lasku] [--payer "<name>"] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug>'
+                'Usage: npm run adoptions -- list | approve <id…> [--via mobilepay|tilisiirto|lasku] [--payer "<name>"] | reject <id> | approve-message <id> | reject-message <id> | revoke <id> | print | page add <id> | page remove <slug> | mobilepay-webhook <url>'
             ))
     )(args)
 } catch (err) {
