@@ -1,3 +1,5 @@
+import type { D1Like } from './formHandling'
+
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { fakeDb, turnstile } from '../../tests/formFakes'
@@ -653,6 +655,21 @@ describe('MobilePay online', () => {
             url.endsWith('/capture') ? { aggregate: { capturedAmount: { value: 10000 } } } : authorized
         )
     const pendingRow = { 'id, status, paid_at': [{ id: 7, paid_at: null, status: 'pending' }] }
+
+    it('answers 503, not a raw error, when the database fails', async () => {
+        const errorLog = vi.spyOn(console, 'error').mockImplementation(() => undefined)
+        const broken = {
+            prepare: () => {
+                throw new Error('no such table: sign_adoptions')
+            },
+        } as unknown as D1Like
+        const env = { ...MOBILEPAY_ENV, DB: broken }
+        const { fetchFn } = fakeMobilePay()
+        expect((await handlePayStatus(status('K-12345'), env, fetchFn)).status).toBe(503)
+        expect((await handlePayStart(start({ ref: 'K-12345', token: 'tok' }), env, fetchFn)).status).toBe(503)
+        expect(errorLog).toHaveBeenCalledTimes(2)
+        errorLog.mockRestore()
+    })
 
     it('reports whether it is switched on', async () => {
         const get = new Request('https://lavanti.fi/api/adoptoi/maksu')

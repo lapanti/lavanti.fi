@@ -512,17 +512,29 @@ export const handlePayStatus = async (
     if (!config || !env.DB) return json({ error: 'palvelu' }, 503)
     if (!REF.test(ref)) return json({ state: 'failed' })
 
-    const row = await env.DB.prepare('SELECT paid_at, mp_reference FROM sign_adoptions WHERE ref_code = ?')
-        .bind(ref)
-        .first<{ mp_reference: null | string; paid_at: null | string }>()
-    if (row?.paid_at) return json({ state: 'paid' })
-    if (!row?.mp_reference) return json({ state: 'failed' })
     try {
+        const row = await env.DB.prepare('SELECT paid_at, mp_reference FROM sign_adoptions WHERE ref_code = ?')
+            .bind(ref)
+            .first<{ mp_reference: null | string; paid_at: null | string }>()
+        if (row?.paid_at) return json({ state: 'paid' })
+        if (!row?.mp_reference) return json({ state: 'failed' })
+
         return json({ state: await settlePayment(env.DB, config, fetchFn, row.mp_reference, now) })
     } catch (err) {
         console.error(`adoptoi: MobilePay status failed: ${errorMessage(err)}`)
         return json({ error: 'palvelu' }, 503)
     }
+}
+
+interface PayRow {
+    company_name: null | string
+    edit_token_hash: string
+    id: number
+    lang: Lang
+    named: 0 | 1
+    paid_at: null | string
+    quantity: number
+    status: string
 }
 
 /**
@@ -548,20 +560,17 @@ export const handlePayStart = async (
     const token = typeof body.token === 'string' ? body.token : ''
     if (!REF.test(ref) || token === '') return json({ error: 'not found' }, 404)
 
-    const row = await env.DB.prepare(
-        'SELECT id, status, lang, named, quantity, company_name, edit_token_hash, paid_at FROM sign_adoptions WHERE ref_code = ?'
-    )
-        .bind(ref)
-        .first<{
-            company_name: null | string
-            edit_token_hash: string
-            id: number
-            lang: Lang
-            named: 0 | 1
-            paid_at: null | string
-            quantity: number
-            status: string
-        }>()
+    let row: null | PayRow
+    try {
+        row = await env.DB.prepare(
+            'SELECT id, status, lang, named, quantity, company_name, edit_token_hash, paid_at FROM sign_adoptions WHERE ref_code = ?'
+        )
+            .bind(ref)
+            .first<PayRow>()
+    } catch (err) {
+        console.error(`adoptoi: MobilePay payment failed: ${errorMessage(err)}`)
+        return json({ error: 'palvelu' }, 503)
+    }
     if (!row || !timingSafeEqual(row.edit_token_hash, await hashToken(token))) {
         return json({ error: 'not found' }, 404)
     }
