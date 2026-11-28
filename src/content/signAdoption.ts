@@ -125,6 +125,8 @@ interface AdoptionLocale {
         copyRef: string
         donate: (euros: number) => string
         open: string
+        /** Shown in the MobilePay app for an online payment; 3–100 characters. */
+        paymentDescription: string
         qrAlt: string
         refNote: (ref: string) => string
     }
@@ -155,6 +157,14 @@ interface AdoptionLocale {
         message: { hint: string; label: string; save: string; saved: string; unavailable: string }
         missingName: string
         next: string
+        /** MobilePay online: the button, and the status lines when the donor comes back from the app. */
+        online: {
+            checking: string
+            donate: (euros: number) => string
+            failed: string
+            slow: string
+            unavailable: string
+        }
         payer: { label: string; save: string; saved: string; tooSoon: string; unavailable: string }
         share: {
             copyImage: string
@@ -354,6 +364,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             copyRef: 'Copy the message',
             donate: (euros) => `Donate €${euros} with MobilePay to number 46492.`,
             open: 'Open MobilePay',
+            paymentDescription: 'Donation to the election fundraiser (Adopt a sign)',
             qrAlt: 'MobilePay QR code for number 46492',
             refNote: (ref) => `Write ${ref} as the message so we can find your donation.`,
         },
@@ -391,6 +402,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             missingName: 'Type the name again to see your sign.',
             next: 'We will check the donation and send a confirmation to your email.',
+            online: {
+                checking: 'Checking your donation with MobilePay…',
+                donate: (euros) => `Donate €${euros} with MobilePay`,
+                failed: 'The donation was not completed, and nothing was taken from your account. You can try again.',
+                slow: 'We have not heard back from MobilePay yet. If you approved the donation, you will get a confirmation by email.',
+                unavailable: 'MobilePay is not responding right now. Use number 46492 below.',
+            },
             payer: {
                 label: "Payer's name, if you pay with someone else's MobilePay",
                 save: 'Save',
@@ -540,6 +558,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             copyRef: 'Kopioi viesti',
             donate: (euros) => `Lahjoita ${euros} euroa MobilePayllä numerolla 46492.`,
             open: 'Avaa MobilePay',
+            paymentDescription: INVOICE_TITLE,
             qrAlt: 'MobilePay-QR-koodi numeroon 46492',
             refNote: (ref) => `Kirjoita viestiksi ${ref}, niin löydämme lahjoituksesi.`,
         },
@@ -577,6 +596,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             missingName: 'Kirjoita nimi uudelleen, niin näet kylttisi.',
             next: 'Tarkistamme lahjoituksen ja lähetämme vahvistuksen sähköpostiisi.',
+            online: {
+                checking: 'Tarkistamme lahjoitustasi MobilePaystä…',
+                donate: (euros) => `Lahjoita ${euros} € MobilePayllä`,
+                failed: 'Lahjoitus jäi kesken, eikä tililtäsi veloitettu mitään. Voit yrittää uudelleen.',
+                slow: 'Emme ole vielä saaneet vahvistusta MobilePaystä. Jos hyväksyit lahjoituksen, saat vahvistuksen sähköpostiisi.',
+                unavailable: 'MobilePay ei vastaa juuri nyt. Lahjoita numerolla 46492 alla.',
+            },
             payer: {
                 label: 'Maksajan nimi, jos maksat toisen henkilön MobilePayllä',
                 save: 'Tallenna',
@@ -730,6 +756,7 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             copyRef: 'Kopiera meddelandet',
             donate: (euros) => `Ge ${euros} euro med MobilePay till nummer 46492.`,
             open: 'Öppna MobilePay',
+            paymentDescription: 'Gåva till valinsamlingen (Adoptera en skylt)',
             qrAlt: 'MobilePay-QR-kod till nummer 46492',
             refNote: (ref) => `Skriv ${ref} som meddelande, så hittar vi din gåva.`,
         },
@@ -767,6 +794,13 @@ export const adoptionContent: Record<Lang, AdoptionLocale> = {
             },
             missingName: 'Skriv namnet igen, så ser du din skylt.',
             next: 'Vi kontrollerar gåvan och skickar en bekräftelse till din e-post.',
+            online: {
+                checking: 'Vi kontrollerar din gåva hos MobilePay…',
+                donate: (euros) => `Ge ${euros} € med MobilePay`,
+                failed: 'Gåvan blev inte klar, och inget drogs från ditt konto. Du kan försöka igen.',
+                slow: 'Vi har inte fått någon bekräftelse från MobilePay ännu. Om du godkände gåvan får du en bekräftelse per e-post.',
+                unavailable: 'MobilePay svarar inte just nu. Använd numret 46492 nedan.',
+            },
             payer: {
                 label: 'Betalarens namn, om du betalar med någon annans MobilePay',
                 save: 'Spara',
