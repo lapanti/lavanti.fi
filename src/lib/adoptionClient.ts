@@ -15,28 +15,65 @@ export interface ThanksParams {
     company: boolean
     quantity: number
     ref: string
+    /** Back on the payment step from the MobilePay app (`mp=1`). */
+    returned?: boolean
     /** A donation for signs without the donor's name on them (`u=1`). */
     unnamed?: boolean
 }
 
 /**
  * The thanks page query: `?ref=K-NNNNN&n=<package count>&y=0|1`, plus `&u=1` for a donation without a name
- * on the sign. Anything else, extra keys included, is rejected as a whole so nothing unvalidated
- * reaches the page.
+ * on the sign and `&mp=1` when MobilePay sends the donor back to the payment step. Anything else,
+ * extra keys included, is rejected as a whole so nothing unvalidated reaches the page.
  */
 export const parseThanksParams = (search: string): null | ThanksParams => {
     const params = new URLSearchParams(search)
     const keys = [...params.keys()]
-    if (keys.some((k) => !['n', 'ref', 'u', 'y'].includes(k))) return null
+    if (keys.some((k) => !['mp', 'n', 'ref', 'u', 'y'].includes(k))) return null
     const ref = params.get('ref') ?? ''
     const n = params.get('n') ?? ''
     const y = params.get('y') ?? ''
     const u = params.get('u') ?? '0'
-    if (!/^K-\d{5}$/.test(ref) || !/^\d{1,2}$/.test(n) || !/^[01]$/.test(y) || !/^[01]$/.test(u)) return null
+    const mp = params.get('mp') ?? '0'
+    if (
+        !/^K-\d{5}$/.test(ref) ||
+        !/^\d{1,2}$/.test(n) ||
+        !/^[01]$/.test(y) ||
+        !/^[01]$/.test(u) ||
+        !/^[01]$/.test(mp)
+    ) {
+        return null
+    }
     const quantity = Number(n)
     if (!isPackage(quantity)) return null
 
-    return { company: y === '1', quantity, ref, unnamed: u === '1' }
+    return { company: y === '1', quantity, ref, unnamed: u === '1', ...(mp === '1' ? { returned: true } : {}) }
+}
+
+export type PaymentState = 'failed' | 'paid' | 'pending'
+
+/**
+ * Asks `/api/adoptoi/maksu?ref=` until MobilePay has an answer: `paid` or `failed`, or `pending`
+ * when `tries` run out or the check doesn't respond.
+ */
+export const pollPayment = async (
+    ref: string,
+    fetchFn: typeof fetch = fetch,
+    tries = 15,
+    wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
+): Promise<PaymentState> => {
+    for (let i = 0; i < tries; i++) {
+        if (i > 0) await wait(2000)
+        try {
+            const res = await fetchFn(`/api/adoptoi/maksu?ref=${encodeURIComponent(ref)}`)
+            const state = res.ok ? ((await res.json()) as { state?: string }).state : undefined
+            if (state === 'paid' || state === 'failed') return state
+        } catch {
+            // Offline for a moment: try again.
+        }
+    }
+
+    return 'pending'
 }
 
 export interface StoredAdoption {
